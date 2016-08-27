@@ -1,0 +1,11 @@
+[OVERLAY]
+┌──────
+│      
+│ Info 
+│      
+│ Items
+│      
+│ Save 
+│      
+│ Close
+└──────

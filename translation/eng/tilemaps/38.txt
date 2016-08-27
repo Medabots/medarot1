@@ -1,0 +1,11 @@
+[OVERLAY]
+┌─────────┐
+│         │
+│ Remove  │
+│         │
+│ Status  │
+│         │
+│ Begin   │
+│         │
+│ Cancel  │
+└─────────┘

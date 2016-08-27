@@ -1,0 +1,11 @@
+[OVERLAY]
+┌──────────────────┐
+│Message speed     │
+│       Slo Med Fst│
+│Animation speed   │
+│           Med Fst│
+│Battle time limit │
+│           Med Fst│
+│                  │
+│           Close  │
+└──────────────────┘

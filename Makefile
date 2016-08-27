@@ -12,6 +12,7 @@ BUILD := $(BASE)/build
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
+TRANSLATIONS = $(BASE)/translation
 
 MODULES := core gfx story
 
@@ -33,6 +34,10 @@ MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 
 all: $(TARGET_OUT)
+
+$(TARGET)_%.$(TARGET_TYPE): $(MODULES_OBJ)
+	rgblink -O $(ORIGINAL) -o $@ $^
+	rgbfix $(FIX_ARGS) $@
 
 $(TARGET_OUT): $(MODULES_OBJ)
 	rgblink -O $(ORIGINAL) -o $@ $^
