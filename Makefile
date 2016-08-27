@@ -12,7 +12,7 @@ BUILD := $(BASE)/build
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 
-MODULES := core
+MODULES := core gfx
 
 #Compiler/Linker
 CC := rgbasm
