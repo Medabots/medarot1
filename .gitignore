@@ -1,0 +1,7 @@
+*.gbc
+*.sav
+*.sgm
+build/
+*.sn1
+*.sna
+*.o
