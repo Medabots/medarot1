@@ -21,7 +21,7 @@ CC_ARGS :=
 LD := rgblink
 LD_ARGS :=
 FIX := rgbfix
-FIX_ARGS := -v -k 9C -l 0x33 -m 0x03 -p 0 -r 3 -t "MEDAROT KABUTO"
+FIX_ARGS := -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 -t "MEDAROT KABUTO"
 # End User Defined
 
 #You shouldn't need to touch anything past this line!
@@ -37,7 +37,6 @@ all: $(TARGET_OUT)
 $(TARGET_OUT): $(MODULES_OBJ)
 	rgblink -O $(ORIGINAL) -o $@ $^
 	rgbfix $(FIX_ARGS) $@
-	cmp -l $(ORIGINAL) $@
 
 .SECONDEXPANSION:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC)
