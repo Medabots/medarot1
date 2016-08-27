@@ -11,8 +11,9 @@ BASE := .
 BUILD := $(BASE)/build
 GAME := $(BASE)/game
 SRC := $(GAME)/src
+COMMON := $(SRC)/common
 
-MODULES := core gfx
+MODULES := core gfx story
 
 #Compiler/Linker
 CC := rgbasm
@@ -29,6 +30,7 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
+COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 
 all: $(TARGET_OUT)
 
@@ -38,7 +40,7 @@ $(TARGET_OUT): $(MODULES_OBJ)
 	cmp -l $(ORIGINAL) $@
 
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD)
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC)
 	rgbasm -o $@ $<
 
 clean:
