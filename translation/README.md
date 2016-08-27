@@ -1,0 +1,16 @@
+From doc/control_codes.txt
+
+00: Normal Space
+4A: Clears previous text on a line (weird form of new line, used in battle text)
+4BXXXX: Shortcut to a piece of text, 4B23C9 is the player's name
+4C: Starts a new text box
+4DXX: Changes text speed, lower numbers are faster (4D02 is default)
+4E: Moves to the second line in a text box
+4FXX: End of string, 4F00 is normal but 00-04 all seem to be used.
+
+4F00 = Waits for button press, then closes. (Most common, used for normal text)
+4F01 = Closes automatically. (Delay depends on text speed?)
+4F02 = Waits for button press, but doesn't clear the text or text box graphics.
+4F03 = Waits for button press, clears the text but not the text box graphics.
+4F04 = Closes automatically, but doesn't clear the text or text box graphics. (Used for questions)
+4F05 and higher = Seem to work the same as 4F04.
