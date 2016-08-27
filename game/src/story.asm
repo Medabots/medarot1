@@ -3,3 +3,4 @@ INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
 INCLUDE "game/src/story/initial_name.asm"
+INCLUDE "game/src/story/text_tables.asm"
