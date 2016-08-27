@@ -35,10 +35,6 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 
 all: $(TARGET_OUT)
 
-$(TARGET)_%.$(TARGET_TYPE): $(MODULES_OBJ)
-	rgblink -O $(ORIGINAL) -o $@ $^
-	rgbfix $(FIX_ARGS) $@
-
 $(TARGET_OUT): $(MODULES_OBJ)
 	rgblink -O $(ORIGINAL) -o $@ $^
 	rgbfix $(FIX_ARGS) $@
