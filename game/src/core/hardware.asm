@@ -12,3 +12,14 @@ SECTION "serial",ROM0[$58] ; serial interrupt
 
 SECTION "joypad",ROM0[$60] ; joypad interrupt
 	reti
+
+SECTION "WaitLCDController", ROM0[$17cb]
+WaitLCDController:: ; 17cb (0:17cb)
+	push af
+.asm_17cc
+	ld a, [hLCDStat]
+	and $02
+	jr nz, .asm_17cc
+	pop af
+	ret
+; 0x17d4
