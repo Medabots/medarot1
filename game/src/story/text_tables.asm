@@ -1,5 +1,5 @@
 SECTION "Dialog Text Tables", ROM0[$1d3b]
-TextTableBanks:: ; 0x1d3b
+TextTableBanks: ; 0x1d3b
     db $0c ;Snippet 1
     db $0d ;Snippet 2
     db $0e ;Snippet 3
@@ -17,7 +17,7 @@ TextTableBanks:: ; 0x1d3b
     db $00
     db $00
 
-TextTableOffsets:: ; 0x1d4b
+TextTableOffsets: ; 0x1d4b
     dw $7e00 ;Snippet 1
     dw $7e00 ;Snippet 2
     dw $7e00 ;Snippet 3
