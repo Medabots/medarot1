@@ -1,3 +1,5 @@
+hLCDStat           EQU $ff41
+
 hPushOAM           EQU $ff80
 
 hBuffer            EQU $ff8b

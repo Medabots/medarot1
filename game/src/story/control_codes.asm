@@ -152,7 +152,7 @@ Char4C: ; 0x1e62
 	add hl, bc
 	ld a, $fa
 	di
-	call $17cb
+	call WaitLCDController
 	ld [hl], a
 	ei
 	ld a, [$ff8d]
@@ -251,7 +251,7 @@ Char4B: ; 0x1ed6
 	add hl, bc
 	pop af
 	di
-	call $17cb
+	call WaitLCDController
 	ld [hl], a
 	ei
 	pop hl
@@ -263,7 +263,7 @@ Char4B: ; 0x1ed6
 	ld l, a
 	ld a, d
 	di
-	call $17cb
+	call WaitLCDController
 	ld [hl], a
 	ei
 	inc hl

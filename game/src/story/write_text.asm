@@ -91,7 +91,7 @@ WriteChar: ; 1f96
   	add hl, bc
   	pop af
   	di
-  	call $17cb
+  	call WaitLCDController
   	ld [hl], a ; "/°
   	ei
   	pop hl
@@ -103,7 +103,7 @@ WriteChar: ; 1f96
   	ld l, a
   	ld a, d
   	di
-  	call $17cb
+  	call WaitLCDController
   	ld [hl], a
   	ei
   	inc hl
@@ -155,7 +155,7 @@ PutString: ; 2fcf
 	add hl, bc
 	ld a, [$c64f]
 	di
-	call $17cb
+	call WaitLCDController
 	ld [hl], a
 	ei
 	ld a, [$c642]
@@ -164,7 +164,7 @@ PutString: ; 2fcf
 	ld l, a
 	ld a, [$c64e]
 	di
-	call $17cb
+	call WaitLCDController
 	ld [hl], a
 	ei
 	inc hl
