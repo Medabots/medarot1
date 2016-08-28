@@ -4,7 +4,7 @@ SECTION "Font Table", ROM0[$10f0]
 FontTable:
 	dw $1156
 	dw $115b
-	dw $1160 ; Special characters in font
+	dw $1160 ; Special characters in font (!, heart symbol, yen, etc...)
   dw $1165 ; Main dialogue font {08, 4168}
   dw $1156
   dw $116a
@@ -57,5 +57,5 @@ FontTable:
 SECTION "Font Table Data", ROM0[$1156]
   dbww $08,$59c5,$8800
   dbww $08,$58dd,$9500
-  dbww $08,$4000,$9000
+  dbww BANK(SpecialDialogueFont), SpecialDialogueFont, $9000
   dbww BANK(DialogueFont), DialogueFont, $8800

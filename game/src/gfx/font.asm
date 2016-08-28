@@ -4,8 +4,14 @@ LoadFont1:
 	call DecompressAndLoadTiles ; Decompress
 	ret
 
+SECTION "Special Character Font", ROMX[$4000], BANK[$8]
+SpecialDialogueFont:
+	db $01 ;Compressed flag
+	;Compressed tilemap
+
 SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
 DialogueFont:
+	db $01 ;Compressed flag
 	;Compressed tilemap
 
 ;a = 04 at init
