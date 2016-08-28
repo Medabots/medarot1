@@ -14,7 +14,7 @@ SRC := $(GAME)/src
 COMMON := $(SRC)/common
 TRANSLATIONS = $(BASE)/translation
 
-MODULES := core gfx story
+MODULES := core gfx story patch
 
 #Compiler/Linker
 CC := rgbasm

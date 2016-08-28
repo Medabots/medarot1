@@ -59,3 +59,6 @@ hCGBPalUpdate      EQU $ffe5
 hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
+
+hSaveA             EQU $FF90
+hBank              EQU $FF91

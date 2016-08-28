@@ -7,8 +7,28 @@ SECTION "rst0", ROM0[$0]
 	ld l, a ;l = a
 	jp [hl]
 
-SECTION "rst8",ROM0[$8] ;Return, enable interrupt
-  reti
+SECTION "rst8",ROM0[$8] ; HackPredef
+	ld [TempA], a ; 3
+	jp Rst8Cont
+
+SECTION "rst8Cont",ROM0[$62]
+Rst8Cont:
+	ld a, [hBank]
+	ld [BankOld],a
+	ld a, BANK(HackPredef)
+	ld [$2000], a
+	call HackPredef
+	ld [TempA], a
+	ld a, [BankOld]
+	cp a, $17
+	jr z, .bs
+	cp a, $1f
+	jr nc, .bs ; bank swap
+	ld a, [$c6e0]
+.bs
+	ld [$2000], a
+	ld a, [TempA]
+	ret
 
 SECTION "rst10, bank swap",ROM0[$10]
 	ld [$2000], a
