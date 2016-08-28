@@ -6,39 +6,40 @@ LoadFont1:
 
 SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
 DialogueFont:
-	
+	;Compressed tilemap
 
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
 ;a = 06, 07 before title screen
-;a = 02, 03 before loading New Game/Load menu and init name screen, and dialogue
+;a = 02 font for the special characters (A, B, 0, 1, 2, 3, 4... !, heart)
+;a = 03 dialogue font
 ;a = 09 on kirara's intro
 SECTION "Load Font", ROM0[$05a9]
-LoadFont0: ;Gets called when dialogue is being setup, among other things
+LoadFont0: ;Gets called at the initial screens during setup
 	call LoadFont_Sub
 	rst $18
 
 SECTION "Load Font sub", ROM0[$10d3]
 LoadFont_Sub: ; 10d3 (0:10d3)
-	ld hl, $10f0
+	ld hl, FontTable
 	ld d, $00
 	ld e, a
 	sla e
 	rl d
 	add hl, de
-	ld a, [hli]
+	ld a, [hli] ;Follow pointer in table to struct
 	ld h, [hl]
 	ld l, a
-	ld a, [hli]
-	rst $10
-	ld a, [hli]
+	ld a, [hli] ;Retrieve bank
+	rst $10 ;Bank swap
+	ld a, [hli] ;Retrieve offset low bytes
 	ld e, a
-	ld a, [hli]
+	ld a, [hli] ;Retrieve offset high bytes
 	ld d, a
-	ld a, [hli]
+	ld a, [hli] ;For font type 2, this is 8800 (VRAM)
 	ld h, [hl]
 	ld l, a
-	ld a, [de]
+	ld a, [de] ;Load first byte at bank:offset (01 is compressed, 00 is not)
 	inc de
 	jp $1214
 ; 0x10ef
@@ -57,7 +58,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
 	ld a, $01
 	ld [$c6ce], a
 	ld a, [$c650]
-	ld hl, $10f0
+	ld hl, FontTable
 	ld d, $00
 	ld e, a
 	sla e

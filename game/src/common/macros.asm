@@ -9,3 +9,9 @@ dwb: MACRO
 	dw \1
 	db \2
 	ENDM
+
+dbww: MACRO
+	db \1
+	dw \2
+	dw \3
+	ENDM
