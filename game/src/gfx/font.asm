@@ -1,8 +1,48 @@
-SECTION "Load Font", ROM0[$2d85]
-LoadFont:: ;Dialogue
+SECTION "Load Dialogue Font", ROM0[$2d85]
+LoadFont1:
 	ld a, 3
 	call DecompressAndLoadTiles ; Decompress
 	ret
+
+SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
+DialogueFont:
+	
+
+;a = 04 at init
+;a = 05 on JP text before SPD2 screen
+;a = 06, 07 before title screen
+;a = 02, 03 before loading New Game/Load menu and init name screen, and dialogue
+;a = 09 on kirara's intro
+SECTION "Load Font", ROM0[$05a9]
+LoadFont0: ;Gets called when dialogue is being setup, among other things
+	call LoadFont_Sub
+	rst $18
+
+SECTION "Load Font sub", ROM0[$10d3]
+LoadFont_Sub: ; 10d3 (0:10d3)
+	ld hl, $10f0
+	ld d, $00
+	ld e, a
+	sla e
+	rl d
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [hli]
+	rst $10
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [de]
+	inc de
+	jp $1214
+; 0x10ef
+
 
 SECTION "Decompress Tiles", ROM0[$12e8]
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
