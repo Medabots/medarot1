@@ -47,7 +47,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
 	ld a, [de]
 	ld b, a
 	inc de
-	jp $1342
+	jp .asm_1342
 ; 0x132e
 .asm_132e
 	ld a, [$c6d4]
@@ -60,6 +60,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
 	ld d, a
 	ld a,[$c6d2]
 	ld e, a
+.asm_1342
 	ld a, [$c6d3]
 	or a
 	jr nz, .asm_135e

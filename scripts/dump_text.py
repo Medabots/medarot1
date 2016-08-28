@@ -17,7 +17,7 @@ def readbyte():
     return ord(rom.read(1))
 
 table = {}
-for line in open("res/medarot.tbl").readlines():
+for line in open("scripts/res/medarot.tbl").readlines():
     if line.strip():
         a, b = line.strip('\n').split("=", 1)
         table[int(a, 16)] = b.replace("\\n", '\n')
