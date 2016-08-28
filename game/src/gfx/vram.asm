@@ -3,7 +3,7 @@ SECTION "CopyVRAMData", ROM0[$CB7]
 ; hl - address to copy from
 ; de - address to copy to
 ; bc - length
-CopyVRAMData: ;  cb7
+CopyVRAMData:: ;  cb7
 	ld a, [hli]
 	di
 	call WaitLCDController
