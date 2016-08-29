@@ -6,7 +6,7 @@
 05:
 06:
 07:
-08:
+08: Contains several tilesets, including the original JP dialogue font
 09:
 0A:
 0B:
