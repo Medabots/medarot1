@@ -9,12 +9,12 @@ SpecialDialogueFont:
 	db $01 ;Compressed flag
 	;Compressed tilemap
 
-SECTION "Dialogue Font", ROMX[$4000], BANK[$25]
+SECTION "Dialogue Font", ROMX[$4000], BANK[$20]
 DialogueFont:
 	db $00
 	dw FontEnd-Font
 Font:
-	INCBIN "translation/eng/font.2bpp"
+	INCBIN "translation/eng/font.2bpp" ;TODO: Makefile should move this to 'build' directory
 FontEnd
 
 ;a = 04 at init
