@@ -1,0 +1,32 @@
+00:
+01:
+02:
+03:
+04:
+05:
+06:
+07:
+08:
+09:
+0A:
+0B:
+0C: Snippet1
+0D: Snippet2
+0E: Snippet3
+0F: Snippet4
+10:
+11:
+12:
+13:
+14:
+15:
+16: StoryText1
+17:
+18: StoryText2
+19:
+1A: StoryText3
+1B:
+1C:
+1D: BattleText
+1E:
+1F: Last bank used by game
