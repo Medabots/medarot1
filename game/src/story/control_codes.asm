@@ -120,7 +120,7 @@ Char4E:
 	inc a
 	ld [$c6c0], a
 	pop hl
-	jp $1d11
+	jp PutCharLoop
 
 Char4D: ; 0x1e46
 ; text speed
@@ -228,7 +228,7 @@ Char4B: ; 0x1ed6
 	ret nz
 	xor a
 	ld [$c6c1], a
-	jp $1d11
+	jp PutCharLoop
 .asm_1f04
 	ld d, a
 	ld a, $40
@@ -281,7 +281,7 @@ Char4B: ; 0x1ed6
 	ret nz
 	xor a
 	ld [$c6c1], a
-	jp $1d11
+	jp PutCharLoop
 
 Char4A: ; 0x1f5f
 ; \r

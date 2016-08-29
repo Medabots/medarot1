@@ -47,6 +47,7 @@ PutChar:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+PutCharLoop: ;1d11, things jump to here after the control code
 	push hl
 	ld a, [$c6c0]
 	ld b, $0
@@ -121,7 +122,7 @@ WriteChar: ; 1f96
   	ret nz
   	xor a
   	ld [$c6c1], a
-  	jp $1d11
+  	jp PutCharLoop
   ; 0x1ff2
 
 SECTION "PutString", ROM0[$2fcf]
