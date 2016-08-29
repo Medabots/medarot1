@@ -1,5 +1,5 @@
 Pointer,Original,Translated
-0x74000,"ヘんどうの こうかが はっせいした!<S3c><4A><4E><S02>こうどうせいこうリつが さがった!<S3c><4A><*4>","Inflicted Flux status!<S3c><4E><S02>Success rate down!<S3c><*4>"
+0x74000,"ヘんどうの こうかが はっせいした!<S3c><4A><4E><S02>こうどうせいこうリつが さがった!<S3c><*4>","Inflicted Flux status!<S3c><4A><4E><S02>Success rate down!<S3c><*4>"
 0x74002,"ていしの こうかが はっせいした!<S3c><4A><4E><S02>しばらくのあいだ うごけない!<S3c><*4>","Inflicted Stop status!<S3c><4A><4E><S02>Unable to move!<S3c><*4>"
 0x74004,"そくばくの こうかが はっせいした!<S3c><4A><4E><S02>スピードが おそくなった!<S3c><*4>","Inflicted Bind status!<S3c><4A><4E><S02>Speed decreased!<S3c><*4>"
 0x74006,"けいぞくの こうかが はっせいした!<S3c><4A><4E><S02>いどうちゅうも ダメージを うける!<S3c><*4>","Inflicted Burn status!<S3c><4A><4E><S02>Continual damage!<S3c><*4>"
