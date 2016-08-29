@@ -1,7 +1,7 @@
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
 	ld a, 3
-	call DecompressAndLoadTiles ; Decompress
+	call LoadFont_Sub
 	ret
 
 SECTION "Special Character Font", ROMX[$4000], BANK[$8]
@@ -9,10 +9,13 @@ SpecialDialogueFont:
 	db $01 ;Compressed flag
 	;Compressed tilemap
 
-SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
+SECTION "Dialogue Font", ROMX[$4000], BANK[$25]
 DialogueFont:
-	db $01 ;Compressed flag
-	;Compressed tilemap
+	db $00
+	dw FontEnd-Font
+Font:
+	INCBIN "translation/eng/font.2bpp"
+FontEnd
 
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
