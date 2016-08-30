@@ -120,7 +120,7 @@ Char4E:
 	inc a
 	ld [$c6c0], a
 	pop hl
-	jp $1d11
+	jp PutCharLoop
 
 Char4D: ; 0x1e46
 ; text speed
@@ -206,15 +206,15 @@ Char4B: ; 0x1ed6
 	inc hl
 	ld a, [hli]
 	ld h, [hl]
-	ld l, a
-	ld a, [$c6c5]
+	ld l, a ;hl = base memory address to pull from
+	ld a, [$c6c5] ;Offset from base of current character
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
 	cp $50
 	jr nz, .asm_1f04 ; 0x1ee4 $1e
-	ld a, [$c6c0]
+	ld a, [$c6c0] ;if character is EOF, we're done and can go back to the loop
 	inc a
 	inc a
 	inc a
@@ -228,8 +228,8 @@ Char4B: ; 0x1ed6
 	ret nz
 	xor a
 	ld [$c6c1], a
-	jp $1d11
-.asm_1f04
+	jp PutCharLoop
+.asm_1f04 
 	ld d, a
 	ld a, $40
 	sub d
@@ -281,7 +281,7 @@ Char4B: ; 0x1ed6
 	ret nz
 	xor a
 	ld [$c6c1], a
-	jp $1d11
+	jp PutCharLoop
 
 Char4A: ; 0x1f5f
 ; \r
