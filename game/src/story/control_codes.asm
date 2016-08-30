@@ -206,15 +206,15 @@ Char4B: ; 0x1ed6
 	inc hl
 	ld a, [hli]
 	ld h, [hl]
-	ld l, a
-	ld a, [$c6c5]
+	ld l, a ;hl = base memory address to pull from
+	ld a, [$c6c5] ;Offset from base of current character
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
 	cp $50
 	jr nz, .asm_1f04 ; 0x1ee4 $1e
-	ld a, [$c6c0]
+	ld a, [$c6c0] ;if character is EOF, we're done and can go back to the loop
 	inc a
 	inc a
 	inc a
@@ -229,7 +229,7 @@ Char4B: ; 0x1ed6
 	xor a
 	ld [$c6c1], a
 	jp PutCharLoop
-.asm_1f04
+.asm_1f04 
 	ld d, a
 	ld a, $40
 	sub d

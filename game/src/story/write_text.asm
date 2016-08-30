@@ -34,7 +34,7 @@ PutChar:
 	sla c
 	rl b
 	add hl, bc
-	ld a, [hli]
+	ld a, [hli] ; hl is currently pointing to the TextTableOffsets[DialogCategory]
 	ld h, [hl]
 	ld l, a
 	pop bc
@@ -43,13 +43,13 @@ PutChar:
 	ld b, a
 	sla c
 	rl b
-	add hl, bc
+	add hl, bc ; bc is the offset to the start of the text that's being printed out
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 PutCharLoop: ;1d11, things jump to here after the control code
 	push hl
-	ld a, [$c6c0]
+	ld a, [$c6c0] ;Current character index
 	ld b, $0
 	ld c, a
 	add hl, bc
