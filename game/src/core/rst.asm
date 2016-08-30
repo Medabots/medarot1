@@ -61,8 +61,8 @@ SECTION "rst30",ROM0[$30] ;
   ld l, a
   ret
 
-SECTION "rst38",ROM0[$38] ; Unused
+SECTION "rst38",ROM0[$38]
 	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+	ld h, [hl]
+	ld l, a
   ret
