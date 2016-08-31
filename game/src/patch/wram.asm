@@ -7,5 +7,3 @@ TempH::
   ds 1
 TempL::
   ds 1
-Flag4F::
-	ds 1

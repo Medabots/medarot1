@@ -39,12 +39,14 @@ PutChar:
 	ld a, b
 	and $f
 	ld b, a
-	sla c
-	rl b
-	add hl, bc ; bc is the offset to the start of the text that's being printed out
+	add hl, bc ;Pointers to text in each of the banks now also have the bank offset, so instead of logical shifts just add it 3 times 
+	add hl, bc
+	add hl, bc
+	ld a,[hli] ;To have more room for text, change the pointer table to include banks ({Bank:1, Address:2 (LE)})
+	push af
 	rst $38
-	nop
-	nop
+	pop af
+	rst $10
 	nop
 	nop
 PutCharLoop: ;1d11, things jump to here after the control code

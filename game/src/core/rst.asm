@@ -11,7 +11,7 @@ SECTION "rst8",ROM0[$8] ; HackPredef
 	ld [TempA], a ; 3
 	jp Rst8Cont
 
-SECTION "rst8Cont",ROM0[$62]
+SECTION "rst8Cont",ROM0[$62] ;Replaces a bunch of empty space
 Rst8Cont:
 	ld a, [hBank]
 	ld [BankOld],a
@@ -36,7 +36,9 @@ SECTION "rst10, bank swap",ROM0[$10]
 
 SECTION "rst18",ROM0[$18] ;Bank swap from memory
   ld a, [$c6e0]
-  ld [$2000], a
+	rst $10
+	nop
+	nop
   ret
 
 SECTION "rst20",ROM0[$20]
