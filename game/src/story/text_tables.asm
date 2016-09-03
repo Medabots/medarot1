@@ -1,29 +1,38 @@
-SECTION "Snippet1", ROMX[$7e00], BANK[$0c]
+SECTION "Snippet1", ROMX[$4000], BANK[$25]
 Snippet1:
+  INCBIN "build/Snippet1.bin"
 
-SECTION "Snippet2", ROMX[$7e00], BANK[$0d]
+SECTION "Snippet2", ROMX[$4000], BANK[$26]
 Snippet2:
+  INCBIN "build/Snippet2.bin"
 
-SECTION "Snippet3", ROMX[$7e00], BANK[$0e]
+SECTION "Snippet3", ROMX[$4000], BANK[$27]
 Snippet3:
+  INCBIN "build/Snippet3.bin"
 
-SECTION "Snippet4", ROMX[$7e00], BANK[$0f]
+SECTION "Snippet4", ROMX[$4000], BANK[$28]
 Snippet4:
+  INCBIN "build/Snippet4.bin"
 
-SECTION "Snippet5", ROMX[$7800], BANK[$13]
+SECTION "Snippet5", ROMX[$4000], BANK[$29]
 Snippet5:
+  INCBIN "build/Snippet5.bin"
 
-SECTION "StoryText1", ROMX[$6000], BANK[$16]
+SECTION "StoryText1", ROMX[$4000], BANK[$2a]
 StoryText1:
+  INCBIN "build/StoryText1.bin"
 
-SECTION "StoryText2", ROMX[$4000], BANK[$18]
+SECTION "StoryText2", ROMX[$4000], BANK[$2b]
 StoryText2:
+  INCBIN "build/StoryText2.bin"
 
-SECTION "StoryText3", ROMX[$4000], BANK[$1a]
+SECTION "StoryText3", ROMX[$4000], BANK[$2c]
 StoryText3:
+  INCBIN "build/StoryText2.bin"
 
-SECTION "BattleText", ROMX[$4000], BANK[$1d]
+SECTION "BattleText", ROMX[$4000], BANK[$2d]
 BattleText:
+  INCBIN "build/BattleText.bin"
 
 
 SECTION "Dialog Text Tables", ROM0[$1d3b]
