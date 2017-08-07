@@ -6,7 +6,18 @@ from struct import *
 import os
 
 def table_convert(txt, tbl):
-    return bytearray(txt, encoding = 'utf-8')
+    t = bytearray(txt, encoding = 'utf-8')
+    i = 0
+    while i < len(t):
+        try:
+            if chr(t[i]) in tbl:
+                t[i] = tbl[chr(t[i])]
+            else:
+                print("Unable to find mapping for 0x%02X (%c)" % (t[i], t[i]))
+                t[i] = tbl['?']
+        finally:
+            i += 1
+    return t
 
 if __name__ == '__main__':
     # TODO: Set this up to take these as an argument
@@ -16,8 +27,10 @@ if __name__ == '__main__':
 
     trans_dir = 'translation/%s/text' % (arg0)
     output_dir = arg1
-    char_table = 'translation/%s/chars.tbl' % (arg0)
+    with open('translation/%s/chars.tbl' % (arg0)) as f:
+        char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
     additional_banks = arg2.split(',')
+
 
     #Reads from the text_tables.asm file to determine banks
     sections = ['Snippet1', 'Snippet2', 'Snippet3', 'Snippet4', 'Snippet5', 'StoryText1', 'StoryText2', 'StoryText3', 'BattleText']
@@ -36,8 +49,10 @@ if __name__ == '__main__':
     for f in additional_banks:
         name = "Additional_b%s" % f 
         bank_map[f] = { "BANK": int(f, 16), "OFFSET": 0x4000 } 
+    
+    reverse_bank_map = dict((v['BANK'], k) for k,v in bank_map.items())
 
-    txt = {}
+    txt = OrderedDict()
     #Get translated text
     for section in sections:
         fn = '%s/%s.csv' % (trans_dir, section)
@@ -49,11 +64,18 @@ if __name__ == '__main__':
                     continue
                 #Pointer, Original, Translated
                 l = line.strip('\r\n').strip('\n').split(',')
+                original_txt = l[1].strip('"')
                 translated_txt = l[2].strip('"')
-                if not translated_txt:
-                    translated_txt = l[0]
+                ptr = l[0]
+                if not translated_txt and original_txt:
+                    translated_txt = ptr
+                elif not translated_txt and not original_txt:
+                    translated_txt = " " # TODO: What needs to happen with the empty strings?
+                elif translated_txt.startswith('='):
+                    ptr = translated_txt.strip('=')
+                    translated_txt = ''
                 converted_txt = table_convert(translated_txt, char_table)
-                txt[section].append((int(l[0], 16), converted_txt))
+                txt[section].append((int(ptr, 16), converted_txt))
         if bank_map[section]['OFFSET'] + len(txt[section]) * 3 > bank_size_max:
             raise Exception("ERROR: Pointers in %s take up %i bytes (max %i)", section, bank_map[section]['OFFSET'] + len(txt[section]) * 3, bank_size_max)
         else: 
@@ -61,15 +83,30 @@ if __name__ == '__main__':
     
     for section in sections:
         offsets = []
+        ptr_offset_map = {}
         for t in txt[section]:
+            if not len(t[1]):
+                offsets.append(ptr_offset_map[t[0]])
+                continue
             #Get first bank with free space
-            # TODO: When it starts with '='
             for b in bank_map:
                 if bank_map[b]['OFFSET'] + len(t[1]) <= bank_size_max:
                     offsets.append((bank_map[b]['BANK'], bank_map[b]['OFFSET']))
-                    bank_map[b]['OFFSET'] = bank_map[b]['OFFSET'] +  len(t[1])
+                    ptr_offset_map[t[0]] = (bank_map[b]['BANK'], bank_map[b]['OFFSET'])
+                    bank_map[b]['OFFSET'] = bank_map[b]['OFFSET'] + len(t[1])
                     break
             else:
                 raise Exception("ERROR: Could not find room for %s", t)
-        print("%s" % offsets) #All text and bank offsets accounted for
+        with open('%s/%s.bin' % (output_dir, section), 'wb') as bin_file:
+            [bin_file.write(pack('<BH', b[0], b[1])) for b in offsets]
+
+        curr_bank = 0
+        curr_file = 0
+        for i, t in enumerate(txt[section]):
+            if curr_bank != offsets[i][0]:
+                if curr_file:
+                    curr_file.close()
+                curr_file = open('%s/%s.bin' % (output_dir, reverse_bank_map[offsets[i][0]]), 'ab')
+            curr_file.write(t[1])
         
+        curr_file.close()
