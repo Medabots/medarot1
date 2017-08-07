@@ -49,9 +49,9 @@ def table_convert(txt, tbl):
         finally:
             i += 1
     
-    result.append(0x4F)
-    result.append(endcode)
-    print(hexlify(result))
+    if len(t):
+        result.append(0x4F)
+        result.append(endcode)
     return result
 
 if __name__ == '__main__':
