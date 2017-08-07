@@ -14,3 +14,13 @@ Reference http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Projec
 4F03 = Waits for button press, clears the text but not the text box graphics.
 4F04 = Closes automatically, but doesn't clear the text or text box graphics. (Used for questions)
 4F05 and higher = Seem to work the same as 4F04.
+
+
+In text:
+
+<*?>       = Non-standard string end code (4F0?)
+<S??>      = Changes text speed (4D??)
+<&????>    = Pulls text from a RAM address (4B????, ???? is little endian)
+<&NAME>    = Player's name (4B23C9)
+<&MEDA>    = Special RAM space, to replace c6a2 for larger text, only applicable in certain situations (like in battle)
+=(pointer) = Identical to a previous pointer

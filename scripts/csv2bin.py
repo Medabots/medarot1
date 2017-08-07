@@ -1,23 +1,58 @@
 #!/bin/python
 
-from binascii import unhexlify
+from binascii import unhexlify, hexlify
 from collections import OrderedDict
 from struct import *
 import os
 
 def table_convert(txt, tbl):
     t = bytearray(txt, encoding = 'utf-8')
+    result = bytearray()
     i = 0
+    endcode = 0x00
     while i < len(t):
         try:
-            if chr(t[i]) in tbl:
-                t[i] = tbl[chr(t[i])]
+            if chr(t[i]) == '<':
+                i += 1
+                special_type = chr(t[i])
+                i += 1
+                special_data = []
+                while chr(t[i]) != '>':
+                    try:
+                        special_data.append(chr(t[i]))
+                    finally:
+                        i += 1
+                if special_type == '*':
+                    endcode = int(special_data[0])
+                    break
+                elif special_type == 'S':
+                    result.append(0x4D)
+                    result.append(int(''.join(special_data), 16))
+                elif special_type == '&':
+                    result.append(0x4B)
+                    s = ''.join(special_data)
+                    if s == "MEDA":
+                        result.append(0x23)
+                        result.append(0xC9)
+                    elif s == "NAME":
+                        result.append(0xD1)
+                        result.append(0xDE)
+                elif special_type == '`':
+                    result.append(0x50)
+                elif special_type == '4':
+                    result.append(int( special_type + ''.join(special_data), 16))
+            elif chr(t[i]) in tbl:
+                result.append(tbl[chr(t[i])])
             else:
                 print("Unable to find mapping for 0x%02X (%c)" % (t[i], t[i]))
-                t[i] = tbl['?']
+                result.append(tbl['?'])
         finally:
             i += 1
-    return t
+    
+    result.append(0x4F)
+    result.append(endcode)
+    print(hexlify(result))
+    return result
 
 if __name__ == '__main__':
     # TODO: Set this up to take these as an argument
@@ -31,6 +66,8 @@ if __name__ == '__main__':
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
     additional_banks = arg2.split(',')
 
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     #Reads from the text_tables.asm file to determine banks
     sections = ['Snippet1', 'Snippet2', 'Snippet3', 'Snippet4', 'Snippet5', 'StoryText1', 'StoryText2', 'StoryText3', 'BattleText']
