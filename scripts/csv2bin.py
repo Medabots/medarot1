@@ -4,6 +4,7 @@ from binascii import unhexlify, hexlify
 from collections import OrderedDict
 from struct import *
 import os
+import csv
 
 def table_convert(txt, tbl):
     t = bytearray(txt, encoding = 'utf-8')
@@ -11,7 +12,7 @@ def table_convert(txt, tbl):
     i = 0
     endcode = 0x00
     while i < len(t):
-        try:
+        try: 
             if chr(t[i]) == '<':
                 i += 1
                 special_type = chr(t[i])
@@ -32,11 +33,14 @@ def table_convert(txt, tbl):
                     result.append(0x4B)
                     s = ''.join(special_data)
                     if s == "MEDA":
+                        result.append(0xA2)
+                        result.append(0xC6)
+                    elif s == "NAME":
                         result.append(0x23)
                         result.append(0xC9)
-                    elif s == "NAME":
-                        result.append(0xD1)
-                        result.append(0xDE)
+                    else:
+                        result.append(int(s[2:3], 16))
+                        result.append(int(s[0:1], 16))
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':
@@ -96,14 +100,13 @@ if __name__ == '__main__':
         txt[section] = []
         print("Starting on %s" % (fn))
         with open(fn, 'r') as f:
-            for line in f:
-                if line.startswith('Pointer'):
-                    continue
+            reader = csv.reader(f, delimiter=',', quotechar='"')
+            next(reader, None) #Skip header
+            for line in reader:
                 #Pointer, Original, Translated
-                l = line.strip('\r\n').strip('\n').split(',')
-                original_txt = l[1].strip('"')
-                translated_txt = l[2].strip('"')
-                ptr = l[0]
+                original_txt = line[1].strip('"')
+                translated_txt = line[2].strip('"')
+                ptr = line[0]
                 if not translated_txt and original_txt:
                     translated_txt = ptr
                 elif not translated_txt and not original_txt:
@@ -113,6 +116,7 @@ if __name__ == '__main__':
                     translated_txt = ''
                 converted_txt = table_convert(translated_txt, char_table)
                 txt[section].append((int(ptr, 16), converted_txt))
+
         if bank_map[section]['OFFSET'] + len(txt[section]) * 3 > bank_size_max:
             raise Exception("ERROR: Pointers in %s take up %i bytes (max %i)", section, bank_map[section]['OFFSET'] + len(txt[section]) * 3, bank_size_max)
         else: 
