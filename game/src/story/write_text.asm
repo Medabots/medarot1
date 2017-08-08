@@ -49,12 +49,13 @@ PutChar:
 	rst $10
 	nop
 	nop
+	nop
+	nop
+	nop
 PutCharLoop: ;1d11, things jump to here after the control code
 	push hl
 	ld a, [$c6c0] ;Current character index
-	ld b, $0
-	ld c, a
-	add hl, bc
+	rst $28
 	ld a, [hl]
 	cp $4f
 	jp z, Char4F

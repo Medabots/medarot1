@@ -42,20 +42,20 @@ SECTION "rst18",ROM0[$18] ;Bank swap from memory
   ret
 
 SECTION "rst20",ROM0[$20]
-  add l ;a = l+a
-  ld l, a ;l = a
-  ret c ;Return if 'c'
-  dec h ;h--
+  add l
+  ld l, a ; l += a
+  ret c ; Return if 'c'
+  dec h ; h--
   ret
 
-SECTION "rst28",ROM0[$28]
-	add l ;a = l+a
-	ld l, a ;l = a
+SECTION "rst28",ROM0[$28] ; hl += a
+	add l
+	ld l, a ;l += a
 	ret nc ;Return if not 'c'
 	inc h ;h++
 	ret
 
-SECTION "rst30",ROM0[$30] ;
+SECTION "rst30",ROM0[$30] ; hl = [hl + a*2]
   add a
   rst $28
   ld a, [hli]
