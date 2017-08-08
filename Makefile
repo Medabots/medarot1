@@ -1,20 +1,27 @@
 export LC_CTYPE=C
+export PYTHONIOENCODING=utf-8
 
-# User defined
+#User defined
 TARGET := medarot
 ORIGINAL := baserom.gbc
+LANG := eng
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
-PYTHON := python
+TEXT_TYPE := csv
+BIN_TYPE := bin
+PYTHON := python3
 
 BASE := .
 BUILD := $(BASE)/build
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
-TRANSLATIONS = $(BASE)/translation
+TRANSLATIONS := $(BASE)/translation/$(LANG)/text
 
 MODULES := core gfx story patch
+TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
+
+#TODO: This should actually be configurable 
 
 #Compiler/Linker
 CC := rgbasm
@@ -23,7 +30,7 @@ LD := rgblink
 LD_ARGS :=
 FIX := rgbfix
 FIX_ARGS := -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 -t "MEDAROT KABUTO"
-# End User Defined
+#End User Defined
 
 #You shouldn't need to touch anything past this line!
 TARGET_OUT := $(TARGET).$(TARGET_TYPE)
@@ -31,21 +38,28 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
+TEXT_FILES := $(foreach FILE,$(TEXT),$(TRANSLATIONS)/$(FILE).$(TEXT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
+BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
 
 all: $(TARGET_OUT)
 
 $(TARGET_OUT): $(MODULES_OBJ)
-	rgblink -O $(ORIGINAL) -o $@ $^
-	rgbfix $(FIX_ARGS) $@
+	$(LD) -O $(ORIGINAL) -o $@ $^
+	$(FIX) $(FIX_ARGS) $@
 
+#Make is a stupid spec, this is absurd
+$(BIN_FILE): $(TEXT_FILES)
+	$(PYTHON) scripts/csv2bin.py
+	
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC)
-	rgbasm -o $@ $<
-
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(BIN_FILE)
+	$(CC) -o $@ $<
+	
 clean:
 	rm -rf $(BUILD) $(TARGET_OUT)
 
 #Make directories if necessary
-$(BUILD):
+$(BUILD): 
 	mkdir $(BUILD)
+

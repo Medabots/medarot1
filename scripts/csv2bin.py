@@ -5,6 +5,7 @@ from collections import OrderedDict
 from struct import *
 import os
 import csv
+from sys import getdefaultencoding
 
 def table_convert(txt, tbl):
     t = bytearray(txt, encoding = 'utf-8')
@@ -62,13 +63,14 @@ if __name__ == '__main__':
     # TODO: Set this up to take these as an argument
     arg0 = 'eng' #language
     arg1 = 'build' #output directory
-    arg2 = '21,22,23'
-
+    arg2 = ''
     trans_dir = 'translation/%s/text' % (arg0)
     output_dir = arg1
-    with open('translation/%s/chars.tbl' % (arg0)) as f:
+    with open('translation/%s/chars.tbl' % (arg0), encoding='utf-8') as f:
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
-    additional_banks = arg2.split(',')
+    additional_banks = []
+    if arg2:
+        additional_banks = arg2.split(',')
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -99,7 +101,7 @@ if __name__ == '__main__':
         fn = '%s/%s.csv' % (trans_dir, section)
         txt[section] = []
         print("Starting on %s" % (fn))
-        with open(fn, 'r') as f:
+        with open(fn, 'r', encoding='utf-8') as f:
             reader = csv.reader(f, delimiter=',', quotechar='"')
             next(reader, None) #Skip header
             for line in reader:
