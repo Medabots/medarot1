@@ -27,4 +27,30 @@ HackPredef::
   ret ; jumps to hl
 
 HackPredefTable:
-  dw $0000
+  dw IncTextOffset ;0
+  dw GetTextOffset ;1
+
+; [[WTextOffsetHi][$c6c0]]++
+IncTextOffset:
+  ld a, [$c6c0]
+  inc a
+  ld [$c6c0], a
+  ret nz
+  ld a, [WTextOffsetHi]
+  inc a
+  ld [WTextOffsetHi], a
+  ret
+
+; bc = [WTextOffsetHi][$c6c0]
+GetTextOffset:
+  ld a, [$c6c0]
+  ld c, a
+  ld a, [WTextOffsetHi]
+  ld b, a
+  ret
+
+ZeroTextOffset:
+  xor a
+  ld [$c6c0], a
+  ld [WTextOffsetHi], a
+  ret
