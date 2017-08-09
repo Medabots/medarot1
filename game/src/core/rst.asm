@@ -31,14 +31,13 @@ Rst8Cont:
 	ret
 
 SECTION "rst10, bank swap",ROM0[$10]
+	ld [hBank], a
 	ld [$2000], a
   ret
 
 SECTION "rst18",ROM0[$18] ;Bank swap from memory
   ld a, [$c6e0]
 	rst $10
-	nop
-	nop
   ret
 
 SECTION "rst20",ROM0[$20]
