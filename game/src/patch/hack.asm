@@ -29,6 +29,7 @@ HackPredef::
 HackPredefTable:
   dw IncTextOffset ;0
   dw GetTextOffset ;1
+  dw ZeroTextOffset ;2
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:

@@ -116,9 +116,12 @@ Char4E:
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
-  ld a, [$c6c0]
-  inc a
-  ld [$c6c0], a
+  ld a, $0
+  rst $8
+  nop
+  nop
+  nop
+  nop
   pop hl
   jp PutCharLoop
 
@@ -128,9 +131,12 @@ Char4D: ; 0x1e46
   ld a, [hl]
   ld [$c6c1], a
   ld [$c6c4], a
-  ld a, [$c6c0]
-  add $2
-  ld [$c6c0], a
+  ld a, $0
+  rst $8
+  ld a, $0
+  rst $8
+  nop
+  nop
   pop hl
   ld a, [$c6c1]
   cp $ff
@@ -196,9 +202,12 @@ Char4C: ; 0x1e62
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
-  ld a, [$c6c0]
-  inc a
-  ld [$c6c0], a
+  ld a, $0
+  rst $8
+  nop
+  nop
+  nop
+  nop
   ret
 
 Char4B: ; 0x1ed6
@@ -214,11 +223,12 @@ Char4B: ; 0x1ed6
   ld a, [hl]
   cp $50
   jr nz, .asm_1f04 ; 0x1ee4 $1e
-  ld a, [$c6c0] ;if character is EOF, we're done and can go back to the loop
-  inc a
-  inc a
-  inc a
-  ld [$c6c0], a
+  ld a, $0
+  rst $8
+  ld a, $0
+  rst $8
+  ld a, $0
+  rst $8
   xor a
   ld [$c6c5], a
   ld a, [$c6c4]
@@ -307,8 +317,11 @@ Char4A: ; 0x1f5f
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
-  ld a, [$c6c0]
-  inc a
-  ld [$c6c0], a
+  ld a, $0
+  rst $8
+  nop
+  nop
+  nop
+  nop
   pop hl
   ret
