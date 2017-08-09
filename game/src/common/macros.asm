@@ -1,17 +1,17 @@
 ; macro for putting a byte then a word
 dbw: MACRO
-	db \1
-	dw \2
-	ENDM
+  db \1
+  dw \2
+  ENDM
 
 ; macro for putting a word then a byte
 dwb: MACRO
-	dw \1
-	db \2
-	ENDM
+  dw \1
+  db \2
+  ENDM
 
 dbww: MACRO
-	db \1
-	dw \2
-	dw \3
-	ENDM
+  db \1
+  dw \2
+  dw \3
+  ENDM

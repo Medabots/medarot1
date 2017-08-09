@@ -1,20 +1,20 @@
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
-	ld a, 3
-	call LoadFont_Sub
-	ret
+  ld a, 3
+  call LoadFont_Sub
+  ret
 
 SECTION "Special Character Font", ROMX[$4000], BANK[$8]
 SpecialDialogueFont:
-	db $01 ;Compressed flag
-	;Compressed tilemap
+  db $01 ;Compressed flag
+  ;Compressed tilemap
 
 SECTION "Dialogue Font", ROMX[$4000], BANK[$20]
 DialogueFont:
-	db $00
-	dw FontEnd-Font
+  db $00
+  dw FontEnd-Font
 Font:
-	INCBIN "translation/eng/font.2bpp" ;TODO: Makefile should move this to 'build' directory
+  INCBIN "translation/eng/font.2bpp" ;TODO: Makefile should move this to 'build' directory
 FontEnd
 
 ;a = 04 at init
@@ -25,104 +25,104 @@ FontEnd
 ;a = 09 on kirara's intro
 SECTION "Load Font", ROM0[$05a9]
 LoadFont0: ;Gets called at the initial screens during setup
-	call LoadFont_Sub
-	rst $18
+  call LoadFont_Sub
+  rst $18
 
 SECTION "Load Font sub", ROM0[$10d3]
 LoadFont_Sub: ; 10d3 (0:10d3)
-	ld hl, FontTable
-	ld d, $00
-	ld e, a
-	sla e
-	rl d
-	add hl, de
-	ld a, [hli] ;Follow pointer in table to struct
-	ld h, [hl]
-	ld l, a
-	ld a, [hli] ;Retrieve bank
-	rst $10 ;Bank swap
-	ld a, [hli] ;Retrieve offset low bytes
-	ld e, a
-	ld a, [hli] ;Retrieve offset high bytes
-	ld d, a
-	ld a, [hli] ;For font type 2, this is 8800 (VRAM)
-	ld h, [hl]
-	ld l, a
-	ld a, [de] ;Load first byte at bank:offset (01 is compressed, 00 is not)
-	inc de
-	jp $1214
+  ld hl, FontTable
+  ld d, $00
+  ld e, a
+  sla e
+  rl d
+  add hl, de
+  ld a, [hli] ;Follow pointer in table to struct
+  ld h, [hl]
+  ld l, a
+  ld a, [hli] ;Retrieve bank
+  rst $10 ;Bank swap
+  ld a, [hli] ;Retrieve offset low bytes
+  ld e, a
+  ld a, [hli] ;Retrieve offset high bytes
+  ld d, a
+  ld a, [hli] ;For font type 2, this is 8800 (VRAM)
+  ld h, [hl]
+  ld l, a
+  ld a, [de] ;Load first byte at bank:offset (01 is compressed, 00 is not)
+  inc de
+  jp $1214
 ; 0x10ef
 
 
 SECTION "Decompress Tiles", ROM0[$12e8]
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
-	ld [$c650], a ;Store font type
-	ld a, b
-	ld [$c6d3], a
-	xor a
-	ld [$c64e], a
-	ld a, [$c6ce]
-	or a
-	jp nz, .asm_132e
-	ld a, $01
-	ld [$c6ce], a
-	ld a, [$c650]
-	ld hl, FontTable
-	ld d, $00
-	ld e, a
-	sla e
-	rl d
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [hli]
-	ld [$c6d4], a
-	rst $10
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc de
-	ld a, h
-	ld [$c5f6], a
-	ld a, l
-	ld [$c5f7], a
-	ld a, [de]
-	ld c, a
-	inc de
-	ld a, [de]
-	ld b, a
-	inc de
-	jp .asm_1342
+  ld [$c650], a ;Store font type
+  ld a, b
+  ld [$c6d3], a
+  xor a
+  ld [$c64e], a
+  ld a, [$c6ce]
+  or a
+  jp nz, .asm_132e
+  ld a, $01
+  ld [$c6ce], a
+  ld a, [$c650]
+  ld hl, FontTable
+  ld d, $00
+  ld e, a
+  sla e
+  rl d
+  add hl, de
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld a, [hli]
+  ld [$c6d4], a
+  rst $10
+  ld a, [hli]
+  ld e, a
+  ld a, [hli]
+  ld d, a
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  inc de
+  ld a, h
+  ld [$c5f6], a
+  ld a, l
+  ld [$c5f7], a
+  ld a, [de]
+  ld c, a
+  inc de
+  ld a, [de]
+  ld b, a
+  inc de
+  jp .asm_1342
 ; 0x132e
 .asm_132e
-	ld a, [$c6d4]
-	rst $10
-	ld a, [$c6cf]
-	ld b, a
-	ld a,[$c6d0]
-	ld c, a
-	ld a,[$c6d1]
-	ld d, a
-	ld a,[$c6d2]
-	ld e, a
+  ld a, [$c6d4]
+  rst $10
+  ld a, [$c6cf]
+  ld b, a
+  ld a,[$c6d0]
+  ld c, a
+  ld a,[$c6d1]
+  ld d, a
+  ld a,[$c6d2]
+  ld e, a
 .asm_1342
-	ld a, [$c6d3]
-	or a
-	jr nz, .asm_135e
-	ld a, b
-	ld [$c6cf], a
-	ld a, c
-	ld [$c6d0], a
-	ld a, d
-	ld [$c6d1], a
-	ld a, e
-	ld [$c6d2], a
-	ld a, $01
-	ld [$c64e], a
-	ret
+  ld a, [$c6d3]
+  or a
+  jr nz, .asm_135e
+  ld a, b
+  ld [$c6cf], a
+  ld a, c
+  ld [$c6d0], a
+  ld a, d
+  ld [$c6d1], a
+  ld a, e
+  ld [$c6d2], a
+  ld a, $01
+  ld [$c64e], a
+  ret
 .asm_135e

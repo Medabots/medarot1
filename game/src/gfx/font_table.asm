@@ -2,9 +2,9 @@
 ;Probably actually just contains a bunch of pointers to raw data
 SECTION "Font Table", ROM0[$10f0]
 FontTable:
-	dw $1156
-	dw $115b
-	dw $1160 ; Special characters in font (!, heart symbol, yen, etc...)
+  dw $1156
+  dw $115b
+  dw $1160 ; Special characters in font (!, heart symbol, yen, etc...)
   dw $1165 ; Main dialogue font {08, 4168}
   dw $1156
   dw $116a
