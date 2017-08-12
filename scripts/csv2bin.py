@@ -8,20 +8,19 @@ import csv
 from sys import getdefaultencoding
 
 def table_convert(txt, tbl):
-    t = bytearray(txt, encoding = 'utf-8')
     result = bytearray()
     i = 0
     endcode = 0x00
-    while i < len(t):
+    while i < len(txt):
         try: 
-            if chr(t[i]) == '<':
+            if txt[i] == '<':
                 i += 1
-                special_type = chr(t[i])
+                special_type = txt[i]
                 i += 1
                 special_data = []
-                while chr(t[i]) != '>':
+                while txt[i] != '>':
                     try:
-                        special_data.append(chr(t[i]))
+                        special_data.append(txt[i])
                     finally:
                         i += 1
                 if special_type == '*':
@@ -46,15 +45,15 @@ def table_convert(txt, tbl):
                     result.append(0x50)
                 elif special_type == '4':
                     result.append(int( special_type + ''.join(special_data), 16))
-            elif chr(t[i]) in tbl:
-                result.append(tbl[chr(t[i])])
+            elif txt[i] in tbl:
+                result.append(tbl[txt[i]])
             else:
                 print("Unable to find mapping for 0x%02X (%c), line: %s" % (t[i], t[i], txt))
                 result.append(tbl['?'])
         finally:
             i += 1
     
-    if len(t):
+    if len(txt):
         result.append(0x4F)
         result.append(endcode)
     return result
@@ -68,7 +67,6 @@ if __name__ == '__main__':
     output_dir = arg1
     with open('translation/%s/chars.tbl' % (arg0), encoding='utf-8') as f:
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
-    print(char_table)
     additional_banks = []
     if arg2:
         additional_banks = arg2.split(',')
