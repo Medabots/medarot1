@@ -5,7 +5,7 @@ SECTION "rst0", ROM0[$0]
   ld a, [hli] ; a = *hl++
   ld h, [hl] ; h = *hl
   ld l, a ;l = a
-  jp [hl]
+  jp hl
 
 SECTION "rst8",ROM0[$8] ; HackPredef
   ld [TempA], a ; 3
