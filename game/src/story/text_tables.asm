@@ -28,7 +28,7 @@ StoryText2:
 
 SECTION "StoryText3", ROMX[$4000], BANK[$2c]
 StoryText3:
-  INCBIN "build/StoryText2.bin"
+  INCBIN "build/StoryText3.bin"
 
 SECTION "BattleText", ROMX[$4000], BANK[$2d]
 BattleText:
