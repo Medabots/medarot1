@@ -118,12 +118,12 @@ Char4E:
   ld [$c6c3], a
   ld a, $0
   rst $8
-  nop
-  nop
-  nop
-  nop
   pop hl
   jp PutCharLoop
+  nop
+  nop
+  nop
+  nop
 
 Char4D: ; 0x1e46
 ; text speed
@@ -135,8 +135,6 @@ Char4D: ; 0x1e46
   rst $8
   ld a, $0
   rst $8
-  nop
-  nop
   pop hl
   ld a, [$c6c1]
   cp $ff
@@ -144,6 +142,8 @@ Char4D: ; 0x1e46
   xor a
   ld [$c6c1], a
   ret
+  nop
+  nop
 
 Char4C: ; 0x1e62
 ; new text box
@@ -204,11 +204,11 @@ Char4C: ; 0x1e62
   ld [$c6c3], a
   ld a, $0
   rst $8
-  nop
-  nop
-  nop
-  nop
   ret
+  nop
+  nop
+  nop
+  nop
 
 Char4B: ; 0x1ed6
 ; call subtext
@@ -319,9 +319,9 @@ Char4A: ; 0x1f5f
   ld [$c6c3], a
   ld a, $0
   rst $8
-  nop
-  nop
-  nop
-  nop
   pop hl
   ret
+  nop
+  nop
+  nop
+  nop

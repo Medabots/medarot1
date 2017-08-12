@@ -80,11 +80,7 @@ PutChar:
   rst $38
   pop af
   rst $10
-  nop
-  nop
-  nop
-  nop
-  nop
+  
 PutCharLoop: ;1d11, things jump to here after the control code
   push hl
   ld a, $1
@@ -144,17 +140,10 @@ WriteChar: ; 1f96
   call WaitLCDController
   ld [hl], a
   ei
-  inc hl
-  ld a, h
-  ld [$c6c2], a
-  ld a, l
-  ld [$c6c3], a
+  ld a, $3
+  rst $8
   ld a, $0
   rst $8
-  nop
-  nop
-  nop
-  nop
   ld a, [$c6c4]
   ld [$c6c1], a
   pop hl
@@ -163,6 +152,16 @@ WriteChar: ; 1f96
   xor a
   ld [$c6c1], a
   jp PutCharLoop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop  
   ; 0x1ff2
 
 SECTION "PutString", ROM0[$2fcf]

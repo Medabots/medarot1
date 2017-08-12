@@ -30,6 +30,7 @@ HackPredefTable:
   dw IncTextOffset ;0
   dw GetTextOffset ;1
   dw ZeroTextOffset ;2
+  dw IncrementTileOffset ;3
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -42,7 +43,7 @@ IncTextOffset:
   ld [WTextOffsetHi], a
   ret
 
-; bc = [WTextOffsetHi][$c6c0]
+; (in) hl = base offset
 GetTextOffset:
   ld a, [$c6c0]
   ld c, a
@@ -54,4 +55,45 @@ ZeroTextOffset:
   xor a
   ld [$c6c0], a
   ld [WTextOffsetHi], a
+  ret
+
+hLineMax           EQU $10 ;Max offset from start of line
+hLineOffset        EQU $20 ;Bytes between line tiles
+IncrementTileOffset:
+  push bc ; save original bc
+  push hl ; save original hl
+  ld a, hLineMax 
+  ld b, $0
+  ld c, hLineOffset
+.loop
+  add c ; a becomes upper limit
+  inc b ; b is the line number (first line is 1)
+  cp l
+  jr c, .loop
+  ld a, b
+  pop hl ; restore original hl
+  pop bc ; restore original bc
+  jr nz, .normal_increment
+.reset_offset
+  cp $3
+  jr c, .new_line
+.new_textbox
+  ret
+.new_line
+  push bc
+  ld hl, $9c00
+  ld bc, $0080
+  ld a, [$c5c7]
+  cp $1
+  jr z, .new_line_normal_type
+  ld bc, $0060
+.new_line_normal_type
+  add hl, bc
+  pop bc
+.normal_increment
+  inc hl
+  ld a, h
+  ld [$c6c2], a
+  ld a, l
+  ld [$c6c3], a
   ret
