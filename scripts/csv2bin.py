@@ -49,7 +49,7 @@ def table_convert(txt, tbl):
             elif chr(t[i]) in tbl:
                 result.append(tbl[chr(t[i])])
             else:
-                print("Unable to find mapping for 0x%02X (%c)" % (t[i], t[i]))
+                print("Unable to find mapping for 0x%02X (%c), line: %s" % (t[i], t[i], txt))
                 result.append(tbl['?'])
         finally:
             i += 1
@@ -68,6 +68,7 @@ if __name__ == '__main__':
     output_dir = arg1
     with open('translation/%s/chars.tbl' % (arg0), encoding='utf-8') as f:
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
+    print(char_table)
     additional_banks = []
     if arg2:
         additional_banks = arg2.split(',')
