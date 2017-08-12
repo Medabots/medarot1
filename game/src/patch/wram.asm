@@ -1,4 +1,4 @@
-SECTION "User Globals (hack)", WRAMX[$DEA0]
+SECTION "User Globals (hack)", WRAMX[$DEA0], BANK[$1] ; for DMG doesn't really matter, but rgbds needs it for overlay
 TempA::
   ds 1
 BankOld::
