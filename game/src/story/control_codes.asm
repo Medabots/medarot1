@@ -105,11 +105,11 @@ Char4F: ; 1d6b end of text
   ret
 Char4E:
   ld hl, $9c00
-  ld bc, $0081
+  ld bc, $0080
   ld a, [$c5c7]
   cp $1
   jr z, .asm_1e32 ; 0x1e2d $3
-  ld bc, $0061
+  ld bc, $0060
 .asm_1e32
   add hl, bc
   ld a, h

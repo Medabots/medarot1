@@ -43,7 +43,7 @@ IncTextOffset:
   ld [WTextOffsetHi], a
   ret
 
-; (in) hl = base offset
+; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
   ld a, [$c6c0]
   ld c, a
@@ -78,7 +78,17 @@ IncrementTileOffset:
   cp $3
   jr c, .new_line
 .new_textbox
-  ret
+  push bc
+  ld hl, $9c00
+  ld bc, $0041
+  ld a, [$c5c7]
+  cp $1
+  jr z, .new_textbox_normal_type
+  ld bc, $0021
+.new_textbox_normal_type
+  add hl, bc
+  pop bc
+  jr .save_tile_offset
 .new_line
   push bc
   ld hl, $9c00
@@ -92,6 +102,7 @@ IncrementTileOffset:
   pop bc
 .normal_increment
   inc hl
+.save_tile_offset
   ld a, h
   ld [$c6c2], a
   ld a, l
