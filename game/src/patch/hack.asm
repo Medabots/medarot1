@@ -92,11 +92,11 @@ IncrementTileOffset:
 .new_line
   push bc
   ld hl, $9c00
-  ld bc, $0081
+  ld bc, $0080 ; 80 instead of 81 since it gets incremented below
   ld a, [$c5c7]
   cp $1
   jr z, .new_line_normal_type
-  ld bc, $0061
+  ld bc, $0060
 .new_line_normal_type
   add hl, bc
   pop bc
