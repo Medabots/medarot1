@@ -11,8 +11,11 @@ SpecialDialogueFont:
 
 SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
 DialogueFont:
-	db $01 ;Compressed flag
-	;Compressed tilemap
+;	db $01 ;Compressed flag
+; dw FontEnd-Font
+Font:
+  INCBIN "game/fonts/Dialogue" ; Pulled with Malias Telefang Tools
+FontEnd
 
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
