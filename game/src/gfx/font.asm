@@ -9,6 +9,14 @@ SpecialDialogueFont:
   db $01 ;Compressed flag
   ;Compressed tilemap
 
+SECTION "Japanese Dialogue Font", ROMX[$4168], BANK[$8]
+JPDialogueFont:
+;	db $01 ;Compressed flag
+; dw JPFontEnd-JPFont
+JPFont:
+  INCBIN "game/fonts/Dialogue" ; Pulled with Malias Telefang Tools
+JPFontEnd
+
 SECTION "Dialogue Font", ROMX[$4000], BANK[$20]
 DialogueFont:
   db $00
