@@ -31,6 +31,7 @@ HackPredefTable:
   dw GetTextOffset ;1
   dw ZeroTextOffset ;2
   dw IncrementTileOffset ;3
+  dw ClearTextBox ;4
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -49,16 +50,26 @@ GetTextOffset:
   ld c, a
   ld a, [WTextOffsetHi]
   ld b, a
+  ld a, [FlagClearText]
+  cp $0
+  jr z, .get_text_ret
+  call ClearTextBox
+  xor a
+  ld [FlagClearText], a
+.get_text_ret
   ret
 
 ZeroTextOffset:
   xor a
   ld [$c6c0], a
   ld [WTextOffsetHi], a
+  ld [FlagClearText], a
   ret
 
 hLineMax           EQU $10 ;Max offset from start of line
 hLineOffset        EQU $20 ;Bytes between line tiles
+hLineCount         EQU $04 ;Total number of lines
+hLineVRAMStart     EQU $9C00 ;Initial Tile VRAM location
 IncrementTileOffset:
   push bc ; save original bc
   push hl ; save original hl
@@ -78,17 +89,19 @@ IncrementTileOffset:
   cp $3
   jr c, .new_line
 .new_textbox
+  ld a, $1
+  ld [FlagClearText], a
   push bc
   ld hl, $9c00
-  ld bc, $0041
+  ld bc, $0040 ; 40 instead of 41 since it gets incremented below
   ld a, [$c5c7]
   cp $1
   jr z, .new_textbox_normal_type
-  ld bc, $0021
+  ld bc, $0020
 .new_textbox_normal_type
   add hl, bc
   pop bc
-  jr .save_tile_offset
+  jr .normal_increment
 .new_line
   push bc
   ld hl, $9c00
@@ -102,9 +115,39 @@ IncrementTileOffset:
   pop bc
 .normal_increment
   inc hl
-.save_tile_offset
   ld a, h
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
+  ret
+
+ClearTextBox:
+  push af
+  push bc
+  push hl
+  ld c, $1
+.clear_lines
+  ld hl, hLineVRAMStart + $1 ; Actual start point is 9C21, not 9C20
+  ld b, c
+.inc_line_offset
+  ld a, hLineOffset
+  rst $28
+  dec b
+  jr nz, .inc_line_offset
+  ld b, hLineMax
+  xor a
+.clear_line
+  di
+  call WaitLCDController
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .clear_line
+  inc c
+  ld a, hLineCount
+  cp c
+  jr nc, .clear_lines
+  pop hl
+  pop bc
+  pop af
   ret

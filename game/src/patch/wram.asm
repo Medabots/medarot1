@@ -9,3 +9,5 @@ TempL::
   ds 1
 WTextOffsetHi::
   ds 1
+FlagClearText::
+  ds 1
