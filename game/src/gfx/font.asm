@@ -1,7 +1,7 @@
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
   ld a, 3
-  call LoadFont_Sub
+  call DecompressAndLoadTiles
   ret
 
 SECTION "Special Character Font", ROMX[$4000], BANK[$8]
@@ -19,10 +19,10 @@ JPFontEnd
 
 SECTION "Dialogue Font", ROMX[$4000], BANK[$20]
 DialogueFont:
-  db $00
-  dw FontEnd-Font
-Font:
-  INCBIN "translation/eng/DialogueFont.2bpp" ;TODO: Makefile should move this to 'build' directory
+;  db $00 
+;  dw FontEnd-Font
+Font: ; TODO: Makefile should move this to 'build' directory, also should be created by a script instead of an external tool
+  INCBIN "translation/eng/DialogueFontCompressed" ; Made with Malias Telefang Tools
 FontEnd
 
 ;a = 04 at init
