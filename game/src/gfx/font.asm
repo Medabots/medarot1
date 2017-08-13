@@ -22,7 +22,7 @@ DialogueFont:
   db $00
   dw FontEnd-Font
 Font:
-  INCBIN "translation/eng/font.2bpp" ;TODO: Makefile should move this to 'build' directory
+  INCBIN "translation/eng/DialogueFont.2bpp" ;TODO: Makefile should move this to 'build' directory
 FontEnd
 
 ;a = 04 at init
