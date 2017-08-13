@@ -276,11 +276,8 @@ Char4B: ; 0x1ed6
   call WaitLCDController
   ld [hl], a
   ei
-  inc hl
-  ld a, h
-  ld [$c6c2], a
-  ld a, l
-  ld [$c6c3], a
+  ld a, $3 ; IncrementTileOffset
+  rst $8
   ld a, [$c6c5]
   inc a
   ld [$c6c5], a
@@ -292,6 +289,13 @@ Char4B: ; 0x1ed6
   xor a
   ld [$c6c1], a
   jp PutCharLoop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
 
 Char4A: ; 0x1f5f
 ; \r

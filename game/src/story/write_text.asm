@@ -140,7 +140,7 @@ WriteChar: ; 1f96
   call WaitLCDController
   ld [hl], a
   ei
-  ld a, $3
+  ld a, $3 ; IncrementTileOffset
   rst $8
   ld a, $0
   rst $8
