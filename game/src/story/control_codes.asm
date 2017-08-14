@@ -241,9 +241,11 @@ Char4B: ; 0x1ed6
   jp PutCharLoop
 .asm_1f04 
   ld d, a
+  ld a, $5
+  rst $8
   ld a, $40
   sub d
-  jp c, $1f2f
+  jp c, .asm_1f2f
   ld hl, $1ff2
   ld c, d
   ld b, $0
@@ -267,6 +269,7 @@ Char4B: ; 0x1ed6
   pop hl
   ld a, [hl]
   ld d, a
+.asm_1f2f
   ld a, [$c6c2]
   ld h, a
   ld a, [$c6c3]
@@ -289,9 +292,6 @@ Char4B: ; 0x1ed6
   xor a
   ld [$c6c1], a
   jp PutCharLoop
-  nop
-  nop
-  nop
   nop
   nop
   nop
