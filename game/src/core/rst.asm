@@ -14,19 +14,14 @@ SECTION "rst8",ROM0[$8] ; HackPredef
 SECTION "rst8Cont",ROM0[$62] ;Replaces a bunch of empty space
 Rst8Cont:
   ld a, [hBank]
-  ld [BankOld],a
+  ld [BankOld], a
   ld a, BANK(HackPredef)
-  ld [$2000], a
+  rst $10
+  ld a, [TempA]
   call HackPredef
   ld [TempA], a
   ld a, [BankOld]
-  cp a, $17
-  jr z, .bs
-  cp a, $1f
-  jr nc, .bs ; bank swap
-  ld a, [$c6e0]
-.bs
-  ld [$2000], a
+  rst $10
   ld a, [TempA]
   ret
 
@@ -54,7 +49,7 @@ SECTION "rst28",ROM0[$28] ; hl += a
   inc h ;h++
   ret
 
-SECTION "rst30",ROM0[$30] ; hl = [hl + a*2]
+SECTION "rst30",ROM0[$30] ; a += a; hl = [hl + a], useful for pointer tables
   add a
   rst $28
   ld a, [hli]

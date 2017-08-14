@@ -1,30 +1,19 @@
 SECTION "User Functions (Hack)", ROMX[$4000], BANK[$24]
 HackPredef::
-  ; save hl
+  push af
   ld a, h
   ld [TempH], a
   ld a, l
   ld [TempL], a
-  push bc
+  pop af
   ld hl, HackPredefTable
-  ld b, 0
-  ld a, [TempA] ; old a
-  ld c, a
-  add hl, bc
-  add hl, bc
-  ld a, [hli]
-  ld c, a
-  ld a, [hl]
-  ld b, a
-  push bc
-  pop hl
-  pop bc
-  push hl
+  rst $30
+  push hl ; Change return pointer to Hack function
   ld a, [TempH]
   ld h, a
   ld a, [TempL]
   ld l, a
-  ret ; jumps to hl
+  ret
 
 HackPredefTable:
   dw IncTextOffset ;0
@@ -32,6 +21,7 @@ HackPredefTable:
   dw ZeroTextOffset ;2
   dw IncrementTileOffset ;3
   dw ClearTextBox ;4
+  dw CheckCallClearTextBox ;5
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -50,13 +40,7 @@ GetTextOffset:
   ld c, a
   ld a, [WTextOffsetHi]
   ld b, a
-  ld a, [FlagClearText]
-  cp $0
-  jr z, .get_text_ret
-  call ClearTextBox
-  xor a
-  ld [FlagClearText], a
-.get_text_ret
+  call CheckCallClearTextBox
   ret
 
 ZeroTextOffset:
@@ -150,4 +134,14 @@ ClearTextBox:
   pop hl
   pop bc
   pop af
+  ret
+
+CheckCallClearTextBox:
+  ld a, [FlagClearText]
+  cp $0
+  jr z, .check_clear_text_ret
+  call ClearTextBox
+  xor a
+  ld [FlagClearText], a
+.check_clear_text_ret
   ret
