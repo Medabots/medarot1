@@ -55,9 +55,7 @@ PutChar:
   swap a
   push af
   ld hl, TextTableBanks
-  ld b, $0
-  ld c, a
-  add hl, bc
+  rst $28
   ld a, [hl]
   rst $10 ;Swap to the correct bank
   pop af
@@ -83,7 +81,9 @@ PutChar:
   
 PutCharLoop: ;1d11, things jump to here after the control code
   push hl
-  ld a, $1
+  ld a, $1 ; GetTextOffset
+  rst $8
+  ld a, $5 ; CheckCallClearTextBox
   rst $8
   add hl, bc
   ld a, [hl]

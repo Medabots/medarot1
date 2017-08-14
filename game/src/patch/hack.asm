@@ -40,7 +40,6 @@ GetTextOffset:
   ld c, a
   ld a, [WTextOffsetHi]
   ld b, a
-  call CheckCallClearTextBox
   ret
 
 ZeroTextOffset:
