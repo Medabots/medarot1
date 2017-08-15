@@ -207,8 +207,6 @@ Char4C: ; 0x1e62
   ret
   nop
   nop
-  nop
-  nop
 
 Char4B: ; 0x1ed6
 ; call subtext
@@ -239,7 +237,11 @@ Char4B: ; 0x1ed6
   jp PutCharLoop
 .asm_1f04 
   ld d, a
-  ld a, $5
+  cp $00
+  jr nz, .not_space
+  call GetWordLength
+.not_space
+  ld a, $5 ; CheckCallClearTextBox
   rst $8
   ld a, $40
   sub d
@@ -290,11 +292,6 @@ Char4B: ; 0x1ed6
   xor a
   ld [$c6c1], a
   jp PutCharLoop
-  nop
-  nop
-  nop
-  nop
-  nop
 
 Char4A: ; 0x1f5f
 ; \r
