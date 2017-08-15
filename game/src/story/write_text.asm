@@ -107,7 +107,7 @@ WriteChar: ; 1f96
   ld d, a
   ld a, $40
   sub d
-  jp c, $1fc2
+  jp c, .asm_1fc2
   ld hl, $1ff2
   ld c, d
   ld b, $0
@@ -131,6 +131,7 @@ WriteChar: ; 1f96
   pop hl
   ld a, [hl]
   ld d, a
+.asm_1fc2
   ld a, [$c6c2]
   ld h, a
   ld a, [$c6c3]
