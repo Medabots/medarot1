@@ -101,59 +101,60 @@ PutChar:
 
 SECTION "WriteChar", ROM0[$1f96]
 WriteChar: ; 1f96
-  	ld a, [hl]
-  	ld d, a
-  	ld a, $40
-  	sub d
-  	jp c, $1fc2
-  	ld hl, $1ff2
-  	ld c, d
-  	ld b, $0
-  	sla c
-  	rl b
-  	add hl, bc
-  	ld a, [hli]
-  	push hl
-  	push af
-  	ld a, [$c6c2]
-  	ld h, a
-  	ld a, [$c6c3]
-  	ld l, a
-  	ld bc, $ffe0
-  	add hl, bc
-  	pop af
-  	di
-  	call WaitLCDController
-  	ld [hl], a ; "/°
-  	ei
-  	pop hl
-  	ld a, [hl]
-  	ld d, a
-  	ld a, [$c6c2]
-  	ld h, a
-  	ld a, [$c6c3]
-  	ld l, a
-  	ld a, d
-  	di
-  	call WaitLCDController
-  	ld [hl], a
-  	ei
-  	inc hl
-  	ld a, h
-  	ld [$c6c2], a
-  	ld a, l
-  	ld [$c6c3], a
-  	ld a, [$c6c0]
-  	inc a
-  	ld [$c6c0], a
-  	ld a, [$c6c4]
-  	ld [$c6c1], a
-  	pop hl
-  	cp $ff
-  	ret nz
-  	xor a
-  	ld [$c6c1], a
-  	jp $1d11
+  ld a, [hl]
+  ld d, a
+  ld a, $40
+  sub d
+  jp c, .asm_1fc2
+  ld hl, $1ff2
+  ld c, d
+  ld b, $0
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  push hl
+  push af
+  ld a, [$c6c2]
+  ld h, a
+  ld a, [$c6c3]
+  ld l, a
+  ld bc, $ffe0
+  add hl, bc
+  pop af
+  di
+  call WaitLCDController
+  ld [hl], a ; "/°
+  ei
+  pop hl
+  ld a, [hl]
+  ld d, a
+.asm_1fc2
+  ld a, [$c6c2]
+  ld h, a
+  ld a, [$c6c3]
+  ld l, a
+  ld a, d
+  di
+  call WaitLCDController
+  ld [hl], a
+  ei
+  inc hl
+  ld a, h
+  ld [$c6c2], a
+  ld a, l
+  ld [$c6c3], a
+  ld a, [$c6c0]
+  inc a
+  ld [$c6c0], a
+  ld a, [$c6c4]
+  ld [$c6c1], a
+  pop hl
+  cp $ff
+  ret nz
+  xor a
+  ld [$c6c1], a
+  jp $1d11
   ; 0x1ff2
 
 SECTION "PutString", ROM0[$2fcf]
