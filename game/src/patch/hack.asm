@@ -63,11 +63,29 @@ IncrementTileOffset:
   add c ; a becomes upper limit
   inc b ; b is the line number (first line is 1)
   cp l
+  jr z, .skip_compare ; if curr_off == max
   jr c, .loop
-  ld a, b
+.endloop
+  ; Add current word length to make sure words don't get clipped
+  ld c, a ; c = max_length
+  ld a, [CurrentWordLen]
+  add l ; a += l
+  jr c, .skip_compare ; l + a > 0xFF ? Skip to next line/box
+  ld l, a ; l = curr_offset
+  ld a, c ; a = max_length
+  cp l
+  jr c, .skip_compare ; curr_off > max_length ? Skip to next line/box
+  inc l ; this is a terrible hack and I should be ashamed of myself,
+        ; but it guarantees that the zero flag won't be set for a situation that gets to this point
+        ; (if it gets to this point, it should be normal incremented)
+.skip_compare
+  ld a, $0
+  ld [CurrentWordLen], a
+  ld a, b ; save current line #
   pop hl ; restore original hl
   pop bc ; restore original bc
-  jr nz, .normal_increment
+  jr z, .reset_offset
+  jr nc, .normal_increment
 .reset_offset
   cp $3
   jr c, .new_line

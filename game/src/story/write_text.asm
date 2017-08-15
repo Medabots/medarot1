@@ -105,6 +105,10 @@ SECTION "WriteChar", ROM0[$1f96]
 WriteChar: ; 1f96
   ld a, [hl]
   ld d, a
+  cp $0
+  jr nz, .skip_length_check
+  call GetWordLength
+.skip_length_check
   ld a, $40
   sub d
   jp c, .asm_1fc2
@@ -156,13 +160,6 @@ WriteChar: ; 1f96
   nop
   nop
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop  
   ; 0x1ff2
 
 SECTION "PutString", ROM0[$2fcf]

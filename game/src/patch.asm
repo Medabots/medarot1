@@ -3,3 +3,4 @@ INCLUDE "game/src/common/macros.asm"
 
 INCLUDE "game/src/patch/wram.asm"
 INCLUDE "game/src/patch/hack.asm"
+INCLUDE "game/src/patch/core_hack.asm"

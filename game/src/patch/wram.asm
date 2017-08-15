@@ -11,3 +11,5 @@ WTextOffsetHi::
   ds 1
 FlagClearText::
   ds 1
+CurrentWordLen::
+  ds 1
