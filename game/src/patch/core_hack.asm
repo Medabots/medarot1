@@ -4,7 +4,7 @@ SECTION "GetWordLength", ROM0[$7B]
 ; input current character addr in hl
 ; output length from next character to end of word in [CurrentWordLenHi][CurrentWordLenLo]
 GetWordLength::
-  ;$50, $00, $4X are word terminators
+  ;$50, $00, $4X are word terminators, except 4B which requires some tuning
   push hl
   push bc
   push af
@@ -25,7 +25,7 @@ GetWordLength::
   cp $4c
   jr z, .end_loop
   cp $4b
-  jr z, .end_loop
+  jr z, .change_ptr
   cp $4a
   jr z, .end_loop
   inc c
@@ -38,3 +38,6 @@ GetWordLength::
   pop bc
   pop hl
   ret
+.change_ptr
+  rst $38 ; hl = [hl]
+  jr .loop

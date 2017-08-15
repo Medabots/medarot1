@@ -212,10 +212,8 @@ Char4C: ; 0x1e62
 
 Char4B: ; 0x1ed6
 ; call subtext
-  inc hl
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a ;hl = base memory address to pull from
+  inc hl ;hl = base memory address to pull from
+  rst $38
   ld a, [$c6c5] ;Offset from base of current character
   ld c, a
   ld b, $0
@@ -295,7 +293,8 @@ Char4B: ; 0x1ed6
   nop
   nop
   nop
-
+  nop
+  nop
 
 Char4A: ; 0x1f5f
 ; \r
