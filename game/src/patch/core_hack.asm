@@ -29,6 +29,7 @@ GetWordLength::
   cp $4a
   jr z, .end_loop
   inc c
+  ld a, c
   cp $ff
   jr nz, .loop
 .end_loop
