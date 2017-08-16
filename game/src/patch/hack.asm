@@ -22,6 +22,7 @@ HackPredefTable:
   dw IncrementTileOffset ;3
   dw ClearTextBox ;4
   dw CheckCallClearTextBox ;5
+  dw SkipSpaceHack ; 6
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -47,6 +48,7 @@ ZeroTextOffset:
   ld [$c6c0], a
   ld [WTextOffsetHi], a
   ld [FlagClearText], a
+  ld [NewLineFlag], a
   ret
 
 hLineMax           EQU $10 ;Max offset from start of line
@@ -79,7 +81,8 @@ IncrementTileOffset:
         ; but it guarantees that the zero flag won't be set for a situation that gets to this point
         ; (if it gets to this point, it should be normal incremented)
 .skip_compare
-  ld a, $0
+  ld a, $0 ; if xor is used, it changes the flags
+  ld [NewLineFlag], a
   ld [CurrentWordLen], a
   ld a, b ; save current line #
   pop hl ; restore original hl
@@ -88,6 +91,8 @@ IncrementTileOffset:
   jr nc, .normal_increment
 .reset_offset
   cp $3
+  ld a, $1
+  ld [NewLineFlag], a
   jr c, .new_line
 .new_textbox
   ld a, $1
@@ -161,4 +166,7 @@ CheckCallClearTextBox:
   xor a
   ld [FlagClearText], a
 .check_clear_text_ret
+  ret
+
+SkipSpaceHack:: ; TODO: Move SkipSpace logic here from core_hack.asm to save space 
   ret

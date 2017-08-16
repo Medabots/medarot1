@@ -13,3 +13,5 @@ FlagClearText::
   ds 1
 CurrentWordLen::
   ds 1
+NewLineFlag::
+  ds 1

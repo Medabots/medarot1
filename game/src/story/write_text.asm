@@ -79,7 +79,7 @@ PutChar:
   pop af
   rst $10
   
-PutCharLoop: ;1d11, things jump to here after the control code
+PutCharLoop:: ;1d11, things jump to here after the control code
   push hl
   ld a, $1 ; GetTextOffset
   rst $8
@@ -99,10 +99,10 @@ PutCharLoop: ;1d11, things jump to here after the control code
   jp z, Char4B
   cp $4a
   jp z, Char4A
-  jp WriteChar
+  jp SkipSpace
 
 SECTION "WriteChar", ROM0[$1f96]
-WriteChar: ; 1f96
+WriteChar:: ; 1f96
   ld a, [hl]
   ld d, a
   cp $0
@@ -147,7 +147,7 @@ WriteChar: ; 1f96
   ei
   ld a, $3 ; IncrementTileOffset
   rst $8
-  ld a, $0
+  ld a, $0 ; IncTextOffset
   rst $8
   ld a, [$c6c4]
   ld [$c6c1], a
