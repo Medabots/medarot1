@@ -1,17 +1,17 @@
 SECTION "rst0", ROM0[$0]
-	pop hl
-	add a ;a = a+a
-	rst $28
-	ld a, [hli] ; a = *hl++
-	ld h, [hl] ; h = *hl
-	ld l, a ;l = a
-	jp hl
+  pop hl
+  add a ;a = a+a
+  rst $28
+  ld a, [hli] ; a = *hl++
+  ld h, [hl] ; h = *hl
+  ld l, a ;l = a
+  jp hl
 
 SECTION "rst8",ROM0[$8] ;Return, enable interrupt
   reti
 
 SECTION "rst10, bank swap",ROM0[$10]
-	ld [$2000], a
+  ld [$2000], a
   ret
 
 SECTION "rst18",ROM0[$18] ;Bank swap from memory
@@ -27,11 +27,11 @@ SECTION "rst20",ROM0[$20]
   ret
 
 SECTION "rst28",ROM0[$28]
-	add l ;a = l+a
-	ld l, a ;l = a
-	ret nc ;Return if not 'c'
-	inc h ;h++
-	ret
+  add l ;a = l+a
+  ld l, a ;l = a
+  ret nc ;Return if not 'c'
+  inc h ;h++
+  ret
 
 SECTION "rst30",ROM0[$30] ;
   add a
@@ -42,7 +42,7 @@ SECTION "rst30",ROM0[$30] ;
   ret
 
 SECTION "rst38",ROM0[$38] ; Unused
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+  ld a, [hli]
+  ld l, [hl]
+  ld h, a
   ret
