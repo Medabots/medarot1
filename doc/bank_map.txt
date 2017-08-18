@@ -28,5 +28,5 @@
 1B:
 1C:
 1D: BattleText
-1E:
+1E: Tilemaps
 1F: Last bank used by game
