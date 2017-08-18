@@ -63,7 +63,7 @@ LoadTilemap:
   cp $fd
   jr z, .asm_ea6 ; 0xe8a $1a
   di
-  call $17cb
+  call WaitLCDController
   ld [hli], a
   ei
   call $2a2a
@@ -103,7 +103,7 @@ LoadTilemap:
   inc de
   ld a, [de]
   di
-  call $17cb
+  call WaitLCDController
   ld [hli], a
   ei
   dec b
@@ -172,7 +172,7 @@ SECTION "Load Tilemap in Window", ROM0[$f84]
   cp $fd
   jr z, .asm_ff8 ; 0xfe2 $14
   di
-  call $17cb
+  call WaitLCDController
   ld [hli], a
   ei
   jr .asm_fd5 ; 0xfea $e9
@@ -209,7 +209,7 @@ SECTION "Load Tilemap in Window", ROM0[$f84]
   inc de
   ld a, [de]
   di
-  call $17cb
+  call WaitLCDController
   ld [hli], a
   ei
   dec b
