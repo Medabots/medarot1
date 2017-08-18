@@ -28,7 +28,7 @@
 1B:
 1C:
 1D:
-1E:
+1E: Tilemaps
 1F: Last bank used by game
 20: English Dialogue Font
 21: Additional space for text
