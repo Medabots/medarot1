@@ -104,6 +104,8 @@ if __name__ == '__main__':
             reader = csv.reader(f, delimiter=',', quotechar='"')
             next(reader, None) #Skip header
             for line in reader:
+                if line[0][0] == '#':
+                    continue
                 #Pointer, Original, Translated
                 original_txt = line[1].strip('"')
                 translated_txt = line[2].strip('"')
