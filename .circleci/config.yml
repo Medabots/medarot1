@@ -9,10 +9,10 @@ jobs:
     steps:
       - run:
           name: Update APT listing
-          command: apt-get -qq update
+          command: sudo apt-get -qq update
       - run:
           name: Install Dependencies
-          command: apt-get -qq -y install bsdiff byacc flex pkg-config libpng-dev
+          command: sudo apt-get -qq -y install bsdiff byacc flex pkg-config libpng-dev
       - run:
           name: Install rgbds
           command: |
