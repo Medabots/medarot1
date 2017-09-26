@@ -6,3 +6,4 @@ build/
 *.sna
 *.o
 .vscode/
+*.patch

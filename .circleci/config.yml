@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+      
+    working_directory: ~/m1
+
+    steps:
+      - run:
+          name: Update APT listing
+          command: sudo apt-get -qq update
+      - run:
+          name: Install Dependencies
+          command: sudo apt-get -qq -y install bsdiff byacc flex pkg-config libpng-dev
+      - run:
+          name: Install rgbds
+          command: |
+            git clone https://github.com/VariantXYZ/rgbds -b master rgbds
+            make -C rgbds
+            sudo make -C rgbds install
+      - checkout:
+          path: medarot1
+      - run:
+          name: Make M1
+          command: |
+            openssl aes-256-cbc -d -in medarot1/.circleci/dat.bin -out medarot1/baserom.gbc -k $KEY
+            make -C medarot1 all
+            rm -f medarot1/baserom.gbc
