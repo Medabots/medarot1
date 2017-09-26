@@ -27,3 +27,6 @@ jobs:
             openssl aes-256-cbc -d -in medarot1/.circleci/dat.bin -out medarot1/baserom.gbc -k $KEY
             make -C medarot1 all
             rm -f medarot1/baserom.gbc
+      - store_artifacts:
+          path: medarot1/m1eng.patch
+          destination: patch

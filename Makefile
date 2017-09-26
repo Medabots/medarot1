@@ -42,7 +42,10 @@ TEXT_FILES := $(foreach FILE,$(TEXT),$(TRANSLATIONS)/$(FILE).$(TEXT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
 
-all: $(TARGET_OUT)
+all: $(TARGET_OUT) patch
+
+patch: $(TARGET_OUT)
+	bsdiff $(ORIGINAL) $(TARGET_OUT) m1$(LANG).patch
 
 $(TARGET_OUT): $(MODULES_OBJ)
 	$(LD) -O $(ORIGINAL) -o $@ $^
