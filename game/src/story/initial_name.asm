@@ -20,13 +20,13 @@ SetupInitialNameScreen: ;4a9f
   ld [hli], a
   ld [$c6c6], a
   ld hl, $c6a2
-  ld a, $9a
+  ld a, $9a ; ひ  
   ld [hli], a
-  ld a, $85
+  ld a, $85 ; か
   ld [hli], a
-  ld a, $a8
+  ld a, $a8 ; る
   ld [hli], a
-  ld a, $50
+  ld a, $50 ; EOL
   ld [hli], a
   xor a
   ld [hli], a
@@ -34,7 +34,7 @@ SetupInitialNameScreen: ;4a9f
   ld [hli], a
   ld [hli], a
   ld [hli], a
-  ld a, $3
+  ld a, $3 ; Name length
   ld [$c5ce], a
   ld a, $2
   call $015f
@@ -67,3 +67,7 @@ SetupInitialNameScreen: ;4a9f
   ld a, $2
   call $0309
   jp $0168
+
+;TODO: Properly disassemble this routine which draws the OAM for the setup screen
+SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
+  ld a, $70 ; Initial tilemap position for spinning coin marker
