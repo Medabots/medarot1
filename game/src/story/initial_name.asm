@@ -67,3 +67,7 @@ SetupInitialNameScreen: ;4a9f
   ld a, $2
   call $0309
   jp $0168
+
+;TODO: Properly disassemble this routine which draws the OAM for the setup screen
+SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
+  ld a, $70 ; Initial tilemap position for spinning coin marker
