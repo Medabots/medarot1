@@ -23,6 +23,7 @@ HackPredefTable:
   dw ClearTextBox ;4
   dw CheckCallClearTextBox ;5
   dw SkipSpaceHack ; 6
+  dw SetInitialName ; 7
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -169,4 +170,26 @@ CheckCallClearTextBox:
   ret
 
 SkipSpaceHack:: ; TODO: Move SkipSpace logic here from core_hack.asm to save space 
+  ret
+
+SetInitialName: ; TODO: In the future, we might be able to just set this as a loop and pull it from a build obj for different language support
+  ld a, $87 ; H
+  ld [hli], a
+  ld a, $bf ; i
+  ld [hli], a
+  ld a, $c1 ; k
+  ld [hli], a
+  ld a, $b7 ; a
+  ld [hli], a
+  ld a, $c8 ; r
+  ld [hli], a
+  ld a, $cb ; u
+  ld [hli], a
+	ld a, $50 ; EOL
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld a, $6
+  ld [$c5ce], a
   ret
