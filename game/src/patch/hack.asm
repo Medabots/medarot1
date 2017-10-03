@@ -24,6 +24,8 @@ HackPredefTable:
   dw CheckCallClearTextBox ;5
   dw SkipSpaceHack ; 6
   dw SetInitialName ; 7
+  dw SetNextChar ; 8
+  dw CheckIncTextOffset ; 9
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -35,6 +37,18 @@ IncTextOffset:
   inc a
   ld [WTextOffsetHi], a
   ret
+
+; [[WTextOffsetHi][$c6c0]]--
+DecTextOffset:
+  ld a, [$c6c0]
+  dec a
+  ld [$c6c0], a
+  ret nc
+  ld a, [WTextOffsetHi]
+  dec a
+  ld [WTextOffsetHi], a
+  ret
+
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -49,10 +63,10 @@ ZeroTextOffset:
   ld [$c6c0], a
   ld [WTextOffsetHi], a
   ld [FlagClearText], a
-  ld [NewLineFlag], a
+  ld [FlagNewLine], a
   ret
 
-hLineMax           EQU $10 ;Max offset from start of line
+hLineMax           EQU $11 ;Max offset from start of line
 hLineOffset        EQU $20 ;Bytes between line tiles
 hLineCount         EQU $04 ;Total number of lines
 hLineVRAMStart     EQU $9C00 ;Initial Tile VRAM location
@@ -83,7 +97,7 @@ IncrementTileOffset:
         ; (if it gets to this point, it should be normal incremented)
 .skip_compare
   ld a, $0 ; if xor is used, it changes the flags
-  ld [NewLineFlag], a
+  ld [FlagNewLine], a
   ld [CurrentWordLen], a
   ld a, b ; save current line #
   pop hl ; restore original hl
@@ -93,11 +107,12 @@ IncrementTileOffset:
 .reset_offset
   cp $3
   ld a, $1
-  ld [NewLineFlag], a
+  ld [FlagNewLine], a
   jr c, .new_line
 .new_textbox
   ld a, $1
   ld [FlagClearText], a
+  ld [FlagDo4C], a
   push bc
   ld hl, $9c00
   ld bc, $0040 ; 40 instead of 41 since it gets incremented below
@@ -192,4 +207,30 @@ SetInitialName: ; TODO: In the future, we might be able to just set this as a lo
 	ld [hli], a
 	ld a, $6
   ld [$c5ce], a
+  ret
+
+SetNextChar: ; Override next character based on flags
+  ld a, [FlagDo4C]
+  cp $0
+  jr z, .return
+  ld a, [NextChar]
+  cp $4c
+  jr z, .is_4c
+  ld a, $4c
+  ld [TmpChar], a
+  ld hl, TmpChar
+.return
+  ret
+.is_4c
+  xor a
+  ld [FlagDo4C], a
+  ret
+
+; [hl] ? nop : IncTextOffset
+CheckIncTextOffset:
+  ld a, [hl]
+  cp $0
+  jr nz, .return
+  call IncTextOffset
+.return
   ret

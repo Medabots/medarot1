@@ -13,5 +13,11 @@ FlagClearText::
   ds 1
 CurrentWordLen::
   ds 1
-NewLineFlag::
+FlagNewLine::
+  ds 1
+NextChar::
+  ds 1
+TmpChar::
+  ds 1
+FlagDo4C::
   ds 1

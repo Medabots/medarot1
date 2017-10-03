@@ -47,7 +47,7 @@ SkipSpace::
   push af
   cp $0
   jr nz, .return
-  ld a, [NewLineFlag]
+  ld a, [FlagNewLine]
   cp $0
   jr z, .return
   ld a, $0 ; IncTextOffset
@@ -58,3 +58,12 @@ SkipSpace::
 .return
   pop af
   jp WriteChar
+
+GetNextChar::
+  push hl
+  ld a, [hl]
+  ld [NextChar], a
+  pop hl
+  ld a, $8 ; SetNextChar
+  rst $8
+  ret

@@ -121,9 +121,6 @@ Char4E:
   pop hl
   jp PutCharLoop
   nop
-  nop
-  nop
-  nop
 
 Char4D: ; 0x1e46
 ; text speed
@@ -142,7 +139,6 @@ Char4D: ; 0x1e46
   xor a
   ld [$c6c1], a
   ret
-  nop
   nop
 
 Char4C: ; 0x1e62
@@ -202,10 +198,12 @@ Char4C: ; 0x1e62
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
-  ld a, $0
+  ld hl, FlagDo4C
+  ld a, $9 ; CheckIncTextOffset
   rst $8
+  xor a
+  ld [hl], a
   ret
-  nop
   nop
 
 Char4B: ; 0x1ed6

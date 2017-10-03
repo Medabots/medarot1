@@ -83,9 +83,8 @@ PutCharLoop:: ;1d11, things jump to here after the control code
   push hl
   ld a, $1 ; GetTextOffset
   rst $8
-  ld a, $5 ; CheckCallClearTextBox
-  rst $8
   add hl, bc
+  call GetNextChar
   ld a, [hl]
   cp $4f
   jp z, Char4F
