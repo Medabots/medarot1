@@ -1,4 +1,5 @@
 #!/bin/python
+import os
 
 rom = open("baserom.gbc", "rb")
 
@@ -62,10 +63,15 @@ def dump_text(addr):
             text += "<@{0}>".format(hex(b)[2:])
 
 addrs = [0x33e00, 0x37e00, 0x3be00, 0x3fe00, 0x4f800, 0x5a000, 0x60000, 0x68000, 0x74000]
+filenames = ["Snippet1", "Snippet2", "Snippet3", "Snippet4", "Snippet5", "StoryText1", "StoryText2", "StoryText3" , "BattleText"]
 
-texts = {}
+if not os.path.exists("text/dialog"):
+    os.makedirs("text/dialog")
 
-for addr in addrs:
+for n, file in enumerate(filenames):
+    texts = {}
+    addr = addrs[n]
+
     bank = addr//0x4000
     rom.seek(addr)
     pts = {}
@@ -77,9 +83,7 @@ for addr in addrs:
             break
     for ptr, p in pts.items():
         texts[ptr] = dump_text(p)
-
-
-print "Pointer,Original,Translated"
-
-for ptr in sorted(texts):
-    print "{0},{1},".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""'))
+    with open("text/dialog/" + file + ".csv", "w") as fp:
+        fp.write("Pointer,Original\n")
+        for ptr in sorted(texts):
+            fp.write("{0},{1}\n".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""')))
