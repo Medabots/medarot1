@@ -4,7 +4,6 @@ export PYTHONIOENCODING=utf-8
 #User defined
 TARGET := medarot
 ORIGINAL := baserom.gbc
-LANG := eng
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
 TEXT_TYPE := csv
@@ -16,7 +15,7 @@ BUILD := $(BASE)/build
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
-TRANSLATIONS := $(BASE)/translation/$(LANG)/text
+DIALOG := $(BASE)/text/dialog
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
@@ -38,7 +37,7 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
-TEXT_FILES := $(foreach FILE,$(TEXT),$(TRANSLATIONS)/$(FILE).$(TEXT_TYPE))
+TEXT_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(TEXT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
 

@@ -1,7 +1,7 @@
 #!/bin/python
 import os
 
-rom = open("baserom.gbc", "rb")
+rom = open("medarot.gbc", "rb")
 
 class NotPointerException(ValueError): pass
 

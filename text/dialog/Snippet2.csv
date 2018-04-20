@@ -1,10 +1,10 @@
-Pointer,Original
-0x37e00,<&NAME>くんおてがらだね<4E>たいちょうから<4C>ロボロボだんたいじのごほうびとして<4E>ティンペットをあずかってるんだ<4C>でもおんなのこティンペットは<4E>つかえるパーツがすくないから<4C>すきなほうをえらんでいいよ<4E>おんなのこティンペットにするかい？<*4>
-0x37e02,ふふふっ<4E>どうだはいってこれないロボ
-0x37e04,
-0x37e06,
-0x37e08,
-0x37e0a,なかなかいいしあいだったよ
-0x37e0c,かたいはなしはさておき・・・<4C>ワシもむかしっからの<4E>ロボトルずきでな<4C>こっとうひんやのしゅじんと<4E>よくあそんだもんだ<4C>ユウキくんにもいったんだがいちど<4E>こっとうひんやにいってみるといい
-0x37e0e,ノックしておったな<4E>うむ・・・
-0x37e10,メダロットのちくたいかいで<4E><&NAME>とユウキが<4C>ゆうしゅうなせいせきをとって<4E>ほんたいかいにでるってはなしは<4C>もうせんせいが<4E>いうまでもないよな!<4C>せんせいもかんどうしているぞっ!<4E>みんなもかんどうしていいぞっ!<4C>こうちょうせんせいも<4E>おまえたちとはなしがしたいと<4C>おっしゃっていたぞ<4C>あとでこうちょうしつに<4E>いってみるといいぞ<4C>それじゃせんせいは<4E>たいさんするぞ
+Pointer,Original,Translated
+0x37e00,"<&NAME>くん おてがらだね<4E>たいちょうから<4C>ロボロボだんたいじの ごほうびとして<4E>ティンペットを あずかってるんだ<4C>でも おんなのこティンペットは<4E>つかえるパーツが すくないから<4C>すきなほうを えらんでいいよ<4E>おんなのこティンペットにするかい？","Thanks a lot, <&NAME>!<4E>As a reward, I'll give you a Tinpet. However it's a female Tinpet, only female parts will work.<4E>Choose wisely, will you take the Tinpet?"
+0x37e02,"ふふふっ<4E>どうだ はいってこれないロボ","Fufufuu!<4E>How's that? Now you can't enter, Robo!"
+0x37e04,"",""
+0x37e06,"",""
+0x37e08,"",""
+0x37e0a,"なかなか いいしあいだったよ","That was a good fight."
+0x37e0c,"かたいはなしは さておき・・・<4C>ワシも むかしっからの<4E>ロボトルずきでな<4C>こっとうひんやの しゅじんと<4E>よく あそんだもんだ<4C>ユウキくんにも いったんだが いちど<4E>こっとうひんやに いってみるといい","Serious topics aside...<4E>When I was young, I loved Robottling.<4E>I would play with the owner of the Antique Shop all the time.<4E>Yuuki is going by for a visit, you should go too."
+0x37e0e,"ノックしておったな<4E>うむ・・・","Ah, you knocked. Excellent."
+0x37e10,"メダロットの ちくたいかいで<4E><&NAME>と ユウキが<4C>ゆうしゅうな せいせきをとって<4E>ほんたいかいに でるってはなしは<4C>もう せんせいが<4E>いうまでもないよな!<4C>せんせいも かんどうしているぞっ!<4E>みんなも かんどうしていいぞっ!<4C>こうちょうせんせいも<4E>おまえたちと はなしがしたいと<4C>おっしゃっていたぞ<4C>あとで こうちょうしつに<4E>いってみるといいぞ<4C>それじゃ せんせいは<4E>たいさんするぞ","I recently heard that<&NAME> and Yuuki were<4E>doing remarkably at the district tournament.<4E>This goes without saying but... I'm proud of you guys!<4E>Everyone else is too, even the principal! The principal also said<4E>that he would like to speak with the two of you. It would be a very good<4E>idea to see him. And with that, I'll be taking my leave."

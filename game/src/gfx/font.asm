@@ -9,20 +9,12 @@ SpecialDialogueFont:
   db $01 ;Compressed flag
   ;Compressed tilemap
 
-SECTION "Japanese Dialogue Font", ROMX[$4168], BANK[$8]
-JPDialogueFont:
-;	db $01 ;Compressed flag
-; dw JPFontEnd-JPFont
-JPFont:
-  INCBIN "game/fonts/Dialogue" ; Pulled with Malias Telefang Tools
-JPFontEnd
-
-SECTION "Dialogue Font", ROMX[$4000], BANK[$20]
+SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
 DialogueFont:
 ;  db $00 
 ;  dw FontEnd-Font
 Font: ; TODO: Makefile should move this to 'build' directory, also should be created by a script instead of an external tool
-  INCBIN "translation/eng/DialogueFontCompressed" ; Made with Malias Telefang Tools
+  INCBIN "game/fonts/Dialogue" ; Made with Malias Telefang Tools
 FontEnd
 
 ;a = 04 at init

@@ -1,8 +1,0 @@
-[OVERLAY]
-┌─────────┐
-│ Status  │
-│         │
-│ Begin   │
-│         │
-│ Cancel  │
-└─────────┘

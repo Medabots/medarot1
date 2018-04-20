@@ -1,7 +1,0 @@
-[OVERLAY]
-┌──────────────────┐
-│                  │
-│ Start\x7d Begin     │
-│                  │
-│ A\x7d View status   │
-└──────────────────┘

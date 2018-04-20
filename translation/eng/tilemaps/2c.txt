@@ -1,8 +1,0 @@
-[OVERLAY]
-ABCDE FGHIJ KLMNO
-
-PQRST UVWXY Z    
-
-abcde fghij klmno
-
-pqrst uvwxy z   \xfc

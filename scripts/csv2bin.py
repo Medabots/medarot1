@@ -60,12 +60,11 @@ def table_convert(txt, tbl):
 
 if __name__ == '__main__':
     # TODO: Set this up to take these as an argument
-    arg0 = 'eng' #language
     arg1 = 'build' #output directory
     arg2 = ''
-    trans_dir = 'translation/%s/text' % (arg0)
-    output_dir = arg1
-    with open('translation/%s/chars.tbl' % (arg0), encoding='utf-8') as f:
+    trans_dir = 'text/dialog'
+    output_dir = 'build'
+    with open('scripts/res/medarot.tbl', encoding='utf-8') as f:
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
     additional_banks = []
     if arg2:

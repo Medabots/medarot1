@@ -1,9 +1,0 @@
-[OVERLAY]
-┌─────────┐
-│         │
-│ Continue│
-│         │
-│ New Game│
-│         │
-│ Options │
-└─────────┘

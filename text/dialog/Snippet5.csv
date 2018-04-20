@@ -1,17 +1,17 @@
-Pointer,Original
-0x4f800,アーレーたすけてーーーーっ!!
-0x4f802,うわあああっ!!
-0x4f804,あれっ？とまった<4C>アリガトウ・・・<4C>え？あたまのなかに<4E>このこえまえにもきいた・・・
-0x4f806,ううそっうそだっ!!<4E>うちゅうじんなんぞしんじるものか<4C>オマエトイウヤツハ・・・!
-0x4f808,うっうわーーーっ!!<4E>ごめんなさいぃたーすけてーぇ
-0x4f80a,ほんとにうちゅうじんなの？<4C>メダル・・・ニンゲンニ<4E>アタエタノワタシタチ<4C>ソレカラズットミテイタ<4E>コノキレイナホシノコト・・・<4C>モウスコシオソカッタラ<4E>タスケラレナカッタ<4C>ヨカッタ<4E>・・・キミニアエテ<4C>まっまってよいかないでよ<4E>まだききたいことが・・・<4C>わああっ!!
-0x4f80c,おちこむな<&NAME><4C>メダルをなおすほうほうは<4E>きっとあるはずだ<4C>そうだ!ユウキくんなら<4E>なにかしっているんじゃないか!？
-0x4f80e,げんきだせよ
-0x4f810,がいこくのひとはかえっちゃったよ
-0x4f812,
-0x4f814,
-0x4f816,
-0x4f818,
-0x4f81a,
-0x4f81c,
-0x4f81e,
+Pointer,Original,Translated
+0x4f800,"アーレー たすけてーーーーっ!!","Huuh?! Someone, help me!"
+0x4f802,"うわあああっ!!","Uwaaah!"
+0x4f804,"あれっ？ とまった<4C>アリガトウ・・・<4C>え？ あたまのなかに<4E>このこえ まえにもきいた・・・","Huh? It stopped.<4E>Thank you...<4E>That voice..it sounds familiar."
+0x4f806,"う うそっ うそだっ!!<4E>うちゅうじんなんぞ しんじるものか<4C>オマエトイウ ヤツハ・・・!","No no way! You guys can't be..<4E>aliens?"
+0x4f808,"うっ うわーーーっ!!<4E>ごめんなさいぃ たーすけてーぇ","Uwaah!! I'm sorry!<4E>Someone, help!"
+0x4f80a,"ほんとに うちゅうじんなの？<4C>メダル・・・ニンゲンニ<4E>アタエタノ ワタシタチ<4C>ソレカラ ズット ミテイタ<4E>コノ キレイナ ホシノコト・・・<4C>モウスコシ オソカッタラ<4E>タスケラレナカッタ<4C>ヨカッタ<4E>・・・キミニ アエテ<4C>まっ まってよ いかないでよ<4E>まだ ききたいことが・・・<4C>わああっ!!","Are you guys...really aliens?<4C>We, Medals, that have been bestowed upon humanity<4E>have protected this planet..<4C>Had I waited a moment later, I wouldn't have been able to save you.<4C>We're glad...<4E>..to have met you.<4C>W-wait! Don't go!<4C>I still have things I need to ask y-<4E>Waaah!"
+0x4f80c,"おちこむな <&NAME><4C>メダルをなおすほうほうは<4E>きっとあるはずだ<4C>そうだ! ユウキくんなら<4E>なにか しっているんじゃないか!？","Don't be sad, <&NAME>. I'm sure there's a way to fix your medal.<4E>..That's right! Yuuki might know something!"
+0x4f80e,"げんきだせよ","Lighten up!"
+0x4f810,"がいこくのひとは かえっちゃったよ","The foreigners went home..."
+0x4f812,"",""
+0x4f814,"",""
+0x4f816,"",""
+0x4f818,"",""
+0x4f81a,"",""
+0x4f81c,"",""
+0x4f81e,"",""
