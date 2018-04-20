@@ -1,6 +1,6 @@
 Requirements:
 
-* Medarot 1 KABUTO ROM v1.1
+* Medarot 1 KABUTO ROM v1.1 (md5: 78c568cbfff6314b1416880d9efaeca6)
 * RGBDS that can support Overlay
 * (Optional) Atom editor with the language-z80 package
 
