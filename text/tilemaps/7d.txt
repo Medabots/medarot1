@@ -1,8 +1,8 @@
 [OVERLAY]
-そうこう 
+Armor 
      
-せいこう 
+Hit  
      
-いリょく 
+Power
      
-かいすう 
+Uses 

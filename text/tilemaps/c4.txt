@@ -1,2 +1,2 @@
 [OVERLAY]
-00X00
+\x6b\x6b\x68\x6b\x6b

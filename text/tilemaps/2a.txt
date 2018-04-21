@@ -1,4 +1,4 @@
 [OVERLAY]
- ゛    
-メタロットの
- なまえは?
+      
+Tinpet
+ name\x75

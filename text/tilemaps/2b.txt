@@ -1,8 +1,8 @@
 [OVERLAY]
-アイウエオ カキクケコ サシスセソ
+ABCDE FGHIJ KLMNO
 
-タチツテト ナニヌネノ ハヒフヘホ
+PQRST UVWXY Z    
 
-マミムメモ ヤユヨワン ラリルレロ
+abcde fghij klmno
 
-ァィゥェォ ャュョッヲ ゛゜ー・\xfc
+pqrst uvwxy z - \xfc

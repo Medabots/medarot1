@@ -1,27 +1,19 @@
 [OVERLAY]
-x========+
-/ランク     ‾
-/ ゛      ‾
-/レヘル     ‾
-/        ‾
-/けいけんち   ‾
-/        ‾
-/ あと     ‾
-♥
-
-
-
-
-
-
-
-\x4f
-/  ゛     ‾
-/こうけき    ‾
-/゛ ゛     ‾
-/ほうきょ    ‾
-/        ‾
-/とくしゅ    ‾
-/        ‾
-/あいしょう   ‾
+\x77\x78\x78\x78\x78\x78\x78\x78\x78\x79
+\x7aRank    ‾
+\x7a        ‾
+\x7aLevel   ‾
+\x7a        ‾
+\x7aExp.    ‾
+\x7a        ‾
+\x7aLeft    ‾
+\x7f\x4e\x4e\x4e\x4e\x4e\x4e\x4e\x4e\x4f
+\x7a        ‾
+\x7aAtk.    ‾
+\x7a        ‾
+\x7aDef.    ‾
+\x7a        ‾
+\x7aSpec.   ‾
+\x7a        ‾
+\x7aBonus   ‾
 円\x7d\x7d\x7d\x7d\x7d\x7d\x7d\x7d\x7e

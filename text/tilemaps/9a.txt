@@ -1,5 +1,5 @@
 [OVERLAY]
- ゛       ゛      
-メタロットを えらふ か    
-             ゛  
-せんとうを かいし してくたさい
+                
+Select Medarots 
+                
+or begin battle 

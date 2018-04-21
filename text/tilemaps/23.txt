@@ -1,26 +1,18 @@
 [OVERLAY]
-x========+
-/        ‾
-/        ‾
-/        ‾
-/        ‾
-/        ‾
-/        ‾
-/        ‾
-/ ランク    ‾
-/  ゛     ‾
-/ レヘル    ‾
-♥
-
-
-
-
-
-
-
-\x4f
-/        ‾
-/        ‾
-/        ‾
-/        ‾
+\x77\x78\x78\x78\x78\x78\x78\x78\x78\x79
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7aRank    ‾
+\x7a        ‾
+\x7aLevel   ‾
+\x7f\x4e\x4e\x4e\x4e\x4e\x4e\x4e\x4e\x4f
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
+\x7a        ‾
 円\x7d\x7d\x7d\x7d\x7d\x7d\x7d\x7d\x7e

@@ -1,7 +1,7 @@
 [OVERLAY]
-┌──────┐
-│\xfb\xfb゛\xfb\xfb\xfb│
-│\xfbはしめから│
-│\xfb\xfb\xfb\xfb\xfb\xfb│
-│\xfbせってい\xfb│
-└──────┘
+┌─────────┐
+│         │
+│ New Game│
+│         │
+│ Options │
+└─────────┘

@@ -1,2 +1,2 @@
 [OVERLAY]
-4
+\x6f

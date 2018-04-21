@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌──────────────────┐
-│    ゛             │
-│メッセーシ  おそい ふつう はやい│
+│Message speed     │
+│       Slo Med Fst│
+│Animation speed   │
+│           Med Fst│
+│Battle time limit │
+│           Med Fst│
 │                  │
-│アニメーション    ふつう はやい│
-│    ゛             │
-│せんとうしかん    ふつう はやい│
-│            ゛     │
-│           としる    │
+│           Close  │
 └──────────────────┘

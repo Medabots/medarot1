@@ -1,10 +1,10 @@
 [OVERLAY]
-そうこう 
+Armor 
      
-せいこう 
+Hit  
      
-いリょく 
-゛    
-しゅうてん
+Power
      
-ねつリょう
+Chrge
+     
+Cldwn

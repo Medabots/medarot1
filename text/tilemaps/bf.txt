@@ -1,5 +1,5 @@
 [OVERLAY]
-\xfd\x20[う"]がぎ
+\xfd\x20\x21がぎ
 \xfdぐげござ
 \xfdじずぜぞ
 \xfdだぢづで
