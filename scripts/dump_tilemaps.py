@@ -49,7 +49,12 @@ def decompress_tilemap(rom):
 				byte = readbyte(rom)
 				for i in range(count+2):
 					tmap.append((byte-i)%0xff)
-	return tmap;
+	ret = []
+	for i,t in enumerate(tmap):
+		if i != 0 and i % 0x20 == 0:
+			ret.append(0xfe)
+		ret.append(t)
+	return ret
 
 table = {}
 for line in open("scripts/res/medarot.tbl", encoding = "utf-8").readlines():
