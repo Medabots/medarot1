@@ -1,5 +1,5 @@
 [OVERLAY]
 ┌──┐
-│\xFD\xFD│
-│\xFD\xFD│
+│\xfd\xfd│
+│\xfd\xfd│
 └──┘

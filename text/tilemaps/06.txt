@@ -4,16 +4,16 @@
                                 
                                 
                                 
-   ぴぷぺぽ\x3B\x3C                       
-   \x3D\x3E\x3F\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49                
+   ぴぷぺぽ\x3b\x3c                       
+   \x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49                
    \
-\x4B
+\x4b
 
-\x4D
-\x4F`ABCDEFGH              
+\x4d
+\x4f`ABCDEFGH              
    IJKLMNOPQRSTUVW              
    XY Z0123456789?              
-   !x=+/‾円\x7D\x7E♥アイウエ               
+   !x=+/‾円\x7d\x7e♥アイウエ               
    オカキクケコサシスセソタチ                
                                 
                                 
