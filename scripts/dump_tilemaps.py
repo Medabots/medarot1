@@ -19,6 +19,38 @@ def dump_tilemap(tilemap_bytes, table):
             tilemap += '\\x{:02X}'.format(b)
     return tilemap
 
+MODE_LITERAL = 0
+MODE_REPEAT = 1
+MODE_INC = 2
+MODE_DEC = 3
+def decompress_tilemap(rom):
+	tmap = []
+	while True:
+		b = readbyte(rom)
+		if b == 0xff:
+			break
+		elif b == 0xfe:
+			tmap.append(0xfe)
+		else:
+			command = (b >> 6) & 0b11
+			count = b & 0b00111111
+			if command == MODE_LITERAL:
+				for i in range(count+1):
+					tmap.append(readbyte(rom))
+			elif command == MODE_REPEAT:
+				byte = readbyte(rom)
+				for i in range(count+2):
+					tmap.append(byte)
+			elif command == MODE_INC:
+				byte = readbyte(rom)
+				for i in range(count+2):
+					tmap.append((byte+i)&0xff)
+			elif command == MODE_DEC:
+				byte = readbyte(rom)
+				for i in range(count+2):
+					tmap.append((byte-i)%0xff)
+	return tmap;
+
 table = {}
 for line in open("scripts/res/medarot.tbl", encoding = "utf-8").readlines():
     if line.strip():
@@ -44,15 +76,20 @@ with open("baserom.gbc", "rb") as rom:
         addr = BASE_ADDR + ptr - BANK_SIZE
         rom.seek(addr)
         compressed = readbyte(rom)
-        print("{:02X} @ [{:04X} / {:08X}]".format(i, ptr, rom.tell()), end="")
+        print("{:02X} @ [{:04X} / {:08X}] ".format(i, ptr, rom.tell()-1), end="")
         if compressed == 0x00:
             print("Uncompressed, ", end="")
             tilemap_bytes[i] = list(iter(partial(readbyte, rom), 0xFF))
-            print("length {:02X}".format(len(tilemap_bytes[i])))
+            print("length 0x{:02X}".format(len(tilemap_bytes[i])))
             with open("text/tilemaps/{:02X}.txt".format(i), "w", encoding = "utf-8") as output:
                 output.write("[OVERLAY]\n")
                 output.write("".join(dump_tilemap(tilemap_bytes[i], table)))
         elif compressed == 0x01:
-            print("Compressed")
+            print("Compressed, ", end="")
+            tilemap_bytes[i] = decompress_tilemap(rom)
+            print("length 0x{:02X}".format(len(tilemap_bytes[i])))
+            with open("text/tilemaps/{:02X}.txt".format(i), "w", encoding = "utf-8") as output:
+                output.write("[DIRECT]\n")
+                output.write("".join(dump_tilemap(tilemap_bytes[i], table)))			
         else:
-            print("Unknown: {:02X}".format(compressed))
+            print("Unknown: 0x{:02X}".format(compressed))
