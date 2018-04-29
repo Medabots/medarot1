@@ -1,3 +1,246 @@
+00.txt (sound test/clear)
+01.txt (normal options)
+02.txt (naming screen press select to switch)
+03.txt ("medarot select" menu box)
+04.txt
+05.txt
+06.txt
+07.txt
+08.txt
+09.txt
+0a.txt
+0b.txt
+0c.txt
+0d.txt
+0e.txt
+0f.txt (intro part names)
+10.txt (clear all data?)
+11.txt
+12.txt
+13.txt
+14.txt
+15.txt
+16.txt
+17.txt
+18.txt
+19.txt
+1a.txt
+1b.txt (store part options)
+1c.txt (buy/sell how many?)
+1d.txt
+1e.txt (buy/sell/cancel)
+1f.txt (money)
+20.txt ("medarot")
+21.txt (debug sound/effect)
+22.txt (medarot screen rearrange with select)
+23.txt (medal screen rank/level)
+24.txt (save screen stats part 1)
+25.txt ("save game?")
+26.txt (save data is corrupted)
+27.txt (start/options)
+28.txt (continue/start/options)
+29.txt ("your name?")
+2a.txt ("medarot name?")
+2b.txt (naming screen letters A)
+2c.txt (naming screen letters B)
+2d.txt (save screen stats part 2)
+2e.txt
+2f.txt
+30.txt
+31.txt
+32.txt
+33.txt
+34.txt
+35.txt ("medarot select" - not used in battle/stats)
+36.txt (pre-battle medarot select)
+37.txt (pre-battle medarot select)
+38.txt (pre-battle medarot select)
+39.txt (pre-battle medarot select)
+3a.txt ("saving")
+3b.txt (save complete)
+3c.txt
+3d.txt
+3e.txt
+3f.txt
+40.txt
+41.txt
+42.txt
+43.txt
+44.txt
+45.txt
+46.txt
+47.txt
+48.txt
+49.txt
+4a.txt (press start to begin battle/b to check)
+4b.txt (press start to begin battle/b to check)
+4c.txt (press start to begin battle/b to check)
+4d.txt (press start to begin battle/b to check)
+4e.txt (press start to begin battle/b to check)
+4f.txt (press start to begin battle/b to check)
+50.txt (press start to begin battle/b to check)
+51.txt
+52.txt
+53.txt
+54.txt
+55.txt
+56.txt
+57.txt (text box for the fortunes)
+58.txt (great luck)    Winner!!
+59.txt (good luck)     Lucky
+5a.txt (some luck)     So-so
+5b.txt (uncertain)     Unsure
+5c.txt (bad luck)  Unlucky
+5d.txt (disaster)  Disaster
+5e.txt
+5f.txt
+60.txt (menu)
+61.txt (info menu)
+62.txt
+63.txt (item screen message)
+64.txt (use/toss)
+65.txt
+66.txt
+67.txt
+68.txt (yes/no)
+69.txt (use/toss + edge)
+6a.txt
+6b.txt ("medal info")
+6c.txt
+6d.txt (medal rank/level/exp... huh?)
+6e.txt
+6f.txt
+70.txt
+71.txt (part list message)
+72.txt (part list message)
+73.txt
+74.txt ("head parts")
+75.txt ("right parts")
+76.txt ("left parts")
+77.txt ("leg parts")
+78.txt
+79.txt
+7a.txt
+7b.txt
+7c.txt
+7d.txt (head stats)
+7e.txt (arm stats)
+7f.txt (leg stats)
+80.txt
+81.txt
+82.txt
+83.txt ("medarot select")
+84.txt (parts change screen/battle stats)
+85.txt
+86.txt
+87.txt
+88.txt
+89.txt
+8a.txt
+8b.txt
+8c.txt
+8d.txt (switch page left/right)
+8e.txt (debug? enemy/action)
+8f.txt
+90.txt
+91.txt
+92.txt
+93.txt (medal screen status/skills)
+94.txt (medal screen status stuff)
+95.txt (medal screen skills)
+96.txt
+97.txt
+98.txt
+99.txt (pre-battle - pick a leader)
+9a.txt (pre-battle - pick more medarots or start)
+9b.txt
+9c.txt ("medarot select")
+9d.txt (debug map test)
+9e.txt (debug map test)
+9f.txt (debug map test)
+a0.txt ("observatory")
+a1.txt ("stadium")
+a2.txt ("medarot lab")
+a3.txt ("dad's hometown")
+a4.txt ("ruins")
+a5.txt ("medal dig site")
+a6.txt ("shop district")
+a7.txt ("insect lab")
+a8.txt ("shinobic park")
+a9.txt ("medarot co")
+aa.txt ("school")
+ab.txt ("shrine")
+ac.txt ("harbor town")
+ad.txt ("select hq")
+ae.txt ("select hq")
+af.txt ("mtn. village")
+b0.txt ("mountainside")
+b1.txt ("downtown")
+b2.txt (link options)
+b3.txt
+b4.txt
+b5.txt (link menu box)
+b6.txt
+b7.txt
+b8.txt
+b9.txt (head/right/left/legs)
+ba.txt
+bb.txt
+bc.txt
+bd.txt
+be.txt
+bf.txt
+c0.txt
+c1.txt
+c2.txt
+c3.txt
+c4.txt
+c5.txt
+c6.txt
+c7.txt
+c8.txt
+c9.txt
+ca.txt
+cb.txt (parts list model/name/#)
+cc.txt ("medal")
+cd.txt ("head parts")
+ce.txt ("right parts")
+cf.txt ("left parts")
+d0.txt ("legs")
+d1.txt ("miss")
+d2.txt
+d3.txt (debug story/event/level)
+d4.txt
+d5.txt
+d6.txt
+d7.txt
+d8.txt
+d9.txt
+da.txt
+db.txt
+dc.txt
+dd.txt
+de.txt
+df.txt
+e0.txt
+e1.txt
+e2.txt
+e3.txt
+e4.txt
+e5.txt
+e6.txt
+e7.txt
+e8.txt
+e9.txt
+ea.txt
+eb.txt
+ec.txt
+ed.txt
+ee.txt
+ef.txt
+
+-----------------------------
+
 0x6b=0
 0x6c=1
 0x6d=2

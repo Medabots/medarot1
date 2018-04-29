@@ -74,7 +74,7 @@ tilemap_ptr = {}
 tilemap_bytes = {}
 with open("baserom.gbc", "rb") as rom:
     rom.seek(BASE_ADDR)
-    for i in range(0xf1):
+    for i in range(0xf0):
         tilemap_ptr[i] = readshort(rom)
 
     for i, ptr in tilemap_ptr.items():
