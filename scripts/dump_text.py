@@ -2,6 +2,12 @@
 import os
 
 rom = open("baserom.gbc", "rb")
+log = open("./scripts/res/ptrs.txt", "a+")
+
+name_table = {}
+for line in log:
+    p, n = line.strip().split("=")
+    name_table[int(p, 16)] = n
 
 class NotPointerException(ValueError): pass
 
@@ -29,15 +35,16 @@ class Special():
         self.default = default
         self.bts = bts
         self.end = end
-        self.names = names if names else []
+        self.names = names
 
-table[0x4b] = Special("&", bts=2, names={0xC923: "NAME"})
+table[0x4b] = Special("&", bts=2, names=name_table)
 table[0x4d] = Special('S', default=2)
 table[0x4f] = Special('*', end=True)
 table[0x50] = Special('`', bts=0, end=True)
 
 
 def dump_text(addr):
+    global name_table
     rom.seek(addr)
     text = ""
     while True:
@@ -52,10 +59,16 @@ def dump_text(addr):
                     if (not token.end and param != token.default) or (token.end and param != token.default):
                         text += "<"+token.symbol
                         if param != token.default:
-                            if param in token.names:
+                            if token.names and param in token.names:
                                 text += token.names[param]
                             else:
-                                text += hex(param)[2:]
+                                if token.names is not None:
+                                    n = "BUF{:02X}".format(len(name_table))
+                                    print("{0}={1}".format(hex(param), n), file=log)
+                                    name_table[param] = n
+                                    text += n
+                                else:
+                                    text += hex(param)[2:]
                         text += ">"
                 if token.end:
                     return text
@@ -87,3 +100,7 @@ for n, file in enumerate(filenames):
         fp.write("Pointer,Original\n")
         for ptr in sorted(texts):
             fp.write("{0},{1}\n".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""')))
+
+log.truncate()
+log.close()
+rom.close()
