@@ -2,6 +2,13 @@
 import os
 
 rom = open("baserom.gbc", "rb")
+log = open("./scripts/res/ptrs.txt", "a+")
+log.seek(0)
+
+name_table = {}
+for line in log:
+    p, n = line.strip().split("=")
+    name_table[int(p, 16)] = n
 
 class NotPointerException(ValueError): pass
 
@@ -29,15 +36,16 @@ class Special():
         self.default = default
         self.bts = bts
         self.end = end
-        self.names = names if names else []
+        self.names = names
 
-table[0x4b] = Special("&", bts=2, names={0xC923: "NAME"})
+table[0x4b] = Special("&", bts=2, names=name_table)
 table[0x4d] = Special('S', default=2)
 table[0x4f] = Special('*', end=True)
 table[0x50] = Special('`', bts=0, end=True)
 
 
 def dump_text(addr):
+    global name_table
     rom.seek(addr)
     text = ""
     while True:
@@ -52,10 +60,16 @@ def dump_text(addr):
                     if (not token.end and param != token.default) or (token.end and param != token.default):
                         text += "<"+token.symbol
                         if param != token.default:
-                            if param in token.names:
+                            if token.names and param in token.names:
                                 text += token.names[param]
                             else:
-                                text += hex(param)[2:]
+                                if token.names is not None:
+                                    n = "BUF{:02X}".format(len(name_table))
+                                    print("{0}={1}".format(hex(param), n), file=log)
+                                    name_table[param] = n
+                                    text += n
+                                else:
+                                    text += hex(param)[2:]
                         text += ">"
                 if token.end:
                     return text
@@ -64,6 +78,7 @@ def dump_text(addr):
 
 addrs = [0x33e00, 0x37e00, 0x3be00, 0x3fe00, 0x4f800, 0x5a000, 0x60000, 0x68000, 0x74000]
 filenames = ["Snippet1", "Snippet2", "Snippet3", "Snippet4", "Snippet5", "StoryText1", "StoryText2", "StoryText3" , "BattleText"]
+ptr_range = [1024, 1024, 10, 1024, 1024, 1024, 1024, 1024 , 1024] #Specify # of pointers if necessary (Snippet 3 has pointers to graphics as well)
 
 if not os.path.exists("text/dialog"):
     os.makedirs("text/dialog")
@@ -75,7 +90,7 @@ for n, file in enumerate(filenames):
     bank = addr//0x4000
     rom.seek(addr)
     pts = {}
-    for i in range(1024):
+    for i in range(ptr_range[n]):
         try:
             ptr = readpointer(bank)
             pts[rom.tell()-2] = ptr
@@ -87,3 +102,7 @@ for n, file in enumerate(filenames):
         fp.write("Pointer,Original\n")
         for ptr in sorted(texts):
             fp.write("{0},{1}\n".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""')))
+
+log.truncate()
+log.close()
+rom.close()
