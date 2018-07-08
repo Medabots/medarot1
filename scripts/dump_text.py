@@ -78,7 +78,7 @@ def dump_text(addr):
 
 addrs = [0x33e00, 0x37e00, 0x3be00, 0x3fe00, 0x4f800, 0x5a000, 0x60000, 0x68000, 0x74000]
 filenames = ["Snippet1", "Snippet2", "Snippet3", "Snippet4", "Snippet5", "StoryText1", "StoryText2", "StoryText3" , "BattleText"]
-ptr_range = [1024, 1024, 10, 1024, 1024, 1024, 1024, 1024 , 1024] #Specify # of pointers if necessary (Snippet 3 has pointers to graphics as well)
+ptr_range = [1024, 1024, 10, 1024, 1024, 1024, 1024, 1024 , 457] #Specify # of pointers if necessary (Snippet 3 has pointers to graphics as well)
 
 if not os.path.exists("text/dialog"):
     os.makedirs("text/dialog")
