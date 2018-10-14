@@ -12,7 +12,7 @@
 \x4d
 \x4f`ABCDEFGH              
    IJKLMNOPQRSTUVW              
-   XY Z0123456789?              
+   XY Z0123456789？              
    !x=+/‾円\x7d\x7e♥アイウエ               
    オカキクケコサシスセソタチ                
                                 
