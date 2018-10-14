@@ -5,10 +5,11 @@ TARGET := medarot
 ORIGINAL := baserom.gbc
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
-PYTHON := python
+PYTHON := python #Python3
 
 BASE := .
 BUILD := $(BASE)/build
+SCRIPT := $(BASE)/scripts
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
@@ -35,16 +36,20 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 all: $(TARGET_OUT)
 
 $(TARGET_OUT): $(MODULES_OBJ)
-	rgblink -O $(ORIGINAL) -o $@ $^
-	rgbfix $(FIX_ARGS) $@
+	$(LD) -O $(ORIGINAL) -o $@ $^
+	$(FIX) $(FIX_ARGS) $@
 	cmp -l $(ORIGINAL) $@
 
 .SECONDEXPANSION:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC)
-	rgbasm -o $@ $<
+	$(CC) -o $@ $<
 
 clean:
 	rm -rf $(BUILD) $(TARGET_OUT)
+
+dump:
+	$(PYTHON) $(SCRIPT)/dump_text.py
+	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
 
 #Make directories if necessary
 $(BUILD):
