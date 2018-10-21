@@ -8,10 +8,11 @@ TARGET_TYPE := gbc
 SOURCE_TYPE := asm
 TEXT_TYPE := csv
 BIN_TYPE := bin
-PYTHON := python3
+PYTHON := python #Python3
 
 BASE := .
 BUILD := $(BASE)/build
+SCRIPT := $(BASE)/scripts
 GAME := $(BASE)/game
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
@@ -54,9 +55,13 @@ $(BIN_FILE): $(TEXT_FILES)
 .SECONDEXPANSION:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(BIN_FILE)
 	$(CC) -o $@ $<
-	
+
 clean:
 	rm -rf $(BUILD) $(TARGET_OUT)
+
+dump:
+	$(PYTHON) $(SCRIPT)/dump_text.py
+	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
 
 #Make directories if necessary
 $(BUILD): 
