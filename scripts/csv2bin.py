@@ -7,6 +7,13 @@ import os
 import csv
 from sys import getdefaultencoding
 
+ptr_names = {}
+with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.txt'),"r") as f:
+    for line in f:
+        l = line.split('=')
+        l[0] = "{:X}".format(int(l[0], 16))
+        ptr_names[l[1].strip()] = (int(l[0][2:4], 16), int(l[0][0:2], 16))
+
 def table_convert(txt, tbl):
     result = bytearray()
     i = 0
@@ -32,13 +39,11 @@ def table_convert(txt, tbl):
                 elif special_type == '&':
                     result.append(0x4B)
                     s = ''.join(special_data)
-                    if s == "MEDA":
-                        result.append(0xA2)
-                        result.append(0xC6)
-                    elif s == "NAME":
-                        result.append(0x23)
-                        result.append(0xC9)
+                    if s in ptr_names:
+                        result.append(ptr_names[s][0])
+                        result.append(ptr_names[s][1])
                     else:
+                        print("Unable to find ptr name for {0}".format(s))
                         result.append(int(s[2:4], 16))
                         result.append(int(s[0:2], 16))
                 elif special_type == '`':
