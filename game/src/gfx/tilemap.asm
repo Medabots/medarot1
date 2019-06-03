@@ -2,7 +2,7 @@ SECTION "Tilemaps", ROMX[$4000], BANK[$1e]
 Tilemaps:
 ; The tilemap pointer table can reference the same data multiple times
 ; so even though there's 0xEF tilemaps, we actually have even fewer than that
-INCLUDE "game/src/gfx/tilemap_files.asm"
+INCLUDE "game/tilemaps/tilemap_files.asm"
 
 SECTION "Load Tilemaps", ROM0[$e2c]
 LoadTilemap:
