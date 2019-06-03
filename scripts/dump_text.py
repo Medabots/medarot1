@@ -25,7 +25,7 @@ def readbyte():
     return ord(rom.read(1))
 
 table = {}
-for line in open("scripts/res/medarot.tbl").readlines():
+for line in open("scripts/res/medarot.tbl", encoding="utf-8").readlines():
     if line.strip():
         a, b = line.strip('\n').split("=", 1)
         table[int(a, 16)] = b.replace("\\n", '\n')
@@ -98,7 +98,7 @@ for n, file in enumerate(filenames):
             break
     for ptr, p in pts.items():
         texts[ptr] = dump_text(p)
-    with open("text/dialog/" + file + ".csv", "w") as fp:
+    with open("text/dialog/" + file + ".csv", "w", encoding="utf-8") as fp:
         fp.write("Pointer,Original\n")
         for ptr in sorted(texts):
             fp.write("{0},{1}\n".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""')))

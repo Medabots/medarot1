@@ -5,14 +5,17 @@ TARGET := medarot
 ORIGINAL := baserom.gbc
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
-PYTHON := python #Python3
+PYTHON := python3
 
 BASE := .
 BUILD := $(BASE)/build
 SCRIPT := $(BASE)/scripts
 GAME := $(BASE)/game
 SRC := $(GAME)/src
+TEXT := $(BASE)/text
 COMMON := $(SRC)/common
+TILEMAP_BIN := $(GAME)/tilemaps
+TILEMAP_TEXT := $(TEXT)/tilemaps
 
 MODULES := core gfx story
 
@@ -40,17 +43,28 @@ $(TARGET_OUT): $(MODULES_OBJ)
 	$(FIX) $(FIX_ARGS) $@
 	cmp -l $(ORIGINAL) $@
 
+# TODO: The dependency chain here is "wrong" (it'll rebuild everything on a resource change)
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC)
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(wildcard $(TILEMAP_BIN)/*)
 	$(CC) -o $@ $<
 
 clean:
 	rm -rf $(BUILD) $(TARGET_OUT)
 
-dump:
+dump: dump_text dump_tilemaps
+
+dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
+
+dump_tilemaps: $(TILEMAP_BIN) $(TILEMAP_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
 
 #Make directories if necessary
 $(BUILD):
-	mkdir $(BUILD)
+	mkdir -p $(BUILD)
+
+$(TILEMAP_BIN):
+	mkdir -p $(TILEMAP_BIN)
+
+$(TILEMAP_TEXT):
+	mkdir -p $(TILEMAP_TEXT)
