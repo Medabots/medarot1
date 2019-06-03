@@ -6,3 +6,5 @@ build/
 *.sna
 *.o
 .vscode/
+scripts/common/__pycache__/
+*.ips

@@ -1,65 +1,14 @@
 #!/bin/python
 
-import struct
+# Script to initially dump tilemaps, shouldn't really need to be run more than once, and is mainly here as a reference
+
+import os, sys
 from functools import partial
-import os
-import sys
 
-def readshort(rom):
-    return struct.unpack("<H", rom.read(2))[0]
+sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
+from common import tilemaps, utils
 
-def readbyte(rom):
-    return struct.unpack("B", rom.read(1))[0]
-
-def dump_tilemap(tilemap_bytes, table):
-    tilemap = []
-    for b in tilemap_bytes:
-        if b in table:
-            tilemap += table[b]
-        else:
-            tilemap += '\\x{:02x}'.format(b)
-    return tilemap
-
-MODE_LITERAL = 0
-MODE_REPEAT = 1
-MODE_INC = 2
-MODE_DEC = 3
-def decompress_tilemap(original):
-    tmap = []
-    rom = iter(original)
-    for b in rom:
-        if b == 0xfe:
-            tmap.append(0xfe)
-        else:
-            command = (b >> 6) & 0b11
-            count = b & 0b00111111
-            if command == MODE_LITERAL:
-                for i in range(count+1):
-                    tmap.append(next(rom))
-            elif command == MODE_REPEAT:
-                byte = next(rom)
-                for i in range(count+2):
-                    tmap.append(byte)
-            elif command == MODE_INC:
-                byte = next(rom)
-                for i in range(count+2):
-                    tmap.append((byte+i)&0xff)
-            elif command == MODE_DEC:
-                byte = next(rom)
-                for i in range(count+2):
-                    tmap.append((byte-i)%0xff)
-    ret = []
-    for i,t in enumerate(tmap):
-        if i != 0 and i % 0x20 == 0:
-            ret.append(0xfe)
-        ret.append(t)
-    return ret
-
-table = {}
-for line in open("scripts/res/medarot.tbl", encoding = "utf-8").readlines():
-    if line.strip():
-        a, b = line.strip('\n').split("=", 1)
-        table[int(a, 16)] = b.replace("\\n", '\n')
+table = utils.read_table("scripts/res/medarot.tbl")
 
 # tilemap bank is 1e (0x78000)
 BANK_SIZE = 0x4000
@@ -72,17 +21,16 @@ tilemap_files = []
 with open("baserom.gbc", "rb") as rom:
     rom.seek(BASE_ADDR)
     for i in range(0xf0):
-        tilemap_ptr[i] = readshort(rom)
-
+        tilemap_ptr[i] = utils.read_short(rom)
 
     for i in sorted(tilemap_ptr):
         ptr = tilemap_ptr[i]
         addr = BASE_ADDR + ptr - BANK_SIZE
         rom.seek(addr)
-        compressed = readbyte(rom)
+        compressed = utils.read_byte(rom)
         assert compressed in [0x0, 0x1], "Unexpected compression byte 0x{:02x}".format(compressed)
         print("{:02x} @ [{:04X} / {:08X}] {} | ".format(i, ptr, rom.tell()-1, "Compressed" if compressed else "Uncompressed"), end="")
-        tilemap_bytes[i] = list(iter(partial(readbyte, rom), 0xFF)) # Read ROM until 0xFF
+        tilemap_bytes[i] = list(iter(partial(utils.read_byte, rom), 0xFF)) # Read ROM until 0xFF
         # tilemaps are all adjacent to each other, so we don't need to do anything more than make sure they're sorted
         file_suffix = "{:04X}".format(ptr)
         if file_suffix not in tilemap_files:
@@ -92,10 +40,10 @@ with open("baserom.gbc", "rb") as rom:
             with open("text/tilemaps/{}.txt".format(file_suffix), "w", encoding = "utf-8") as output:
                 if compressed:
                     output.write("[DIRECT]\n")
-                    tilemap_bytes[i] = decompress_tilemap(tilemap_bytes[i])
+                    tilemap_bytes[i] = tilemaps.decompress_tilemap(tilemap_bytes[i])
                 else:
                     output.write("[OVERLAY]\n")
-                output.write("".join(dump_tilemap(tilemap_bytes[i], table)))
+                output.write("".join(tilemaps.dump_tilemap(tilemap_bytes[i], table)))
                 print("total length 0x{:02x}".format(len(tilemap_bytes[i])))
         else:
             print("Duplicate")
