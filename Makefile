@@ -43,13 +43,13 @@ $(TARGET_OUT): $(MODULES_OBJ)
 	$(FIX) $(FIX_ARGS) $@
 	cmp -l $(ORIGINAL) $@
 
-# TODO: The dependency chain here is "wrong" (it'll rebuild everything on a resource change)
+# TODO: The dependency chain here is "wrong"...
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(wildcard $(TILEMAP_BIN)/*)
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(TILEMAP_BIN)/tilemap_files.asm
 	$(CC) -o $@ $<
 
-clean:
-	rm -rf $(BUILD) $(TARGET_OUT)
+$(TILEMAP_BIN)/tilemap_files.asm: $(SCRIPT)/res/tilemaps.tbl $(wildcard $(TILEMAP_BIN)/*.tmap)
+	$(PYTHON) $(SCRIPT)/update_tilemap_files.py
 
 dump: dump_text dump_tilemaps
 
@@ -58,6 +58,9 @@ dump_text:
 
 dump_tilemaps: $(TILEMAP_BIN) $(TILEMAP_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
+
+clean:
+	rm -rf $(BUILD) $(TARGET_OUT)	
 
 #Make directories if necessary
 $(BUILD):
