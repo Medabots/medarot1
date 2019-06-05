@@ -47,10 +47,9 @@ with open("baserom.gbc", "rb") as rom:
                         output.write("[DIRECT]\n")
                         tilemap_bytes[i] = tilemaps.decompress_tilemap(tilemap_bytes[i])
                     else:
-                        tmap_path = "build/tilemaps/{}.tmap".format(fname)
                         output.write("[OVERLAY]\n")
                     output.write("".join(utils.bin2txt(tilemap_bytes[i], table)))
                 print("total length 0x{:02x}".format(len(tilemap_bytes[i])))
             else:
                 print("Duplicate")
-            ptrfile.write("{:02X}={}\n".format(i, tmap_path))
+            ptrfile.write("{:02X}={}\n".format(i, fname))
