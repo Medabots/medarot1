@@ -8,3 +8,4 @@ build/
 .vscode/
 scripts/common/__pycache__/
 *.ips
+*.pyc
