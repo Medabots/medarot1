@@ -5,6 +5,9 @@ TARGET := medarot
 ORIGINAL := baserom.gbc
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
+TABLE_TYPE := tbl
+TMAP_TYPE := tmap
+TEXT_TYPE := txt
 PYTHON := python3
 
 BASE := .
@@ -16,8 +19,10 @@ TEXT := $(BASE)/text
 COMMON := $(SRC)/common
 TILEMAP_BIN := $(GAME)/tilemaps
 TILEMAP_TEXT := $(TEXT)/tilemaps
+TILEMAP_OUT := $(BUILD)/tilemaps
 
 MODULES := core gfx story
+TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -35,6 +40,9 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
+TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
+
+gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
 
 all: $(TARGET_OUT)
 
@@ -43,24 +51,26 @@ $(TARGET_OUT): $(MODULES_OBJ)
 	$(FIX) $(FIX_ARGS) $@
 	cmp -l $(ORIGINAL) $@
 
-# TODO: The dependency chain here is "wrong"...
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(TILEMAP_BIN)/tilemap_files.asm
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) | $(BUILD)
 	$(CC) -o $@ $<
 
-$(TILEMAP_BIN)/tilemap_files.asm: $(SCRIPT)/res/tilemaps.tbl $(wildcard $(TILEMAP_BIN)/*.tmap)
-	$(PYTHON) $(SCRIPT)/update_tilemap_files.py
+$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemaps.$(TABLE_TYPE) $(TILEMAP_FILES)
+	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
+
+$(TILEMAP_OUT)/%.tmap: text/tilemaps/%.$(TEXT_TYPE) | $(TILEMAP_OUT)
+	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
 dump: dump_text dump_tilemaps
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
 
-dump_tilemaps: $(TILEMAP_BIN) $(TILEMAP_TEXT)
+dump_tilemaps: $(TILEMAP_BIN) | $(TILEMAP_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
 
 clean:
-	rm -rf $(BUILD) $(TARGET_OUT)	
+	rm -r $(BUILD) $(TARGET_OUT)	
 
 #Make directories if necessary
 $(BUILD):
@@ -71,3 +81,6 @@ $(TILEMAP_BIN):
 
 $(TILEMAP_TEXT):
 	mkdir -p $(TILEMAP_TEXT)
+
+$(TILEMAP_OUT):
+	mkdir -p $(TILEMAP_OUT)
