@@ -3,13 +3,12 @@
 # Script to initially dump tilemaps, shouldn't really need to be run anymore, and is mainly here as a reference
 
 import os, sys
-import json
 from functools import partial
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
 from common import utils, tilemaps
 
-table = utils.read_table("scripts/res/medarot.tbl")
+table = utils.read_table("scripts/res/tilemaps.tbl")
 
 # tilemap bank is 1e (0x78000)
 BANK_SIZE = 0x4000
@@ -24,7 +23,7 @@ with open("baserom.gbc", "rb") as rom:
     for i in range(0xf0):
         tilemap_ptr[i] = utils.read_short(rom)
 
-    with open("scripts/res/tilemaps.tbl", "w+") as ptrfile:
+    with open("scripts/res/tilemap_files.tbl", "w+") as ptrfile:
         for i in sorted(tilemap_ptr):
             ptr = tilemap_ptr[i]
             addr = BASE_ADDR + ptr - BANK_SIZE
@@ -36,18 +35,22 @@ with open("baserom.gbc", "rb") as rom:
             # tilemaps are all adjacent to each other, so we don't need to do anything more than make sure they're sorted
             fname = "Tilemap_{:04X}".format(ptr)
             txt_path = "text/tilemaps/{}.txt".format(fname)
-            tmap_path = "game/tilemaps/{}.tmap".format(fname)
+            
             if not fname in tilemap_files:
                 tilemap_files.append(fname)
-                with open(tmap_path, "wb") as binary, open(txt_path, "w", encoding = "utf-8") as output:
-                    binary.write(bytearray([compressed] + tilemap_bytes[i] + [0xFF]))
+                with open(txt_path, "w", encoding = "utf-8") as output:
+                    # We can rebuild every non-compressed tilemap, but we need to keep every compressed one until we figure out the compression algorithm
                     if compressed:
+                        tmap_path = "game/tilemaps/{}.tmap".format(fname)
+                        with open(tmap_path, "wb") as binary:
+                            binary.write(bytearray([compressed] + tilemap_bytes[i] + [0xFF]))
                         output.write("[DIRECT]\n")
                         tilemap_bytes[i] = tilemaps.decompress_tilemap(tilemap_bytes[i])
                     else:
+                        tmap_path = "build/tilemaps/{}.tmap".format(fname)
                         output.write("[OVERLAY]\n")
-                    output.write("".join(tilemaps.dump_tilemap(tilemap_bytes[i], table)))
+                    output.write("".join(utils.bin2txt(tilemap_bytes[i], table)))
                 print("total length 0x{:02x}".format(len(tilemap_bytes[i])))
             else:
                 print("Duplicate")
-            ptrfile.write("{:02X}={}\n".format(i, fname))
+            ptrfile.write("{:02X}={}\n".format(i, tmap_path))
