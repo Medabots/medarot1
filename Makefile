@@ -6,22 +6,29 @@ TARGET := medarot
 ORIGINAL := baserom.gbc
 TARGET_TYPE := gbc
 SOURCE_TYPE := asm
-TEXT_TYPE := csv
+DIAG_TYPE := csv
 BIN_TYPE := bin
-PYTHON := python #Python3
+TABLE_TYPE := tbl
+TMAP_TYPE := tmap
+TEXT_TYPE := txt
+PYTHON := python3
 
 BASE := .
 BUILD := $(BASE)/build
 SCRIPT := $(BASE)/scripts
 GAME := $(BASE)/game
 SRC := $(GAME)/src
+TEXT := $(BASE)/text
 COMMON := $(SRC)/common
 DIALOG := $(BASE)/text/dialog
 
+TILEMAP_BIN := $(GAME)/tilemaps
+TILEMAP_TEXT := $(TEXT)/tilemaps
+TILEMAP_OUT := $(BUILD)/tilemaps
+
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
-
-#TODO: This should actually be configurable 
+TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -38,9 +45,12 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
-TEXT_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(TEXT_TYPE))
+DIAG_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(DIAG_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
+TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
+
+gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
 
 all: $(TARGET_OUT)
 
@@ -49,21 +59,39 @@ $(TARGET_OUT): $(MODULES_OBJ)
 	$(FIX) $(FIX_ARGS) $@
 
 #Make is a stupid spec, this is absurd
-$(BIN_FILE): $(TEXT_FILES)
+$(BIN_FILE): $(DIAG_FILES)
 	$(PYTHON) scripts/csv2bin.py
 	
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BUILD) $(COMMON_SRC) $(BIN_FILE)
+$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BIN_FILE) | $(BUILD)
 	$(CC) -o $@ $<
 
-clean:
-	rm -rf $(BUILD) $(TARGET_OUT)
+$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES)
+	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
 
-dump:
+$(TILEMAP_OUT)/%.$(TMAP_TYPE): text/tilemaps/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
+	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
+
+dump: dump_text dump_tilemaps
+
+dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
+
+dump_tilemaps: $(TILEMAP_BIN) | $(TILEMAP_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
 
-#Make directories if necessary
-$(BUILD): 
-	mkdir $(BUILD)
+clean:
+	rm -r $(BUILD) $(TARGET_OUT)	
 
+#Make directories if necessary
+$(BUILD):
+	mkdir -p $(BUILD)
+
+$(TILEMAP_BIN):
+	mkdir -p $(TILEMAP_BIN)
+
+$(TILEMAP_TEXT):
+	mkdir -p $(TILEMAP_TEXT)
+
+$(TILEMAP_OUT):
+	mkdir -p $(TILEMAP_OUT)

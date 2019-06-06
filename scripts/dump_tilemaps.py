@@ -1,69 +1,12 @@
 #!/bin/python
 
-import struct
+# Script to initially dump tilemaps, shouldn't really need to be run anymore, and is mainly here as a reference
+
+import os, sys
 from functools import partial
-import os
 
-def readshort(rom):
-    return struct.unpack("<H", rom.read(2))[0]
-
-def readbyte(rom):
-    return struct.unpack("B", rom.read(1))[0]
-
-def dump_tilemap(tilemap_bytes, table):
-    tilemap = []
-    for b in tilemap_bytes:
-        if b in table:
-            tilemap += table[b]
-        else:
-            tilemap += '\\x{:02x}'.format(b)
-    return tilemap
-
-MODE_LITERAL = 0
-MODE_REPEAT = 1
-MODE_INC = 2
-MODE_DEC = 3
-def decompress_tilemap(rom):
-	tmap = []
-	while True:
-		b = readbyte(rom)
-		if b == 0xff:
-			break
-		elif b == 0xfe:
-			tmap.append(0xfe)
-		else:
-			command = (b >> 6) & 0b11
-			count = b & 0b00111111
-			if command == MODE_LITERAL:
-				for i in range(count+1):
-					tmap.append(readbyte(rom))
-			elif command == MODE_REPEAT:
-				byte = readbyte(rom)
-				for i in range(count+2):
-					tmap.append(byte)
-			elif command == MODE_INC:
-				byte = readbyte(rom)
-				for i in range(count+2):
-					tmap.append((byte+i)&0xff)
-			elif command == MODE_DEC:
-				byte = readbyte(rom)
-				for i in range(count+2):
-					tmap.append((byte-i)%0xff)
-	ret = []
-	for i,t in enumerate(tmap):
-		if i != 0 and i % 0x20 == 0:
-			ret.append(0xfe)
-		ret.append(t)
-	return ret
-
-table = {}
-for line in open("scripts/res/medarot.tbl", encoding = "utf-8").readlines():
-    if line.strip():
-        a, b = line.strip('\n').split("=", 1)
-        table[int(a, 16)] = b.replace("\\n", '\n')
-
-if not os.path.exists("text/tilemaps"):
-    os.makedirs("text/tilemaps")
+sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
+from common import utils, tilemaps
 
 # tilemap bank is 1e (0x78000)
 BANK_SIZE = 0x4000
@@ -72,29 +15,67 @@ MAX_ADDR = BASE_ADDR + BANK_SIZE - 1
 
 tilemap_ptr = {}
 tilemap_bytes = {}
+tilemap_files = []
 with open("baserom.gbc", "rb") as rom:
     rom.seek(BASE_ADDR)
     for i in range(0xf0):
-        tilemap_ptr[i] = readshort(rom)
+        tilemap_ptr[i] = utils.read_short(rom)
 
-    for i, ptr in tilemap_ptr.items():
-        addr = BASE_ADDR + ptr - BANK_SIZE
-        rom.seek(addr)
-        compressed = readbyte(rom)
-        print("{:02x} @ [{:04X} / {:08X}] ".format(i, ptr, rom.tell()-1), end="")
-        if compressed == 0x00:
-            print("Uncompressed, ", end="")
-            tilemap_bytes[i] = list(iter(partial(readbyte, rom), 0xFF))
-            print("length 0x{:02x}".format(len(tilemap_bytes[i])))
-            with open("text/tilemaps/{:02x}.txt".format(i), "w", encoding = "utf-8") as output:
-                output.write("[OVERLAY]\n")
-                output.write("".join(dump_tilemap(tilemap_bytes[i], table)))
-        elif compressed == 0x01:
-            print("Compressed, ", end="")
-            tilemap_bytes[i] = decompress_tilemap(rom)
-            print("length 0x{:02x}".format(len(tilemap_bytes[i])))
-            with open("text/tilemaps/{:02x}.txt".format(i), "w", encoding = "utf-8") as output:
-                output.write("[DIRECT]\n")
-                output.write("".join(dump_tilemap(tilemap_bytes[i], table)))			
-        else:
-            print("Unknown: 0x{:02x}".format(compressed))
+    ptrfile = None
+    if os.path.exists("scripts/res/tilemap_files.tbl"):
+        ptrtable = utils.read_table("scripts/res/tilemap_files.tbl")
+    else:
+        ptrfile = open("scripts/res/tilemap_files.tbl","w")
+
+    # Load previously generated/manually written tilemap <-> tileset mapping
+    tileset_file = None
+    tilesets = {}
+    tiletables = {}
+    tileset_default = utils.read_table("scripts/res/tileset_3.tbl")
+    if os.path.exists("scripts/res/tilesets.tbl"):
+        tilesets = utils.read_table("scripts/res/tilesets.tbl", keystring=True)
+        for fname in tilesets:
+            if tilesets[fname] not in tiletables:
+                tiletables[tilesets[fname]] = utils.merge_dicts([utils.read_table(tbl) for tbl in tilesets[fname].split(",")])
+    else:
+        tileset_file = open("scripts/res/tilesets.tbl","w")
+
+    try:
+        for i in sorted(tilemap_ptr):
+            ptr = tilemap_ptr[i]
+            addr = BASE_ADDR + ptr - BANK_SIZE
+            rom.seek(addr)
+            compressed = utils.read_byte(rom)
+            assert compressed in [0x0, 0x1], "Unexpected compression byte 0x{:02x}".format(compressed)
+            print("{:02x} @ [{:04X} / {:08X}] {} | ".format(i, ptr, rom.tell()-1, "Compressed" if compressed else "Uncompressed"), end="")
+            tilemap_bytes[i] = list(iter(partial(utils.read_byte, rom), 0xFF)) # Read ROM until 0xFF
+            # tilemaps are all adjacent to each other, so we don't need to do anything more than make sure they're sorted
+            fname = "Tilemap_{:04X}".format(ptr) if i not in ptrtable else ptrtable[i]
+            txt_path = "text/tilemaps/{}.txt".format(fname)
+
+            if not fname in tilemap_files:
+                tilemap_files.append(fname)
+                with open(txt_path, "w", encoding = "utf-8") as output:
+                    # We can rebuild every non-compressed tilemap, but we need to keep every compressed one until we figure out the compression algorithm
+                    if compressed:
+                        tmap_path = "game/tilemaps/{}.tmap".format(fname)
+                        with open(tmap_path, "wb") as binary:
+                            binary.write(bytearray([compressed] + tilemap_bytes[i] + [0xFF]))
+                        output.write("[DIRECT]\n")
+                        tilemap_bytes[i] = tilemaps.decompress_tilemap(tilemap_bytes[i])
+                    else:
+                        output.write("[OVERLAY]\n")
+                    # Assume tilesets[fname] in tiletables if fname is in tilesets
+                    output.write("".join(utils.bin2txt(tilemap_bytes[i], tiletables[tilesets[fname]] if fname in tilesets else tileset_default)))
+                print("total length 0x{:02x}".format(len(tilemap_bytes[i])))
+            else:
+                print("Duplicate")
+            if ptrfile:
+                ptrfile.write("{:02X}={}\n".format(i, fname))
+            if tileset_file:
+                tileset_file.write("{}=scripts/res/tileset_3.tbl\n".format(fname))
+    finally:
+        if ptrfile:
+            ptrfile.close()
+        if tileset_file:
+            tileset_file.close()

@@ -11,10 +11,10 @@ SpecialDialogueFont:
 
 SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
 DialogueFont:
-;  db $00 
-;  dw FontEnd-Font
-Font: ; TODO: Makefile should move this to 'build' directory, also should be created by a script instead of an external tool
-  INCBIN "game/fonts/Dialogue" ; Made with Malias Telefang Tools
+;  db $01 ;Compressed flag
+; dw FontEnd-Font
+Font:
+  INCBIN "game/tilesets/Dialogue" ; Pulled with Malias Telefang Tools
 FontEnd
 
 ;a = 04 at init
