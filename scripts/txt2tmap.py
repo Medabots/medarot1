@@ -8,9 +8,11 @@ from common import utils, tilemaps
 if __name__ == '__main__':
     input_file = sys.argv[1]
     output_file = sys.argv[2]
-    char_table = utils.read_table("scripts/res/tilemaps.tbl", reverse=True)
+
+    fname = os.path.splitext(os.path.basename(input_file))[0]
+    char_table = utils.merge_dicts([utils.read_table(tbl, reverse=True) for tbl in utils.read_table("scripts/res/tilesets.tbl", keystring=True)[fname].split(",")])
     
-    prebuilt = "game/tilemaps/{}.tmap".format(os.path.splitext(os.path.basename(input_file))[0])
+    prebuilt = "game/tilemaps/{}.tmap".format(fname)
     if os.path.isfile(prebuilt):
         print("\tUsing prebuilt {}".format(prebuilt))
         copyfile(prebuilt, output_file)

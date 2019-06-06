@@ -1,6 +1,12 @@
 import struct
 from ast import literal_eval
 
+def merge_dicts(dict_list):
+    result = {}
+    for dictionary in dict_list:
+        result.update(dictionary)
+    return result
+
 def bin2txt(bin, tbl):
     tilemap = []
     for b in bin:
@@ -10,6 +16,11 @@ def bin2txt(bin, tbl):
             tilemap += '\\x{:02x}'.format(b)
     return tilemap
 
+def rom2realaddr(i):
+    return i[0] * 0x4000 + i[1] - 0x4000
+
+def real2romaddr(i):
+    return (int(i / 0x4000), i % 0x4000 + 0x4000)
 
 class ContinueLoopException(Exception):
     pass
@@ -44,11 +55,11 @@ def read_short(rom):
 def read_byte(rom):
     return struct.unpack("B", rom.read(1))[0]
 
-def read_table(filename, reverse = False):
+def read_table(filename, reverse = False, keystring=False):
     table = {}
     with open(filename, 'r', encoding='utf-8') as f:
         if reverse:
-            return dict((literal_eval("'{0}'".format(line.strip('\n').strip('\r\n').split('=', 1)[1].replace("'","\\\'"))), int(line.strip().split('=', 1)[0],16)) for line in f if line.strip())
+            return dict((literal_eval("'{0}'".format(line.strip('\n').strip('\r\n').split('=', 1)[1].replace("'","\\\'"))), int(line.strip().split('=', 1)[0],16) if not keystring else line.strip().split('=', 1)[0]) for line in f if line.strip())
         else:
-            return dict((int(line.strip().split('=', 1)[0],16), literal_eval("'{0}'".format(line.strip('\n').strip('\r\n').split('=', 1)[1].replace("'","\\\'")))) for line in f if line.strip())
+            return dict((int(line.strip().split('=', 1)[0],16) if not keystring else line.strip().split('=', 1)[0], literal_eval("'{0}'".format(line.strip('\n').strip('\r\n').split('=', 1)[1].replace("'","\\\'")))) for line in f if line.strip())
     return table

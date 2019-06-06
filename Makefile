@@ -55,10 +55,10 @@ $(TARGET_OUT): $(MODULES_OBJ)
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) | $(BUILD)
 	$(CC) -o $@ $<
 
-$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemaps.$(TABLE_TYPE) $(TILEMAP_FILES)
+$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES)
 	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
 
-$(TILEMAP_OUT)/%.tmap: text/tilemaps/%.$(TEXT_TYPE) | $(TILEMAP_OUT)
+$(TILEMAP_OUT)/%.$(TMAP_TYPE): text/tilemaps/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
 dump: dump_text dump_tilemaps

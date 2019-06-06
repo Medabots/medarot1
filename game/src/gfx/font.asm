@@ -14,7 +14,7 @@ DialogueFont:
 ;  db $01 ;Compressed flag
 ; dw FontEnd-Font
 Font:
-  INCBIN "game/fonts/Dialogue" ; Pulled with Malias Telefang Tools
+  INCBIN "game/tilesets/Dialogue" ; Pulled with Malias Telefang Tools
 FontEnd
 
 ;a = 04 at init
