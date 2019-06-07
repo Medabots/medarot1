@@ -1,6 +1,6 @@
 Tilemap_41E0=scripts/res/tileset_03.tbl,scripts/res/tileset_02.tbl
 Tilemap_42B2=scripts/res/tileset_03.tbl
-Tilemap_4385=scripts/res/tileset_03.tbl
+Tilemap_4385=scripts/res/tileset_03.tbl,scripts/res/tileset_02.tbl
 Tilemap_4440=scripts/res/tileset_03.tbl
 Tilemap_44EF=scripts/res/tileset_03.tbl
 Tilemap_4539=scripts/res/tileset_03.tbl
@@ -26,7 +26,7 @@ Tilemap_4B03=scripts/res/tileset_03.tbl
 Tilemap_4B06=scripts/res/tileset_03.tbl
 Tilemap_4B0B=scripts/res/tileset_03.tbl
 Tilemap_4B8A=scripts/res/tileset_03.tbl
-Tilemap_4BEE=scripts/res/tileset_03.tbl
+Tilemap_4BEE=scripts/res/tileset_03.tbl,scripts/res/tileset_02.tbl
 Tilemap_4C6D=scripts/res/tileset_03.tbl
 Tilemap_4D2C=scripts/res/tileset_03.tbl
 Tilemap_4D5E=scripts/res/tileset_03.tbl
