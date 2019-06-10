@@ -92,8 +92,8 @@
 5B=Tilemap_5C3D
 5C=Tilemap_5C4A
 5D=Tilemap_5C57
-5E=Tilemap_5C64
-5F=Tilemap_5C7B
+5E=PressStart
+5F=PressStartBlank
 60=Tilemap_5C92
 61=Tilemap_5CE3
 62=Tilemap_5D3E
