@@ -37,6 +37,7 @@ with open("baserom.gbc", "rb") as rom:
         for fname in tilesets:
             if tilesets[fname] not in tiletables:
                 tiletables[tilesets[fname]] = utils.merge_dicts([utils.read_table(tbl) for tbl in tilesets[fname].split(",")])
+                tiletables[tilesets[fname]][0xFE] = '\n' # 0xFE is a special control code for a new line, not really a tile
     else:
         tileset_file = open("scripts/res/tilesets.tbl","w")
 

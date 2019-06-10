@@ -1,8 +1,8 @@
 [OVERLAY]
-ABCDE FGHIJ KLMNO
+あいうえお かきくけこ さしすせそ
 
-PQRST UVWXY Z    
+たちつてと なにぬねの はひふヘほ
 
-abcde fghij klmno
+まみむめも やゆよわん らリるれろ
 
-pqrst uvwxy z   \xfc
+ぁぃぅぇぉ ゃゅょっを ゛゜ー・ᴱD

@@ -1,4 +1,4 @@
 [OVERLAY]
       
-Your  
- name\x75
+キミの   
+ なまえは\x75
