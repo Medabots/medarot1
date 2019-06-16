@@ -8,7 +8,7 @@ SetupInitialNameScreen: ;4a9f
   ld [hli], a
   ld [hli], a
   ld [hli], a
-  ld hl, $c923
+  ld hl, cNAME
   ld [hli], a
   ld [hli], a
   ld [hli], a
@@ -19,7 +19,7 @@ SetupInitialNameScreen: ;4a9f
   ld [hli], a
   ld [hli], a
   ld [$c6c6], a
-  ld hl, $c6a2
+  ld hl, cBUF01
   ld a, $7
   rst $8 ; SetInitialName
   nop
@@ -58,7 +58,7 @@ SetupInitialNameScreen: ;4a9f
   ld c, $1
   ld e, $29
   call $015c
-  ld hl, $c6a2
+  ld hl, cBUF01
   ld bc, $984a
   call $0264
   call $5213

@@ -8,7 +8,7 @@ import csv
 from sys import getdefaultencoding
 
 ptr_names = {}
-with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.txt'),"r") as f:
+with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
     for line in f:
         l = line.split('=')
         l[0] = "{:X}".format(int(l[0], 16))

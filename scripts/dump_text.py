@@ -2,7 +2,7 @@
 import os
 
 rom = open("baserom.gbc", "rb")
-log = open("./scripts/res/ptrs.txt", "a+")
+log = open("./scripts/res/ptrs.tbl", "a+")
 log.seek(0)
 
 name_table = {}
