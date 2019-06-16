@@ -11,8 +11,8 @@ ptr_names = {}
 with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
     for line in f:
         l = line.split('=')
-        l[0] = "{:X}".format(int(l[0], 16))
-        ptr_names[l[1].strip()] = (int(l[0][2:4], 16), int(l[0][0:2], 16))
+        l[1] = "{:X}".format(int(l[1], 16))
+        ptr_names[l[0].strip()] = (int(l[1][2:4], 16), int(l[1][0:2], 16))
 
 def table_convert(txt, tbl):
     result = bytearray()

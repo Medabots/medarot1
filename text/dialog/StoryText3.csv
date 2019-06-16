@@ -469,7 +469,7 @@ Pointer,Original,Translated
 0x683a6,"「<&BUF01>」の<4E>メダルを てにいれた!<4C>おなじメダルは 2コもてない!","=0x683a4"
 0x683a8,"キミのパーツと<4E>ボクのパーツを<4C>こうかんしてくれないか？","Wanna trade parts?"
 0x683aa,"<&BUF02><4E>「<&BUF01>」を てにいれた!","<&BUF02> obtained ""<&BUF01>""!"
-0x683ac,"「<&BUF01>」の<4E>メダルを てにいれた!","Obtained ""<&FREE0>"" Medal!"
+0x683ac,"「<&BUF01>」の<4E>メダルを てにいれた!","Obtained ""<&BUF01>"" Medal!"
 0x683ae,"「<&BUF01>」を てにいれた!","Obtained ""<&BUF01>""!"
 0x683b0,"<&BUF03>を てにいれた!","Obtained ""<&BUF03>""."
 0x683b2,"「<&BUF01>」を てにいれた!<4E>しかし これいじゃうもてない!","Obtained ""<&BUF01>""!<4E>...But you can't carry any more!"
