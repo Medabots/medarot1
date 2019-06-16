@@ -1,3 +1,5 @@
+INCLUDE "build/buffer_constants.asm"
+
 hLCDStat           EQU $ff41
 
 hPushOAM           EQU $ff80

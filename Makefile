@@ -39,7 +39,7 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
-COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
+COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
@@ -60,6 +60,9 @@ $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE
 
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): text/tilemaps/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
+
+$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl
+	$(PYTHON) $(SCRIPT)/ptrs2asm.py $< $@
 
 dump: dump_text dump_tilemaps
 
