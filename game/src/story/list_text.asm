@@ -19,8 +19,8 @@ LoadMedalList: ;4a9f
   sla c
   rl b
   add hl, bc
-  ld de, cBUF01
-  ld b, $7
+  ld de, cFREE0
+  ld b, $f
 .asm_32d8
   ld a, [hli]
   ld [de], a
