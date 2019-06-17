@@ -44,5 +44,5 @@
 2B: StoryText2
 2C: StoryText3
 2D: BattleText
-2E:
+2E: List Text
 2F:
