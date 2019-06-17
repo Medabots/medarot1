@@ -51,13 +51,11 @@ gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
 story_ADDITIONAL := $(LISTS_FILES)
 
 all: $(TARGET_OUT)
-	cmp -l $(ORIGINAL) $<
-
-nocmp: $(TARGET_OUT)
 
 $(TARGET_OUT): $(MODULES_OBJ)
 	$(LD) -O $(ORIGINAL) -o $@ $^
 	$(FIX) $(FIX_ARGS) $@
+	cmp -l $(ORIGINAL) $<
 
 .SECONDEXPANSION:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) | $(BUILD)
@@ -69,8 +67,8 @@ $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
-$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
-	$(PYTHON) $(SCRIPT)/ptrs2asm.py $< $@
+$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl $(SCRIPT)/res/ptrsize.tbl | $(BUILD)
+	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
 
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@

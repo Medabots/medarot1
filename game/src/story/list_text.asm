@@ -6,10 +6,10 @@ MedalList:
 SECTION "Load Medals", ROM0[$32b9]
 LoadMedalList: ;4a9f
   push af
-  ld a, $17
+  ld a, BANK(MedalList)
   ld [$2000], a
   pop af
-  ld hl, $5d50
+  ld hl, MedalList
   ld b, $0
   ld c, a
   sla c
@@ -20,7 +20,7 @@ LoadMedalList: ;4a9f
   rl b
   add hl, bc
   ld de, cBUF01
-  ld b, $7
+  ld b, cBUF01Size-$1
 .asm_32d8
   ld a, [hli]
   ld [de], a
