@@ -13,6 +13,7 @@ list_map = ({
 	# 'Type' : (Ptr, Total Length, Terminator, Number of Items)
 	'Items' : ((0x17, 0x5af0), 0x10, 0x50, 38),
 	'Medals' : ((0x17, 0x5d50), 0x8, 0x50, 28),
+	'Medarots' : ((0x17,0x6c36), 0x10, 0x50, 60),
 })
 
 tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_03.tbl"), utils.read_table("scripts/res/tileset_02.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
