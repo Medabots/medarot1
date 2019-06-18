@@ -57,5 +57,5 @@ FontTable:
 SECTION "Font Table Data", ROM0[$1156]
   dbww $08,$59c5,$8800
   dbww $08,$58dd,$9500
-  dbww BANK(SpecialDialogueFont), SpecialDialogueFont, $9000
-  dbww BANK(DialogueFont), DialogueFont, $8800
+  dbww BANK(Tileset02), Tileset02, $9000
+  dbww BANK(Tileset03), Tileset03, $8800
