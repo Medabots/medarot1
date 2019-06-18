@@ -2,12 +2,12 @@
 import os
 
 rom = open("baserom.gbc", "rb")
-log = open("./scripts/res/ptrs.txt", "a+")
+log = open("./scripts/res/ptrs.tbl", "a+")
 log.seek(0)
 
 name_table = {}
 for line in log:
-    p, n = line.strip().split("=")
+    n, p = line.strip().split("=")
     name_table[int(p, 16)] = n
 
 class NotPointerException(ValueError): pass
@@ -65,7 +65,7 @@ def dump_text(addr):
                             else:
                                 if token.names is not None:
                                     n = "BUF{:02X}".format(len(name_table))
-                                    print("{0}={1}".format(hex(param), n), file=log)
+                                    print("{1}={0}".format(hex(param), n), file=log)
                                     name_table[param] = n
                                     text += n
                                 else:

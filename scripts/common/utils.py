@@ -24,7 +24,7 @@ def real2romaddr(i):
 
 class ContinueLoopException(Exception):
     pass
-def txt2bin(txt, tbl):
+def txt2bin(txt, tbl, pad=0, padbyte=0):
     tbl_max = 4 # Most characters we see are 4
     tmap = []
     idx = 0
@@ -47,7 +47,7 @@ def txt2bin(txt, tbl):
             continue 
         finally:
             idx += 1
-    return tmap
+    return tmap if not pad else (tmap + ([padbyte]*(pad-len(tmap))))[0:pad]
 
 def read_short(rom):
     return struct.unpack("<H", rom.read(2))[0]
