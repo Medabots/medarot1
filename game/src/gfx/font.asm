@@ -4,18 +4,12 @@ LoadFont1:
   call DecompressAndLoadTiles
   ret
 
-SECTION "Special Character Font", ROMX[$4000], BANK[$8]
-SpecialDialogueFont:
-  db $01 ;Compressed flag
-  ;Compressed tilemap
+SECTION "Tileset 02 (Special Characters)", ROMX[$4000], BANK[$8]
+Tileset02:
 
-SECTION "Dialogue Font", ROMX[$4168], BANK[$8]
-DialogueFont:
-;  db $01 ;Compressed flag
-; dw FontEnd-Font
-Font:
-  INCBIN "game/tilesets/Dialogue" ; Pulled with Malias Telefang Tools
-FontEnd
+SECTION "Tileset 03 (Main dialog font)", ROMX[$4000], BANK[$20]
+Tileset03:
+  INCBIN "game/tilesets/03" ; Pulled with Malias Telefang Tools
 
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
@@ -23,7 +17,7 @@ FontEnd
 ;a = 02 font for the special characters (A, B, 0, 1, 2, 3, 4... !, heart)
 ;a = 03 dialogue font
 ;a = 09 on kirara's intro
-SECTION "Load Font", ROM0[$05a9]
+SECTION "Load Tileset", ROM0[$05a9]
 LoadFont0: ;Gets called at the initial screens during setup
   call LoadFont_Sub
   rst $18
