@@ -7,7 +7,7 @@ LoadFont1:
 SECTION "Tileset 02 (Special Characters)", ROMX[$4000], BANK[$8]
 Tileset02:
 
-SECTION "Tileset 03 (Main dialog font)", ROMX[$4168], BANK[$8]
+SECTION "Tileset 03 (Main dialog font)", ROMX[$4000], BANK[$20]
 Tileset03:
   INCBIN "game/tilesets/03" ; Pulled with Malias Telefang Tools
 
