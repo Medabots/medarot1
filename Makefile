@@ -7,6 +7,7 @@ TARGET_TYPE := gbc
 SOURCE_TYPE := asm
 TABLE_TYPE := tbl
 TMAP_TYPE := tmap
+LIST_TYPE := bin
 TEXT_TYPE := txt
 PYTHON := python3
 
@@ -20,9 +21,12 @@ COMMON := $(SRC)/common
 TILEMAP_BIN := $(GAME)/tilemaps
 TILEMAP_TEXT := $(TEXT)/tilemaps
 TILEMAP_OUT := $(BUILD)/tilemaps
+LISTS_TEXT := $(TEXT)/lists
+LISTS_OUT := $(BUILD)/lists
 
 MODULES := core gfx story
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
+LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -39,10 +43,12 @@ TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
-COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
+COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
+LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
 
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
+story_ADDITIONAL := $(LISTS_FILES)
 
 all: $(TARGET_OUT)
 
@@ -58,16 +64,27 @@ $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $
 $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES)
 	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
 
-$(TILEMAP_OUT)/%.$(TMAP_TYPE): text/tilemaps/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
+$(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
-dump: dump_text dump_tilemaps
+$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
+	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
+
+$(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
+	$(PYTHON) $(SCRIPT)/list2bin.py $< $@
+
+list_files:  $(LISTS_FILES)
+
+dump: dump_text dump_tilemaps dump_lists
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
 
-dump_tilemaps: $(TILEMAP_BIN) | $(TILEMAP_TEXT)
+dump_tilemaps: | $(TILEMAP_TEXT) $(TILEMAP_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
+
+dump_lists: | $(LISTS_TEXT)
+	$(PYTHON) $(SCRIPT)/dump_lists.py
 
 clean:
 	rm -r $(BUILD) $(TARGET_OUT)	
@@ -84,3 +101,9 @@ $(TILEMAP_TEXT):
 
 $(TILEMAP_OUT):
 	mkdir -p $(TILEMAP_OUT)
+
+$(LISTS_TEXT):
+	mkdir -p $(LISTS_TEXT)
+
+$(LISTS_OUT):
+	mkdir -p $(LISTS_OUT)
