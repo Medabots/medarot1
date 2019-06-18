@@ -1,39 +1,39 @@
 16,80
-とじる     
-ロボロボメダル
-ふくびきけん
-わたるくんルアー
-てづくリルアー
-あおいヒヨコ
-なふだ
-ふつうのメガネ
-しきぼう
-むずかしいほん
-めちゃムズのほん
-ちょームズのほん
-カブトムシ
-なし
-ダメロット
-しんせんなさかな
-ほしのかけら
-メダルもどき
-やまのつち
-せともの
-ロボロボのふく
-ボスのしゃしん
-セレクトメダル
-きんぴかパーツ
-おんぼろパーツ
-キララのケイタイ
-かぜのつばさ
-ミニハンドル
-せんぼうきょう
-タウンマップ
-しのびチケット
-ロボロボカード
-ロボロボバッチ
-パスワード1ーず
-パスワード2ーい
-パスワード3ーけ
-パスワード4ーん
-おんなのこメダル
+Exit
+RoboRobo Medal
+Lottery Ticket
+Mr. Wataru Lure
+Handmade Lure
+Baby Chick
+Name Tag
+Ordinary Glasses
+Conductor's Baton
+Difficult Book
+Complicated Book
+Esoteric Book
+Rhino Beetle
+None
+Medanot
+Fresh Fish
+Star Piece
+Medal-Like Coin
+Mountain Soil
+Pottery
+RoboRobo Suit
+Boss's Photo
+Select Medal
+Shining Parts
+Worn-Out Parts
+Kirara's Phone
+Wings of Wind
+Mini-Handle
+Periscope
+Town Map
+Shinobi Ticket
+RoboRobo Card
+RoboRobo Badge
+Password 1 - Zu
+Password 2 - I
+Password 3 - Ke
+Password 4 - N
+Girl's Medal
