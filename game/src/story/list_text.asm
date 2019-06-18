@@ -1,12 +1,10 @@
 ; Includes logic for dealing with "list" text (Medals, Items)
 
-SECTION "List Data", ROMX[$5af0], BANK[$17]
+SECTION "List Data", ROMX[$4000], BANK[$2E]
 ItemList:
   INCBIN "build/lists/Items.bin"
 MedalList:
   INCBIN "build/lists/Medals.bin"
-
-SECTION "Medarot List Data", ROMX[$6c36], BANK[$17]
 MedarotList:
   INCBIN "build/lists/Medarots.bin"
 
@@ -81,7 +79,7 @@ LoadMedarotList:
   call $3981
   ld de, cBUF01
   ld a, [hli]
-  cp $50
+  cp $50 ; Unlike the other lists, medarot names literally just don't even bother checking for length, and just look for the terminator...
   jr z, .asm_35fa ; 0x35f3 $5
   ld [de], a
   inc de
