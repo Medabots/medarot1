@@ -11,10 +11,16 @@ SECTION "Medarot List Data", ROMX[$6c36], BANK[$17]
 MedarotList:
   INCBIN "build/lists/Medarots.bin"
 
-SECTION "Head Part Data", ROMX[$65cc], BANK[$1c]
+SECTION "Part List Data", ROMX[$65cc], BANK[$1c]
 PartList:
 HeadPartList:
   INCBIN "build/lists/HeadParts.bin"
+RightPartList:
+  INCBIN "build/lists/RightParts.bin"
+LeftPartList:
+  INCBIN "build/lists/LeftParts.bin"
+LegPartList:
+  INCBIN "build/lists/LegParts.bin"
 
 SECTION "Load from Item List", ROM0[$328f]
 LoadItemList:
@@ -97,6 +103,15 @@ LoadMedarotList:
   ret
 ; 0x3600
 
+
+; Pointer to the start of each part list (Head, Right, Left, Leg)
+SECTION "Part List Pointers", ROM0[$3562] ; Actually quite surprising it's in ROM0, since there's no need for flexibility with banks (all part lists are in 1c)
+PartListPointers:
+  dw HeadPartList
+  dw RightPartList
+  dw LeftPartList
+  dw LegPartList
+
 SECTION "Load from Part List", ROM0[$34f0]
 LoadPartList:
   ld [$c64e], a
@@ -104,8 +119,8 @@ LoadPartList:
   ld [$2000], a
   ld a, b
   or a
-  jp nz, $352d
-  ld hl, $3562
+  jp nz, .load_model_no
+  ld hl, PartListPointers
   ld b, $0
   sla c
   rl b
@@ -134,8 +149,8 @@ LoadPartList:
   dec b
   jr nz, .asm_3526 ; 0x352a $fa
   ret
-; 0x352d
-  ld hl, $3562
+.load_model_no
+  ld hl, PartListPointers
   ld b, $0
   sla c
   rl b

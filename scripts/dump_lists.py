@@ -16,6 +16,9 @@ list_map = ({
 	'Medarots' : ((0x17,0x6c36), 0x10, 0x50, 0x0, 60, None),
 	# Parts are [PartName:7+1][PartCode:7+1]
 	'HeadParts' : ((0x1c, 0x65cc), 0x10, 0x50, 0x50, 60, '8B8B'),
+	'RightParts' : ((0x1c, 0x698c), 0x10, 0x50, 0x50, 60, '8B8B'),
+	'LeftParts' : ((0x1c, 0x6d4c), 0x10, 0x50, 0x50, 60, '8B8B'),
+	'LegParts' : ((0x1c, 0x710c), 0x10, 0x50, 0x50, 60, '8B8B'),
 })
 
 tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_03.tbl"), utils.read_table("scripts/res/tileset_02.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
