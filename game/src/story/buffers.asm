@@ -130,3 +130,31 @@ NameToBuf: ; 5058
   pop hl
   ret
 ; 0x6e572
+
+SECTION "Read name from BUF02", ROMX[$74eb], BANK[$1]
+ReadFromBuf2
+  push hl
+  push de
+  push bc
+  ld hl, $750b
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld de, cBUF02
+  ld b, $9
+.asm_7501
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_7501 ; 0x7505 $fa
+  pop bc
+  pop de
+  pop hl
+  ret
+; 0x750b
