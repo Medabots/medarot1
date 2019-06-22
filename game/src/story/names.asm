@@ -71,3 +71,40 @@ SetupInitialNameScreen: ;4a9f
 ;TODO: Properly disassemble this routine which draws the OAM for the setup screen
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
   ld a, $70 ; Initial tilemap position for spinning coin marker
+
+SECTION "On Erase character", ROMX[$51bc], BANK[$1]
+OnEraseCharacter:
+  ld a, [$c5ce]
+  or a
+  jp z, $51f9
+  dec a
+  ld [$c5ce], a
+  ld hl, cBUF01 ; Clear byte from memory
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld [hl], $0
+  ld hl, $982a
+  ld b, $0
+  ld c, a
+  add hl, bc
+  di
+  call $016e
+  ld [hl], $0
+  ei
+  ld bc, $0020
+  add hl, bc
+  di
+  call $016e
+  ld [hl], $0
+  ei
+  ld a, [$c1e2]
+  sub $8
+  ld [$c1e2], a
+  ld a, $1
+  ld [$c600], a
+  call $5213
+  xor a
+  ld [$c5c9], a
+  ret
+; 0x51fe
