@@ -23,6 +23,8 @@ TILEMAP_TEXT := $(TEXT)/tilemaps
 TILEMAP_OUT := $(BUILD)/tilemaps
 LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
+PTRLISTS_TEXT := $(TEXT)/ptrlists
+PTRLISTS_OUT := $(BUILD)/ptrlists
 
 MODULES := core gfx story
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
@@ -75,7 +77,7 @@ $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
 
 list_files:  $(LISTS_FILES)
 
-dump: dump_text dump_tilemaps dump_lists
+dump: dump_text dump_tilemaps dump_lists dump_ptrlists
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
@@ -85,6 +87,9 @@ dump_tilemaps: | $(TILEMAP_TEXT) $(TILEMAP_BIN)
 
 dump_lists: | $(LISTS_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_lists.py
+
+dump_ptrlists: | $(PTRLISTS_TEXT)
+	$(PYTHON) $(SCRIPT)/dump_ptrlists.py
 
 clean:
 	rm -r $(BUILD) $(TARGET_OUT)	
@@ -104,6 +109,9 @@ $(TILEMAP_OUT):
 
 $(LISTS_TEXT):
 	mkdir -p $(LISTS_TEXT)
+
+$(PTRLISTS_TEXT):
+	mkdir -p $(PTRLISTS_TEXT)
 
 $(LISTS_OUT):
 	mkdir -p $(LISTS_OUT)
