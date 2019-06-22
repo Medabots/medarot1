@@ -22,26 +22,6 @@ SetupInitialNameScreen: ;4a9f
   ld hl, cBUF01
   ld a, $7
   rst $8 ; SetInitialName
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
   ld a, $2
   call $015f
   ld a, $3
@@ -73,6 +53,26 @@ SetupInitialNameScreen: ;4a9f
   ld a, $2
   call $0309
   jp $0168
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 
 ;TODO: Properly disassemble this routine which draws the OAM for the setup screen
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
