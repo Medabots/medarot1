@@ -1,4 +1,4 @@
-16,80
+16|80|0
 Exit
 RoboRobo Medal
 Lottery Ticket
