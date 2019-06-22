@@ -26,7 +26,8 @@ HackPredefTable:
   dw SetInitialName ; 7
   dw SetNextChar ; 8
   dw CheckIncTextOffset ; 9
-  dw LeftShiftBC ;A
+  dw LeftShiftBC ; A
+  dw LeftShiftBC5 ; B
 
 ; [[WTextOffsetHi][$c6c0]]++
 IncTextOffset:
@@ -244,4 +245,18 @@ LeftShiftBC:
   dec l
   jr nz, .loop
 .return
+  ret
+
+; bc = bc << 5
+LeftShiftBC5:
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
   ret

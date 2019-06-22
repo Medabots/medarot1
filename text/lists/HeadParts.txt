@@ -1,121 +1,121 @@
-(9, 7)|80|80
-さんだんじゅう
+(25, 7)|80|80
+Shotgun
 \x53\x62\x67ー01
-ヘクサドン
+Hexadon
 \x52\x55\x55ー01
-サイコウェーブ
+Psycho-Wave
 \x52\x51\x64ー01
-ブラストガン
+Blast Gun
 \x60\x58\x68ー01
-コクピット
+Cockpit
 \x60\x5c\x5eー01
-エンジェルボディ
+Angel Body
 \x51\x5e\x57ー01
-メテオストライク
+Meteor Strike
 \x52\x55\x62ー01
-ボイド
+Void
 \x57\x58\x64ー01
-ハニーヘッド
+Hani-Head
 \x58\x5e\x59ー01
-ドグー
+Doguu
 \x54\x57\x65ー01
-ファランクス
+Pharynx
 \x63\x5e\x57ー01
-リゅうすいしょう
+Dragon Crystal
 \x54\x62\x51ー01
-フィールドバリア
+Field barrier
 \x56\x5cAー01
-デスブラスト
+Death Blast
 \x67\x55\x51ー01
-ボディアタック
+Body Blow
 \x53\x5f\x67ー01
-ブービートラップ
+Booby Trap
 \x63\x60\x59ー01
-ハチマキ
+Headband
 \x53\x5c\x51ー01
-ハッカー
+Hacker
 \x63\x5e\x51ー01
-ガーディアン
+Guardian
 \x65\x5e\x59ー01
-ソーラーレーザー
+Solar Laser
 \x56\x5c\x67ー01
-インビジボディ
+Invisi-body
 \x53\x5d\x5fー01
-アンテナ
+Antenna
 \x5b\x67\x57ー01
-ミサイル
+Missile
 \x5b\x52\x64ー01
-かすみあみ
+Mist Net
 \x5e\x59\x5eー01
-ミカヅチ
+Mikazuchi
 \x5b\x64\x5eー01
-ボディプレス
+Body Press
 \x5b\x59\x5eー01
-エアバッグ
+Airbag
 \x64\x51\x5eー01
-サムライブラスト
+Samurai Blast
 \x63\x51\x5dー01
-リニアカノン
+Linear Cannon
 \x54\x5f\x57ー01
-メルトコーン
+Melt Cone
 \x5e\x64\x52ー01
-エアコン
+Air-Con
 \x62\x52\x64ー01
-スモークガス
+Smoke Gas
 \x5d\x5f\x5eー01
-ミュートボディ
+Mute Body
 \x51\x5c\x59ー01
-デビルボディ
+Devil Body
 \x54\x66\x5cー01
-ファイトいっぱつ
+Fighter Hair
 \x63\x5c\x62ー01
-テイザー
+Taser
 \x53\x51\x64ー01
-ブリザード
+Blizzard
 \x61\x65\x5eー01
-サンクチュアリ
+Sanctuary
 \x5e\x51\x63ー01
-チャームポイント
+Charm Point
 \x5b\x5e\x59ー01
-ボディコンシャス
+Body Conscious
 \x52\x5eAー01
-ボディショット
+Body Shot
 \x53\x51\x62ー01
-プラズマレーザー
+Plasma Laser
 \x62\x51Aー01
-モーニングコール
+Morning call
 \x53\x5f\x5dー01
-フィナーレ
+Finale
 \x60\x59\x55ー01
-ビクトリアーマー
+Victory Armor
 \x52\x5d\x64ー01
-クリアシールド
+Clear Shield
 \x5e\x59\x64ー01
-サーチレーダー
+Search Radar
 \x52\x5f\x5bー01
-じゅうでんき
+Elec-Charger
 \x59\x5e\x64ー01
-バッテリー
+Battery
 \x64\x5f\x64ー01
-せんしゃミサイル
+Tank Missile
 \x57\x5c\x5dー01
-デバッガー
+Debugger
 \x62\x59\x53ー01
-トランプル
+Trample
 \x55\x5c\x56ー01
-カバーアップ
+Cover Up
 \x5d\x5f\x57ー01
-グランドボム
+Grand Bomb
 \x55\x57\x64ー01
-アンチウォーター
+Anti-Water
 \x5d\x62\x5eー01
-でんどうドライバ
+Elec-Driver
 \x63\x51\x5bー01
-シンジュー
+Pearl
 \x63\x58\x5cー01
-カッパービーム
+Kappa Beam
 \x5b\x51\x60ー01
-オールリペア
+All Repair
 \x5d\x51\x62ー01
-リザレクター
+Resurrector
 \x60\x55\x5eー01

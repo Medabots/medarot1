@@ -8,8 +8,6 @@ MedalList:
   INCBIN "build/lists/Medals.bin"
 MedarotList:
   INCBIN "build/lists/Medarots.bin"
-
-SECTION "Part List Data", ROMX[$65cc], BANK[$1c]
 PartList:
 HeadPartList:
   INCBIN "build/lists/HeadParts.bin"
@@ -52,10 +50,10 @@ LoadItemList:
 LoadMedalList: ;4a9f
   ld b, $0
   ld c, a
+  push af
   ld l, $4 ; Shift 4 times, list element size is 16
   ld a, $a ; LeftShiftBC
   rst $8
-  push af
   ld a, BANK(MedalList)
   ld [$2000], a
   pop af
@@ -116,7 +114,7 @@ SECTION "Load from Part List", ROM0[$34f0]
 LoadPartList:
   ld [$c64e], a
   ld a, BANK(PartList)
-  ld [$2000], a
+  rst $10 ; Swap and preserve bank
   ld a, b
   or a
   jp nz, .load_model_no
@@ -131,17 +129,11 @@ LoadPartList:
   ld a, [$c64e]
   ld b, $0
   ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
+  ld a, $b ; LeftShiftBC5
+  rst $8
   add hl, bc
   ld de, cBUF01
-  ld b, $9
+  ld b, $25
 .asm_3526
   ld a, [hli]
   ld [de], a
@@ -161,17 +153,11 @@ LoadPartList:
   ld a, [$c64e]
   ld b, $0
   ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
+  ld a, $b ; LeftShiftBC5
+  rst $8
   add hl, bc
   ld b, $0
-  ld c, $9
+  ld c, $25
   add hl, bc
   ld de, cBUF01
   ld b, $7
@@ -182,4 +168,32 @@ LoadPartList:
   dec b
   jr nz, .asm_355b ; 0x355f $fa
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 ; 0x3562
