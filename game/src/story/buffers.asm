@@ -131,8 +131,8 @@ NameToBuf: ; 5058
   ret
 ; 0x6e572
 
-SECTION "Read name from BUF02", ROMX[$74eb], BANK[$1]
-ReadFromBuf2
+SECTION "Read into BUF02", ROMX[$74eb], BANK[$1]
+ReadFromBuf2:
   push hl
   push de
   push bc
