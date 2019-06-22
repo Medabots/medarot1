@@ -4,7 +4,7 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
-INCLUDE "game/src/story/initial_name.asm"
+INCLUDE "game/src/story/names.asm"
 INCLUDE "game/src/story/text_tables.asm"
 INCLUDE "game/src/story/control_codes.asm"
 INCLUDE "game/src/story/write_text.asm"
