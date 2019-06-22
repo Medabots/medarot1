@@ -1,6 +1,7 @@
 #!/bin/python
 
 import os, sys
+from ast import literal_eval
 from shutil import copyfile
 sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
 from common import utils
@@ -16,7 +17,11 @@ if __name__ == '__main__':
 	])
 
 	with open(output_file, 'wb') as o, open(input_file, 'r', encoding="utf-8") as i:
-		length,term,padbyte,packstr = (int(x) if x.isdigit() else x for x in i.readline().split(","))
+		length,term,padbyte = (int(x) if x.isdigit() else literal_eval(x) for x in i.readline().split("|"))
 		char_table['\n'] = term
-		for line in i:
-			o.write(bytearray(utils.txt2bin(line, char_table, pad=length, padbyte=padbyte))) # The pad=length helps with things like the Parts list which are the full representations, terminators included
+
+		line = i.readline()
+		while line:
+			for l in length if isinstance(length, tuple) else (length,):
+				o.write(bytearray(utils.txt2bin(line, char_table, pad=l, padbyte=padbyte)))
+				line = i.readline()
