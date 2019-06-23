@@ -22,22 +22,16 @@ SECTION "Load from Item List", ROM0[$328f]
 LoadItemList:
   push af
   ld a, BANK(ItemList)
-  ld [$2000], a
+  rst $10
   pop af
-  ld hl, ItemList - $10
+  ld hl, ItemList - $20
   ld b, $0
   ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
+  ld a, $b ; LeftShiftBC5
+  rst $8
   add hl, bc
   ld de, cBUF01
-  ld b, $9 ; Despite having 16 bytes per item, it only looks at 10
+  ld b, $20
 .asm_32b2
   ld a, [hli]
   ld [de], a
@@ -45,6 +39,21 @@ LoadItemList:
   dec b
   jr nz, .asm_32b2 ; 0x32b6 $fa
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 ; 0x32b9
 
 LoadMedalList: ;4a9f
