@@ -23,10 +23,13 @@ TILEMAP_TEXT := $(TEXT)/tilemaps
 TILEMAP_OUT := $(BUILD)/tilemaps
 LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
+PTRLISTS_TEXT := $(TEXT)/ptrlists
+PTRLISTS_OUT := $(BUILD)/ptrlists
 
 MODULES := core gfx story
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
+PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -46,9 +49,10 @@ MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
+PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
-story_ADDITIONAL := $(LISTS_FILES)
+story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
 
 all: $(TARGET_OUT)
 
@@ -73,9 +77,10 @@ $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@
 
-list_files:  $(LISTS_FILES)
+$(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
+	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
 
-dump: dump_text dump_tilemaps dump_lists
+dump: dump_text dump_tilemaps dump_lists dump_ptrlists
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
@@ -86,8 +91,15 @@ dump_tilemaps: | $(TILEMAP_TEXT) $(TILEMAP_BIN)
 dump_lists: | $(LISTS_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_lists.py
 
+dump_ptrlists: | $(PTRLISTS_TEXT)
+	$(PYTHON) $(SCRIPT)/dump_ptrlists.py
+
 clean:
 	rm -r $(BUILD) $(TARGET_OUT)	
+
+# Rules to stop Make from deleting outputs...
+list_files:  $(LISTS_FILES)
+ptrlist_files: $(PTRLISTS_FILES)
 
 #Make directories if necessary
 $(BUILD):
@@ -107,3 +119,9 @@ $(LISTS_TEXT):
 
 $(LISTS_OUT):
 	mkdir -p $(LISTS_OUT)
+
+$(PTRLISTS_TEXT):
+	mkdir -p $(PTRLISTS_TEXT)
+
+$(PTRLISTS_OUT):
+	mkdir -p $(PTRLISTS_OUT)
