@@ -22,26 +22,6 @@ SetupInitialNameScreen: ;4a9f
   ld hl, cBUF01
   ld a, $7
   rst $8 ; SetInitialName
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
   ld a, $2
   call $015f
   ld a, $3
@@ -73,20 +53,83 @@ SetupInitialNameScreen: ;4a9f
   ld a, $2
   call $0309
   jp $0168
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 
 ;TODO: Properly disassemble this routine which draws the OAM for the setup screen
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
   ld a, $88 ; Initial tilemap position for spinning coin marker
 
-SECTION "Copy from buffer to &NAME", ROMX[$4f1d], BANK[$1]
+SECTION "Fill Buffer with $50", ROMX[$4b89], BANK[$1]
+PadNameBuf50:
+  ld a, [$c6c6]
+  or a
+  jr z, .asm_4ba2 ; 0x4b8d $13
+  ld a, [$c5ce]
   ld hl, cBUF01
-  ld de, cNAME
-  ld b, $9
-.asm_4f25
-  ld a, [hli]
-  ld [de], a
-  inc de
-  dec b
-  jr nz, .asm_4f25 ; 0x4f29 $fa
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld [hl], $50
+  call BufferToName
+  call $0168
   ret
-; 0x4f2c
+.asm_4ba2
+  call $4f2c
+  ret
+; 0x4ba6
+
+SECTION "On Erase character", ROMX[$51bc], BANK[$1]
+OnEraseCharacter:
+  ld a, [$c5ce]
+  or a
+  jp z, $51f9
+  dec a
+  ld [$c5ce], a
+  ld hl, cBUF01 ; Clear byte from memory
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld [hl], $0
+  ld hl, $982a
+  ld b, $0
+  ld c, a
+  add hl, bc
+  di
+  call $016e
+  ld [hl], $0
+  ei
+  ld bc, $0020
+  add hl, bc
+  di
+  call $016e
+  ld [hl], $0
+  ei
+  ld a, [$c1e2]
+  sub $8
+  ld [$c1e2], a
+  ld a, $1
+  ld [$c600], a
+  call $5213
+  xor a
+  ld [$c5c9], a
+  ret
+; 0x51fe
