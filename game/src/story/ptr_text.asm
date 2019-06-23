@@ -1,4 +1,6 @@
 ; For text in tables with pointers (except Dialog Text and Tilemaps which are handled separately)
+SECTION "Part Names", ROMX[$750b], BANK[$1]
+INCLUDE "build/ptrlists/PartTypes.asm"
 
 SECTION "Load Part Type", ROMX[$74eb], BANK[$1]
 LoadPartType:
@@ -15,7 +17,7 @@ LoadPartType:
   ld h, [hl]
   ld l, a
   ld de, cBUF02
-  ld b, $9
+  ld b, $9 ; What's the point of the pointer table if you're going to use fixed lengths anyway?
 .asm_7501
   ld a, [hli]
   ld [de], a

@@ -1,7 +1,7 @@
 #!/bin/python
 
 # Script to dump text lists with pointers
-# We make an assumption that pointers will be adjacent to each other
+# We make an assumption that objects will be adjacent to each other
 
 import os, sys
 from functools import partial
