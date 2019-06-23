@@ -13,7 +13,7 @@ Tileset03:
 
 SECTION "Tileset 0A (Menu Text Font)", ROMX[$46f1], BANK[$8]
 Tileset0A:
-;  INCBIN "game/tilesets/0A"
+  INCBIN "game/tilesets/0A"
 
 SECTION "Tileset 0B (Menu Medarot tiles)", ROMX[$554e], BANK[$8]
 Tileset0B:
