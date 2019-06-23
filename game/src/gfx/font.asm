@@ -11,6 +11,17 @@ SECTION "Tileset 03 (Main dialog font)", ROMX[$4000], BANK[$20]
 Tileset03:
   INCBIN "game/tilesets/03" ; Pulled with Malias Telefang Tools
 
+SECTION "Tileset 0A (Menu Text Font)", ROMX[$46f1], BANK[$8]
+Tileset0A:
+  INCBIN "game/tilesets/0A"
+
+SECTION "Tileset 0B (Menu Medarot tiles)", ROMX[$554e], BANK[$8]
+Tileset0B:
+
+SECTION "Tileset 0C (Menu Text Special Character Font)", ROMX[$57ad], BANK[$8]
+Tileset0C:
+;  INCBIN "game/tilesets/0C" 
+
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
 ;a = 06, 07 before title screen

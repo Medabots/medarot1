@@ -12,7 +12,7 @@ FontTable:
   dw $1174
   dw $1179
   dw $117e
-  dw $1188
+  dw $1188 ; Loaded in Medarot Menu
   dw $118d
   dw $1192
   dw $1197
@@ -59,3 +59,8 @@ SECTION "Font Table Data", ROM0[$1156]
   dbww $08,$58dd,$9500
   dbww BANK(Tileset02), Tileset02, $9000
   dbww BANK(Tileset03), Tileset03, $8800
+
+SECTION "Font Table Data 0A", ROM0[$1188] ; For Menu text
+  dbww BANK(Tileset0A), Tileset0A, $8800
+  dbww BANK(Tileset0B), Tileset0B, $8000
+  dbww BANK(Tileset0C), Tileset0C, $9400
