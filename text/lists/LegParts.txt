@@ -1,15 +1,15 @@
 (25, 7)|80|80
-Leaf
+Leaf Fan
 \x53\x62\x67ー04
 Abdomen
 \x52\x55\x55ー04
 Coffin
 \x52\x51\x64ー04
-Red
+Red Tail
 \x60\x58\x68ー04
-Jet
+Jet Engine
 \x60\x5c\x5eー04
-Angel
+Angel Leg
 \x51\x5e\x57ー04
 Floaty
 \x52\x55\x62ー04
@@ -19,19 +19,19 @@ Haniwan
 \x58\x5e\x59ー04
 Kaboom
 \x54\x57\x65ー04
-Pipe
+Pipe Organ
 \x63\x5e\x57ー04
-Dragon
+Dragon's Bed
 \x54\x62\x51ー04
-Flower
+Flower Fly
 \x56\x5cAー04
 Spaghetti
 \x67\x55\x51ー04
-Dash
+Dash Attack
 \x53\x5f\x67ー04
-Spider
+Spider Net
 \x63\x60\x59ー04
-Octo
+Octo Legs
 \x53\x5c\x51ー04
 Musk
 \x63\x5e\x51ー04
@@ -39,17 +39,17 @@ Racer
 \x65\x5e\x59ー04
 Roots
 \x56\x5c\x67ー04
-Spin
+Spin-Spin
 \x53\x5d\x5fー04
 Tatacker
 \x5b\x67\x57ー04
 Ochitsuker
 \x5b\x52\x64ー04
-Ninja
+Ninja Legs
 \x5e\x59\x5eー04
 Hakama
 \x5b\x64\x5eー04
-Kinta
+Kinta Leg
 \x5b\x59\x5eー04
 Breadwinner
 \x64\x51\x5eー04
@@ -57,19 +57,19 @@ Commander
 \x63\x51\x5dー04
 Gunzer
 \x54\x5f\x57ー04
-Native
+Native Step
 \x5e\x64\x52ー04
-Bunny
+Bunny Hop
 \x62\x52\x64ー04
-Quick
+Quick Legs
 \x5d\x5f\x5eー04
-Mute
+Mute Leg
 \x51\x5c\x59ー04
-Devil
+Devil Leg
 \x54\x66\x5cー04
 Miniskirt
 \x63\x5c\x62ー04
-Cat
+Cat Walk
 \x53\x51\x64ー04
 Sledski
 \x61\x65\x5eー04
@@ -77,31 +77,31 @@ Apron
 \x5e\x51\x63ー04
 Thighs
 \x5b\x5e\x59ー04
-Leg
+Leg-High Heels
 \x52\x5eAー04
-Plasma
+Plasma Dash
 \x53\x51\x62ー04
 Stalker
 \x62\x51Aー04
-Dog
+Dog Race
 \x53\x5f\x5dー04
 Ballrider
 \x60\x59\x55ー04
-Armor
+Armor Car
 \x52\x5d\x64ー04
-Trojan
+Trojan Horse
 \x5e\x59\x64ー04
 Chairy
 \x52\x5f\x5bー04
 Snailcargot
 \x59\x5e\x64ー04
-Shell
+Shell Tank
 \x64\x5f\x64ー04
-Block
+Block Tank
 \x57\x5c\x5dー04
-Handy
+Handy Car
 \x62\x59\x53ー04
-Crush
+Crush Legs
 \x55\x5c\x56ー04
 Shovel
 \x5d\x5f\x57ー04
@@ -109,11 +109,11 @@ Seat
 \x55\x57\x64ー04
 Screw
 \x5d\x62\x5eー04
-Flip
+Flip-Flap
 \x63\x51\x5bー04
 Undertower
 \x63\x58\x5cー04
-Coral
+Coral Reef
 \x5b\x51\x60ー04
 Taily
 \x5d\x51\x62ー04
