@@ -2,9 +2,9 @@
 ┌──────┐
 │ Head │
 │      │
-│ R-Arm│
+│ R.Arm│
 │      │
-│ L-Arm│
+│ L.Arm│
 │      │
 │ Legs │
 │      │
