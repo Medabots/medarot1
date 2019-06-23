@@ -2,7 +2,6 @@
 
 import os, sys
 from ast import literal_eval
-from shutil import copyfile
 sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
 from common import utils
 
