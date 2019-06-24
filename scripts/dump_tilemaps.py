@@ -32,14 +32,14 @@ with open("baserom.gbc", "rb") as rom:
     tilesets = {}
     tiletables = {}
     tileset_default = utils.read_table("scripts/res/tileset_03.tbl")
-    if os.path.exists("scripts/res/tilesets.tbl"):
-        tilesets = utils.read_table("scripts/res/tilesets.tbl", keystring=True)
+    if os.path.exists("scripts/res/tilemap_tilesets.tbl"):
+        tilesets = utils.read_table("scripts/res/tilemap_tilesets.tbl", keystring=True)
         for fname in tilesets:
             if tilesets[fname] not in tiletables:
                 tiletables[tilesets[fname]] = utils.merge_dicts([utils.read_table(tbl) for tbl in filter(None, tilesets[fname].split(","))])
                 tiletables[tilesets[fname]][0xFE] = '\n' # 0xFE is a special control code for a new line, not really a tile
     else:
-        tileset_file = open("scripts/res/tilesets.tbl","w")
+        tileset_file = open("scripts/res/tilemap_tilesets.tbl","w")
 
     try:
         for i in sorted(tilemap_ptr):
