@@ -13,7 +13,7 @@ list_map = ({
 	'PartTypes' : ((0x1, 0x750b), 0x50, 4),
 })
 
-tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_03.tbl"), utils.read_table("scripts/res/tileset_02.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
+tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_MainDialog.tbl"), utils.read_table("scripts/res/tileset_MainSpecial.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
 with open("baserom.gbc", "rb") as rom:
 	for l in list_map:
 		addr, term, n = list_map[l]

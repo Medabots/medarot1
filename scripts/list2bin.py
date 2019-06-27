@@ -10,8 +10,8 @@ if __name__ == '__main__':
 	output_file = sys.argv[2]
 
 	char_table = utils.merge_dicts([
-		utils.read_table("scripts/res/tileset_03.tbl", reverse=True), 
-		utils.read_table("scripts/res/tileset_02.tbl", reverse=True), 
+		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
+		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True), 
 		utils.read_table("scripts/res/dakuten.tbl", reverse=True)
 	])
 
