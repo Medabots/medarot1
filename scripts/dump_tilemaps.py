@@ -31,7 +31,7 @@ with open("baserom.gbc", "rb") as rom:
     tileset_file = None
     tilesets = {}
     tiletables = {}
-    tileset_default = utils.read_table("scripts/res/tileset_03.tbl")
+    tileset_default = utils.read_table("scripts/res/tileset_MainDialog.tbl")
     if os.path.exists("scripts/res/tilemap_tilesets.tbl"):
         tilesets = utils.read_table("scripts/res/tilemap_tilesets.tbl", keystring=True)
         for fname in tilesets:
@@ -74,7 +74,7 @@ with open("baserom.gbc", "rb") as rom:
             if ptrfile:
                 ptrfile.write("{:02X}={}\n".format(i, fname))
             if tileset_file:
-                tileset_file.write("{}=scripts/res/tileset_03.tbl\n".format(fname))
+                tileset_file.write("{}=scripts/res/tileset_MainDialog.tbl\n".format(fname))
     finally:
         if ptrfile:
             ptrfile.close()

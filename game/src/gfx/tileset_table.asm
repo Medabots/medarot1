@@ -2,7 +2,7 @@ SECTION "Tileset Table", ROM0[$10F0]
 TilesetTable:
   dw TilesetInfo1156
   dw TilesetInfo115B
-  dw TilesetInfo1160
+  dw TilesetInfoMainSpecial
   dw TilesetInfoMainDialog
   dw TilesetInfo1156
   dw TilesetInfo116A
@@ -10,7 +10,7 @@ TilesetTable:
   dw TilesetInfo1174
   dw TilesetInfo1179
   dw TilesetInfo117E
-  dw TilesetInfo1188
+  dw TilesetInfoMenuDialog
   dw TilesetInfo118D
   dw TilesetInfo1192
   dw TilesetInfo1197
@@ -57,9 +57,9 @@ TilesetInfo1156:
 SECTION "TilesetInfo 115B", ROM0[$115B]
 TilesetInfo115B:
   dbww BANK(Tileset115B), Tileset115B, $9500
-SECTION "TilesetInfo 1160", ROM0[$1160]
-TilesetInfo1160:
-  dbww BANK(Tileset1160), Tileset1160, $9000
+SECTION "TilesetInfo MainSpecial", ROM0[$1160]
+TilesetInfoMainSpecial:
+  dbww BANK(TilesetMainSpecial), TilesetMainSpecial, $9000
 SECTION "TilesetInfo MainDialog", ROM0[$1165]
 TilesetInfoMainDialog:
   dbww BANK(TilesetMainDialog), TilesetMainDialog, $8800
@@ -81,9 +81,9 @@ TilesetInfo117E:
 SECTION "TilesetInfo 1183", ROM0[$1183]
 TilesetInfo1183:
   dbww BANK(Tileset1183), Tileset1183, $8000
-SECTION "TilesetInfo 1188", ROM0[$1188]
-TilesetInfo1188:
-  dbww BANK(Tileset1188), Tileset1188, $8800
+SECTION "TilesetInfo MenuDialog", ROM0[$1188]
+TilesetInfoMenuDialog:
+  dbww BANK(TilesetMenuDialog), TilesetMenuDialog, $8800
 SECTION "TilesetInfo 118D", ROM0[$118D]
 TilesetInfo118D:
   dbww BANK(Tileset118D), Tileset118D, $8000

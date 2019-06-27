@@ -43,4 +43,6 @@ with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w
 				output.write('  dbww BANK(Tileset{0}), Tileset{0}, ${1:04X}\n'.format(data[ptr][3], data[ptr][2]))
 				outputf.write('SECTION "Tileset Data {0}", ROMX[${1:04X}], BANK[${2:02X}]\n'.format(data[ptr][3], data[ptr][1], data[ptr][0]))
 				outputf.write("Tileset{}:\n".format(data[ptr][3]))
+				outputf.write("TilesetStart{}\n".format(data[ptr][3]))
 				outputf.write('  INCBIN "game/tilesets/{}.malias"\n'.format(data[ptr][3]))
+				outputf.write("TilesetEnd{}\n\n".format(data[ptr][3]))
