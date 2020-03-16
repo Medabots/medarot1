@@ -30,6 +30,7 @@ LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
 PTRLISTS_TEXT := $(TEXT)/ptrlists
 PTRLISTS_OUT := $(BUILD)/ptrlists
+TILESETS_OUT := $(GAME)/tilesets
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
@@ -79,7 +80,7 @@ $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $
 $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES)
 	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
 
-$(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
+$(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilemap_tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
@@ -91,7 +92,7 @@ $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
 $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
 
-dump: dump_text dump_tilemaps dump_lists dump_ptrlists
+dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_tilesets
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
@@ -104,6 +105,9 @@ dump_lists: | $(LISTS_TEXT)
 
 dump_ptrlists: | $(PTRLISTS_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_ptrlists.py
+
+dump_tilesets: | $(TILESETS_OUT)
+	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
 	rm -r $(BUILD) $(TARGET_OUT)	
@@ -136,3 +140,6 @@ $(PTRLISTS_TEXT):
 
 $(PTRLISTS_OUT):
 	mkdir -p $(PTRLISTS_OUT)
+
+$(TILESETS_OUT):
+	mkdir -p $(TILESETS_OUT)

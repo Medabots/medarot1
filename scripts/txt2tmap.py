@@ -10,7 +10,7 @@ if __name__ == '__main__':
     output_file = sys.argv[2]
 
     fname = os.path.splitext(os.path.basename(input_file))[0]
-    char_table = utils.merge_dicts([utils.read_table(tbl, reverse=True) for tbl in filter(None, utils.read_table("scripts/res/tilesets.tbl", keystring=True)[fname].split(","))])
+    char_table = utils.merge_dicts([utils.read_table(tbl, reverse=True) for tbl in filter(None, utils.read_table("scripts/res/tilemap_tilesets.tbl", keystring=True)[fname].split(","))])
 
     # 0xFE is a special character indicating a new line for tilemaps, it doesn't really belong in the tileset table but for this specifically it makes sense
     char_table['\n'] = 0xFE

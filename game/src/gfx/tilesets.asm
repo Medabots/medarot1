@@ -1,15 +1,11 @@
+INCLUDE "game/src/gfx/tileset_table.asm"
+INCLUDE "game/src/gfx/tileset_files.asm"
+
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
   ld a, 3
   call DecompressAndLoadTiles
   ret
-
-SECTION "Tileset 02 (Special Characters)", ROMX[$4000], BANK[$8]
-Tileset02:
-
-SECTION "Tileset 03 (Main dialog font)", ROMX[$4000], BANK[$20]
-Tileset03:
-  INCBIN "game/tilesets/03" ; Pulled with Malias Telefang Tools
 
 ;a = 04 at init
 ;a = 05 on JP text before SPD2 screen
@@ -24,7 +20,7 @@ LoadFont0: ;Gets called at the initial screens during setup
 
 SECTION "Load Font sub", ROM0[$10d3]
 LoadFont_Sub: ; 10d3 (0:10d3)
-  ld hl, FontTable
+  ld hl, TilesetTable
   ld d, $00
   ld e, a
   sla e
@@ -61,7 +57,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld a, $01
   ld [$c6ce], a
   ld a, [$c650]
-  ld hl, FontTable
+  ld hl, TilesetTable
   ld d, $00
   ld e, a
   sla e
