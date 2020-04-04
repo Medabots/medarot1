@@ -72,7 +72,7 @@ SetupInitialNameScreen: ;4a9f
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
   ld a, $70 ; Initial tilemap position for spinning coin marker
 
-SECTION "Fill Buffer with $50", ROMX[$4b89], BANK[$1]
+SECTION "Fill BUF01 with $50", ROMX[$4b89], BANK[$1]
 PadNameBuf50:
   ld a, [$c6c6]
   or a
@@ -90,6 +90,22 @@ PadNameBuf50:
   call $4f2c
   ret
 ; 0x4ba6
+ 
+; this is actually part of a much bigger routine...
+SECTION "Fill BUF01 with $50, dupe", ROMX[$4edc], BANK[$1]
+PadNameBuf50_1:
+  ld a, [$c5ce]
+  ld hl, cBUF01
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld [hl], $50
+  call $033f
+  call $4efc
+  ld a, $1
+  ld [$c75f], a
+  ret
+; 0x4ef4
 
 SECTION "On Erase character", ROMX[$51bc], BANK[$1]
 OnEraseCharacter:
