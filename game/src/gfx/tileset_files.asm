@@ -58,11 +58,11 @@ TilesetStart1183
   INCBIN "game/tilesets/1183.malias"
 TilesetEnd1183
 
-SECTION "Tileset Data MenuDialog", ROMX[$46F1], BANK[$08]
-TilesetMenuDialog:
-TilesetStartMenuDialog
-  INCBIN "game/tilesets/MenuDialog.malias"
-TilesetEndMenuDialog
+SECTION "Tileset Data MenuText", ROMX[$46F1], BANK[$08]
+TilesetMenuText:
+TilesetStartMenuText
+  INCBIN "game/tilesets/MenuText.malias"
+TilesetEndMenuText
 
 SECTION "Tileset Data 118D", ROMX[$554E], BANK[$08]
 Tileset118D:
