@@ -9,9 +9,12 @@ if __name__ == '__main__':
 	input_file = sys.argv[1]
 	output_file = sys.argv[2]
 
+	# This is actually a hack with how lists work
+	# TODO: Tilesets are probably going to vary between lists, so this may break in the future
 	char_table = utils.merge_dicts([
 		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
-		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True), 
+		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True),
+		utils.read_table("scripts/res/tileset_MenuText.tbl", reverse=True),
 		utils.read_table("scripts/res/dakuten.tbl", reverse=True)
 	])
 
