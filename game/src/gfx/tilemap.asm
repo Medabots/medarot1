@@ -115,6 +115,7 @@ LoadTilemap:
 ; 0xed9
 
 SECTION "Load Tilemap in Window", ROM0[$f84]
+LoadTilemapInWindow:
   ld a, BANK(Tilemaps)
   rst $10
   push de
