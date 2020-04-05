@@ -1,7 +1,7 @@
 SystemOptions=scripts/res/tileset_MainDialog.tbl,scripts/res/tileset_MainSpecial.tbl
 GameOptions=scripts/res/tileset_MainDialog.tbl
 NameScreen=scripts/res/tileset_MainDialog.tbl,scripts/res/tileset_MainSpecial.tbl
-MedarotSelect=scripts/res/tileset_MainDialog.tbl,scripts/res/tileset_0C.tbl
+MedarotSelect=scripts/res/tileset_MenuText.tbl,scripts/res/tileset_0C.tbl
 Tilemap_44EF=scripts/res/tileset_MainDialog.tbl
 Tilemap_4539=scripts/res/tileset_MainDialog.tbl
 Tilemap_45CD=scripts/res/tileset_MainDialog.tbl
