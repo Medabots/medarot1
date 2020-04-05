@@ -18,7 +18,7 @@ jobs:
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
-          command: make
+          command: make -j
       - run:
           name: "Get Lipx"
           command: git clone --quiet git@github.com:VariantXYZ/Lipx.git ~/lipx
