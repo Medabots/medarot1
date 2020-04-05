@@ -20,13 +20,10 @@ jobs:
           working_directory: ~/medarot_1
           command: make -j
       - run:
-          name: "Get Lipx"
-          command: git clone --quiet git@github.com:VariantXYZ/Lipx.git ~/lipx
-      - run:
           name: "Generate Patch"
           command: |
             mkdir patch
-            python ~/lipx/lipx.py -c ~/medarot_1/baserom.gbc ~/medarot_1/medarot.gbc patch/$PATCH_OUTPUT
+            ips_util create ~/medarot_1/baserom.gbc ~/medarot_1/medarot.gbc -o patch/$PATCH_OUTPUT
       - store_artifacts:
           path: patch/
           destination: patch
