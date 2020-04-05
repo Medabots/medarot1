@@ -1,0 +1,20 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: variantxyz/rgbds-20200404:4e96cf98759de41c118cbeb4e5d7765737b95982
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "4f:8a:7b:39:92:9f:c1:33:12:ea:98:fe:a2:6d:58:0f"
+      - checkout:
+          path: ~/medarot_1
+      - run:
+          name: "Get base"
+          working_directory: ~
+          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom.gbc
+      - run:
+          name: "Build ROM"
+          working_directory: ~/medarot_1
+          command: make
