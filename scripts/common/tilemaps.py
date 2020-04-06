@@ -69,9 +69,9 @@ def compress_mode_decrement(idx, tmap, do_compression = False):
 
 COMPRESSION_METHODS = {
     MODE_LIT : compress_mode_literal,
-    MODE_REP : compress_mode_repeat,
-    MODE_INC : compress_mode_increment,
-    MODE_DEC : compress_mode_decrement
+#    MODE_REP : compress_mode_repeat,
+#    MODE_INC : compress_mode_increment,
+#    MODE_DEC : compress_mode_decrement
 }
 def compress_tmap(tmap):
     idx = 0
