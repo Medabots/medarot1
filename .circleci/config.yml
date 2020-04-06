@@ -1,10 +1,14 @@
 version: 2.1
 jobs:
   build:
+    parameters:
+      use-latest-translations:
+        type: boolean
+        default: false
     docker:
       - image: variantxyz/rgbds-20200404:4e96cf98759de41c118cbeb4e5d7765737b95982
     environment:
-      PATCH_OUTPUT: m1kabuto-<<pipeline.number>>-<<pipeline.git.revision>>.ips
+      PATCH_OUTPUT: m1kabuto-<<pipeline.number>>-<<pipeline.git.revision>>
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -15,6 +19,16 @@ jobs:
           name: "Get base"
           working_directory: ~
           command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom.gbc
+      - when:
+          condition: << parameters.use-latest-translations >>
+          steps:
+            - run:
+                name: "Download latest text"
+                command: wget -q --no-check-certificate "https://docs.google.com/spreadsheets/d/$TRANSLATION_SHEET_ID/export" -O ~/sheet.xlsx
+            - run:
+                name: "Update text"
+                working_directory: ~/medarot_1
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
@@ -23,7 +37,16 @@ jobs:
           name: "Generate Patch"
           command: |
             mkdir patch
-            ips_util create ~/medarot_1/baserom.gbc ~/medarot_1/medarot.gbc -o patch/$PATCH_OUTPUT
+            ips_util create ~/medarot_1/baserom.gbc ~/medarot_1/medarot.gbc -o patch/$PATCH_OUTPUT.ips
       - store_artifacts:
           path: patch/
           destination: patch
+
+workflows:
+  workflow:
+    jobs:
+      - build:
+          use-latest-translations: false
+      - build:
+          name: "Latest translations"
+          use-latest-translations: true

@@ -29,10 +29,10 @@ csvdir = sys.argv[2]
 
 wb = xl.load_workbook(filename = xlsx)
 ptr_names = {}
-with open(path.join(path.dirname(__file__), 'res', 'ptrs.txt'),"r") as f:
+with open(path.join(path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
 	for line in f:
 		l = line.split('=')
-		ptr_names[int(l[0], 16)] =  l[1].strip()
+		ptr_names[int(l[1].strip(), 16)] =  l[0].strip()
 
 for sheet in wb.worksheets:
 	if not sheet.title in SHEETS:
@@ -44,7 +44,7 @@ for sheet in wb.worksheets:
 	translated_idx = header.index('Translated')
 	file_path = path.join(csvdir, "{0}.csv".format(sheet.title))
 	print("Writing {0}".format(file_path))
-	with open(file_path, "w") as csv:
+	with open(file_path, "w", encoding='utf-8') as csv:
 		csv.write("Pointer,Original,Translated\n")
 		for line in data:
 			try:
