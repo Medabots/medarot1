@@ -29,7 +29,7 @@ csvdir = sys.argv[2]
 
 wb = xl.load_workbook(filename = xlsx)
 ptr_names = {}
-with open(path.join(path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
+with open(path.join(path.dirname(__file__), 'res', 'ptrs_orig.tbl'),"r") as f:
 	for line in f:
 		l = line.split('=')
 		ptr_names[int(l[1].strip(), 16)] =  l[0].strip()
