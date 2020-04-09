@@ -11,6 +11,10 @@ SECTION "Part Descriptions", ROMX[$7234], BANK[$1f]
 PartDescriptionsPtr:
 INCLUDE "build/ptrlists/PartDescriptions.asm"
 
+SECTION "Skill", ROMX[$7fc0], BANK[$2]
+SkillsPtr:
+INCLUDE "build/ptrlists/Skills.asm"
+
 SECTION "Load Part Type", ROMX[$74eb], BANK[$1]
 LoadPartType:
   push hl
@@ -77,3 +81,30 @@ LoadPartDescription:
   call $2fcf
   ret
 ; 0x3942
+
+SECTION "Load Skill", ROMX[$67a6], BANK[$2]
+LoadSkill:
+  ld a, [$c727]
+  cp $3
+  ret z
+  ld a, $3
+  call $6778
+  ld hl, $67d1
+  ld b, $0
+  ld a, [$c64e]
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, SkillsPtr
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld bc, $99c1
+  call $0264
+  ret
+; 0xa7d1

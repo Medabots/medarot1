@@ -12,7 +12,8 @@ list_map = ({
 	# 'Type' : (Start of Pointers, Terminator, Number of Items)
 	'PartTypes' : ((0x1, 0x750b), 0x50, 4),
 	'Attributes' : ((0x2, 0x7f03), 0x50, 28),
-	'PartDescriptions': (0x7F234, 0x50, 50),
+	'PartDescriptions' : (0x7F234, 0x50, 50),
+	'Skills' : ((0x2, 0x7fc0), 0x50, 8),
 })
 
 tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_MainDialog.tbl"), utils.read_table("scripts/res/tileset_MainSpecial.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
