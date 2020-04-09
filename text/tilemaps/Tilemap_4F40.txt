@@ -1,3 +1,5 @@
 [OVERLAY]
-  ゛
-セーフしますか\x75
+   
+Save your
+
+progress?
