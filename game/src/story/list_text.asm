@@ -330,3 +330,128 @@ LoadMedalScreen:
   jr nz, .asm_9890 ; 0x98ca $c4
   ret
 ; 0x98cd
+
+SECTION "Load Parts Screen", ROMX[$62f7], BANK[$2]
+LoadPartsScreen:
+  ld a, $98
+  ld [$c644], a
+  ld a, $a8
+  ld [$c645], a
+  ld a, [$c727]
+  cp $0
+  jp z, $6316
+  cp $1
+  jp z, $631c
+  cp $2
+  jp z, $6322
+  jp $6328
+; 0xa316
+  ld hl, $b520
+  jp $632b
+; 0xa31c
+  ld hl, $b5a0
+  jp $632b
+; 0xa322
+  ld hl, $b620
+  jp $632b
+; 0xa328
+  ld hl, $b6a0
+  ld a, [$c725]
+  dec a
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  ld b, $0
+.asm_a33c  
+  push hl
+  push bc
+  push de
+  ld a, [hl]
+  or a
+  jp nz, $6354
+  ld a, b
+  sla a
+  add $4
+  ld c, a
+  ld b, $8
+  ld e, $73
+  call $015c
+  jp $637d
+; 0xa354
+  push hl
+  ld a, b
+  sla a
+  add $4
+  ld c, a
+  ld b, $8
+  ld e, $7a
+  call $015c
+  pop hl
+  ld a, [$c727]
+  ld c, a
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  call $0294
+  ld hl, cBUF01
+  ld a, [$c644]
+  ld b, a
+  ld a, [$c645]
+  ld c, a
+  call $0264
+  ld a, [$c644]
+  ld h, a
+  ld a, [$c645]
+  ld l, a
+  ld bc, $0040
+  add hl, bc
+  ld a, h
+  ld [$c644], a
+  ld a, l
+  ld [$c645], a
+  pop de
+  pop bc
+  pop hl
+  inc hl
+  inc hl
+  inc b
+  ld a, b
+  cp $4
+  jr nz, .asm_a33c ; 0xa39a $a0
+  ret
+  ld a, [$c750]
+  ld hl, $63af
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  jp hl
+  cp a
+  ld h, e
+  bit 4, e
+  rst $10
+  ld h, e
+  or $63
+  dec b
+  ld h, h
+  ld b, b
+  ld h, h
+  ld d, e
+  ld h, h
+  ld e, a
+  ld h, h
+  ld b, $0
+  ld c, $0
+  ld e, $7b
+  call $015c
+  jp $5788
+; 0xa3cb
