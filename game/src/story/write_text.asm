@@ -162,61 +162,67 @@ WriteChar:: ; 1f96
   nop
   ; 0x1ff2
 
+hPSTextAddrHi          EQU $c640
+hPSTextAddrLo          EQU $c641
+hPSVRAMAddrHi          EQU $c642
+hPSVRAMAddrLo          EQU $c643
+hPSCurrChar            EQU $c64e
+hPSCurrCharTile        EQU $c64f
 SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
   ld a, h
-  ld [$c640], a
+  ld [hPSTextAddrHi], a
   ld a, l
-  ld [$c641], a
+  ld [hPSTextAddrLo], a
   ld a, b
-  ld [$c642], a
+  ld [hPSVRAMAddrHi], a
   ld a, c
-  ld [$c643], a
+  ld [hPSVRAMAddrLo], a
 .char
-  ld a, [$c640]
+  ld a, [hPSTextAddrHi]
   ld h, a
-  ld a, [$c641]
+  ld a, [hPSTextAddrLo]
   ld l, a
   ld a, [hl]
   cp $50
   ret z
-  ld [$c64e], a
+  ld [hPSCurrChar], a
   call $2068
-  ld a, [$c64f]
+  ld a, [hPSCurrCharTile]
   or a
   jp z, $300d
-  ld a, [$c642]
+  ld a, [hPSVRAMAddrHi]
   ld h, a
-  ld a, [$c643]
+  ld a, [hPSVRAMAddrLo]
   ld l, a
   ld bc, $ffe0
   add hl, bc
-  ld a, [$c64f]
+  ld a, [hPSCurrCharTile]
   di
   call WaitLCDController
   ld [hl], a
   ei
-  ld a, [$c642]
+  ld a, [hPSVRAMAddrHi]
   ld h, a
-  ld a, [$c643]
+  ld a, [hPSVRAMAddrLo]
   ld l, a
-  ld a, [$c64e]
+  ld a, [hPSCurrChar]
   di
   call WaitLCDController
   ld [hl], a
   ei
   inc hl
   ld a, h
-  ld [$c642], a
+  ld [hPSVRAMAddrHi], a
   ld a, l
-  ld [$c643], a
-  ld a, [$c640]
+  ld [hPSVRAMAddrLo], a
+  ld a, [hPSTextAddrHi]
   ld h, a
-  ld a, [$c641]
+  ld a, [hPSTextAddrLo]
   ld l, a
   inc hl
   ld a, h
-  ld [$c640], a
+  ld [hPSTextAddrHi], a
   ld a, l
-  ld [$c641], a
+  ld [hPSTextAddrLo], a
   jp .char
