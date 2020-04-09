@@ -56,7 +56,7 @@ LoadItemList:
   nop
 ; 0x32b9
 
-LoadMedalList: ;4a9f
+LoadMedalList: ;32b9
   ld b, $0
   ld c, a
   push af
