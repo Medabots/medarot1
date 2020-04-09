@@ -12,9 +12,9 @@ if __name__ == '__main__':
 	prefix = os.path.splitext(os.path.basename(input_file))[0]
 
 	char_table = utils.merge_dicts([
-		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
 		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True), 
-		utils.read_table("scripts/res/dakuten.tbl", reverse=True)
+		utils.read_table("scripts/res/dakuten.tbl", reverse=True),
+		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
 	])
 
 	with open(input_file, 'r', encoding="utf-8") as i, open(output_file, 'w') as o:
