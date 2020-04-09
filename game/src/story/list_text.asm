@@ -665,3 +665,25 @@ LoadPartsScreenPartModel:
   jp nz, $667f
   ret
 ; 0xa70e
+
+SECTION "Load Part Info", ROMX[$6753], BANK[$2]
+LoadPartInfo:
+  call $670e
+  ld a, [$c727]
+  ld c, a
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  call $0294
+  ld hl, cBUF01
+  call $028e
+  ld h, $0
+  ld l, a
+  ld bc, $9901
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call $0264
+  ret
+; 0xa778
