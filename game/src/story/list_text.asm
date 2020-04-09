@@ -166,7 +166,7 @@ LoadPartList:
   rst $8
   add hl, bc
   ld b, $0
-  ld c, $25
+  ld c, $19 ; 24 bytes for the part name, last 8 are the model
   add hl, bc
   ld de, cBUF01
   ld b, $7
