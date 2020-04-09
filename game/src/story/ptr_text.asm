@@ -7,7 +7,7 @@ SECTION "Attributes", ROMX[$7f03], BANK[$2]
 AttributesPtr:
 INCLUDE "build/ptrlists/Attributes.asm"
 
-SECTION "Part Descriptions", ROMX[$7234], BANK[$1f]
+SECTION "Part Descriptions", ROMX[$4000], BANK[$2f]
 PartDescriptionsPtr:
 INCLUDE "build/ptrlists/PartDescriptions.asm"
 

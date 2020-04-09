@@ -1,51 +1,51 @@
 80
-クセがなく つかいやすい
-とても いリょくが たかい
-ばくふうで ついかダメージをあたえる
-ぼうぎょしないと だいダメージ
-「なぐる」「がむしゃら」に ダメージ
-「うつ」「ねらいうち」に ダメージ
-こうどうの せいこうリつを さげる
-あいてのうごきを ストップさせる
-いどうスピードを おそくする
-いどうちゅうも ダメージをあたえる
-「トラップ」をはかいする
-「バグ」「ウィルス」のかいじょ
-「サンダー」「アイス」のかいじょ
-「ホールド」「ウェーブ」のかいじょ
-「メルト」「ファイヤー」のかいじょ
-すべてのしょうじょうをかいじょ
-「レーザー」「ビーム」をブロック
-「ミサイル」「ナパーム」をブロック
-「ブレイク」「プレス」をブロック
-とくしゅこうげきをブロック
-なかまのメダロットを えんごする
-かんぜんに こうげきをブロック
-よわいこうげきを かんぜんにブロック
-ダメージをうけたパーツを かいふく
-きのうていしパーツを ふっかつさせる
-ひこうメダロットに つよくなる
+Simple and easy to use
+High in attack power
+Blast deals extra damage
+Higher damage if target can't defend
+Damages "Strike" and "Berserk" parts
+Damages "Shoot" and "Snipe" parts
+Lowers success rate 
+Stops the target's movement
+Slows down target
+Damages target while it's moving
+Destroys traps
+Heals "Bug" and "Virus" ailments
+Heals "Thunder" and "Ice" ailments
+Heals "Hold" and "Wave" ailments
+Heals "Melt" and "Fire" ailments
+Heals all status ailments
+Blocks "Laser" and "Beam" attacks
+Blocks "Missile" and "Napalm" attacks
+Blocks "Break" and "Press" attacks
+Blocks special attacks
+Protects allied Medarots
+Completely blocks all attacks
+Completely blocks weak attacks
+Repairs damaged parts
+Revives destroyed parts
+Strong against flying Medarots
 
-せんすいメダロットに つよくなる
+Strong against aquatic Medarots
 
-こうげきが あたリやすくなる
-こうげきを よけやすくなる
-ぜんぶのこうげきを あたリにくくする
-
-
-いどうスピードが はやくなる
-じゅんびじかんを ゼロにする
+Increases accuracy
+Increases evasion
+Removes accuracy bonuses
 
 
+Increases movement speed
+Reduces charge time to zero
 
 
 
 
-べつのパーツに ヘんしんする
-ひこうメダロットになる
-ちけいの えいきょうをうけない
-かくとうに さいてき
-ぜんたいバランスがよい
-がむしゃら ねらいうちが つよい
-うごきはおそいが そうこうが かたい
-せんすいメダロットになる
+
+
+Transforms into different parts
+Becomes a flying Medarot
+Not affected by terrain
+Best with close-range attacks
+Good overall balance
+Good with "Berserk" and "Snipe" attacks
+Moves slowly but has high armor
+Becomes an aquatic Medarot
