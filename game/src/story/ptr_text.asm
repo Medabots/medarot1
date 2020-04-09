@@ -7,6 +7,10 @@ SECTION "Attributes", ROMX[$7f03], BANK[$2]
 AttributesPtr:
 INCLUDE "build/ptrlists/Attributes.asm"
 
+SECTION "Part Descriptions", ROMX[$7234], BANK[$1f]
+PartDescriptionsPtr:
+INCLUDE "build/ptrlists/PartDescriptions.asm"
+
 SECTION "Load Part Type", ROMX[$74eb], BANK[$1]
 LoadPartType:
   push hl
@@ -53,3 +57,23 @@ LoadAttribute:
   call $0264
   ret
 ; 0xa7a6
+
+SECTION "Load Part Description", ROM0[$3926]
+LoadPartDescription:
+  push af
+  ld a, BANK(PartDescriptionsPtr)
+  ld [$2000], a
+  pop af
+  ld hl, PartDescriptionsPtr
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld bc, $9a01
+  call $2fcf
+  ret
+; 0x3942
