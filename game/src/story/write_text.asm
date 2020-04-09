@@ -186,7 +186,7 @@ PutString:: ; 2fcf
   call $2068
   ld a, [hPSCurrCharTile]
   or a
-  jp z, $300d
+  jp z, .write_vram
   ld a, [hPSVRAMAddrHi]
   ld h, a
   ld a, [hPSVRAMAddrLo]
@@ -198,6 +198,7 @@ PutString:: ; 2fcf
   call WaitLCDController
   ld [hl], a
   ei
+.write_vram
   ld a, [hPSVRAMAddrHi]
   ld h, a
   ld a, [hPSVRAMAddrLo]
