@@ -163,7 +163,7 @@ WriteChar:: ; 1f96
   ; 0x1ff2
 
 SECTION "PutString", ROM0[$2fcf]
-PutString: ; 2fcf
+PutString:: ; 2fcf
   ld a, h
   ld [$c640], a
   ld a, l

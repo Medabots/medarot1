@@ -78,7 +78,7 @@ LoadPartDescription:
   ld h, [hl]
   ld l, a
   ld bc, $9a01
-  call $2fcf
+  call PutString
   ret
 ; 0x3942
 
