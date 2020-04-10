@@ -3,13 +3,11 @@ SECTION "Part Names", ROMX[$750b], BANK[$1]
 PartTypesPtr:
 INCLUDE "build/ptrlists/PartTypes.asm"
 
-SECTION "Attributes", ROMX[$7f03], BANK[$2]
-AttributesPtr:
-INCLUDE "build/ptrlists/Attributes.asm"
-
 SECTION "Part Descriptions", ROMX[$4000], BANK[$2f]
 PartDescriptionsPtr:
 INCLUDE "build/ptrlists/PartDescriptions.asm"
+AttributesPtr:
+INCLUDE "build/ptrlists/Attributes.asm"
 
 SECTION "Skill", ROMX[$7fc0], BANK[$2]
 SkillsPtr:
@@ -54,12 +52,10 @@ LoadAttribute:
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
   ld bc, $9941
-  call $0264
-  ret
+  ld d, BANK(LoadAttribute)
+  ld e, BANK(AttributesPtr)
+  jp PrintPtrText
 ; 0xa7a6
 
 SECTION "Load Part Description", ROM0[$3926]
