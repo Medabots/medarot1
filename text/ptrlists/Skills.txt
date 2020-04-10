@@ -1,9 +1,9 @@
 80
-なぐる
-がむしゃら
-うつ
-ねらいうち
-おうえん
-まもる
-なおす
-そのほか
+Strike
+Berserk
+Shoot
+Snipe
+Support
+Protect
+Heal
+Misc
