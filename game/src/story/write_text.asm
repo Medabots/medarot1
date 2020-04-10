@@ -162,7 +162,7 @@ WriteChar:: ; 1f96
   nop
   ; 0x1ff2
 
-hPSTextAddrHi          EQU $c640
+hPSCounter             EQU $c640
 hPSTextAddrLo          EQU $c641
 hPSVRAMAddrHi          EQU $c642
 hPSVRAMAddrLo          EQU $c643
@@ -172,6 +172,8 @@ SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
   ; hl is ptr to string to print, terminated by 0x50
   ; bc is VRAM address to write to
+  xor a
+  ld [hPSCounter], a
 .loop
   ld a, [hli]
   cp $50
@@ -208,7 +210,23 @@ PutString:: ; 2fcf
   ei
   pop hl
   inc bc
-  jr .loop ; 3001
+  ld a, [hPSCounter]
+  inc a
+  cp $12
+  jr nz, .continue
+  push hl
+  push bc
+  pop hl
+  ld c, $20 - $12
+  ld b, $0
+  add hl, bc
+  push hl
+  pop bc
+  pop hl
+  xor a
+.continue
+  ld [hPSCounter], a
+  jr .loop
   nop
   nop
   nop
@@ -239,31 +257,4 @@ PutString:: ; 2fcf
   nop
   nop
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop  
 ; 303b

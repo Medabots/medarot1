@@ -77,7 +77,7 @@ LoadPartDescription:
   ld a, [hli]
   ld h, [hl]
   ld l, a
-  ld bc, $9a01
+  ld bc, $99e1 ; original 9a01
   call PutString
   ret
 ; 0x3942
@@ -104,7 +104,7 @@ LoadSkill:
   ld a, [hli]
   ld h, [hl]
   ld l, a
-  ld bc, $99c1
+  ld bc, $99a1 ; original 99c1
   call $0264
   ret
 ; 0xa7d1
