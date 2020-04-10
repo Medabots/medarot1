@@ -15,9 +15,9 @@ Heals "Thunder" and "Ice" ailments
 Heals "Hold" and "Wave" ailments
 Heals "Melt" and "Fire" ailments
 Heals all status ailments
-Blocks "Laser" and "Beam" attacks
-Blocks "Missile" and "Napalm" attacks
-Blocks "Break" and "Press" attacks
+Blocks "Laser" and "Beam"
+Blocks "Missile" and "Napalm"
+Blocks "Break" and "Press"
 Blocks special attacks
 Protects allied Medarots
 Completely blocks all attacks
@@ -46,6 +46,6 @@ Becomes a flying Medarot
 Not affected by terrain
 Best with close-range attacks
 Good overall balance
-Good with "Berserk" and "Snipe" attacks
+Good with "Berserk" and "Snipe"
 Moves slowly but has high armor
 Becomes an aquatic Medarot
