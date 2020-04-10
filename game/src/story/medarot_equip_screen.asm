@@ -1,4 +1,4 @@
-SECTION "Load Medarot Part Select", ROMX[$6ee6], BANK[$2]
+SECTION "Medarot Equip Screen - Load Part Names", ROMX[$6ee6], BANK[$2]
 LoadMedarotPartSelectMedal:
   ld a, [$a03b]
   ld b, a
@@ -129,3 +129,60 @@ LoadMedarotPartSelectLegs:
   call $0264
   ret
 ; 0xaff0
+
+SECTION "Medarot Equip Screen, Load Skill", ROMX[$761e], BANK[$2]
+LoadMedarotPartSelectSkills:
+  ld a, [$a03a]
+  ld b, a
+  ld a, [$a03b]
+  cp b
+  ret z
+  ld hl, $a640
+  ld b, $0
+  ld c, a
+  ld a, $5
+  call $02b8
+  xor a
+  ld [$c658], a
+  ld [$c65a], a
+  ld [$c65b], a
+.asm_b644
+  ld hl, $000c
+  add hl, de
+  ld a, [hl]
+  ld [$c65b], a
+  ld hl, $000c
+  ld b, $0
+  ld a, [$c658]
+  ld c, a
+  add hl, bc
+  add hl, de
+  ld a, [hl]
+  ld b, a
+  ld a, [$c65b]
+  sub b
+  jr nc, .asm_b661 ; 0xb655 $a
+  ld a, [$c658]
+  ld [$c65a], a
+  ld a, b
+  ld [$c65b], a
+.asm_b661
+  ld a, [$c658]
+  inc a
+  ld [$c658], a
+  cp $8
+  jp nz, $7644 ; asm_b644
+  ld a, [$c65a]
+  ld hl, SkillsPtr
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld bc, $98ec
+  call $0264
+  ret
+; 0xb685
