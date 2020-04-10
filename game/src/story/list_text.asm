@@ -687,3 +687,23 @@ LoadPartInfo:
   call $0264
   ret
 ; 0xa778
+
+SECTION "Load Medarot Part Select", ROMX[$6f32], BANK[$2]
+LoadMedarotPartSelect:
+  ld a, [$a03d]
+  ld hl, $b520
+  ld c, a
+  ld b, $0
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  ld c, $0
+  call $0294
+  ld hl, cBUF01
+  ld bc, $9949
+  call $0264
+  ret
+; 0xaf54
