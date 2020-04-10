@@ -1,4 +1,31 @@
-SECTION "Load Medarot Part Select", ROMX[$6f20], BANK[$2]
+SECTION "Load Medarot Part Select", ROMX[$6ee6], BANK[$2]
+LoadMedarotPartSelectMedal:
+  ld a, [$a03b]
+  ld b, a
+  ld a, [$a03a]
+  cp b
+  jp nz, $6efb
+  ld b, $a
+  ld c, $4
+  ld e, $85
+  call $015c
+  ret
+  ld hl, $a640
+  ld c, b
+  ld b, $0
+  ld a, $5
+  call $02b8
+  ld a, $40
+  ld hl, $988a
+  call $585a
+  ld hl, $0001
+  add hl, de
+  ld a, [hl]
+  call $0282
+  ld hl, cBUF01
+  ld bc, $98ac
+  call $0264
+  ret
 LoadMedarotPartSelectHead:
   ld a, [$a03d]
   sub $3c
