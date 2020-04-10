@@ -11,3 +11,6 @@ INCLUDE "game/src/story/control_codes.asm"
 INCLUDE "game/src/story/write_text.asm"
 INCLUDE "game/src/story/list_text.asm"
 INCLUDE "game/src/story/ptr_text.asm"
+
+INCLUDE "game/src/story/parts_screen.asm"
+INCLUDE "game/src/story/medarot_equip_screen.asm"
