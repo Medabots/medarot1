@@ -3,15 +3,11 @@ SECTION "Part Names", ROMX[$750b], BANK[$1]
 PartTypesPtr:
 INCLUDE "build/ptrlists/PartTypes.asm"
 
-SECTION "Attributes", ROMX[$7f03], BANK[$2]
-AttributesPtr:
-INCLUDE "build/ptrlists/Attributes.asm"
-
-SECTION "Part Descriptions", ROMX[$7234], BANK[$1f]
+SECTION "Pointer Lists", ROMX[$4000], BANK[$2f]
 PartDescriptionsPtr:
 INCLUDE "build/ptrlists/PartDescriptions.asm"
-
-SECTION "Skill", ROMX[$7fc0], BANK[$2]
+AttributesPtr:
+INCLUDE "build/ptrlists/Attributes.asm"
 SkillsPtr:
 INCLUDE "build/ptrlists/Skills.asm"
 
@@ -54,12 +50,10 @@ LoadAttribute:
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
   ld bc, $9941
-  call $0264
-  ret
+  ld d, BANK(LoadAttribute)
+  ld e, BANK(AttributesPtr)
+  jp PrintPtrText
 ; 0xa7a6
 
 SECTION "Load Part Description", ROM0[$3926]
@@ -77,7 +71,7 @@ LoadPartDescription:
   ld a, [hli]
   ld h, [hl]
   ld l, a
-  ld bc, $9a01
+  ld bc, $99e1 ; original 9a01
   call PutString
   ret
 ; 0x3942
@@ -101,10 +95,8 @@ LoadSkill:
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $99c1
-  call $0264
-  ret
+  ld bc, $99a1 ; original 99c1
+  ld d, BANK(LoadSkill)
+  ld e, BANK(SkillsPtr)  
+  jp PrintPtrText
 ; 0xa7d1

@@ -162,7 +162,7 @@ WriteChar:: ; 1f96
   nop
   ; 0x1ff2
 
-hPSTextAddrHi          EQU $c640
+hPSCounter             EQU $c640
 hPSTextAddrLo          EQU $c641
 hPSVRAMAddrHi          EQU $c642
 hPSVRAMAddrLo          EQU $c643
@@ -170,60 +170,91 @@ hPSCurrChar            EQU $c64e
 hPSCurrCharTile        EQU $c64f
 SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
-  ld a, h
-  ld [hPSTextAddrHi], a
-  ld a, l
-  ld [hPSTextAddrLo], a
-  ld a, b
-  ld [hPSVRAMAddrHi], a
-  ld a, c
-  ld [hPSVRAMAddrLo], a
-.char
-  ld a, [hPSTextAddrHi]
-  ld h, a
-  ld a, [hPSTextAddrLo]
-  ld l, a
-  ld a, [hl]
+  ; hl is ptr to string to print, terminated by 0x50
+  ; bc is VRAM address to write to
+  xor a
+  ld [hPSCounter], a
+.loop
+  ld a, [hli]
   cp $50
   ret z
   ld [hPSCurrChar], a
+  push hl
+  push bc
   call $2068
+  pop bc
+  pop hl
   ld a, [hPSCurrCharTile]
   or a
-  jp z, .write_vram
-  ld a, [hPSVRAMAddrHi]
-  ld h, a
-  ld a, [hPSVRAMAddrLo]
-  ld l, a
+  jr z, .write_vram
+  push hl ; Save current text addr
+  push bc ; Save current VRAM addr
+  push bc ; hl = bc
+  pop hl 
   ld bc, $ffe0
   add hl, bc
-  ld a, [hPSCurrCharTile]
   di
   call WaitLCDController
   ld [hl], a
   ei
+  pop bc
+  pop hl
 .write_vram
-  ld a, [hPSVRAMAddrHi]
-  ld h, a
-  ld a, [hPSVRAMAddrLo]
-  ld l, a
+  push hl
+  push bc ; hl = bc
+  pop hl
   ld a, [hPSCurrChar]
   di
   call WaitLCDController
   ld [hl], a
   ei
-  inc hl
-  ld a, h
-  ld [hPSVRAMAddrHi], a
-  ld a, l
-  ld [hPSVRAMAddrLo], a
-  ld a, [hPSTextAddrHi]
-  ld h, a
-  ld a, [hPSTextAddrLo]
-  ld l, a
-  inc hl
-  ld a, h
-  ld [hPSTextAddrHi], a
-  ld a, l
-  ld [hPSTextAddrLo], a
-  jp .char
+  pop hl
+  inc bc
+  ld a, [hPSCounter]
+  inc a
+  cp $12
+  jr nz, .continue
+  push hl
+  push bc
+  pop hl
+  ld c, $20 - $12
+  ld b, $0
+  add hl, bc
+  push hl
+  pop bc
+  pop hl
+  xor a
+.continue
+  ld [hPSCounter], a
+  jr .loop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+; 303b

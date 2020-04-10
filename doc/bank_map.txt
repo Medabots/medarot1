@@ -45,4 +45,4 @@
 2C: StoryText3
 2D: BattleText
 2E: List Text
-2F:
+2F: Pointer List Text
