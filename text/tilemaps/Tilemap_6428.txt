@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌──────────────────┐
 │                  │
-│Head              │
+│ Head             │
 │                  │
-│RArm              │
+│ RArm             │
 │                  │
-│LArm              │
+│ LArm             │
 │                  │
-│Legs              │
+│ Legs             │
 └──────────────────┘

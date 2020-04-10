@@ -48,7 +48,7 @@ LoadMedarotPartSelectHead:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  ld bc, $9946 ; originally 9949
+  ld bc, $9949
   call $0264
   ret
 LoadMedarotPartSelectRArm:
@@ -73,7 +73,7 @@ LoadMedarotPartSelectRArm:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9986 ; originally 9989
+  ld bc, $9989
   call $0264
   ret
 LoadMedarotPartSelectLArm:
@@ -98,7 +98,7 @@ LoadMedarotPartSelectLArm:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ld bc, $99c6 ; originally 99c9
+  ld bc, $99c9
   call $0264
   ret
 ; 0xafbc
@@ -125,7 +125,7 @@ LoadMedarotPartSelectLegs:
   ld c, $3
   call $0294
   ld hl, cBUF01
-  ld bc, $9a06 ; originally 9a09
+  ld bc, $9a09
   call $0264
   ret
 ; 0xaff0
@@ -179,10 +179,8 @@ LoadMedarotPartSelectSkills:
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
   ld bc, $98ec
-  call $0264
-  ret
+  ld d, BANK(LoadSkill)
+  ld e, BANK(SkillsPtr)
+  jp PrintPtrText
 ; 0xb685
