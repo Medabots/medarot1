@@ -11,6 +11,14 @@ INCLUDE "build/ptrlists/Attributes.asm"
 SkillsPtr::
 INCLUDE "build/ptrlists/Skills.asm"
 
+SECTION "Attacks", ROMX[$76d2], BANK[$17]
+AttacksPtr::
+INCLUDE "build/ptrlists/Attacks.asm"
+
+SECTION "Medarotters", ROMX[$64e6], BANK[$17]
+MedarottersPtr::
+INCLUDE "build/ptrlists/Medarotters.asm"
+
 SECTION "Load Part Type", ROMX[$74eb], BANK[$1]
 LoadPartType:
   push hl
