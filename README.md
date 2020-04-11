@@ -1,9 +1,21 @@
-Requirements:
+[Medapedia page](http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project) (source reference for a lot of text and information)
+
+# Building
+
+## Dependencies
 
 * Medarot 1 KABUTO ROM v1.1 (md5: 78c568cbfff6314b1416880d9efaeca6)
-* RGBDS that can support Overlay
-* (Optional) Atom editor with the language-z80 package
+	* Currently relies on the rgbds overlay feature as parts are disassembled and tacked on
+* Make
+* Python 3.6 or greater, aliased to 'python3'
+* [rgbds](https://github.com/rednex/rgbds)
 
-Lots of data pulled from http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project/Text
+# Make
 
-^Special thanks to Kimbles, Sanky, Tobias, and anyone else who contributed/is contributing
+1. Name the Medarot 1 KABUTO v1.1 ROM 'baserom.gbc' and drop it in the project root
+1. Execute make (optionally pass -j)
+	* The master branch will execute cmp to verify the output matches the original
+
+# Dumping
+
+Execute 'make dump' (nothing should change, as the text files are checked in)
