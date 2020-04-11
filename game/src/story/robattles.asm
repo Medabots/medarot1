@@ -277,3 +277,158 @@ RobattleScreenSetup:
   jp nz, $521c
   ret
 ; 0x11326
+
+
+
+SECTION "Robattle - Part Screen", ROMX[$6c7e], BANK[$1b]
+RobattlePartScreen:
+  ld hl, $ac00
+  ld a, [$c0d7]
+  ld b, $0
+  ld c, a
+  ld a, $8
+  call $02b8
+  push de
+  ld hl, $0002
+  add hl, de
+  push hl
+  call $028e
+  ld h, $0
+  ld l, a
+  ld bc, $984b
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  call $0264
+  pop de
+  push de
+  ld hl, $0081
+  add hl, de
+  ld a, [hl]
+  ld de, $9410
+  call $027c
+  pop de
+  ld a, $41
+  ld hl, $988a
+  call $6d0e
+  push de
+  ld hl, $0081
+  add hl, de
+  ld a, [hl]
+  call $0282
+  ld hl, cBUF01
+  ld bc, $98ac
+  call $0264
+  pop de
+  call $6fc4
+  ld hl, $000d
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld [$a03d], a
+  push de
+  call $6d2c
+  pop de
+  ld hl, $000e
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld [$a03f], a
+  push de
+  call $6d54
+  pop de
+  ld hl, $000f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld [$a041], a
+  push de
+  call $6d7c
+  pop de
+  ld hl, $0010
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld [$a043], a
+  push de
+  call $6da4
+  pop de
+  call $6ece
+  ret
+; 0x6ed0e
+
+SECTION "Robattle - Load Parts", ROMX[$6d2c], BANK[$1b]
+RobattleMedarotInfoLoadHead:
+  ld a, [$a03d]
+  sub $3c
+  jp c, $6d3e
+  ld b, $9
+  ld c, $9
+  ld e, $86
+  call $015c
+  ret
+  ld a, [$a03d]
+  and $7f
+  ld b, $0
+  ld c, $0
+  call $0294
+  ld hl, cBUF01
+  ld bc, $9949
+  call $0264
+  ret
+RobattleMedarotInfoLoadRArm:
+  ld a, [$a03f]
+  sub $3c
+  jp c, $6d66
+  ld b, $9
+  ld c, $b
+  ld e, $86
+  call $015c
+  ret
+  ld a, [$a03f]
+  and $7f
+  ld b, $0
+  ld c, $1
+  call $0294
+  ld hl, cBUF01
+  ld bc, $9989
+  call $0264
+  ret
+RobattleMedarotInfoLoadLArm:
+  ld a, [$a041]
+  sub $3c
+  jp c, $6d8e
+  ld b, $9
+  ld c, $d
+  ld e, $86
+  call $015c
+  ret
+  ld a, [$a041]
+  and $7f
+  ld b, $0
+  ld c, $2
+  call $0294
+  ld hl, cBUF01
+  ld bc, $99c9
+  call $0264
+  ret
+RobattleMedarotInfoLoadLegs:
+  ld a, [$a043]
+  sub $3c
+  jp c, $6db6
+  ld b, $9
+  ld c, $f
+  ld e, $86
+  call $015c
+  ret
+  ld a, [$a043]
+  and $7f
+  ld b, $0
+  ld c, $3
+  call $0294
+  ld hl, cBUF01
+  ld bc, $9a09
+  call $0264
+  ret
+; 0x6edcc
