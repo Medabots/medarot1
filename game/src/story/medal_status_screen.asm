@@ -83,3 +83,35 @@ LoadMedalStatScreen:
   call $015c
   jp $5788
 ; 0x9d7b
+
+SECTION "Load Medal Stat Screen - Load Attributes", ROMX[$5e27], BANK[$2]
+LoadMedalStatScreenAttribute:
+  ld a, [$c725]
+  ld b, a
+  ld a, [$c6f4]
+  ld c, a
+  call $5942
+  ld hl, $0001
+  add hl, de
+  ld a, [hl]
+  ld hl, AttributesPtr
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  push hl
+  ld bc, $9881
+  call $028e
+  ld h, $0
+  ld l, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  call $0264
+  ret
+; 0x9e57
