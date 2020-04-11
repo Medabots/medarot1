@@ -14,8 +14,3 @@
 
 1. Name the Medarot 1 KABUTO v1.1 ROM 'baserom.gbc' and drop it in the project root
 1. Execute make (optionally pass -j)
-	* The master branch will execute cmp to verify the output matches the original
-
-# Dumping
-
-Execute 'make dump' (nothing should change, as the text files are checked in)
