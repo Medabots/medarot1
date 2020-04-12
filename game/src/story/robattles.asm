@@ -611,3 +611,52 @@ RobattleLoadBattleText:
   pop de
   ret
 ; 0x158c7
+
+SECTION "Robattle - Load Attack Text", ROM0[$3adc]
+RobattleLoadAttackText:
+  push hl
+  push de
+  push bc
+  ld hl, $00ca
+  add hl, de
+  ld a, [hl]
+  ld [$c652], a
+  ld hl, $000d
+  ld b, $0
+  ld c, a
+  add hl, bc
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld c, a
+  ld a, [$c652]
+  ld b, a
+  ld a, $f
+  push de
+  call $3117
+  pop de
+  ld a, BANK(AttacksPtr)
+  ld [$2000], a
+  ld hl, AttacksPtr
+  ld b, $0
+  ld a, [$c64e]
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld de, cBUF04
+  ld b, $9
+.asm_3b19
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_3b19 ; 0x3b1d $fa
+  pop bc
+  pop de
+  pop hl
+  ret
+; 0x3b23
