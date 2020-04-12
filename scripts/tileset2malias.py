@@ -19,4 +19,4 @@ if __name__ == '__main__':
         quit()
     
     with open(input_file, 'r', encoding='utf-8-sig') as i, open(output_file, 'wb') as o:
-        o.write(bytearray(tileset.compress_tileset(i)))
+        o.write(bytearray(tilesets.compress_tileset(i)))
