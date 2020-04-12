@@ -9,7 +9,7 @@ if __name__ == '__main__':
 	input_file = sys.argv[1]
 	output_file = sys.argv[2]
 
-	prefix = os.path.splitext(os.path.basename(input_file))[0]
+	prefix = "." + os.path.splitext(os.path.basename(input_file))[0]
 
 	char_table = utils.merge_dicts([
 		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True), 

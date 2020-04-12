@@ -34,7 +34,7 @@ with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w
 		output.write("  dw TilesetInfo{}\n".format(data[i][3]))
 	with open("game/src/gfx/tileset_files.asm", "w") as outputf:
 		for ptr in sorted(data):
-			with open("game/tilesets/{}.malias".format(data[ptr][3]),"wb") as compressed, open("game/tilesets/{}.2bpp".format(data[ptr][3]),"wb") as uncompressed:
+			with open("game/tilesets/{}.malias".format(data[ptr][3]),"wb") as compressed, open("text/tilesets/{}.2bpp".format(data[ptr][3]),"wb") as uncompressed:
 				f = tilesets.decompress_tileset(rom, utils.rom2realaddr((data[ptr][0],data[ptr][1])))
 				uncompressed.write(bytearray(f[0]))
 				compressed.write(bytearray(f[1]))
@@ -44,5 +44,5 @@ with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w
 				outputf.write('SECTION "Tileset Data {0}", ROMX[${1:04X}], BANK[${2:02X}]\n'.format(data[ptr][3], data[ptr][1], data[ptr][0]))
 				outputf.write("Tileset{}:\n".format(data[ptr][3]))
 				outputf.write("TilesetStart{}\n".format(data[ptr][3]))
-				outputf.write('  INCBIN "game/tilesets/{}.malias"\n'.format(data[ptr][3]))
+				outputf.write('  INCBIN "build/tilesets/{}.malias"\n'.format(data[ptr][3]))
 				outputf.write("TilesetEnd{}\n\n".format(data[ptr][3]))
