@@ -2,6 +2,7 @@
 
 from binascii import unhexlify, hexlify
 from collections import OrderedDict
+from contextlib import suppress
 from struct import *
 import os
 import csv
@@ -89,7 +90,7 @@ if __name__ == '__main__':
             if line.startswith('SECTION'):
                 o = line.lstrip('SECTION ').replace(' ', '').replace('\n','').replace('\r\n','').replace('"','').split(',')
                 #Name ROMX[$OFFSET] BANK[$BANK]
-                if o[0] in sections:
+                if o[0].startswith("FREE_"):
                     bank_map[o[0]] = { "BANK": int(o[2].replace('BANK','').replace('[','').replace(']','').replace('$','0x'), 16), "OFFSET": int(o[1].replace('ROMX','').replace('[','').replace(']','').replace('$','0x'), 16) }
 
     for f in additional_banks:
@@ -123,12 +124,14 @@ if __name__ == '__main__':
                     translated_txt = ''
                 converted_txt = table_convert(translated_txt, char_table)
                 txt[section].append((int(ptr, 16), converted_txt))
+    pointer_total = sum([len(x) * 3 for x in txt[section]])
+    if pointer_total > bank_size_max:
+        raise Exception("ERROR: Pointers in %s take up %i bytes (max %i)", section, pointer_total, bank_size_max)
 
-        if bank_map[section]['OFFSET'] + len(txt[section]) * 3 > bank_size_max:
-            raise Exception("ERROR: Pointers in %s take up %i bytes (max %i)", section, bank_map[section]['OFFSET'] + len(txt[section]) * 3, bank_size_max)
-        else: 
-            bank_map[section]['OFFSET'] = bank_map[section]['OFFSET'] + len(txt[section]) * 3
-    
+    for b in bank_map:
+        with suppress(OSError):
+            os.remove('%s/%s.bin' % (output_dir, b))
+
     for section in sections:
         offsets = []
         ptr_offset_map = {}
@@ -142,19 +145,8 @@ if __name__ == '__main__':
                     offsets.append((bank_map[b]['BANK'], bank_map[b]['OFFSET']))
                     ptr_offset_map[t[0]] = (bank_map[b]['BANK'], bank_map[b]['OFFSET'])
                     bank_map[b]['OFFSET'] = bank_map[b]['OFFSET'] + len(t[1])
+                    with open('%s/%s.bin' % (output_dir, b), 'ab') as o:
+                        o.write(t[1])
                     break
-            else:
-                raise Exception("ERROR: Could not find room for %s", t)
         with open('%s/%s.bin' % (output_dir, section), 'wb') as bin_file:
             [bin_file.write(pack('<BH', b[0], b[1])) for b in offsets]
-
-        curr_bank = 0
-        curr_file = 0
-        for i, t in enumerate(txt[section]):
-            if curr_bank != offsets[i][0]:
-                if curr_file:
-                    curr_file.close()
-                curr_file = open('%s/%s.bin' % (output_dir, reverse_bank_map[offsets[i][0]]), 'ab')
-            curr_file.write(t[1])
-        
-        curr_file.close()
