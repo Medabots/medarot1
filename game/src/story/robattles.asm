@@ -432,3 +432,57 @@ RobattleMedarotInfoLoadLegs:
   call $0264
   ret
 ; 0x6edcc
+
+; They actually maintain a separate copy of all the skills in 1B
+SECTION "Skills_1B", ROMX[$7019], BANK[$1b]
+Skills_1B:
+INCLUDE "build/ptrlists/Skills.asm"
+
+SECTION "Robattle - Load Parts - Skills", ROMX[$6fc4], BANK[$1b]
+RobattleMedarotInfoLoadSkill:
+  xor a
+  ld [$c658], a
+  ld [$c65a], a
+  ld [$c65b], a
+  ld hl, $008c
+  add hl, de
+  ld a, [hl]
+  ld [$c65b], a
+.asm_6fd6:
+  ld hl, $008c
+  ld b, $0
+  ld a, [$c658]
+  ld c, a
+  add hl, bc
+  add hl, de
+  ld a, [hl]
+  ld b, a
+  ld a, [$c65b]
+  sub b
+  jr nc, .asm_6eff3 ; 0x6efe7 $a
+  ld a, [$c658]
+  ld [$c65a], a
+  ld a, b
+  ld [$c65b], a
+.asm_6eff3
+  ld a, [$c658]
+  inc a
+  ld [$c658], a
+  cp $8
+  jp nz, .asm_6fd6
+  ld a, [$c65a]
+  ld hl, Skills_1B
+  ld b, $0
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld bc, $98ec
+  push de
+  call $0264
+  pop de
+  ret
+; 0x6f019
