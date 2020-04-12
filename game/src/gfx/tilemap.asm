@@ -1,4 +1,4 @@
-SECTION "Tilemaps", ROMX[$4000], BANK[$1e]
+SECTION "Tilemaps", ROMX[$4000], BANK[$2b]
 Tilemaps:
 ; The tilemap pointer table can reference the same data multiple times
 ; so even though there's 0xEF tilemaps, we actually have even fewer than that

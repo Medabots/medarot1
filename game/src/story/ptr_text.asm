@@ -3,7 +3,7 @@ SECTION "Part Names", ROMX[$750b], BANK[$1]
 PartTypesPtr::
 INCLUDE "build/ptrlists/PartTypes.asm"
 
-SECTION "Pointer Lists", ROMX[$4000], BANK[$2f]
+SECTION "Pointer Lists", ROMX[$4000], BANK[$2d]
 PartDescriptionsPtr::
 INCLUDE "build/ptrlists/PartDescriptions.asm"
 AttributesPtr::

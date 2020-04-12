@@ -28,21 +28,21 @@
 1B:
 1C:
 1D:
-1E: Tilemaps
+1E:
 1F: Last bank used by game
-20: English Dialogue Font
-21: Additional space for text
-22: Additional space for text
-23: Additional space for text
+20:
+21:
+22:
+23:
 24: Patch functions (HackPredef)
-25: Snippet1
-26: Snippet2
-27: Snippet3
-28: Snippet4
-29: Snippet5
-2A: StoryText1
-2B: StoryText2
-2C: StoryText3
-2D: BattleText
-2E: List Text
-2F: Pointer List Text
+25: All text pointers
+26: Dialogue Text
+27: Dialogue Text
+28: Dialogue Text
+29: Dialogue Text
+2A: Dialogue Text
+2B: Tilemaps
+2C: List Text
+2D: Pointer List Text
+2E: 
+2F: 

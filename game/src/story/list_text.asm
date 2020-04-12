@@ -1,7 +1,7 @@
 ; Includes logic for dealing with "list" text (Medals, Items, Medarots)
 ; Data is fixed size, so no need for a pointer table
 
-SECTION "List Data", ROMX[$4000], BANK[$2E]
+SECTION "List Data", ROMX[$4000], BANK[$2c]
 ItemList:
   INCBIN "build/lists/Items.bin"
 MedalList:
