@@ -486,3 +486,128 @@ RobattleMedarotInfoLoadSkill:
   pop de
   ret
 ; 0x6f019
+
+SECTION "Robattle - Load Text", ROMX[$54f1], BANK[$4]
+RobattleLoadText:
+.asm_114f1
+  ld b, $6
+  ld c, $d
+  ld e, $86
+  call $015c
+  ret
+; 0x114fb
+  ld hl, $00d3
+  add hl, de
+  ld a, [hl]
+  or a
+  jr z, .asm_114f1 ; 0x11501 $ee
+  ld hl, $000d
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b520
+  ld c, a
+  ld b, $0
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  ld c, $0
+  call $0294
+  ld hl, cBUF01
+  call $028e
+  ld hl, $99c6
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call $0264
+  ret
+  ld hl, $000e
+  add hl, de
+  ld a, [hl]
+  and $7f
+  sub $3c
+  jp c, $554b
+  ld b, $b
+  ld c, $f
+  ld e, $86
+  call $015c
+  ret
+  ld hl, $000e
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b5a0
+  ld c, a
+  ld b, $0
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  ld c, $1
+  call $0294
+  ld hl, cBUF01
+  ld bc, $9a0b
+  call $0264
+  ret
+  ld hl, $000f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  sub $3c
+  jp c, $5587
+  ld b, $1
+  ld c, $f
+  ld e, $86
+  call $015c
+  ret
+  ld hl, $000f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b620
+  ld c, a
+  ld b, $0
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $0
+  ld c, $2
+  call $0294
+  ld hl, cBUF01
+  call $546f
+  ld hl, $9a01
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call $0264
+  ret
+
+SECTION "Robattle - Load Battle Text", ROMX[$58b5], BANK[$5]
+RobattleLoadBattleText:
+  push de
+  ld hl, $0002
+  add hl, de
+  ld de, cBUF01
+  ld b, $9
+.asm_158bf
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_158bf ; 0x158c3 $fa
+  pop de
+  ret
+; 0x158c7
