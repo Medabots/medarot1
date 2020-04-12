@@ -7,6 +7,8 @@ TARGET_TYPE := gbc
 SOURCE_TYPE := asm
 TABLE_TYPE := tbl
 TMAP_TYPE := tmap
+SYM_TYPE := sym
+MAP_TYPE := map
 TSET_SRC_TYPE := 2bpp
 TSET_TYPE := malias
 LIST_TYPE := bin
@@ -49,6 +51,8 @@ FIX_ARGS := -v -k 9C -l 0x33 -m 0x03 -p 0 -r 3 -t "MEDAROT KABUTO"
 
 #You shouldn't need to touch anything past this line!
 TARGET_OUT := $(TARGET).$(TARGET_TYPE)
+SYM_OUT := $(TARGET).$(SYM_TYPE)
+MAP_OUT := $(TARGET).$(MAP_TYPE)
 TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
 
 INT_TYPE := o
@@ -65,7 +69,7 @@ story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
 all: $(TARGET_OUT)
 
 $(TARGET_OUT): $(MODULES_OBJ)
-	$(LD) -O $(ORIGINAL) -o $@ $^
+	$(LD) -n $(SYM_OUT) -m $(MAP_OUT) -O $(ORIGINAL) -o $@ $^
 	$(FIX) $(FIX_ARGS) $@
 	cmp -l $(ORIGINAL) $@
 
@@ -109,7 +113,7 @@ dump_tilesets: | $(TILESETS_TEXT) $(TILESET_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
-	rm -r $(BUILD) $(TARGET_OUT)	
+	rm -r $(BUILD) $(TARGET_OUT) $(SYM_OUT) $(MAP_OUT)	
 
 # Rules to stop Make from deleting outputs...
 list_files:  $(LISTS_FILES)
