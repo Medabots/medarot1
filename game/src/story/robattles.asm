@@ -583,7 +583,8 @@ RobattleLoadText:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  call $546f
+  ; call $546f
+  xor a ; Skip length check
   ld hl, $9a01
   ld b, $0
   ld c, a
@@ -593,6 +594,8 @@ RobattleLoadText:
   ld hl, cBUF01
   call $0264
   ret
+  nop
+  nop
 
 SECTION "Robattle - Load Battle Text", ROMX[$58b5], BANK[$5]
 RobattleLoadBattleText:
