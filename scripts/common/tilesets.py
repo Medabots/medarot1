@@ -42,11 +42,26 @@ def decompress_tileset(rom, offset):
         raise "Unknown compression flag (expect 0 or 1)"
     return data, original
 
+def compress_tileset(file):
+    file.seek(0, 2)
+    total = file.tell()
+    file.seek(0)
+    compressed_data = [0x0] + list(total.to_bytes(2, byteorder='little'))
+    loc = 0
+    while loc < total:
+        b = utils.read_byte(file)
+        compressed_data.append(b)
+        loc += 1
+    return compressed_data
+
 if __name__ == "__main__":
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-    offset = int(sys.argv[3])
-    mode = int(sys.argv[4]) # 0 decompressed, 1 is original
+    operation = int(sys.argv[1])
+    input_file = sys.argv[2]
+    output_file = sys.argv[3]
+    offset = int(sys.argv[4])
 
     with open(input_file, 'rb') as i, open(output_file, 'wb') as o:
-        o.write(bytearray(decompress_tileset(i, offset)[mode]))
+        if operation == 0: # Decompress
+            o.write(bytearray(decompress_tileset(i, offset)[0]))
+        elif operation == 1: # Compress
+            o.write(bytearray(compress_tileset(i)))
