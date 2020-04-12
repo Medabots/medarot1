@@ -9,3 +9,5 @@ build/
 scripts/common/__pycache__/
 *.ips
 *.pyc
+*.map
+*.sym
