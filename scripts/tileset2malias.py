@@ -18,5 +18,7 @@ if __name__ == '__main__':
         os.utime(output_file, None)
         quit()
     
-    with open(input_file, 'r', encoding='utf-8-sig') as i, open(output_file, 'wb') as o:
-        o.write(bytearray(tileset.compress_tileset(i)))
+    with open(input_file, 'rb') as i:
+        ba = bytearray(tilesets.compress_tileset(i))
+        with open(output_file, 'wb') as o:
+            o.write(ba)
