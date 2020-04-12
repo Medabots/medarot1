@@ -7,6 +7,8 @@ TARGET_TYPE := gbc
 SOURCE_TYPE := asm
 TABLE_TYPE := tbl
 TMAP_TYPE := tmap
+TSET_SRC_TYPE := 2bpp
+TSET_TYPE := malias
 LIST_TYPE := bin
 TEXT_TYPE := txt
 PYTHON := python3
@@ -18,19 +20,23 @@ GAME := $(BASE)/game
 SRC := $(GAME)/src
 TEXT := $(BASE)/text
 COMMON := $(SRC)/common
-TILEMAP_BIN := $(GAME)/tilemaps
-TILEMAP_TEXT := $(TEXT)/tilemaps
-TILEMAP_OUT := $(BUILD)/tilemaps
 LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
 PTRLISTS_TEXT := $(TEXT)/ptrlists
 PTRLISTS_OUT := $(BUILD)/ptrlists
-TILESETS_OUT := $(GAME)/tilesets
+
+TILEMAP_BIN := $(GAME)/tilemaps
+TILEMAP_TEXT := $(TEXT)/tilemaps
+TILEMAP_OUT := $(BUILD)/tilemaps
+TILESET_BIN := $(GAME)/tilesets
+TILESET_TEXT := $(TEXT)/tilesets
+TILESET_OUT := $(BUILD)/tilesets
 
 MODULES := core gfx story
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
+TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -49,10 +55,11 @@ INT_TYPE := o
 MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
+TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
 LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 
-gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE)
+gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
 
 all: $(TARGET_OUT)
@@ -71,6 +78,9 @@ $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE
 
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilemap_tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
+
+$(TILESET_OUT)/%.$(TSET_TYPE): $(TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
@@ -95,7 +105,7 @@ dump_lists: | $(LISTS_TEXT)
 dump_ptrlists: | $(PTRLISTS_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_ptrlists.py
 
-dump_tilesets: | $(TILESETS_OUT)
+dump_tilesets: | $(TILESETS_TEXT) $(TILESET_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
@@ -104,6 +114,7 @@ clean:
 # Rules to stop Make from deleting outputs...
 list_files:  $(LISTS_FILES)
 ptrlist_files: $(PTRLISTS_FILES)
+tileset_files: $(TILESET_FILES)
 
 #Make directories if necessary
 $(BUILD):
@@ -130,5 +141,11 @@ $(PTRLISTS_TEXT):
 $(PTRLISTS_OUT):
 	mkdir -p $(PTRLISTS_OUT)
 
-$(TILESETS_OUT):
-	mkdir -p $(TILESETS_OUT)
+$(TILESET_BIN):
+	mkdir -p $(TILESET_BIN)
+
+$(TILESET_TEXT):
+	mkdir -p $(TILESET_TEXT)
+
+$(TILESET_OUT):
+	mkdir -p $(TILESET_OUT)
