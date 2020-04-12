@@ -434,9 +434,9 @@ RobattleMedarotInfoLoadLegs:
 ; 0x6edcc
 
 ; They actually maintain a separate copy of all the skills in 1B
-SECTION "Skills_1B", ROMX[$7019], BANK[$1b]
-Skills_1B:
-INCLUDE "build/ptrlists/Skills.asm"
+; SECTION "Skills_1B", ROMX[$7019], BANK[$1b]
+; Skills_1B:
+; INCLUDE "build/ptrlists/Skills.asm"
 
 SECTION "Robattle - Load Parts - Skills", ROMX[$6fc4], BANK[$1b]
 RobattleMedarotInfoLoadSkill:
@@ -471,18 +471,17 @@ RobattleMedarotInfoLoadSkill:
   cp $8
   jp nz, .asm_6fd6
   ld a, [$c65a]
-  ld hl, Skills_1B
+  ld hl, SkillsPtr
   ld b, $0
   ld c, a
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
   ld bc, $98ec
   push de
-  call $0264
+  ld d, BANK(RobattleMedarotInfoLoadSkill)
+  ld e, BANK(SkillsPtr)  
+  call PrintPtrText
   pop de
-  ret
 ; 0x6f019
+  ret ; Overwrites the first byte of the unused 1B copy
