@@ -10,6 +10,18 @@ TilesetStart115B
   INCBIN "build/tilesets/115B.malias"
 TilesetEnd115B
 
+SECTION "Tileset Data MainSpecial", ROMX[$4000], BANK[$08]
+TilesetMainSpecial:
+TilesetStartMainSpecial
+  INCBIN "build/tilesets/MainSpecial.malias"
+TilesetEndMainSpecial
+
+SECTION "Tileset Data MainDialog", ROMX[$4168], BANK[$08]
+TilesetMainDialog:
+TilesetStartMainDialog
+  INCBIN "build/tilesets/MainDialog.malias"
+TilesetEndMainDialog
+
 SECTION "Tileset Data 116A", ROMX[$60B3], BANK[$08]
 Tileset116A:
 TilesetStart116A
@@ -213,13 +225,3 @@ TilesetMenuText:
 TilesetStartMenuText
   INCBIN "build/tilesets/MenuText.malias"
 TilesetEndMenuText
-
-TilesetMainSpecial:
-TilesetStartMainSpecial
-  INCBIN "build/tilesets/MainSpecial.malias"
-TilesetEndMainSpecial
-
-TilesetMainDialog:
-TilesetStartMainDialog
-  INCBIN "build/tilesets/MainDialog.malias"
-TilesetEndMainDialog
