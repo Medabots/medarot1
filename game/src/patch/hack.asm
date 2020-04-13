@@ -192,15 +192,15 @@ SkipSpaceHack:: ; TODO: Move SkipSpace logic here from core_hack.asm to save spa
 SetInitialName: ; TODO: In the future, we might be able to just set this as a loop and pull it from a build obj for different language support
   ld a, $87 ; H
   ld [hli], a
-  ld a, $bf ; i
+  ld a, $a2 ; i
   ld [hli], a
-  ld a, $c1 ; k
+  ld a, $a4 ; k
   ld [hli], a
-  ld a, $b7 ; a
+  ld a, $9a ; a
   ld [hli], a
-  ld a, $c8 ; r
+  ld a, $ab ; r
   ld [hli], a
-  ld a, $cb ; u
+  ld a, $ae ; u
   ld [hli], a
 	ld a, $50 ; EOL
 	ld [hli], a
