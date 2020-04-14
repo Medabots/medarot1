@@ -43,6 +43,27 @@ LoadFont_Sub: ; 10d3 (0:10d3)
   jp $1214
 ; 0x10ef
 
+SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
+  ld a, $a
+  ld b, $1
+  call $0246 ; Calls decompress tiles
+  ld a, [$c64e]
+  or a
+  ret nz
+  ld a, [$c752]
+  add $d
+  call $015f
+  ld a, $2
+  call $017d
+  ld b, $8
+  ld c, $b
+  ld d, $6
+  ld e, $0
+  ld a, $a
+  call $0309
+  call $67de
+  ret
+; 0x6eaf1
 
 SECTION "Decompress Tiles", ROM0[$12e8]
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
