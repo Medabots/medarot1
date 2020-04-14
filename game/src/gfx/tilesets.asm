@@ -4,7 +4,7 @@ INCLUDE "game/src/gfx/tileset_files.asm"
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
   ld a, 3
-  call LoadFont0
+  call DecompressAndLoadTiles
   ret
 
 ;a = 04 at init
