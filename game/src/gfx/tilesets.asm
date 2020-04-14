@@ -43,29 +43,139 @@ LoadFont_Sub: ; 10d3 (0:10d3)
   jp $1214
 ; 0x10ef
 
-SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
-  ld a, $a
-  ld b, $1
-  call LoadFont0
-  ld a, [$c64e]
-  or a
-  ret nz
-  ld a, [$c752]
-  add $d
-  call $015f
-  ld a, $2
-  call $017d
-  ld b, $8
-  ld c, $b
-  ld d, $6
-  ld e, $0
-  ld a, $a
-  call $0309
-  call $67de
+SECTION "Load Tiles", ROM0[$1214]
+LoadTiles: ; 1214 (0:1214)
+  cp $0
+  jp z, NoDecompressLoadTiles
+  ld a, h
+  ld [$c5f6], a
+  ld a, l
+  ld [$c5f7], a
+  ld a, [de]
+  ld c, a
+  inc de
+  ld a, [de]
+  ld b, a
+  inc de
+  ld a, b
+  or c
+  jp z, LoadTiles_Return
+  ld a, [de]
+  ld [$c5f5], a
+  inc de
+  ld a, [de]
+  ld [$c5f4], a
+  inc de
+  ld a, $11
+  ld [$c5f3], a
+  ld a, b
+  or c
+  jp z, LoadTiles_Return
+  ld a, [$c5f3]
+  dec a
+  jp z, $1227
+  ld [$c5f3], a
+  push de
+  ld a, [$c5f4]
+  ld d, a
+  ld a, [$c5f5]
+  ld e, a
+  srl d
+  ld a, d
+  ld [$c5f4], a
+  rr e
+  ld a, e
+  ld [$c5f5], a
+  jp c, $127f
+  pop de
+  ld a, [$c5f6]
+  ld h, a
+  ld a, [$c5f7]
+  ld l, a
+  ld a, [de]
+  di
+  call WaitLCDController
+  ld [hli], a
+  ei
+  ld a, h
+  ld [$c5f6], a
+  ld a, l
+  ld [$c5f7], a
+  dec bc
+  inc de
+  jp $123b
+; 0x127f
+  pop de
+  push de
+  ld a, [de]
+  ld l, a
+  inc de
+  ld a, [de]
+  and $7
+  ld h, a
+  ld a, [de]
+  srl a
+  srl a
+  srl a
+  and $1f
+  add $3
+  ld [$c5f2], a
+  ld a, h
+  cpl
+  ld d, a
+  ld a, l
+  cpl
+  ld e, a
+  ld a, [$c5f6]
+  ld h, a
+  ld a, [$c5f7]
+  ld l, a
+  add hl, de
+  push hl
+  pop de
+  ld a, [$c5f6]
+  ld h, a
+  ld a, [$c5f7]
+  ld l, a
+  di
+  call WaitLCDController
+  ld a, [de]
+  ei
+  ld [hli], a
+  dec bc
+  inc de
+  ld a, [$c5f2]
+  dec a
+  ld [$c5f2], a
+  jp nz, $12af
+  ld a, h
+  ld [$c5f6], a
+  ld a, l
+  ld [$c5f7], a
+  pop de
+  inc de
+  inc de
+  jp $123b
+NoDecompressLoadTiles:
+  ld a, [de]
+  ld c, a
+  inc de
+  ld a, [de]
+  ld b, a
+  inc de
+  ld a, b
+  or c
+  jp z, LoadTiles_Return
+  ld a, [de]
+  di
+  call $17cb
+  ld [hli], a
+  ei
+  inc de
+  dec bc
+  jp $12d6
+LoadTiles_Return:
   ret
-; 0x6eaf1
-
-SECTION "Decompress Tiles", ROM0[$12e8]
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld [$c650], a ;Store font type
   ld a, b
@@ -137,3 +247,25 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld [$c64e], a
   ret
 .asm_135e
+
+SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
+  ld a, $a
+  ld b, $1
+  call LoadFont0
+  ld a, [$c64e]
+  or a
+  ret nz
+  ld a, [$c752]
+  add $d
+  call $015f
+  ld a, $2
+  call $017d
+  ld b, $8
+  ld c, $b
+  ld d, $6
+  ld e, $0
+  ld a, $a
+  call $0309
+  call $67de
+  ret
+; 0x6eaf1
