@@ -30,10 +30,10 @@
 1D:
 1E:
 1F: Last bank used by game
-20: Fonts
-21:
-22:
-23:
+20: Tilesets
+21: Tilesets
+22: Tilesets
+23: Tilesets
 24: Patch functions (HackPredef)
 25: All text pointers
 26: Dialogue Text

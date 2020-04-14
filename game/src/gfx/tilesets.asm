@@ -181,12 +181,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld a, b
   ld [$c6d3], a
   xor a
-  ld [$c64e], a
-  ld a, [$c6ce]
-  or a
-  jp nz, .asm_132e
-  ld a, $01
-  ld [$c6ce], a
+  ld [$c64e], a ; "In Progress" flag
   ld a, [$c650]
   ld hl, TilesetTable
   ld d, $00
@@ -208,8 +203,15 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld h, [hl]
   ld l, a
   inc de
+  jr NoDecompressLoadTiles
+  nop
+  ld a, [$c6ce]
+  or a
+  jp nz, .asm_132e
+  ld a, $01
+  ld [$c6ce], a
   ld a, h
-  ld [$c5f6], a
+  ;ld [$c5f6], a
   ld a, l
   ld [$c5f7], a
   ld a, [de]
@@ -251,7 +253,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
 SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
   ld a, $a
   ld b, $1
-  call LoadFont0
+  call $0246
   ld a, [$c64e]
   or a
   ret nz
