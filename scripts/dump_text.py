@@ -1,5 +1,10 @@
 #!/bin/python
 import os
+import sys
+from collections import OrderedDict
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
+from common import utils
 
 rom = open("baserom.gbc", "rb")
 log = open("./scripts/res/ptrs.tbl", "a+")
@@ -24,11 +29,7 @@ def readshort():
 def readbyte():
     return ord(rom.read(1))
 
-table = {}
-for line in open("scripts/res/medarot.tbl", encoding="utf-8").readlines():
-    if line.strip():
-        a, b = line.strip('\n').split("=", 1)
-        table[int(a, 16)] = b.replace("\\n", '\n')
+table = utils.read_table("scripts/res/medarot.tbl")
 
 class Special():
     def __init__(self, symbol, default=0, bts=1, end=False, names=None):
@@ -39,7 +40,7 @@ class Special():
         self.names = names
 
 table[0x4b] = Special("&", bts=2, names=name_table)
-table[0x4d] = Special('S', default=2)
+table[0x4d] = Special('S', default=-1)
 table[0x4f] = Special('*', end=True)
 table[0x50] = Special('`', bts=0, end=True)
 
@@ -65,43 +66,56 @@ def dump_text(addr):
                             else:
                                 if token.names is not None:
                                     n = "BUF{:02X}".format(len(name_table))
-                                    print("{1}={0}".format(hex(param), n), file=log)
                                     name_table[param] = n
                                     text += n
                                 else:
                                     text += hex(param)[2:]
                         text += ">"
                 if token.end:
+                    if not text:
+                        text = "<" + token.symbol + hex(param)[2:] + ">"
                     return text
         else:
             text += "<@{0}>".format(hex(b)[2:])
 
 addrs = [0x33e00, 0x37e00, 0x3be00, 0x3fe00, 0x4f800, 0x5a000, 0x60000, 0x68000, 0x74000]
 filenames = ["Snippet1", "Snippet2", "Snippet3", "Snippet4", "Snippet5", "StoryText1", "StoryText2", "StoryText3" , "BattleText"]
-ptr_range = [1024, 1024, 10, 1024, 1024, 1024, 1024, 1024 , 457] #Specify # of pointers if necessary (Snippet 3 has pointers to graphics as well)
+ptr_range = [1024, 1024, (10, 16), 1024, 1024, 1024, 1024, 1024 , (457, 464)] #Specify # of pointers if necessary (Snippet 3 has pointers to graphics as well)
 
 if not os.path.exists("text/dialog"):
     os.makedirs("text/dialog")
 
 for n, file in enumerate(filenames):
-    texts = {}
+    texts = OrderedDict()
     addr = addrs[n]
-
     bank = addr//0x4000
-    rom.seek(addr)
+    print("Working on {}".format(file))
     pts = {}
-    for i in range(ptr_range[n]):
+    for i in range(ptr_range[n] if isinstance(ptr_range[n], int) else ptr_range[n][1]):
+        rom.seek(addr)
         try:
-            ptr = readpointer(bank)
-            pts[rom.tell()-2] = ptr
+            ptr = readpointer(bank) # actual pointer to text
         except NotPointerException:
             break
-    for ptr, p in pts.items():
-        texts[ptr] = dump_text(p)
+        print(hex(ptr))
+        idx = rom.tell()-2 # position in ptr table
+        text = ""
+        if ptr not in pts:
+            pts[ptr] = idx
+            if not isinstance(ptr_range[n], int) and i >= ptr_range[n][0]:
+                text = "<IGNORED>"
+            else:    
+                text = dump_text(ptr)
+        else:
+            text = "={}".format(hex(pts[ptr]))
+        addr += 2
+        texts[idx] = "{}".format(text.replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""'))
+
     with open("text/dialog/" + file + ".csv", "w", encoding="utf-8") as fp:
         fp.write("Pointer,Original\n")
-        for ptr in sorted(texts):
-            fp.write("{0},{1}\n".format(hex(ptr).rstrip('L'), texts[ptr].replace('\n\n','<4C>').replace('\n','<4E>').replace('"','""')))
+        for idx in texts:
+            fp.write("{},{}\n".format(hex(idx), texts[idx]))
+
 
 log.truncate()
 log.close()
