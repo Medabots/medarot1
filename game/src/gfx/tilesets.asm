@@ -4,7 +4,7 @@ INCLUDE "game/src/gfx/tileset_files.asm"
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
   ld a, 3
-  call DecompressAndLoadTiles
+  call LoadFont0
   ret
 
 ;a = 04 at init
@@ -46,7 +46,7 @@ LoadFont_Sub: ; 10d3 (0:10d3)
 SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
   ld a, $a
   ld b, $1
-  call $0246 ; Calls decompress tiles
+  call LoadFont0
   ld a, [$c64e]
   or a
   ret nz
