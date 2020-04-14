@@ -58,12 +58,6 @@ TilesetStart1183
   INCBIN "build/tilesets/1183.malias"
 TilesetEnd1183
 
-SECTION "Tileset Data MenuText", ROMX[$4000], BANK[$20]
-TilesetMenuText:
-TilesetStartMenuText
-  INCBIN "build/tilesets/MenuText.malias"
-TilesetEndMenuText
-
 SECTION "Tileset Data 118D", ROMX[$554E], BANK[$08]
 Tileset118D:
 TilesetStart118D
@@ -226,3 +220,8 @@ TilesetStart120F
   INCBIN "build/tilesets/120F.malias"
 TilesetEnd120F
 
+SECTION "Tileset Data MenuText", ROMX[$4000], BANK[$2F]
+TilesetMenuText:
+TilesetStartMenuText
+  INCBIN "build/tilesets/MenuText.malias"
+TilesetEndMenuText
