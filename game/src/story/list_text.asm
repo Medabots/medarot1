@@ -69,7 +69,7 @@ LoadMedalList: ;32b9
   ld hl, MedalList
   add hl, bc
   ld de, cBUF01
-  ld b, $7
+  ld b, $8
 .asm_32d8
   ld a, [hli]
   ld [de], a
