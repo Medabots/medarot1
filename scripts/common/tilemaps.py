@@ -34,68 +34,58 @@ def decompress_tilemap(original):
         ret.append(t)
     return ret
 
-def compress_mode_literal(idx, tmap, do_compression = False):
-    return 0
+MAX_COUNT = 63
+MIN_COUNT = 1
+def compress_mode_literal(idx, tmap):
+    return MIN_COUNT
 
-def compress_mode_repeat(idx, tmap, do_compression = False):
-    curbyte = tmap[idx]
+# All non-literal methods must have a minimum size of 2 bytes to make sense
+def compress_mode_repeat(idx, tmap):
     i = 0
-    for i, byte in zip(range(64), tmap[idx + 1:]):
+    curbyte = tmap[idx]
+    for i, byte in zip(range(MAX_COUNT+1), tmap[idx + 1:]):
         if byte != curbyte:
             break
-        elif do_compression:
-            tmap[idx + 1 + i] = 0xFFFF
     return i
 
-def compress_mode_increment(idx, tmap, do_compression = False):
+def compress_mode_increment(idx, tmap):
     i = 0
     curbyte = tmap[idx]
-    for i, byte in zip(range(64), tmap[idx + 1:]):
+    for i, byte in zip(range(MAX_COUNT+1), tmap[idx + 1:]):
         if byte != (curbyte + 1 + i) & 0xFF:
             break
-        elif do_compression:
-            tmap[idx + 1 + i] = 0xFFFF
-    return i   
+    return i
 
-def compress_mode_decrement(idx, tmap, do_compression = False):
+def compress_mode_decrement(idx, tmap):
     i = 0
     curbyte = tmap[idx]
-    for i, byte in zip(range(64), tmap[idx + 1:]):
+    for i, byte in zip(range(MAX_COUNT+1), tmap[idx + 1:]):
         if byte != (curbyte - 1 - i) & 0xFF:
             break
-        elif do_compression:
-            tmap[idx + 1 + i] = 0xFFFF
     return i
 
 COMPRESSION_METHODS = {
     MODE_LIT : compress_mode_literal,
-#    MODE_REP : compress_mode_repeat,
-#    MODE_INC : compress_mode_increment,
-#    MODE_DEC : compress_mode_decrement
+    MODE_REP : compress_mode_repeat,
+    MODE_INC : compress_mode_increment,
+    MODE_DEC : compress_mode_decrement,
 }
 def compress_tmap(tmap):
+    compressed_tmap = []
     idx = 0
     while idx < len(tmap):
-        best = max(COMPRESSION_METHODS, key=lambda x : COMPRESSION_METHODS[x](idx, tmap))
-        byte_count = COMPRESSION_METHODS[best](idx, tmap, True)
-        if best != MODE_LIT:
-            tmap[idx + 1] = tmap[idx]
-            tmap[idx] = ((best << 6) & 0b11000000) + ((byte_count-1) & 0b00111111) # +1 is implied during decompress
-        else:
-            tmap[idx] |= 0x0100
-        idx += 1 + byte_count
-    tmap = [b for b in tmap if b != 0xFFFF]
-    idx = 0
-    while idx < len(tmap):
-        if tmap[idx] & 0x0100:
-            tmap.insert(idx, 0xFF) # +1 is implied during decompress
-            j = 1
-            while j < 64 and j + idx < len(tmap) and tmap[idx + j] & 0x0100:
-                tmap[idx + j] &= 0xFF
-                tmap[idx] += 1
-                j += 1
-            tmap[idx] &= 0xFF
-            idx += j
-        else:
-            idx += 1
-    return tmap
+        best_method = MODE_LIT
+        best_size = MIN_COUNT
+        curbyte = tmap[idx]
+        for m in COMPRESSION_METHODS: # Just greedily figure out how to compress the next N bytes
+            size = COMPRESSION_METHODS[m](idx, tmap)
+            if size > best_size:
+                best_size = size
+                best_method = m
+        command = (best_method << 6) | (best_size - 1)
+        compressed_tmap.append(command)
+        compressed_tmap.append(curbyte)
+        idx += best_size
+        if best_method != MODE_LIT:
+            idx += 1 # In non-literal mode, skip the next byte 
+    return compressed_tmap
