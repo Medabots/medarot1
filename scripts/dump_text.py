@@ -97,7 +97,6 @@ for n, file in enumerate(filenames):
             ptr = readpointer(bank) # actual pointer to text
         except NotPointerException:
             break
-        print(hex(ptr))
         idx = rom.tell()-2 # position in ptr table
         text = ""
         if ptr not in pts:
