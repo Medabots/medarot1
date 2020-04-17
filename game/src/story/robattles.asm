@@ -662,3 +662,62 @@ RobattleLoadAttackText:
   pop hl
   ret
 ; 0x3b23
+
+SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
+RobattleEndScreenEXP:
+  ld a, $1
+  call $01d7
+  ld a, [$a08e]
+  ld b, a
+  ld a, [$a08f]
+  ld c, a
+  ld hl, cBUF01
+  ld a, [$c64e]
+  push af
+  call $0336
+  pop af
+  ld [$c64e], a
+  ld a, $d1
+  ld [$a0c2], a
+  ld a, $aa
+  ld [$a0c3], a
+  jp $73ce
+  ld a, [$a0c1]
+  ld hl, $a090
+  ld b, $0
+  ld c, a
+  ld a, $4
+  call $02b8
+  ld a, d
+  ld [$a044], a
+  ld a, e
+  ld [$a045], a
+  ld a, [hl]
+  or a
+  jr z, .asm_730c ; 0x7304 $6
+  call $73ce
+  jp $7294
+.asm_730c
+  ld a, $1
+  ld [$c64e], a
+  ret
+  ld a, $19
+  ld [$ffa0], a
+  ld a, [$a044]
+  ld h, a
+  ld a, [$a045]
+  ld l, a
+  ld bc, $0001
+  add hl, bc
+  ld a, [hli]
+  call $0282
+  ld a, $d0
+  ld [$a0c2], a
+.asm_732b
+  ld a, $50
+.asm_732d
+  ld [$a0c3], a
+  ld a, $1
+  call $01d7
+  jp $73ce
+; 0x7338
