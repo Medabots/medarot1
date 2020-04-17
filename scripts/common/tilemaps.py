@@ -34,7 +34,7 @@ def decompress_tilemap(original):
         ret.append(t)
     return ret
 
-MAX_COUNT = 63
+MAX_COUNT = 64
 MIN_COUNT = 1
 def compress_mode_literal(idx, tmap):
     return MIN_COUNT
@@ -73,6 +73,8 @@ COMPRESSION_METHODS = {
 def compress_tmap(tmap):
     compressed_tmap = []
     idx = 0
+    prev_best = None
+    prev_idx = -1
     while idx < len(tmap):
         best_method = MODE_LIT
         best_size = MIN_COUNT
@@ -82,10 +84,19 @@ def compress_tmap(tmap):
             if size > best_size:
                 best_size = size
                 best_method = m
-        command = (best_method << 6) | (best_size - 1)
-        compressed_tmap.append(command)
-        compressed_tmap.append(curbyte)
+
+        if prev_best == MODE_LIT and best_method == MODE_LIT and (compressed_tmap[prev_idx] & 0b00111111) < 0b00111111:
+            # If we get literal mode multiple times in a row, just add it to the original counter
+            compressed_tmap[prev_idx] += 1
+            compressed_tmap.append(curbyte)
+        else:
+            prev_best = best_method
+            prev_idx = len(compressed_tmap)
+            command = (best_method << 6) | (best_size - 1)
+            compressed_tmap.append(command)
+            compressed_tmap.append(curbyte)
+
+            if best_method != MODE_LIT:
+                idx += 1 # In non-literal mode, skip the next byte         
         idx += best_size
-        if best_method != MODE_LIT:
-            idx += 1 # In non-literal mode, skip the next byte 
     return compressed_tmap
