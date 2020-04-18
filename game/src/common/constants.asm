@@ -64,3 +64,16 @@ hDMATransfer       EQU $ffe8
 
 hSaveA             EQU $FF90
 hBank              EQU $FF91
+
+; Joypad
+hJPInputHeldDown   EQU $ff8c
+hJPInputChanged    EQU $ff8d
+
+hJPInputA          EQU $1
+hJPInputB          EQU $2
+hJPInputSelect     EQU $4
+hJPInputStart      EQU $8
+hJPInputRight      EQU $10
+hJPInputLeft       EQU $20
+hJPInputUp         EQU $40
+hJPInputDown       EQU $80
