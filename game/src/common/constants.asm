@@ -61,3 +61,16 @@ hCGBPalUpdate      EQU $ffe5
 hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
+
+; Joypad
+hJPInputHeldDown   EQU $ff8c
+hJPInputChanged    EQU $ff8d
+
+hJPInputA          EQU $1
+hJPInputB          EQU $2
+hJPInputSelect     EQU $4
+hJPInputStart      EQU $8
+hJPInputRight      EQU $10
+hJPInputLeft       EQU $20
+hJPInputUp         EQU $40
+hJPInputDown       EQU $80
