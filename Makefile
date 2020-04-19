@@ -89,7 +89,7 @@ $(BIN_FILE): $(DIAG_FILES)
 $(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BIN_FILE) | $(BUILD)
 	$(CC) -o $@ $<
 
-$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES)
+$(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
 
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilemap_tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
