@@ -1,4 +1,5 @@
 SECTION "Dialog Control Codes", ROM0[$1d6b]
+; All of the below functions should now be dead code. They should be filled with nops to reclaim some space in bank 0.
 Char4F: ; 1d6b end of text
   inc hl
   ld a, [hl]
