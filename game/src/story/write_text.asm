@@ -124,68 +124,6 @@ PutCharLoopWithBankswitch::
   nop
   nop
 
-SECTION "WriteChar", ROM0[$1f96]
-; This entire function below should now be dead code. It should be filled with nops to reclaim some space in bank 0.
-WriteChar:: ; 1f96
-  ld a, [hl]
-  ld d, a
-  cp $0
-  jr nz, .skip_length_check
-  call GetWordLength
-.skip_length_check
-  ld a, $40
-  sub d
-  jp c, .asm_1fc2
-  ld hl, $1ff2
-  ld c, d
-  ld b, $0
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  push hl
-  push af
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld bc, $ffe0
-  add hl, bc
-  pop af
-  di
-  call WaitLCDController
-  ld [hl], a ; "/°
-  ei
-  pop hl
-  ld a, [hl]
-  ld d, a
-.asm_1fc2
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld a, d
-  di
-  call WaitLCDController
-  ld [hl], a
-  ei
-  ld a, $3 ; IncrementTileOffset
-  rst $8
-  ld a, $0 ; IncTextOffset
-  rst $8
-  ld a, [$c6c4]
-  ld [$c6c1], a
-  pop hl
-  cp $ff
-  ret nz
-  xor a
-  ld [$c6c1], a
-  jp PutCharLoop
-  nop
-  nop
-  nop
-  ; 0x1ff2
-
 hPSCounter             EQU $c640
 hPSTextAddrLo          EQU $c641
 hPSVRAMAddrHi          EQU $c642
