@@ -3,6 +3,8 @@ SetupDialog:
   ld [$c5c7], a
   xor a
   ld [$c5c8], a
+  inc a
+  ld [VWFIsInit], a
   call $1ab0
   xor a
 	ld a, $2
@@ -17,14 +19,13 @@ SetupDialog:
   ld a, [hl]
   ld [$c6c1], a
   ld [$c6c4], a
-  ld hl, $9c00
-  ld bc, $0041
+  ld h, $9c
+  ld l, $41
   ld a, [$c5c7]
   cp $1
   jr z, .asm_1cbc ; 0x1cb7 $3
-  ld bc, $0021
+  ld l, $21
 .asm_1cbc
-  add hl, bc
   ld a, h
   ld [$c6c2], a
   ld a, l
@@ -37,7 +38,7 @@ PutChar:
   ld a, [$c6c6]
   or a
   ret nz
-  ld a, [$c6c0]
+  ld a, [VWFTilesDrawn]
   sub $2
   jr nc, .asm_1cda ; 0x1cd3 $5
   ld a, $1
@@ -63,8 +64,7 @@ PutChar:
   ld hl, TextTableOffsets ;Go to the start of the dialog in this bank
   ld b, $0
   ld c, a
-  sla c
-  rl b
+  add hl, bc
   add hl, bc
   rst $38
   pop bc
@@ -78,6 +78,7 @@ PutChar:
   push af
   rst $38
   pop af
+  ld [VWFTrackBank], a
   rst $10
   
 PutCharLoop:: ;1d11, things jump to here after the control code
@@ -86,81 +87,40 @@ PutCharLoop:: ;1d11, things jump to here after the control code
   rst $8
   add hl, bc
   call GetNextChar
-  ld a, [hl]
-  cp $4f
-  jp z, Char4F
-  cp $4e
-  jp z, Char4E
-  cp $4d
-  jp z, Char4D
-  cp $4c
-  jp z, Char4C
-  cp $4b
-  jp z, Char4B
-  cp $4a
-  jp z, Char4A
-  jp SkipSpace
 
-SECTION "WriteChar", ROM0[$1f96]
-WriteChar:: ; 1f96
-  ld a, [hl]
-  ld d, a
-  cp $0
-  jr nz, .skip_length_check
-  call GetWordLength
-.skip_length_check
-  ld a, $40
-  sub d
-  jp c, .asm_1fc2
-  ld hl, $1ff2
-  ld c, d
-  ld b, $0
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  push hl
-  push af
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld bc, $ffe0
-  add hl, bc
-  pop af
-  di
-  call WaitLCDController
-  ld [hl], a ; "/°
-  ei
-  pop hl
-  ld a, [hl]
-  ld d, a
-.asm_1fc2
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld a, d
-  di
-  call WaitLCDController
-  ld [hl], a
-  ei
-  ld a, $3 ; IncrementTileOffset
-  rst $8
-  ld a, $0 ; IncTextOffset
-  rst $8
-  ld a, [$c6c4]
-  ld [$c6c1], a
-  pop hl
-  cp $ff
-  ret nz
-  xor a
-  ld [$c6c1], a
+  ; Store the current character index as well as potential arguments for control codes in WRAM. Point hl to WRAM location.
+
+  ld b, h
+  ld c, l
+  call VWFWordLengthTest
+  ld hl, VWFCurrentLetter
+  ld a, [bc]
+  ld [hli], a
+  inc bc
+  ld a, [bc]
+  ld [hli], a
+  inc bc
+  ld a, [bc]
+  ld [hld], a
+  dec l
+
+  ; Switch to the bank where the vwf font is located.
+
+  ld a, BANK(VWFFont)
+  rst $10
+
+  ; From here on out there is no reason for us to operate in bank 0 until the next character is required.
+
+  jp VWFDrawCharLoop
+  
+PutCharLoopWithBankswitch::
+  ld a, [VWFTrackBank]
+  rst $10 ;Swap to the correct bank
   jp PutCharLoop
   nop
   nop
   nop
-  ; 0x1ff2
+  nop
 
 hPSCounter             EQU $c640
 hPSTextAddrLo          EQU $c641

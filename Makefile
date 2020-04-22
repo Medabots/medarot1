@@ -14,6 +14,8 @@ SYM_TYPE := sym
 MAP_TYPE := map
 TSET_SRC_TYPE := 2bpp
 TSET_TYPE := malias
+VWF_TSET_SRC_TYPE := 1bpp
+VWF_TSET_TYPE := vwffont
 LIST_TYPE := bin
 TEXT_TYPE := txt
 PYTHON := python3
@@ -38,6 +40,7 @@ TILEMAP_OUT := $(BUILD)/tilemaps
 TILESET_BIN := $(GAME)/tilesets
 TILESET_TEXT := $(TEXT)/tilesets
 TILESET_OUT := $(BUILD)/tilesets
+VWF_TILESET_TEXT = $(TILESET_TEXT)/VWF
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
@@ -45,6 +48,7 @@ TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
 TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
+VWF_TILESETS := $(notdir $(basename $(wildcard $(VWF_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 
 #Compiler/Linker
 CC := rgbasm
@@ -68,10 +72,11 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$
 BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
+VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 
-gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
+gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES) $(VWF_TILESET_FILES)
 story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
 
 all: $(TARGET_OUT)
@@ -96,6 +101,9 @@ $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tile
 
 $(TILESET_OUT)/%.$(TSET_TYPE): $(TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
+
+$(TILESET_OUT)/%.$(VWF_TSET_TYPE): $(VWF_TILESET_TEXT)/%.$(VWF_TSET_SRC_TYPE) | $(TILESET_OUT)
+	cp $< $@
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
@@ -130,6 +138,7 @@ clean:
 list_files:  $(LISTS_FILES)
 ptrlist_files: $(PTRLISTS_FILES)
 tileset_files: $(TILESET_FILES)
+vwf_tileset_files: $(VWF_TILESET_FILES)
 
 #Make directories if necessary
 $(BUILD):
