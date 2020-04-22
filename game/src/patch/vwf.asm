@@ -42,6 +42,13 @@ VWFWordLengthTest::
 	pop bc
 	ret
 
+; Tilemaps are loaded from a different branch, so we make sure to keep track
+LoadTilemapInWindowWrapper:
+	call $0f84
+	ld a, BANK(VWFDrawCharLoop)
+	rst $10
+	ret
+
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
 	; This determines the width of each character (excluding the 1px between characters).
@@ -508,7 +515,7 @@ VWFChar4F::
 	ld b, $1
 	ld c, $1
 	ld e, $2f
-	call $0f84
+	call LoadTilemapInWindowWrapper
 
 	; Clearing some basic variables.
 
@@ -536,7 +543,7 @@ VWFChar4E::
 	call VWFResetForNewline
 	call VWFIncTextOffset
 	pop hl
-	jp PutCharLoopWithBankswitch
+	jp PutCharLoopWithBankSwitch
 
 VWFChar4D::
 	; Text speed.
@@ -647,7 +654,7 @@ VWFChar4B::
 	call VWFIncTextOffset
 	call VWFIncTextOffset
 	call VWFIncTextOffset
-	jp PutCharLoopWithBankswitch
+	jp PutCharLoopWithBankSwitch
 
 .notEndCode
 	ld [VWFCurrentLetter], a
@@ -659,7 +666,7 @@ VWFChar4B::
 	ld a, [$c6c5]
 	inc a
 	ld [$c6c5], a
-	jp PutCharLoopWithBankswitch
+	jp PutCharLoopWithBankSwitch
 
 VWFChar4A::
 	; New text box without user input.

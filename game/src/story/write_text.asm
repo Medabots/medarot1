@@ -81,7 +81,7 @@ PutChar:
   ld [VWFTrackBank], a
   rst $10
   
-PutCharLoop:: ;1d11, things jump to here after the control code
+PutCharLoop: ;1d11, things jump to here after the control code
   push hl
   ld a, $1 ; GetTextOffset
   rst $8
@@ -89,7 +89,6 @@ PutCharLoop:: ;1d11, things jump to here after the control code
   call GetNextChar
 
   ; Store the current character index as well as potential arguments for control codes in WRAM. Point hl to WRAM location.
-
   ld b, h
   ld c, l
   call VWFWordLengthTest
@@ -105,18 +104,18 @@ PutCharLoop:: ;1d11, things jump to here after the control code
   dec l
 
   ; Switch to the bank where the vwf font is located.
-
   ld a, BANK(VWFFont)
   rst $10
-
-  ; From here on out there is no reason for us to operate in bank 0 until the next character is required.
-
-  jp VWFDrawCharLoop
   
-PutCharLoopWithBankswitch::
+  ; From here on out there is no reason for us to operate in bank 0 until the next character is required.
+  jp VWFDrawCharLoop
+
+PutCharLoopWithBankSwitch::
+  ; Swap to the bank with the text before jumping back
   ld a, [VWFTrackBank]
-  rst $10 ;Swap to the correct bank
-  jp PutCharLoop
+  rst $10
+  jr PutCharLoop
+  nop
   nop
   nop
   nop
