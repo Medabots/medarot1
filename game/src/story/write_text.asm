@@ -92,6 +92,7 @@ PutCharLoop:: ;1d11, things jump to here after the control code
 
   ld b, h
   ld c, l
+  call VWFWordLengthTest
   ld hl, VWFCurrentLetter
   ld a, [bc]
   ld [hli], a
@@ -116,9 +117,6 @@ PutCharLoopWithBankswitch::
   ld a, [VWFTrackBank]
   rst $10 ;Swap to the correct bank
   jp PutCharLoop
-  nop
-  nop
-  nop
   nop
   nop
   nop

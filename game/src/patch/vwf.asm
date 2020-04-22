@@ -1,17 +1,46 @@
-SECTION "VWF Variables", WRAMX[$DC00], BANK[$1]
-VWFTilesDrawn:: ds 1
-VWFCurrentLetter:: ds 1
-VWFControlCodeArguments:: ds 2
-VWFCompositeAreaAddress:: ds 2
-VWFLetterShift:: ds 1
-VWFOldTileMode:: ds 1
-VWFTileBaseIdx:: ds 1
-VWFIsInit:: ds 1
-VWFIsSecondLine:: ds 1
-VWFTrackBank:: ds 1
+SECTION "VWF Word Length Tester", ROM0[$1D6B]
+VWFWordLengthTest::
+	ld a, [hl]
+	or a
+	ret nz
+	xor a
+	ld [VWFNextWordLength], a
+	push bc
 
-SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
-VWFCompositeArea:: ds $30
+.loop
+	ld d, h
+	ld e, l
+	push hl
+	ld hl, VWFCurrentLetter
+	ld b, $C
+
+	; Buffer up to 10 characters + 2 potential arguments.
+
+.bufferLoop
+	ld a, [de]
+	ld [hli], a
+	inc de
+	dec b
+	jr nz, .bufferLoop
+
+	ld hl, VWFCurrentLetter
+	ld a, BANK(VWFMeasureCharacter)
+	rst $10
+
+	call VWFMeasureStringPart
+
+	ld a, [VWFTrackBank]
+	pop hl
+	jr nz, .exitLoop
+	ld d, 0
+	add hl, de
+	rst $10
+	jr .loop
+
+.exitLoop
+	rst $10
+	pop bc
+	ret
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
@@ -44,13 +73,13 @@ VWFMessageBoxInputHandler::
 	; Advance on button press.
 
 	ld a, [hJPInputChanged]
-	and hJPInputA + hJPInputB
+	and hJPInputA | hJPInputB
 	ret nz
 
 	; Auto-advance if button held down.
 
 	ld a, [hJPInputHeldDown]
-	and hJPInputA + hJPInputB
+	and hJPInputA | hJPInputB
 	ret z
 
 	; Wait 10 frames before advancing.
@@ -94,9 +123,147 @@ VWFDecTextOffset::
 	ld [WTextOffsetHi], a
 	ret
 
+VWFCountChar4B::
+	inc hl
+	push hl
+	rst $38
+
+.loop
+	; Abort count if the counted text is already too long.
+
+	ld a, [VWFNextWordLength]
+	ld d, a
+	ld a, [VWFTextLength]
+	add d
+	jr c, .endCode
+	cp $89
+	jr nc, .endCode
+
+	ld a, [hl]
+	cp $50
+	jr z, .endCode
+	call VWFMeasureCharacter
+	jr .loop
+
+.endCode
+	pop hl
+	inc hl
+	inc hl
+	inc e
+	inc e
+	inc e
+	ret
+
+VWFMeasureStringPart::
+	; Measures 10 characters at a time. The remaining 2 buffered characters are reserved for if the 9th or 10th character is a 4B control code.
+
+	ld e, 0
+
+.loop
+	ld a, e
+	cp $A
+	jp nc, .exit
+	ld a, [VWFNextWordLength]
+	or a
+	ld a, [hl]
+	
+	; Space only acts as a terminator after the first character, since the string we are counting will contain a leading space.
+	
+	jr z, .ignoreFirstSpace
+	or a
+	jp nz, .ignoreFirstSpace
+	xor a
+	inc a
+	ret
+
+.ignoreFirstSpace
+	; Count substrings.
+	
+	cp $4b
+	jp z, VWFCountChar4B
+	
+	; Treat 4D as zero length and skip its argument.
+	
+	cp $4d
+	jr nz, .not4D
+
+	inc e
+	inc e
+	jr .loop
+
+.not4D
+	; Treat 4F, 4E, 4C, 4A, and 49 as terminators.
+
+	cp $4f
+	jr z, .foundTerminator
+	cp $4e
+	jr z, .foundTerminator
+	cp $4c
+	jr z, .foundTerminator
+	cp $4a
+	jr z, .foundTerminator
+	cp $49
+	jr z, .foundTerminator
+
+	; Abort count if the counted text is already too long.
+
+	ld a, [VWFNextWordLength]
+	ld d, a
+	ld a, [VWFTextLength]
+	add d
+	jr c, .foundTerminator
+	cp $89
+	jr nc, .foundTerminator
+
+	; Measure character.
+
+	ld a, [hl]
+	call VWFMeasureCharacter
+	inc e
+	jr .loop
+
+.exit
+	xor a
+	ret
+
+.foundTerminator
+	xor a
+	inc a
+	ret
+	
+VWFMeasureCharacter::
+	push hl
+	ld h, VWFDrawLetterTable >> 8
+	ld l, a
+	ld d, [hl]
+	ld a, [VWFNextWordLength]
+	add d
+	inc a
+	ld [VWFNextWordLength], a
+	pop hl
+	inc hl
+	ret
+
 VWFDrawCharLoop::
 	call VWFCheckInit
 	ld a, [hl]
+	or a
+	jr nz, .notSpace
+
+	; Treat spaces as 49 control codes if they preceed a word that will overflow the current line.
+
+	ld a, [VWFNextWordLength]
+	ld d, a
+	ld a, [VWFTextLength]
+	add d
+	jp c, VWFChar49
+	cp $89
+	jp nc, VWFChar49
+
+.noAutoLinebreak
+	ld a, [hl]
+
+.notSpace
 	cp $4f
 	jp z, VWFChar4F
 	cp $4e
@@ -221,6 +388,7 @@ VWFResetForNewline::
 .common
 	ld [VWFOldTileMode], a
 	ld [VWFLetterShift], a
+	ld [VWFTextLength], a
 
 	push hl
 	ld hl, VWFCompositeArea
@@ -437,7 +605,6 @@ VWFChar4C::
 	ld l, $72
 
 .windowUsedB
-	add hl, bc
 	xor a
 	di
 	call WaitLCDController
@@ -604,8 +771,11 @@ VWFDrawLetter::
 	ld a, [VWFCurrentLetter]
 	ld h, VWFDrawLetterTable >> 8
 	ld l, a
-	xor a
 	ld b, [hl]
+	ld a, [VWFTextLength]
+	add b
+	inc a
+	ld [VWFTextLength], a
 
 	; Check if the character overflows into the next tile.
 
