@@ -22,7 +22,7 @@ def transform_line(line):
 	line = (line or "")
 	for ptr in ptr_names.keys():
 		line = line.replace("<&{0:X}>".format(ptr, 'x').lower(), "<&{0}>".format(ptr_names[ptr]))
-	return line.replace('\n\n','<49>').replace('\n','<49>').replace('"','""')
+	return line.replace('\n\n','<4C>').replace('\n','<49>').replace('"','""')
 
 xlsx = sys.argv[1]
 csvdir = sys.argv[2]
