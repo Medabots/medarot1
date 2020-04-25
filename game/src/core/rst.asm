@@ -14,16 +14,18 @@ SECTION "rst8",ROM0[$8] ; HackPredef
 SECTION "rst8Cont",ROM0[$62] ;Replaces a bunch of empty space
 Rst8Cont:
   ld a, [hBank]
-  ld [BankOld], a
+  push af
   ld a, BANK(HackPredef)
   rst $10
   ld a, [TempA]
   call HackPredef
   ld [TempA], a
-  ld a, [BankOld]
+  pop af
   rst $10
   ld a, [TempA]
   ret
+  nop
+  nop
 
 SECTION "rst10, bank swap",ROM0[$10]
   ld [hBank], a
