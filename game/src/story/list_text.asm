@@ -237,7 +237,7 @@ LoadInventoryScreen:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call $0264
+  call JumpPutString
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
@@ -331,7 +331,7 @@ LoadMedalScreen:
   ld a, [$c645]
   ld c, a
   ld hl, cBUF01
-  call $0264
+  call JumpPutString
   ld a, [$c644]
   ld h, a
   ld a, [$c645]

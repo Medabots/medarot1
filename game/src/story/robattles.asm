@@ -292,7 +292,7 @@ RobattlePartScreen:
   ld hl, $0002
   add hl, de
   push hl
-  call $028e
+  call JumpPadTextTo8
   ld h, $0
   ld l, a
   ld bc, $984b
@@ -300,7 +300,7 @@ RobattlePartScreen:
   ld b, h
   ld c, l
   pop hl
-  call $0264
+  call JumpPutString
   pop de
   push de
   ld hl, $0081
@@ -319,7 +319,7 @@ RobattlePartScreen:
   call $0282
   ld hl, cBUF01
   ld bc, $98ac
-  call $0264
+  call JumpPutString
   pop de
   call $6fc4
   ld hl, $000d
@@ -375,7 +375,7 @@ RobattleMedarotInfoLoadHead:
   call $0294
   ld hl, cBUF01
   ld bc, $9949
-  call $0264
+  call JumpPutString
   ret
 RobattleMedarotInfoLoadRArm:
   ld a, [$a03f]
@@ -393,7 +393,7 @@ RobattleMedarotInfoLoadRArm:
   call $0294
   ld hl, cBUF01
   ld bc, $9989
-  call $0264
+  call JumpPutString
   ret
 RobattleMedarotInfoLoadLArm:
   ld a, [$a041]
@@ -411,7 +411,7 @@ RobattleMedarotInfoLoadLArm:
   call $0294
   ld hl, cBUF01
   ld bc, $99c9
-  call $0264
+  call JumpPutString
   ret
 RobattleMedarotInfoLoadLegs:
   ld a, [$a043]
@@ -429,7 +429,7 @@ RobattleMedarotInfoLoadLegs:
   call $0294
   ld hl, cBUF01
   ld bc, $9a09
-  call $0264
+  call JumpPutString
   ret
 ; 0x6edcc
 
@@ -516,7 +516,7 @@ RobattleLoadText:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  call $028e
+  call JumpPadTextTo8
   ld hl, $99c6
   ld b, $0
   ld c, a
@@ -524,7 +524,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call $0264
+  call JumpPutString
   ret
   ld hl, $000e
   add hl, de
@@ -554,7 +554,7 @@ RobattleLoadText:
   call $0294
   ld hl, cBUF01
   ld bc, $9a0b
-  call $0264
+  call JumpPutString
   ret
   ld hl, $000f
   add hl, de
@@ -592,7 +592,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call $0264
+  call JumpPutString
   ret
   nop
   nop

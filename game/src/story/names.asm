@@ -40,7 +40,7 @@ SetupInitialNameScreen: ;4a9f
   call $015c
   ld hl, cBUF01
   ld bc, $984a
-  call $0264
+  call JumpPutString
   call $5213
   ld a, $1
   ld [$ffa0], a

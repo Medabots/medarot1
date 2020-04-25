@@ -58,14 +58,14 @@ LoadMedalStatScreen:
   call $0282
   ld bc, $9841
   ld hl, cBUF01
-  call $028e
+  call JumpPadTextTo8
   ld h, $0
   ld l, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call $0264
+  call JumpPutString
   call $5e27
   jp $5788
   ld a, [$c6f5]
@@ -107,7 +107,7 @@ LoadMedalStatScreenAttribute:
   ; UNUSED CODE
   ; Checks string length for padding
   push hl
-  call $028e
+  call JumpPadTextTo8
   ld h, $0
   ld l, a
   add hl, bc

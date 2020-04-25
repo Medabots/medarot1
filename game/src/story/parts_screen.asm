@@ -70,7 +70,7 @@ LoadPartsScreenPartName:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call $0264
+  call JumpPutString
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
@@ -186,7 +186,7 @@ LoadPartsScreenPartModel:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call $0264
+  call JumpPutString
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
@@ -343,7 +343,7 @@ LoadPartInfo:
   ld b, $0
   call $0294
   ld hl, cBUF01
-  call $028e
+  call JumpPadTextTo8
   ld h, $0
   ld l, a
   ld bc, $9901
@@ -351,7 +351,7 @@ LoadPartInfo:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call $0264
+  call JumpPutString
   ret
 ; 0xa778
 
