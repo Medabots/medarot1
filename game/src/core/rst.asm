@@ -26,6 +26,8 @@ Rst8Cont:
   ret
   nop
   nop
+  nop
+  nop
 
 SECTION "rst10, bank swap",ROM0[$10]
   ld [hBank], a
