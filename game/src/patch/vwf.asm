@@ -740,6 +740,178 @@ VWFTileIdx2Ptr::
 	ld h, a
 	ret
 
+VWFPutStringInit::
+	; Save initial PutString arguments.
+
+	ld a, c
+	ld [VWFMappingAddress], a
+	ld a, b
+	ld [VWFMappingAddress + 1], a
+
+	; Prepare ring buffer drawing location based on last offset.
+
+	call VWFGetRingBufferOffset
+	ld [VWFTilesDrawn], a
+	ld a, $C0
+	ld [VWFTileBaseIdx], a
+
+	; Prepare variables for centred text (if applicable) and where to draw to.
+
+	ld a, [VWFInitialOffset]
+	ld [VWFLetterShift], a
+
+	; Reset some variables, including VWFInitialOffset so that it can't be accidentally picked up by later calls to PutString.
+
+	xor a
+	ld [VWFOldTileMode], a
+	ld [VWFInitialOffset], a
+	ld [VWFTextLength], a
+
+	; Clear the first tile in the composite area to avoid visual bugs with centred text.
+
+	push hl
+	ld hl, VWFCompositeArea
+	ld b, $10
+	jp VWFResetForNewline.clearCompositeAreaLoop
+
+VWFPutStringDrawChar::
+	; Draw the character.
+
+	call VWFWriteChar
+
+	; Check if VWFTilesDrawn is now outside the ring buffer.
+
+	ld a, [VWFTilesDrawn]
+	cp $30
+	jr nc, .outsideRange
+	ret
+
+.outsideRange
+	; Get the index of the overflown tile.
+
+	ld a, [VWFTilesDrawn]
+	ld b, a
+	ld a, [VWFTileBaseIdx]
+	add b
+
+	; Get the address of the overflown tile.
+
+	call VWFTileIdx2Ptr
+
+	; Copy the overflown tile to the start of the ring buffer.
+
+	ld de, $8C00
+	ld b, 8
+.loop
+	di
+
+.wfb
+	ldh a, [hLCDStat]
+	and 2
+	jr nz, .wfb
+	
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	ei
+	inc de
+	dec b
+	jr nz, .loop
+
+	; Set VWFTilesDrawn to the start of the ring buffer.
+
+	xor a
+	ld [VWFTilesDrawn], a
+	ret
+
+VWFGetRingBufferOffset::
+	ld a, [VWFRingBufferOffset]
+	cp $30
+	jr nc, .outsideRange
+	ret
+	
+.outsideRange
+	sub $30
+	cp $30
+	jr nc, .outsideRange
+	ld [VWFRingBufferOffset], a
+	ret
+
+VWFMapRenderedString::
+	; Get the new ring buffer offset.
+
+	ld a, [VWFTilesDrawn]
+	ld d, a
+	ld a, [VWFLetterShift]
+	or a
+	jr z, .ignoreCurrentTile
+	inc d
+
+.ignoreCurrentTile
+	and $F8
+	jr z, .ignoreNextTile
+	inc d
+
+.ignoreNextTile
+	ld a, d
+
+.boundsCheck
+	cp $30
+	jr c, .insideRange
+	sub $30
+	jr .boundsCheck
+
+.insideRange
+	ld d, a
+
+	; Get the old ring buffer offset.
+
+	call VWFGetRingBufferOffset
+	ld e, a
+
+	; Save the new ring buffer offset.
+
+	ld a, d
+	ld [VWFRingBufferOffset], a
+
+	; Get the address we are mapping tiles to.
+
+	ld hl, VWFMappingAddress
+	rst $38
+
+	; Map tiles until the old ring buffer offset matches the new one.
+
+.loop
+	di
+
+.wfb
+	ldh a, [hLCDStat]
+	and 2
+	jr nz, .wfb
+
+	ld a, e
+	add $C0
+	ld [hli], a
+	ei
+	ld a, e
+	inc a
+
+.boundsCheckB
+	cp $30
+	jr c, .insideRangeB
+	sub $30
+	jr .boundsCheckB
+
+.insideRangeB
+	ld e, a
+	cp d
+	jr nz, .loop
+
+.exit
+	ret
+
 VWFDrawLetter::
 	ld a, [VWFCurrentLetter]
 

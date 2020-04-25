@@ -20,9 +20,9 @@ HackPredefTable:
   dw GetTextOffset ;1
   dw ZeroTextOffset ;2
   dw IncrementTileOffset ;3
-  dw ClearTextBox ;4
-  dw CheckCallClearTextBox ;5
-  dw SkipSpaceHack ; 6
+  dw VWFPutStringInit ;4
+  dw VWFPutStringDrawChar ;5
+  dw VWFMapRenderedString ; 6
   dw SetInitialName ; 7
   dw SetNextChar ; 8
   dw CheckIncTextOffset ; 9
@@ -143,50 +143,6 @@ IncrementTileOffset:
   ld [$c6c2], a
   ld a, l
   ld [$c6c3], a
-  ret
-
-ClearTextBox:
-  push af
-  push bc
-  push hl
-  ld c, $1
-.clear_lines
-  ld hl, hLineVRAMStart + $1 ; Actual start point is 9C21, not 9C20
-  ld b, c
-.inc_line_offset
-  ld a, hLineOffset
-  rst $28
-  dec b
-  jr nz, .inc_line_offset
-  ld b, hLineMax
-  xor a
-.clear_line
-  di
-  call WaitLCDController
-  ld [hli], a
-  ei
-  dec b
-  jr nz, .clear_line
-  inc c
-  ld a, hLineCount
-  cp c
-  jr nc, .clear_lines
-  pop hl
-  pop bc
-  pop af
-  ret
-
-CheckCallClearTextBox:
-  ld a, [FlagClearText]
-  cp $0
-  jr z, .check_clear_text_ret
-  call ClearTextBox
-  xor a
-  ld [FlagClearText], a
-.check_clear_text_ret
-  ret
-
-SkipSpaceHack:: ; TODO: Move SkipSpace logic here from core_hack.asm to save space 
   ret
 
 SetInitialName: ; TODO: In the future, we might be able to just set this as a loop and pull it from a build obj for different language support

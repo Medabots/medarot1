@@ -12,6 +12,9 @@ VWFIsSecondLine:: ds 1
 VWFTrackBank:: ds 1
 VWFTextLength:: ds 1
 VWFNextWordLength:: ds 1
+VWFInitialOffset:: ds 1
+VWFRingBufferOffset:: ds 1
+VWFMappingAddress:: ds 2
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30

@@ -129,6 +129,31 @@ hPSCurrChar            EQU $c64e
 hPSCurrCharTile        EQU $c64f
 SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
+	; hl is the address of the string to print, terminated by 0x50.
+	; bc is the address we are mapping tiles to.
+	; Prints text to a ring buffer from 8C00 to 8F1F.
+	; PutChar and PutString should never ever be used on the same screen as each other or shit will break.
+
+	ld a, 4
+	rst $8 ; VWFPutStringInit
+
+.loop
+	ld a, [hli]
+	cp $50
+	jr z, .exit
+	push hl
+	ld [VWFCurrentLetter], a
+	ld a, 5
+	rst $8 ; VWFPutStringDrawChar
+	pop hl
+	jr .loop
+
+.exit
+	ld a, 6
+	rst $8 ; VWFMapRenderedString
+	ret
+
+PutStringLegacy::
   ; hl is ptr to string to print, terminated by 0x50
   ; bc is VRAM address to write to
   xor a
@@ -186,29 +211,6 @@ PutString:: ; 2fcf
 .continue
   ld [hPSCounter], a
   jr .loop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
   nop
   nop
   nop
