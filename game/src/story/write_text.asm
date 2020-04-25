@@ -223,3 +223,25 @@ PutString:: ; 2fcf
   ld a, l
   ld [hPSTextAddrLo], a
   jp .char
+
+SECTION "PadTextTo8", ROM0[$34c4]
+; Centers text given 8 tiles
+; [hl] = text
+PadTextTo8:: ; 34c4
+  push hl
+  push bc
+  ld b, $0
+.asm_34c8
+  ld a, [hli]
+  cp $50
+  jr z, .asm_34d0 ; 0x34cb $3
+  inc b
+  jr .asm_34c8 ; 0x34ce $f8
+.asm_34d0
+  ld a, $8
+  sub b
+  srl a
+  pop bc
+  pop hl
+  ret
+; 0x34d8

@@ -24,7 +24,7 @@ LoadMedarotPartSelectMedal:
   call $0282
   ld hl, cBUF01
   ld bc, $98ac
-  call $0264
+  call JumpPutString
   ret
 LoadMedarotPartSelectHead:
   ld a, [$a03d]
@@ -49,7 +49,7 @@ LoadMedarotPartSelectHead:
   call $0294
   ld hl, cBUF01
   ld bc, $9949
-  call $0264
+  call JumpPutString
   ret
 LoadMedarotPartSelectRArm:
   ld a, [$a03f]
@@ -74,7 +74,7 @@ LoadMedarotPartSelectRArm:
   call $0294
   ld hl, cBUF01
   ld bc, $9989
-  call $0264
+  call JumpPutString
   ret
 LoadMedarotPartSelectLArm:
   ld a, [$a041]
@@ -99,7 +99,7 @@ LoadMedarotPartSelectLArm:
   call $0294
   ld hl, cBUF01
   ld bc, $99c9
-  call $0264
+  call JumpPutString
   ret
 ; 0xafbc
 LoadMedarotPartSelectLegs:
@@ -126,7 +126,7 @@ LoadMedarotPartSelectLegs:
   call $0294
   ld hl, cBUF01
   ld bc, $9a09
-  call $0264
+  call JumpPutString
   ret
 ; 0xaff0
 
@@ -183,6 +183,6 @@ LoadMedarotPartSelectSkills:
   ld h, [hl]
   ld l, a
   ld bc, $98ec
-  call $0264
+  call JumpPutString
   ret
 ; 0xb685
