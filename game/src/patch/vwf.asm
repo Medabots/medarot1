@@ -502,7 +502,6 @@ VWFCalculateCentredTextOffsets::
 
 .withinLimits
 	ld e, 0
-	ld a, d
 	rra
 
 .loop
