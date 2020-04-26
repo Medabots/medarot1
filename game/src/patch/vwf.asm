@@ -49,6 +49,63 @@ LoadTilemapInWindowWrapper:
 	rst $10
 	ret
 
+VWFPutStringTo8::
+	ld a, 8
+	; Continues into VWFPutString.
+
+VWFPutString::
+	; hl is the address of the string to print, terminated by 0x50.
+	; a is the number of tiles our drawing area is comprised of.
+	; b is the tile index of our drawing area.
+	; c is a single-byte representation of an address for mapping tiles to.
+
+	ld [VWFTileLength], a
+	ld a, 4
+	rst $8 ; VWFPutStringInit
+
+.loop
+	ld a, [hli]
+	cp $50
+	jr z, .exit
+	push hl
+	ld [VWFCurrentLetter], a
+	ld a, 5
+	rst $8 ; VWFWriteChar
+	pop hl
+	jr .loop
+
+.exit
+	ld a, 6
+	rst $8 ; VWFMapRenderedString
+	ret
+
+VWFPadTextTo8::
+	ld a, 8
+	; Continues into VWFPadText.
+	
+VWFPadText::
+	ld [VWFTileLength], a
+	xor a
+	rst $8 ; VWFPadTextInit
+
+.loop
+	ld a, [hli]
+	cp $50
+	jr z, .exit
+	push hl
+	ld [VWFCurrentLetter], a
+	ld a, 3
+	rst $8 ; VWFCountCharForCentring
+	pop hl
+	jr .loop
+
+.exit
+	ld a, 9
+	rst $8 ; VWFCalculateCentredTextOffsets
+	
+	xor a
+	ret
+
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
 	; This determines the width of each character (excluding the 1px between characters).
@@ -290,6 +347,9 @@ VWFDrawCharLoop::
 	jp VWFIncTextOffset
 
 VWFEmptyDrawingRegion::
+	ld c, 4
+
+.loop
 	di
 
 .wfb
@@ -302,6 +362,8 @@ VWFEmptyDrawingRegion::
 	ld [hli], a
 	ld [hli], a
 	ei
+	dec c
+	jr nz, .loop
 	dec b
 	jr nz, VWFEmptyDrawingRegion
 	ret
@@ -376,7 +438,7 @@ VWFResetMessageBoxTilemaps::
 
 VWFResetMessageBox::
 	push hl
-	ld b, $88
+	ld b, $22
 	ld hl, $8D00
 	call VWFEmptyDrawingRegion
 	pop hl
@@ -406,6 +468,138 @@ VWFResetForNewline::
 	dec b
 	jr nz, .clearCompositeAreaLoop
 	pop hl
+	ret
+
+VWFPadTextInit::
+	ld a, [VWFTileLength]
+	add a
+	add a
+	add a
+	ld [VWFDrawingAreaLengthInPixels], a
+	xor a
+	ld [VWFNextWordLength], a
+	ret
+
+VWFCountCharForCentring::
+	ld a, [VWFNextWordLength]
+	ld d, a
+	ld a, [VWFDrawingAreaLengthInPixels]
+	cp d
+	ret c
+	ld a, [VWFCurrentLetter]
+	call VWFMeasureCharacter
+	ret
+
+VWFCalculateCentredTextOffsets::
+	ld a, [VWFNextWordLength]
+	ld d, a
+	ld a, [VWFDrawingAreaLengthInPixels]
+	sub d
+	jr nc, .withinLimits
+	xor a
+	ld [VWFInitialLetterOffset], a
+	ld [VWFInitialTileOffset], a
+
+.withinLimits
+	ld e, 0
+	ld a, d
+	rra
+
+.loop
+	cp 8
+	jr c, .exitLoop
+	sub 8
+	inc e
+	jr .loop
+
+.exitLoop
+	ld [VWFInitialLetterOffset], a
+	ld a, e
+	ld [VWFInitialTileOffset], a
+	ret
+
+VWFPutStringInit::
+	; Store mapping location.
+
+	ld a, c
+	ld [VWFTileMappingPseudoIndex], a
+
+	; Store drawing location.
+
+	ld a, b
+	ld [VWFTileBaseIdx], a
+
+	; Store text centring offsets.
+
+	ld a, [VWFInitialLetterOffset]
+	ld [VWFLetterShift], a
+
+	ld a, [VWFInitialTileOffset]
+	ld [VWFTilesDrawn], a
+
+	; Reset some variables, including the centring variables so that they can't be accidentally picked up by later calls to VWFPutString.
+
+	xor a
+	ld [VWFOldTileMode], a
+	ld [VWFInitialLetterOffset], a
+	ld [VWFInitialTileOffset], a
+	ld [VWFTextLength], a
+
+	; Clear all tiles in the designated drawing region.
+
+	push hl
+
+	ld a, [VWFTileBaseIdx]
+	call VWFTileIdx2Ptr
+	ld a, [VWFTileLength]
+	ld b, a
+	call VWFEmptyDrawingRegion
+
+	; Clear the first tile in the composite area to avoid visual bugs with centred text.
+
+	ld hl, VWFCompositeArea
+	ld b, $10
+
+	; hl is popped after the jump.
+
+	jp VWFResetForNewline.clearCompositeAreaLoop
+
+VWFMapRenderedString::
+	; Converts our 1 byte representation into a full address for mapping tiles.
+
+	ld h, $4C
+	ld a, [VWFTileMappingPseudoIndex]
+	add $10
+	and $F0
+	ld l, a
+	add hl, hl
+	ld a, [VWFTileMappingPseudoIndex]
+	inc a
+	and $F
+	add l
+	ld l, a
+
+	; Map all tiles within the drawing area.
+
+	ld a, [VWFTileBaseIdx]
+	ld c, a
+	ld a, [VWFTileLength]
+	ld b, a
+
+.loop
+	di
+
+.wfb
+	ldh a, [hLCDStat]
+	and 2
+	jr nz, .wfb
+
+	ld a, c
+	ld [hli], a
+	ei
+	inc c
+	dec b
+	jr nz, .loop
 	ret
 
 VWFChar4F::

@@ -343,15 +343,15 @@ LoadPartInfo:
   ld b, $0
   call $0294
   ld hl, cBUF01
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $9901
+  psbc $9901, $be
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  call VWFPutStringTo8
   ret
 ; 0xa778
 
