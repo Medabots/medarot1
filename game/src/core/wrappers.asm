@@ -5,6 +5,9 @@ JumpPutString:: jp WrapPutString
 SECTION "JumpTable_1", ROM0[$028e]
 JumpPadTextTo8:: jp WrapPadTextTo8
 
+SECTION "JumpTable_2", ROM0[$02a6]
+JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
+
 SECTION "Wrappers_0", ROM0[$072c]
 WrapPutString:
 	call PutString
@@ -14,3 +17,18 @@ SECTION "Wrappers_1", ROM0[$0784]
 WrapPadTextTo8:
 	call PadTextTo8
 	ret
+
+SECTION "Wrappers_2", ROM0[$07eb]
+WrapRobattleSetupMedarotSelect:
+  push af
+  ld a, [$c6e0]
+  ld [$c6e1], a
+  ld a, $2
+  ld [$2000], a
+  ld [$c6e0], a
+  pop af
+  call RobattleSetupMedarotSelect
+  ld a, [$c6e1]
+  ld [$c6e0], a
+  rst $18
+  ret
