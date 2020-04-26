@@ -100,18 +100,17 @@ LoadMedalStatScreenAttribute:
   sla c
   rl b
   add hl, bc
-  ld bc, $9881
+  psbc $9881, $be
   ld d, BANK(LoadMedalStatScreenAttribute)
   ld e, BANK(AttributesPtr)
-  jp PrintPtrText
-  ; UNUSED CODE
   ; Checks string length for padding
   push hl
-  call JumpPadTextTo8
+  call PadPtrTextTo8
   ld h, $0
   ld l, a
   add hl, bc
   ld b, h
   ld c, l
   pop hl
+  jp PrintPtrText
 ; 0x9e57

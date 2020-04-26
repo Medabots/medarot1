@@ -179,7 +179,7 @@ LoadMedarotPartSelectSkills:
   sla c
   rl b
   add hl, bc
-  ld bc, $98ec
+  psbc $98ec, $be
   ld d, BANK(LoadSkill)
   ld e, BANK(SkillsPtr)
   jp PrintPtrText
