@@ -387,7 +387,6 @@ LoadPartDescription:
   psbc $99e1, $ce ; original 9a01
   ld a, $12
   call VWFPutString
-  nop
   psbc $9a01, $e0
   jp VWFPutString
 ; 0x3942
