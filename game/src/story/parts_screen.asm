@@ -376,7 +376,7 @@ SECTION "Load Part Description", ROM0[$3926]
 LoadPartDescription:
   push af
   ld a, BANK(PartDescriptionsPtr)
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, PartDescriptionsPtr
   ld b, $0
@@ -384,12 +384,13 @@ LoadPartDescription:
   sla c
   rl b
   add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $99e1 ; original 9a01
-  call PutString
+  rst $38
+  psbc $99e1, $d6 ; originally 9a01
+  ld a, $12
+  call VWFPutString
   ret
+  nop
+  nop
 ; 0x3942
 
 SECTION "Load Skill", ROMX[$67a6], BANK[$2]
