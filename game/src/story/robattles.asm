@@ -480,7 +480,7 @@ RobattleMedarotInfoLoadSkill:
   sla c
   rl b
   add hl, bc
-  ld bc, $98ec
+  psbc $98ec, $be
   push de
   ld d, BANK(RobattleMedarotInfoLoadSkill)
   ld e, BANK(SkillsPtr)  

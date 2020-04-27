@@ -366,7 +366,7 @@ LoadAttribute:
   sla c
   rl b
   add hl, bc
-  ld bc, $9941
+  psbc $9941, $c6
   ld d, BANK(LoadAttribute)
   ld e, BANK(AttributesPtr)
   jp PrintPtrText
@@ -385,7 +385,7 @@ LoadPartDescription:
   rl b
   add hl, bc
   rst $38
-  psbc $9a01, $d6
+  psbc $99e1, $d6 ; original 9a01
   ld a, $12
   call VWFPutString
   ret
@@ -412,7 +412,7 @@ LoadSkill:
   sla c
   rl b
   add hl, bc
-  ld bc, $99a1 ; original 99c1
+  psbc $99a1, $ce
   ld d, BANK(LoadSkill)
   ld e, BANK(SkillsPtr)  
   jp PrintPtrText
