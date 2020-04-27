@@ -19,3 +19,7 @@ dbww: MACRO
 psbc: MACRO
   ld bc, (((\2&$FF)*$100)+((((\1-$20)>>1)&$F0)+((\1-1)&$F)))
   ENDM
+
+psa: MACRO
+  ld a, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
+  ENDM

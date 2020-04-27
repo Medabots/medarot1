@@ -1,8 +1,8 @@
 SECTION "Load Parts Screen, Part Name", ROMX[$62f7], BANK[$2]
 LoadPartsScreenPartName:
-  ld a, $98
+  ld a, $be
   ld [$c644], a
-  ld a, $a8
+  psa $98a8
   ld [$c645], a
   ld a, [$c727]
   cp $0
@@ -70,12 +70,12 @@ LoadPartsScreenPartName:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call JumpPutString
+  call VWFPutStringTo8
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
   ld l, a
-  ld bc, $0040
+  ld bc, $0820
   add hl, bc
   ld a, h
   ld [$c644], a
@@ -378,19 +378,17 @@ LoadPartDescription:
   ld a, BANK(PartDescriptionsPtr)
   rst $10
   pop af
-  ld hl, PartDescriptionsPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
+  ld bc, PartDescriptionsPtr
+  ld h, 0
+  ld l, a
+  add hl, hl
   add hl, bc
   rst $38
-  psbc $99e1, $d6 ; original 9a01
+  psbc $99e1, $ce ; original 9a01
   ld a, $12
   call VWFPutString
-  ret
-  nop
-  nop
+  psbc $9a01, $e0
+  jp VWFPutString
 ; 0x3942
 
 SECTION "Load Skill", ROMX[$67a6], BANK[$2]
@@ -412,7 +410,7 @@ LoadSkill:
   sla c
   rl b
   add hl, bc
-  psbc $99a1, $ce
+  psbc $99a1, $45
   ld d, BANK(LoadSkill)
   ld e, BANK(SkillsPtr)  
   jp PrintPtrText
