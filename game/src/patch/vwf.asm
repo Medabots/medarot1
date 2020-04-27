@@ -67,6 +67,8 @@ VWFPutString::
   ld a, [hli]
   cp $50
   jr z, .exit
+  cp $49
+  jr z, .exit49
   push hl
   ld [VWFCurrentLetter], a
   ld a, 5
@@ -75,8 +77,13 @@ VWFPutString::
   jr .loop
 
 .exit
+  dec hl
+
+.exit49
+  push hl
   ld a, 6
   rst $8 ; VWFMapRenderedString
+  pop hl
   ret
 
 VWFPadTextTo8::
@@ -587,6 +594,7 @@ VWFMapRenderedString::
   ld c, a
   ld a, [VWFTileLength]
   ld b, a
+  ld d, a
 
 .loop
   di
@@ -602,6 +610,7 @@ VWFMapRenderedString::
   inc c
   dec b
   jr nz, .loop
+  ld a, d
   ret
 
 VWFChar4F::
