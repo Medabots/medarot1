@@ -568,8 +568,11 @@ VWFMapRenderedString::
 
   ld h, $4C
   ld a, [VWFTileMappingPseudoIndex]
-  add $10
   and $F0
+  add $10
+  jr nc, .noOverflow
+  inc h
+.noOverflow
   ld l, a
   add hl, hl
   ld a, [VWFTileMappingPseudoIndex]

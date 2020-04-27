@@ -385,7 +385,7 @@ LoadPartDescription:
   rl b
   add hl, bc
   rst $38
-  psbc $99e1, $d6 ; originally 9a01
+  psbc $9a01, $d6
   ld a, $12
   call VWFPutString
   ret
