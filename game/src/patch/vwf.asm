@@ -755,8 +755,9 @@ VWFChar4D::
 
   inc hl
   ld a, [hl]
-  ld [$c6c1], a
   ld [$c6c4], a
+  srl a
+  ld [$c6c1], a
   call VWFIncTextOffset
   call VWFIncTextOffset
   pop hl
@@ -853,6 +854,7 @@ VWFChar4B::
   ; Reset text speed timer.
 
   ld a, [$c6c4]
+  srl a
   ld [$c6c1], a
 
   pop hl
@@ -918,6 +920,7 @@ VWFWriteChar::
   ; Reset text speed timer.
 
   ld a, [$c6c4]
+  srl a
   ld [$c6c1], a
   ret
 
