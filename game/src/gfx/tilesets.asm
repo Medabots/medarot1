@@ -57,9 +57,10 @@ LoadTiles: ; 1214 (0:1214)
   ld a, [de]
   ld b, a
   inc de
+.read_next
   ld a, b
   or c
-  jp z, LoadTiles_Return
+  jp z, NoDecompressLoadTiles.return
   ld a, [de]
   ld [$c5f5], a
   inc de
@@ -68,12 +69,13 @@ LoadTiles: ; 1214 (0:1214)
   inc de
   ld a, $11
   ld [$c5f3], a
+.loop
   ld a, b
   or c
-  jp z, LoadTiles_Return
+  jp z, NoDecompressLoadTiles.return
   ld a, [$c5f3]
   dec a
-  jp z, $1227
+  jp z, .read_next
   ld [$c5f3], a
   push de
   ld a, [$c5f4]
@@ -86,7 +88,7 @@ LoadTiles: ; 1214 (0:1214)
   rr e
   ld a, e
   ld [$c5f5], a
-  jp c, $127f
+  jp c, .break_loop
   pop de
   ld a, [$c5f6]
   ld h, a
@@ -103,7 +105,8 @@ LoadTiles: ; 1214 (0:1214)
   ld [$c5f7], a
   dec bc
   inc de
-  jp $123b
+  jp .loop
+.break_loop
 ; 0x127f
   pop de
   push de
@@ -137,6 +140,7 @@ LoadTiles: ; 1214 (0:1214)
   ld h, a
   ld a, [$c5f7]
   ld l, a
+.write_to_vram
   di
   call WaitLCDController
   ld a, [de]
@@ -147,7 +151,7 @@ LoadTiles: ; 1214 (0:1214)
   ld a, [$c5f2]
   dec a
   ld [$c5f2], a
-  jp nz, $12af
+  jp nz, .write_to_vram
   ld a, h
   ld [$c5f6], a
   ld a, l
@@ -155,7 +159,7 @@ LoadTiles: ; 1214 (0:1214)
   pop de
   inc de
   inc de
-  jp $123b
+  jp .loop
 NoDecompressLoadTiles:
   ld a, [de]
   ld c, a
@@ -163,18 +167,19 @@ NoDecompressLoadTiles:
   ld a, [de]
   ld b, a
   inc de
+.loop
   ld a, b
   or c
-  jp z, LoadTiles_Return
+  jp z, .return
   ld a, [de]
   di
-  call $17cb
+  call WaitLCDController
   ld [hli], a
   ei
   inc de
   dec bc
-  jp $12d6
-LoadTiles_Return:
+  jp .loop
+.return:
   ret
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld [$c650], a ;Store font type
