@@ -60,7 +60,7 @@ LoadTiles: ; 1214 (0:1214)
 .read_next
   ld a, b
   or c
-  jp z, NoDecompressLoadTiles.return
+  ret z
   ld a, [de]
   ld [$c5f5], a
   inc de
@@ -72,7 +72,7 @@ LoadTiles: ; 1214 (0:1214)
 .loop
   ld a, b
   or c
-  jp z, NoDecompressLoadTiles.return
+  ret z
   ld a, [$c5f3]
   dec a
   jp z, .read_next
@@ -160,6 +160,34 @@ LoadTiles: ; 1214 (0:1214)
   inc de
   inc de
   jp .loop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+SECTION "Load Uncompressed Tiles", ROM0[$1DDD]
 NoDecompressLoadTiles:
   ld a, [de]
   ld c, a
@@ -167,20 +195,42 @@ NoDecompressLoadTiles:
   ld a, [de]
   ld b, a
   inc de
+
+  ld a, c
+  and 1
+  jr z, .loop
+
+  di
+  call WaitLCDController
+  ld a, [de]
+  ld [hli], a
+  ei
+  inc de
+  dec c
+
 .loop
   ld a, b
   or c
-  jp z, .return
-  ld a, [de]
+  ret z
   di
-  call WaitLCDController
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  ld a, [de]
+  ld [hli], a
+  inc de
+  ld a, [de]
   ld [hli], a
   ei
   inc de
   dec bc
-  jp .loop
-.return:
-  ret
+  dec c
+  jr .loop
+
+SECTION "Load Compressed Tiles", ROM0[$12E8]
 DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld [$c650], a ;Store font type
   ld a, b
@@ -208,8 +258,7 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
   ld h, [hl]
   ld l, a
   inc de
-  jr NoDecompressLoadTiles
-  nop
+  jp NoDecompressLoadTiles
   ld a, [$c6ce]
   or a
   jp nz, .asm_132e
