@@ -40,7 +40,7 @@ LoadFont_Sub: ; 10d3 (0:10d3)
   ld l, a
   ld a, [de] ;Load first byte at bank:offset (01 is compressed, 00 is not)
   inc de
-  jp $1214
+  jp LoadTiles
 ; 0x10ef
 
 SECTION "Load Tiles", ROM0[$1214]
