@@ -17,6 +17,7 @@ VWFInitialTileOffset:: ds 1
 VWFTileLength:: ds 1
 VWFDrawingAreaLengthInPixels:: ds 1
 VWFTileMappingPseudoIndex:: ds 1
+AsyncTileLastPosition:: ds 6
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30
