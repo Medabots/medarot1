@@ -50,17 +50,17 @@ SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
 LoadRobattleNames:
   ld hl, cNAME
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $9841
+  psbc $9841, $be
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ld a, BANK(MedarottersPtr)
-  ld [$2000], a
+  rst $10
   ld a, [$c753]
   ld hl, MedarottersPtr
   ld b, $0
@@ -96,29 +96,31 @@ LoadRobattleNames:
   or a
   jr nz, .asm_2f95 ; 0x2f81 $12
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $c6
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ret
 .asm_2f95
   ld hl, $c778
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $c6
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ret
+  nop
+  nop
 ; 0x2faa
 
 SECTION "Robattle Screen - Initialize", ROMX[$520c], BANK[$4]
