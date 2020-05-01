@@ -69,8 +69,8 @@ LoadMedarotPartSelectMedal:
   ld a, [hl]
   call $0282
   ld hl, cBUF01
-  ld bc, $98ac
-  call JumpPutString
+  psbc $98ac, $be
+  call VWFPutStringTo8
   ret
 LoadMedarotPartSelectHead:
   ld a, [$a03d]
@@ -94,8 +94,8 @@ LoadMedarotPartSelectHead:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  ld bc, $9949
-  call JumpPutString
+  psbc $9949, $ce
+  call VWFPutStringTo8
   ret
 LoadMedarotPartSelectRArm:
   ld a, [$a03f]
@@ -119,8 +119,8 @@ LoadMedarotPartSelectRArm:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9989
-  call JumpPutString
+  psbc $9989, $d6
+  call VWFPutStringTo8
   ret
 LoadMedarotPartSelectLArm:
   ld a, [$a041]
@@ -144,8 +144,8 @@ LoadMedarotPartSelectLArm:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ld bc, $99c9
-  call JumpPutString
+  psbc $99c9, $de
+  call VWFPutStringTo8
   ret
 ; 0xafbc
 LoadMedarotPartSelectLegs:
@@ -171,8 +171,8 @@ LoadMedarotPartSelectLegs:
   ld c, $3
   call $0294
   ld hl, cBUF01
-  ld bc, $9a09
-  call JumpPutString
+  psbc $9a09, $e6
+  call VWFPutStringTo8
   ret
 ; 0xaff0
 
@@ -225,7 +225,7 @@ LoadMedarotPartSelectSkills:
   sla c
   rl b
   add hl, bc
-  psbc $98ec, $be
+  psbc $98ec, $c6
   ld d, BANK(LoadSkill)
   ld e, BANK(SkillsPtr)
   jp PrintPtrText
