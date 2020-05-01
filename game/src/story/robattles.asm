@@ -587,7 +587,7 @@ RobattleLoadText:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  call $546f
+  call LeftPadTextTo8
   ld hl, $9a01
   ld b, $0
   ld c, a
@@ -597,6 +597,25 @@ RobattleLoadText:
   ld hl, cBUF01
   call JumpPutString
   ret
+
+SECTION "LeftPadTextTo8", ROMX[$546f], BANK[$4]
+LeftPadTextTo8:
+  push hl
+  push bc
+  ld b, $0
+.asm_11473
+  ld a, [hli]
+  cp $50
+  jr z, .asm_1147b ; 0x11476 $3
+  inc b
+  jr .asm_11473 ; 0x11479 $f8
+.asm_1147b
+  ld a, $8
+  sub b
+  pop bc
+  pop hl
+  ret
+; 0x11481
 
 SECTION "Robattle - Load Battle Text", ROMX[$58b5], BANK[$5]
 RobattleLoadBattleText:
