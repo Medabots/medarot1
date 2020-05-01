@@ -50,7 +50,7 @@ SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
 LoadRobattleNames:
   ld hl, cNAME
   push hl
-  call $34c4
+  call PadTextTo8
   ld h, $0
   ld l, a
   ld bc, $9841
@@ -96,7 +96,7 @@ LoadRobattleNames:
   or a
   jr nz, .asm_2f95 ; 0x2f81 $12
   push hl
-  call $34c4
+  call PadTextTo8
   ld h, $0
   ld l, a
   ld bc, $984b
@@ -109,7 +109,7 @@ LoadRobattleNames:
 .asm_2f95
   ld hl, $c778
   push hl
-  call $34c4
+  call PadTextTo8
   ld h, $0
   ld l, a
   ld bc, $984b
