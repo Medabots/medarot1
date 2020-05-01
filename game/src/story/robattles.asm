@@ -521,15 +521,15 @@ RobattleLoadText:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  call JumpPadTextTo8
-  ld hl, $99c6
+  call VWFPadTextTo8
   ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $99c6, $be
+  call VWFPutStringTo8
   ret
   ld hl, $000e
   add hl, de
@@ -558,8 +558,8 @@ RobattleLoadText:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9a0b
-  call JumpPutString
+  psbc $9a0b, $c6
+  call VWFPutStringTo8
   ret
   ld hl, $000f
   add hl, de
@@ -588,19 +588,16 @@ RobattleLoadText:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ; call LeftPadTextTo8
-  xor a ; Skip length check
-  ld hl, $9a01
+  call VWFLeftPadTextTo8
   ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $9a01, $ce
+  call VWFPutStringTo8
   ret
-  nop
-  nop
 
 SECTION "LeftPadTextTo8", ROMX[$546f], BANK[$4]
 LeftPadTextTo8:

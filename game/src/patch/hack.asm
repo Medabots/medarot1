@@ -28,6 +28,7 @@ HackPredefTable:
   dw VWFCalculateCentredTextOffsets ; 9
   dw LeftShiftBC ; A
   dw LeftShiftBC5 ; B
+  dw VWFCalculateRightAlignedTextOffsets ; C
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
