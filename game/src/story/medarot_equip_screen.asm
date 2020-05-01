@@ -1,4 +1,41 @@
-SECTION "Medarot Equip Screen - Load Part Names", ROMX[$6ee6], BANK[$2]
+SECTION "Medarot Equip Screen - Load Strings", ROMX[$6ea8], BANK[$2]
+LoadMedarotPartSelectName:
+  ld a, [$c72d]
+  call $6d9f
+  push de
+  ld hl, $0002
+  add hl, de
+  push hl
+  call JumpPadTextTo8
+  ld h, $0
+  ld l, a
+  ld bc, $984b
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  call JumpPutString
+  pop de
+  ret
+; 0xaec6
+LoadMedarotPartSelectUnk1: ; Not sure what this loads yet
+  ld a, [$a03a]
+  ld b, a
+  ld a, [$a03b]
+  cp b
+  ret z
+  ld hl, $a640
+  ld b, $0
+  ld c, a
+  ld a, $5
+  call $02b8
+  ld hl, $0001
+  add hl, de
+  ld a, [hl]
+  ld de, $9400
+  call $027c
+  ret
+; 0xaee6
 LoadMedarotPartSelectMedal:
   ld a, [$a03b]
   ld b, a
