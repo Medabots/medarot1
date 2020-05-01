@@ -297,15 +297,15 @@ RobattlePartScreen:
   ld hl, $0002
   add hl, de
   push hl
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $be
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call JumpPutString
+  call VWFPutStringTo8
   pop de
   push de
   ld hl, $0081
@@ -322,9 +322,9 @@ RobattlePartScreen:
   add hl, de
   ld a, [hl]
   call $0282
-  ld hl, cBUF01
-  ld bc, $98ac
-  call JumpPutString
+  ld hl, cBUF01 ; Medal
+  psbc $98ac, $c6
+  call VWFPutStringTo8
   pop de
   call $6fc4
   ld hl, $000d
@@ -379,8 +379,8 @@ RobattleMedarotInfoLoadHead:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  ld bc, $9949
-  call JumpPutString
+  psbc $9949, $d6
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadRArm:
   ld a, [$a03f]
@@ -397,8 +397,8 @@ RobattleMedarotInfoLoadRArm:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9989
-  call JumpPutString
+  psbc $9989, $de
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadLArm:
   ld a, [$a041]
@@ -415,8 +415,8 @@ RobattleMedarotInfoLoadLArm:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ld bc, $99c9
-  call JumpPutString
+  psbc $99c9, $e6
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadLegs:
   ld a, [$a043]
@@ -433,8 +433,8 @@ RobattleMedarotInfoLoadLegs:
   ld c, $3
   call $0294
   ld hl, cBUF01
-  ld bc, $9a09
-  call JumpPutString
+  psbc $9a09, $5c
+  call VWFPutStringTo8
   ret
 ; 0x6edcc
 
@@ -482,7 +482,7 @@ RobattleMedarotInfoLoadSkill:
   sla c
   rl b
   add hl, bc
-  psbc $98ec, $be
+  psbc $98ec, $ce
   push de
   ld d, BANK(RobattleMedarotInfoLoadSkill)
   ld e, BANK(SkillsPtr)  
