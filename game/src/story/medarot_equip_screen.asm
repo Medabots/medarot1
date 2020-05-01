@@ -1,4 +1,13 @@
-SECTION "Medarot Equip Screen - Load Strings", ROMX[$6ea8], BANK[$2]
+SECTION "Medarot Equip Screen - Load Strings", ROMX[$6e92], BANK[$2]
+LoadMedarotPartSelectSetupPartScreen::
+  call LoadMedarotPartSelectName
+  call LoadMedarotPartSelectUnk1
+  call LoadMedarotPartSelectMedal
+  call LoadMedarotPartSelectHead
+  call LoadMedarotPartSelectRArm
+  call LoadMedarotPartSelectLArm
+  call LoadMedarotPartSelectLegs
+  ret
 LoadMedarotPartSelectName:
   ld a, [$c72d]
   call $6d9f
