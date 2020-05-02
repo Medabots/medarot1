@@ -113,6 +113,33 @@ VWFPadText::
   xor a
   ret
 
+; Copy of VWFPadTextTo8, but for right-aligned text
+VWFLeftPadTextTo8::
+  ld a, 8
+
+VWFLeftPadText::
+  ld [VWFTileLength], a
+  xor a
+  rst $8 ; VWFPadTextInit
+
+.loop
+  ld a, [hli]
+  cp $50
+  jr z, .exit
+  push hl
+  ld [VWFCurrentLetter], a
+  ld a, 3
+  rst $8 ; VWFCountCharForCentring
+  pop hl
+  jr .loop
+
+.exit
+  ld a, $c
+  rst $8 ; VWFCalculateRightAlignedTextOffsets
+  
+  xor a
+  ret
+
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
   ; This determines the width of each character (excluding the 1px between characters).
@@ -510,6 +537,33 @@ VWFCalculateCentredTextOffsets::
 .withinLimits
   ld e, 0
   rra
+
+.loop
+  cp 8
+  jr c, .exitLoop
+  sub 8
+  inc e
+  jr .loop
+
+.exitLoop
+  ld [VWFInitialLetterOffset], a
+  ld a, e
+  ld [VWFInitialTileOffset], a
+  ret
+
+; Identical to VWFCalculateCentredTextOffsets without calling rra
+VWFCalculateRightAlignedTextOffsets::
+  ld a, [VWFNextWordLength]
+  ld d, a
+  ld a, [VWFDrawingAreaLengthInPixels]
+  sub d
+  jr nc, .withinLimits
+  xor a
+  ld [VWFInitialLetterOffset], a
+  ld [VWFInitialTileOffset], a
+
+.withinLimits
+  ld e, 0
 
 .loop
   cp 8

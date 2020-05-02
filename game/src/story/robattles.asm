@@ -50,17 +50,17 @@ SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
 LoadRobattleNames:
   ld hl, cNAME
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $9841
+  psbc $9841, $be
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ld a, BANK(MedarottersPtr)
-  ld [$2000], a
+  rst $10
   ld a, [$c753]
   ld hl, MedarottersPtr
   ld b, $0
@@ -96,29 +96,31 @@ LoadRobattleNames:
   or a
   jr nz, .asm_2f95 ; 0x2f81 $12
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $c6
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ret
 .asm_2f95
   ld hl, $c778
   push hl
-  call PadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $c6
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call PutString
+  call VWFPutStringTo8
   ret
+  nop
+  nop
 ; 0x2faa
 
 SECTION "Robattle Screen - Initialize", ROMX[$520c], BANK[$4]
@@ -295,15 +297,15 @@ RobattlePartScreen:
   ld hl, $0002
   add hl, de
   push hl
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $0
   ld l, a
-  ld bc, $984b
+  psbc $984b, $be
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call JumpPutString
+  call VWFPutStringTo8
   pop de
   push de
   ld hl, $0081
@@ -320,9 +322,9 @@ RobattlePartScreen:
   add hl, de
   ld a, [hl]
   call $0282
-  ld hl, cBUF01
-  ld bc, $98ac
-  call JumpPutString
+  ld hl, cBUF01 ; Medal
+  psbc $98ac, $c6
+  call VWFPutStringTo8
   pop de
   call $6fc4
   ld hl, $000d
@@ -377,8 +379,8 @@ RobattleMedarotInfoLoadHead:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  ld bc, $9949
-  call JumpPutString
+  psbc $9949, $d6
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadRArm:
   ld a, [$a03f]
@@ -395,8 +397,8 @@ RobattleMedarotInfoLoadRArm:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9989
-  call JumpPutString
+  psbc $9989, $de
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadLArm:
   ld a, [$a041]
@@ -413,8 +415,8 @@ RobattleMedarotInfoLoadLArm:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ld bc, $99c9
-  call JumpPutString
+  psbc $99c9, $e6
+  call VWFPutStringTo8
   ret
 RobattleMedarotInfoLoadLegs:
   ld a, [$a043]
@@ -431,8 +433,8 @@ RobattleMedarotInfoLoadLegs:
   ld c, $3
   call $0294
   ld hl, cBUF01
-  ld bc, $9a09
-  call JumpPutString
+  psbc $9a09, $5c
+  call VWFPutStringTo8
   ret
 ; 0x6edcc
 
@@ -480,7 +482,7 @@ RobattleMedarotInfoLoadSkill:
   sla c
   rl b
   add hl, bc
-  psbc $98ec, $be
+  psbc $98ec, $ce
   push de
   ld d, BANK(RobattleMedarotInfoLoadSkill)
   ld e, BANK(SkillsPtr)  
@@ -519,15 +521,15 @@ RobattleLoadText:
   ld c, $0
   call $0294
   ld hl, cBUF01
-  call JumpPadTextTo8
-  ld hl, $99c6
+  call VWFPadTextTo8
   ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $99c6, $be
+  call VWFPutStringTo8
   ret
   ld hl, $000e
   add hl, de
@@ -556,8 +558,8 @@ RobattleLoadText:
   ld c, $1
   call $0294
   ld hl, cBUF01
-  ld bc, $9a0b
-  call JumpPutString
+  psbc $9a0b, $c6
+  call VWFPutStringTo8
   ret
   ld hl, $000f
   add hl, de
@@ -586,19 +588,16 @@ RobattleLoadText:
   ld c, $2
   call $0294
   ld hl, cBUF01
-  ; call LeftPadTextTo8
-  xor a ; Skip length check
-  ld hl, $9a01
+  call VWFLeftPadTextTo8
   ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $9a01, $ce
+  call VWFPutStringTo8
   ret
-  nop
-  nop
 
 SECTION "LeftPadTextTo8", ROMX[$546f], BANK[$4]
 LeftPadTextTo8:

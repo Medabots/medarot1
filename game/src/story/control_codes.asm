@@ -1,5 +1,5 @@
-SECTION "Old Dialog Control Codes", ROM0[$1E8F]
-REPT $163
+SECTION "Old Dialog Control Codes", ROM0[$1df8]
+REPT $149
 	nop
 ENDR
 

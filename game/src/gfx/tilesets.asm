@@ -187,7 +187,7 @@ LoadTiles: ; 1214 (0:1214)
   nop
   nop
 
-SECTION "Load Uncompressed Tiles", ROM0[$1DDD]
+SECTION "Load Uncompressed Tiles", ROM0[$1f41] ; Address is at the end of the old control codes
 NoDecompressLoadTiles:
   ld a, [de]
   ld c, a

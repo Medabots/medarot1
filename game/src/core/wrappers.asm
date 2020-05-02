@@ -41,7 +41,7 @@ WrapLoadMedarotPartSelectSetupPartScreen:
   ld a, [$c6e0]
   ld [$c6e1], a
   ld a, $2
-  ld [$2000], a
+  rst $10
   ld [$c6e0], a
   pop af
   call LoadMedarotPartSelectSetupPartScreen
@@ -49,4 +49,6 @@ WrapLoadMedarotPartSelectSetupPartScreen:
   ld [$c6e0], a
   rst $18
   ret
+  nop
+  nop
 ; 0x925
