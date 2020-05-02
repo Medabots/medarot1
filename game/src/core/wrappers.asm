@@ -8,6 +8,14 @@ JumpPadTextTo8:: jp WrapPadTextTo8
 SECTION "JumpTable_2", ROM0[$02a6]
 JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
 
+SECTION "Increment Substate Index Wrapper Wrapper", ROM0[$0168]
+IncSubStateIndexWrapperWrapper::
+	jp IncSubStateIndexWrapper
+
+SECTION "Increment Substate Index Wrapper", ROM0[$05B4]
+IncSubStateIndexWrapper::
+	jp IncSubStateIndex
+
 SECTION "Wrappers_0", ROM0[$072c]
 WrapPutString:
 	call PutString
