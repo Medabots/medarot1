@@ -10,21 +10,21 @@ JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
 
 SECTION "Increment Substate Index Wrapper Wrapper", ROM0[$0168]
 IncSubStateIndexWrapperWrapper::
-	jp IncSubStateIndexWrapper
+  jp IncSubStateIndexWrapper
 
 SECTION "Increment Substate Index Wrapper", ROM0[$05B4]
 IncSubStateIndexWrapper::
-	jp IncSubStateIndex
+  jp IncSubStateIndex
 
 SECTION "Wrappers_0", ROM0[$072c]
 WrapPutString:
-	call PutString
-	ret
+  call PutString
+  ret
 
 SECTION "Wrappers_1", ROM0[$0784]
 WrapPadTextTo8:
-	call PadTextTo8
-	ret
+  call PadTextTo8
+  ret
 
 SECTION "Wrappers_2", ROM0[$07eb]
 WrapRobattleSetupMedarotSelect:
