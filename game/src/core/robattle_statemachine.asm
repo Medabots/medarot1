@@ -74,7 +74,6 @@ RobattleStatePrepareAttackScreen::
   ld d, a
   ld a, [$A045]
   ld e, a
-  call $54CB
   ld hl, $58
   add hl, de
   ld a, [hl]
@@ -90,7 +89,19 @@ RobattleStatePrepareAttackScreen::
   ld a, [hl]
   ld [$C72D], a
   call $584A
-  jp IncSubStateIndexWrapperWrapper
+  ld a, $23
+  ld [CoreSubStateIndex], a
+  ret
 
 .table
   db 3, 0, 1, 2
+
+SECTION "Robattle States (Hack)", ROMX[$7FF0], BANK[$4]
+RobattleStatePrepareAttackScreenOffload::
+  ld a, [$A044]
+  ld d, a
+  ld a, [$A045]
+  ld e, a
+  ld a, $12
+  ld [CoreSubStateIndex], a
+  jp $54CB
