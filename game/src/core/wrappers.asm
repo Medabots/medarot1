@@ -81,11 +81,13 @@ WrapRobattleSetupPrepScreenCopy: ; Calls the robattle name setup in the middle o
   ld a, [$c6e0]
   ld [$c6e1], a
   ld a, $1b
-  ld [$2000], a
+  rst $10
   ld [$c6e0], a
   call $6b3f ; Calls RobattleLoadMedarotNamesCopy
   ld a, [$c6e1]
   ld [$c6e0], a
   rst $18
   ret
+  nop
+  nop
 ; 0xb26
