@@ -37,7 +37,7 @@ LoadMedarotPartSelectUnk1: ; Not sure what this loads yet
   ld b, $0
   ld c, a
   ld a, $5
-  call $02b8
+  call JumpPadListText
   ld hl, $0001
   add hl, de
   ld a, [hl]
@@ -60,7 +60,7 @@ LoadMedarotPartSelectMedal:
   ld c, b
   ld b, $0
   ld a, $5
-  call $02b8
+  call JumpPadListText
   ld a, $40
   ld hl, $988a
   call $585a
@@ -187,7 +187,7 @@ LoadMedarotPartSelectSkills:
   ld b, $0
   ld c, a
   ld a, $5
-  call $02b8
+  call JumpPadListText
   xor a
   ld [$c658], a
   ld [$c65a], a

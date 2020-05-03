@@ -1,4 +1,7 @@
 ; Fill this with the giant jump table and wrapper functions, eventually should only be 2 sections (JumpTable and Wrappers)
+SECTION "Increment Substate Index Wrapper Wrapper", ROM0[$0168]
+IncSubStateIndexWrapperWrapper:: jp IncSubStateIndexWrapper
+
 SECTION "JumpTable_0", ROM0[$01E3]
 JumpLoadItemList:: jp WrapLoadItemList
 
@@ -11,13 +14,11 @@ JumpPadTextTo8:: jp WrapPadTextTo8
 SECTION "JumpTable_3", ROM0[$02a6]
 JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
 
-SECTION "Increment Substate Index Wrapper Wrapper", ROM0[$0168]
-IncSubStateIndexWrapperWrapper::
-  jp IncSubStateIndexWrapper
+SECTION "JumpTable_4", ROM0[$02b8]
+JumpPadListText:: jp WrapPadListText
 
 SECTION "Increment Substate Index Wrapper", ROM0[$05B4]
-IncSubStateIndexWrapper::
-  jp IncSubStateIndex
+IncSubStateIndexWrapper:: jp IncSubStateIndex
 
 SECTION "Wrappers_0", ROM0[$0660]
 WrapLoadItemList:
@@ -50,7 +51,12 @@ WrapRobattleSetupMedarotSelect:
   rst $18
   ret
 
-SECTION "Wrappers_4", ROM0[$090a]
+SECTION "Wrappers_4", ROM0[$086f]
+WrapPadListText:
+  call PadListText
+  ret
+
+SECTION "Wrappers_5", ROM0[$090a]
 WrapLoadMedarotPartSelectSetupPartScreen:
   push af
   ld a, [$c6e0]
