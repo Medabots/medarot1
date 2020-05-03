@@ -72,7 +72,7 @@ VWFPutString::
   push hl
   ld [VWFCurrentLetter], a
   ld a, 5
-  rst $8 ; VWFWriteChar
+  rst $8 ; VWFWriteCharLimited
   pop hl
   jr .loop
 
@@ -492,6 +492,7 @@ VWFResetForNewline::
   ld [VWFOldTileMode], a
   ld [VWFLetterShift], a
   ld [VWFTextLength], a
+  ld [VWFDiscardSecondTile], a
 
   push hl
   ld hl, VWFCompositeArea
@@ -604,6 +605,7 @@ VWFPutStringInit::
   ld [VWFInitialLetterOffset], a
   ld [VWFInitialTileOffset], a
   ld [VWFTextLength], a
+  ld [VWFDiscardSecondTile], a
 
   ; Clear all tiles in the designated drawing region.
 
@@ -948,6 +950,25 @@ VWFChar49::
   jp z, VWFChar4E
   jp VWFChar4C
 
+VWFWriteCharLimited::
+  ld a, [VWFTileLength]
+  ld b, a
+  ld a, [VWFTilesDrawn]
+
+  ; If the number of tiles drawn match (or exceed) the max number of tiles then stop drawing.
+
+  cp b
+  ret nc
+
+  ; If the number of tiles drawn are 1 less than the max number of tiles then stop drawing the second tile from the composite area.
+
+  inc a
+  cp b
+  jr c, VWFWriteChar
+  ld a, 1
+  ld [VWFDiscardSecondTile], a
+  ; Continue into VWFWriteChar.
+
 VWFWriteChar::
   ; Get tile address.
 
@@ -1128,6 +1149,9 @@ VWFDrawLetter::
   push af
   or a
   jr z, .skipSecondTile
+  ld a, [VWFDiscardSecondTile]
+  or a
+  jr nz, .skipSecondTile
   ld hl, $10
   add hl, de
   ld a, c
