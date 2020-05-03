@@ -89,12 +89,13 @@ LoadMedarotList:
   ld a, $4
   call $3981
   ld de, cBUF01
+.loop
   ld a, [hli]
   cp $50
   jr z, .asm_35fa ; 0x35f3 $5
   ld [de], a
   inc de
-  jp $35f0
+  jp .loop
 .asm_35fa
   ld a, $50
   ld [de], a
