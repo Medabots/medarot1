@@ -223,9 +223,9 @@ LoadInventoryScreen:
   add hl, bc
   add hl, bc
   add hl, bc
-  ld a, $98
+  ld a, $be
   ld [$c644], a
-  ld a, $62
+  psa $9862
   ld [$c645], a
   ld b, $5
 .asm_8bf8
@@ -240,12 +240,12 @@ LoadInventoryScreen:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call JumpPutString
+  call VWFPutStringTo8
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
   ld l, a
-  ld bc, $0040
+  ld bc, $0820 ; increment drawing area (b) and position (c)
   add hl, bc
   ld a, h
   ld [$c644], a

@@ -136,7 +136,7 @@ RobattleScreenSetup:
   ld a, [$c65a]
   ld c, a
   ld a, $8
-  call $02b8
+  call JumpPadListText
   ld a, $3
   ld [de], a
   ld a, $1
@@ -292,7 +292,7 @@ RobattlePartScreen:
   ld b, $0
   ld c, a
   ld a, $8
-  call $02b8
+  call JumpPadListText
   push de
   ld hl, $0002
   add hl, de
@@ -708,7 +708,7 @@ RobattleEndScreenEXP:
   ld b, $0
   ld c, a
   ld a, $4
-  call $02b8
+  call JumpPadListText
   ld a, d
   ld [$a044], a
   ld a, e
@@ -742,3 +742,78 @@ RobattleEndScreenEXP:
   call $01d7
   jp $73ce
 ; 0x7338
+
+SECTION "Robattle - Load Medarot Names", ROMX[$76cc], BANK[$4]
+RobattleLoadMedarotNames:
+  xor a
+  ld [$c652], a
+.asm_76d0
+  ld hl, $ac00
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpPadListText
+  ld a, [de]
+  or a
+  jp z, .asm_770d
+  ld hl, $0002
+  add hl, de
+  call LeftPadTextTo8
+  ld [$c650], a
+  push de
+  ld hl, $98e0
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $6
+  call JumpPadListText
+  pop de
+  ld a, [$c650]
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call JumpPutString
+.asm_770d
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .asm_76d0
+  xor a
+  ld [$c652], a
+.asm_771d
+  ld hl, $af00
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpPadListText
+  ld a, [de]
+  or a
+  jp z, .asm_7749
+  push de
+  ld hl, $98ec
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $6
+  call JumpPadListText
+  pop de
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call JumpPutString
+.asm_7749
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .asm_771d
+  ret
+; 0x13756
