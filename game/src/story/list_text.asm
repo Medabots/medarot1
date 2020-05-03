@@ -356,3 +356,16 @@ LoadMedalScreen:
   jr nz, .asm_9890 ; 0x98ca $c4
   ret
 ; 0x98cd
+
+SECTION "GetListTextOffset", ROM0[$3981]
+GetListTextOffset:: ; 34c4
+.asm_3981
+  sla c
+  rl b
+  dec a
+  jr nz, .asm_3981 ; 0x3986 $f9
+  add hl, bc
+  ld d, h
+  ld e, l
+  ret
+; 0x398c
