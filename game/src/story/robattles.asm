@@ -217,7 +217,7 @@ RobattleScreenSetup:
   ld c, a
   call $02be
   push de
-  ld b, $9
+  ld b, $f ; Medarot name length
   ld hl, $0002
   add hl, de
   ld d, h
@@ -759,17 +759,17 @@ RobattleLoadMedarotNames:
   jp z, .asm_770d
   ld hl, $0002
   add hl, de
-  call LeftPadTextTo8
-  ld [$c650], a
   push de
-  ld hl, $98e0
+  call VWFLeftPadTextTo8
+  pop de
+  push de
+  pshl $98e0, $be ; be, c6, ce for player medarots
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
-  ld a, [$c650]
   ld b, $0
   ld c, a
   add hl, bc
@@ -777,7 +777,7 @@ RobattleLoadMedarotNames:
   ld c, l
   ld hl, $0002
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .asm_770d
   ld a, [$c652]
   inc a
@@ -797,18 +797,18 @@ RobattleLoadMedarotNames:
   or a
   jp z, .asm_7749
   push de
-  ld hl, $98ec
+  pshl $98ec, $d6 ; d6, de, e6 for enemy medarots
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
   ld b, h
   ld c, l
   ld hl, $0002
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .asm_7749
   ld a, [$c652]
   inc a
@@ -816,4 +816,8 @@ RobattleLoadMedarotNames:
   cp $3
   jp nz, .asm_771d
   ret
+  nop
+  nop
+  nop
+  nop
 ; 0x13756
