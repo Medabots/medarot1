@@ -8,7 +8,7 @@ db 0, 0
 
 SECTION "Free3", ROM0[$A7]
 REPT $59
-	nop
+  nop
 ENDR
 
 ; Free space at the end of banks

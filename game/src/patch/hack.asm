@@ -64,12 +64,12 @@ SetInitialName: ; TODO: In the future, we might be able to just set this as a lo
   ld [hli], a
   ld a, $ae ; u
   ld [hli], a
-	ld a, $50 ; EOL
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld a, $6
+  ld a, $50 ; EOL
+  ld [hli], a
+  xor a
+  ld [hli], a
+  ld [hli], a
+  ld a, $6
   ld [$c5ce], a
   ret
 

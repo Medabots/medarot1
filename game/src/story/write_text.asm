@@ -7,8 +7,8 @@ SetupDialog:
   ld [VWFIsInit], a
   call $1ab0
   xor a
-	ld a, $2
-	rst $8 ; ZeroTextOffset
+  ld a, $2
+  rst $8 ; ZeroTextOffset
   ld [$c6c5], a
   ld [$c6c6], a
   ld hl, $1cc6
