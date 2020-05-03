@@ -19,7 +19,7 @@ LegPartList:
   INCBIN "build/lists/LegParts.bin"
 
 SECTION "Load from Item List", ROM0[$328f]
-LoadItemList:
+LoadItemList::
   push af
   ld a, BANK(ItemList)
   rst $10
@@ -231,7 +231,7 @@ LoadInventoryScreen:
   ret z
   push hl
   push bc
-  call $01e3
+  call JumpLoadItemList
   ld hl, cBUF01
   ld a, [$c644]
   ld b, a
