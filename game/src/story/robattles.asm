@@ -659,7 +659,7 @@ RobattleLoadAttackText:
   call $3117
   pop de
   ld a, BANK(AttacksPtr)
-  ld [$2000], a
+  rst $10
   ld hl, AttacksPtr
   ld b, $0
   ld a, [$c64e]
@@ -682,6 +682,8 @@ RobattleLoadAttackText:
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x3b23
 
 SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
