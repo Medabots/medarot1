@@ -31,7 +31,7 @@ RobattleStateMachine::
   dw $45E4 ; 0F
   dw $4604 ; 10
   dw $4614 ; 11
-  dw RobattleStateDoNothing ; 12
+  dw RobattleStatePrepareAttackScreen ; 12
   dw $4B45 ; 13
   dw RobattleStateDoNothing ; 14
   dw RobattleStateDoNothing ; 15
@@ -47,7 +47,7 @@ RobattleStateMachine::
   dw $46A3 ; 1F
   dw $46EE ; 20
   dw $46F8 ; 21
-  dw RobattleStatePrepareAttackScreen ; 22
+  dw RobattleStatePrepareAttackScreenOffload ; 22
   dw $4778 ; 23
   dw $483A ; 24
   dw $4852 ; 25
@@ -74,7 +74,6 @@ RobattleStatePrepareAttackScreen::
   ld d, a
   ld a, [$A045]
   ld e, a
-  call $54CB
   ld hl, $58
   add hl, de
   ld a, [hl]
@@ -90,7 +89,55 @@ RobattleStatePrepareAttackScreen::
   ld a, [hl]
   ld [$C72D], a
   call $584A
-  jp IncSubStateIndexWrapperWrapper
+  ld a, $23
+  ld [CoreSubStateIndex], a
+  ret
 
 .table
   db 3, 0, 1, 2
+
+SECTION "Robattle States (Hack)", ROMX[$7FBF], BANK[$4]
+RobattleStatePrepareAttackScreenOffload::
+  ld a, [$A044]
+  ld d, a
+  ld a, [$A045]
+  ld e, a
+  ld a, [RobattleAttackNameDrawStagingIndex]
+
+.checkStage0
+  or a
+  jr nz, .checkStage1
+  ld hl,$99A1
+  ld bc, $1204
+  call $0270
+  jr .nextStage
+
+.checkStage1
+  dec a
+  jr nz, .checkStage2
+  call $54E5
+  jr .nextStage
+
+.checkStage2
+  dec a
+  jr nz, .checkStage3
+  call $5535
+  jr .nextStage
+
+.checkStage3
+  dec a
+  jr nz, .exit
+  call $5571
+
+.nextStage
+  ld a, [RobattleAttackNameDrawStagingIndex]
+  inc a
+  ld [RobattleAttackNameDrawStagingIndex], a
+  ret
+
+.exit
+  xor a
+  ld [RobattleAttackNameDrawStagingIndex], a
+  ld a, $12
+  ld [CoreSubStateIndex], a
+  ret
