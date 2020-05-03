@@ -747,7 +747,7 @@ SECTION "Robattle - Load Medarot Names", ROMX[$76cc], BANK[$4]
 RobattleLoadMedarotNames:
   xor a
   ld [$c652], a
-.asm_76d0
+.loop_medarot
   ld hl, $ac00
   ld b, $0
   ld a, [$c652]
@@ -756,7 +756,7 @@ RobattleLoadMedarotNames:
   call JumpGetListTextOffset
   ld a, [de]
   or a
-  jp z, .asm_770d
+  jp z, .next_medarot
   ld hl, $0002
   add hl, de
   push de
@@ -778,15 +778,15 @@ RobattleLoadMedarotNames:
   ld hl, $0002
   add hl, de
   call VWFPutStringTo8
-.asm_770d
+.next_medarot
   ld a, [$c652]
   inc a
   ld [$c652], a
   cp $3
-  jp nz, .asm_76d0
+  jp nz, .loop_medarot
   xor a
   ld [$c652], a
-.asm_771d
+.loop_enemy_medarot
   ld hl, $af00
   ld b, $0
   ld a, [$c652]
@@ -795,7 +795,7 @@ RobattleLoadMedarotNames:
   call JumpGetListTextOffset
   ld a, [de]
   or a
-  jp z, .asm_7749
+  jp z, .next_enemy_medarot
   push de
   pshl $98ec, $d6 ; d6, de, e6 for enemy medarots
   ld b, $0
@@ -809,15 +809,111 @@ RobattleLoadMedarotNames:
   ld hl, $0002
   add hl, de
   call VWFPutStringTo8
-.asm_7749
+.next_enemy_medarot
   ld a, [$c652]
   inc a
   ld [$c652], a
   cp $3
-  jp nz, .asm_771d
+  jp nz, .loop_enemy_medarot
   ret
   nop
   nop
   nop
   nop
 ; 0x13756
+
+SECTION "Robattle - Load Medarot Names (1B copy)", ROMX[$6e26], BANK[$1B]
+RobattleLoadMedarotNamesCopy:
+  xor a
+  ld [$c652], a
+.loop_medarot
+  ld hl, $ac00
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpGetListTextOffset
+  ld a, [de]
+  or a
+  jp z, .next_medarot
+  ld hl, $0002
+  add hl, de
+  push de
+  call VWFLeftPadTextTo8
+  pop de
+  push de
+  pshl $98e0, $be ; be, c6, ce for player medarots
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $3
+  call JumpGetListTextOffset
+  pop de
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call VWFPutStringTo8
+.next_medarot
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .loop_medarot
+  xor a
+  ld [$c652], a
+.loop_enemy_medarot
+  ld hl, $af00
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpGetListTextOffset
+  ld a, [de]
+  or a
+  jp z, .next_enemy_medarot
+  push de
+  pshl $98ec, $d6 ; d6, de, e6 for enemy medarots
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $3
+  call JumpGetListTextOffset
+  pop de
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call VWFPutStringTo8
+.next_enemy_medarot
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .loop_enemy_medarot
+  ret
+  nop
+  nop
+  nop
+  nop
+
+SECTION "LeftPadTextTo8 (1B Copy)", ROMX[$6ebc], BANK[$1B]
+LeftPadTextTo8Copy:
+  push hl
+  push bc
+  ld b, $0
+.asm_11473
+  ld a, [hli]
+  cp $50
+  jr z, .asm_1147b ; 0x11476 $3
+  inc b
+  jr .asm_11473 ; 0x11479 $f8
+.asm_1147b
+  ld a, $8
+  sub b
+  pop bc
+  pop hl
+  ret
