@@ -91,7 +91,7 @@ LoadMedarotList:
   push hl
   push de
   ld a, BANK(MedarotList)
-  ld [$2000], a
+  rst $10
   ld hl, MedarotList
   ld b, $0
   ld a, $4
@@ -110,6 +110,8 @@ LoadMedarotList:
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x3600
 
 ; Pointer to the start of each part list (Head, Right, Left, Leg)
