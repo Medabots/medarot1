@@ -245,16 +245,3 @@ PadTextTo8:: ; 34c4
   pop hl
   ret
 ; 0x34d8
-
-SECTION "PadListText", ROM0[$3981]
-PadListText:: ; 34c4
-.asm_3981
-  sla c
-  rl b
-  dec a
-  jr nz, .asm_3981 ; 0x3986 $f9
-  add hl, bc
-  ld d, h
-  ld e, l
-  ret
-; 0x398c

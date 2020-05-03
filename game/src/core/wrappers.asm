@@ -15,7 +15,7 @@ SECTION "JumpTable_3", ROM0[$02a6]
 JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
 
 SECTION "JumpTable_4", ROM0[$02b8]
-JumpPadListText:: jp WrapPadListText
+JumpGetListTextOffset:: jp WrapGetListTextOffset
 
 SECTION "Increment Substate Index Wrapper", ROM0[$05B4]
 IncSubStateIndexWrapper:: jp IncSubStateIndex
@@ -52,8 +52,8 @@ WrapRobattleSetupMedarotSelect:
   ret
 
 SECTION "Wrappers_4", ROM0[$086f]
-WrapPadListText:
-  call PadListText
+WrapGetListTextOffset:
+  call GetListTextOffset
   ret
 
 SECTION "Wrappers_5", ROM0[$090a]

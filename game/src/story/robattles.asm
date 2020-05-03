@@ -134,7 +134,7 @@ RobattleScreenSetup:
   ld a, [$c65a]
   ld c, a
   ld a, $8
-  call JumpPadListText
+  call JumpGetListTextOffset
   ld a, $3
   ld [de], a
   ld a, $1
@@ -290,7 +290,7 @@ RobattlePartScreen:
   ld b, $0
   ld c, a
   ld a, $8
-  call JumpPadListText
+  call JumpGetListTextOffset
   push de
   ld hl, $0002
   add hl, de
@@ -707,7 +707,7 @@ RobattleEndScreenEXP:
   ld b, $0
   ld c, a
   ld a, $4
-  call JumpPadListText
+  call JumpGetListTextOffset
   ld a, d
   ld [$a044], a
   ld a, e
@@ -752,7 +752,7 @@ RobattleLoadMedarotNames:
   ld a, [$c652]
   ld c, a
   ld a, $8
-  call JumpPadListText
+  call JumpGetListTextOffset
   ld a, [de]
   or a
   jp z, .asm_770d
@@ -766,7 +766,7 @@ RobattleLoadMedarotNames:
   ld a, [$c652]
   ld c, a
   ld a, $6
-  call JumpPadListText
+  call JumpGetListTextOffset
   pop de
   ld a, [$c650]
   ld b, $0
@@ -791,7 +791,7 @@ RobattleLoadMedarotNames:
   ld a, [$c652]
   ld c, a
   ld a, $8
-  call JumpPadListText
+  call JumpGetListTextOffset
   ld a, [de]
   or a
   jp z, .asm_7749
@@ -801,7 +801,7 @@ RobattleLoadMedarotNames:
   ld a, [$c652]
   ld c, a
   ld a, $6
-  call JumpPadListText
+  call JumpGetListTextOffset
   pop de
   ld b, h
   ld c, l
