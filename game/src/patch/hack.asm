@@ -21,7 +21,7 @@ HackPredefTable:
   dw ZeroTextOffset ;2
   dw VWFCountCharForCentring ;3
   dw VWFPutStringInit ;4
-  dw VWFWriteChar ;5
+  dw VWFWriteCharLimited ;5
   dw VWFMapRenderedString ; 6
   dw SetInitialName ; 7
   dw SetNextChar ; 8
