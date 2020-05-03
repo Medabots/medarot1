@@ -217,7 +217,7 @@ RobattleScreenSetup:
   ld c, a
   call $02be
   push de
-  ld b, $f ; Medarot name length
+  ld b, $9 ; Medarot name length (Including terminator)
   ld hl, $0002
   add hl, de
   ld d, h
