@@ -96,7 +96,7 @@ RobattleStatePrepareAttackScreen::
 .table
   db 3, 0, 1, 2
 
-SECTION "Robattle States (Hack)", ROMX[$7FBF], BANK[$4]
+SECTION "Robattle States (Hack)", ROMX[$796a], BANK[$4]
 RobattleStatePrepareAttackScreenOffload::
   ld a, [$A044]
   ld d, a
