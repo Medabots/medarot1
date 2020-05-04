@@ -45,3 +45,7 @@ TmpChar::
   ds 1
 FlagDo4C::
   ds 1
+EnemyMedarotNames:: ; Use WRAM instead of SRAM for enemy names
+  ds $10
+  ds $10
+  ds $10

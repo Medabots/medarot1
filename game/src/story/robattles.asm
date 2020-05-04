@@ -217,12 +217,10 @@ RobattleScreenSetup:
   ld c, a
   call $02be
   push de
-  ld b, $9 ; Medarot name length (Including terminator)
-  ld hl, $0002
-  add hl, de
-  ld d, h
-  ld e, l
+  ld a, [$c65a]
+  call RobattleLoadEnemyNamesHack
   ld hl, cBUF01
+  ld b, $10 ; Medarot name length (Including terminator)
 .asm_112cb
   ld a, [hli]
   ld [de], a
@@ -279,6 +277,24 @@ RobattleScreenSetup:
   jp nz, $521c
   ret
 ; 0x11326
+
+SECTION "Robattle Screen - Load Enemy Names (Hack)", ROMX[$796a], BANK[$4]
+RobattleLoadEnemyNamesHack:
+  ld hl, EnemyMedarotNames
+  ld b, $0
+  ld c, a
+  ld a, $4
+  call GetListTextOffset
+  ret
+
+SECTION "Robattle Screen - Load Enemy Names (Hack, 1B copy)", ROMX[$781f], BANK[$1b]
+RobattleLoadEnemyNamesHackCopy:
+  ld hl, EnemyMedarotNames
+  ld b, $0
+  ld c, a
+  ld a, $4
+  call GetListTextOffset
+  ret
 
 SECTION "Robattle - Medarot Select", ROMX[$7815], BANK[$2]
 RobattleSetupMedarotSelect::
@@ -795,7 +811,7 @@ RobattleLoadMedarotNames:
   ld c, a
   ld a, $8
   call JumpGetListTextOffset
-  ld a, [de]
+  ld a, [de] ; Check the medarot struct to see if it's a valid one
   or a
   jp z, .next_enemy_medarot
   push de
@@ -808,8 +824,10 @@ RobattleLoadMedarotNames:
   pop de
   ld b, h
   ld c, l
-  ld hl, $0002
-  add hl, de
+  ld a, [$c652]
+  push bc
+  call RobattleLoadEnemyNamesHack
+  pop bc
   call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
@@ -818,10 +836,6 @@ RobattleLoadMedarotNames:
   cp $3
   jp nz, .loop_enemy_medarot
   ret
-  nop
-  nop
-  nop
-  nop
 ; 0x13756
 
 SECTION "Robattle - Load Medarot Names (1B copy)", ROMX[$6e26], BANK[$1B]
@@ -874,7 +888,7 @@ RobattleLoadMedarotNamesCopy:
   ld c, a
   ld a, $8
   call JumpGetListTextOffset
-  ld a, [de]
+  ld a, [de] ; Check the medarot struct to see if it's a valid one
   or a
   jp z, .next_enemy_medarot
   push de
@@ -887,8 +901,10 @@ RobattleLoadMedarotNamesCopy:
   pop de
   ld b, h
   ld c, l
-  ld hl, $0002
-  add hl, de
+  ld a, [$c652]
+  push bc
+  call RobattleLoadEnemyNamesHackCopy
+  pop bc
   call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
@@ -897,10 +913,6 @@ RobattleLoadMedarotNamesCopy:
   cp $3
   jp nz, .loop_enemy_medarot
   ret
-  nop
-  nop
-  nop
-  nop
 
 SECTION "LeftPadTextTo8 (1B Copy)", ROMX[$6ebc], BANK[$1B]
 LeftPadTextTo8Copy:
