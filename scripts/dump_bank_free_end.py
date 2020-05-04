@@ -10,9 +10,9 @@ with open('baserom.gbc', 'rb') as rom:
 			x += 1
 			rom.seek(-2, 1)
 		pos = 0x4000 + rom.tell() % 0x4000
-		print('SECTION "BANK{:02x}_END", ROMX[${:x}], BANK[${:x}]'.format(i, pos, i))
-		print('BANK{:02x}_END::'.format(i))
-		print('REPT ${:x}'.format(0x8000 - pos))
+		print('SECTION "BANK{:02X}_END", ROMX[${:x}], BANK[${:x}]'.format(i, pos, i))
+		print('BANK{:02X}_END::'.format(i))
+		print('REPT $8000 - BANK{:02X}_END'.format(i))
 		print('  db 0')
 		print('ENDR')
 		print('')
