@@ -123,6 +123,52 @@ LoadRobattleNames:
   nop
 ; 0x2faa
 
+SECTION "Robattle Screen - Copy Player Medarot Info", ROMX[$4d8f], BANK[$4]
+RobattleScreenCopyPlayerMedarotInfo:
+  ld c, $a
+  ld a, [de]
+  ld b, a
+  ld a, [$c64e]
+  cp b
+  jp nz, $4ddb
+  ld hl, $a500 ; Probably where the original medarot structures actually live
+  ld b, $0
+  ld a, [$c654]
+  ld c, a
+  ld a, $5
+  call JumpGetListTextOffset
+  push de
+  ld hl, RobattlePlayerMedarot1
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpGetListTextOffset
+  pop de
+  ld b, $20
+  push hl
+.asm_10dbb
+  ld a, [de]
+  ld [hli], a
+  inc de
+  dec b
+  jr nz, .asm_10dbb ; 0x10dbf $fa
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  pop hl
+  ld d, h
+  ld e, l
+  ld hl, $0011
+  add hl, de
+  ld a, [$c650]
+  ld [hl], a
+  ld a, [$c650]
+  inc a
+  ld [$c650], a
+  ret
+; 0x10ddb
+
 SECTION "Robattle Screen - Initialize", ROMX[$520c], BANK[$4]
 RobattleScreenSetup:
   ld a, [$c753]
