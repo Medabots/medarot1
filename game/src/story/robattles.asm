@@ -1,7 +1,7 @@
 SECTION "Robattles Start Screen", ROM0[$2e58]
 LoadRobattleStartScreenMedarotter:
   ld a, BANK(MedarottersPtr)
-  ld [$2000], a
+  rst $10
   ld a, [$c753]
   ld hl, MedarottersPtr
   ld b, $0
@@ -32,7 +32,7 @@ LoadRobattleStartScreenMedarotter:
   sla c
   rl b
   ld a, $14
-  ld [$2000], a
+  rst $10
   ld hl, $4000
   add hl, bc
   ld de, $9110
@@ -44,6 +44,8 @@ LoadRobattleStartScreenMedarotter:
   xor a
   ld [$c741], a
   ret
+  nop
+  nop
 ; 0x2eb0
 
 SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
@@ -146,17 +148,14 @@ RobattleScreenCopyPlayerMedarotInfo:
   call JumpGetListTextOffset
   pop de
   ld b, $20
-  push hl
-.asm_10dbb
-  ld a, [de]
-  ld [hli], a
-  inc de
-  dec b
-  jr nz, .asm_10dbb ; 0x10dbf $fa
+  call HackCopyDEtoHL_4
+  srl b
+  ld a, $ee ; A hack to copy the name to $f0
+  rst $28 ; hl += a
+  call HackCopyDEtoHL_4
   ld a, [$c652]
   inc a
   ld [$c652], a
-  pop hl
   ld d, h
   ld e, l
   ld hl, $0011
@@ -168,6 +167,22 @@ RobattleScreenCopyPlayerMedarotInfo:
   ld [$c650], a
   ret
 ; 0x10ddb
+
+SECTION "(Hack) Copy 'b' bytes from [de] to [hl], preserve all registers except a", ROMX[$79ab], BANK[$4]
+HackCopyDEtoHL_4:
+  push bc
+  push de
+  push hl
+.loop
+  ld a, [de]
+  ld [hli], a
+  inc de
+  dec b
+  jr nz, .loop
+  pop hl
+  pop de
+  pop bc
+  ret
 
 SECTION "Robattle Screen - Initialize", ROMX[$520c], BANK[$4]
 RobattleScreenSetup:
@@ -263,8 +278,8 @@ RobattleScreenSetup:
   ld c, a
   call $02be
   push de
-  ld b, $9
-  ld hl, $0002
+  ld b, $10 ; Medarot name length, 15+1 term
+  ld hl, $00f0
   add hl, de
   ld d, h
   ld e, l
@@ -340,7 +355,7 @@ RobattlePartScreen:
   ld a, $8
   call JumpGetListTextOffset
   push de
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   push hl
   call VWFPadTextTo8
@@ -667,10 +682,10 @@ LeftPadTextTo8:
 SECTION "Robattle - Load Battle Text", ROMX[$58b5], BANK[$5]
 RobattleLoadBattleText:
   push de
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   ld de, cBUF01
-  ld b, $9
+  ld b, $10
 .asm_158bf
   ld a, [hli]
   ld [de], a
@@ -705,7 +720,7 @@ RobattleLoadAttackText:
   call $3117
   pop de
   ld a, BANK(AttacksPtr)
-  ld [$2000], a
+  rst $10
   ld hl, AttacksPtr
   ld b, $0
   ld a, [$c64e]
@@ -728,6 +743,7 @@ RobattleLoadAttackText:
   pop de
   pop hl
   ret
+  nop
 ; 0x3b23
 
 SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
@@ -803,7 +819,7 @@ RobattleLoadMedarotNames:
   ld a, [de]
   or a
   jp z, .next_medarot
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call LeftPadTextTo8
   ld [$c650], a
@@ -821,7 +837,7 @@ RobattleLoadMedarotNames:
   add hl, bc
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call JumpPutString
 .next_medarot
@@ -852,7 +868,7 @@ RobattleLoadMedarotNames:
   pop de
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call JumpPutString
 .next_enemy_medarot
@@ -878,7 +894,7 @@ RobattleLoadMedarotNamesCopy:
   ld a, [de]
   or a
   jp z, .next_medarot
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call LeftPadTextTo8Copy
   ld [$c650], a
@@ -896,7 +912,7 @@ RobattleLoadMedarotNamesCopy:
   add hl, bc
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call JumpPutString
 .next_medarot
@@ -927,7 +943,7 @@ RobattleLoadMedarotNamesCopy:
   pop de
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call JumpPutString
 .next_enemy_medarot
