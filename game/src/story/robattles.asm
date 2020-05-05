@@ -821,14 +821,14 @@ RobattleLoadMedarotNames:
   jp z, .next_medarot
   ld hl, $00f0
   add hl, de
-  call LeftPadTextTo8
+  call VWFLeftPadTextTo8
   ld [$c650], a
   push de
-  ld hl, $98e0
+  pshl $98e0, $be
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
   ld a, [$c650]
@@ -839,7 +839,7 @@ RobattleLoadMedarotNames:
   ld c, l
   ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_medarot
   ld a, [$c652]
   inc a
@@ -859,18 +859,18 @@ RobattleLoadMedarotNames:
   or a
   jp z, .next_enemy_medarot
   push de
-  ld hl, $98ec
+  pshl $98ec, $d6
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
   ld b, h
   ld c, l
   ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -881,7 +881,7 @@ RobattleLoadMedarotNames:
 ; 0x13756
 
 SECTION "Robattle - Load Medarot Names (1B copy)", ROMX[$6e26], BANK[$1B]
-RobattleLoadMedarotNamesCopy:
+RobattleLoadMedarotNamesCopy::
   xor a
   ld [$c652], a
 .loop_medarot
@@ -896,14 +896,14 @@ RobattleLoadMedarotNamesCopy:
   jp z, .next_medarot
   ld hl, $00f0
   add hl, de
-  call LeftPadTextTo8Copy
+  call VWFLeftPadTextTo8
   ld [$c650], a
   push de
-  ld hl, $98e0
+  pshl $98e0, $be
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
   ld a, [$c650]
@@ -914,7 +914,7 @@ RobattleLoadMedarotNamesCopy:
   ld c, l
   ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_medarot
   ld a, [$c652]
   inc a
@@ -934,18 +934,18 @@ RobattleLoadMedarotNamesCopy:
   or a
   jp z, .next_enemy_medarot
   push de
-  ld hl, $98ec
+  pshl $98ec, $d6
   ld b, $0
   ld a, [$c652]
   ld c, a
-  ld a, $6
+  ld a, $3
   call JumpGetListTextOffset
   pop de
   ld b, h
   ld c, l
   ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a

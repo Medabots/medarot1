@@ -91,6 +91,7 @@ VWFPadTextTo8::
   ; Continues into VWFPadText.
   
 VWFPadText::
+  push de
   ld [VWFTileLength], a
   xor a
   rst $8 ; VWFPadTextInit
@@ -111,6 +112,7 @@ VWFPadText::
   rst $8 ; VWFCalculateCentredTextOffsets
   
   xor a
+  pop de
   ret
 
 ; Copy of VWFPadTextTo8, but for right-aligned text
@@ -118,6 +120,7 @@ VWFLeftPadTextTo8::
   ld a, 8
 
 VWFLeftPadText::
+  push de
   ld [VWFTileLength], a
   xor a
   rst $8 ; VWFPadTextInit
@@ -138,6 +141,7 @@ VWFLeftPadText::
   rst $8 ; VWFCalculateRightAlignedTextOffsets
   
   xor a
+  pop de
   ret
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
