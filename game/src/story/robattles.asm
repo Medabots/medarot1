@@ -129,7 +129,7 @@ RobattleScreenSetup:
   ld [$c745], a
   xor a
   ld [$c65a], a
-  ld hl, $af00
+  ld hl, RobattleEnemyMedarot1
   ld b, $0
   ld a, [$c65a]
   ld c, a
@@ -285,7 +285,7 @@ RobattleSetupMedarotSelect::
 
 SECTION "Robattle - Part Screen", ROMX[$6c7e], BANK[$1b]
 RobattlePartScreen:
-  ld hl, $ac00
+  ld hl, RobattleMedarots
   ld a, [$c0d7]
   ld b, $0
   ld c, a
@@ -747,7 +747,7 @@ RobattleLoadMedarotNames:
   xor a
   ld [$c652], a
 .loop_medarot
-  ld hl, $ac00
+  ld hl, RobattlePlayerMedarot1
   ld b, $0
   ld a, [$c652]
   ld c, a
@@ -786,7 +786,7 @@ RobattleLoadMedarotNames:
   xor a
   ld [$c652], a
 .loop_enemy_medarot
-  ld hl, $af00
+  ld hl, RobattleEnemyMedarot1
   ld b, $0
   ld a, [$c652]
   ld c, a
@@ -822,7 +822,7 @@ RobattleLoadMedarotNamesCopy:
   xor a
   ld [$c652], a
 .loop_medarot
-  ld hl, $ac00
+  ld hl, RobattlePlayerMedarot1
   ld b, $0
   ld a, [$c652]
   ld c, a
@@ -861,7 +861,7 @@ RobattleLoadMedarotNamesCopy:
   xor a
   ld [$c652], a
 .loop_enemy_medarot
-  ld hl, $af00
+  ld hl, RobattleEnemyMedarot1
   ld b, $0
   ld a, [$c652]
   ld c, a
