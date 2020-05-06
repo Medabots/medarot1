@@ -238,7 +238,7 @@ LoadInventoryScreen:
   ld b, a
   ld a, [$c645]
   ld c, a
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ld a, [$c644]
   ld h, a
   ld a, [$c645]

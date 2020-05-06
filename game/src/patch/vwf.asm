@@ -60,6 +60,8 @@ VWFPutString::
   ; c is a single-byte representation of an address for mapping tiles to.
 
   ld [VWFTileLength], a
+
+.skipSettingLength
   ld a, 4
   rst $8 ; VWFPutStringInit
 
@@ -86,11 +88,7 @@ VWFPutString::
   pop hl
   ret
 
-VWFPadTextTo8::
-  ld a, 8
-  ; Continues into VWFPadText.
-  
-VWFPadText::
+VWFPadTextCommon::
   ld [VWFTileLength], a
   xor a
   rst $8 ; VWFPadTextInit
@@ -107,9 +105,19 @@ VWFPadText::
   jr .loop
 
 .exit
+  ret
+
+VWFPadTextTo8::
+  ld a, 8
+  ; Continues into VWFPadText.
+  
+VWFPadText::
+  call VWFPadTextCommon
   ld a, 9
   rst $8 ; VWFCalculateCentredTextOffsets
-  
+
+  ; To do: We need to in the future force this to run again if the font changed to narrow.
+
   xor a
   ret
 
@@ -118,27 +126,27 @@ VWFLeftPadTextTo8::
   ld a, 8
 
 VWFLeftPadText::
-  ld [VWFTileLength], a
-  xor a
-  rst $8 ; VWFPadTextInit
-
-.loop
-  ld a, [hli]
-  cp $50
-  jr z, .exit
-  push hl
-  ld [VWFCurrentLetter], a
-  ld a, 3
-  rst $8 ; VWFCountCharForCentring
-  pop hl
-  jr .loop
-
-.exit
+  call VWFPadTextCommon
   ld a, $c
   rst $8 ; VWFCalculateRightAlignedTextOffsets
-  
+
+  ; To do: We need to in the future force this to run again if the font changed to narrow.
+
   xor a
   ret
+
+VWFPutStringAutoNarrowTo8::
+  ld a, 8
+
+VWFPutStringAutoNarrow::
+  push hl
+  push bc
+  call VWFPadTextCommon
+  ld a, $d
+  rst $8 ; VWFCalculateAutoNarrow
+  pop bc
+  pop hl
+  jp VWFPutString.skipSettingLength
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
@@ -164,8 +172,31 @@ VWFDrawLetterTable::
   db 7, 7, 3, 7, 3, 3, 3, 3, 4, 4, 7, 5, 7, 7, 7, 7 ; Fx
   ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
 
+VWFDrawNarrowLetterTable::
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+  db 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 0x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 1x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 2x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 3x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 4x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 5x
+  db 7, 6, 4, 3, 4, 3, 1, 3, 3, 4, 4, 4, 2, 4, 4, 4 ; 6x
+  db 4, 4, 4, 4, 4, 4, 1, 5, 3, 5, 3, 5, 5, 1, 3, 5 ; 7x
+  db 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 5, 4, 4, 4 ; 8x
+  db 4, 4, 4, 4, 4, 4, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3 ; 9x
+  db 3, 3, 1, 2, 3, 1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3 ; Ax
+  db 5, 4, 3, 3, 3, 5, 5, 4, 2, 2, 3, 1, 3, 1, 5, 2 ; Bx
+  db 2, 3, 5, 3, 3, 2, 5, 5, 5, 5, 5, 5, 5, 4, 5, 2 ; Cx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Dx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Ex
+  db 7, 7, 3, 7, 3, 3, 3, 3, 3, 3, 5, 3, 6, 7, 7, 7 ; Fx
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+
 VWFFont::
   INCBIN "build/tilesets/Font.vwffont"
+
+VWFNarrowFont::
+  INCBIN "build/tilesets/NarrowFont.vwffont"
 
 VWFMessageBoxInputHandler::
   ; Advance on button press.
@@ -333,6 +364,9 @@ VWFMeasureCharacter::
   push hl
   ld h, VWFDrawLetterTable >> 8
   ld l, a
+  ld a, [VWFCurrentFont]
+  add h
+  ld h, a
   ld d, [hl]
   ld a, [VWFNextWordLength]
   add d
@@ -519,6 +553,7 @@ VWFCountCharForCentring::
   ld a, [VWFNextWordLength]
   ld d, a
   ld a, [VWFDrawingAreaLengthInPixels]
+  inc a
   cp d
   ret c
   ld a, [VWFCurrentLetter]
@@ -530,12 +565,7 @@ VWFCalculateCentredTextOffsets::
   ld d, a
   ld a, [VWFDrawingAreaLengthInPixels]
   sub d
-  jr nc, .withinLimits
-  xor a
-  ld [VWFInitialLetterOffset], a
-  ld [VWFInitialTileOffset], a
-
-.withinLimits
+  jr c, .limitsExceeded
   ld e, 0
   rra
 
@@ -552,32 +582,35 @@ VWFCalculateCentredTextOffsets::
   ld [VWFInitialTileOffset], a
   ret
 
+.limitsExceeded
+  inc a
+  jr z, .onlyOnePixelOver
+  ld a, 1
+  ld [VWFCurrentFont], a
+
+.onlyOnePixelOver
+  xor a
+  ld [VWFInitialLetterOffset], a
+  ld [VWFInitialTileOffset], a
+  ret
+
 ; Identical to VWFCalculateCentredTextOffsets without calling rra
 VWFCalculateRightAlignedTextOffsets::
   ld a, [VWFNextWordLength]
   ld d, a
   ld a, [VWFDrawingAreaLengthInPixels]
   sub d
-  jr nc, .withinLimits
-  xor a
-  ld [VWFInitialLetterOffset], a
-  ld [VWFInitialTileOffset], a
-
-.withinLimits
+  jr c, VWFCalculateCentredTextOffsets.limitsExceeded
   ld e, 0
+  jr VWFCalculateCentredTextOffsets.loop
 
-.loop
-  cp 8
-  jr c, .exitLoop
-  sub 8
-  inc e
-  jr .loop
-
-.exitLoop
-  ld [VWFInitialLetterOffset], a
-  ld a, e
-  ld [VWFInitialTileOffset], a
-  ret
+VWFCalculateAutoNarrow::
+  ld a, [VWFNextWordLength]
+  ld d, a
+  ld a, [VWFDrawingAreaLengthInPixels]
+  sub d
+  jr c, VWFCalculateCentredTextOffsets.limitsExceeded
+  jr VWFCalculateCentredTextOffsets.onlyOnePixelOver
 
 VWFPutStringInit::
   ; Store mapping location.
@@ -627,6 +660,11 @@ VWFPutStringInit::
   jp VWFResetForNewline.clearCompositeAreaLoop
 
 VWFMapRenderedString::
+  ; Reset font to normal after rendering (for after auto-narrowing).
+
+  xor a
+  ld [VWFCurrentFont], a
+
   ; Converts our 1 byte representation into a full address for mapping tiles.
 
   ld h, $4C
@@ -1041,6 +1079,12 @@ VWFDrawLetter::
   rl b
   ld c, a
   ld hl, VWFFont
+  ld a, [VWFCurrentFont]
+  add a
+  add a
+  add a
+  add h
+  ld h, a
   add hl, bc
   ld d, h
   ld e, l
@@ -1061,6 +1105,9 @@ VWFDrawLetter::
   ld a, [VWFCurrentLetter]
   ld h, VWFDrawLetterTable >> 8
   ld l, a
+  ld a, [VWFCurrentFont]
+  add h
+  ld h, a
   ld b, [hl]
   ld a, [VWFTextLength]
   add b
@@ -1088,7 +1135,6 @@ VWFDrawLetter::
   push de
   push hl
   push af
-  di
   ld a, [VWFCompositeAreaAddress]
   ld h, a
   ld a, [VWFCompositeAreaAddress + 1]
@@ -1158,7 +1204,6 @@ VWFDrawLetter::
   call VWFExpandGlyph
   
 .skipSecondTile
-  ei
   pop af
   pop hl
   pop de
@@ -1169,6 +1214,9 @@ VWFDrawLetter::
   xor a
   ld [VWFOldTileMode], a
   ld b, VWFDrawLetterTable >> 8
+  ld a, [VWFCurrentFont]
+  add b
+  ld b, a
   ld a, [VWFCurrentLetter]
   ld c, a
   ld a, [bc]
@@ -1193,6 +1241,7 @@ VWFDrawLetter::
 VWFExpandGlyph::
   push bc
   ld b, a
+  di
 
 .wfb
   ldh a, [hLCDStat]
@@ -1202,5 +1251,6 @@ VWFExpandGlyph::
   ld a, b
   ld [hli], a
   ld [hli], a
+  ei
   pop bc
   ret
