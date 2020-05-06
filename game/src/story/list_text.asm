@@ -85,6 +85,7 @@ LoadMedalList: ;32b9
   nop
   nop
   nop
+  nop
 ; 0x32df
 
 SECTION "Load from Medarot List", ROM0[$35dc]
@@ -111,6 +112,7 @@ LoadMedarotList:
   pop de
   pop hl
   ret
+  nop
   nop
 ; 0x3600
 

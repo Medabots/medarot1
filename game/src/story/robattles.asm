@@ -824,7 +824,7 @@ RobattleLoadMedarotNames:
   call VWFLeftPadTextTo8
   ld [$c650], a
   push de
-  pshl $98e0, $be
+  pshl $98e0, $01 ; write to free space, to avoid redrawing 
   ld b, $0
   ld a, [$c652]
   ld c, a
@@ -899,7 +899,7 @@ RobattleLoadMedarotNamesCopy::
   call VWFLeftPadTextTo8
   ld [$c650], a
   push de
-  pshl $98e0, $be
+  pshl $98e0, $01
   ld b, $0
   ld a, [$c652]
   ld c, a
