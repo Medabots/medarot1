@@ -13,13 +13,8 @@ LoadFont1:
 ;a = 02 font for the special characters (A, B, 0, 1, 2, 3, 4... !, heart)
 ;a = 03 dialogue font
 ;a = 09 on kirara's intro
-SECTION "Load Tileset", ROM0[$05a9]
-LoadFont0: ;Gets called at the initial screens during setup
-  call LoadFont_Sub
-  rst $18
-
 SECTION "Load Font sub", ROM0[$10d3]
-LoadFont_Sub: ; 10d3 (0:10d3)
+LoadFont0:: ; 10d3 (0:10d3)
   ld hl, TilesetTable
   ld d, $00
   ld e, a
@@ -181,7 +176,7 @@ NoDecompressLoadTiles:
   jp .loop
 .return:
   ret
-DecompressAndLoadTiles: ; 12e8 (0:12e8)
+DecompressAndLoadTiles:: ; 12e8 (0:12e8)
   ld [$c650], a ;Store font type
   ld a, b
   ld [$c6d3], a
