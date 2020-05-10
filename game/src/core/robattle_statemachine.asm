@@ -90,7 +90,7 @@ RobattleStatePrepareAttackScreen::
   ld a, [hl]
   ld [$C72D], a
   call $584A
-  jp IncSubStateIndexWrapperWrapper
+  jp JumpIncSubStateIndexWrapper
 
 .table
   db 3, 0, 1, 2

@@ -22,11 +22,11 @@ LoadMedalStatScreen:
   ld a, e
   ld e, l
   ld de, $c0c0
-  call $0159
+  call JumpTable_159
   ld b, $0
   ld c, $0
   ld e, $93
-  call $015c
+  call JumpTable_15c
   ld a, [$c725]
   ld b, a
   ld a, [$c6f4]
@@ -36,16 +36,16 @@ LoadMedalStatScreen:
   add hl, de
   ld a, [hl]
   ld [$c5fd], a
-  call $034b
+  call JumpTable_34b
   jp $5788
   ld b, $2
   ld c, $6
   ld e, $6f
-  call $015c
+  call JumpTable_15c
   ld b, $2
   ld c, $6
   ld e, $70
-  call $015c
+  call JumpTable_15c
   jp $5788
   ld a, [$c725]
   ld b, a
@@ -55,7 +55,7 @@ LoadMedalStatScreen:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call $0282
+  call JumpTable_282
   ld bc, $9841
   ld hl, cBUF01
   call JumpPadTextTo8
@@ -74,13 +74,13 @@ LoadMedalStatScreen:
   ld b, $a
   ld c, $0
   ld e, $94
-  call $015c
+  call JumpTable_15c
   jp $5788
 .asm_9d6f
   ld b, $a
   ld c, $0
   ld e, $95
-  call $015c
+  call JumpTable_15c
   jp $5788
 ; 0x9d7b
 

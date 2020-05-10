@@ -42,7 +42,7 @@ LoadMedarotPartSelectUnk1: ; Not sure what this loads yet
   add hl, de
   ld a, [hl]
   ld de, $9400
-  call $027c
+  call JumpTable_27c
   ret
 ; 0xaee6
 LoadMedarotPartSelectMedal:
@@ -54,7 +54,7 @@ LoadMedarotPartSelectMedal:
   ld b, $a
   ld c, $4
   ld e, $85
-  call $015c
+  call JumpTable_15c
   ret
   ld hl, $a640
   ld c, b
@@ -67,7 +67,7 @@ LoadMedarotPartSelectMedal:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call $0282
+  call JumpTable_282
   ld hl, cBUF01
   ld bc, $98ac
   call JumpPutString
@@ -79,7 +79,7 @@ LoadMedarotPartSelectHead:
   ld b, $9
   ld c, $9
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a03d]
   ld hl, $b520
@@ -92,7 +92,7 @@ LoadMedarotPartSelectHead:
   and $7f
   ld b, $0
   ld c, $0
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld bc, $9949
   call JumpPutString
@@ -104,7 +104,7 @@ LoadMedarotPartSelectRArm:
   ld b, $9
   ld c, $b
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a03f]
   ld hl, $b5a0
@@ -117,7 +117,7 @@ LoadMedarotPartSelectRArm:
   and $7f
   ld b, $0
   ld c, $1
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld bc, $9989
   call JumpPutString
@@ -129,7 +129,7 @@ LoadMedarotPartSelectLArm:
   ld b, $9
   ld c, $d
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a041]
   ld hl, $b620
@@ -142,7 +142,7 @@ LoadMedarotPartSelectLArm:
   and $7f
   ld b, $0
   ld c, $2
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld bc, $99c9
   call JumpPutString
@@ -155,7 +155,7 @@ LoadMedarotPartSelectLegs:
   ld b, $9
   ld c, $f
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
 ; 0xafce
   ld a, [$a043]
@@ -169,7 +169,7 @@ LoadMedarotPartSelectLegs:
   and $7f
   ld b, $0
   ld c, $3
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld bc, $9a09
   call JumpPutString

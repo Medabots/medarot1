@@ -256,21 +256,21 @@ DecompressAndLoadTiles: ; 12e8 (0:12e8)
 SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
   ld a, $a
   ld b, $1
-  call $0246 ; Calls decompress tiles
+  call JumpTable_246 ; Calls decompress tiles
   ld a, [$c64e]
   or a
   ret nz
   ld a, [$c752]
   add $d
-  call $015f
+  call JumpTable_15f
   ld a, $2
-  call $017d
+  call JumpTable_17d
   ld b, $8
   ld c, $b
   ld d, $6
   ld e, $0
   ld a, $a
-  call $0309
+  call JumpTable_309
   call $67de
   ret
 ; 0x6eaf1

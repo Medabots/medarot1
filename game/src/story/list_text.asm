@@ -247,12 +247,12 @@ LoadInventoryScreen:
   ld l, a
   ld a, $77
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   ld a, [$c64e]
   push hl
-  call $025b
+  call JumpTable_25b
   pop hl
   ld a, [$c64f]
   and $f0
@@ -260,7 +260,7 @@ LoadInventoryScreen:
   ld b, $6b
   add b
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   ld a, [$c64f]
@@ -268,7 +268,7 @@ LoadInventoryScreen:
   ld b, $6b
   add b
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   pop bc
@@ -303,7 +303,7 @@ LoadMedalScreen:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call $0282
+  call JumpTable_282
   ld a, [$c644]
   ld b, a
   ld a, [$c645]

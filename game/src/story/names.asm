@@ -37,21 +37,21 @@ SetupInitialNameScreen: ;4a9f
   ld a, $3 ; Name length
   ld [$c5ce], a
   ld a, $2
-  call $015f
+  call JumpTable_15f
   ld a, $3
-  call $015f
+  call JumpTable_15f
   ld b, $0
   ld c, $0
   ld e, $2
-  call $015c
+  call JumpTable_15c
   ld b, $2
   ld c, $6
   ld e, $2b
-  call $015c
+  call JumpTable_15c
   ld b, $1
   ld c, $1
   ld e, $29
-  call $015c
+  call JumpTable_15c
   ld hl, cBUF01
   ld bc, $984a
   call JumpPutString
@@ -59,14 +59,14 @@ SetupInitialNameScreen: ;4a9f
   ld a, $1
   ld [$ffa0], a
   ld a, $4
-  call $017d
+  call JumpTable_17d
   ld b, $5
   ld c, $5
   ld d, $5
   ld e, $5
   ld a, $2
-  call $0309
-  jp $0168
+  call JumpTable_309
+  jp JumpIncSubStateIndexWrapper
 
 ;TODO: Properly disassemble this routine which draws the OAM for the setup screen
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
@@ -84,7 +84,7 @@ PadNameBuf50:
   add hl, bc
   ld [hl], $50
   call BufferToName
-  call $0168
+  call JumpIncSubStateIndexWrapper
   ret
 .asm_4ba2
   call $4f2c
@@ -100,7 +100,7 @@ PadNameBuf50_1:
   ld c, a
   add hl, bc
   ld [hl], $50
-  call $033f
+  call JumpTable_33f
   call $4efc
   ld a, $1
   ld [$c75f], a
@@ -124,13 +124,13 @@ OnEraseCharacter:
   ld c, a
   add hl, bc
   di
-  call $016e
+  call JumpTable_16e
   ld [hl], $0
   ei
   ld bc, $0020
   add hl, bc
   di
-  call $016e
+  call JumpTable_16e
   ld [hl], $0
   ei
   ld a, [$c1e2]

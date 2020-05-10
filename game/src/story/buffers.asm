@@ -51,9 +51,9 @@ NameScreenSaveToBuf: ; 5058
   ld a, [$c223]
   add $4
   ld [$ff8e], a
-  call $01b3
+  call JumpTable_1b3
   di
-  call $016e
+  call JumpTable_16e
   ld a, [hl]
   ei
   cp $ec
@@ -66,7 +66,7 @@ NameScreenSaveToBuf: ; 5058
   cp $8
   jp z, $5187
   di
-  call $016e
+  call JumpTable_16e
   ld a, [hl]
   ei
   ld [$c64e], a
@@ -84,7 +84,7 @@ NameScreenSaveToBuf: ; 5058
   add hl, bc
   ld a, [$c64e]
   di
-  call $016e
+  call JumpTable_16e
   ld [hl], a
   ei
   ld a, [$c5ce]
