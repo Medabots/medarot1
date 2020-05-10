@@ -168,7 +168,7 @@ RobattleScreenCopyPlayerMedarotInfo:
   ret
 ; 0x10ddb
 
-SECTION "(Hack) Copy 'b' bytes from [de] to [hl], preserve all registers except a", ROMX[$79ab], BANK[$4]
+SECTION "(Hack) Copy 'b' bytes from [de] to [hl], preserve all registers except a", ROMX[$796a], BANK[$4]
 HackCopyDEtoHL_4:
   push bc
   push de
