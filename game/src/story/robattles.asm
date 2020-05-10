@@ -187,7 +187,7 @@ HackCopyDEtoHL_4:
 SECTION "Robattle Screen - Initialize", ROMX[$520c], BANK[$4]
 RobattleScreenSetup:
   ld a, [$c753]
-  call $02bb
+  call JumpTable_2bb
   ld a, [$c64e]
   ld [$c745], a
   xor a
@@ -217,7 +217,7 @@ RobattleScreenSetup:
   ld hl, $000b
   add hl, de
   ld [hl], a
-  call $0162
+  call JumpTable_162
   ld a, [$c5f0]
   and $3
   ld hl, $c650
@@ -228,7 +228,7 @@ RobattleScreenSetup:
   ld hl, $000d
   add hl, de
   ld [hl], a
-  call $0162
+  call JumpTable_162
   ld a, [$c5f0]
   and $3
   ld hl, $c650
@@ -239,7 +239,7 @@ RobattleScreenSetup:
   ld hl, $000e
   add hl, de
   ld [hl], a
-  call $0162
+  call JumpTable_162
   ld a, [$c5f0]
   and $3
   ld hl, $c650
@@ -250,7 +250,7 @@ RobattleScreenSetup:
   ld hl, $000f
   add hl, de
   ld [hl], a
-  call $0162
+  call JumpTable_162
   ld a, [$c5f0]
   and $3
   ld hl, $c650
@@ -276,7 +276,7 @@ RobattleScreenSetup:
   ld a, [hl]
   and $7f
   ld c, a
-  call $02be
+  call JumpTable_2be
   push de
   ld b, $10 ; Medarot name length, 15+1 term
   ld hl, $00f0
@@ -373,7 +373,7 @@ RobattlePartScreen:
   add hl, de
   ld a, [hl]
   ld de, $9410
-  call $027c
+  call JumpTable_27c
   pop de
   ld a, $41
   ld hl, $988a
@@ -382,7 +382,7 @@ RobattlePartScreen:
   ld hl, $0081
   add hl, de
   ld a, [hl]
-  call $0282
+  call JumpTable_282
   ld hl, cBUF01 ; Medal
   psbc $98ac, $c6
   call VWFPutStringTo8
@@ -432,13 +432,13 @@ RobattleMedarotInfoLoadHead:
   ld b, $9
   ld c, $9
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a03d]
   and $7f
   ld b, $0
   ld c, $0
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   psbc $9949, $d6
   call VWFPutStringTo8
@@ -450,13 +450,13 @@ RobattleMedarotInfoLoadRArm:
   ld b, $9
   ld c, $b
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a03f]
   and $7f
   ld b, $0
   ld c, $1
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   psbc $9989, $de
   call VWFPutStringTo8
@@ -468,13 +468,13 @@ RobattleMedarotInfoLoadLArm:
   ld b, $9
   ld c, $d
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a041]
   and $7f
   ld b, $0
   ld c, $2
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   psbc $99c9, $e6
   call VWFPutStringTo8
@@ -486,13 +486,13 @@ RobattleMedarotInfoLoadLegs:
   ld b, $9
   ld c, $f
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld a, [$a043]
   and $7f
   ld b, $0
   ld c, $3
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   psbc $9a09, $5c
   call VWFPutStringTo8
@@ -558,7 +558,7 @@ RobattleLoadText:
   ld b, $6
   ld c, $d
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
 ; 0x114fb
   ld hl, $00d3
@@ -580,7 +580,7 @@ RobattleLoadText:
   and $7f
   ld b, $0
   ld c, $0
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   call VWFPadTextTo8
   ld b, $0
@@ -601,7 +601,7 @@ RobattleLoadText:
   ld b, $b
   ld c, $f
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld hl, $000e
   add hl, de
@@ -617,7 +617,7 @@ RobattleLoadText:
   and $7f
   ld b, $0
   ld c, $1
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   psbc $9a0b, $c6
   call VWFPutStringTo8
@@ -631,7 +631,7 @@ RobattleLoadText:
   ld b, $1
   ld c, $f
   ld e, $86
-  call $015c
+  call JumpTable_15c
   ret
   ld hl, $000f
   add hl, de
@@ -647,7 +647,7 @@ RobattleLoadText:
   and $7f
   ld b, $0
   ld c, $2
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   call VWFLeftPadTextTo8
   ld b, $0
@@ -749,7 +749,7 @@ RobattleLoadAttackText:
 SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
 RobattleEndScreenEXP:
   ld a, $1
-  call $01d7
+  call JumpTable_1d7
   ld a, [$a08e]
   ld b, a
   ld a, [$a08f]
@@ -757,7 +757,7 @@ RobattleEndScreenEXP:
   ld hl, cBUF01
   ld a, [$c64e]
   push af
-  call $0336
+  call JumpTable_336
   pop af
   ld [$c64e], a
   ld a, $d1
@@ -793,7 +793,7 @@ RobattleEndScreenEXP:
   ld bc, $0001
   add hl, bc
   ld a, [hli]
-  call $0282
+  call JumpTable_282
   ld a, $d0
   ld [$a0c2], a
 .asm_732b
@@ -801,7 +801,7 @@ RobattleEndScreenEXP:
 .asm_732d
   ld [$a0c3], a
   ld a, $1
-  call $01d7
+  call JumpTable_1d7
   jp $73ce
 ; 0x7338
 

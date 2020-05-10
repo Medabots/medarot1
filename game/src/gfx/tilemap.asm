@@ -5,7 +5,7 @@ Tilemaps:
 INCLUDE "build/tilemaps/tilemap_files.asm"
 
 SECTION "Load Tilemaps", ROM0[$e2c]
-LoadTilemap:
+LoadTilemap::
   ld a, BANK(Tilemaps)
   rst $10
   push de

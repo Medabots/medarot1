@@ -47,7 +47,7 @@ LoadPartsScreenPartName:
   ld c, a
   ld b, $8
   ld e, $73
-  call $015c
+  call JumpTable_15c
   jp $637d
 ; 0xa354
   push hl
@@ -57,14 +57,14 @@ LoadPartsScreenPartName:
   ld c, a
   ld b, $8
   ld e, $7a
-  call $015c
+  call JumpTable_15c
   pop hl
   ld a, [$c727]
   ld c, a
   ld a, [hl]
   and $7f
   ld b, $0
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld a, [$c644]
   ld b, a
@@ -119,7 +119,7 @@ LoadPartsScreenPartName:
   ld b, $0
   ld c, $0
   ld e, $7b
-  call $015c
+  call JumpTable_15c
   jp $5788
 ; 0xa3cb
 
@@ -172,7 +172,7 @@ LoadPartsScreenPartModel:
   ld c, a
   ld b, $1
   ld e, $78
-  call $015c
+  call JumpTable_15c
   jp $661a
 ; 0xa600
   ld a, [$c727]
@@ -180,7 +180,7 @@ LoadPartsScreenPartModel:
   ld a, [hl]
   and $7f
   ld b, $1
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   ld a, [$c644]
   ld b, a
@@ -253,7 +253,7 @@ LoadPartsScreenPartModel:
   ld c, a
   ld b, $11
   ld e, $79
-  call $015c
+  call JumpTable_15c
   jp $66ed
 ; 0xa697
   push hl
@@ -263,19 +263,19 @@ LoadPartsScreenPartModel:
   ld l, a
   xor a
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   pop hl
@@ -288,7 +288,7 @@ LoadPartsScreenPartModel:
   ld a, [$c645]
   ld l, a
   pop af
-  call $02fa
+  call JumpTable_2fa
   pop hl
   ld a, [hl]
   and $7f
@@ -308,7 +308,7 @@ LoadPartsScreenPartModel:
   inc hl
   ld a, $50
   di
-  call $016e
+  call JumpTable_16e
   ld [hli], a
   ei
   ld a, [$c644]
@@ -341,7 +341,7 @@ LoadPartInfo:
   ld a, [hl]
   and $7f
   ld b, $0
-  call $0294
+  call JumpTable_294
   ld hl, cBUF01
   call VWFPadTextTo8
   ld h, $0
