@@ -88,7 +88,7 @@ Main::
   call $0482
   ld a, [$C5A1]
   or a
-  jr nz, .jpB
+  jr nz, .waitForNextFrame
   call $3FB8
   call $3F0F
   call $3EF8
@@ -98,9 +98,6 @@ Main::
   call $18DA
   ld a, 1
   ld [$C5A1], a
-
-.jpB
-  call $058D ; Audio handling.
 
 .waitForNextFrame
   ldh a, [$FF92]
@@ -112,3 +109,6 @@ Main::
   xor a
   ld [$C5A1], a
   jp .gameLoop
+  nop
+  nop
+  nop
