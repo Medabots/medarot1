@@ -806,7 +806,7 @@ RobattleEndScreenEXP:
 ; 0x7338
 
 SECTION "Robattle - Load Medarot Names", ROMX[$76cc], BANK[$4]
-RobattleLoadMedarotNames:
+RobattleLoadMedarotNames::
   xor a
   ld [$c652], a
 .loop_medarot
