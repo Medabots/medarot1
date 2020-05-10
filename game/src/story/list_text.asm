@@ -64,12 +64,12 @@ LoadMedalList: ;32b9
   ld a, $a ; LeftShiftBC
   rst $8
   ld a, BANK(MedalList)
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, MedalList
   add hl, bc
   ld de, cBUF01
-  ld b, $8
+  ld b, $10
 .asm_32d8
   ld a, [hli]
   ld [de], a
@@ -84,6 +84,8 @@ LoadMedalList: ;32b9
   nop
   nop
   nop
+  nop
+  nop
 ; 0x32df
 
 SECTION "Load from Medarot List", ROM0[$35dc]
@@ -91,7 +93,7 @@ LoadMedarotList:
   push hl
   push de
   ld a, BANK(MedarotList)
-  ld [$2000], a
+  rst $10
   ld hl, MedarotList
   ld b, $0
   ld a, $4
@@ -110,6 +112,8 @@ LoadMedarotList:
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x3600
 
 ; Pointer to the start of each part list (Head, Right, Left, Leg)

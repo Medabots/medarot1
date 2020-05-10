@@ -80,8 +80,8 @@ SECTION "Wrappers_6", ROM0[$0b0d]
 WrapRobattleSetupPrepScreenCopy: ; Calls the robattle name setup in the middle of a robattle (also copy in bank $4)
   ld a, [$c6e0]
   ld [$c6e1], a
-  ld a, $1b
-  ld [$2000], a
+  ld a, BANK(RobattleLoadMedarotNamesCopy)
+  rst $10
   ld [$c6e0], a
   call $6b3f ; Calls RobattleLoadMedarotNamesCopy
   ld a, [$c6e1]

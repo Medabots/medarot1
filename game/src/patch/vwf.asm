@@ -112,6 +112,7 @@ VWFPadTextTo8::
   ; Continues into VWFPadText.
   
 VWFPadText::
+  push de
   call VWFPadTextCommon
   ld a, 9
   rst $8 ; VWFCalculateCentredTextOffsets
@@ -119,6 +120,7 @@ VWFPadText::
   ; To do: We need to in the future force this to run again if the font changed to narrow.
 
   xor a
+  pop de
   ret
 
 ; Copy of VWFPadTextTo8, but for right-aligned text
@@ -126,6 +128,7 @@ VWFLeftPadTextTo8::
   ld a, 8
 
 VWFLeftPadText::
+  push de
   call VWFPadTextCommon
   ld a, $c
   rst $8 ; VWFCalculateRightAlignedTextOffsets
@@ -133,6 +136,7 @@ VWFLeftPadText::
   ; To do: We need to in the future force this to run again if the font changed to narrow.
 
   xor a
+  pop de
   ret
 
 VWFPutStringAutoNarrowTo8::
