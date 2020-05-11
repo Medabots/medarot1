@@ -17,8 +17,6 @@ VWFInitialTileOffset:: ds 1
 VWFTileLength:: ds 1
 VWFDrawingAreaLengthInPixels:: ds 1
 VWFTileMappingPseudoIndex:: ds 1
-AsyncTileLastPosition:: ds 6
-RobattleAttackNameDrawStagingIndex:: ds 1
 VWFDiscardSecondTile:: ds 1
 VWFCurrentFont:: ds 1
 

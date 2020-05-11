@@ -27,9 +27,19 @@ VBlankingIRQ::
 .setCompletedFlag
   ld a, 1
   ldh [$FF92], a
-  call $3DF9
+  call SoundFixHack
   pop hl
   pop de
   pop bc
   pop af
   reti
+
+SECTION "Sound Fix", ROM0[$1FE2]
+SoundFixHack::
+  call $3DF9 ; Original replaced call. Nothing to do with sound.
+  ld a, 6
+  ld [$2000], a
+  call $4000
+  ldh a, [hBank]
+  ld [$2000], a
+  ret
