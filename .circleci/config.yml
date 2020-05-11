@@ -18,7 +18,7 @@ jobs:
       - run:
           name: "Get base"
           working_directory: ~
-          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom.gbc
+          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom.gb
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
@@ -37,7 +37,7 @@ jobs:
           name: "Generate Patch"
           command: |
             mkdir patch
-            ips_util create ~/medarot_1/baserom.gbc ~/medarot_1/medarot.gbc -o patch/$PATCH_OUTPUT.ips
+            ips_util create ~/medarot_1/baserom.gb ~/medarot_1/medarot.gb -o patch/$PATCH_OUTPUT.ips
       - store_artifacts:
           path: patch/
           destination: patch
