@@ -4,7 +4,7 @@ INCLUDE "game/src/gfx/tileset_files.asm"
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:
   ld a, 3
-  call NoDecompressAsyncLoadTiles
+  call DecompressAndLoadTiles
   ret
 
 ;a = 04 at init
@@ -279,7 +279,7 @@ SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
   ret
 ; 0x6eaf1
 
-SECTION "Load Uncompressed Tiles", ROM0[$1f41] ; Address is at the end of the old control codes
+SECTION "Load Uncompressed Tiles", ROM0[$1fb9] ; Address is at the end of the old control codes
 NoDecompressLoadTiles:
   ld a, [de]
   ld c, a
@@ -321,112 +321,3 @@ NoDecompressLoadTiles:
   dec bc
   dec c
   jr .loop
-
-NoDecompressAsyncLoadTiles:
-  ld [$c650], a ;Store font type
-  ld a, b
-  ld [$c6d3], a
-  xor a
-  ld [$c64e], a ; "In Progress" flag
-  ld a, [$c650]
-  ld hl, TilesetTable
-  ld d, 0
-  ld e, a
-  add hl, de
-  add hl, de
-  rst $38
-  ld a, [hli]
-  ld [$c6d4], a
-  rst $10
-
-  ld a, [AsyncTileLastPosition]
-  ld e, a
-  ld a, [AsyncTileLastPosition + 1]
-
-  cp e
-  jr z, .init
-
-  ld d, a
-  ld a, [AsyncTileLastPosition + 2]
-  ld c, a
-  ld a, [AsyncTileLastPosition + 3]
-  ld b, a
-  ld a, [AsyncTileLastPosition + 4]
-  ld l, a
-  ld a, [AsyncTileLastPosition + 5]
-  ld h, a
-  jr .loop
-
-.init
-  ld a, [hli]
-  ld e, a
-  ld a, [hli]
-  ld d, a
-  rst $38
-  inc de
-
-  ld a, [de]
-  ld c, a
-  inc de
-  ld a, [de]
-  ld b, a
-  inc de
-
-  ld a, c
-  and 1
-  jr z, .loop
-
-  di
-  call WaitLCDController
-  ld a, [de]
-  ld [hli], a
-  ei
-  inc de
-  dec c
-
-.loop
-  ld a, b
-  or c
-  jr z, .exit
-
-  di
-
-.wfb
-  ldh a, [hLCDStat]
-  and 2
-  jr nz, .wfb
-
-  ld a, [de]
-  ld [hli], a
-  inc de
-  ld a, [de]
-  ld [hli], a
-  ei
-  inc de
-  dec bc
-  dec c
-  jr nz, .loop
-
-  ld a, l
-  ld [AsyncTileLastPosition + 4], a
-  ld a, h
-  ld [AsyncTileLastPosition + 5], a
-  ld hl, AsyncTileLastPosition
-  ld a, e
-  ld [hli], a
-  ld a, d
-  ld [hli], a
-  ld a, c
-  ld [hli], a
-  ld a, b
-  ld [hl], a
-  ld a, 1
-  ld [$c64e], a
-  ret
-
-.exit
-  ld hl, AsyncTileLastPosition
-  xor a
-  ld [hli], a
-  ld [hl], a
-  ret
