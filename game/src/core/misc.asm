@@ -3,7 +3,7 @@
 SECTION "Func_25e5", ROM0[$25e5]
 Func_25e5: ; 25e5 (0:25e5)
   ld a, $12
-  ld [$2000], a
+  rst $10
   ld a, [$c8f9]
   ld hl, $70e6
   ld b, $00
@@ -15,12 +15,17 @@ Func_25e5: ; 25e5 (0:25e5)
   ld [$c933], a
   call $398c
   ret
+  nop
+  nop
+;
 
 SECTION "Func_2bb2", ROM0[$2bb2]
 Func_2bb2: ; 2bb2 (0:2bb2)
   ld [$c6d3], a
   ld a, $0b
-  ld [$2000], a
+  rst $10
+  nop
+  nop
   xor a
   ld [$c64e], a
   ld a, [$c6ce]
@@ -81,7 +86,9 @@ Func_2bb2: ; 2bb2 (0:2bb2)
 SECTION "Func_2dba", ROM0[$2dba]
 Func_2dba: ; 2dba (0:2dba)
   ld a, $17
-  ld [$2000], a
+  rst $10
+  nop
+  nop
   ld hl, $c933
   ld a, [$c936]
   cp $ff
@@ -105,7 +112,9 @@ Func_2dba: ; 2dba (0:2dba)
   ld a, [hli]
   ld [$c650], a
   ld a, $12
-  ld [$2000], a
+  rst $10
+  nop
+  nop
   ld hl, $7206
   ld b, $00
   ld a, [$c8f9]
@@ -120,7 +129,7 @@ Func_2dba: ; 2dba (0:2dba)
 SECTION "Func_2e3f", ROM0[$2e3f]
 Func_2e3f: ; 2e3f (0:2e3f)
   ld a, $14
-  ld [$2000], a
+  rst $10
   ld hl, $4000
   ld de, $9010
   ld bc, $100
@@ -129,12 +138,14 @@ Func_2e3f: ; 2e3f (0:2e3f)
   inc a
   ld [$c740], a
   ret
+  nop
+  nop
 ; 0x2e58
 
 SECTION "Func_2eb0", ROM0[$2eb0]
 Func_2eb0: ; 2eb0 (0:2eb0)
   ld a, $14
-  ld [$2000], a
+  rst $10
   ld a, [$c752]
   ld b, $00
   ld c, a
@@ -168,12 +179,14 @@ Func_2eb0: ; 2eb0 (0:2eb0)
   ld a, $ff
   ld [$c740], a
   ret
+  nop
+  nop
 ; 0x2ef7
 
 SECTION "Func_2faa", ROM0[$2faa]
 Func_2faa: ; 2faa (0:2faa)
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld a, [$c753]
   ld hl, $64e6
   ld b, $00
@@ -196,13 +209,15 @@ Func_2faa: ; 2faa (0:2faa)
   dec b
   jr nz, .asm_2fc8
   ret
+  nop
+  nop
 ; 0x2fcf
 
 SECTION "Func_3155", ROM0[$3155]
 Func_3155: ; 3155 (0:3155)
   ld [$c64e], a
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld hl, $318f
   ld d, $00
   ld e, b
@@ -232,6 +247,8 @@ Func_3155: ; 3155 (0:3155)
   ld a, [hl]
   ld [$c64e], a
   ret
+  nop
+  nop
 ; 0x318f
 
 SECTION "Func_3195", ROM0[$3195]
@@ -241,7 +258,7 @@ Func_3195: ; 3195 (0:3195)
   ld e, $3c
   call LoadTilemap
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld hl, $325c
   ld b, $00
   ld a, [$a00e]
@@ -339,12 +356,14 @@ Func_3195: ; 3195 (0:3195)
   ld bc, $992b
   call PutString
   ret
+  nop
+  nop
 
 SECTION "Func_3262", ROM0[$3262]
 Func_3262: ; 3262 (0:3262)
   push af
   ld a, $08
-  ld [$2000], a
+  rst $10
   pop af
   ld b, $00
   ld c, a
@@ -365,6 +384,8 @@ Func_3262: ; 3262 (0:3262)
   ld bc, $40
   call CopyVRAMData
   ret
+  nop
+  nop
 ; 0x328f
 
 SECTION "Func_32ed", ROM0[$32ed]
@@ -399,7 +420,7 @@ SECTION "Func_3480", ROM0[$3480]
 Func_3480: ; 3480 (0:3480)
   push af
   ld a, $0a
-  ld [$2000], a
+  rst $10
   pop af
   ld b, $00
   ld c, a
@@ -424,16 +445,20 @@ Func_3480: ; 3480 (0:3480)
   ld bc, $100
   call CopyVRAMData
   ret
+  nop
+  nop
 ; 0x34b5
 
 SECTION "34b5", ROM0[$34b5]
 Func_34b5: ; 34b5 (0:34b5)
   ld a, $0a
-  ld [$2000], a
+  rst $10
   ld hl, $7900
   ld bc, $1a0
   call CopyVRAMData
   ret
+  nop
+  nop
 ; 0x34c4
 
 SECTION "Func_356a", ROM0[$356a]
@@ -441,7 +466,7 @@ Func_356a: ; 356a (0:356a)
   push af
   ld b, $0c
   add b
-  ld [$2000], a
+  rst $10
   ld b, $00
   sla c
   rl b
@@ -469,6 +494,8 @@ Func_356a: ; 356a (0:356a)
 .asm_35a2
   call CopyVRAMData
   ret
+  nop
+  nop
 ; 0x35a6
 
 SECTION "Func_35a6", ROM0[$35a6]
@@ -477,7 +504,7 @@ Func_35a6: ; 35a6 (0:35a6)
   push de
   push bc
   ld a, $0b
-  ld [$2000], a
+  rst $10
   ld hl, $4000
   ld bc, $90
   call CopyVRAMData
@@ -485,13 +512,15 @@ Func_35a6: ; 35a6 (0:35a6)
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x35bb
 
 SECTION "Func_35bb", ROM0[$35bb]
 Func_35bb: ; 35bb (0:35bb)
   push af
   ld a, $17
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, $6879
   ld b, $00
@@ -511,6 +540,8 @@ Func_35bb: ; 35bb (0:35bb)
   dec b
   jr nz, .asm_35d5
   ret
+  nop
+  nop
 ; 0x35dc
 
 SECTION "Func_37cd", ROM0[$37cd]
@@ -520,7 +551,7 @@ Func_37cd: ; 37cd (0:37cd)
   push bc
   push af
   ld a, $17
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, $70d6
   ld b, $00
@@ -542,6 +573,8 @@ Func_37cd: ; 37cd (0:37cd)
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x37fc
 
 SECTION "Func_37fc", ROM0[$37fc]
@@ -551,7 +584,7 @@ Func_37fc: ; 37fc (0:37fc)
   push bc
   push af
   ld a, $17
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, $6ff6
   ld b, $00
@@ -580,6 +613,8 @@ Func_37fc: ; 37fc (0:37fc)
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x382d
 
 SECTION "Func_382d", ROM0[$382d]
@@ -591,7 +626,7 @@ Func_382d: ; 382d (0:382d)
   ld de, $a420
 .asm_3837
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld hl, $4
   add hl, de
   ld a, [hl]
@@ -692,6 +727,8 @@ Func_382d: ; 382d (0:382d)
   jr nz, .asm_38c8
   pop de
   ret
+  nop
+  nop
 ; 0x38d0
 
 SECTION "Func_38d0", ROM0[$38d0]
@@ -699,7 +736,7 @@ Func_38d0: ; 38d0 (0:38d0)
   push de
   push af
   ld a, $17
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, $755a
   ld b, $00
@@ -721,6 +758,8 @@ Func_38d0: ; 38d0 (0:38d0)
   jr nz, .asm_38f0
   pop de
   ret
+  nop
+  nop
 ; 0x38f8
 
 SECTION "Func_38f8", ROM0[$38f8]
@@ -728,7 +767,7 @@ Func_38f8: ; 38f8 (0:38f8)
   push hl
   push de
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld hl, $7622
   ld d, $00
   ld e, b
@@ -754,6 +793,8 @@ Func_38f8: ; 38f8 (0:38f8)
   pop de
   pop hl
   ret
+  nop
+  nop
 ; 0x3926
 
 SECTION "Func_3942", ROM0[$3942]
@@ -770,7 +811,7 @@ Func_3942: ; 3942 (0:3942)
   ld a, $01
   call $3117
   ld a, $02
-  ld [$2000], a
+  rst $10
   ld hl, $67f7
   ld b, $00
   ld a, [$c64e]
@@ -779,7 +820,7 @@ Func_3942: ; 3942 (0:3942)
   ld a, [hl]
   push af
   ld a, $1f
-  ld [$2000], a
+  rst $10
   pop af
   ld hl, $7234
   ld b, $00
@@ -793,12 +834,16 @@ Func_3942: ; 3942 (0:3942)
   ld bc, $9c41
   call PutString
   ret
+  nop
+  nop
+  nop
+  nop
 ; 0x3981
 
 SECTION "Func_398c", ROM0[$398c]
 Func_398c: ; 398c (0:398c)
   ld a, $12
-  ld [$2000], a
+  rst $10
   ld hl, $7176
   ld b, $00
   ld a, [$c8f9]
@@ -827,12 +872,14 @@ Func_398c: ; 398c (0:398c)
   and $0f
   ld [$c935], a
   ret
+  nop
+  nop
 ; 0x39c0
 
 SECTION "Func_3ac8", ROM0[$3ac8]
 Func_3ac8: ; 3ac8 (0:3ac8)
   ld a, $12
-  ld [$2000], a
+  rst $10
   ld a, [$c8f9]
   ld hl, $7296
   ld b, $00
@@ -841,13 +888,17 @@ Func_3ac8: ; 3ac8 (0:3ac8)
   ld a, [hl]
   ld [$c64e], a
   ret
+  nop
+  nop
 ; 0x3adc
 
 SECTION "Func_3ca6", ROM0[$3ca6]
 Func_3ca6: ; 3ca6 (0:3ca6)
   call $2a9e
   ld a, $1d
-  ld [$2000], a
+  rst $10 ; FIXME: Don't move the nops til this routine is completely disassembled, as it might misalign jumps/calls
+  nop
+  nop
   ld a, [$c8f9]
   ld hl, $6000
   ld d, $00
@@ -869,7 +920,9 @@ Func_3ca6: ; 3ca6 (0:3ca6)
   ld l, a
   push hl
   ld a, $1d
-  ld [$2000], a
+  rst $10
+  nop
+  nop
   ld a, [hl]
   cp $ff
   jp z, $3d66
@@ -937,7 +990,9 @@ Func_3ca6: ; 3ca6 (0:3ca6)
   ld a, [hl]
   ld c, a
   ld a, $01
-  ld [$2000], a
+  rst $10
+  nop
+  nop
   ld a, [$c8b0]
   and $80
   jp z, .asm_3d4d
