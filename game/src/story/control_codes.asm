@@ -91,7 +91,7 @@ Char4F: ; 1d6b end of text
   ld b, $1
   ld c, $1
   ld e, $2f
-  call $0f84
+  call LoadTilemapInWindow
   xor a
   ld [$c6c5], a
   ld a, $1
@@ -175,14 +175,14 @@ Char4C: ; 0x1e62
   ld b, $1
   ld c, $1
   ld e, $2f
-  call $0f84
+  call LoadTilemapInWindow
   ld a, [$c5c7]
   cp $1
   jr z, .asm_1eb5 ; 0x1eaa $9
   ld b, $0
   ld c, $0
   ld e, $30
-  call $0f84
+  call LoadTilemapInWindow
 .asm_1eb5
   ld hl, $9c00
   ld bc, $0041
@@ -298,7 +298,7 @@ Char4A: ; 0x1f5f
 .asm_1f74
   ld b, $1
   ld e, $2f
-  call $0f84
+  call LoadTilemapInWindow
   ld hl, $9c00
   ld a, [$c650]
   ld b, $0
