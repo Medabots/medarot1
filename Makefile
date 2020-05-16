@@ -81,7 +81,7 @@ PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TY
 
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
-patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES)
+patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias # Manually add MainDialog as a special case for map text reloading
 
 all: $(TARGET_OUT)
 

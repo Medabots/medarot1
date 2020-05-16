@@ -32,6 +32,7 @@ HackPredefTable:
   dw VWFCalculateAutoNarrow ; D
   dw AddHLShiftBC5 ; E
   dw LoadInventoryTilesetAndHelpTilemap ; F
+  dw LoadNormalMenuText ; 10
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -136,6 +137,20 @@ LoadInventoryTilesetAndHelpTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartInventoryText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadNormalMenuText:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMapText
   ld a, [de]
   inc de
   call LoadTiles

@@ -1,5 +1,5 @@
 SECTION "Tileset Data 1", ROMX[$4000], BANK[$20]
-TilesetMenuText:
+TilesetMenuText::
 TilesetStartMenuText
   INCBIN "build/tilesets/MenuText.malias"
 TilesetEndMenuText
