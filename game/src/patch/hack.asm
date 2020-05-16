@@ -30,8 +30,7 @@ HackPredefTable:
   dw LeftShiftBC5 ; B
   dw VWFCalculateRightAlignedTextOffsets ; C
   dw VWFCalculateAutoNarrow ; D
-  dw AddHLShiftBC5 ; E
-  dw LoadInventoryTileset ; F
+  dw LoadInventoryTilesetAndHelpTilemap ; E
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -130,7 +129,7 @@ AddHLShiftBC5:
 ; Tileset methods
 INCLUDE "game/src/patch/tilesets.asm"
 
-LoadInventoryTileset:
+LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
   push bc
@@ -142,4 +141,4 @@ LoadInventoryTileset:
   pop bc
   pop de
   pop hl
-  ret
+  jp WrapLoadTilemap

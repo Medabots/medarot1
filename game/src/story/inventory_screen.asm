@@ -3,7 +3,8 @@ LoadHelpTextTilemap: ; 8673 (2:4673)
   ld b, $00
   ld c, $0c
   ld e, $63
-  call JumpTable_15c
+  ld a, $e ; LoadInventoryTilesetAndHelpTilemap
+  rst $8
   ld a, $02
   call JumpTable_17d
   ld b, $05
