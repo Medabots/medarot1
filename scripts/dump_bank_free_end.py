@@ -2,7 +2,7 @@
 
 from struct import unpack
 
-with open('baserom.gbc', 'rb') as rom:
+with open('baserom.gb', 'rb') as rom:
 	for i in range(1, 0x20):
 		rom.seek(i * 0x4000 + 0x3fff - 1)
 		x = 0

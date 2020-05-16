@@ -17,7 +17,7 @@ else:
 
 tiletable = 0x10f0
 count = 51
-with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w") as output:
+with open("baserom.gb", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w") as output:
 	rom.seek(tiletable)
 	ptrs = [utils.read_short(rom) for i in range(0, count)]
 	data = {}
@@ -32,6 +32,7 @@ with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w
 	output.write('TilesetTable:\n')
 	for i in ptrs:
 		output.write("  dw TilesetInfo{}\n".format(data[i][3]))
+	output.write("TilesetTableEnd::\n");
 	with open("game/src/gfx/tileset_files.asm", "w") as outputf:
 		for ptr in sorted(data):
 			with open("game/tilesets/{}.malias".format(data[ptr][3]),"wb") as compressed, open("text/tilesets/{}.2bpp".format(data[ptr][3]),"wb") as uncompressed:
@@ -46,3 +47,4 @@ with open("baserom.gbc", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w
 				outputf.write("TilesetStart{}\n".format(data[ptr][3]))
 				outputf.write('  INCBIN "build/tilesets/{}.malias"\n'.format(data[ptr][3]))
 				outputf.write("TilesetEnd{}\n\n".format(data[ptr][3]))
+		output.write("TilesetInfoEnd::\n");
