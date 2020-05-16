@@ -39,7 +39,7 @@ LoadFont0:: ; 10d3 (0:10d3)
 ; 0x10ef
 
 SECTION "Load Tiles", ROM0[$1214]
-LoadTiles: ; 1214 (0:1214)
+LoadTiles:: ; 1214 (0:1214)
   cp $0
   jp z, NoDecompressLoadTiles
   ld a, h
