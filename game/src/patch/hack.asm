@@ -30,7 +30,8 @@ HackPredefTable:
   dw LeftShiftBC5 ; B
   dw VWFCalculateRightAlignedTextOffsets ; C
   dw VWFCalculateAutoNarrow ; D
-  dw LoadInventoryTilesetAndHelpTilemap ; E
+  dw AddHLShiftBC5 ; E
+  dw LoadInventoryTilesetAndHelpTilemap ; F
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
