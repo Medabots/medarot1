@@ -16,7 +16,7 @@ MAX_ADDR = BASE_ADDR + BANK_SIZE - 1
 tilemap_ptr = {}
 tilemap_bytes = {}
 tilemap_files = []
-with open("baserom.gbc", "rb") as rom:
+with open("baserom.gb", "rb") as rom:
     rom.seek(BASE_ADDR)
     for i in range(0xf0):
         tilemap_ptr[i] = utils.read_short(rom)
