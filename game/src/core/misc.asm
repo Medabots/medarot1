@@ -1,5 +1,14 @@
 ; Misc functions to be categorized, but needed to be dumped
 
+; Also used for wings of wind
+SECTION "Town Map tilemap loading (partial)", ROMX[$77e9], BANK[$1]
+LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
+  ld b, $00
+  ld c, $00
+  ld e, $0d
+  call JumpTable_15c
+  jp JumpIncSubStateIndexWrapper
+
 SECTION "Func_25e5", ROM0[$25e5]
 Func_25e5: ; 25e5 (0:25e5)
   ld a, $12
