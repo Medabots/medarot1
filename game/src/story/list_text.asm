@@ -218,14 +218,11 @@ LoadInventoryScreen:
   dec a
   ld b, $0
   ld c, a
-  sla c
-  rl b
-  add hl, bc
-  add hl, bc
-  add hl, bc
-  add hl, bc
-  add hl, bc
-  ld a, $be
+  ld a, $e ; AddHLShiftBC5
+  rst $8
+  ld a, $f ; LoadInventoryTileset
+  rst $8
+  ld a, $ad
   ld [$c644], a
   psa $9862
   ld [$c645], a
@@ -257,7 +254,7 @@ LoadInventoryScreen:
   pop hl
   ld a, [hl]
   and $80
-  jp z, $4c70
+  jp z, .asm_8c70
   ld a, [hl]
   and $7f
   ld [$c64e], a
@@ -300,10 +297,14 @@ LoadInventoryScreen:
   ei
   pop bc
   pop hl
+.asm_8c70
   inc hl
   dec b
   jr nz, .asm_8bf8 ; 0x8c72 $84
   ret
+  nop
+  nop
+  nop
 ; 0x8c75
 
 SECTION "Load Medal Screen", ROMX[$5878], BANK[$2]
