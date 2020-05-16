@@ -51,6 +51,7 @@ TilesetTable:
   dw TilesetInfo120A
   dw TilesetInfo120F
   dw TilesetInfo1183
+TilesetTableEnd::
 SECTION "TilesetInfo 1156", ROM0[$1156]
 TilesetInfo1156:
   dbww BANK(Tileset1156), Tileset1156, $8800
@@ -165,3 +166,4 @@ TilesetInfo120A:
 SECTION "TilesetInfo 120F", ROM0[$120F]
 TilesetInfo120F:
   dbww BANK(Tileset120F), Tileset120F, $9000
+TilesetInfoEnd::
