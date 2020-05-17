@@ -1080,27 +1080,27 @@ RobattleDisplayHealth::
 
 SECTION "Robattle - Display Health Fix (Hack)", ROMX[$7f64], BANK[$5]
 RobattleHealthDisplayFix::
-	push bc
-	inc bc ; Skip first tile.
-	ld a, l
-	cp 100 ; Note: decimal value.
-	call c, .clearTile
-	ld a, l
-	cp 10
-	call c, .clearTile
-	pop bc
-	jp JumpTable_1ec
+  push bc
+  inc bc ; Skip first tile.
+  ld a, l
+  cp 100 ; Note: decimal value.
+  call c, .clearTile
+  ld a, l
+  cp 10
+  call c, .clearTile
+  pop bc
+  jp JumpTable_1ec
 
 .clearTile
-	di
+  di
 
 .wfb
-	ldh a, [hLCDStat]
-	and 2
-	jr nz, .wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
 
-	xor a
-	ld [bc], a
-	ei
-	inc bc
-	ret
+  xor a
+  ld [bc], a
+  ei
+  inc bc
+  ret
