@@ -1,3 +1,10 @@
-* text=auto
-*.tmap binary diff=hex
+* text eol=lf
+Makefile text
 *.asm text
+*.py text
+*.tbl text
+*.yml text
+*.md text
+*.txt text
+*.csv text
+*.tmap binary diff=hex
