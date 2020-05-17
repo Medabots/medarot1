@@ -139,7 +139,7 @@ JumpTable_2e8:: jp Wrapper_93f
 JumpTable_2eb:: jp Wrapper_94d
 JumpTable_2ee:: jp Wrapper_968
 JumpTable_2f1:: jp Wrapper_96d
-JumpTable_2f4:: jp Wrapper_972
+JumpPutShopString:: jp WrapPutShopString
 JumpTable_2f7:: jp Wrapper_977
 JumpTable_2fa:: jp Wrapper_97c
 JumpTable_2fd:: jp Wrapper_981
