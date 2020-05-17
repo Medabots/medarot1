@@ -1023,22 +1023,6 @@ RobattleDisplayHealth::
   ld b, h
   ld c, l
 
-  ; Clear text above health bar.
-
-  push bc
-  ld h, 8
-  xor a
-
-.loop
-  di
-  call JumpTable_16e
-  ld [bc], a
-  ei
-  inc bc
-  dec h
-  jr nz, .loop
-  pop bc
-
   ; Map current health numbers.
 
   push bc
@@ -1049,7 +1033,7 @@ RobattleDisplayHealth::
   ld a, [hli]
   ld l, [hl]
   ld h, a
-  call JumpTable_1ec
+  call RobattleHealthDisplayFix
 
   ; Map "/".
 
@@ -1074,6 +1058,49 @@ RobattleDisplayHealth::
   ld a, [hli]
   ld l, [hl]
   ld h, a
-  call JumpTable_1ec
+  call RobattleHealthDisplayFix
   pop de
   ret
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+SECTION "Robattle - Display Health Fix (Hack)", ROMX[$7f64], BANK[$5]
+RobattleHealthDisplayFix::
+	push bc
+	inc bc ; Skip first tile.
+	ld a, l
+	cp 100 ; Note: decimal value.
+	call c, .clearTile
+	ld a, l
+	cp 10
+	call c, .clearTile
+	pop bc
+	jp JumpTable_1ec
+
+.clearTile
+	di
+
+.wfb
+	ldh a, [hLCDStat]
+	and 2
+	jr nz, .wfb
+
+	xor a
+	ld [bc], a
+	ei
+	inc bc
+	ret
