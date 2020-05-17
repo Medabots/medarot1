@@ -954,3 +954,109 @@ LeftPadTextTo8Copy:
   pop bc
   pop hl
   ret
+
+SECTION "Robattle - Display Health",  ROMX[$5cf8],  BANK[$5]
+RobattleDisplayHealth::
+  push de
+  ld [$C64E], a
+  ld a, b
+  ld [$C640], a
+  ld a, c
+  ld [$C641], a
+  push bc
+
+  ; Map health bar left border.
+
+  ld a, [$C640]
+  ld h, a
+  ld a, [$C641]
+  ld l, a
+  ld a, $FB
+  di
+  call JumpTable_16e
+  ld [hli], a
+  ei
+
+  ; Map health in bar.
+
+  ld a, h
+  ld [$C640], a
+  ld a, l
+  ld [$C641], a
+  call $5D7D
+
+  ; Map health bar right border.
+
+  ld a, [$C640]
+  ld h, a
+  ld a, [$C641]
+  ld l, a
+  ld a, $FC
+  di
+  call JumpTable_16e
+  ld [hli], a
+  ei
+  ld a, h
+  ld [$C640], a
+  ld a, l
+  ld [$C641], a
+  pop bc
+  ld hl, $FFE0
+  add hl, bc
+  ld b, h
+  ld c, l
+
+  ; Clear text above health bar.
+
+  push bc
+  ld h, 8
+  xor a
+
+.loop
+  di
+  call JumpTable_16e
+  ld [bc], a
+  ei
+  inc bc
+  dec h
+  jr nz, .loop
+  pop bc
+
+  ; Map current health numbers.
+
+  push bc
+  call $5821
+  pop bc
+  ld hl, $59
+  add hl, de
+  ld a, [hli]
+  ld l, [hl]
+  ld h, a
+  call JumpTable_1ec
+
+  ; Map "/".
+
+  push bc
+  ld hl, 4
+  add hl, bc
+  ld a, $68
+  di
+  call JumpTable_16e
+  ld [hl], a
+  ei
+  pop bc
+  ld hl, 4
+  add hl, bc
+
+  ; Map max health numbers.
+
+  ld b, h
+  ld c, l
+  ld hl, $5B
+  add hl, de
+  ld a, [hli]
+  ld l, [hl]
+  ld h, a
+  call JumpTable_1ec
+  pop de
+  ret
