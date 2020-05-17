@@ -8,3 +8,4 @@ Makefile text
 *.txt text
 *.csv text
 *.tmap binary diff=hex
+*.malias binary diff=hex
