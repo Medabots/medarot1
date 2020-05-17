@@ -16,3 +16,19 @@
 
 1. Name the Medarot 1 KABUTO v1.1 ROM 'baserom.gb' and drop it in the project root
 1. Execute make (optionally pass -j)
+
+# Contribution
+
+If you plan on making PRs, set the following git options in the repository:
+
+## On \*nix
+```
+git config core.autocrlf input
+git config core.eol lf
+```
+
+## On Windows
+```
+git config core.autocrlf true
+git config core.eol lf
+```
