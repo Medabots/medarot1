@@ -30,6 +30,9 @@ HackPredefTable:
   dw LeftShiftBC5 ; B
   dw VWFCalculateRightAlignedTextOffsets ; C
   dw VWFCalculateAutoNarrow ; D
+  dw AddHLShiftBC5 ; E
+  dw LoadInventoryTilesetAndHelpTilemap ; F
+  dw LoadNormalMenuText ; 10
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -114,3 +117,44 @@ LeftShiftBC5:
   sla c
   rl b
   ret
+
+AddHLShiftBC5:
+  sla c
+  rl b
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  ret
+
+; Tileset methods
+INCLUDE "game/src/patch/tilesets.asm"
+
+LoadInventoryTilesetAndHelpTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartInventoryText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadNormalMenuText:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMapText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap

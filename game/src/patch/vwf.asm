@@ -197,10 +197,10 @@ VWFDrawNarrowLetterTable::
   ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
 
 VWFFont::
-  INCBIN "build/tilesets/Font.vwffont"
+  INCBIN "build/tilesets/patch/Font.vwffont"
 
 VWFNarrowFont::
-  INCBIN "build/tilesets/NarrowFont.vwffont"
+  INCBIN "build/tilesets/patch/NarrowFont.vwffont"
 
 VWFMessageBoxInputHandler::
   ; Advance on button press.
