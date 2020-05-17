@@ -90,7 +90,7 @@ PutShopString:: ; 303c (0:303c)
 
 SECTION "Load Shop Menu - Parts", ROMX[$45af], BANK[$3]
 LoadShopPartsMenu:
-  call Func_c7a0
+  call LoadShopInfo
   ld [$c883], a
   ld a, [$c88a]
   ld c, a
@@ -330,7 +330,7 @@ LoadShopPartsMenuSell:
 .asm_c79f
   ret
 ; 0xc7a0
-Func_c7a0: ; c7a0 (3:47a0)
+LoadShopInfo: ; c7a0 (3:47a0)
   ld hl, $484d
   ld a, [$c881]
   ld e, a
@@ -353,3 +353,38 @@ Func_c7a0: ; c7a0 (3:47a0)
   ld a, [hli]
   ret
 ; 0xc7c1
+
+SECTION "Load Buy/Sell Menu (in shops)", ROMX[$70d3], BANK[$3]
+LoadBuySellTilemap: ; f0d3 (3:70d3)
+  ld b, $00
+  ld c, $00
+  ld e, $1e
+  call JumpTable_2ca
+  jp $659c
+; 0xf0df
+
+SECTION "Load Money Overlay (in shops)", ROMX[$571c], BANK[$3]
+LoadMoneyTilemapOverlayInShops: ; d71c (3:571c)
+  ld b, $08
+  ld c, $00
+  ld e, $1f
+  call JumpTable_2ca
+  ld b, $0d
+  ld c, $01
+  call JumpTable_1dd
+  push hl
+  pop bc
+  ld a, [$c93a]
+  ld h, a
+  ld a, [$c93b]
+  ld l, a
+  ld a, h
+  or a
+  jr nz, .asm_d73d
+  ld a, l
+  or a
+  ret z
+.asm_d73d
+  call JumpTable_1ec
+  ret
+; 0xd741
