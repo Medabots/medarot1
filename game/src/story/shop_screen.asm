@@ -102,9 +102,8 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $4
-  call JumpPutShopString
+  psbc $9884, $be
+  call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
   ld b, $c
@@ -131,9 +130,8 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $6
-  call JumpPutShopString
+  psbc $98c4, $c6
+  call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
   ld b, $c
@@ -160,9 +158,8 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $8
-  call JumpPutShopString
+  psbc $9904, $e0
+  call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
   ld b, $c
@@ -188,9 +185,8 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $a
-  call JumpPutShopString
+  psbc $9944, $e8
+  call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
   ld b, $c
@@ -208,6 +204,10 @@ LoadShopPartsMenu:
   call JumpTable_2ca
 .asm_c69f
   ret
+  nop
+  nop
+  nop
+  nop
 ; 0xc6a0
 LoadShopPartsMenuSell:
   ld a, [$c88a]
@@ -224,9 +224,8 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $4
-  call JumpPutShopString
+  psbc $9884, $be
+  call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $4
   call JumpTable_1dd
@@ -253,9 +252,8 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $6
-  call JumpPutShopString
+  psbc $98c4, $c6
+  call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $6
   call JumpTable_1dd
@@ -282,9 +280,8 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $8
-  call JumpPutShopString
+  psbc $9904, $e0
+  call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $8
   call JumpTable_1dd
@@ -311,9 +308,8 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  ld b, $4
-  ld c, $a
-  call JumpPutShopString
+  psbc $9944, $e8
+  call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $a
   call JumpTable_1dd
@@ -329,6 +325,10 @@ LoadShopPartsMenuSell:
   call JumpTable_2ca
 .asm_c79f
   ret
+  nop
+  nop
+  nop
+  nop
 ; 0xc7a0
 Func_c7a0: ; c7a0 (3:47a0)
   ld hl, $484d
