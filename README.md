@@ -21,3 +21,19 @@
 # Dumping
 
 Execute 'make dump' (nothing should change, as the text files are checked in)
+
+# Contribution
+
+If you plan on making PRs, set the following git options in the repository:
+
+## On \*nix
+```
+git config core.autocrlf input
+git config core.eol lf
+```
+
+## On Windows
+```
+git config core.autocrlf true
+git config core.eol lf
+```
