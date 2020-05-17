@@ -629,8 +629,8 @@ Wrapper_96d::
   call $37fc
   rst $18
   ret
-Wrapper_972::
-  call $303c
+WrapPutShopString::
+  call PutShopString
   rst $18
   ret
 Wrapper_977::
