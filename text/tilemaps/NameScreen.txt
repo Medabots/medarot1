@@ -14,8 +14,8 @@
 │                  │            
 │                  │            
 │──────────────────│            
-│Press             │            
-│ select to switch!│            
+│Press select      │            
+│ to swap case.    │            
 └──────────────────┘            
                                 
                                 
