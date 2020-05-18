@@ -102,7 +102,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9884, $be
+  psbc $9884, $b0
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -130,7 +130,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $98c4, $c6
+  psbc $98c4, $b8
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -158,7 +158,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9904, $e0
+  psbc $9904, $c0
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -185,7 +185,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9944, $e8
+  psbc $9944, $c8
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -224,7 +224,7 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9884, $be
+  psbc $9884, $b0
   call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $4
@@ -252,7 +252,7 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $98c4, $c6
+  psbc $98c4, $b8
   call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $6
@@ -280,7 +280,7 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9904, $e0
+  psbc $9904, $c0
   call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $8
@@ -308,7 +308,7 @@ LoadShopPartsMenuSell:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9944, $e8
+  psbc $9944, $c8
   call VWFPutStringAutoNarrowTo8
   ld b, $d
   ld c, $a
@@ -359,7 +359,8 @@ LoadBuySellTilemap: ; f0d3 (3:70d3)
   ld b, $00
   ld c, $00
   ld e, $1e
-  call JumpTable_2ca
+  ld a, $11 ; LoadShopTilesetAndBuySellTilemap
+  rst $8
   jp $659c
 ; 0xf0df
 

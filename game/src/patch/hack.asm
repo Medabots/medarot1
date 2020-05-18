@@ -33,6 +33,7 @@ HackPredefTable:
   dw AddHLShiftBC5 ; E
   dw LoadInventoryTilesetAndHelpTilemap ; F
   dw LoadNormalMenuText ; 10
+  dw LoadShopTilesetAndBuySellTilemap ; 11
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -151,6 +152,20 @@ LoadNormalMenuText:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMapText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadShopTilesetAndBuySellTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartShopText
   ld a, [de]
   inc de
   call LoadTiles
