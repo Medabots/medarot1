@@ -17,7 +17,7 @@ else:
 
 tiletable = 0x10f0
 count = 51
-with open("baserom.gb", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w") as output:
+with open("baserom_kabuto.gb", "rb") as rom, open("game/src/gfx/tileset_table.asm", "w") as output:
 	rom.seek(tiletable)
 	ptrs = [utils.read_short(rom) for i in range(0, count)]
 	data = {}

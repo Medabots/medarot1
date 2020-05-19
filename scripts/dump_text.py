@@ -6,7 +6,7 @@ from collections import OrderedDict
 sys.path.append(os.path.join(os.path.dirname(__file__), 'common'))
 from common import utils
 
-rom = open("baserom.gb", "rb")
+rom = open("baserom_kabuto.gb", "rb")
 log = open("./scripts/res/ptrs.tbl", "a+")
 log.seek(0)
 

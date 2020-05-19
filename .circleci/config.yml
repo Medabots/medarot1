@@ -13,7 +13,7 @@ jobs:
       - run:
           name: "Get base"
           working_directory: ~
-          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom.gb
+          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom_kabuto.gb
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1

@@ -3,7 +3,7 @@ export PYTHONIOENCODING=utf-8
 
 #User defined
 TARGET := medarot
-ORIGINAL := baserom.gb
+ORIGINAL := baserom_kabuto.gb
 TARGET_TYPE := gb
 SOURCE_TYPE := asm
 DIAG_TYPE := csv

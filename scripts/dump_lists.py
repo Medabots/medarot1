@@ -21,7 +21,7 @@ list_map = ({
 })
 
 tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_MainDialog.tbl"), utils.read_table("scripts/res/tileset_MainSpecial.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
-with open("baserom.gb", "rb") as rom:
+with open("baserom_kabuto.gb", "rb") as rom:
 	for l in list_map:
 		addr, length, term, pad, n = list_map[l]
 		if isinstance(addr, tuple):
