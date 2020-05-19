@@ -9,3 +9,5 @@ Makefile text
 *.csv text
 *.tmap binary diff=hex
 *.malias binary diff=hex
+*.1bpp binary diff=hex
+*.2bpp binary diff=hex
