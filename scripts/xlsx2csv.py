@@ -24,7 +24,7 @@ def transform_line(line):
 	line = (line or "")
 	for ptr in ptr_names.keys():
 		line = line.replace("<&{0:X}>".format(ptr, 'x').lower(), "<&{0}>".format(ptr_names[ptr]))
-	return line.replace('\n\n','<4C>').replace('\n','<49>').replace('"','""')
+	return line.replace('\n\n','<4C>').replace('\n','<49>')
 
 xlsx = sys.argv[1]
 csvdir = sys.argv[2]
@@ -54,7 +54,7 @@ for sheet in wb.worksheets:
 			int(line[pointer_idx].split("#")[0], 16)
 		except ValueError:
 			continue
-		text[ptr] = translated
+		text[ptr] = translated.replace('""', '"') if translated else None
 	
 	orig_text = OrderedDict()
 	with open(file_path, "r", encoding='utf-8', newline='\n') as csvfile:
@@ -67,7 +67,7 @@ for sheet in wb.worksheets:
 
 	with open(file_path, "w", encoding='utf-8', newline='\n') as csvfile:
 		print("Writing {0}".format(file_path))
-		writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL, lineterminator='\n')
+		writer = csv.writer(csvfile, delimiter=',', lineterminator='\n')
 		writer.writerow(["Pointer[#version]","Original","Translated"])
 		for ptr in orig_text:
 			writer.writerow([
