@@ -2,27 +2,6 @@
 ; Data is fixed size, so no need for a pointer table
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "List Data", ROMX[$5af0], BANK[$17]
-ItemList:
-  INCBIN "build/lists/Items.bin"
-MedalList:
-  INCBIN "build/lists/Medals.bin"
-
-SECTION "Medarot List Data", ROMX[$6c36], BANK[$17]
-MedarotList:
-  INCBIN "build/lists/Medarots.bin"
-
-SECTION "Part List Data", ROMX[$65cc], BANK[$1c]
-PartList:
-HeadPartList:
-  INCBIN "build/lists/HeadParts.bin"
-RightPartList:
-  INCBIN "build/lists/RightParts.bin"
-LeftPartList:
-  INCBIN "build/lists/LeftParts.bin"
-LegPartList:
-  INCBIN "build/lists/LegParts.bin"
-
 SECTION "Load from Item List", ROM0[$328f]
 LoadItemList::
   push af

@@ -73,15 +73,17 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
-BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE) # One script call generates all bin files, so we just look at the first one
+BASE_BIN_FILE := $(BUILD)/$(word 1, $(TEXT))
+BIN_FILES := $(foreach VERSION,$(VERSIONS),$(BASE_BIN_FILE)_$(VERSION).$(BIN_TYPE))# One script call generates all bin files, so we just look at the first one
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
-LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
+LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
+shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
-story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(BIN_FILE)
+story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
 
 .PHONY: all clean
 all: $(VERSIONS)
@@ -103,7 +105,7 @@ $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$
 # Don't delete intermediate files
 .SECONDEXPANSION:
 .SECONDARY:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
+$(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $(shared_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
 	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
@@ -118,14 +120,15 @@ $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tile
 $(TILESET_OUT)/%.$(TSET_TYPE): $(TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
-$(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
-	$(PYTHON) $(SCRIPT)/list2bin.py $< $@
+.SECONDEXPANSION:
+$(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
+	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
 $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
 
-$(BIN_FILE): $(DIALOG_FILES)
-	$(PYTHON) scripts/csv2bin.py $(CURVERSION)
+$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
+	$(PYTHON) scripts/csv2bin.py $*
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_tilesets
 
