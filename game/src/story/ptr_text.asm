@@ -1,4 +1,6 @@
 ; For text in tables with pointers (except Dialog Text and Tilemaps which are handled separately)
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Part Names", ROMX[$750b], BANK[$1]
 PartTypesPtr::
 INCLUDE "build/ptrlists/PartTypes.asm"

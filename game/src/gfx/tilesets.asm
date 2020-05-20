@@ -1,5 +1,4 @@
-INCLUDE "game/src/gfx/tileset_table.asm"
-INCLUDE "game/src/gfx/tileset_files.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Load Dialogue Font", ROM0[$2d85]
 LoadFont1:

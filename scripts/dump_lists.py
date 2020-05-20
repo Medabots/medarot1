@@ -20,17 +20,33 @@ list_map = ({
 	'LegParts' : ((0x1c, 0x710c), (0x9, 0x7), 0x50, 0x50, 60),
 })
 
+VERSIONS = [("baserom_kabuto.gb", "kabuto"), ("baserom_kuwagata.gb", "kuwagata")]
+
 tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_MainDialog.tbl"), utils.read_table("scripts/res/tileset_MainSpecial.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
-with open("baserom.gb", "rb") as rom:
-	for l in list_map:
-		addr, length, term, pad, n = list_map[l]
-		if isinstance(addr, tuple):
-			addr = utils.rom2realaddr(addr)
-		rom.seek(addr)
-		with open('text/lists/{}.txt'.format(l), 'w', encoding = "utf-8") as output:
-			output.write("{}|{}|{}\n".format(length, term, pad))
-			for i in range(0, n):
-				for l in length if isinstance(length, tuple) else (length,):
-					b = list(iter(partial(utils.read_byte, rom), term))
-					rom.seek(l-len(b)-1,1) # Account for the terminator
-					output.write("{}\n".format("".join(utils.bin2txt(bytearray(b), tileset))))
+for lst in list_map:
+	merged_dict = {}
+	addr, length, term, pad, n = list_map[lst]
+	for version in VERSIONS:
+		with open(version[0], "rb") as rom:
+				if isinstance(addr, tuple):
+					addr = utils.rom2realaddr(addr)
+				rom.seek(addr)
+				for i in range(0, n):
+					c = 0
+					for l in length if isinstance(length, tuple) else (length,):
+						b = list(iter(partial(utils.read_byte, rom), term))
+						rom.seek(l-len(b)-1,1) # Account for the terminator
+						value = "{}\n".format("".join(utils.bin2txt(bytearray(b), tileset)))
+						key = "{:03}_{:02}".format(i, c)
+						c += 1
+						if key in merged_dict and merged_dict[key] != value: # Just assume 2 versions, so the existence of a previous entry must belong to the 'default' version
+							merged_dict[key + VERSIONS[0][1]] = "[{}]{}".format(VERSIONS[0][1], merged_dict[key])
+							del merged_dict[key]
+							key = key + version[1]
+							value = "[{}]{}".format(version[1], value)
+						merged_dict[key] = value
+
+	with open('text/lists/{}.txt'.format(lst), 'w', encoding = "utf-8") as output:
+		output.write("{}|{}|{}\n".format(length, term, pad))
+		for i in sorted(merged_dict.keys(), key=lambda x:x.lower()):
+			output.write(merged_dict[i])

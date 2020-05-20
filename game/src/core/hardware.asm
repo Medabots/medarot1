@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "vblank",ROM0[$40] ; vblank interrupt
   jp $049b
 

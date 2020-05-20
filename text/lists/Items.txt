@@ -11,7 +11,8 @@ Conductor's Baton
 Difficult Book
 Complicated Book
 Esoteric Book
-Rhino Beetle
+[kabuto]Rhino Beetle
+[kuwagata]Stag Beetle
 None
 Medanot
 Fresh Fish

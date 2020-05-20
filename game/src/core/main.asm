@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Main", ROM0[$0390]
 Main::
 ; Disable LCD.

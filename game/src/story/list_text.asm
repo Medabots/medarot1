@@ -1,22 +1,6 @@
 ; Includes logic for dealing with "list" text (Medals, Items, Medarots)
 ; Data is fixed size, so no need for a pointer table
-
-SECTION "List Data", ROMX[$4000], BANK[$2c]
-ItemList:
-  INCBIN "build/lists/Items.bin"
-MedalList:
-  INCBIN "build/lists/Medals.bin"
-MedarotList:
-  INCBIN "build/lists/Medarots.bin"
-PartList:
-HeadPartList:
-  INCBIN "build/lists/HeadParts.bin"
-RightPartList:
-  INCBIN "build/lists/RightParts.bin"
-LeftPartList:
-  INCBIN "build/lists/LeftParts.bin"
-LegPartList:
-  INCBIN "build/lists/LegParts.bin"
+INCLUDE "game/src/common/constants.asm"
 
 SECTION "Load from Item List", ROM0[$328f]
 LoadItemList::

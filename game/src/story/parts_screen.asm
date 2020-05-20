@@ -1,3 +1,6 @@
+INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
+
 SECTION "Load Parts Screen, Part Name", ROMX[$62f7], BANK[$2]
 LoadPartsScreenPartName:
   ld a, $be

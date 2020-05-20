@@ -4,6 +4,8 @@
 ## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog
 import sys
 import openpyxl as xl
+from collections import OrderedDict
+import csv
 from os import path
 
 SHEETS = ([
@@ -43,15 +45,33 @@ for sheet in wb.worksheets:
 	original_idx = header.index('Original')
 	translated_idx = header.index('Translated')
 	file_path = path.join(csvdir, "{0}.csv".format(sheet.title))
-	print("Writing {0}".format(file_path))
-	with open(file_path, "w", encoding='utf-8') as csv:
-		csv.write("Pointer,Original,Translated\n")
-		for line in data:
-			try:
-				int(line[pointer_idx], 16)
-			except ValueError:
-				continue
-			csv.write('{0},"{1}","{2}"\n'.format(line[pointer_idx],\
-				transform_line(line[original_idx]),
-				transform_line(line[translated_idx])
-			))
+	text = {}
+	for line in data:
+		ptr = line[pointer_idx]
+		original = line[original_idx]
+		translated = line[translated_idx]
+		try:
+			int(line[pointer_idx].split("#")[0], 16)
+		except ValueError:
+			continue
+		text[ptr] = translated
+	
+	orig_text = OrderedDict()
+	with open(file_path, "r", encoding='utf-8', newline='\n') as csvfile:
+		csvfile.readline()
+		reader = csv.reader(csvfile, delimiter=',')
+		for line in reader:
+			ptr = line[0]
+			txt = line[1]
+			orig_text[ptr.strip()] = txt.strip()
+
+	with open(file_path, "w", encoding='utf-8', newline='\n') as csvfile:
+		print("Writing {0}".format(file_path))
+		writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL, lineterminator='\n')
+		writer.writerow(["Pointer[#version]","Original","Translated"])
+		for ptr in orig_text:
+			writer.writerow([
+				ptr, 
+				transform_line(orig_text[ptr]),
+			 	transform_line(text[ptr]) if ptr in text else ptr
+			])

@@ -7,6 +7,7 @@ from struct import *
 import os
 import csv
 from sys import getdefaultencoding
+import sys
 
 ptr_names = {}
 with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
@@ -70,6 +71,7 @@ if __name__ == '__main__':
     arg2 = ''
     trans_dir = 'text/dialog'
     output_dir = 'build'
+    version_suffix = sys.argv[1]
     with open('scripts/res/medarot.tbl', encoding='utf-8') as f:
         char_table = dict((line.strip('\r\n').strip('\n').split('=', 1)[1], int(line.strip().split('=', 1)[0],16)) for line in f)
     additional_banks = []
@@ -85,7 +87,7 @@ if __name__ == '__main__':
     ptr_size = 3
 
     bank_map = OrderedDict()
-    with open('game/src/story/text_tables.asm', 'r') as txt_file:
+    with open('game/src/{}/text_tables.asm'.format(version_suffix), 'r') as txt_file:
         for line in txt_file:
             if line.startswith('SECTION'):
                 o = line.lstrip('SECTION ').replace(' ', '').replace('\n','').replace('\r\n','').replace('"','').split(',')
@@ -115,6 +117,10 @@ if __name__ == '__main__':
                 original_txt = line[1].strip('"')
                 translated_txt = line[2].strip('"')
                 ptr = line[0]
+                if "#" in ptr:
+                    ptr, suffix = ptr.split("#")
+                    if suffix != version_suffix:
+                        continue
                 if not translated_txt and original_txt:
                     translated_txt = ptr
                 elif not translated_txt and not original_txt:
@@ -145,8 +151,8 @@ if __name__ == '__main__':
                     offsets.append((bank_map[b]['BANK'], bank_map[b]['OFFSET']))
                     ptr_offset_map[t[0]] = (bank_map[b]['BANK'], bank_map[b]['OFFSET'])
                     bank_map[b]['OFFSET'] = bank_map[b]['OFFSET'] + len(t[1])
-                    with open('%s/%s.bin' % (output_dir, b), 'ab') as o:
+                    with open('%s/%s_%s.bin' % (output_dir, b, version_suffix), 'ab') as o:
                         o.write(t[1])
                     break
-        with open('%s/%s.bin' % (output_dir, section), 'wb') as bin_file:
+        with open('%s/%s_%s.bin' % (output_dir, section, version_suffix), 'wb') as bin_file:
             [bin_file.write(pack('<BH', b[0], b[1])) for b in offsets]

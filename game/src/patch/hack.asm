@@ -130,7 +130,7 @@ AddHLShiftBC5:
   ret
 
 ; Tileset methods
-INCLUDE "game/src/patch/tilesets.asm"
+INCLUDE "game/src/patch/include/tilesets.asm"
 
 LoadInventoryTilesetAndHelpTilemap:
   push hl

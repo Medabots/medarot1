@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Setup Initial Name Screen", ROMX[$4a9f], BANK[$1]
 SetupInitialNameScreen: ;4a9f
   xor a

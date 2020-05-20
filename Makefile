@@ -1,11 +1,12 @@
 export LC_CTYPE=C
 export PYTHONIOENCODING=utf-8
 
-#User defined
-TARGET := medarot
-ORIGINAL := baserom.gb
-TARGET_TYPE := gb
+VERSIONS := kabuto kuwagata
+OUTPUT_PREFIX := medarot_
+ORIGINAL_PREFIX := baserom_
+ROM_TYPE := gb
 SOURCE_TYPE := asm
+INT_TYPE := o
 DIAG_TYPE := csv
 BIN_TYPE := bin
 TABLE_TYPE := tbl
@@ -45,57 +46,78 @@ PATCH_TILESET_OUT := $(TILESET_OUT)/patch
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
+
+# Compiler/Linker
+CC := rgbasm
+CC_ARGS :=
+LD := rgblink
+LD_ARGS := --dmg
+FIX := rgbfix
+FIX_ARGS = -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3
+
+# Helper
+TOUPPER = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
+
+# Inputs
+ORIGINALS := $(foreach VERSION,$(VERSIONS),$(BASE)/$(ORIGINAL_PREFIX)$(VERSION).$(ROM_TYPE))
+
+# Outputs (used by clean)
+TARGETS := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(ROM_TYPE))
+SYM_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(SYM_TYPE))
+MAP_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(MAP_TYPE))
+
+# Sources
+DIALOG_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(DIAG_TYPE))
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
 TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
+OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(INT_TYPE), $(notdir $(basename $(wildcard $(SRC)/$(MODULE)/*.$(SOURCE_TYPE)))))))
+COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
 
-#Compiler/Linker
-CC := rgbasm
-CC_ARGS :=
-LD := rgblink
-LD_ARGS :=
-FIX := rgbfix
-FIX_ARGS := -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 -t "MEDAROT KABUTO"
-#End User Defined
-
-#You shouldn't need to touch anything past this line!
-TARGET_OUT := $(TARGET).$(TARGET_TYPE)
-SYM_OUT := $(TARGET).$(SYM_TYPE)
-MAP_OUT := $(TARGET).$(MAP_TYPE)
-TARGET_SRC := $(GAME)/$(TARGET).$(SOURCE_TYPE)
-
-INT_TYPE := o
-MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
-DIAG_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(DIAG_TYPE))
-COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
-BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE)
+# Intermediates
+OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
+BASE_BIN_FILE := $(BUILD)/$(word 1, $(TEXT))
+BIN_FILES := $(foreach VERSION,$(VERSIONS),$(BASE_BIN_FILE)_$(VERSION).$(BIN_TYPE))# One script call generates all bin files, so we just look at the first one
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
+LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
+PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
-LISTS_FILES := $(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE).$(LIST_TYPE))
-PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 
+# Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
+shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
-story_ADDITIONAL := $(LISTS_FILES) $(PTRLISTS_FILES)
+story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
 patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias # Manually add MainDialog as a special case for map text reloading
 
-all: $(TARGET_OUT)
+.PHONY: all clean
+all: $(VERSIONS)
 
-$(TARGET_OUT): $(MODULES_OBJ)
-	$(LD) -n $(SYM_OUT) -m $(MAP_OUT) -O $(ORIGINAL) -o $@ $^
-	$(FIX) $(FIX_ARGS) $@
+# Support building specific versions
+# Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
+kabuto: CURVERSION:=kabuto
+kuwagata: CURVERSION:=kuwagata
 
-#Make is a stupid spec, this is absurd
-$(BIN_FILE): $(DIAG_FILES)
-	$(PYTHON) scripts/csv2bin.py
-	
+$(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
+
+# $| is a hack, we cannot have any other order-only prerequisites
 .SECONDEXPANSION:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/%.$(SOURCE_TYPE) $(COMMON_SRC) $$(%_ADDITIONAL) $$(wildcard $(SRC)/%/*.$(SOURCE_TYPE)) $(BIN_FILE) | $(BUILD)
-	$(CC) -o $@ $<
+$(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
+	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
+	$(FIX) $(FIX_ARGS) $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
+
+# Don't delete intermediate files
+.SECONDEXPANSION:
+.SECONDARY:
+$(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $(shared_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
+	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
+
+$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
+	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
 
 $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE_TYPE) $(TILEMAP_FILES) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/update_tilemap_files.py $@
@@ -112,14 +134,15 @@ $(PATCH_TILESET_OUT)/%.$(VWF_TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(VWF_TSET_SRC_
 $(PATCH_TILESET_OUT)/%.$(TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
-$(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
-	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
-
-$(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/%.$(TEXT_TYPE) | $(LISTS_OUT)
-	$(PYTHON) $(SCRIPT)/list2bin.py $< $@
+.SECONDEXPANSION:
+$(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
+	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
 $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
+
+$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
+	$(PYTHON) scripts/csv2bin.py $*
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_tilesets
 
@@ -139,7 +162,7 @@ dump_tilesets: | $(TILESETS_TEXT) $(TILESET_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
-	rm -r $(BUILD) $(TARGET_OUT) $(SYM_OUT) $(MAP_OUT)	
+	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
 
 # Rules to stop Make from deleting outputs...
 list_files:  $(LISTS_FILES)

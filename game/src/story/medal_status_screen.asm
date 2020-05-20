@@ -1,3 +1,6 @@
+INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
+
 SECTION "Load Medal Stat Screen", ROMX[$5cd6], BANK[$2]
 LoadMedalStatScreen:
   ld a, [$c750]

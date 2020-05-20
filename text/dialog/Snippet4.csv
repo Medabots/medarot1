@@ -1,5 +1,5 @@
-Pointer,Original,Translated
-0x3fe00,"これよリ ロボトルちくたいかいを<49>かいさいします<4C>けっしょうに かちすすんだ<49>2チームのみが<4C>えいこうある ほんたいかいに<49>すすむことができます<4C>それではみなさん<49>がんばってください<4C>じっきょうは ほうそうしつから<49>ミスターうるちで おおくリいたします","Ladies and gentlemen, I will be hosting this tournament.<49>Only two teams will be allowed to advance to the final tournament.<49>With that in mind, good luck to you all! This tournament will be broadcasted live<49>by me, Mr.Uruchi!"
-0x3fe02,"ゆうしょうは<49>あがた <&NAME>くん<4C>じゅんゆうしょうは<49>にもうさくユウキくん!","The winner is <&NAME> Agata!<49>The runner-up, Yuuki Nimousaku!"
-0x3fe04,"ゆうしょうは<49>にもうさく ユウキくん!<4C>じゅんゆうしょうは<49>あがた <&NAME>くん","The winner is Yuuki Nimousaku!<49>The runner-up, <&NAME> Agata!"
-0x3fe06,"ほんたいかいに すすむ<49>ふたリの メダロッターが<4C>けってい いたしました!<4C>それでは おふたリとも<49>がんばってください!<4C>1しゅうかんご ほんたいかいドームで<49>ふたたび おあいしましょう!","These two will move on to the national tournament!<49>With that in mind, good luck you two, do your best!<49>We will meet again at the National Tournament Dome in exactly 1 week!"
+Pointer[#version],Original,Translated
+0x3fe00,これよリ ロボトルちくたいかいを<4E>かいさいします<4C>けっしょうに かちすすんだ<4E>2チームのみが<4C>えいこうある ほんたいかいに<4E>すすむことができます<4C>それではみなさん<4E>がんばってください<4C>じっきょうは ほうそうしつから<4E>ミスターうるちで おおくリいたします,"Ladies and gentlemen, I will be hosting this tournament.<49>Only two teams will be allowed to advance to the final tournament.<49>With that in mind, good luck to you all! This tournament will be broadcasted live<49>by me, Mr.Uruchi!"
+0x3fe02,ゆうしょうは<4E>あがた <&NAME>くん<4C>じゅんゆうしょうは<4E>にもうさくユウキくん!,"The winner is <&NAME> Agata!<49>The runner-up, Yuuki Nimousaku!"
+0x3fe04,ゆうしょうは<4E>にもうさく ユウキくん!<4C>じゅんゆうしょうは<4E>あがた <&NAME>くん,"The winner is Yuuki Nimousaku!<49>The runner-up, <&NAME> Agata!"
+0x3fe06,ほんたいかいに すすむ<4E>ふたリの メダロッターが<4C>けってい いたしました!<4C>それでは おふたリとも<4E>がんばってください!<4C>1しゅうかんご ほんたいかいドームで<4E>ふたたび おあいしましょう!,"These two will move on to the national tournament!<49>With that in mind, good luck you two, do your best!<49>We will meet again at the National Tournament Dome in exactly 1 week!"

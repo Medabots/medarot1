@@ -1,3 +1,6 @@
+INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
+
 SECTION "Medarot Equip Screen - Load Strings", ROMX[$6e92], BANK[$2]
 LoadMedarotPartSelectSetupPartScreen::
   call LoadMedarotPartSelectName

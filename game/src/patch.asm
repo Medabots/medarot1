@@ -1,7 +1,0 @@
-INCLUDE "game/src/common/constants.asm"
-INCLUDE "game/src/common/macros.asm"
-
-INCLUDE "game/src/patch/wram.asm"
-INCLUDE "game/src/patch/vwf.asm"
-INCLUDE "game/src/patch/hack.asm"
-INCLUDE "game/src/patch/core_hack.asm"

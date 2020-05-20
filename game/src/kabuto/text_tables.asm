@@ -1,0 +1,1 @@
+../version/text_tables.asm
