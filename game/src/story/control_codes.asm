@@ -1,5 +1,5 @@
 SECTION "Dialog Control Codes", ROM0[$1d6b]
-Char4F: ; 1d6b end of text
+Char4F:: ; 1d6b end of text
   inc hl
   ld a, [hl]
   or a
@@ -103,7 +103,7 @@ Char4F: ; 1d6b end of text
   ld [$c6c6], a
   pop hl
   ret
-Char4E:
+Char4E::
   ld hl, $9c00
   ld bc, $0081
   ld a, [$c5c7]
@@ -122,7 +122,7 @@ Char4E:
   pop hl
   jp $1d11
 
-Char4D: ; 0x1e46
+Char4D:: ; 0x1e46
 ; text speed
   inc hl
   ld a, [hl]
@@ -139,7 +139,7 @@ Char4D: ; 0x1e46
   ld [$c6c1], a
   ret
 
-Char4C: ; 0x1e62
+Char4C:: ; 0x1e62
 ; new text box
   pop hl
   ld hl, $9c00
@@ -201,7 +201,7 @@ Char4C: ; 0x1e62
   ld [$c6c0], a
   ret
 
-Char4B: ; 0x1ed6
+Char4B:: ; 0x1ed6
 ; call subtext
   inc hl
   ld a, [hli]
@@ -284,7 +284,7 @@ Char4B: ; 0x1ed6
   ld [$c6c1], a
   jp $1d11
 
-Char4A: ; 0x1f5f
+Char4A:: ; 0x1f5f
 ; \r
   ld c, $1
   ld a, $41

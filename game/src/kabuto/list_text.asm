@@ -1,0 +1,1 @@
+../version/list_text.asm

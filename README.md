@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/VariantXYZ/medarot_1/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/VariantXYZ/medarot_1?branch=master)
+[![CircleCI](https://circleci.com/gh/VariantXYZ/medarot_1/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/VariantXYZ/medarot1?branch=master)
 
 [Medapedia page](http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project) (source reference for a lot of text and information)
 
@@ -14,7 +14,7 @@
 
 # Make
 
-1. Name the Medarot 1 KABUTO v1.1 ROM 'baserom.gb' and drop it in the project root
+1. Name the Medarot 1 KABUTO v1.1 ROM 'baserom_kabuto.gb' and drop it in the project root
 1. Execute make (optionally pass -j)
 	* The master branch will execute cmp to verify the output matches the original
 

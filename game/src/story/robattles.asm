@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Robattles Start Screen", ROM0[$2e58]
 LoadRobattleStartScreenMedarotter:
   ld a, BANK(MedarottersPtr)

@@ -8,6 +8,7 @@ from common import utils
 if __name__ == '__main__':
 	input_file = sys.argv[1]
 	output_file = sys.argv[2]
+	version_suffix = sys.argv[3]
 
 	# This is actually a hack with how lists work
 	# TODO: Tilesets are probably going to vary between lists, so this may break in the future
@@ -22,8 +23,11 @@ if __name__ == '__main__':
 		length,term,padbyte = (int(x) if x.isdigit() else literal_eval(x) for x in i.readline().split("|"))
 		char_table['\n'] = term
 
+		prefix = "[{}]".format(version_suffix)
 		line = i.readline()
 		while line:
 			for l in length if isinstance(length, tuple) else (length,):
-				o.write(bytearray(utils.txt2bin(line, char_table, pad=l, padbyte=padbyte)))
+				if not line.startswith("[") or line.startswith(prefix):
+					line = line.replace(prefix,"") # Not the best way to do it, but it's good enough
+					o.write(bytearray(utils.txt2bin(line, char_table, pad=l, padbyte=padbyte)))
 				line = i.readline()

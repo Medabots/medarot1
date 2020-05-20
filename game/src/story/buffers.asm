@@ -1,5 +1,7 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Copy from buffer to &NAME", ROMX[$4f1d], BANK[$1]
-BufferToName:
+BufferToName::
   ld hl, cBUF01
   ld de, cNAME
   ld b, $9

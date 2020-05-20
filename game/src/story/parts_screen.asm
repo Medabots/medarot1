@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Load Parts Screen, Part Name", ROMX[$62f7], BANK[$2]
 LoadPartsScreenPartName:
   ld a, $98

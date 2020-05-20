@@ -1,4 +1,5 @@
 ; Misc functions to be categorized, but needed to be dumped
+INCLUDE "game/src/common/constants.asm"
 
 ; Also used for wings of wind
 SECTION "Town Map tilemap loading (partial)", ROMX[$77e9], BANK[$1]

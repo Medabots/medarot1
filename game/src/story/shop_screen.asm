@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 ; Used to draw shop items, only thing I've seen that uses this so far (might need to move it elsewhere if it's used elsewhere)
 ; hl = text
 ; bc = index, added to $9800

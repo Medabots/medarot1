@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Load Inventory Screen Help Text Tilemap", ROMX[$4673], BANK[$2]
 LoadHelpTextTilemap: ; 8673 (2:4673)
   ld b, $00
