@@ -1,38 +1,38 @@
 SECTION "Snippet1", ROMX[$7e00], BANK[$0c]
 Snippet1:
-  INCBIN "build/Snippet1.bin"
+  INCBIN "build/Snippet1_{GAMEVERSION}.bin"
 
 SECTION "Snippet2", ROMX[$7e00], BANK[$0d]
 Snippet2:
-  INCBIN "build/Snippet2.bin"
+  INCBIN "build/Snippet2_{GAMEVERSION}.bin"
 
 SECTION "Snippet3", ROMX[$7e00], BANK[$0e]
 Snippet3:
-  INCBIN "build/Snippet3.bin"
+  INCBIN "build/Snippet3_{GAMEVERSION}.bin"
 
 SECTION "Snippet4", ROMX[$7e00], BANK[$0f]
 Snippet4:
-  INCBIN "build/Snippet4.bin"
+  INCBIN "build/Snippet4_{GAMEVERSION}.bin"
 
 SECTION "Snippet5", ROMX[$7800], BANK[$13]
 Snippet5:
-  INCBIN "build/Snippet5.bin"
+  INCBIN "build/Snippet5_{GAMEVERSION}.bin"
 
 SECTION "StoryText1", ROMX[$6000], BANK[$16]
 StoryText1:
-  INCBIN "build/StoryText1.bin"
+  INCBIN "build/StoryText1_{GAMEVERSION}.bin"
 
 SECTION "StoryText2", ROMX[$4000], BANK[$18]
 StoryText2:
-  INCBIN "build/StoryText2.bin"
+  INCBIN "build/StoryText2_{GAMEVERSION}.bin"
 
 SECTION "StoryText3", ROMX[$4000], BANK[$1a]
 StoryText3: ; FIXME: StoryText3 has some data between text that causes trouble when rebuilding... (between 0x682b6 and 0x682b8)
-  ;INCBIN "build/StoryText3.bin"
+  ;INCBIN "build/StoryText3_{GAMEVERSION}.bin"
 
 SECTION "BattleText", ROMX[$4000], BANK[$1d]
 BattleText:
-  INCBIN "build/BattleText.bin"
+  INCBIN "build/BattleText_{GAMEVERSION}.bin"
 
 
 SECTION "Dialog Text Tables", ROM0[$1d3b]

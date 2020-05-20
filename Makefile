@@ -45,16 +45,19 @@ TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 Story
 
 # Compiler/Linker
 CC := rgbasm
-CC_ARGS := -Werror
+CC_ARGS :=
 LD := rgblink
-LD_ARGS :=
+LD_ARGS := --dmg
 FIX := rgbfix
-FIX_ARGS := -v -k 9C -l 0x33 -m 0x03 -p 0 -r 3 -t "MEDAROT KABUTO"
+FIX_ARGS = -v -k 9C -l 0x33 -m 0x03 -p 0 -r 3
+
+# Helper
+TOUPPER = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 
 # Inputs
 ORIGINALS := $(foreach VERSION,$(VERSIONS),$(BASE)/$(ORIGINAL_PREFIX)$(VERSION).$(ROM_TYPE))
 
-# Outputs
+# Outputs (used by clean)
 TARGETS := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(ROM_TYPE))
 SYM_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(SYM_TYPE))
 MAP_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(MAP_TYPE))
@@ -70,7 +73,6 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
-MODULES_OBJ := $(foreach FILE,$(MODULES),$(BUILD)/$(FILE).$(INT_TYPE))
 BIN_FILE := $(BUILD)/$(word 1, $(TEXT)).$(BIN_TYPE) # One script call generates all bin files, so we just look at the first one
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
@@ -79,24 +81,30 @@ PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TY
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
-story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
-story_text_tables_ADDITIONAL := $(BIN_FILE)
+story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(BIN_FILE)
 
-all: $(TARGETS)
+.PHONY: all clean
+all: $(VERSIONS)
 
-#Support building specific versions
+# Support building specific versions
+# Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
+kabuto: CURVERSION:=kabuto
+kuwagata: CURVERSION:=kuwagata
+
 $(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
 
 # $| is a hack, we cannot have any other order-only prerequisites
-$(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
-	$(LD) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
-	$(FIX) $(FIX_ARGS) $@
+.SECONDEXPANSION:
+$(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
+	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
+	$(FIX) $(FIX_ARGS) $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
 	cmp -l $| $@
 
+# Don't delete intermediate files
 .SECONDEXPANSION:
 .SECONDARY:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
-	$(CC) -o $@ $<
+	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@
@@ -117,7 +125,7 @@ $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_O
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
 
 $(BIN_FILE): $(DIALOG_FILES)
-	$(PYTHON) scripts/csv2bin.py
+	$(PYTHON) scripts/csv2bin.py $(CURVERSION)
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_tilesets
 

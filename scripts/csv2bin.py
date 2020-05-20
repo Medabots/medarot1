@@ -69,7 +69,7 @@ if __name__ == '__main__':
     arg1 = 'build' #output directory
     trans_dir = 'text/dialog'
     output_dir = 'build'
-    version_suffix = 'kabuto'
+    version_suffix = sys.argv[1]
 
     char_table = utils.merge_dicts([
         utils.read_table("scripts/res/medarot.tbl", reverse=True), # FIXME: There are missing tileset mappings, for now just read medarot.tbl
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     ptr_size = 3
 
     bank_map = {}
-    with open('game/src/story/text_tables.asm', 'r') as txt_file:
+    with open('game/src/{}/text_tables.asm'.format(version_suffix), 'r') as txt_file:
         for line in txt_file:
             if line.startswith('SECTION'):
                 o = line.lstrip('SECTION ').replace(' ', '').replace('\n','').replace('\r\n','').replace('"','').split(',')
@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     for section in sections:
         fn = os.path.join(trans_dir, "{}.csv".format(section))
-        of = os.path.join(output_dir, "{}.bin".format(section))
+        of = os.path.join(output_dir, "{}_{}.bin".format(section, version_suffix))
         print("Starting on {}".format(fn))
         output_text = OrderedDict()
         with open(fn, 'r', encoding="utf-8") as f:
