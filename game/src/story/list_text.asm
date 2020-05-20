@@ -1,5 +1,6 @@
 ; Includes logic for dealing with "list" text (Medals, Items, Medarots)
 ; Data is fixed size, so no need for a pointer table
+INCLUDE "game/src/common/constants.asm"
 
 SECTION "List Data", ROMX[$5af0], BANK[$17]
 ItemList:

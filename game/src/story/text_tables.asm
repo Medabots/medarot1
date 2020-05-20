@@ -36,7 +36,7 @@ BattleText:
 
 
 SECTION "Dialog Text Tables", ROM0[$1d3b]
-TextTableBanks: ; 0x1d3b
+TextTableBanks:: ; 0x1d3b
   db BANK(Snippet1) ;Snippet 1
   db BANK(Snippet2) ;Snippet 2
   db BANK(Snippet3) ;Snippet 3
@@ -54,7 +54,7 @@ TextTableBanks: ; 0x1d3b
   db $00
   db $00
 
-TextTableOffsets: ; 0x1d4b
+TextTableOffsets:: ; 0x1d4b
   dw Snippet1 ;Snippet 1
   dw Snippet2 ;Snippet 2
   dw Snippet3 ;Snippet 3

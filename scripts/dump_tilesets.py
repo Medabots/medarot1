@@ -28,8 +28,9 @@ with open("baserom_kabuto.gb", "rb") as rom, open("game/src/gfx/tileset_table.as
 			nametable[ptr] = "{:04X}".format(ptr)
 			namefile.write("{:04X}={}\n".format(ptr, nametable[ptr]))
 		data[ptr] = (utils.read_byte(rom), utils.read_short(rom), utils.read_short(rom), nametable[ptr])
+	output.write('INCLUDE "game/src/common/macros.asm"\n\n')
 	output.write('SECTION "Tileset Table", ROM0[${:04X}]\n'.format(tiletable))
-	output.write('TilesetTable:\n')
+	output.write('TilesetTable::\n')
 	for i in ptrs:
 		output.write("  dw TilesetInfo{}\n".format(data[i][3]))
 	output.write("TilesetTableEnd::\n");
@@ -40,11 +41,11 @@ with open("baserom_kabuto.gb", "rb") as rom, open("game/src/gfx/tileset_table.as
 				uncompressed.write(bytearray(f[0]))
 				compressed.write(bytearray(f[1]))
 				output.write('SECTION "TilesetInfo {0}", ROM0[${1:04X}]\n'.format(data[ptr][3], ptr))
-				output.write("TilesetInfo{}:\n".format(data[ptr][3]))
+				output.write("TilesetInfo{}::\n".format(data[ptr][3]))
 				output.write('  dbww BANK(Tileset{0}), Tileset{0}, ${1:04X}\n'.format(data[ptr][3], data[ptr][2]))
 				outputf.write('SECTION "Tileset Data {0}", ROMX[${1:04X}], BANK[${2:02X}]\n'.format(data[ptr][3], data[ptr][1], data[ptr][0]))
-				outputf.write("Tileset{}:\n".format(data[ptr][3]))
-				outputf.write("TilesetStart{}\n".format(data[ptr][3]))
+				outputf.write("Tileset{}::\n".format(data[ptr][3]))
+				outputf.write("TilesetStart{}::\n".format(data[ptr][3]))
 				outputf.write('  INCBIN "build/tilesets/{}.malias"\n'.format(data[ptr][3]))
-				outputf.write("TilesetEnd{}\n\n".format(data[ptr][3]))
+				outputf.write("TilesetEnd{}::\n\n".format(data[ptr][3]))
 		output.write("TilesetInfoEnd::\n");
