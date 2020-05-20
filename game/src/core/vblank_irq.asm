@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "LCDC VBlank_IRQ", ROM0[$049B]
 VBlankingIRQ::
   push af

@@ -1,3 +1,4 @@
+INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
 SECTION "Load Dialogue Font", ROM0[$2d85]

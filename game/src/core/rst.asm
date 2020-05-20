@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "rst0", ROM0[$0]
   pop hl
   add a ;a = a+a
@@ -24,10 +26,6 @@ Rst8Cont:
   rst $10
   ld a, [TempA]
   ret
-  nop
-  nop
-  nop
-  nop
 
 SECTION "rst10, bank swap",ROM0[$10]
   ld [hBank], a

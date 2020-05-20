@@ -1,16 +1,16 @@
 SECTION "List Data", ROMX[$4000], BANK[$2c]
-ItemList:
+ItemList::
   INCBIN "build/lists/Items_{GAMEVERSION}.bin"
-MedalList:
+MedalList::
   INCBIN "build/lists/Medals_{GAMEVERSION}.bin"
-MedarotList:
+MedarotList::
   INCBIN "build/lists/Medarots_{GAMEVERSION}.bin"
-PartList:
-HeadPartList:
+PartList::
+HeadPartList::
   INCBIN "build/lists/HeadParts_{GAMEVERSION}.bin"
-RightPartList:
+RightPartList::
   INCBIN "build/lists/RightParts_{GAMEVERSION}.bin"
-LeftPartList:
+LeftPartList::
   INCBIN "build/lists/LeftParts_{GAMEVERSION}.bin"
-LegPartList:
+LegPartList::
   INCBIN "build/lists/LegParts_{GAMEVERSION}.bin"

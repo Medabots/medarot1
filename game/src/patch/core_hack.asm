@@ -1,6 +1,6 @@
 ; Functions that needed to go within the core game space 
 
-SECTION "GetNextChar", ROM0[$7B]
+SECTION "GetNextChar", ROM0[$79]
 GetNextChar::
   push hl
   ld a, [hl]

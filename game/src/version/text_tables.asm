@@ -1,47 +1,47 @@
 SECTION "Pointers", ROMX[$4000], BANK[$25]
-Snippet1:
+Snippet1::
   INCBIN "build/Snippet1_{GAMEVERSION}.bin"
-Snippet2:
+Snippet2::
   INCBIN "build/Snippet2_{GAMEVERSION}.bin"
-Snippet3:
+Snippet3::
   INCBIN "build/Snippet3_{GAMEVERSION}.bin"
-Snippet4:
+Snippet4::
   INCBIN "build/Snippet4_{GAMEVERSION}.bin"
-Snippet5:
+Snippet5::
   INCBIN "build/Snippet5_{GAMEVERSION}.bin"
-StoryText1:
+StoryText1::
   INCBIN "build/StoryText1_{GAMEVERSION}.bin"
-StoryText2:
+StoryText2::
   INCBIN "build/StoryText2_{GAMEVERSION}.bin"
-StoryText3:
+StoryText3::
   INCBIN "build/StoryText3_{GAMEVERSION}.bin"
-BattleText:
+BattleText::
   INCBIN "build/BattleText_{GAMEVERSION}.bin"
 
 SECTION "FREE_TEXT0", ROMX[$4000], BANK[$26]
-FREE_TEXT0:
+FREE_TEXT0::
   INCBIN "build/FREE_TEXT0_{GAMEVERSION}.bin"
 
 SECTION "FREE_TEXT1", ROMX[$4000], BANK[$27]
-FREE_TEXT1:
+FREE_TEXT1::
   INCBIN "build/FREE_TEXT1_{GAMEVERSION}.bin"
 
 SECTION "FREE_TEXT2", ROMX[$4000], BANK[$28]
-FREE_TEXT2:
+FREE_TEXT2::
   INCBIN "build/FREE_TEXT2_{GAMEVERSION}.bin"
 
 SECTION "FREE_TEXT3", ROMX[$4000], BANK[$29]
-FREE_TEXT3:
+FREE_TEXT3::
   INCBIN "build/FREE_TEXT3_{GAMEVERSION}.bin"
 
 SECTION "FREE_TEXT4", ROMX[$4000], BANK[$2a]
-FREE_TEXT4:
+FREE_TEXT4::
   INCBIN "build/FREE_TEXT4_{GAMEVERSION}.bin"
 
 
 
 SECTION "Dialog Text Tables", ROM0[$1d3b]
-TextTableBanks: ; 0x1d3b
+TextTableBanks:: ; 0x1d3b
   db BANK(Snippet1) ;Snippet 1
   db BANK(Snippet2) ;Snippet 2
   db BANK(Snippet3) ;Snippet 3
@@ -59,7 +59,7 @@ TextTableBanks: ; 0x1d3b
   db $00
   db $00
 
-TextTableOffsets: ; 0x1d4b
+TextTableOffsets:: ; 0x1d4b
   dw Snippet1 ;Snippet 1
   dw Snippet2 ;Snippet 2
   dw Snippet3 ;Snippet 3

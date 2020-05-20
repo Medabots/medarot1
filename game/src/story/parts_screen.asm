@@ -395,7 +395,7 @@ LoadPartDescription:
 ; 0x3942
 
 SECTION "Load Skill", ROMX[$67a6], BANK[$2]
-LoadSkill:
+LoadSkill::
   ld a, [$c727]
   cp $3
   ret z

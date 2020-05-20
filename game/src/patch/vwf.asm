@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "VWF Word Length Tester", ROM0[$1D6B]
 VWFWordLengthTest::
   ld a, [hl]
