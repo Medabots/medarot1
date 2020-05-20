@@ -1,7 +1,7 @@
 export LC_CTYPE=C
 export PYTHONIOENCODING=utf-8
 
-VERSIONS := kabuto
+VERSIONS := kabuto kuwagata
 OUTPUT_PREFIX := medarot_
 ORIGINAL_PREFIX := baserom_
 ROM_TYPE := gb
@@ -83,6 +83,9 @@ story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
 story_text_tables_ADDITIONAL := $(BIN_FILE)
 
 all: $(TARGETS)
+
+#Support building specific versions
+$(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
 
 # $| is a hack, we cannot have any other order-only prerequisites
 $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
