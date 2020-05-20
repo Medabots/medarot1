@@ -69,6 +69,8 @@ if __name__ == '__main__':
     arg1 = 'build' #output directory
     trans_dir = 'text/dialog'
     output_dir = 'build'
+    version_suffix = 'kabuto'
+
     char_table = utils.merge_dicts([
         utils.read_table("scripts/res/medarot.tbl", reverse=True), # FIXME: There are missing tileset mappings, for now just read medarot.tbl
         #utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True),
@@ -107,6 +109,10 @@ if __name__ == '__main__':
                     continue
                 # Pointer,Original
                 ptr = line[0]
+                if "#" in ptr:
+                    ptr, suffix = ptr.split("#")
+                    if suffix != version_suffix:
+                        continue
                 txt = line[1].strip('"')
                 if txt.startswith('='):
                     output_text[ptr] = int(txt.strip('='), 16)
