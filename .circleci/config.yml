@@ -34,7 +34,7 @@ jobs:
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
-          command: make -j
+          command: make << parameters.game-version >> -j
       - run:
           name: "Generate Patch"
           command: |
@@ -54,7 +54,7 @@ workflows:
       - build:
           name: "Kuwagata"
           use-latest-translations: false
-          game-version: "kabuto"
+          game-version: "kuwagata"
       - build:
           name: "Kabuto - Latest Translations"
           use-latest-translations: true
@@ -62,4 +62,4 @@ workflows:
       - build:
           name: "Kuwagata - Latest Translations"
           use-latest-translations: true
-          game-version: "kabuto"
+          game-version: "kuwagata"
