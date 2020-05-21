@@ -165,7 +165,6 @@ RobattleScreenCopyPlayerMedarotInfo:
   add hl, de
   ld a, [$c650]
   ld [hl], a
-  ld a, [$c650]
   inc a
   ld [$c650], a
   ret
@@ -825,19 +824,16 @@ RobattleLoadMedarotNames::
   ld hl, $00f0
   add hl, de
   call VWFLeftPadTextTo8
-  ld [$c650], a
-  push de
-  pshl $98e0, $01 ; write to free space, to avoid redrawing 
-  ld b, $0
+  pshl $98e0, $01
   ld a, [$c652]
-  ld c, a
-  ld a, $3
-  call JumpGetListTextOffset
-  pop de
-  ld a, [$c650]
-  ld b, $0
-  ld c, a
+  ld bc, $0820
+.loop_player_getoffset
+  or a
+  jr z, .end_loop_player_getoffset
   add hl, bc
+  dec a
+  jr .loop_player_getoffset
+.end_loop_player_getoffset
   ld b, h
   ld c, l
   ld hl, $00f0
@@ -861,14 +857,16 @@ RobattleLoadMedarotNames::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  push de
   pshl $98ec, $d6
-  ld b, $0
   ld a, [$c652]
-  ld c, a
-  ld a, $3
-  call JumpGetListTextOffset
-  pop de
+  ld bc, $0820
+.loop_enemy_getoffset
+  or a
+  jr z, .end_loop_enemy_getoffset
+  add hl, bc
+  dec a
+  jr .loop_enemy_getoffset
+.end_loop_enemy_getoffset
   ld b, h
   ld c, l
   ld hl, $00f0
@@ -881,6 +879,16 @@ RobattleLoadMedarotNames::
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 ; 0x13756
 
 SECTION "Robattle - Load Medarot Names (1B copy)", ROMX[$6e26], BANK[$1B]
@@ -900,19 +908,16 @@ RobattleLoadMedarotNamesCopy::
   ld hl, $00f0
   add hl, de
   call VWFLeftPadTextTo8
-  ld [$c650], a
-  push de
   pshl $98e0, $01
-  ld b, $0
   ld a, [$c652]
-  ld c, a
-  ld a, $3
-  call JumpGetListTextOffset
-  pop de
-  ld a, [$c650]
-  ld b, $0
-  ld c, a
+  ld bc, $0820
+.loop_player_getoffset
+  or a
+  jr z, .end_loop_player_getoffset
   add hl, bc
+  dec a
+  jr .loop_player_getoffset
+.end_loop_player_getoffset
   ld b, h
   ld c, l
   ld hl, $00f0
@@ -936,14 +941,16 @@ RobattleLoadMedarotNamesCopy::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  push de
   pshl $98ec, $d6
-  ld b, $0
   ld a, [$c652]
-  ld c, a
-  ld a, $3
-  call JumpGetListTextOffset
-  pop de
+  ld bc, $0820
+.loop_enemy_getoffset
+  or a
+  jr z, .end_loop_enemy_getoffset
+  add hl, bc
+  dec a
+  jr .loop_enemy_getoffset
+.end_loop_enemy_getoffset
   ld b, h
   ld c, l
   ld hl, $00f0
@@ -956,6 +963,16 @@ RobattleLoadMedarotNamesCopy::
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 
 SECTION "LeftPadTextTo8 (1B Copy)", ROMX[$6ebc], BANK[$1B]
 LeftPadTextTo8Copy:
