@@ -165,7 +165,6 @@ RobattleScreenCopyPlayerMedarotInfo:
   add hl, de
   ld a, [$c650]
   ld [hl], a
-  ld a, [$c650]
   inc a
   ld [$c650], a
   ret
