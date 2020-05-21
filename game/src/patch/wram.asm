@@ -44,4 +44,4 @@ TmpChar::
   ds 1
 FlagDo4C::
   ds 1
-TempByteBuffer:: ds $10
+RobattleHackNeedsRedraw:: ds 1
