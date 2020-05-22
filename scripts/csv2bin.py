@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     for b in bank_map:
         with suppress(OSError):
-            os.remove('%s/%s.bin' % (output_dir, b))
+            os.remove('%s/%s_%s.bin' % (output_dir, b, version_suffix))
 
     for section in sections:
         offsets = []
