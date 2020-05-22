@@ -17,6 +17,8 @@ TSET_SRC_TYPE := 2bpp
 TSET_TYPE := malias
 VWF_TSET_SRC_TYPE := 1bpp
 VWF_TSET_TYPE := vwffont
+RAW_TSET_SRC_TYPE := 2bpp.nomalias
+RAW_TSET_TYPE := 2bpp
 LIST_TYPE := bin
 TEXT_TYPE := txt
 PYTHON := python3
@@ -76,6 +78,7 @@ OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(I
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
+RAW_TILESETS := $(notdir $(basename $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE)))))
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
@@ -87,12 +90,14 @@ LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
+RAW_TILESET_FILES := $(foreach FILE,$(RAW_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(RAW_TSET_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
-patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias # Manually add MainDialog as a special case for map text reloading
+# Manually add MainDialog as a special case for map text reloading
+patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(RAW_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
 
 .PHONY: all clean
 all: $(VERSIONS)
@@ -134,6 +139,9 @@ $(PATCH_TILESET_OUT)/%.$(VWF_TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(VWF_TSET_SRC_
 $(PATCH_TILESET_OUT)/%.$(TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
+$(PATCH_TILESET_OUT)/%.$(RAW_TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+	cp $< $@
+
 .SECONDEXPANSION:
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
@@ -169,6 +177,7 @@ list_files:  $(LISTS_FILES)
 ptrlist_files: $(PTRLISTS_FILES)
 tileset_files: $(TILESET_FILES)
 vwf_tileset_files: $(VWF_TILESET_FILES)
+raw_tileset_files: $(RAW_TILESET_FILES)
 patch_tileset_files: $(PATCH_TILESET_FILES)
 
 #Make directories if necessary
