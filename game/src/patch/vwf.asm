@@ -45,7 +45,7 @@ VWFWordLengthTest::
   ret
 
 ; Tilemaps are loaded from a different branch, so we make sure to keep track
-LoadTilemapInWindowWrapper::
+LoadTilemapInWindowWrapper:
   call $0f84
   ld a, BANK(VWFDrawCharLoop)
   rst $10
@@ -1002,29 +1002,38 @@ VWFChar49::
 
 VWFChar48::
   ; Draw character portrait if called
+
   inc hl
   ld a, [hl]
-  or a
-  jr z, .clearbox 
   push de
   push bc
-  call HackDrawPortrait
+  call DrawPortrait ; Returns width of portrait in a (0 if none)
+  ld [VWFPortraitDrawn], a
   pop bc
   pop de
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
-  ld a, $4 ; The width of the portrait, for convenience
-  ld [VWFPortraitDrawn], a
   call VWFResetMessageBox
   ret
-.clearbox
+
+DrawPortrait:
+  or a
+  jr nz, .drawportrait
+  ; Clear the existing portrait and restore the 16 bytes previously there
   ; TODO
-  pop hl
-  call VWFIncTextOffset
-  call VWFIncTextOffset
-  xor a
-  ld [VWFPortraitDrawn], a
+.drawportrait
+  ld a, [$c6e0]
+  ld [TempBankStorage], a
+  ld a, BANK(DrawPortrait)
+  ld [$c6e0], a
+  ld b, $0
+  ld c, $0
+  ld e, $f0
+  call LoadTilemapInWindowWrapper ; Draw in 9C00
+  ld a, [TempBankStorage]
+  ld [$c6e0], a
+  ld a, $4
   ret
 
 VWFWriteCharLimited::

@@ -173,16 +173,3 @@ LoadShopTilesetAndBuySellTilemap:
   pop de
   pop hl
   jp WrapLoadTilemap
-
-HackDrawPortrait::
-  ld a, [$c6e0]
-  ld [TempBankStorage], a
-  ld a, BANK(HackDrawPortrait)
-  ld [$c6e0], a
-  ld b, $0
-  ld c, $0
-  ld e, $f0
-  call LoadTilemapInWindowWrapper ; Draw in 9C00
-  ld a, [TempBankStorage]
-  ld [$c6e0], a
-  ret
