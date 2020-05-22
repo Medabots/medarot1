@@ -1058,7 +1058,7 @@ DrawPortrait:
 .removeportrait
   ld [VWFPortraitDrawn], a
   ; Make sure to save 'temporary bank for rst $18 to function'
-  ld a, [$c751]
+  ld a, [$c5c7]
   or a
   jr z, .windowUsed
   dec c ; adjust Y
