@@ -45,7 +45,7 @@ VWFWordLengthTest::
   ret
 
 ; Tilemaps are loaded from a different branch, so we make sure to keep track
-LoadTilemapInWindowWrapper:
+LoadTilemapInWindowWrapper::
   call $0f84
   ld a, BANK(VWFDrawCharLoop)
   rst $10
@@ -317,8 +317,10 @@ VWFMeasureStringPart::
   cp $4b
   jp z, VWFCountChar4B
   
-  ; Treat 4D as zero length and skip its argument.
-  
+  ; Treat 4D and 48 as zero length and skip arguments.
+  cp $48
+  jr nz, .not48
+.not48
   cp $4d
   jr nz, .not4D
 
@@ -416,6 +418,8 @@ VWFDrawCharLoop::
   jp z, VWFChar4A
   cp $49
   jp z, VWFChar49
+  cp $48
+  jp z, VWFChar48
   pop hl
   call VWFWriteChar
   jp VWFIncTextOffset
@@ -993,6 +997,20 @@ VWFChar49::
   or a
   jp z, VWFChar4E
   jp VWFChar4C
+
+VWFChar48::
+  ; Draw character portrait if called
+  inc hl
+  ld a, [hl]
+  push de
+  push bc
+  call HackDrawPortrait
+  pop bc
+  pop de
+  pop hl
+  call VWFIncTextOffset
+  call VWFIncTextOffset
+  ret
 
 VWFWriteCharLimited::
   ld a, [VWFTileLength]

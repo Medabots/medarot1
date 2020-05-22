@@ -48,6 +48,10 @@ def table_convert(txt, tbl):
                         print("Unable to find ptr name for {0}".format(s))
                         result.append(int(s[2:4], 16))
                         result.append(int(s[0:2], 16))
+                elif special_type == '@':
+                    s = ''.join(special_data)
+                    result.append(0x48)
+                    result.append(int(s[0:2], 16))
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':
