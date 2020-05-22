@@ -552,6 +552,7 @@ VWFResetForNewline::
 
 .common
   ld [VWFOldTileMode], a
+  ld [VWFLetterShift], a
   ld [VWFTextLength], a
   ld [VWFDiscardSecondTile], a
 
@@ -561,7 +562,7 @@ VWFResetForNewline::
   jr z, .noportrait
   rr a ; add 2 pixels to between the portrait and text
   ld [VWFLetterShift], a
-  ld a, $24
+  ld a, $22
   ld [VWFTextLength], a
   xor a
 .noportrait
@@ -1059,7 +1060,7 @@ DrawPortrait:
   ld [VWFPortraitDrawn], a
   ; Make sure to save 'temporary bank for rst $18 to function'
   ld a, [$c5c7]
-  or a
+  cp $1
   jr z, .windowUsed
   dec c ; adjust Y
 .windowUsed
