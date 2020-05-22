@@ -1048,24 +1048,8 @@ DrawPortrait:
   dec e
   push bc
   push de
-  ld b, $0 ; Get correct offset in index
-  ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
+  ld b, a
+  ld c, $0
   ld de, $8C00
   call LoadPortraitTileset
   pop de
