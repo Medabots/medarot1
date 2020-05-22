@@ -319,12 +319,11 @@ VWFMeasureStringPart::
   
   ; Treat 4D and 48 as zero length and skip arguments.
   cp $48
-  jr nz, .not48
-.not48
+  jr z, .is48
   cp $4d
   jr nz, .not4D
-
   inc e
+.is48
   inc e
   jr .loop
 
@@ -488,6 +487,7 @@ VWFCheckInit::
   ret z
   xor a
   ld [VWFIsInit], a
+  ld [VWFPortraitDrawn], a
   ld a, $D0
   ld [VWFTileBaseIdx], a
   call VWFResetMessageBox
@@ -521,12 +521,15 @@ VWFResetMessageBox::
   call VWFEmptyDrawingRegion
   pop hl
   ; "a" should be 0 after calling VWFEmptyDrawingRegion so a "xor a" here would feel redundant.
-  ld [VWFTilesDrawn], a
   ld [VWFIsSecondLine], a
+  ld a, [VWFPortraitDrawn]
+  ld [VWFTilesDrawn], a ; either 0 or 4
+  xor a ; Expect a to be 0
   jr VWFResetForNewline.common
 
 VWFResetForNewline::
-  ld a, $11
+  ld a, [VWFPortraitDrawn]
+  add $11
   ld [VWFTilesDrawn], a
   ld a, 1
   ld [VWFIsSecondLine], a
@@ -874,7 +877,6 @@ VWFChar4D::
 
 VWFChar4C::
   ; New text box.
-
   pop hl
 
   ; Map next page indicator arrow.
@@ -1002,6 +1004,8 @@ VWFChar48::
   ; Draw character portrait if called
   inc hl
   ld a, [hl]
+  or a
+  jr z, .clearbox 
   push de
   push bc
   call HackDrawPortrait
@@ -1010,6 +1014,17 @@ VWFChar48::
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
+  ld a, $4 ; The width of the portrait, for convenience
+  ld [VWFPortraitDrawn], a
+  call VWFResetMessageBox
+  ret
+.clearbox
+  ; TODO
+  pop hl
+  call VWFIncTextOffset
+  call VWFIncTextOffset
+  xor a
+  ld [VWFPortraitDrawn], a
   ret
 
 VWFWriteCharLimited::

@@ -19,6 +19,7 @@ VWFDrawingAreaLengthInPixels:: ds 1
 VWFTileMappingPseudoIndex:: ds 1
 VWFDiscardSecondTile:: ds 1
 VWFCurrentFont:: ds 1
+VWFPortraitDrawn:: ds 1
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30
