@@ -126,11 +126,7 @@ REPT $8000 - BANK13_END
   db 0
 ENDR
 
-SECTION "BANK14_END", ROMX[$7ff0], BANK[$14]
-BANK14_END::
-REPT $8000 - BANK14_END
-  db 0
-ENDR
+; Bank 14 is used entirely for the robattle portraits and background graphics
 
 SECTION "BANK15_END", ROMX[$7f19], BANK[$15]
 BANK15_END::

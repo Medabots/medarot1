@@ -1,5 +1,23 @@
 INCLUDE "game/src/common/constants.asm"
 
+SECTION "Robattle Portraits", ROMX[$4000], BANK[$14]
+RobattlePortraits::
+  INCBIN "build/tilesets/portraits.2bpp"
+
+SECTION "Load Player Portrait", ROM0[$2e3f]
+LoadPlayerPortrait: ; 2e3f (0:2e3f)
+  ld a, BANK(RobattlePortraits)
+  ld [$2000], a
+  ld hl, RobattlePortraits
+  ld de, $9010
+  ld bc, $100
+  call CopyVRAMData
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  ret
+; 0x2e58
+
 SECTION "Robattles Start Screen", ROM0[$2e58]
 LoadRobattleStartScreenMedarotter:
   ld a, BANK(MedarottersPtr)
@@ -33,13 +51,13 @@ LoadRobattleStartScreenMedarotter:
   rl b
   sla c
   rl b
-  ld a, $14
+  ld a, BANK(RobattlePortraits)
   ld [$2000], a
-  ld hl, $4000
+  ld hl, RobattlePortraits
   add hl, bc
   ld de, $9110
   ld bc, $0100
-  call $0cb7
+  call CopyVRAMData
   ld a, [$c740]
   inc a
   ld [$c740], a
