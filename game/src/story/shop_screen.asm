@@ -369,11 +369,11 @@ LoadBuySellTilemap: ; f0d3 (3:70d3)
 
 SECTION "Load Money Overlay (in shops)", ROMX[$571c], BANK[$3]
 LoadMoneyTilemapOverlayInShops: ; d71c (3:571c)
-  ld b, $08
+  ld b, $0C
   ld c, $00
   ld e, $1f
   call JumpTable_2ca
-  ld b, $0d
+  ld b, $0e
   ld c, $01
   call JumpTable_1dd
   push hl
