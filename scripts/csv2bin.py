@@ -19,10 +19,12 @@ with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
 def table_convert(txt, tbl):
     result = bytearray()
     i = 0
+    specialStartIdx = 0
     endcode = 0x00
     while i < len(txt):
         try: 
             if txt[i] == '<':
+                specialStartIdx = i
                 i += 1
                 special_type = txt[i]
                 i += 1
@@ -48,6 +50,12 @@ def table_convert(txt, tbl):
                         print("Unable to find ptr name for {0}".format(s))
                         result.append(int(s[2:4], 16))
                         result.append(int(s[0:2], 16))
+                elif special_type == '@':
+                    s = ''.join(special_data)
+                    if specialStartIdx > 0:
+                        result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character
+                    result.append(0x48)
+                    result.append(int(s[0:2], 16))
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':

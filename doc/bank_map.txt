@@ -44,5 +44,5 @@
 2B: Tilemaps
 2C: List Text
 2D: Pointer List Text
-2E: 
+2E: Portraits
 2F: 

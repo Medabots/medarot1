@@ -19,29 +19,21 @@ VWFDrawingAreaLengthInPixels:: ds 1
 VWFTileMappingPseudoIndex:: ds 1
 VWFDiscardSecondTile:: ds 1
 VWFCurrentFont:: ds 1
+VWFPortraitDrawn:: ds 1
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30
 
 SECTION "User Globals (hack)", WRAMX[$DEA0], BANK[$1] ; for DMG doesn't really matter, but rgbds needs it for overlay
-TempA::
-  ds 1
-TempH::
-  ds 1
-TempL::
-  ds 1
-WTextOffsetHi::
-  ds 1
-FlagClearText::
-  ds 1
-CurrentWordLen::
-  ds 1
-FlagNewLine::
-  ds 1
-NextChar::
-  ds 1
-TmpChar::
-  ds 1
-FlagDo4C::
-  ds 1
+TempA:: ds 1
+TempH:: ds 1
+TempL:: ds 1
+WTextOffsetHi:: ds 1
+FlagClearText:: ds 1
+CurrentWordLen:: ds 1
+FlagNewLine:: ds 1
+NextChar:: ds 1
+TmpChar:: ds 1
+FlagDo4C:: ds 1
 RobattleHackNeedsRedraw:: ds 1
+TempBankStorage:: ds 1

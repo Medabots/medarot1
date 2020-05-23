@@ -51,6 +51,17 @@ LoadTilemapInWindowWrapper:
   rst $10
   ret
 
+LoadPortraitTileset:
+  ld a, BANK(TilesetPortraits)
+  rst $10
+  ld hl, TilesetPortraits
+  add hl, bc
+  ld bc, $0100
+  call CopyVRAMData
+  ld a, BANK(DrawPortrait)
+  rst $10
+  ret
+
 VWFPutStringTo8::
   ld a, 8
   ; Continues into VWFPutString.
@@ -153,6 +164,10 @@ VWFPutStringAutoNarrow::
   pop bc
   pop hl
   jp VWFPutString.skipSettingLength
+
+SECTION "Portraits", ROMX[$4000], BANK[$2E]
+TilesetPortraits::
+  INCBIN "build/tilesets/patch/Portraits.2bpp"
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
@@ -317,12 +332,13 @@ VWFMeasureStringPart::
   cp $4b
   jp z, VWFCountChar4B
   
-  ; Treat 4D as zero length and skip its argument.
-  
+  ; Treat 4D and 48 as zero length and skip arguments.
+  cp $48
+  jr z, .is48
   cp $4d
   jr nz, .not4D
-
   inc e
+.is48
   inc e
   jr .loop
 
@@ -416,6 +432,8 @@ VWFDrawCharLoop::
   jp z, VWFChar4A
   cp $49
   jp z, VWFChar49
+  cp $48
+  jp z, VWFChar48
   pop hl
   call VWFWriteChar
   jp VWFIncTextOffset
@@ -484,6 +502,7 @@ VWFCheckInit::
   ret z
   xor a
   ld [VWFIsInit], a
+  ld [VWFPortraitDrawn], a
   ld a, $D0
   ld [VWFTileBaseIdx], a
   call VWFResetMessageBox
@@ -517,12 +536,15 @@ VWFResetMessageBox::
   call VWFEmptyDrawingRegion
   pop hl
   ; "a" should be 0 after calling VWFEmptyDrawingRegion so a "xor a" here would feel redundant.
-  ld [VWFTilesDrawn], a
   ld [VWFIsSecondLine], a
+  ld a, [VWFPortraitDrawn]
+  ld [VWFTilesDrawn], a ; either 0 or 4
+  xor a ; Expect a to be 0
   jr VWFResetForNewline.common
 
 VWFResetForNewline::
-  ld a, $11
+  ld a, [VWFPortraitDrawn]
+  add $11
   ld [VWFTilesDrawn], a
   ld a, 1
   ld [VWFIsSecondLine], a
@@ -530,9 +552,18 @@ VWFResetForNewline::
 
 .common
   ld [VWFOldTileMode], a
-  ld [VWFLetterShift], a
   ld [VWFTextLength], a
   ld [VWFDiscardSecondTile], a
+
+  ; Shift letters if portrait is drawn
+  ld a, [VWFPortraitDrawn]
+  rr a
+  ld [VWFLetterShift], a
+  jr z, .noportrait
+  ld a, $22
+  ld [VWFTextLength], a
+  xor a
+.noportrait
 
   push hl
   ld hl, VWFCompositeArea
@@ -870,7 +901,6 @@ VWFChar4D::
 
 VWFChar4C::
   ; New text box.
-
   pop hl
 
   ; Map next page indicator arrow.
@@ -993,6 +1023,53 @@ VWFChar49::
   or a
   jp z, VWFChar4E
   jp VWFChar4C
+
+VWFChar48::
+  ; Draw character portrait if called
+  ; csv2bin will forcibly add 4C before this, if it isn't the first character in dialog
+
+  inc hl
+  ld a, [hl]
+  call DrawPortrait ; Sets VWFPortraitDrawn
+  pop hl
+  call VWFIncTextOffset
+  call VWFIncTextOffset
+  call VWFResetMessageBox ; Need to set start offsets
+  ret
+
+DrawPortrait:
+  ld e, $f1 ; Portrait restore f1, Portrait f0
+  ld b, $1 ; tilemap x position
+  ld c, $1 ; tilemap y position
+  or a
+  jr z, .removeportrait
+  dec a ; Get correct index
+  dec e
+  push bc
+  push de
+  ld b, a
+  ld c, $0
+  ld de, $8C00
+  call LoadPortraitTileset
+  pop de
+  pop bc
+  ld a, $4
+.removeportrait
+  ld [VWFPortraitDrawn], a
+  ; Make sure to save 'temporary bank for rst $18 to function'
+  ld a, [$c5c7]
+  cp $1
+  jr z, .windowUsed
+  dec c ; adjust Y
+.windowUsed
+  ld a, [$c6e0]
+  ld [TempBankStorage], a
+  ld a, BANK(DrawPortrait)
+  ld [$c6e0], a
+  call LoadTilemapInWindowWrapper ; Draw in 9C00
+  ld a, [TempBankStorage]
+  ld [$c6e0], a
+  ret
 
 VWFWriteCharLimited::
   ld a, [VWFTileLength]
