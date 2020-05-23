@@ -13,12 +13,11 @@ TABLE_TYPE := tbl
 TMAP_TYPE := tmap
 SYM_TYPE := sym
 MAP_TYPE := map
+RAW_TSET_SRC_TYPE := png
 TSET_SRC_TYPE := 2bpp
 TSET_TYPE := malias
 VWF_TSET_SRC_TYPE := 1bpp
 VWF_TSET_TYPE := vwffont
-RAW_TSET_SRC_TYPE := 2bpp.nomalias
-RAW_TSET_TYPE := 2bpp
 LIST_TYPE := bin
 TEXT_TYPE := txt
 PYTHON := python3
@@ -43,19 +42,22 @@ TILEMAP_OUT := $(BUILD)/tilemaps
 TILESET_BIN := $(GAME)/tilesets
 TILESET_TEXT := $(TEXT)/tilesets
 TILESET_OUT := $(BUILD)/tilesets
+TILESET_UNCOMPRESSED_TEXT := $(TILESET_TEXT)/nomalias
 PATCH_TILESET_TEXT := $(TILESET_TEXT)/patch
 PATCH_TILESET_OUT := $(TILESET_OUT)/patch
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
 
-# Compiler/Linker
+# Toolchain
 CC := rgbasm
 CC_ARGS :=
 LD := rgblink
-LD_ARGS := --dmg
+LD_ARGS :=
 FIX := rgbfix
-FIX_ARGS = -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3
+FIX_ARGS :=
+CCGFX := rgbgfx
+CCGFX_ARGS :=
 
 # Helper
 TOUPPER = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
@@ -73,31 +75,32 @@ DIALOG_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(DIAG_TYPE))
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
-TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
+TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
+UNCOMPRESSED_TILESETS := $(notdir $(basename $(wildcard $(TILESET_UNCOMPRESSED_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
 OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(INT_TYPE), $(notdir $(basename $(wildcard $(SRC)/$(MODULE)/*.$(SOURCE_TYPE)))))))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
-PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(TSET_SRC_TYPE))))
-RAW_TILESETS := $(notdir $(basename $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE)))))
+PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
 BASE_BIN_FILE := $(BUILD)/$(word 1, $(TEXT))
-BIN_FILES := $(foreach VERSION,$(VERSIONS),$(BASE_BIN_FILE)_$(VERSION).$(BIN_TYPE))# One script call generates all bin files, so we just look at the first one
+BIN_FILES := $(foreach VERSION,$(VERSIONS),$(BASE_BIN_FILE)_$(VERSION).$(BIN_TYPE)) # One script call generates all bin files, so we just look at the first one
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
+UNCOMPRESSED_TILESET_FILES := $(foreach FILE,$(UNCOMPRESSED_TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_SRC_TYPE))
 LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
-RAW_TILESET_FILES := $(foreach FILE,$(RAW_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(RAW_TSET_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
-story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES)
+story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES)
 # Manually add MainDialog as a special case for map text reloading
-patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(RAW_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
+# Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
+patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(TILESET_OUT)/portraits.2bpp $(TILESET_OUT)/MainDialog.malias
 
 .PHONY: all clean
 all: $(VERSIONS)
@@ -113,7 +116,7 @@ $(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
 .SECONDEXPANSION:
 $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
 	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
-	$(FIX) $(FIX_ARGS) $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
+	$(FIX) $(FIX_ARGS) -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
 
 # Don't delete intermediate files
 .SECONDEXPANSION:
@@ -130,17 +133,23 @@ $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE): $(SCRIPT)/res/tilemap_files.$(TABLE
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_TEXT)/%.$(TEXT_TYPE) $(SCRIPT)/res/tilemap_tilesets.$(TABLE_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2tmap.py $< $@
 
-$(TILESET_OUT)/%.$(TSET_TYPE): $(TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(TILESET_OUT)
+$(TILESET_OUT)/%.$(TSET_SRC_TYPE): $(TILESET_UNCOMPRESSED_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
+
+$(TILESET_OUT)/%.$(TSET_SRC_TYPE): $(TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
+
+$(TILESET_OUT)/%.$(TSET_TYPE): $(TILESET_OUT)/%.$(TSET_SRC_TYPE) | $(TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
 $(PATCH_TILESET_OUT)/%.$(VWF_TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(VWF_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
 	cp $< $@
 
-$(PATCH_TILESET_OUT)/%.$(TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+$(PATCH_TILESET_OUT)/%.$(TSET_TYPE): $(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
 	$(PYTHON) $(SCRIPT)/tileset2malias.py $< $@
 
-$(PATCH_TILESET_OUT)/%.$(RAW_TSET_TYPE): $(PATCH_TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
-	cp $< $@
+$(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
 
 .SECONDEXPANSION:
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
@@ -177,7 +186,6 @@ list_files:  $(LISTS_FILES)
 ptrlist_files: $(PTRLISTS_FILES)
 tileset_files: $(TILESET_FILES)
 vwf_tileset_files: $(VWF_TILESET_FILES)
-raw_tileset_files: $(RAW_TILESET_FILES)
 patch_tileset_files: $(PATCH_TILESET_FILES)
 
 #Make directories if necessary

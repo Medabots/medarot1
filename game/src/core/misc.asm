@@ -137,22 +137,6 @@ Func_2dba: ; 2dba (0:2dba)
 .asm_2dfb
 ; 0x2dfb
 
-SECTION "Func_2e3f", ROM0[$2e3f]
-Func_2e3f: ; 2e3f (0:2e3f)
-  ld a, $14
-  rst $10
-  ld hl, $4000
-  ld de, $9010
-  ld bc, $100
-  call CopyVRAMData
-  ld a, [$c740]
-  inc a
-  ld [$c740], a
-  ret
-  nop
-  nop
-; 0x2e58
-
 SECTION "Func_2eb0", ROM0[$2eb0]
 Func_2eb0: ; 2eb0 (0:2eb0)
   ld a, $14

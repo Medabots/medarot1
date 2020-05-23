@@ -11,4 +11,4 @@ Makefile text
 *.malias binary diff=hex
 *.1bpp binary diff=hex
 *.2bpp binary diff=hex
-*.2bpp.nomalias binary diff=hex
+*.png binary diff=hex

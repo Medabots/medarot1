@@ -167,7 +167,7 @@ VWFPutStringAutoNarrow::
 
 SECTION "Portraits", ROMX[$4000], BANK[$2E]
 TilesetPortraits::
-  INCBIN "build/tilesets/patch/Portraits.2bpp"
+  INCBIN "build/tilesets/portraits.2bpp"
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
