@@ -1,6 +1,33 @@
 ; Misc functions to be categorized, but needed to be dumped
 INCLUDE "game/src/common/constants.asm"
 
+SECTION "Draw Player Money in Menu", ROMX[$45B9], BANK[$2]
+DrawPlayerMoneyInMenu: ; 85b9 (2:45b9)
+  ld b, $04
+  ld c, $00
+  ld e, $51
+  call JumpTable_2ca
+  ld a, [$c93a]
+  or a
+  jr nz, .asm_85cd
+  ld a, [$c93b]
+  or a
+  ret z
+.asm_85cd
+  ld b, $05
+  ld c, $01
+  call JumpTable_1dd
+  push hl
+  pop bc
+  ld a, [$c93a]
+  ld h, a
+  ld a, [$c93b]
+  ld l, a
+  call JumpTable_1ec
+  ret
+; 0x85e2
+; 0x85e2
+
 ; Also used for wings of wind
 SECTION "Town Map tilemap loading (partial)", ROMX[$77e9], BANK[$1]
 LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
