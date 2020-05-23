@@ -552,16 +552,14 @@ VWFResetForNewline::
 
 .common
   ld [VWFOldTileMode], a
-  ld [VWFLetterShift], a
   ld [VWFTextLength], a
   ld [VWFDiscardSecondTile], a
 
   ; Shift letters if portrait is drawn
   ld a, [VWFPortraitDrawn]
-  or a
-  jr z, .noportrait
-  rr a ; add 2 pixels to between the portrait and text
+  rr a
   ld [VWFLetterShift], a
+  jr z, .noportrait
   ld a, $22
   ld [VWFTextLength], a
   xor a
