@@ -14,7 +14,7 @@ DrawPlayerMoneyInMenu: ; 85b9 (2:45b9)
   or a
   ret z
 .asm_85cd
-  ld b, $05
+  ld b, $06
   ld c, $01
   call JumpTable_1dd
   push hl
