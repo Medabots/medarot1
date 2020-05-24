@@ -45,6 +45,8 @@ TILESET_OUT := $(BUILD)/tilesets
 TILESET_UNCOMPRESSED_TEXT := $(TILESET_TEXT)/nomalias
 PATCH_TILESET_TEXT := $(TILESET_TEXT)/patch
 PATCH_TILESET_OUT := $(TILESET_OUT)/patch
+PATCH_PORTRAITS_TEXT := $(PATCH_TILESET_TEXT)/portraits
+PATCH_PORTRAITS_OUT := $(PATCH_TILESET_OUT)/portraits
 
 MODULES := core gfx story patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
@@ -81,6 +83,7 @@ OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(I
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
+PATCH_PORTRAIT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_PORTRAITS_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
@@ -93,6 +96,7 @@ LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
 VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
+PATCH_PORTRAIT_TILESET_FILES := $(foreach FILE,$(PATCH_PORTRAIT_TILESETS),$(PATCH_PORTRAITS_OUT)/$(FILE).$(TSET_SRC_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
@@ -100,7 +104,9 @@ gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES)
 # Manually add MainDialog as a special case for map text reloading
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
-patch_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_TILESET_FILES) $(TILESET_OUT)/portraits.2bpp $(TILESET_OUT)/MainDialog.malias
+patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
+patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
+patch_vwf_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
 
 .PHONY: all clean
 all: $(VERSIONS)
@@ -151,6 +157,9 @@ $(PATCH_TILESET_OUT)/%.$(TSET_TYPE): $(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE) | $
 $(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
 	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
 
+$(PATCH_PORTRAITS_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_PORTRAITS_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_PORTRAITS_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
+
 .SECONDEXPANSION:
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
@@ -187,6 +196,7 @@ ptrlist_files: $(PTRLISTS_FILES)
 tileset_files: $(TILESET_FILES)
 vwf_tileset_files: $(VWF_TILESET_FILES)
 patch_tileset_files: $(PATCH_TILESET_FILES)
+patch_portrait_files: $(PATCH_PORTRAIT_TILESET_FILES)
 
 #Make directories if necessary
 $(BUILD):
@@ -224,3 +234,6 @@ $(TILESET_OUT):
 
 $(PATCH_TILESET_OUT):
 	mkdir -p $(PATCH_TILESET_OUT)
+
+$(PATCH_PORTRAITS_OUT):
+	mkdir -p $(PATCH_PORTRAITS_OUT)

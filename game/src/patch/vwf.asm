@@ -52,10 +52,9 @@ LoadTilemapInWindowWrapper:
   ret
 
 LoadPortraitTileset:
-  ld a, BANK(TilesetPortraits)
+; a is the bank where the portraits are
+; hl is the address of the portrait to pull
   rst $10
-  ld hl, TilesetPortraits
-  add hl, bc
   ld bc, $0100
   call CopyVRAMData
   ld a, BANK(DrawPortrait)
@@ -165,9 +164,13 @@ VWFPutStringAutoNarrow::
   pop hl
   jp VWFPutString.skipSettingLength
 
-SECTION "Portraits", ROMX[$4000], BANK[$2E]
-TilesetPortraits::
-  INCBIN "build/tilesets/portraits.2bpp"
+SECTION "Portraits 1-64", ROMX[$4000], BANK[$2E]
+TilesetPortraits1::
+  INCLUDE "game/src/patch/include/portraits_1.asm"
+
+SECTION "Portraits 65-113", ROMX[$4000], BANK[$2F]
+TilesetPortraits2::
+  INCLUDE "game/src/patch/include/portraits_2.asm"
 
 SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
 VWFDrawLetterTable::
@@ -1047,9 +1050,21 @@ DrawPortrait:
   dec e
   push bc
   push de
-  ld b, a
+  cp $40
+  ld e, a
+  ld a, BANK(TilesetPortraits1)
+  ld hl, TilesetPortraits1
+  jr c, .normalbank
+  ld a, e
+  sub $40
+  ld e, a
+  ld a, BANK(TilesetPortraits2)
+  ld hl, TilesetPortraits2
+.normalbank
+  ld b, e
   ld c, $0
   ld de, $8C00
+  add hl, bc
   call LoadPortraitTileset
   pop de
   pop bc
