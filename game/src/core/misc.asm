@@ -26,7 +26,6 @@ DrawPlayerMoneyInMenu: ; 85b9 (2:45b9)
   call JumpTable_1ec
   ret
 ; 0x85e2
-; 0x85e2
 
 ; Also used for wings of wind
 SECTION "Town Map tilemap loading (partial)", ROMX[$77e9], BANK[$1]
