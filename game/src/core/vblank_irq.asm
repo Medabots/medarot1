@@ -36,16 +36,6 @@ VBlankingIRQ::
   pop af
   reti
 
-SECTION "Sound Fix", ROM0[$1FE2]
-SoundFixHack::
-  call $3DF9 ; Original replaced call. Nothing to do with sound.
-  ld a, 6
-  ld [$2000], a
-  call $4000
-  ldh a, [hBank]
-  ld [$2000], a
-  ret
-
 ; LCDC Status Interrupt (INT 48)
 LCDC_Status_IRQ: ; 4d0 (0:4d0)
   push af
@@ -146,3 +136,13 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld [hli], a
   ret
 ; 0x562
+
+SECTION "Sound Fix", ROM0[$1FE2]
+SoundFixHack::
+  call $3DF9 ; Original replaced call. Nothing to do with sound.
+  ld a, 6
+  ld [$2000], a
+  call $4000
+  ldh a, [hBank]
+  ld [$2000], a
+  ret
