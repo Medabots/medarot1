@@ -91,7 +91,8 @@ shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES)
 
-.PHONY: all clean
+.PHONY: all clean default $(VERSIONS)
+default: kabuto
 all: $(VERSIONS)
 
 # Support building specific versions
