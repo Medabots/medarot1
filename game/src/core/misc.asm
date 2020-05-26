@@ -27,6 +27,18 @@ DrawPlayerMoneyInMenu: ; 85b9 (2:45b9)
   ret
 ; 0x85e2
 
+SECTION "Draw Player Money (unknown area)", ROMX[$4289], BANK[$3]
+DrawPlayerMoneyMisc: ; c289 (3:4289)
+  call $429e
+  ld b, $00
+  ld c, $00
+  ld e, $1f
+  call JumpTable_2ca
+  ld hl, $9825
+  call $433a
+  jp $659c
+; 0xc29e
+
 ; Also used for wings of wind
 SECTION "Town Map tilemap loading (partial)", ROMX[$77e9], BANK[$1]
 LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)

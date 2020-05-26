@@ -108,7 +108,8 @@ patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
 patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
 patch_vwf_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
 
-.PHONY: all clean
+.PHONY: all clean default $(VERSIONS)
+default: kabuto
 all: $(VERSIONS)
 
 # Support building specific versions
