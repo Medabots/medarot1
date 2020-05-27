@@ -47,45 +47,54 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   jp nz, .asm_51f
   ld a, [$c6bf]
   or a
-  jp nz, .asm_4e8
-  call .asm_54e
-  jp .asm_549
-.asm_4e8: ; 4e8 (0:4e8)
-  ld de, $c6b0
-.asm_4eb
-  di
-  call WaitLCDController
-  ld a, [de]
-  ei
+  jp nz, .draw_scroll
+  call ResetIRQVars
+  jr .draw_scroll_return
+.draw_scroll: ; 4e8 (0:4e8)
+  ld h, $c6
+  ld a, [HackHBlankOffset]
+  ld l, a
+  ld a, [hl]
   or a
-  jp z, .asm_517
-  ld hl, $1
-  add hl, de
-  ld a, [hl]
-  ld [$ff43], a
-  ld hl, $2
-  add hl, de
-  ld a, [hl]
-  ld [$ff42], a
-  ld hl, $0
+  jr nz, .draw_scroll_section
+  ; Reset draw state back to normal
+  ld a, [HackHBlankOriginal]
+  or a
+  jr nz, .hack_notzero ; A hack, which primarily affects robattles
+  ld a, $8F ; When the original start point is 0, we can set the interrupt to occur at $8F, leaving 1 more than the vblank period to draw
+  ld [HackHBlankOriginal], a
+.hack_notzero
+  ld [$ff45], a
+  ld a, $b0
+  ld [HackHBlankOffset], a
+  ld de, -$03
   add hl, de
   ld a, [hl]
   ld b, a
-.asm_509
-  ld a, [$ff44]
-  sub b
-  jr c, .asm_509
-  ld hl, $3
-  add hl, de
-  ld d, h
-  ld e, l
-  jp .asm_4eb
-; 0x517
-.asm_517: ; 517 (0:517)
+  inc b
+  call HBlankWaitForLine ; We might be here early, so wait
   xor a
   ld [$ff43], a
   ld [$ff42], a
-  jp .asm_549
+  jr .draw_scroll_return
+.draw_scroll_section  
+  ld a, l
+  cp $b0
+  jr nz, .draw_scroll_section_not_original
+  ld a, [$ff45] ; Keep track of original interrupt point
+  ld [HackHBlankOriginal], a
+.draw_scroll_section_not_original
+  ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
+  ld a, [hli] ; [0] = Line to stop at
+  sub $03 ; Set the trigger 3 lines early
+  ld [$ff45], a
+  ld a, [hli] 
+  ld [$ff43], a ; [1] = SCX
+  ld a, [hli]
+  ld [$ff42], a ; [2] = SCY
+  ld a, l
+  ld [HackHBlankOffset], a
+  jr .draw_scroll_return
 .asm_51f: ; 51f (0:51f)
   xor a
   ld [$c7fc], a
@@ -94,7 +103,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
 .asm_529
   ld a, [hli]
   ld [$ff43], a
-  ld a, $00
+  xor a
   ld [$ff42], a
   ld a, [$c7fc]
   ld b, a
@@ -110,14 +119,32 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, d
   or e
   jp nz, .asm_529
-.asm_549
+.draw_scroll_return
   pop hl
   pop de
   pop bc
   pop af
   reti
-.asm_54e: ; 54e (0:54e)
+  nop
+  nop
+  nop
+  nop
+  nop
+; 0x562
+
+SECTION "IRQ Hacks", ROM0[$1F8A]
+SoundFixHack::
+  call $3DF9 ; Original replaced call. Nothing to do with sound.
+  ld a, 6
+  ld [$2000], a
+  call $4000
+  ldh a, [hBank]
+  ld [$2000], a
+  ret
+ResetIRQVars::
   ld hl, $c6b0
+  ld a, l
+  ld [HackHBlankOffset], a
   xor a
   ld [hli], a
   ld [hli], a
@@ -135,14 +162,9 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld [hli], a
   ld [hli], a
   ret
-; 0x562
-
-SECTION "Sound Fix", ROM0[$1FE2]
-SoundFixHack::
-  call $3DF9 ; Original replaced call. Nothing to do with sound.
-  ld a, 6
-  ld [$2000], a
-  call $4000
-  ldh a, [hBank]
-  ld [$2000], a
+HBlankWaitForLine::
+.waitforline
+  ld a, [$ff44]
+  cp b
+  jr c, .waitforline
   ret
