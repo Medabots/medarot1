@@ -164,11 +164,11 @@ VWFPutStringAutoNarrow::
   pop hl
   jp VWFPutString.skipSettingLength
 
-SECTION "Portraits 1-64", ROMX[$4000], BANK[$2E]
+SECTION "Portraits 0-63", ROMX[$4000], BANK[$2E]
 TilesetPortraits1::
   INCLUDE "game/src/patch/include/portraits_1.asm"
 
-SECTION "Portraits 65-113", ROMX[$4000], BANK[$2F]
+SECTION "Portraits 64-112", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
 
@@ -1044,9 +1044,9 @@ DrawPortrait:
   ld e, $f1 ; Portrait restore f1, Portrait f0
   ld b, $1 ; tilemap x position
   ld c, $1 ; tilemap y position
-  or a
+  inc a ; Portrait $ff is 'remove portrait', so ff + 1 will give us 0
   jr z, .removeportrait
-  dec a ; Get correct index
+  dec a
   dec e
   push bc
   push de

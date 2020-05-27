@@ -1,4 +1,5 @@
 PatchPortraits1Start::
+  INCBIN "build/tilesets/patch/portraits/portrait_000.2bpp"
   INCBIN "build/tilesets/patch/portraits/portrait_001.2bpp"
   INCBIN "build/tilesets/patch/portraits/portrait_002.2bpp"
   INCBIN "build/tilesets/patch/portraits/portrait_003.2bpp"
@@ -62,4 +63,3 @@ PatchPortraits1Start::
   INCBIN "build/tilesets/patch/portraits/portrait_061.2bpp"
   INCBIN "build/tilesets/patch/portraits/portrait_062.2bpp"
   INCBIN "build/tilesets/patch/portraits/portrait_063.2bpp"
-  INCBIN "build/tilesets/patch/portraits/portrait_064.2bpp"
