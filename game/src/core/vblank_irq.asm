@@ -38,7 +38,6 @@ VBlankingIRQ::
 
 ; LCDC Status Interrupt (INT 48)
 LCDC_Status_IRQ: ; 4d0 (0:4d0)
-  di
   push af
   push bc
   push de
@@ -49,21 +48,34 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, [$c6bf]
   or a
   jp nz, .draw_scroll
-  call .asm_54e
-  jp .draw_scroll_return
+  call ResetIRQVars
+  jr .draw_scroll_return
 .draw_scroll: ; 4e8 (0:4e8)
   ld h, $c6
   ld a, [HackHBlankOffset]
   ld l, a
   ld a, [hl]
   or a
-  jr nz, .draw_scroll_section 
-  ld [$ff43], a
-  ld [$ff42], a
+  jr nz, .draw_scroll_section
+  ; Reset draw state back to normal
   ld a, [HackHBlankOriginal]
+  or a
+  jr nz, .hack_notzero ; A hack, which primarily affects robattles
+  ld a, $8F ; When the original start point is 0, we can set the interrupt to occur at $8F, leaving 1 more than the vblank period to draw
+  ld [HackHBlankOriginal], a
+.hack_notzero
   ld [$ff45], a
   ld a, $b0
   ld [HackHBlankOffset], a
+  ld de, -$03
+  add hl, de
+  ld a, [hl]
+  ld b, a
+  inc b
+  call HBlankWaitForLine ; We might be here early, so wait
+  xor a
+  ld [$ff43], a
+  ld [$ff42], a
   jr .draw_scroll_return
 .draw_scroll_section  
   ld a, l
@@ -74,6 +86,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
 .draw_scroll_section_not_original
   ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
   ld a, [hli] ; [0] = Line to stop at
+  sub $03 ; Set the trigger 3 lines early
   ld [$ff45], a
   ld a, [hli] 
   ld [$ff43], a ; [1] = SCX
@@ -112,7 +125,23 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   pop bc
   pop af
   reti
-.asm_54e: ; 54e (0:54e)
+  nop
+  nop
+  nop
+  nop
+  nop
+; 0x562
+
+SECTION "IRQ Hacks", ROM0[$1F8A]
+SoundFixHack::
+  call $3DF9 ; Original replaced call. Nothing to do with sound.
+  ld a, 6
+  ld [$2000], a
+  call $4000
+  ldh a, [hBank]
+  ld [$2000], a
+  ret
+ResetIRQVars::
   ld hl, $c6b0
   ld a, l
   ld [HackHBlankOffset], a
@@ -133,14 +162,9 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld [hli], a
   ld [hli], a
   ret
-; 0x562
-
-SECTION "Sound Fix", ROM0[$1FE2]
-SoundFixHack::
-  call $3DF9 ; Original replaced call. Nothing to do with sound.
-  ld a, 6
-  ld [$2000], a
-  call $4000
-  ldh a, [hBank]
-  ld [$2000], a
+HBlankWaitForLine::
+.waitforline
+  ld a, [$ff44]
+  cp b
+  jr c, .waitforline
   ret

@@ -1,5 +1,5 @@
 SECTION "Old Dialog Control Codes", ROM0[$1e09]
-REPT $1b0
+REPT $181
   nop
 ENDR
 
