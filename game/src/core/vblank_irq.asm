@@ -38,6 +38,7 @@ VBlankingIRQ::
 
 ; LCDC Status Interrupt (INT 48)
 LCDC_Status_IRQ: ; 4d0 (0:4d0)
+  di
   push af
   push bc
   push de
@@ -47,45 +48,40 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   jp nz, .asm_51f
   ld a, [$c6bf]
   or a
-  jp nz, .asm_4e8
+  jp nz, .draw_scroll
   call .asm_54e
-  jp .asm_549
-.asm_4e8: ; 4e8 (0:4e8)
-  ld de, $c6b0
-.asm_4eb
-  di
-  call WaitLCDController
-  ld a, [de]
-  ei
+  jp .draw_scroll_return
+.draw_scroll: ; 4e8 (0:4e8)
+  ld h, $c6
+  ld a, [HackHBlankOffset]
+  ld l, a
+  ld a, [hl]
   or a
-  jp z, .asm_517
-  ld hl, $1
-  add hl, de
-  ld a, [hl]
-  ld [$ff43], a
-  ld hl, $2
-  add hl, de
-  ld a, [hl]
-  ld [$ff42], a
-  ld hl, $0
-  add hl, de
-  ld a, [hl]
-  ld b, a
-.asm_509
-  ld a, [$ff44]
-  sub b
-  jr c, .asm_509
-  ld hl, $3
-  add hl, de
-  ld d, h
-  ld e, l
-  jp .asm_4eb
-; 0x517
-.asm_517: ; 517 (0:517)
-  xor a
+  jr nz, .draw_scroll_section 
   ld [$ff43], a
   ld [$ff42], a
-  jp .asm_549
+  ld a, [HackHBlankOriginal]
+  ld [$ff45], a
+  ld a, $b0
+  ld [HackHBlankOffset], a
+  jr .draw_scroll_return
+.draw_scroll_section  
+  ld a, l
+  cp $b0
+  jr nz, .draw_scroll_section_not_original
+  ld a, [$ff45] ; Keep track of original interrupt point
+  ld [HackHBlankOriginal], a
+.draw_scroll_section_not_original
+  ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
+  ld a, [hli] ; [0] = Line to stop at
+  ld [$ff45], a
+  ld a, [hli] 
+  ld [$ff43], a ; [1] = SCX
+  ld a, [hli]
+  ld [$ff42], a ; [2] = SCY
+  ld a, l
+  ld [HackHBlankOffset], a
+  jr .draw_scroll_return
 .asm_51f: ; 51f (0:51f)
   xor a
   ld [$c7fc], a
@@ -94,7 +90,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
 .asm_529
   ld a, [hli]
   ld [$ff43], a
-  ld a, $00
+  xor a
   ld [$ff42], a
   ld a, [$c7fc]
   ld b, a
@@ -110,7 +106,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, d
   or e
   jp nz, .asm_529
-.asm_549
+.draw_scroll_return
   pop hl
   pop de
   pop bc
@@ -118,6 +114,8 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   reti
 .asm_54e: ; 54e (0:54e)
   ld hl, $c6b0
+  ld a, l
+  ld [HackHBlankOffset], a
   xor a
   ld [hli], a
   ld [hli], a

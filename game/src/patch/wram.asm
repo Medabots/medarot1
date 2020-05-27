@@ -37,3 +37,5 @@ TmpChar:: ds 1
 FlagDo4C:: ds 1
 RobattleHackNeedsRedraw:: ds 1
 TempBankStorage:: ds 1
+HackHBlankOffset:: ds 1
+HackHBlankOriginal:: ds 1
