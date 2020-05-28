@@ -29,7 +29,8 @@ GAME := $(BASE)/game
 SRC := $(GAME)/src
 TEXT := $(BASE)/text
 COMMON := $(SRC)/common
-DIALOG := $(BASE)/text/dialog
+DIALOG := $(TEXT)/dialog
+CREDITS := $(TEXT)/credits
 
 LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
@@ -74,6 +75,7 @@ MAP_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(MA
 
 # Sources
 DIALOG_FILES := $(foreach FILE,$(TEXT),$(DIALOG)/$(FILE).$(DIAG_TYPE))
+CREDIT_FILES := $(wildcard $(CREDITS)/*.$(DIAG_TYPE))
 TILEMAPS := $(notdir $(basename $(wildcard $(TILEMAP_TEXT)/*.$(TEXT_TYPE))))
 LISTS := $(notdir $(basename $(wildcard $(LISTS_TEXT)/*.$(TEXT_TYPE))))
 PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
@@ -88,6 +90,7 @@ PATCH_PORTRAIT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_PORTRAITS_TEXT
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
 BASE_BIN_FILE := $(BUILD)/$(word 1, $(TEXT))
+CREDITS_BIN_FILE := $(BUILD)/$(basename $(word 1, $(notdir $(CREDIT_FILES)))).$(BIN_TYPE)
 BIN_FILES := $(foreach VERSION,$(VERSIONS),$(BASE_BIN_FILE)_$(VERSION).$(BIN_TYPE)) # One script call generates all bin files, so we just look at the first one
 TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
@@ -101,7 +104,7 @@ PATCH_PORTRAIT_TILESET_FILES := $(foreach FILE,$(PATCH_PORTRAIT_TILESETS),$(PATC
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
-story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES)
+story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
 # Manually add MainDialog as a special case for map text reloading
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
 patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
@@ -171,10 +174,16 @@ $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_O
 $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
 	$(PYTHON) scripts/csv2bin.py $*
 
-dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_tilesets
+$(CREDITS_BIN_FILE): $(CREDIT_FILES)
+	$(PYTHON) scripts/credits2bin.py
+
+dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
 
 dump_text:
 	$(PYTHON) $(SCRIPT)/dump_text.py
+
+dump_credits:
+	$(PYTHON) $(SCRIPT)/dump_credits.py
 
 dump_tilemaps: | $(TILEMAP_TEXT) $(TILEMAP_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilemaps.py
