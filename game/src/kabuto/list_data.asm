@@ -1,1 +1,1 @@
-../version/list_data.asm
+INCLUDE "game/src/version/list_data.asm"

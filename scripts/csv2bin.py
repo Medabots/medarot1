@@ -87,7 +87,7 @@ if __name__ == '__main__':
     ptr_size = 3
 
     bank_map = {}
-    with open('game/src/{}/text_tables.asm'.format(version_suffix), 'r') as txt_file:
+    with open('game/src/version/text_tables.asm'.format(version_suffix), 'r') as txt_file:
         for line in txt_file:
             if line.startswith('SECTION'):
                 o = line.lstrip('SECTION ').replace(' ', '').replace('\n','').replace('\r\n','').replace('"','').split(',')
