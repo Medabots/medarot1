@@ -1,5 +1,5 @@
-SECTION "Credits", ROMX[$52ed], BANK[$16]
-Credits:
+SECTION "Credits", ROMX[$7b75], BANK[$16]
+Credits: ; Moved to the end of bank 16 (if more space is necessary, change the pointer in free.asm)
   INCBIN "build/Credits.bin"
 
 SECTION "Load Credit Text", ROMX[$51d2], BANK[$16]

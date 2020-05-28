@@ -110,7 +110,8 @@ if __name__ == '__main__':
                 # Pointer,VRAMOffset,Original
                 ptr = line[0]
                 vramoffset = line[1]
-                txt = line[2].strip('"')
+                original = line[2].strip('"')
+                txt = line[3].strip('"')
                 if txt.startswith('='):
                     output_text[ptr] = int(txt.strip('='), 16)
                 elif txt == "<IGNORED>":
