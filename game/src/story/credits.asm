@@ -1,6 +1,10 @@
 SECTION "Credits", ROMX[$52ed], BANK[$16]
 Credits:
   INCBIN "build/Credits.bin"
+CreditsBinEnd: ; Unused space
+REPT $6000 - CreditsBinEnd
+  db 0
+ENDR
 
 SECTION "Load Credit Text", ROMX[$51d2], BANK[$16]
 LoadCreditText:
@@ -25,7 +29,7 @@ LoadCreditText:
   ld d, a
   ld a, $40
   sub d
-  jp c, $521a
+  jp c, .asm_521a
   ld hl, $5277
   ld c, d
   ld b, $0
@@ -49,6 +53,7 @@ LoadCreditText:
   pop hl
   ld a, [hl]
   ld d, a
+.asm_521a
   ld a, [$c6c2]
   ld h, a
   ld a, [$c6c3]
@@ -97,6 +102,7 @@ DrawUnknown: ; Draws something, not sure what
   ld de, $0020
   add hl, de
   ld bc, $0014
+.asm_5269
   xor a
   di
   call JumpTable_16e
@@ -105,7 +111,7 @@ DrawUnknown: ; Draws something, not sure what
   dec bc
   ld a, c
   or b
-  jp nz, $5269
+  jp nz, .asm_5269
   ret
 ; 0x59277
 ; It's all data beyond here

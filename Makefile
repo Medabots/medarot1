@@ -146,7 +146,7 @@ $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_O
 $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
 	$(PYTHON) scripts/csv2bin.py $*
 
-$(CREDITS_BIN_FILE): $(CREDIT_FILES)
+$(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm
 	$(PYTHON) scripts/credits2bin.py
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
