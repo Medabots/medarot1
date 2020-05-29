@@ -20,6 +20,8 @@ VWFTileMappingPseudoIndex:: ds 1
 VWFDiscardSecondTile:: ds 1
 VWFCurrentFont:: ds 1
 VWFPortraitDrawn:: ds 1
+VWFCreditsRingBufferOffsetIndex:: ds 1
+VWFTileMappingAddress:: ds 2
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30

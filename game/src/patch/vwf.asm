@@ -77,10 +77,12 @@ VWFPutString::
   ld a, 4
   rst $8 ; VWFPutStringInit
 
-.loop
+VWFPutStringLoop::
   ld a, [hli]
   cp $50
   jr z, .exit
+  cp $4F
+  jr z, .exit49
   cp $49
   jr z, .exit49
   push hl
@@ -88,7 +90,7 @@ VWFPutString::
   ld a, 5
   rst $8 ; VWFWriteCharLimited
   pop hl
-  jr .loop
+  jr VWFPutStringLoop
 
 .exit
   dec hl
@@ -108,6 +110,8 @@ VWFPadTextCommon::
 .loop
   ld a, [hli]
   cp $50
+  jr z, .exit
+  cp $4F
   jr z, .exit
   push hl
   ld [VWFCurrentLetter], a
@@ -652,12 +656,19 @@ VWFCalculateAutoNarrow::
   jr c, VWFCalculateCentredTextOffsets.limitsExceeded
   jr VWFCalculateCentredTextOffsets.onlyOnePixelOver
 
+VWFPutStringInitFullTileLocation::
+  ld a, d
+  ld [VWFTileMappingAddress + 1], a
+  ld a, e
+  ld [VWFTileMappingAddress], a
+  jr VWFPutStringInit.skipMappingLocation
+
 VWFPutStringInit::
   ; Store mapping location.
 
-  ld a, c
-  ld [VWFTileMappingPseudoIndex], a
+  call VWFExpandMappingPseudoIndex
 
+.skipMappingLocation
   ; Store drawing location.
 
   ld a, b
@@ -699,16 +710,11 @@ VWFPutStringInit::
 
   jp VWFResetForNewline.clearCompositeAreaLoop
 
-VWFMapRenderedString::
-  ; Reset font to normal after rendering (for after auto-narrowing).
-
-  xor a
-  ld [VWFCurrentFont], a
-
-  ; Converts our 1 byte representation into a full address for mapping tiles.
+VWFExpandMappingPseudoIndex::
+  ; Convert our 1 byte representation into a full address for mapping tiles.
 
   ld h, $4C
-  ld a, [VWFTileMappingPseudoIndex]
+  ld a, c
   and $F0
   add $10
   jr nc, .noOverflow
@@ -716,10 +722,26 @@ VWFMapRenderedString::
 .noOverflow
   ld l, a
   add hl, hl
-  ld a, [VWFTileMappingPseudoIndex]
+  ld a, c
   inc a
   and $F
   add l
+  ld [VWFTileMappingAddress], a
+  ld h, a
+  ld [VWFTileMappingAddress + 1], a
+  ret
+
+VWFMapRenderedString::
+  ; Reset font to normal after rendering (for after auto-narrowing).
+
+  xor a
+  ld [VWFCurrentFont], a
+  
+  ; Load our mapping address.
+  
+  ld a, [VWFTileMappingAddress + 1]
+  ld h, a
+  ld a, [VWFTileMappingAddress]
   ld l, a
 
   ; Map all tiles within the drawing area.
