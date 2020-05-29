@@ -713,6 +713,7 @@ VWFPutStringInit::
 VWFExpandMappingPseudoIndex::
   ; Convert our 1 byte representation into a full address for mapping tiles.
 
+  push hl
   ld h, $4C
   ld a, c
   and $F0
@@ -727,8 +728,9 @@ VWFExpandMappingPseudoIndex::
   and $F
   add l
   ld [VWFTileMappingAddress], a
-  ld h, a
+  ld a, h
   ld [VWFTileMappingAddress + 1], a
+  pop hl
   ret
 
 VWFMapRenderedString::
