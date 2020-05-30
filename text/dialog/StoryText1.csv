@@ -41,12 +41,12 @@ Pointer[#version],Original,Translated
 0x5a04e,=0x5a04a,=0x5a04a
 0x5a050,サメは もうこないのかな？<4E>でも ぼくおよげないからいいや,"Are the sharks really gone?<49>Well, I can't swim anyway so it doesn't matter."
 0x5a052,<*0>,
-0x5a054,=0x5a052,
-0x5a056,=0x5a052,
-0x5a058,=0x5a052,
-0x5a05a,=0x5a052,
-0x5a05c,=0x5a052,
-0x5a05e,=0x5a052,
+0x5a054,=0x5a052,=0x5a052
+0x5a056,=0x5a052,=0x5a052
+0x5a058,=0x5a052,=0x5a052
+0x5a05a,=0x5a052,=0x5a052
+0x5a05c,=0x5a052,=0x5a052
+0x5a05e,=0x5a052,=0x5a052
 0x5a060,これよリ ロボトルほんたいかいを<4E>かいさい いたします<4C>こんかいは わがまちの<4E>56チームに くわえて<4C>がいこくから 8にんの<4E>しょうたいせんしゅを<4C>まねいておリます<4C>さあ わがまちの<4E>ゆうしゅうな メダロッターたちは<4C>なみいるきょうごうを<4E>うちまかせるのでしょうか？<4C>それでは だい1かいせん<4E>ロボトルファイトッ!,"Ladies and gentlemen, I will be hosting this tournament. This year, our town has a total of 56 teams, 8 of them being foreigners, <49>have joined... Will they be able to beat our veteran fighters? In any case, Robottle Fight! Round 1!"
 0x5a062,だい2かいせんの あいては<4E>しょうたいせんしゅの ひとリ<4C>フィールドをまう きこうし<4E>シャモジール!!<4C>さあ <&NAME>くんは<4E>どのように たたかうのでしょうか？<4C>それでは ロボトルファイト!,"Round 2's opponent will be interesting, a young man who loves to dance and sweep their opponents off their feet.<49>Here's Shamajel!! Now, <&NAME>...how do you plan to take on this new foe? Let's find out. Robottle Fight!"
 0x5a064,だい3かいせんの あいては・・<4C>イクゾ!<4C>おーっと<4E>おきてやぶリの せんせいこうげき!<4C>そっ<4E>それでは ロボトルファイト!,"Round 3's opponent will be...<49>LET'S GO!<49>Woah, a preemptive strike, that's against the rules!<49>Uh...w-without further ado, Robottle Fight!"
@@ -89,15 +89,15 @@ Pointer[#version],Original,Translated
 0x5a0a4,あ・・・<4E>このいし<4C>ああ 「ほしのかけら」のこと？<4C>ほしかったんですけど まよってるうち<4E>うリきれになってしまって<4C>でも よかった<4C><&NAME>さんに<4E>あいにきたら みられるんですね<4C>そんなに ほしかったら<4E>ナエちゃんに あげるよ<4C>いいんです <&NAME>さんに<4E>もっていてもらったほうが<4C>それに あそびにくる<4E>リゆうが できますし・・・<4C>なんかいった？<4C>い いえ<4E>なんでもないです<4C>でも リゆうが できるとか・・<4C>あ そうでした<4C>きょうは パーツのテストを<4E>おねがいしたくて きたんです<4C>このパーツ つかってみてください,"Ah, that stone...<49>Is that a ""Star Piece""?<49>I always wanted one but I could never find one, they were always sold out.<49>But I'm glad to see one up close like this. <49>I only came here to see you anyway.<49>If you want it that badly, I'll give it to you...<49>It's okay, it's better if you hold on to it.<49>Besides, I want you to have a reason to visit more often...<49>Huh, did you say something?<49>Oh...n-nothing. <49>Anyway, I came here because...<49>Ah, right.<49>I want you to test out some new parts.<49>Try them out."
 0x5a0a6,ロボトルする あいてのかおのしたに<4E>「!」マークが でるだろ？<4C>あれが あいてチームの<4E>メダロットの かずなんだ,"Y'know those ""!"" marks that appear under an opponent's face before you Robottle them?<4C>That's the number of Medarots they have on their team."
 0x5a0a8,「なぐる」や「がむしゃら」をつかうと<4E>ぼうぎょが できなくなるんだ<4C>そのときは だれかが かわって<4E>ぼうぎょしなくちゃ いけないよ<4C>それに がむしゃらのときは<4E>あいてのこうげきを かわすことも<4C>ぼうぎょすることも できないから<4E>すぐにあたまを ねらわれちゃうんだ,"If you use a ""Strike"" or ""Berserk"" attack, you won't be able to defend during cooldown.<49>In situations like these, it's best to have a Medarot that can use a ""Guard"" skill.<49>Moreover, if you use a ""Berserk"" attack, you won't be able to dodge nor defend.<4C>This makes the Medarot's head a very easy target! Be careful."
-0x5a0aa#kabuto,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「カブト」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,0x5a0aa#kabuto
-0x5a0aa#kuwagata,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「クワガタ」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,0x5a0aa#kuwagata
+0x5a0aa#kabuto,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「カブト」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,
+0x5a0aa#kuwagata,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「クワガタ」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,
 0x5a0ac,ちょうないたいかいは たのしんだか？,Did you enjoy the tournament?
 0x5a0ae,なにかが あしに あたった,Something hit my foot..
 0x5a0b0,まだまだそろってない パーツや<4E>メダルが あるだろ？<4C>おとこだったら<4E>さいごまで やリとげるんだ,You still haven't set up all your parts and Medals? <49>Real men always have them ready!
 0x5a0b2,ここまで せいちょうしたら<4E>つぎは つうしんケーブルで<4C>べつの せかいのともだちと<4E>ロボトルに ちょうせんだ!,"As your Medarots grow, you can connect with friends from other worlds through a Link Cable!"
 0x5a0b4,<*0>,
-0x5a0b6,=0x5a0b4,
-0x5a0b8,=0x5a0b4,
-0x5a0ba,=0x5a0b4,
-0x5a0bc,=0x5a0b4,
-0x5a0be,=0x5a0b4,
+0x5a0b6,=0x5a0b4,=0x5a0b4
+0x5a0b8,=0x5a0b4,=0x5a0b4
+0x5a0ba,=0x5a0b4,=0x5a0b4
+0x5a0bc,=0x5a0b4,=0x5a0b4
+0x5a0be,=0x5a0b4,=0x5a0b4

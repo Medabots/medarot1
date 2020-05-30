@@ -7,7 +7,7 @@ Pointer[#version],Original,Translated
 0x6000a,パーツが とられてしまった!,My parts got stolen!
 0x6000c,よく みやぶったわね,You saw right through me!
 0x6000e,こんなところに<4E>さっきとられた パーツがおちている,This place is littered with stolen parts.
-0x60010,そのパーツは・・・<4E>おっ おぼえてらっしゃい!,I...I remember that part!
+0x60010,そのパーツは・・・<4E>おっ おぼえてらっしゃい!,Remember those parts...!
 0x60012,おみやげに<4E>ほしのかけらを かいませんか？<*4>,Will you buy this Star Piece as a souvenir?
 0x60014,あリがとう,Thanks.
 0x60016,あリがとう ございます<4E>300円になリます,Thank you very much. That'll be 300¥.
@@ -40,7 +40,7 @@ Pointer[#version],Original,Translated
 0x6004c,=0x6004a,=0x6004a
 0x6004e,=0x6004a,=0x6004a
 0x60050,んっ ぼうずか・・・<4E>ひとリものどうし ロボトルするか？<*4>,Hey boy..<49>How about a robottle between two single men?<*4>
-0x60052,<&NAME> きょうもげんきだな<4C>スポーツもいいけど<4E>そろそろ メダロ・・・<4C>いや いいんだ なんでもない,"Good morning <&NAME>, you're looking good today.<4C>Sports are great and all, but you really should get into Medar...<4C>Er... Nevermind, it's nothing."
+0x60052,<&NAME> きょうもげんきだな<4C>スポーツもいいけど<4E>そろそろ メダロ・・・<4C>いや いいんだ なんでもない,"Good morning <&NAME>, you're looking good today.<4C>Sports are great and all, but you really should get into Medar...<4C>Er... Nevermind, forget it."
 0x60054,=0x60052,=0x60052
 0x60056,ロボトルしよーぜ!<4C>えっ メダロットを もってないって<4E>ちぇっ ださいやつ,"C'mon, let's Robottle!<4C>Huh? You don't have a Medarot? <49>Laaame."
 0x60058,メダロットどうしを たたかわせる<4E>ロボトルが はやっているのよ<4C>メダロットの1たいも もってなきゃ<4E>おんなのこに もてないんだから,"Right now, it's super cool to have your Medarot fight in Robottles.<49>If you don't have your own Medarot, you'll never be popular with the ladies!"
@@ -48,8 +48,8 @@ Pointer[#version],Original,Translated
 0x6005c,メダロットを あくようして わるさを<4E>している れんちゅうがいるんだ<4C>それが ロボロボだんさ<4E>ロボロボだんを みつけたら<4C>せいぎのみかた セレクトたいに<4E>まもってもらわなきゃ,"They say there's a group of bad guys going around using Medarots for evil deeds.<4C>They call themselves the RoboRobo Gang. If you see one of them, you should report it to the Select Force right away. They're the defenders of justice!"
 0x6005e,さあ<4E>けっちゃくを つけようじゃないか,"Now, let's settle this."
 0x60060,けっきょく<4E>きみだけには かてなかったな,It seems that I can beat everyone except you.
-0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,"D-Dad?<49>My final opponent is...my Dad?<49><&NAME>. I won't hold back, make this a good match."
-0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,
+0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,"D-Dad?<49>My opponent for the semi-finals... is my dad?<49><&NAME>, surpass me and grow as a Medarotter!"
+0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"Well then, if I may...<49>*sniffle* ...I-I'm so proud of you, son!!<49>You've grown so much...<49>The winner,<&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
 0x60066,がんばれよ <&NAME><4E>パパのゆめを かなえてくれ,"Do your best, <&NAME>. Achieve your father's dream!"
 0x60068,さいきょうの メダロッターをかけた<4E>このラストバトル<4C>めがみは どちらにほほえむのか!？<4C><&NAME>くんは<4E>やるきまんまんです <4C>それでは ロボトルファイト!!,"The strongest Medarotters are going head to head<49>in this final battle.<4C>Who will Lady Luck smile upon today?<4C><&NAME> sure looks determined!<4C>That said, Robottle Fight!"
 0x6006a,しょうしゃは <&NAME>くん!<4C>セレクトたい たいちょうをうちやぶリ<4E>えいこうの ざを かちとリました!<4C>ただでは すまさんぞ!,The winner is <&NAME>!<49>He completely trounced the Select Force Commander<49>in this heated battle!<4C>Don't think I'm done just yet!
@@ -242,10 +242,10 @@ Pointer[#version],Original,Translated
 0x601e0,おんなのこの パーツが<4E>ゆにゅうひんやで うってるそうだよ,They sell female parts at the Imports shop.
 0x601e2,わたしを ごらんください<4C>きれいでしょ？,Look at me.<49>Aren't I pretty?
 0x601e4,あのメダル ほしいなぁ,I want that Medal...
-0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,0x601e6#kabuto
-0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,0x601e6#kuwagata
-0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,0x601e8#kabuto
-0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,0x601e8#kuwagata
+0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,
+0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,
+0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,
+0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,
 0x601ea,わしの もってるメダルと ちがうぞ<4E>ほら みろ!<4C>おじさんが みせてくれたのは<4E>「ネコ」の メダルだ,"My Medal is different from yours, see?<49>It's a ""Cat"" Medal."
 0x601ec,スクープだ しゃしんとらなきゃ<4E>パシャッ パシャッ,This is quite a scoop! I gotta get a picture!<49>*flash* *flash*
 0x601ee,メダルと パーツの あいしょうや<4E>じゅくれんども だいじですけど<4C>せいかくに あわせた<4E>パーツえらびも たいせつですよ,Skills and part compatability are important and all but choosing parts that match your Medal's personality also helps.
@@ -258,19 +258,19 @@ Pointer[#version],Original,Translated
 0x601fc,こどもは はいってきちゃいかん!,Children are not allowed here!
 0x601fe,あらぁっ ボウヤ<4C>こんなところに はいってきちゃ<4E>いけないのよ<4C>おしおき しちゃうんだからぁ,"Heey, boy. You can't come in here! I'll punish yoou!"
 0x60200,もう こんかいだけよっ♥,"All right, but just this once.♥"
-0x60202,また きたの？<4C>きょうは<4E>てかげんして あげないからねぇ<4C>ねえ なんかいま みたような<4E>きがするんだけど・・<4C>そんなこといっても<4E>いれてあげないんだからぁ<4C>ハニー ばにい バニー!？,"Again? I can't let you off easy this time. Come to think of it, I feel like I've seen you several times...Anyway, I can't let in you heere! Honey bunny bunny!?"
+0x60202,また きたの？<4C>きょうは<4E>てかげんして あげないからねぇ<4C>ねえ なんかいま みたような<4E>きがするんだけど・・<4C>そんなこといっても<4E>いれてあげないんだからぁ<4C>ハニー ばにい バニー!？,"Again? I can't let you off easy this time. Come to think of it, I feel like I've seen you somewhere before...Anyway, I can't let in you heere! Honey bunny bunny!?"
 0x60204,=0x60202,=0x60202
 0x60206,きょうは がっこうは<4E>おおそうじだから はいれないよ,"The school is being cleaned today, so you can't come inside yet."
 0x60208,<*0>,
-0x6020a,=0x60208,
-0x6020c,=0x60208,
-0x6020e,=0x60208,
-0x60210,=0x60208,
-0x60212,=0x60208,
-0x60214,=0x60208,
-0x60216,=0x60208,
-0x60218,=0x60208,
-0x6021a,=0x60208,
+0x6020a,=0x60208,=0x60208
+0x6020c,=0x60208,=0x60208
+0x6020e,=0x60208,=0x60208
+0x60210,=0x60208,=0x60208
+0x60212,=0x60208,=0x60208
+0x60214,=0x60208,=0x60208
+0x60216,=0x60208,=0x60208
+0x60218,=0x60208,=0x60208
+0x6021a,=0x60208,=0x60208
 0x6021c,いらっしゃい,Welcome!
 0x6021e,どうぶつと メダロット<4E>どっちが いいのかしら？,"Animals and Medarots, which do you prefer?"
 0x60220,ティンペットって<4E>ブリキのペットって いみなんだぜ,"Tinpet is short for ""a pet made out of tin""."
@@ -480,4 +480,4 @@ Pointer[#version],Original,Translated
 0x603b8,おいおい あいてに なんねーぜ<4C>かわいそうだから<4E>パーツとるのは やめといてやるぜ<4C>いこーぜ<4E>あんまリよわくて しらけちまった,"Oh, come on! This guy's no match for us!<4C>I'm feeling sorry for you, so we won't bother taking your parts this time. <4C>Let's go, Kubota. If we stick around them, their lameness might start rubbing off on us."
 0x603ba,なんだか たすけられちゃったね<4E>・・・あリがと♥<4C>でも あんなむちゃしちゃダメ<4E>メダロットが かわいそうだわ<4C>キミ メダルとパーツの<4E>あいしょうとか かんがえてる？<4C>メダルとパーツの ぞくせいが<4E>おなじなら メダロットは<4C>パワーアップ!・・・ってしってた？<4C>それとね メダルにだって<4E>こころが あるのよ<4C>かんがえて そだてないと<4E>ダメなこに なっちゃうんだから!<4C>ちょっと じしんついたら<4E>また あいにきて<4C>とっくんしてあ・げ・る,"Looks like you kinda saved me there.<49>...Thanks. ♥<4C>You shouldn't be so reckless though! I feel sorry for your poor Medarot.<4C>Have you thought about the compatibility between your Medal and its parts? If the parts and Medal are a good match, your Medarot will become stronger!<4C>Also, remember that Medals all have a consciousness inside them. If you don't take care and raise them properly, they'll turn out no good!<4C>Come see me again once you've gotten a bit more experience.<49>I'll give you some of my special training!"
 0x603bc,<*0>,
-0x603be,=0x603bc,
+0x603be,=0x603bc,=0x603bc

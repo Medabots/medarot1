@@ -10,8 +10,8 @@ Pointer[#version],Original,Translated
 0x3be10,あれっ<4E>つぎは どこだっけ・・・<4C>あっ そうそう<4E>いせきよ いせき!<4C>パパも・・・<4C>いいわよ!<4E>あそこは ロマンがあって・・・<4C>ねっ♥<4E>いってらっしゃいよ♥<4C>まちがっても<4E>「イセキのいえ」じゃないからね!,"Hmm, what was that place again...?<49>Ah, right! Right! The Ruins!<49>Your father is going too...<49>It's great! It's very adventurous...<49>Well, go on now. ♥<49>Don't get lost"
 0x3be12,なわばしごが なくなっている,The rope ladder disappeared.
 0x3be14,<IGNORED>,0x3be14
-0x3be16,=0x3be14,0x3be16
-0x3be18,=0x3be14,0x3be18
-0x3be1a,=0x3be14,0x3be1a
-0x3be1c,=0x3be14,0x3be1c
-0x3be1e,=0x3be14,0x3be1e
+0x3be16,=0x3be14,=0x3be14
+0x3be18,=0x3be14,=0x3be14
+0x3be1a,=0x3be14,=0x3be14
+0x3be1c,=0x3be14,=0x3be14
+0x3be1e,=0x3be14,=0x3be14

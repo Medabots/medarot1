@@ -414,8 +414,8 @@ Pointer[#version],Original,Translated
 0x68338,ドンッ!,*Thud*
 0x6833a,=0x68338,=0x68338
 0x6833c,=0x68338,=0x68338
-0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,0x6833e#kabuto
-0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,0x6833e#kuwagata
+0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,
+0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,
 0x68340,カアッ! カアッ! カアッ!,Caw! Caw! Caw!
 0x68342,メダルが ごっそリ はいってる,There's a Medal inside.
 0x68344,シリコダマ ヌクケ!!,I'll take your soul!!
