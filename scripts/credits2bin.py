@@ -1,9 +1,8 @@
 #!/bin/python
 # -*- coding: utf-8 -*-
 
-# A copy of csv2bin
+# A copy of csv2bin with some changes
 
-from binascii import unhexlify, hexlify
 from collections import OrderedDict
 from struct import *
 import os
@@ -119,7 +118,7 @@ if __name__ == '__main__':
                 elif not txt:
                     output_text[ptr] = bytearray(2)
                 else:
-                    output_text[ptr] = bytearray([int(vramoffset[2:4], 16), int(vramoffset[0:2], 16)]) + table_convert(txt, char_table)
+                    output_text[ptr] = bytearray(pack("<H", int(vramoffset, 16))) + table_convert(txt, char_table)
         ptrs_map = {}
         curr_txt = bank_map[section]["OFFSET"] + 2 * len(output_text) # Start the text after the pointer table
         with open(of, 'wb') as bin_file:
