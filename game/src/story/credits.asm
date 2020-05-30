@@ -11,69 +11,97 @@ LoadCreditText:
   ld d, $0
   ld hl, Credits
   ld e, a
-  sla e
-  rl d
+  add hl, de
   add hl, de
   ld a, [hli]
   ld h, [hl]
   ld l, a
   ld a, [hli]
+  and $E0
+  add 2
   ld [$c6c3], a
+  ld e, a
   ld a, [hli]
   ld [$c6c2], a
-.asm_51e8
-  ld a, [hli]
-  cp $4f
-  jp z, .asm_5236
-  push hl
   ld d, a
-  ld a, $40
-  sub d
-  jp c, .asm_521a
-  ld hl, $5277
-  ld c, d
-  ld b, $0
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
   push hl
-  push af
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld bc, $ffe0
-  add hl, bc
-  pop af
-  di
-  call JumpTable_16e
-  ld [hl], a
-  ei
+  ld a, $10
+  call VWFPadText
   pop hl
-  ld a, [hl]
-  ld d, a
-.asm_521a
-  ld a, [$c6c2]
-  ld h, a
-  ld a, [$c6c3]
-  ld l, a
-  ld a, d
-  di
-  call JumpTable_16e
-  ld [hl], a
-  ei
-  inc hl
-  ld a, h
-  ld [$c6c2], a
-  ld a, l
-  ld [$c6c3], a
-  pop hl
-  jp .asm_51e8
-.asm_5236
+  ld a, [VWFCreditsRingBufferOffsetIndex]
+  inc a
+  ld [VWFCreditsRingBufferOffsetIndex], a
+  dec a
+
+.correctionLoop
+  sub $F
+  jr nc, .correctionLoop
+  add $F
+  inc a
+  add a
+  add a
+  add a
+  add a
+  ld b, a
+  ld a, $12
+  rst $8 ; VWFPutStringInitFullTileLocation
+  call VWFPutStringLoop
+
   ld a, [hli]
   ld [$c5c3], a
   ret
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+  nop
+  nop
+  nop
+  
+  nop
+  nop
+
 DrawUnknown: ; Draws something, not sure what
   ld a, [$c5a3]
   sub $20

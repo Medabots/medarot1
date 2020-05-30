@@ -34,6 +34,7 @@ HackPredefTable:
   dw LoadInventoryTilesetAndHelpTilemap ; F
   dw LoadNormalMenuText ; 10
   dw LoadShopTilesetAndBuySellTilemap ; 11
+  dw VWFPutStringInitFullTileLocation ; 12
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
