@@ -102,14 +102,16 @@ if __name__ == '__main__':
         output_text = OrderedDict()
         with open(fn, 'r', encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=',', quotechar='"')
-            next(reader, None) #Skip header
+            header = next(reader, None)
+            vramoffset_idx = header.index("VRAMOffset")
+            original_idx = header.index("Original")
             for line in reader:
                 if line[0][0] == '#': # Comment
                     continue
                 # Pointer,VRAMOffset,Original
                 ptr = line[0]
-                vramoffset = line[1]
-                txt = line[2].strip('"')
+                vramoffset = line[vramoffset_idx]
+                txt = line[original_idx].strip('"')
                 if txt.startswith('='):
                     output_text[ptr] = int(txt.strip('='), 16)
                 elif txt == "<IGNORED>":

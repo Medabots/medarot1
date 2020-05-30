@@ -103,7 +103,8 @@ if __name__ == '__main__':
         output_text = OrderedDict()
         with open(fn, 'r', encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=',', quotechar='"')
-            next(reader, None) #Skip header
+            header = next(reader, None) # Pointer is always 0
+            original_idx = header.index("Original")
             for line in reader:
                 if line[0][0] == '#': # Comment
                     continue
@@ -113,7 +114,7 @@ if __name__ == '__main__':
                     ptr, suffix = ptr.split("#")
                     if suffix != version_suffix:
                         continue
-                txt = line[1].strip('"')
+                txt = line[original_idx].strip('"')
                 if txt.startswith('='):
                     output_text[ptr] = int(txt.strip('='), 16)
                 elif txt == "<IGNORED>":
