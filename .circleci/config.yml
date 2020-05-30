@@ -28,9 +28,13 @@ jobs:
                 name: "Download latest text"
                 command: wget -q --no-check-certificate "https://docs.google.com/spreadsheets/d/$TRANSLATION_SHEET_ID/export" -O ~/sheet.xlsx
             - run:
-                name: "Update text"
+                name: "Update Dialog"
                 working_directory: ~/medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
+            - run:
+                name: "Update Credits"
+                working_directory: ~/medarot_1
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1

@@ -8,18 +8,6 @@ from collections import OrderedDict
 import csv
 from os import path
 
-SHEETS = ([
-	"StoryText1",
-	"StoryText2",
-	"StoryText3",
-	"Snippet1",
-	"Snippet2",
-	"Snippet3",
-	"Snippet4",
-	"Snippet5",
-	"BattleText",
-])
-
 def transform_line(line):
 	line = (line or "")
 	for ptr in ptr_names.keys():
@@ -28,6 +16,21 @@ def transform_line(line):
 
 xlsx = sys.argv[1]
 csvdir = sys.argv[2]
+
+if len(sys.argv) < 4:
+	SHEETS = ([
+		"StoryText1",
+		"StoryText2",
+		"StoryText3",
+		"Snippet1",
+		"Snippet2",
+		"Snippet3",
+		"Snippet4",
+		"Snippet5",
+		"BattleText",
+	])
+else:
+	SHEETS = list(sys.argv[3:])
 
 wb = xl.load_workbook(filename = xlsx)
 ptr_names = {}
@@ -47,6 +50,8 @@ for sheet in wb.worksheets:
 	file_path = path.join(csvdir, "{0}.csv".format(sheet.title))
 	text = {}
 	for line in data:
+		if line[0] == '#':
+			continue
 		ptr = line[pointer_idx]
 		original = line[original_idx]
 		translated = line[translated_idx]
@@ -57,21 +62,24 @@ for sheet in wb.worksheets:
 		text[ptr] = translated.replace('""', '"') if translated else None
 	
 	orig_text = OrderedDict()
+	fieldnames = []
+	orig_idx = -1
 	with open(file_path, "r", encoding='utf-8', newline='\n') as csvfile:
-		csvfile.readline()
 		reader = csv.reader(csvfile, delimiter=',')
+		fieldnames = next(reader)
+		fieldnames.remove("Translated")
+		orig_idx = fieldnames.index("Original")
 		for line in reader:
 			ptr = line[0]
-			txt = line[1]
-			orig_text[ptr.strip()] = txt.strip()
+			orig_text[ptr.strip()] = line[1:len(fieldnames)]
 
 	with open(file_path, "w", encoding='utf-8', newline='\n') as csvfile:
 		print("Writing {0}".format(file_path))
 		writer = csv.writer(csvfile, delimiter=',', lineterminator='\n')
-		writer.writerow(["Pointer[#version]","Original","Translated"])
+		fieldnames.append("Translated")
+		writer.writerow(fieldnames)
 		for ptr in orig_text:
-			writer.writerow([
-				ptr, 
-				transform_line(orig_text[ptr]),
-			 	transform_line(text[ptr]) if ptr in text else ptr
-			])
+			row = [ptr]
+			row += [transform_line(x) if i == orig_idx else x for i, x in enumerate(orig_text[ptr])]
+			row.append(transform_line(text[ptr]) if ptr in text else ptr)
+			writer.writerow(row)
