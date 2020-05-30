@@ -80,12 +80,9 @@ for sheet in wb.worksheets:
 		for ptr in orig_text:
 			row = []
 			original_text = orig_text[ptr][orig_text_idx]
-			if original_text.startswith("="):
+			if original_text.startswith("=") or original_text == "<IGNORED>":
 				row = orig_text[ptr]
-				row.append(original_text)				
-			elif original_text == "<IGNORED>":
-				row = orig_text[ptr]
-				row.append(ptr)
+				row.append(original_text)
 			elif ptr not in text:
 				print("\tWarning: Missing text for {}".format(ptr))
 				row = orig_text[ptr]
