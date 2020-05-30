@@ -990,6 +990,12 @@ VWFChar4B::
   inc hl
   rst $38
 
+  ; Reset text speed timer.
+
+  ld a, [$c6c4]
+  srl a
+  ld [$c6c1], a
+
   ; Get the current character index using $c6c5 as the substring offset.
 
   ld a, [$c6c5]
@@ -1003,26 +1009,30 @@ VWFChar4B::
   cp $50
   jr nz, .notEndCode
 
+.endCode
+
   ; Reset offset.
 
   xor a
   ld [$c6c5], a
 
-  ; Reset text speed timer.
-
-  ld a, [$c6c4]
-  srl a
-  ld [$c6c1], a
-
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
   call VWFIncTextOffset
-  jp PutCharLoopWithBankSwitch
+  ret
 
 .notEndCode
   ld [VWFCurrentLetter], a
   call VWFWriteChar
+
+  ; Check if the character we just drew is followed by a string terminator.
+
+  inc hl
+  ld a, [hl]
+  cp $50
+  jr z, .endCode
+
   pop hl
 
   ; Progress to next character.
@@ -1030,7 +1040,7 @@ VWFChar4B::
   ld a, [$c6c5]
   inc a
   ld [$c6c5], a
-  jp PutCharLoopWithBankSwitch
+  ret
 
 VWFChar4A::
   ; New text box without user input.
