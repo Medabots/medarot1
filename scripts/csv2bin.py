@@ -117,13 +117,15 @@ if __name__ == '__main__':
         print("Starting on %s" % (fn))
         with open(fn, 'r', encoding='utf-8') as f:
             reader = csv.reader(f, delimiter=',', quotechar='"')
-            next(reader, None) #Skip header
+            header = next(reader, None)
+            original_idx = header.index("Original")
+            translated_idx = header.index("Translated")
             for line in reader:
                 if line[0][0] == '#':
                     continue
                 #Pointer, Original, Translated
-                original_txt = line[1].strip('"')
-                translated_txt = line[2].strip('"')
+                original_txt = line[original_idx].strip('"')
+                translated_txt = line[translated_idx].strip('"')
                 ptr = line[0]
                 if "#" in ptr:
                     ptr, suffix = ptr.split("#")
