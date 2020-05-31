@@ -35,7 +35,7 @@ Wrapper_5b7::
   rst $18
   pop af
   ret
-Wrapper_5c3::
+WrapWaitLCDController::
   jp WaitLCDController
 Wrapper_5c6::
   jp $da7

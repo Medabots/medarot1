@@ -993,7 +993,7 @@ RobattleDisplayHealth::
   ld l, a
   ld a, $FB
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
 
@@ -1013,7 +1013,7 @@ RobattleDisplayHealth::
   ld l, a
   ld a, $FC
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   ld a, h
@@ -1034,7 +1034,7 @@ RobattleDisplayHealth::
 
 .loop
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [bc], a
   ei
   inc bc
@@ -1061,7 +1061,7 @@ RobattleDisplayHealth::
   add hl, bc
   ld a, $68
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], a
   ei
   pop bc

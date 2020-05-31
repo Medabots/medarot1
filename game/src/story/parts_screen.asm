@@ -265,19 +265,19 @@ LoadPartsScreenPartModel:
   ld l, a
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   pop hl
@@ -310,7 +310,7 @@ LoadPartsScreenPartModel:
   inc hl
   ld a, $50
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   ld a, [$c644]

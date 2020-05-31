@@ -47,7 +47,7 @@ LoadCreditText:
   add hl, bc
   pop af
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], a
   ei
   pop hl
@@ -60,7 +60,7 @@ LoadCreditText:
   ld l, a
   ld a, d
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], a
   ei
   inc hl
@@ -91,7 +91,7 @@ DrawUnknown: ; Draws something, not sure what
 .asm_59255
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   dec bc
@@ -105,7 +105,7 @@ DrawUnknown: ; Draws something, not sure what
 .asm_5269
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   dec bc

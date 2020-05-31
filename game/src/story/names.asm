@@ -126,13 +126,13 @@ OnEraseCharacter:
   ld c, a
   add hl, bc
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], $0
   ei
   ld bc, $0020
   add hl, bc
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], $0
   ei
   ld a, [$c1e2]

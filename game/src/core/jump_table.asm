@@ -9,7 +9,7 @@ JumpTable_162:: jp Wrapper_5ae
 JumpTable_165:: jp Wrapper_5b1
 JumpIncSubStateIndexWrapper:: jp WrapIncSubStateIndex ; Jumps to another jump
 JumpTable_16b:: jp Wrapper_5b7
-JumpTable_16e:: jp Wrapper_5c3
+JumpWaitLCDController:: jp WrapWaitLCDController
 JumpTable_171:: jp Wrapper_5c6
 JumpTable_174:: jp Wrapper_5c9
 JumpTable_177:: jp Wrapper_5cc
