@@ -35,6 +35,7 @@ HackPredefTable:
   dw LoadNormalMenuText ; 10
   dw LoadShopTilesetAndBuySellTilemap ; 11
   dw VWFPutStringInitFullTileLocation ; 12
+  dw LoadPatchText ; 13
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -174,3 +175,31 @@ LoadShopTilesetAndBuySellTilemap:
   pop de
   pop hl
   jp WrapLoadTilemap
+
+PatchTextDisclaimerNotice:: INCBIN "build/patch/notice.bin"
+PatchTextVersion:: INCBIN "build/patch/version.bin"
+LoadPatchText:
+; hl = Text Pointer in this bank
+; bc = bc for VWFPutString (set with psbc)
+  push de
+
+.loop
+  ld a, $13
+  push bc
+  call VWFPutString
+  pop bc
+  push hl
+  ;ld a, [VWFTilesDrawn] ; Would be nice to use this, but we would need to precalculate the 'VWFTileLength' to do this
+  ld a, $13
+  ld h, a
+  ld l, $10 ; Next line
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  ld a, [hl]
+  cp $50 ; [hl] will only be $50 once we're done
+  jr nz, .loop
+
+  pop de
+  ret

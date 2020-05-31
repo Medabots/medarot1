@@ -27,3 +27,7 @@ pshl: MACRO
 psa: MACRO
   ld a, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
   ENDM
+
+psc: MACRO
+  ld c, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
+  ENDM

@@ -36,6 +36,9 @@ LISTS_TEXT := $(TEXT)/lists
 LISTS_OUT := $(BUILD)/lists
 PTRLISTS_TEXT := $(TEXT)/ptrlists
 PTRLISTS_OUT := $(BUILD)/ptrlists
+# For added patch-specific messages, unrelated to the game specifically
+PATCH_TEXT := $(TEXT)/patch
+PATCH_TEXT_OUT := $(BUILD)/patch
 
 TILEMAP_BIN := $(GAME)/tilemaps
 TILEMAP_TEXT := $(TEXT)/tilemaps
@@ -86,6 +89,7 @@ COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$
 VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 PATCH_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
 PATCH_PORTRAIT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_PORTRAITS_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
+PATCH_TEXT_FILES := $(notdir $(basename $(wildcard $(PATCH_TEXT)/*.$(TEXT_TYPE))))
 
 # Intermediates
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
@@ -100,6 +104,7 @@ PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TY
 VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
 PATCH_PORTRAIT_TILESET_FILES := $(foreach FILE,$(PATCH_PORTRAIT_TILESETS),$(PATCH_PORTRAITS_OUT)/$(FILE).$(TSET_SRC_TYPE))
+PATCH_BIN_FILES := $(foreach FILE,$(PATCH_TEXT_FILES),$(PATCH_TEXT_OUT)/$(FILE).$(BIN_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
@@ -108,10 +113,10 @@ story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILE
 # Manually add MainDialog as a special case for map text reloading
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
 patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
-patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
+patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias $(PATCH_BIN_FILES)
 patch_vwf_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
 
-.PHONY: all clean default $(VERSIONS)
+.PHONY: all clean default $(VERSIONS) diag
 default: kabuto
 all: $(VERSIONS)
 
@@ -176,6 +181,9 @@ $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
 
 $(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm
 	$(PYTHON) scripts/credits2bin.py
+
+$(PATCH_TEXT_OUT)/%.$(BIN_TYPE): $(PATCH_TEXT)/%.$(TEXT_TYPE) | $(PATCH_TEXT_OUT)
+	$(PYTHON) $(SCRIPT)/patchtext2bin.py $< $@
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
 
@@ -247,3 +255,6 @@ $(PATCH_TILESET_OUT):
 
 $(PATCH_PORTRAITS_OUT):
 	mkdir -p $(PATCH_PORTRAITS_OUT)
+
+$(PATCH_TEXT_OUT):
+	mkdir -p $(PATCH_TEXT_OUT)
