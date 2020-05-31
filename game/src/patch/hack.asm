@@ -36,6 +36,7 @@ HackPredefTable:
   dw LoadShopTilesetAndBuySellTilemap ; 11
   dw VWFPutStringInitFullTileLocation ; 12
   dw LoadPatchText ; 13
+  dw LoadPatchTextFixedTopRight ; 14
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -176,22 +177,46 @@ LoadShopTilesetAndBuySellTilemap:
   pop hl
   jp WrapLoadTilemap
 
-PatchTextDisclaimerNotice:: INCBIN "build/patch/notice.bin"
-PatchTextVersion:: INCBIN "build/patch/version.bin"
+INCLUDE "game/src/patch/include/patch_text.asm"
+
+GetPatchTextLength:
+  push de
+  push bc
+  xor a
+  ld [VWFNextWordLength], a
+  push hl
+.measure_text_loop
+  ld a, [hl]
+  cp $50
+  jr z, .return
+  cp $49
+  jr z, .return
+  call VWFMeasureCharacter
+  jr .measure_text_loop
+.return
+  pop hl
+  pop bc
+  pop de
+  ld a, [VWFNextWordLength]
+  rra
+  rra
+  rra
+  and $1f
+  inc a
+  ret
+
 LoadPatchText:
 ; hl = Text Pointer in this bank
 ; bc = bc for VWFPutString (set with psbc)
-  push de
-
 .loop
-  ld a, $13
+  call GetPatchTextLength
+  push af
   push bc
   call VWFPutString
   pop bc
+  pop af
   push hl
-  ;ld a, [VWFTilesDrawn] ; Would be nice to use this, but we would need to precalculate the 'VWFTileLength' to do this
-  ld a, $13
-  ld h, a
+  ld h, a ; Tiles used
   ld l, $10 ; Next line
   add hl, bc
   ld b, h
@@ -201,5 +226,33 @@ LoadPatchText:
   cp $50 ; [hl] will only be $50 once we're done
   jr nz, .loop
 
+  ret
+
+LoadPatchTextFixedTopRight:
+; hl = Text Pointer in this bank
+; b = tile drawing index
+  ld de, $980b
+.loop
+  call GetPatchTextLength
+  ld [VWFTileLength], a
+  push bc
+  call VWFPutStringInitFullTileLocation
+  pop bc
+  push bc
+  push de
+  call VWFPutStringLoop
   pop de
+  pop bc
+  ld a, [VWFTileLength] ; increment tile drawing index
+  add b
+  ld b, a
+  push hl
+  ld hl, $0020 ; next line
+  add hl, de
+  ld d, h
+  ld e, l
+  pop hl
+  ld a, [hl]
+  cp $50 ; [hl] will only be $50 once we're done
+  jr nz, .loop
   ret

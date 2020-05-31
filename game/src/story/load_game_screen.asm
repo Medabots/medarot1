@@ -8,18 +8,20 @@ LoadGameScreen:: ; 448c (1:448c)
   or a
   psc $9921 ; Draw Disclaimer text below box
   jr z, .draw_tilemap
-  psc $9901 ; Draw a row up if new game
+  psc $98e1 ; Draw a row up if new game
   ld e, $27
 .draw_tilemap
+  push de
   ld b, $01
   ld hl, PatchTextDisclaimerNotice
   ld a, $13 ; LoadPatchText
   rst $8
-  psbc $986b, $b4
+  ld b, $b4
   ld hl, PatchTextVersion
-  ld a, $13
+  ld a, $14 ; LoadPatchTextFixed
   rst $8
   ld bc, $0000
+  pop de
   call WrapLoadTilemap
   ld a, $01
   call DrawCursor
