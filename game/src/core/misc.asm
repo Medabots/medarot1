@@ -45,7 +45,7 @@ LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
   ld b, $00
   ld c, $00
   ld e, $0d
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp JumpIncSubStateIndexWrapper
 
 SECTION "Func_25e5", ROM0[$25e5]

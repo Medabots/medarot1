@@ -435,7 +435,7 @@ RobattleMedarotInfoLoadHead:
   ld b, $9
   ld c, $9
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a03d]
   and $7f
@@ -453,7 +453,7 @@ RobattleMedarotInfoLoadRArm:
   ld b, $9
   ld c, $b
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a03f]
   and $7f
@@ -471,7 +471,7 @@ RobattleMedarotInfoLoadLArm:
   ld b, $9
   ld c, $d
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a041]
   and $7f
@@ -489,7 +489,7 @@ RobattleMedarotInfoLoadLegs:
   ld b, $9
   ld c, $f
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a043]
   and $7f
@@ -562,7 +562,7 @@ RobattleLoadText:
   ld b, $6
   ld c, $d
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
 ; 0x114fb
   ld hl, $00d3
@@ -605,7 +605,7 @@ RobattleLoadText:
   ld b, $b
   ld c, $f
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld hl, $000e
   add hl, de
@@ -635,7 +635,7 @@ RobattleLoadText:
   ld b, $1
   ld c, $f
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld hl, $000f
   add hl, de

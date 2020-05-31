@@ -3,7 +3,7 @@ JumpTable_150:: jp Main
 JumpTable_153:: jp Wrapper_59b
 JumpTable_156:: jp Wrapper_59e
 JumpTable_159:: jp Wrapper_5a1
-JumpTable_15c:: jp WrapLoadTilemap
+JumpLoadTilemap:: jp WrapLoadTilemap
 JumpTable_15f:: jp WrapLoadFont
 JumpTable_162:: jp Wrapper_5ae
 JumpTable_165:: jp Wrapper_5b1
