@@ -1,0 +1,4 @@
+This is a work-in-progress fan
+patch. Please report any bugs
+and translation issues at
+github.com/VariantXYZ/medarot1

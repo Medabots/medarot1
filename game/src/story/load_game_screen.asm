@@ -1,30 +1,38 @@
+INCLUDE "game/src/common/macros.asm"
+
 SECTION "New/Load Game Screen", ROMX[$448c], BANK[$1]
 LoadGameScreen:: ; 448c (1:448c)
   call JumpTable_1a7
-  ld a, [$c624]
+  ld e, $28 
+  ld a, [$c624] ; New Game flag (1 if yes)
   or a
-  jr nz, .new_game
-  ld b, $00
-  ld c, $00
-  ld e, $28
-  call JumpLoadTilemap
-  ld a, $01
-  call DrawCursor
-  ld a, $08
-  call JumpTable_17d
-  call JumpIncSubStateIndexWrapper
-  ret
-.new_game
-  ld b, $00
-  ld c, $00
+  psc $9921 ; Draw Disclaimer text below box
+  jr z, .draw_tilemap
+  psc $98e1 ; Draw a row up if new game
   ld e, $27
-  call JumpLoadTilemap
+.draw_tilemap
+  push de
+  ld b, $01
+  ld hl, PatchTextDisclaimerNotice
+  ld a, $13 ; LoadPatchText
+  rst $8
+  ld b, $b4
+  ld hl, PatchTextVersion
+  ld a, $14 ; LoadPatchTextFixed
+  rst $8
+  ld bc, $0000
+  pop de
+  call WrapLoadTilemap
   ld a, $01
   call DrawCursor
   ld a, $08
   call JumpTable_17d
   call JumpIncSubStateIndexWrapper
   ret
+.LoadGameScreenEnd
+REPT $44c3 - .LoadGameScreenEnd
+  nop
+ENDR
 ; 0x44c3
 SECTION "Draw Cursor", ROMX[$46cf], BANK[$1]
 DrawCursor: ; 46cf (1:46cf)
