@@ -31,15 +31,15 @@ SetupInitialNameScreen: ;4a9f
   ld b, $0
   ld c, $0
   ld e, $2
-  call JumpTable_15c
+  call JumpLoadTilemap
   ld b, $2
   ld c, $6
   ld e, $2b
-  call JumpTable_15c
+  call JumpLoadTilemap
   ld b, $1
   ld c, $1
   ld e, $29
-  call JumpTable_15c
+  call JumpLoadTilemap
   ld hl, cBUF01
   ld bc, $984a
   call JumpPutString
@@ -132,13 +132,13 @@ OnEraseCharacter:
   ld c, a
   add hl, bc
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], $0
   ei
   ld bc, $0020
   add hl, bc
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hl], $0
   ei
   ld a, [$c1e2]

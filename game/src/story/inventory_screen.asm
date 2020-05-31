@@ -78,7 +78,7 @@ LoadInventoryScreen:
   rst $38
   ld a, $77
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   ld a, [$c64e]
@@ -91,7 +91,7 @@ LoadInventoryScreen:
   ld b, $6b
   add b
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   ld a, [$c64f]
@@ -99,7 +99,7 @@ LoadInventoryScreen:
   ld b, $6b
   add b
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   pop bc

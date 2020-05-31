@@ -29,7 +29,7 @@ LoadMedalStatScreen:
   ld b, $0
   ld c, $0
   ld e, $93
-  call JumpTable_15c
+  call JumpLoadTilemap
   ld a, [$c725]
   ld b, a
   ld a, [$c6f4]
@@ -44,11 +44,11 @@ LoadMedalStatScreen:
   ld b, $2
   ld c, $6
   ld e, $6f
-  call JumpTable_15c
+  call JumpLoadTilemap
   ld b, $2
   ld c, $6
   ld e, $70
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $5788
   ld a, [$c725]
   ld b, a
@@ -77,13 +77,13 @@ LoadMedalStatScreen:
   ld b, $a
   ld c, $0
   ld e, $94
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $5788
 .asm_9d6f
   ld b, $a
   ld c, $0
   ld e, $95
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $5788
 ; 0x9d7b
 

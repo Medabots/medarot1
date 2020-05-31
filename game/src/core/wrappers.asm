@@ -41,7 +41,7 @@ Wrapper_5b7::
   ret
   nop
   nop
-Wrapper_5c3::
+WrapWaitLCDController::
   jp WaitLCDController
 Wrapper_5c6::
   jp $da7

@@ -119,7 +119,7 @@ DrawUnknown: ; Draws something, not sure what
 .asm_59255
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   dec bc
@@ -133,7 +133,7 @@ DrawUnknown: ; Draws something, not sure what
 .asm_5269
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   dec bc

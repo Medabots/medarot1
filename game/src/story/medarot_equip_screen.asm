@@ -57,7 +57,7 @@ LoadMedarotPartSelectMedal:
   ld b, $a
   ld c, $4
   ld e, $85
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld hl, $a640
   ld c, b
@@ -82,7 +82,7 @@ LoadMedarotPartSelectHead:
   ld b, $9
   ld c, $9
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a03d]
   ld hl, $b520
@@ -107,7 +107,7 @@ LoadMedarotPartSelectRArm:
   ld b, $9
   ld c, $b
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a03f]
   ld hl, $b5a0
@@ -132,7 +132,7 @@ LoadMedarotPartSelectLArm:
   ld b, $9
   ld c, $d
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
   ld a, [$a041]
   ld hl, $b620
@@ -158,7 +158,7 @@ LoadMedarotPartSelectLegs:
   ld b, $9
   ld c, $f
   ld e, $86
-  call JumpTable_15c
+  call JumpLoadTilemap
   ret
 ; 0xafce
   ld a, [$a043]

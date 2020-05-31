@@ -50,7 +50,7 @@ LoadPartsScreenPartName:
   ld c, a
   ld b, $8
   ld e, $73
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $637d
 ; 0xa354
   push hl
@@ -60,7 +60,7 @@ LoadPartsScreenPartName:
   ld c, a
   ld b, $8
   ld e, $7a
-  call JumpTable_15c
+  call JumpLoadTilemap
   pop hl
   ld a, [$c727]
   ld c, a
@@ -122,7 +122,7 @@ LoadPartsScreenPartName:
   ld b, $0
   ld c, $0
   ld e, $7b
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $5788
 ; 0xa3cb
 
@@ -175,7 +175,7 @@ LoadPartsScreenPartModel:
   ld c, a
   ld b, $1
   ld e, $78
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $661a
 ; 0xa600
   ld a, [$c727]
@@ -256,7 +256,7 @@ LoadPartsScreenPartModel:
   ld c, a
   ld b, $11
   ld e, $79
-  call JumpTable_15c
+  call JumpLoadTilemap
   jp $66ed
 ; 0xa697
   push hl
@@ -266,19 +266,19 @@ LoadPartsScreenPartModel:
   ld l, a
   xor a
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   pop hl
@@ -311,7 +311,7 @@ LoadPartsScreenPartModel:
   inc hl
   ld a, $50
   di
-  call JumpTable_16e
+  call JumpWaitLCDController
   ld [hli], a
   ei
   ld a, [$c644]
