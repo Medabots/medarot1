@@ -35,6 +35,13 @@ jobs:
                 name: "Update Credits"
                 working_directory: ~/medarot_1
                 command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
+            - run:
+                name: "Update Version"
+                working_directory: ~/medarot_1
+                command: |
+                  export DATE=`date +%Y-%m-%d`
+                  export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
+                  sed -i -e "s/hhhhhhh/$SHORT_HASH/g" -e "s/YYYY-MM-DD/$DATE/g" -e "s/NNNNNNNN/<<pipeline.number>>/g" text/patch/version.txt && cat text/patch/version.txt
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
