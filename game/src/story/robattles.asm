@@ -100,7 +100,7 @@ LoadRobattleNames:
   ld b, $0
   ld c, a
   ld a, $6
-  call $3981
+  call GetListTextOffset
   ld b, $0
   pop af
   ld c, a

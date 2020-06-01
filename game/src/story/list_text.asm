@@ -67,7 +67,7 @@ LoadMedarotList::
   ld hl, MedarotList
   ld b, $0
   ld a, $4
-  call $3981
+  call GetListTextOffset
   ld de, cBUF01
 .loop
   ld a, [hli]
