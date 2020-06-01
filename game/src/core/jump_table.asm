@@ -101,7 +101,7 @@ JumpTable_276:: jp Wrapper_75e
 JumpTable_279:: jp Wrapper_763
 JumpTable_27c:: jp Wrapper_768
 JumpTable_27f:: jp Wrapper_76d
-JumpTable_282:: jp Wrapper_771
+JumpLoadMedalList:: jp WrapLoadMedalList
 JumpTable_285:: jp Wrapper_776
 JumpTable_288:: jp Wrapper_77a
 JumpTable_28b:: jp Wrapper_77f
@@ -121,7 +121,7 @@ JumpTable_2b2:: jp Wrapper_839
 JumpTable_2b5:: jp Wrapper_854
 JumpGetListTextOffset:: jp WrapGetListTextOffset
 JumpTable_2bb:: jp Wrapper_873
-JumpTable_2be:: jp Wrapper_878
+JumpLoadMedarotList:: jp WrapLoadMedarotList
 JumpTable_2c1:: jp Wrapper_87d
 JumpTable_2c4:: jp Wrapper_887
 JumpTable_2c7:: jp Wrapper_88c

@@ -279,7 +279,7 @@ RobattleScreenSetup:
   ld a, [hl]
   and $7f
   ld c, a
-  call JumpTable_2be
+  call JumpLoadMedarotList
   push de
   ld b, $9
   ld hl, $0002
@@ -385,7 +385,7 @@ RobattlePartScreen:
   ld hl, $0081
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld hl, cBUF01
   ld bc, $98ac
   call JumpPutString
@@ -796,7 +796,7 @@ RobattleEndScreenEXP:
   ld bc, $0001
   add hl, bc
   ld a, [hli]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld a, $d0
   ld [$a0c2], a
 .asm_732b

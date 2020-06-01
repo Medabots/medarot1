@@ -57,7 +57,7 @@ LoadMedalStatScreen:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld bc, $9841
   ld hl, cBUF01
   call JumpPadTextTo8

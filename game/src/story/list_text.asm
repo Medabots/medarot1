@@ -32,7 +32,7 @@ LoadItemList::
 ; 0x32b9
 
 SECTION "Load from Medal List", ROM0[$32b9]
-LoadMedalList:
+LoadMedalList::
   push af
   ld a, BANK(MedalList)
   ld [$2000], a
@@ -59,7 +59,7 @@ LoadMedalList:
 ; 0x32df
 
 SECTION "Load from Medarot List", ROM0[$35dc]
-LoadMedarotList:
+LoadMedarotList::
   push hl
   push de
   ld a, BANK(MedarotList)
@@ -189,7 +189,7 @@ LoadMedalScreen:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld a, [$c644]
   ld b, a
   ld a, [$c645]
