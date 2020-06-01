@@ -351,8 +351,8 @@ Wrapper_768::
 Wrapper_76d::
   call $32ed
   ret
-Wrapper_771::
-  call $32b9
+WrapLoadMedalList::
+  call LoadMedalList
   rst $18
   ret
 Wrapper_776::
@@ -515,8 +515,8 @@ Wrapper_873::
   call $35bb
   rst $18
   ret
-Wrapper_878::
-  call $35dc
+WrapLoadMedarotList::
+  call LoadMedarotList
   rst $18
   ret
 Wrapper_87d::

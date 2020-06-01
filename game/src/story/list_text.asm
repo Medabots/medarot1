@@ -40,7 +40,7 @@ LoadItemList::
   nop
 ; 0x32b9
 
-LoadMedalList: ;32b9
+LoadMedalList:: ;32b9
   ld b, $0
   ld c, a
   push af
@@ -73,7 +73,7 @@ LoadMedalList: ;32b9
 ; 0x32df
 
 SECTION "Load from Medarot List", ROM0[$35dc]
-LoadMedarotList:
+LoadMedarotList::
   push hl
   push de
   ld a, BANK(MedarotList)
@@ -81,7 +81,7 @@ LoadMedarotList:
   ld hl, MedarotList
   ld b, $0
   ld a, $4
-  call $3981
+  call GetListTextOffset
   ld de, cBUF01
 .loop
   ld a, [hli]
@@ -220,7 +220,7 @@ LoadMedalScreen:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld a, [$c644]
   ld b, a
   ld a, [$c645]

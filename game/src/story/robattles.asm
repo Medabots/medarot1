@@ -103,7 +103,7 @@ LoadRobattleNames:
   ld b, $0
   ld c, a
   ld a, $6
-  call $3981
+  call GetListTextOffset
   ld b, $0
   pop af
   ld c, a
@@ -296,7 +296,7 @@ RobattleScreenSetup:
   ld a, [hl]
   and $7f
   ld c, a
-  call JumpTable_2be
+  call JumpLoadMedarotList
   push de
   ld b, $10 ; Medarot name length, 15+1 term
   ld hl, $00f0
@@ -402,7 +402,7 @@ RobattlePartScreen:
   ld hl, $0081
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld hl, cBUF01 ; Medal
   psbc $98ac, $c6
   call VWFPutStringTo8
@@ -813,7 +813,7 @@ RobattleEndScreenEXP:
   ld bc, $0001
   add hl, bc
   ld a, [hli]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld a, $d0
   ld [$a0c2], a
 .asm_732b

@@ -70,7 +70,7 @@ LoadMedarotPartSelectMedal:
   ld hl, $0001
   add hl, de
   ld a, [hl]
-  call JumpTable_282
+  call JumpLoadMedalList
   ld hl, cBUF01
   psbc $98ac, $c6
   call VWFPutStringTo8
