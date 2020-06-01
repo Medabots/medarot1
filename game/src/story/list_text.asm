@@ -1,6 +1,7 @@
 ; Includes logic for dealing with "list" text (Medals, Items, Medarots)
 ; Data is fixed size, so no need for a pointer table
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Load from Item List", ROM0[$328f]
 LoadItemList::
@@ -203,9 +204,9 @@ LoadMedalScreen:
   ld b, $0
   ld c, a
   call $58e9
-  ld a, $98
+  ld a, $be
   ld [$c644], a
-  ld a, $83
+  psa $9883
   ld [$c645], a
   ld b, $5
   ld d, h
@@ -214,7 +215,6 @@ LoadMedalScreen:
   ld a, [de]
   or a
   ret z
-  push hl
   push bc
   push de
   ld hl, $0001
@@ -226,12 +226,13 @@ LoadMedalScreen:
   ld a, [$c645]
   ld c, a
   ld hl, cBUF01
-  call JumpPutString
+  ld a, $07
+  call VWFPutStringAutoNarrow
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
   ld l, a
-  ld bc, $0060
+  ld bc, $0730
   add hl, bc
   ld a, h
   ld [$c644], a
@@ -239,7 +240,6 @@ LoadMedalScreen:
   ld [$c645], a
   pop de
   pop bc
-  pop hl
   ld hl, $0020
   add hl, de
   ld d, h
@@ -247,7 +247,10 @@ LoadMedalScreen:
   dec b
   jr nz, .asm_9890 ; 0x98ca $c4
   ret
-; 0x98cd
+.LoadMedalScreenEnd
+REPT $58cd - .LoadMedalScreenEnd
+  nop
+ENDR
 
 SECTION "GetListTextOffset", ROM0[$3981]
 GetListTextOffset:: ; 34c4
