@@ -414,8 +414,8 @@ Pointer[#version],Original,Translated
 0x68338,ドンッ!,*Thud*
 0x6833a,=0x68338,=0x68338
 0x6833c,=0x68338,=0x68338
-0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,
-0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,
+0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,Waah! A leech!<4C>You dropped the Rhino Beetle.
+0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,Waah! A leech!<4C>You dropped the Stag Beetle.
 0x68340,カアッ! カアッ! カアッ!,Caw! Caw! Caw!
 0x68342,メダルが ごっそリ はいってる,There's a Medal inside.
 0x68344,シリコダマ ヌクケ!!,I'll take your soul!!

@@ -242,10 +242,10 @@ Pointer[#version],Original,Translated
 0x601e0,おんなのこの パーツが<4E>ゆにゅうひんやで うってるそうだよ,They sell female parts at the Imports shop.
 0x601e2,わたしを ごらんください<4C>きれいでしょ？,Look at me.<49>Aren't I pretty?
 0x601e4,あのメダル ほしいなぁ,I want that Medal...
-0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,
-0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,
-0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,
-0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,
+0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,"Ah! It's a ""Dragon"" Medal!"
+0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,"Ah! It's a ""Devil"" Medal!"
+0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,"Ah! It's a ""Ninja"" Medal!"
+0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,"Ah! It's an ""Angel"" Medal!"
 0x601ea,わしの もってるメダルと ちがうぞ<4E>ほら みろ!<4C>おじさんが みせてくれたのは<4E>「ネコ」の メダルだ,"My Medal is different from yours, see?<49>It's a ""Cat"" Medal."
 0x601ec,スクープだ しゃしんとらなきゃ<4E>パシャッ パシャッ,This is quite a scoop! I gotta get a picture!<49>*flash* *flash*
 0x601ee,メダルと パーツの あいしょうや<4E>じゅくれんども だいじですけど<4C>せいかくに あわせた<4E>パーツえらびも たいせつですよ,Skills and part compatability are important and all but choosing parts that match your Medal's personality also helps.
