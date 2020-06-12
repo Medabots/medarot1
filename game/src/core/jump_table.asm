@@ -81,7 +81,7 @@ JumpTable_23a:: jp Wrapper_6f1
 JumpTable_23d:: jp Wrapper_6f6
 JumpTable_240:: jp Wrapper_6fa
 JumpTable_243:: jp Wrapper_6fe
-JumpTable_246:: jp WrapDecompressAndLoadTiles
+JumpDecompressAndLoadTiles:: jp WrapDecompressAndLoadTiles
 JumpTable_249:: jp Wrapper_707
 JumpTable_24c:: jp Wrapper_70c
 JumpTable_24f:: jp Wrapper_711

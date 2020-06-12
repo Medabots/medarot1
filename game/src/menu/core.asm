@@ -56,11 +56,11 @@ MenuSubStateMachine: ; 8046 (2:4046)
 .table
   dw MainMenuStateMachine ; Main Menu State Machine
   dw InfoMenuStateMachine ; Info Menu State Machine
-  dw $45E2
-  dw $5037
-  dw $683B
-  dw $5344 ; Medal Menu State Machine
-  dw $5FC3
+  dw InventoryScreenStateMachine ; Inventory Screen State Machine
+  dw $5037 ; Save Screen State Machine
+  dw $683B ; Medarots Screen State Machine
+  dw $5344 ; Medals Screen State Machine
+  dw $5FC3 ; Parts Screen State Machine
 
 
 SECTION "Menu State Machine Utility functions", ROMX[$44f7], BANK[$2]
