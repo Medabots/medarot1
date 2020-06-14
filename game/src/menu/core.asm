@@ -35,7 +35,7 @@ InitializeMenu: ; 8016 (2:4016)
   ld [$c6f6], a
   ld [$c6f7], a
   ld a, $03
-  call JumpTable_15f
+  call JumpLoadFont
   ld a, $01
   call JumpTable_1e6
   call JumpIncSubStateIndexWrapper
@@ -57,7 +57,7 @@ MenuSubStateMachine: ; 8046 (2:4046)
   dw MainMenuStateMachine ; Main Menu State Machine
   dw InfoMenuStateMachine ; Info Menu State Machine
   dw InventoryScreenStateMachine ; Inventory Screen State Machine
-  dw $5037 ; Save Screen State Machine
+  dw SaveScreenStateMachine ; Save Screen State Machine
   dw $683B ; Medarots Screen State Machine
   dw $5344 ; Medals Screen State Machine
   dw $5FC3 ; Parts Screen State Machine

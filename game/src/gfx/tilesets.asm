@@ -254,7 +254,7 @@ SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
   ret nz
   ld a, [$c752]
   add $d
-  call JumpTable_15f
+  call JumpLoadFont
   ld a, $2
   call JumpTable_17d
   ld b, $8

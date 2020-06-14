@@ -4,7 +4,7 @@ JumpTable_153:: jp Wrapper_59b
 JumpTable_156:: jp Wrapper_59e
 JumpTable_159:: jp Wrapper_5a1
 JumpLoadTilemap:: jp WrapLoadTilemap
-JumpTable_15f:: jp WrapLoadFont
+JumpLoadFont:: jp WrapLoadFont
 JumpTable_162:: jp Wrapper_5ae
 JumpTable_165:: jp Wrapper_5b1
 JumpIncSubStateIndexWrapper:: jp WrapIncSubStateIndex ; Jumps to another jump
