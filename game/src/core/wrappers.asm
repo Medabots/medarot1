@@ -406,7 +406,7 @@ Wrapper_7d0::
   ld [$c6e0], a
   rst $18
   ret
-WrapRobattleSetupMedarotSelect::
+WrapMedarotScreenSetupMedarotSelect::
   push af
   ld a, [$c6e0]
   ld [$c6e1], a
@@ -414,7 +414,7 @@ WrapRobattleSetupMedarotSelect::
   ld [$2000], a
   ld [$c6e0], a
   pop af
-  call RobattleSetupMedarotSelect
+  call MedarotScreenSetupMedarotSelect
   ld a, [$c6e1]
   ld [$c6e0], a
   rst $18

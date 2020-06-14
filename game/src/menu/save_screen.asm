@@ -34,7 +34,7 @@ SaveScreenStateMachine::
   dw $537e ; ret
   dw $537e ; ret
   dw $5389 ; Clear screen
-  dw SaveScreenExitAsyncRestoreTileset
+  dw MenuExitExitAsyncRestoreTileset
   dw $537f
   dw $51a0
   dw $50fa
@@ -50,6 +50,7 @@ SaveScreenLoadSaveDialogTilemap: ; 90b2 (2:50b2)
   ld e, $25
   call JumpLoadTilemap
   jp MenuIncrementStateSubIndex
+
 SaveScreenLoadSaveYesNoTilemap: ; 90c7 (2:50c7)
   ld b, $0e
   ld c, $0b
@@ -59,10 +60,9 @@ SaveScreenLoadSaveYesNoTilemap: ; 90c7 (2:50c7)
   ld [$c6f1], a
   jp MenuIncrementStateSubIndex
 
-SaveScreenSubStateIndex   EQU $c750
 SECTION "Save Screen States Async Draw Save Screen Tilemap", ROMX[$51b0], BANK[$2]
 SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
-  ld a, [SaveScreenSubStateIndex]
+  ld a, [TempStateIndex]
   ld hl, .table
   ld b, $00
   ld c, a
@@ -82,13 +82,13 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld c, $00
   ld e, $24
   call JumpLoadTilemap
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
+  jp TempStateIncrementStateIndex
 .draw_bottom_half
   ld b, $00
   ld c, $05
   ld e, $2d
   call JumpLoadTilemap
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
+  jp TempStateIncrementStateIndex
 .draw_strings
   ld hl, cNAME
   ld bc, $9847
@@ -114,90 +114,5 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   call $5223
   call $526f
   ld a, $ff
-  ld [SaveScreenSubStateIndex], a
+  ld [TempStateIndex], a
   ret
-
-SECTION "Save Screen States (partial disassembly)", ROMX[$575f], BANK[$2]
-SaveScreenExitAsyncRestoreTileset: ; 975f (2:575f)
-  call SaveScreenExitAsyncRestoreTilesetStateMachine ; Redraw tilesets
-  ld a, [SaveScreenSubStateIndex]
-  cp $ff
-  ret nz
-  call SaveScreenExitAsyncRestoreTilesetCleanup
-  jp MenuIncrementStateSubIndex
-SaveScreenExitSetState: ; 976e (2:576e)
-  ld a, $05
-  ld [$ffa0], a
-  ld a, $01
-  ld [$c600], a
-  ld a, $01
-  ld [MenuStateIndex], a
-  ld a, $02
-  ld [MenuStateSubIndex], a
-  ret
-SaveScreenExitAsyncRestoreTilesetCleanup: ; 9782 (2:5782)
-  ld a, $02
-  call JumpTable_17d
-  ret
-SaveScreenExitAsyncRestoreTilesetIncrementState: ; 9788 (2:5788)
-  ld a, [SaveScreenSubStateIndex]
-  inc a
-  ld [SaveScreenSubStateIndex], a
-  ret
-; 0x9790
-
-SECTION "SaveScreenExitAsyncRestoreTilesetStateMachine", ROMX[$5c15], BANK[$2]
-SaveScreenExitAsyncRestoreTilesetStateMachine: ; 9c15 (2:5c15)
-  ld a, [SaveScreenSubStateIndex]
-  ld hl, .table
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  jp hl
-.table
-  dw $5c35
-  dw $5c3b
-  dw SaveScreenExitAsyncRestoreTilesetMainSpecial ; TilesetMainSpecial
-  dw SaveScreenExitAsyncRestoreTilesetMainDialog ; TilesetMainDialog
-  dw $5c8f
-  dw $5cb5
-  dw $5cc5
-  dw $56cd
-
-SECTION "SaveScreenExitAsyncRestoreTilesetStateMachine - Tileset Restoration", ROMX[$5c53], BANK[$2]
-SaveScreenExitAsyncRestoreTilesetMainSpecial: ; 9c53 (2:5c53)
-  ld a, [$c6c8]
-  cp $03
-  jr z, .asm_9c62
-  ld a, $02
-  call JumpLoadFont
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
-.asm_9c62
-  ld a, $02
-  ld b, $01
-  call JumpDecompressAndLoadTiles
-  ld a, [$c64e]
-  or a
-  ret nz
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
-SaveScreenExitAsyncRestoreTilesetMainDialog: ; 9c71 (2:5c71)
-  ld a, [$c6c8]
-  cp $03
-  jr z, .asm_9c80
-  ld a, $03
-  call JumpLoadFont
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
-.asm_9c80
-  ld a, $03
-  ld b, $01
-  call JumpDecompressAndLoadTiles
-  ld a, [$c64e]
-  or a
-  ret nz
-  jp SaveScreenExitAsyncRestoreTilesetIncrementState
-; 0x9c8f

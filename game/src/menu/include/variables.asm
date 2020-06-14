@@ -7,3 +7,5 @@ MenuStateSubIndex  EQU $c6c9
 
 MainMenuPosition   EQU $c6f0
 InfoMenuPosition   EQU $c6f1
+
+TempStateIndex   EQU $c750 ; Used for various asynchronous operations (e.g. for exiting the menu)

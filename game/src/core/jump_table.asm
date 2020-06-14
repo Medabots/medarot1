@@ -113,7 +113,7 @@ JumpTable_29a:: jp Wrapper_797
 JumpTable_29d:: jp Wrapper_79c
 JumpTable_2a0:: jp Wrapper_7b5
 JumpTable_2a3:: jp Wrapper_7d0
-JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
+JumpMedarotScreenSetupMedarotSelect:: jp WrapMedarotScreenSetupMedarotSelect
 JumpTable_2a9:: jp Wrapper_806
 JumpTable_2ac:: jp Wrapper_821
 JumpTable_2af:: jp Wrapper_82d
