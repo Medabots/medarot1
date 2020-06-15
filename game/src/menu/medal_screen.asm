@@ -32,14 +32,11 @@ MedalScreenStateMachine::
   dw $5389
   dw $570f
   dw $573b
-  dw MedalScreenStateMachineRet ; ret
+  dw MenuStateMachineRet ; ret
   dw $5389
   dw MenuExitAsyncRestoreTileset
   dw $537f
   dw $576e
-
-MedalScreenStateMachineRet:
-  ret
 
 SECTION "Medal Screen - Draw Medal Tilesets Asynchronously", ROMX[$53b6], BANK[$2]
 MedalScreenSetupMedalTilesetStateMachine::

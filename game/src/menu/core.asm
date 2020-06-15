@@ -58,9 +58,9 @@ MenuSubStateMachine: ; 8046 (2:4046)
   dw InfoMenuStateMachine ; Info Menu State Machine
   dw InventoryScreenStateMachine ; Inventory Screen State Machine
   dw SaveScreenStateMachine ; Save Screen State Machine
-  dw MedarotScreenStateMachine ; Medarots Screen State Machine
-  dw MedalScreenStateMachine ; Medals Screen State Machine
-  dw $5FC3 ; Parts Screen State Machine
+  dw MedarotScreenStateMachine ; Medarot Screen State Machine
+  dw MedalScreenStateMachine ; Medal Screen State Machine
+  dw PartScreenStateMachine ; Part Screen State Machine
 
 
 SECTION "Menu State Machine Utility functions", ROMX[$44f7], BANK[$2]
@@ -144,6 +144,10 @@ MenuIncrementStateSubIndex::
   ld a, [MenuStateSubIndex]
   inc a
   ld [MenuStateSubIndex], a
+  ret
+
+SECTION "Menu State Machine Return", ROMX[$537e], BANK[$2]
+MenuStateMachineRet::
   ret
 
 SECTION "Menu State Machine Utility functions 3", ROMX[$5788], BANK[$2]

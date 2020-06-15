@@ -28,11 +28,11 @@ SaveScreenStateMachine::
   dw $5155
   dw $516e
   dw $5182
-  dw $537e ; ret
-  dw $537e ; ret
-  dw $537e ; ret
-  dw $537e ; ret
-  dw $537e ; ret
+  dw MenuStateMachineRet ; ret
+  dw MenuStateMachineRet ; ret
+  dw MenuStateMachineRet ; ret
+  dw MenuStateMachineRet ; ret
+  dw MenuStateMachineRet ; ret
   dw $5389 ; Clear screen
   dw MenuExitAsyncRestoreTileset
   dw $537f
