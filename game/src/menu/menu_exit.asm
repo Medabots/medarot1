@@ -66,18 +66,11 @@ MenuExitAsyncRestoreTilesetMainSpecial: ; 9c53 (2:5c53)
   ret nz
   jp TempStateIncrementStateIndex
 MenuExitAsyncRestoreTilesetMainDialog: ; 9c71 (2:5c71)
-  ld a, [$c6c8]
-  cp $03
-  jr z, .asm_9c80
-  ld a, $03
-  call JumpLoadFont
+  ld a, $16 ; LoadMainMenuTileset
+  rst $08
   jp TempStateIncrementStateIndex
-.asm_9c80
-  ld a, $03
-  ld b, $01
-  call JumpDecompressAndLoadTiles
-  ld a, [$c64e]
-  or a
-  ret nz
-  jp TempStateIncrementStateIndex
+.MenuExitAsyncRestoreTilesetMainDialog
+REPT $5c8f - .MenuExitAsyncRestoreTilesetMainDialog
+  nop
+ENDR
 ; 0x9c8f

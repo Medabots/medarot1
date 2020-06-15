@@ -32,11 +32,14 @@ HackPredefTable:
   dw VWFCalculateAutoNarrow ; D
   dw AddHLShiftBC5 ; E
   dw LoadInventoryTilesetAndHelpTilemap ; F
-  dw LoadNormalMenuText ; 10
+  dw LoadNormalMenuTextAndLoadTilemap ; 10
   dw LoadShopTilesetAndBuySellTilemap ; 11
   dw VWFPutStringInitFullTileLocation ; 12
   dw LoadPatchText ; 13
   dw LoadPatchTextFixedTopRight ; 14
+  dw LoadMainMenuTilesetAndLoadTilemap ; 15
+  dw LoadMainMenuTileset ; 16
+  dw LoadMainMenuTilesetWithGraphics ; 17
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -149,7 +152,7 @@ LoadInventoryTilesetAndHelpTilemap:
   pop hl
   jp WrapLoadTilemap
 
-LoadNormalMenuText:
+LoadNormalMenuTextAndLoadTilemap:
   push hl
   push de
   push bc
@@ -176,6 +179,53 @@ LoadShopTilesetAndBuySellTilemap:
   pop de
   pop hl
   jp WrapLoadTilemap
+
+LoadMainMenuTilesetAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMainMenuText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadMainMenuTileset:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMainMenuText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  ret
+
+LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMainMenuText
+  ld a, [de]
+  inc de
+  call LoadTiles  
+  ld hl, $8F00
+  ld de, PatchTilesetStartMainMenuGraphics
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  ret
 
 INCLUDE "game/src/patch/include/patch_text.asm"
 

@@ -81,7 +81,9 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld b, $00
   ld c, $00
   ld e, $24
-  call JumpLoadTilemap
+  ;call JumpLoadTilemap
+  ld a, $10
+  rst $08
   jp TempStateIncrementStateIndex
 .draw_bottom_half
   ld b, $00

@@ -60,16 +60,16 @@ InventoryScreenLoadHelpText: ; 8673 (2:4673)
 
 SECTION "Inventory Screen States (partial disassembly)", ROMX[$4b6d], BANK[$2]
 InventoryScreenExitAsyncRestoreTileset:: ; 8b6d (2:4b6d)
-  ld a, $03
-  ld b, $01
-  call JumpDecompressAndLoadTiles
-  ld a, [$c64e]
-  or a
-  ret nz
+  ld a, $17 ; LoadMainMenuTilesetWithGraphics
+  rst $08
   ld a, $02
   call JumpTable_17d
   call JumpTable_18c
   jp MenuIncrementStateSubIndex
+.end
+REPT $4b84 - .end
+  nop
+ENDR
 ; 0x8b84
 
 SECTION "Load Inventory Screen", ROMX[$4bdc], BANK[$2]
