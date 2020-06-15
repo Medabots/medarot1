@@ -197,61 +197,6 @@ LoadPartList:
   nop
 ; 0x3562
 
-SECTION "Load Medal Screen", ROMX[$5878], BANK[$2]
-LoadMedalScreen:
-  ld hl, $a640
-  dec a
-  ld b, $0
-  ld c, a
-  call $58e9
-  ld a, $be
-  ld [$c644], a
-  psa $9883
-  ld [$c645], a
-  ld b, $5
-  ld d, h
-  ld e, l
-.asm_9890
-  ld a, [de]
-  or a
-  ret z
-  push bc
-  push de
-  ld hl, $0001
-  add hl, de
-  ld a, [hl]
-  call JumpLoadMedalList
-  ld a, [$c644]
-  ld b, a
-  ld a, [$c645]
-  ld c, a
-  ld hl, cBUF01
-  ld a, $07
-  call VWFPutStringAutoNarrow
-  ld a, [$c644]
-  ld h, a
-  ld a, [$c645]
-  ld l, a
-  ld bc, $0730
-  add hl, bc
-  ld a, h
-  ld [$c644], a
-  ld a, l
-  ld [$c645], a
-  pop de
-  pop bc
-  ld hl, $0020
-  add hl, de
-  ld d, h
-  ld e, l
-  dec b
-  jr nz, .asm_9890 ; 0x98ca $c4
-  ret
-.LoadMedalScreenEnd
-REPT $58cd - .LoadMedalScreenEnd
-  nop
-ENDR
-
 SECTION "GetListTextOffset", ROM0[$3981]
 GetListTextOffset:: ; 34c4
 .asm_3981

@@ -362,11 +362,6 @@ RobattleScreenSetup:
   ret
 ; 0x11326
 
-SECTION "Robattle - Medarot Select", ROMX[$7815], BANK[$2]
-RobattleSetupMedarotSelect::
-; This is a very long function, but there's no need to dump it yet
-
-
 SECTION "Robattle - Part Screen", ROMX[$6c7e], BANK[$1b]
 RobattlePartScreen:
   ld hl, RobattleMedarots

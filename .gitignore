@@ -11,3 +11,6 @@ scripts/common/__pycache__/
 *.pyc
 *.map
 *.sym
+
+# OSX
+.DS_Store

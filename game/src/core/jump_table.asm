@@ -4,7 +4,7 @@ JumpTable_153:: jp Wrapper_59b
 JumpTable_156:: jp Wrapper_59e
 JumpTable_159:: jp Wrapper_5a1
 JumpLoadTilemap:: jp WrapLoadTilemap
-JumpTable_15f:: jp WrapLoadFont
+JumpLoadFont:: jp WrapLoadFont
 JumpTable_162:: jp Wrapper_5ae
 JumpTable_165:: jp Wrapper_5b1
 JumpIncSubStateIndexWrapper:: jp WrapIncSubStateIndex ; Jumps to another jump
@@ -81,7 +81,7 @@ JumpTable_23a:: jp Wrapper_6f1
 JumpTable_23d:: jp Wrapper_6f6
 JumpTable_240:: jp Wrapper_6fa
 JumpTable_243:: jp Wrapper_6fe
-JumpTable_246:: jp WrapDecompressAndLoadTiles
+JumpDecompressAndLoadTiles:: jp WrapDecompressAndLoadTiles
 JumpTable_249:: jp Wrapper_707
 JumpTable_24c:: jp Wrapper_70c
 JumpTable_24f:: jp Wrapper_711
@@ -113,7 +113,7 @@ JumpTable_29a:: jp Wrapper_797
 JumpTable_29d:: jp Wrapper_79c
 JumpTable_2a0:: jp Wrapper_7b5
 JumpTable_2a3:: jp Wrapper_7d0
-JumpRobattleSetupMedarotSelect:: jp WrapRobattleSetupMedarotSelect
+JumpMedarotScreenSetupMedarotSelect:: jp WrapMedarotScreenSetupMedarotSelect
 JumpTable_2a9:: jp Wrapper_806
 JumpTable_2ac:: jp Wrapper_821
 JumpTable_2af:: jp Wrapper_82d
