@@ -39,9 +39,9 @@ MedarotScreenStateMachine::
   dw $6c3c
   dw $6c4a
   dw $5389
-  dw MenuExitExitAsyncRestoreTileset
+  dw MenuExitAsyncRestoreTileset
   dw $537f
-  dw MenuExitExitSetState
+  dw MenuExitSetState
   dw $6891 ; ret
   dw $6891 ; ret
   dw $6891 ; ret

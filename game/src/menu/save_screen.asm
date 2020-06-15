@@ -34,7 +34,7 @@ SaveScreenStateMachine::
   dw $537e ; ret
   dw $537e ; ret
   dw $5389 ; Clear screen
-  dw MenuExitExitAsyncRestoreTileset
+  dw MenuExitAsyncRestoreTileset
   dw $537f
   dw $51a0
   dw $50fa
