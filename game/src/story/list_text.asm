@@ -165,59 +165,6 @@ LoadPartList:
   ret
 ; 0x3562
 
-SECTION "Load Medal Screen", ROMX[$5878], BANK[$2]
-LoadMedalScreen:
-  ld hl, $a640
-  dec a
-  ld b, $0
-  ld c, a
-  call $58e9
-  ld a, $98
-  ld [$c644], a
-  ld a, $83
-  ld [$c645], a
-  ld b, $5
-  ld d, h
-  ld e, l
-.asm_9890
-  ld a, [de]
-  or a
-  ret z
-  push hl
-  push bc
-  push de
-  ld hl, $0001
-  add hl, de
-  ld a, [hl]
-  call JumpLoadMedalList
-  ld a, [$c644]
-  ld b, a
-  ld a, [$c645]
-  ld c, a
-  ld hl, cBUF01
-  call JumpPutString
-  ld a, [$c644]
-  ld h, a
-  ld a, [$c645]
-  ld l, a
-  ld bc, $0060
-  add hl, bc
-  ld a, h
-  ld [$c644], a
-  ld a, l
-  ld [$c645], a
-  pop de
-  pop bc
-  pop hl
-  ld hl, $0020
-  add hl, de
-  ld d, h
-  ld e, l
-  dec b
-  jr nz, .asm_9890 ; 0x98ca $c4
-  ret
-; 0x98cd
-
 SECTION "GetListTextOffset", ROM0[$3981]
 GetListTextOffset:: ; 34c4
 .asm_3981

@@ -39,9 +39,9 @@ SetupInitialNameScreen: ;4a9f
   ld a, $3 ; Name length
   ld [$c5ce], a
   ld a, $2
-  call JumpTable_15f
+  call JumpLoadFont
   ld a, $3
-  call JumpTable_15f
+  call JumpLoadFont
   ld b, $0
   ld c, $0
   ld e, $2

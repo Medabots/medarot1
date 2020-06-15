@@ -1,7 +1,118 @@
-INCLUDE "game/src/common/constants.asm"
+; Medals Screen state machine
 
-SECTION "Load Parts Screen, Part Name", ROMX[$62f7], BANK[$2]
-LoadPartsScreenPartName:
+INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/menu/include/variables.asm"
+
+SECTION "Part Screen State Machine", ROMX[$5fc3], BANK[$2]
+PartScreenStateMachine::
+  ld a, [MenuStateSubIndex]
+  ld hl, .table
+  ld d, $00
+  ld e, a
+  sla e
+  rl d
+  add hl, de
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  jp hl
+.table
+  dw $6007
+  dw $5389
+  dw $602a
+  dw PartScreenTilemapTextSetup ; Load part names and tilemaps
+  dw $537f
+  dw $6090
+  dw $61e7
+  dw $5389
+  dw $61f8
+  dw $6213
+  dw $6225
+  dw $6225
+  dw $6237
+  dw $537f
+  dw $6249
+  dw $5389
+  dw $625c
+  dw MenuStateMachineRet
+  dw MenuStateMachineRet
+  dw MenuStateMachineRet
+  dw MenuStateMachineRet
+  dw $5389
+  dw MenuExitAsyncRestoreTileset
+  dw $537f
+  dw $576e
+; 2:6007
+
+SECTION "Part Screen State Machine (partial disassembly)", ROMX[$6070], BANK[$2]
+PartScreenTilemapTextSetup:
+  call PartScreenSetupTilemapTextStateMachine
+  ld a, [TempStateIndex]
+  cp $ff
+  ret nz
+  xor a
+  ld [$c735], a
+  ld b, $08
+  ld c, $0b
+  ld d, $00
+  ld e, $00
+  ld a, $0d
+  call JumpTable_309
+  call MenuExitAsyncRestoreTilesetCleanup
+  jp MenuIncrementStateSubIndex
+
+SECTION "Part Screen Setup Tilemaps State Machine", ROMX[$629d], BANK[$2]
+PartScreenSetupTilemapTextStateMachine:
+  ld a, [TempStateIndex]
+  ld hl, .table
+  ld b, $00
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  jp hl
+.table
+  dw PartScreenSetupTilemaps
+  dw PartScreenSetupText
+
+PartScreenSetupTilemaps: ; a2b3 (2:62b3)
+  ld b, $00
+  ld c, $0c
+  ld e, $72 ; Help Text at bottom
+  call JumpLoadTilemap
+  ld b, $03
+  ld c, $00
+  ld a, [$c727]
+  add $74
+  ld e, a ; Part Type
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $02
+  ld e, $cb
+  call JumpLoadTilemap
+  jp TempStateIncrementStateIndex
+
+PartScreenSetupText: ; a2d5 (2:62d5)
+  ld hl, $982d 
+  call $4cff ; Set page number
+  call PartScreenSetupLoadPartName
+  call PartScreenSetupLoadPartModel
+  call $663a
+  ld a, [$c6f4]
+  ld d, a
+  ld a, $02
+  ld b, $00
+  ld c, $06
+  call $4c81
+  ld a, $ff
+  ld [TempStateIndex], a
+  ret
+; 0xa2f7
+
+PartScreenSetupLoadPartName:
   ld a, $98
   ld [$c644], a
   ld a, $a8
@@ -14,16 +125,12 @@ LoadPartsScreenPartName:
   cp $2
   jp z, $6322
   jp $6328
-; 0xa316
   ld hl, $b520
   jp $632b
-; 0xa31c
   ld hl, $b5a0
   jp $632b
-; 0xa322
   ld hl, $b620
   jp $632b
-; 0xa328
   ld hl, $b6a0
   ld a, [$c725]
   dec a
@@ -51,7 +158,6 @@ LoadPartsScreenPartName:
   ld e, $73
   call JumpLoadTilemap
   jp $637d
-; 0xa354
   push hl
   ld a, b
   sla a
@@ -122,11 +228,11 @@ LoadPartsScreenPartName:
   ld c, $0
   ld e, $7b
   call JumpLoadTilemap
-  jp $5788
+  jp TempStateIncrementStateIndex
 ; 0xa3cb
 
-SECTION "Load Parts Screen, Part Model", ROMX[$65a3], BANK[$2]
-LoadPartsScreenPartModel:
+SECTION "Load Part Screen Setup - Load Model", ROMX[$65a3], BANK[$2]
+PartScreenSetupLoadPartModel:
   ld a, $98
   ld [$c644], a
   ld a, $a1
@@ -139,16 +245,12 @@ LoadPartsScreenPartModel:
   cp $2
   jp z, $65ce
   jp $65d4
-; 0xa5c2
   ld hl, $b520
   jp $65d7
-; 0xa5c8
   ld hl, $b5a0
   jp $65d7
-; 0xa5ce
   ld hl, $b620
   jp $65d7
-; 0xa5d4
   ld hl, $b6a0
   ld a, [$c725]
   dec a
@@ -176,7 +278,6 @@ LoadPartsScreenPartModel:
   ld e, $78
   call JumpLoadTilemap
   jp $661a
-; 0xa600
   ld a, [$c727]
   ld c, a
   ld a, [hl]
@@ -221,16 +322,12 @@ LoadPartsScreenPartModel:
   cp $2
   jp z, $6665
   jp $666b
-; 0xa659
   ld hl, $b520
   jp $666e
-; 0xa65f
   ld hl, $b5a0
   jp $666e
-; 0xa665
   ld hl, $b620
   jp $666e
-; 0xa66b
   ld hl, $b6a0
   ld a, [$c725]
   dec a
@@ -334,91 +431,3 @@ LoadPartsScreenPartModel:
   jp nz, $667f
   ret
 ; 0xa70e
-
-SECTION "Load Part Info", ROMX[$6753], BANK[$2]
-LoadPartInfo:
-  call $670e
-  ld a, [$c727]
-  ld c, a
-  ld a, [hl]
-  and $7f
-  ld b, $0
-  call JumpTable_294
-  ld hl, cBUF01
-  call JumpPadTextTo8
-  ld h, $0
-  ld l, a
-  ld bc, $9901
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
-  call JumpPutString
-  ret
-; 0xa778
-
-SECTION "Load Attribute", ROMX[$6789], BANK[$2]
-LoadAttribute:
-  ld a, $0
-  call $6778
-  ld hl, AttributesPtr
-  ld b, $0
-  ld a, [$c64e]
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $9941
-  call JumpPutString
-  ret
-; 0xa7a6
-
-SECTION "Load Part Description", ROM0[$3926]
-LoadPartDescription:
-  push af
-  ld a, BANK(PartDescriptionsPtr)
-  ld [$2000], a
-  pop af
-  ld hl, PartDescriptionsPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $9a01
-  call PutString
-  ret
-; 0x3942
-
-SECTION "Load Skill", ROMX[$67a6], BANK[$2]
-LoadSkill:
-  ld a, [$c727]
-  cp $3
-  ret z
-  ld a, $3
-  call $6778
-  ld hl, $67d1
-  ld b, $0
-  ld a, [$c64e]
-  ld c, a
-  add hl, bc
-  ld a, [hl]
-  ld hl, SkillsPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $99c1
-  call JumpPutString
-  ret
-; 0xa7d1
