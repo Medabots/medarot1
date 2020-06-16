@@ -24,6 +24,6 @@ Martyr
 Love
 Change
 Sneak
-Transfrm
+Transform
 Volatile
 None

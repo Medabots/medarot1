@@ -2,16 +2,16 @@
 Simple and easy to use
 High in attack power
 Blast deals extra damage
-Higher damage if target can't defend
-Damages "Strike" and "Berserk" parts
-Damages "Shoot" and "Snipe" parts
-Lowers success rate 
+Higher damage if target can't |defend
+Damages "Strike" and "Berserk" |parts
+Damages "Shoot" and "Snipe" |parts
+Lowers success rate
 Stops the target's movement
 Slows down target
-Damages target while it's moving
+Damages target while it's |moving
 Destroys traps
 Heals "Bug" and "Virus" ailments
-Heals "Thunder" and "Ice" ailments
+Heals "Thunder" and "Ice" |ailments
 Heals "Hold" and "Wave" ailments
 Heals "Melt" and "Fire" ailments
 Heals all status ailments

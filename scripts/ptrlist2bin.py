@@ -17,6 +17,8 @@ if __name__ == '__main__':
 		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
 	])
 
+	char_table['|'] = 0x4F
+
 	with open(input_file, 'r', encoding="utf-8") as i, open(output_file, 'w') as o:
 		term, = (int(x) if x.isdigit() else literal_eval(x) for x in i.readline().strip().split("|"))
 		char_table['\n'] = term
