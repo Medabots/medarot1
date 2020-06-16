@@ -1,8 +1,8 @@
 [OVERLAY]
 │                  │
-│ Wins/Rate      % │
+│ \x9b\x9c\x9d\x9f\xa0          \x90 │
 │                  │
-│ Parts       \x7a\x6d\x6f\x6b │
+│ \x91\x92\x93\x94        \x7a\x6d\x6f\x6b │
 │                  │
-│ Play Time  \x6b\x6b\x7d\x6b\x6b │
+│ \xa4\xa5\xa6\xa7\xa9\xaa     \x6b\x6b\x7d\x6b\x6b │
 └──────────────────┘

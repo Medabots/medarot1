@@ -37,7 +37,8 @@ InitializeMainMenu: ; 8082 (2:4082)
   srl a
   ld c, a
   ld e, $60
-  call JumpLoadTilemap
+  ld a, $15 ; LoadMainMenuTilesetAndLoadTilemap
+  rst $08
   jp MenuIncrementStateSubIndex
 
 AdditionalSetupMainMenu: ; 80a4 (2:40a4)

@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌──────
 │      
-│ Info 
+│ \x80\x81\x82  
 │      
-│ Items
+│ \x83\x84\x85\x86 
 │      
-│ Save 
+│ \x87\x88\x89  
 │      
-│ Close
+│ \x8A\x8B\x8C  
 └──────

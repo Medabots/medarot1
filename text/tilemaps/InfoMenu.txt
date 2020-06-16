@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌───────
 │       
-│ Medart
+│ \x91\x92\x93\x94\x95 
 │       
-│ Medals
+│ \x8D\x8E\x8F\x90  
 │       
-│ Parts 
+│ \x96\x97\x98\x99   
 │       
-│ Close 
+│ \x8A\x8B\x8C   
 └───────
