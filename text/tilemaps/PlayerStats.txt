@@ -1,6 +1,6 @@
 [OVERLAY]
 │                  │
-│ \x9b\x9c\x9d\x9f\xa0       \x90    │
+│ \x9b\x9c\x9d\x9f\xa0          \x90 │
 │                  │
 │ \x91\x92\x93\x94        \x7a\x6d\x6f\x6b │
 │                  │

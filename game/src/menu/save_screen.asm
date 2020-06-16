@@ -145,7 +145,7 @@ SaveScreenDrawWinRate: ; 9223 (2:5223)
   ld bc, $a
   call JumpTable_285
   ld a, [$c64e]
-  ld hl, $98cb
+  ld hl, $98cd
   call JumpTable_2fa
   ld h, $00
   ld a, [$c641]
