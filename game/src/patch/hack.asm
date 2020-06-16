@@ -40,6 +40,7 @@ HackPredefTable:
   dw LoadMainMenuTilesetAndLoadTilemap ; 15
   dw LoadMainMenuTileset ; 16
   dw LoadMainMenuTilesetWithGraphics ; 17
+  dw LoadSaveScreenTextAndLoadTilemap ; 18
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -226,6 +227,20 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   pop de
   pop hl
   ret
+
+LoadSaveScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartSaveScreenText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
 
 INCLUDE "game/src/patch/include/patch_text.asm"
 

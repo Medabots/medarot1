@@ -16,3 +16,6 @@ PatchTilesetEndMenuText::
 PatchTilesetStartMainMenuGraphics::
   INCBIN "build/tilesets/patch/MainMenuGraphics.malias"
 PatchTilesetEndMainMenuGraphics::
+PatchTilesetStartSaveScreenText::
+  INCBIN "build/tilesets/patch/SaveScreen.malias"
+PatchTilesetEndSaveScreenText::

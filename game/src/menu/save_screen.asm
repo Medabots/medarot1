@@ -1,6 +1,7 @@
 ; Save Screen state machine
 
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 INCLUDE "game/src/menu/include/variables.asm"
 
 SECTION "Save Screen State Machine", ROMX[$5037], BANK[$2]
@@ -81,8 +82,7 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld b, $00
   ld c, $00
   ld e, $24
-  ;call JumpLoadTilemap
-  ld a, $10
+  ld a, $18 ; LoadSaveScreenTextAndLoadTilemap
   rst $08
   jp TempStateIncrementStateIndex
 .draw_bottom_half
@@ -93,8 +93,8 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   jp TempStateIncrementStateIndex
 .draw_strings
   ld hl, cNAME
-  ld bc, $9847
-  call JumpPutString
+  psbc $9846, $d0
+  call VWFPutStringTo8
   ld a, [$c8f0]
   ld h, a
   ld a, [$c8f1]
