@@ -111,8 +111,47 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld a, [$c8f5]
   ld hl, $994f
   call JumpTable_2fa
-  call $5223
+  call SaveScreenDrawWinRate
   call $526f
   ld a, $ff
   ld [TempStateIndex], a
   ret
+SaveScreenDrawWinRate: ; 9223 (2:5223)
+  ld a, [$c8f0]
+  ld b, a
+  ld a, [$c8f1]
+  ld c, a
+  ld hl, $0
+  ld d, $64
+.asm_9230
+  add hl, bc
+  dec d
+  jr nz, .asm_9230
+  push hl
+  ld a, [$c8f2]
+  ld h, a
+  ld a, [$c8f3]
+  ld l, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  call JumpTable_285
+  ld h, $00
+  ld a, [$c64e]
+  ld l, a
+  ld bc, $a
+  call JumpTable_285
+  ld a, [$c64e]
+  ld hl, $98cb
+  call JumpTable_2fa
+  ld h, $00
+  ld a, [$c641]
+  ld l, a
+  ld bc, $1
+  call JumpTable_285
+  ld a, [$c64e]
+  ld hl, $98ce
+  call JumpTable_2fa
+  ret
+; 0x926f
