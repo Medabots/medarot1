@@ -313,14 +313,13 @@ MedalScreenLoadMedarotName: ; 9a4a (2:5a4a)
   ld hl, $2
   add hl, de
   push hl
-  ld bc, $9a0b
-  call JumpPadTextTo8
-  ld h, $00
-  ld l, a
-  add hl, bc
-  ld b, h
-  ld c, l
+  call VWFPadTextTo8
   pop hl
-  call JumpPutString
+  psbc $9a0b, $e0
+  call VWFPutStringTo8
   ret
+.end
+REPT $5a93 - .end
+  nop
+ENDR
 ; 0x9a93
