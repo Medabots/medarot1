@@ -202,7 +202,8 @@ MedalScreenSetupDrawInfoTilemaps: ; 9b7c (2:5b7c)
   ld b, $01
   ld c, $00
   ld e, $6b
-  call JumpLoadTilemap
+  ld a, $19 ; LoadMedalScreenTextAndLoadTilemap
+  rst $08
   ld b, $0a
   ld c, $01
   ld e, $23

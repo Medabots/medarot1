@@ -41,6 +41,7 @@ HackPredefTable:
   dw LoadMainMenuTileset ; 16
   dw LoadMainMenuTilesetWithGraphics ; 17
   dw LoadSaveScreenTextAndLoadTilemap ; 18
+  dw LoadMedalScreenTextAndLoadTilemap ; 19
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -234,6 +235,20 @@ LoadSaveScreenTextAndLoadTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartSaveScreenText
+  ld a, [de]
+  inc de
+  call LoadTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadMedalScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartMedalScreenText
   ld a, [de]
   inc de
   call LoadTiles

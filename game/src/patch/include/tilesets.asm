@@ -19,3 +19,6 @@ PatchTilesetEndMainMenuGraphics::
 PatchTilesetStartSaveScreenText::
   INCBIN "build/tilesets/patch/SaveScreen.malias"
 PatchTilesetEndSaveScreenText::
+PatchTilesetStartMedalScreenText::
+  INCBIN "build/tilesets/patch/MedalScreen.malias"
+PatchTilesetEndMedalScreenText::
