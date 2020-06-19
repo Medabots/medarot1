@@ -253,14 +253,14 @@ MedalScreenSetupLoadMedalText:
   ld b, a
   ld a, [$c645]
   ld c, a
+  push bc
   ld hl, cBUF01
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
   ld a, $07 ; Max tile length of $7
   call VWFPutStringAutoNarrow
-  ld a, [$c644]
-  ld h, a
-  ld a, [$c645]
-  ld l, a
-  ld bc, $0730 ; Max tile length of $7, each line is $30 apart
+  pop bc
+  ld hl, $0730 ; Max tile length of $7, each line is $30 apart
   add hl, bc
   ld a, h
   ld [$c644], a
