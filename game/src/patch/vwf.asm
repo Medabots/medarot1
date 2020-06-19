@@ -589,7 +589,7 @@ VWFPadTextInit::
   add a
   add a
   ld [VWFDrawingAreaLengthInPixels], a
-  xor a
+  ld a, [VWFInitialPaddingOffset]
   ld [VWFNextWordLength], a
   ret
 
@@ -624,6 +624,8 @@ VWFCalculateCentredTextOffsets::
   ld [VWFInitialLetterOffset], a
   ld a, e
   ld [VWFInitialTileOffset], a
+  xor a
+  ld [VWFInitialPaddingOffset], a
   ret
 
 .limitsExceeded
@@ -636,6 +638,7 @@ VWFCalculateCentredTextOffsets::
   xor a
   ld [VWFInitialLetterOffset], a
   ld [VWFInitialTileOffset], a
+  ld [VWFInitialPaddingOffset], a
   ret
 
 ; Identical to VWFCalculateCentredTextOffsets without calling rra
@@ -653,8 +656,20 @@ VWFCalculateAutoNarrow::
   ld d, a
   ld a, [VWFDrawingAreaLengthInPixels]
   sub d
-  jr c, VWFCalculateCentredTextOffsets.limitsExceeded
-  jr VWFCalculateCentredTextOffsets.onlyOnePixelOver
+  jr c, .limitsExceeded
+  jr .onlyOnePixelOver
+
+.limitsExceeded
+  inc a
+  jr z, .onlyOnePixelOver
+  ld a, 1
+  ld [VWFCurrentFont], a
+
+.onlyOnePixelOver
+  ld a, [VWFInitialPaddingOffset]
+  ld d, a
+  ld e, 0
+  jr VWFCalculateCentredTextOffsets.loop
 
 VWFPutStringInitFullTileLocation::
   ld a, d
