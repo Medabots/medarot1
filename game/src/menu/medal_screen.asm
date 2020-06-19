@@ -240,16 +240,13 @@ MedalScreenSetupLoadMedalText:
   psa $9883
   ld [$c645], a
   ld b, $5
-  ld d, h
-  ld e, l
 .asm_9890
-  ld a, [de]
+  ld a, [hl]
   or a
   ret z
   push bc
-  push de
-  ld hl, $0001
-  add hl, de
+  push hl
+  inc hl
   ld a, [hl]
   call JumpLoadMedalList
   ld a, [$c644]
@@ -257,24 +254,22 @@ MedalScreenSetupLoadMedalText:
   ld a, [$c645]
   ld c, a
   ld hl, cBUF01
-  ld a, $07
+  ld a, $07 ; Max tile length of $7
   call VWFPutStringAutoNarrow
   ld a, [$c644]
   ld h, a
   ld a, [$c645]
   ld l, a
-  ld bc, $0730
+  ld bc, $0730 ; Max tile length of $7, each line is $30 apart
   add hl, bc
   ld a, h
   ld [$c644], a
   ld a, l
   ld [$c645], a
-  pop de
+  pop hl
   pop bc
-  ld hl, $0020
+  ld de, $0020
   add hl, de
-  ld d, h
-  ld e, l
   dec b
   jr nz, .asm_9890 ; 0x98ca $c4
   ret
