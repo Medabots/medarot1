@@ -282,3 +282,44 @@ REPT $58cd - .LoadMedalScreenEnd
   nop
 ENDR
 ; 0x98cd
+
+SECTION "Medal Screen - Load Medarot Name", ROMX[$5a4a], BANK[$2]
+MedalScreenLoadMedarotName: ; 9a4a (2:5a4a)
+  ld a, $01
+  ld [$c600], a
+  ld a, $11
+  ld [$c0c0], a
+  ld a, $78
+  ld [$c0c2], a
+  ld a, $78
+  ld [$c0c3], a
+  ld hl, $13
+  add hl, de
+  ld a, [hl]
+  dec a
+  ld hl, $77d9
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  sla a
+  add $d0
+  ld [$c0c4], a
+  ld hl, $99eb
+  ld b, $08
+  ld c, $02
+  call $7b9b ; OAM, probably
+  ld hl, $2
+  add hl, de
+  push hl
+  ld bc, $9a0b
+  call JumpPadTextTo8
+  ld h, $00
+  ld l, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  pop hl
+  call JumpPutString
+  ret
+; 0x9a93
