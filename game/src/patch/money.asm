@@ -1,5 +1,5 @@
 SECTION "Map Price With Yen Symbol", ROM0[$A7]
-MapPriceWithYenSymbol::
+MapMoneyWithYenSymbol::
   dec c
   di
   call WaitLCDController

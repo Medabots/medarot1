@@ -20,6 +20,6 @@ DrawPlayerMoneyInMenu:: ; 85b9 (2:45b9)
   ld h, a
   ld a, [$c93b]
   ld l, a
-  call MapPriceWithYenSymbol
+  call MapMoneyWithYenSymbol
   ret
 ; 0x85e2

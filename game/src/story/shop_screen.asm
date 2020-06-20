@@ -389,6 +389,6 @@ LoadMoneyTilemapOverlayInShops: ; d71c (3:571c)
   or a
   ret z
 .asm_d73d
-  call MapPriceWithYenSymbol
+  call MapMoneyWithYenSymbol
   ret
 ; 0xd741
