@@ -1,6 +1,24 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
+SECTION "Medarot Equip Screen - Setup Tilemaps", ROMX[$6aca], BANK[$2]
+Func_aaca: ; aaca (2:6aca)
+  ld b, $0a
+  ld c, $00
+  ld e, $97
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $08
+  ld e, $84
+  call JumpLoadTilemap
+  call LoadMedarotPartSelectSetupPartScreen
+  call JumpTable_366
+  call JumpTable_369
+  call $761e
+  xor a
+  ld [$c740], a
+  jp MenuIncrementStateSubIndex
+
 SECTION "Medarot Equip Screen - Load Strings", ROMX[$6e92], BANK[$2]
 LoadMedarotPartSelectSetupPartScreen::
   call LoadMedarotPartSelectName
