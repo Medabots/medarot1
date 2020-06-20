@@ -26,7 +26,7 @@ Repairs damaged parts
 Revives destroyed parts
 Strong against flying Medarots
 
-Strong against aquatic Medarots
+Strong against aquatic |Medarots
 
 Increases accuracy
 Increases evasion

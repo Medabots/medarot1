@@ -1,7 +1,7 @@
 [OVERLAY]
 ┌──────────────────┐
 │                  │
-│Press select to   │
+│\x9A\x9B\x9C\x9D\x9E\x9F\xA0\xA1\xA2\xA3\xA4\xA5\xA6\xA7\xA8   │
 │                  │
-│rearrange.        │
+│                  │
 └──────────────────┘

@@ -176,7 +176,7 @@ SECTION "Portraits 64-112", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
 
-SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
+SECTION "VWF Drawing Functions", ROMX[$6800], BANK[$24]
 VWFDrawLetterTable::
   ; This determines the width of each character (excluding the 1px between characters).
   ; The address of this table must be a multiple of $100.
@@ -221,10 +221,10 @@ VWFDrawNarrowLetterTable::
   ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
 
 VWFFont::
-  INCBIN "build/tilesets/patch/Font.vwffont"
+  INCBIN "build/tilesets/patch/Font.1bpp"
 
 VWFNarrowFont::
-  INCBIN "build/tilesets/patch/NarrowFont.vwffont"
+  INCBIN "build/tilesets/patch/NarrowFont.1bpp"
 
 VWFMessageBoxInputHandler::
   ; Advance on button press.

@@ -83,8 +83,9 @@ PartScreenSetupTilemaps: ; a2b3 (2:62b3)
   ld b, $00
   ld c, $0c
   ld e, $72 ; Help Text at bottom
-  call JumpLoadTilemap
-  ld b, $03
+  ld a, $1a ; LoadPartsScreenTextAndLoadTilemap
+  rst $08
+  ld b, $01 ; x position, originally 3
   ld c, $00
   ld a, [$c727]
   add $74
@@ -232,7 +233,8 @@ PartInfoScreenTilemapLoadStatBox:
   ld b, $0a
   ld c, $0
   ld e, $7c
-  call JumpLoadTilemap
+  ld a, $1c ; LoadPartsInfoTextAndLoadTilemap
+  rst $08
   jp TempStateIncrementStateIndex
 ; 0xa3cb
 
