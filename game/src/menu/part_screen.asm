@@ -214,7 +214,7 @@ PartInfoScreenStateMachine:
   ld l, a
   jp hl
 .table
-  dw PartInfoScreenTilemapLoadInitialTilemap
+  dw PartInfoScreenTilemapLoadSmallBox
   dw $63cb
   dw $63d7
   dw $63f6
@@ -222,10 +222,16 @@ PartInfoScreenStateMachine:
   dw $6440
   dw $6453
   dw $645f
-PartInfoScreenTilemapLoadInitialTilemap:
+PartInfoScreenTilemapLoadSmallBox:
   ld b, $0
   ld c, $0
   ld e, $7b
+  call JumpLoadTilemap
+  jp TempStateIncrementStateIndex
+PartInfoScreenTilemapLoadStatBox:
+  ld b, $0a
+  ld c, $0
+  ld e, $7c
   call JumpLoadTilemap
   jp TempStateIncrementStateIndex
 ; 0xa3cb
