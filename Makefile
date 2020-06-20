@@ -86,7 +86,6 @@ TILESETS := $(notdir $(basename $(wildcard $(TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE
 UNCOMPRESSED_TILESETS := $(notdir $(basename $(wildcard $(TILESET_UNCOMPRESSED_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
 OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(INT_TYPE), $(notdir $(basename $(wildcard $(SRC)/$(MODULE)/*.$(SOURCE_TYPE)))))))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE)) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
-VWF_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE))))
 PATCH_TEXT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(VWF_TSET_SRC_TYPE).$(RAW_TSET_SRC_TYPE)))) # text-only -> 1bpp to save space
 PATCH_TILESETS := $(filter-out $(PATCH_TEXT_TILESETS), $(notdir $(basename $(wildcard $(PATCH_TILESET_TEXT)/*.$(RAW_TSET_SRC_TYPE)))))
 PATCH_PORTRAIT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_PORTRAITS_TEXT)/*.$(RAW_TSET_SRC_TYPE))))
@@ -102,7 +101,6 @@ TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
 UNCOMPRESSED_TILESET_FILES := $(foreach FILE,$(UNCOMPRESSED_TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_SRC_TYPE))
 LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
 PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
-VWF_TILESET_FILES := $(foreach FILE,$(VWF_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(VWF_TSET_TYPE))
 PATCH_TEXT_TILESET_FILES := $(foreach FILE,$(PATCH_TEXT_TILESETS),$(PATCH_TILESET_OUT)/$(FILE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
 PATCH_PORTRAIT_TILESET_FILES := $(foreach FILE,$(PATCH_PORTRAIT_TILESETS),$(PATCH_PORTRAITS_OUT)/$(FILE).$(TSET_SRC_TYPE))
@@ -116,7 +114,7 @@ story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILE
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
 patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
 patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias $(PATCH_BIN_FILES) $(PATCH_TEXT_TILESET_FILES)
-patch_vwf_ADDITIONAL := $(VWF_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
+patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
 
 .PHONY: all clean default $(VERSIONS) diag
 default: kabuto
