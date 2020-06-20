@@ -83,8 +83,9 @@ PartScreenSetupTilemaps: ; a2b3 (2:62b3)
   ld b, $00
   ld c, $0c
   ld e, $72 ; Help Text at bottom
-  call JumpLoadTilemap
-  ld b, $03
+  ld a, $1a ; LoadPartsScreenTextAndLoadTilemap
+  rst $08
+  ld b, $01 ; x position, originally 3
   ld c, $00
   ld a, [$c727]
   add $74
@@ -200,8 +201,10 @@ PartScreenSetupLoadPartName:
   cp $4
   jr nz, .asm_a33c ; 0xa39a $a0
   ret
-  ld a, [$c750]
-  ld hl, $63af
+
+PartInfoScreenStateMachine:
+  ld a, [TempStateIndex]
+  ld hl, .table
   ld b, $0
   ld c, a
   sla c
@@ -211,24 +214,27 @@ PartScreenSetupLoadPartName:
   ld h, [hl]
   ld l, a
   jp hl
-  cp a
-  ld h, e
-  bit 4, e
-  rst $10
-  ld h, e
-  or $63
-  dec b
-  ld h, h
-  ld b, b
-  ld h, h
-  ld d, e
-  ld h, h
-  ld e, a
-  ld h, h
+.table
+  dw PartInfoScreenTilemapLoadSmallBox
+  dw $63cb
+  dw $63d7
+  dw $63f6
+  dw $6405
+  dw $6440
+  dw $6453
+  dw $645f
+PartInfoScreenTilemapLoadSmallBox:
   ld b, $0
   ld c, $0
   ld e, $7b
   call JumpLoadTilemap
+  jp TempStateIncrementStateIndex
+PartInfoScreenTilemapLoadStatBox:
+  ld b, $0a
+  ld c, $0
+  ld e, $7c
+  ld a, $1c ; LoadPartsInfoTextAndLoadTilemap
+  rst $08
   jp TempStateIncrementStateIndex
 ; 0xa3cb
 

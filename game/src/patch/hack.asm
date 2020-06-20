@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "User Functions (Hack)", ROMX[$4000], BANK[$24]
 HackPredef::
   push af
@@ -41,6 +43,10 @@ HackPredefTable:
   dw LoadMainMenuTileset ; 16
   dw LoadMainMenuTilesetWithGraphics ; 17
   dw LoadSaveScreenTextAndLoadTilemap ; 18
+  dw LoadMedalScreenTextAndLoadTilemap ; 19
+  dw LoadPartsScreenTextAndLoadTilemap ; 1A
+  dw LoadMedarotScreenFontAndLoadTilemap ; 1B
+  dw LoadPartsInfoTextAndLoadTilemap ; 1C
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -139,15 +145,45 @@ AddHLShiftBC5:
 ; Tileset methods
 INCLUDE "game/src/patch/include/tilesets.asm"
 
+Load1BPPTiles:
+; hl is the vram address to write to.
+; de is the address to copy from.
+; b is the number of tiles to copy.
+  ld c, 8
+.loop
+  di
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  ld a, [de]
+  ld [hli], a
+  ld [hli], a
+
+  ei
+
+  inc de
+  dec c
+  jr nz, .loop
+  dec b
+  jr nz, Load1BPPTiles
+
+  ret
+
+Load1BPPTileset: MACRO
+  ld hl, \1
+  ld de, \2
+  ld b, (\3 - \2) / $8
+  call Load1BPPTiles
+  ENDM
+
 LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartInventoryText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartInventoryText, PatchTilesetEndInventoryText
   pop bc
   pop de
   pop hl
@@ -157,11 +193,7 @@ LoadNormalMenuTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMapText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartMapText, PatchTilesetEndMapText
   pop bc
   pop de
   pop hl
@@ -171,11 +203,7 @@ LoadShopTilesetAndBuySellTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartShopText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartShopText, PatchTilesetEndShopText
   pop bc
   pop de
   pop hl
@@ -185,11 +213,7 @@ LoadMainMenuTilesetAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   pop bc
   pop de
   pop hl
@@ -199,11 +223,7 @@ LoadMainMenuTileset:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   pop bc
   pop de
   pop hl
@@ -213,11 +233,7 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles  
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   ld hl, $8F00
   ld de, PatchTilesetStartMainMenuGraphics
   ld a, [de]
@@ -232,11 +248,48 @@ LoadSaveScreenTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartSaveScreenText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  Load1BPPTileset $8800, PatchTilesetStartSaveScreenText, PatchTilesetEndSaveScreenText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadMedalScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartMedalScreenText, PatchTilesetEndMedalScreenText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadPartsScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartPartsListText, PatchTilesetEndPartsListText
+  Load1BPPTileset $9110, PatchTilesetStartPartsInfoText, PatchTilesetEndPartsInfoText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadMedarotScreenFontAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartMedarotScreenText, PatchTilesetEndMedarotScreenText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadPartsInfoTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $9110, PatchTilesetStartPartsInfoText, PatchTilesetEndPartsInfoText
   pop bc
   pop de
   pop hl

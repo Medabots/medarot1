@@ -1,6 +1,7 @@
 ; Medarot Screen state machine
 
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 INCLUDE "game/src/menu/include/variables.asm"
 
 SECTION "Medarot Screen State Machine", ROMX[$683b], BANK[$2]
@@ -68,12 +69,17 @@ MedarotScreenSetupLoadTilesets: ; a90b (2:690b)
   ld a, $20
   ld [MenuStateSubIndex], a
   ret
+.end
+REPT $692e - .end
+  nop
+ENDR
 
 MedarotScreenSetupLoadTilemaps: ; a92e (2:692e)
   ld b, $00
   ld c, $00
   ld e, $03 ; MedarotSelect
-  call JumpLoadTilemap
+  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  rst $08
   ld b, $00
   ld c, $0c
   ld e, $22 ; MedarotSelectHelpText
@@ -143,15 +149,15 @@ MedarotScreenSetupWriteName: ; b98a (2:798a)
   ld hl, $2
   add hl, de
   push hl
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $00
   ld l, a
-  ld bc, $994b
+  psbc $994b, $be
   add hl, bc
   ld b, h
   ld c, l
   pop hl
-  call JumpPutString
+  call VWFPutStringTo8
 .asm_b9a7
   xor a
   ld [MedarotSelectStateIndex], a

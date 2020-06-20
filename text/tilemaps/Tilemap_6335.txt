@@ -1,8 +1,8 @@
 [OVERLAY]
-Armor 
+\x11\x12\x13\x14  
      
-Hit  
+\x43\x44   
      
-Power
+\x1B\x1C\x1D\x1E 
      
-Uses 
+\x34\x35\x36 
