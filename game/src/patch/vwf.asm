@@ -176,7 +176,7 @@ SECTION "Portraits 64-112", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
 
-SECTION "VWF Drawing Functions", ROMX[$6000], BANK[$24]
+SECTION "VWF Drawing Functions", ROMX[$6800], BANK[$24]
 VWFDrawLetterTable::
   ; This determines the width of each character (excluding the 1px between characters).
   ; The address of this table must be a multiple of $100.

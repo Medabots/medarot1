@@ -1,24 +1,36 @@
-; Patch specific (non-vwf) tilesets, included as part of hack.asm
+; Patch specific tilesets, included as part of hack.asm
 
 PatchTilesetStart::
 PatchTilesetStartInventoryText::
-  INCBIN "build/tilesets/patch/Inventory.malias"
+  INCBIN "build/tilesets/patch/Inventory.1bpp"
 PatchTilesetEndInventoryText::
 PatchTilesetStartMapText::
-  INCBIN "build/tilesets/MainDialog.malias" ; Just cheat and use main dialog
+  INCBIN "build/tilesets/patch/MainDialog.1bpp" ; Just cheat and use main dialog
 PatchTilesetEndMapText::
 PatchTilesetStartShopText::
-  INCBIN "build/tilesets/patch/ShopText.malias"
+  INCBIN "build/tilesets/patch/ShopText.1bpp"
 PatchTilesetEndShopText::
 PatchTilesetStartMainMenuText::
-  INCBIN "build/tilesets/patch/MainMenu.malias"
-PatchTilesetEndMenuText::
+  INCBIN "build/tilesets/patch/MainMenu.1bpp"
+PatchTilesetEndMainMenuText::
 PatchTilesetStartMainMenuGraphics::
   INCBIN "build/tilesets/patch/MainMenuGraphics.malias"
 PatchTilesetEndMainMenuGraphics::
 PatchTilesetStartSaveScreenText::
-  INCBIN "build/tilesets/patch/SaveScreen.malias"
+  INCBIN "build/tilesets/patch/SaveScreen.1bpp"
 PatchTilesetEndSaveScreenText::
 PatchTilesetStartMedalScreenText::
-  INCBIN "build/tilesets/patch/MedalScreen.malias"
+  INCBIN "build/tilesets/patch/MedalScreen.1bpp"
 PatchTilesetEndMedalScreenText::
+PatchTilesetStartPartsListText::
+  INCBIN "build/tilesets/patch/PartsList.1bpp"
+PatchTilesetEndPartsListText::
+PatchTilesetStartPartsInfoText::
+  INCBIN "build/tilesets/patch/PartsInfo.1bpp"
+PatchTilesetEndPartsInfoText::
+PatchTilesetStartMedarotScreenText::
+  INCBIN "build/tilesets/patch/MedarotScreen.1bpp"
+PatchTilesetEndMedarotScreenText::
+PatchTilesetStartRobottlesText::
+  INCBIN "build/tilesets/patch/Robottles.1bpp"
+PatchTilesetEndRobottlesText::

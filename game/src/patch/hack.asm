@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "User Functions (Hack)", ROMX[$4000], BANK[$24]
 HackPredef::
   push af
@@ -42,6 +44,7 @@ HackPredefTable:
   dw LoadMainMenuTilesetWithGraphics ; 17
   dw LoadSaveScreenTextAndLoadTilemap ; 18
   dw LoadMedalScreenTextAndLoadTilemap ; 19
+  dw LoadPartsScreenTextAndLoadTilemap ; 1A
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -140,15 +143,41 @@ AddHLShiftBC5:
 ; Tileset methods
 INCLUDE "game/src/patch/include/tilesets.asm"
 
+Load1BPPTiles:
+; hl is the vram address to write to.
+; de is the address to copy from.
+; b is the number of tiles to copy.
+  ld c, 8
+.loop
+  di
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  ld a, [de]
+  ld [hli], a
+  ld [hli], a
+
+  ei
+
+  inc de
+  dec c
+  jr nz, .loop
+  dec b
+  jr nz, Load1BPPTiles
+
+  ret
+
 LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartInventoryText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndInventoryText - PatchTilesetStartInventoryText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl
@@ -160,9 +189,8 @@ LoadNormalMenuTextAndLoadTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMapText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndMapText - PatchTilesetStartMapText) / $8
+  call Load1BPPTiles  
   pop bc
   pop de
   pop hl
@@ -174,9 +202,8 @@ LoadShopTilesetAndBuySellTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartShopText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndShopText - PatchTilesetStartShopText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl
@@ -188,9 +215,8 @@ LoadMainMenuTilesetAndLoadTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl
@@ -202,9 +228,8 @@ LoadMainMenuTileset:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl
@@ -216,9 +241,8 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMainMenuText
-  ld a, [de]
-  inc de
-  call LoadTiles  
+  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
+  call Load1BPPTiles
   ld hl, $8F00
   ld de, PatchTilesetStartMainMenuGraphics
   ld a, [de]
@@ -235,9 +259,8 @@ LoadSaveScreenTextAndLoadTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartSaveScreenText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndSaveScreenText - PatchTilesetStartSaveScreenText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl
@@ -249,9 +272,25 @@ LoadMedalScreenTextAndLoadTilemap:
   push bc
   ld hl, $8800
   ld de, PatchTilesetStartMedalScreenText
-  ld a, [de]
-  inc de
-  call LoadTiles
+  ld b, (PatchTilesetEndMedalScreenText - PatchTilesetStartMedalScreenText) / $8
+  call Load1BPPTiles
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadPartsScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  ld hl, $8800
+  ld de, PatchTilesetStartPartsListText
+  ld b, (PatchTilesetEndPartsListText - PatchTilesetStartPartsListText) / $8
+  call Load1BPPTiles
+  ld hl, $9110
+  ld de, PatchTilesetStartPartsInfoText
+  ld b, (PatchTilesetEndPartsInfoText - PatchTilesetStartPartsInfoText) / $8
+  call Load1BPPTiles
   pop bc
   pop de
   pop hl

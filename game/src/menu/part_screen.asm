@@ -83,7 +83,8 @@ PartScreenSetupTilemaps: ; a2b3 (2:62b3)
   ld b, $00
   ld c, $0c
   ld e, $72 ; Help Text at bottom
-  call JumpLoadTilemap
+  ld a, $1a ; LoadPartsScreenTextAndLoadTilemap
+  rst $08
   ld b, $03
   ld c, $00
   ld a, [$c727]
@@ -114,7 +115,7 @@ PartScreenSetupText: ; a2d5 (2:62d5)
 ; 0xa2f7
 
 PartScreenSetupLoadPartName:
-  ld a, $be
+  ld a, $bc
   ld [$c644], a
   psa $98a8
   ld [$c645], a
