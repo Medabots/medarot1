@@ -1,7 +1,7 @@
 INCLUDE "game/src/common/constants.asm"
 
 SECTION "Medarot Equip Screen - Setup Tilemaps", ROMX[$6aca], BANK[$2]
-Func_aaca: ; aaca (2:6aca)
+MedarotPartSelectSetupTilemaps: ; aaca (2:6aca)
   ld b, $0a
   ld c, $00
   ld e, $97
