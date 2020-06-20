@@ -233,7 +233,8 @@ PartInfoScreenTilemapLoadStatBox:
   ld b, $0a
   ld c, $0
   ld e, $7c
-  call JumpLoadTilemap
+  ld a, $1c ; LoadPartsInfoTextAndLoadTilemap
+  rst $08
   jp TempStateIncrementStateIndex
 ; 0xa3cb
 

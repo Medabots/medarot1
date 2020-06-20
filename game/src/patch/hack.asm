@@ -45,6 +45,8 @@ HackPredefTable:
   dw LoadSaveScreenTextAndLoadTilemap ; 18
   dw LoadMedalScreenTextAndLoadTilemap ; 19
   dw LoadPartsScreenTextAndLoadTilemap ; 1A
+  dw LoadMedarotScreenFontAndLoadTilemap ; 1B
+  dw LoadPartsInfoTextAndLoadTilemap ; 1C
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -170,14 +172,18 @@ Load1BPPTiles:
 
   ret
 
+Load1BPPTileset: MACRO
+  ld hl, \1
+  ld de, \2
+  ld b, (\3 - \2) / $8
+  call Load1BPPTiles
+  ENDM
+
 LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartInventoryText
-  ld b, (PatchTilesetEndInventoryText - PatchTilesetStartInventoryText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartInventoryText, PatchTilesetEndInventoryText
   pop bc
   pop de
   pop hl
@@ -187,10 +193,7 @@ LoadNormalMenuTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMapText
-  ld b, (PatchTilesetEndMapText - PatchTilesetStartMapText) / $8
-  call Load1BPPTiles  
+  Load1BPPTileset $8800, PatchTilesetStartMapText, PatchTilesetEndMapText
   pop bc
   pop de
   pop hl
@@ -200,10 +203,7 @@ LoadShopTilesetAndBuySellTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartShopText
-  ld b, (PatchTilesetEndShopText - PatchTilesetStartShopText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartShopText, PatchTilesetEndShopText
   pop bc
   pop de
   pop hl
@@ -213,10 +213,7 @@ LoadMainMenuTilesetAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   pop bc
   pop de
   pop hl
@@ -226,10 +223,7 @@ LoadMainMenuTileset:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   pop bc
   pop de
   pop hl
@@ -239,10 +233,7 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMainMenuText
-  ld b, (PatchTilesetEndMainMenuText - PatchTilesetStartMainMenuText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   ld hl, $8F00
   ld de, PatchTilesetStartMainMenuGraphics
   ld a, [de]
@@ -257,10 +248,7 @@ LoadSaveScreenTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartSaveScreenText
-  ld b, (PatchTilesetEndSaveScreenText - PatchTilesetStartSaveScreenText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartSaveScreenText, PatchTilesetEndSaveScreenText
   pop bc
   pop de
   pop hl
@@ -270,10 +258,7 @@ LoadMedalScreenTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartMedalScreenText
-  ld b, (PatchTilesetEndMedalScreenText - PatchTilesetStartMedalScreenText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartMedalScreenText, PatchTilesetEndMedalScreenText
   pop bc
   pop de
   pop hl
@@ -283,14 +268,28 @@ LoadPartsScreenTextAndLoadTilemap:
   push hl
   push de
   push bc
-  ld hl, $8800
-  ld de, PatchTilesetStartPartsListText
-  ld b, (PatchTilesetEndPartsListText - PatchTilesetStartPartsListText) / $8
-  call Load1BPPTiles
-  ld hl, $9110
-  ld de, PatchTilesetStartPartsInfoText
-  ld b, (PatchTilesetEndPartsInfoText - PatchTilesetStartPartsInfoText) / $8
-  call Load1BPPTiles
+  Load1BPPTileset $8800, PatchTilesetStartPartsListText, PatchTilesetEndPartsListText
+  Load1BPPTileset $9110, PatchTilesetStartPartsInfoText, PatchTilesetEndPartsInfoText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadMedarotScreenFontAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartMedarotScreenText, PatchTilesetEndMedarotScreenText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadPartsInfoTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $9110, PatchTilesetStartPartsInfoText, PatchTilesetEndPartsInfoText
   pop bc
   pop de
   pop hl

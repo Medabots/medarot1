@@ -6,7 +6,8 @@ MedarotPartSelectSetupTilemaps: ; aaca (2:6aca)
   ld b, $0a
   ld c, $00
   ld e, $97
-  call JumpLoadTilemap
+  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  rst $08
   ld b, $00
   ld c, $08
   ld e, $84
