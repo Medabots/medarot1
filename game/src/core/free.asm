@@ -1,6 +1,6 @@
 ; Sections of nops
-SECTION "Free3", ROM0[$A7]
-REPT $59
+SECTION "Free3", ROM0[$CD]
+REPT $33
   nop
 ENDR
 
