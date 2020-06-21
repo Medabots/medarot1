@@ -52,7 +52,7 @@ PATCH_TILESET_OUT := $(TILESET_OUT)/patch
 PATCH_PORTRAITS_TEXT := $(PATCH_TILESET_TEXT)/portraits
 PATCH_PORTRAITS_OUT := $(PATCH_TILESET_OUT)/portraits
 
-MODULES := core gfx story menu patch
+MODULES := core gfx story menu robattle patch
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
 
 # Toolchain
