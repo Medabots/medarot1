@@ -19,12 +19,12 @@ VBlankingIRQ::
   ldh a, [$FF92]
   or a
   jr nz, .setCompletedFlag
-  ld a, [$C600]
+  ld a, [OAMDMAReady]
   or a
   call nz,  $FF80 ; In-memory code: OAM DMA
   ei
   xor a
-  ld [$C600], a
+  ld [OAMDMAReady], a
 
 .setCompletedFlag
   ld a, 1
@@ -132,7 +132,18 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   nop
 ; 0x562
 
-SECTION "IRQ Hacks", ROM0[$1F8A]
+SECTION "IRQ Hacks", ROM0[$1F79]
+LoadSpritesForDMAHack::
+  ld a, [$C600]
+  or a
+  ret z
+  call $0CCA ; If $0CC5 is ever dumped then symbolise this too.
+  xor a
+  ld [$C600], a
+  inc a
+  ld [OAMDMAReady], a
+  ret
+
 SoundFixHack::
   call $3DF9 ; Original replaced call. Nothing to do with sound.
   ld a, 6

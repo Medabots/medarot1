@@ -96,7 +96,7 @@ Main::
   call $3EF8
   call $0C09
   call $3B23
-  call $0CC5
+  call LoadSpritesForDMAHack
   call $18DA
   ld a, 1
   ld [$C5A1], a

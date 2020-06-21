@@ -1,5 +1,5 @@
 SECTION "Old Dialog Control Codes", ROM0[$1e11]
-REPT $179
+REPT $168
   nop
 ENDR
 
