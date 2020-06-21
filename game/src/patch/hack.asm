@@ -259,10 +259,42 @@ LoadMedalScreenTextAndLoadTilemap:
   push de
   push bc
   Load1BPPTileset $8800, PatchTilesetStartMedalScreenText, PatchTilesetEndMedalScreenText
+  call ClearAllMetaspriteConfigsAndUpdate
   pop bc
   pop de
   pop hl
   jp WrapLoadTilemap
+
+ClearAllMetaspriteConfigsAndUpdate::
+  ; This function should clear all metasprite data and trigger OAM DMA to clear all sprites.
+  ld hl, $C000
+  ld b, $A
+  xor a
+  ld [$C600], a
+
+.loop
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  dec b
+  jr nz, .loop
+
+  inc a
+  ld [$C600], a
+  ret
 
 LoadPartsScreenTextAndLoadTilemap:
   push hl
