@@ -1,147 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "Robattle Portraits", ROMX[$4000], BANK[$14]
-RobattleImages::
-  INCLUDE "game/src/story/include/robattle_portraits.asm"
-  INCLUDE "game/src/story/include/robattle_backgrounds.asm"
-
-SECTION "Load Player Portrait", ROM0[$2e3f]
-LoadPlayerPortrait: ; 2e3f (0:2e3f)
-  ld a, BANK(RobattleImages)
-  ld [$2000], a
-  ld hl, RobattleImages
-  ld de, $9010
-  ld bc, $100
-  call CopyVRAMData
-  ld a, [$c740]
-  inc a
-  ld [$c740], a
-  ret
-; 0x2e58
-
-SECTION "Robattles Start Screen", ROM0[$2e58]
-LoadRobattleStartScreenMedarotter:
-  ld a, BANK(MedarottersPtr)
-  ld [$2000], a
-  ld a, [$c753]
-  ld hl, MedarottersPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld a, [hl]
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  ld a, BANK(RobattleImages)
-  ld [$2000], a
-  ld hl, RobattleImages
-  add hl, bc
-  ld de, $9110
-  ld bc, $0100
-  call CopyVRAMData
-  ld a, [$c740]
-  inc a
-  ld [$c740], a
-  xor a
-  ld [$c741], a
-  ret
-; 0x2eb0
-
-SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
-LoadRobattleNames:
-  ld hl, cNAME
-  push hl
-  call PadTextTo8
-  ld h, $0
-  ld l, a
-  ld bc, $9841
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call PutString
-  ld a, BANK(MedarottersPtr)
-  ld [$2000], a
-  ld a, [$c753]
-  ld hl, MedarottersPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  inc hl
-  ld a, [hli]
-  push hl
-  push af
-  ld a, [$c74e]
-  ld hl, $d0c0
-  ld b, $0
-  ld c, a
-  ld a, $6
-  call GetListTextOffset
-  ld b, $0
-  pop af
-  ld c, a
-  add hl, bc
-  ld a, h
-  ld [$c754], a
-  ld a, l
-  ld [$c755], a
-  pop hl
-  ld a, [hli]
-  ld [$c76b], a
-  ld a, [$c776]
-  or a
-  jr nz, .asm_2f95 ; 0x2f81 $12
-  push hl
-  call PadTextTo8
-  ld h, $0
-  ld l, a
-  ld bc, $984b
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call PutString
-  ret
-.asm_2f95
-  ld hl, $c778
-  push hl
-  call PadTextTo8
-  ld h, $0
-  ld l, a
-  ld bc, $984b
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call PutString
-  ret
-; 0x2faa
-
 SECTION "Robattle Screen - Copy Player Medarot Info", ROMX[$4d8f], BANK[$4]
 RobattleScreenCopyPlayerMedarotInfo:
   ld c, $a
@@ -1076,3 +934,34 @@ RobattleDisplayHealth::
   call JumpTable_1ec
   pop de
   ret
+
+SECTION "Robattle - Load Part Screen",  ROMX[$6a13],  BANK[$1b]
+RobattleStateLoadPartScreenTilemaps: ; 6ea13 (1b:6a13)
+  ld hl, $9800
+  ld b, $00
+  ld a, [$c740]
+  ld c, a
+  ld a, $06
+  call JumpGetListTextOffset
+  ld b, $14
+  ld c, $02
+  call JumpTable_270
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  cp $09
+  ret nz
+  ld b, $0a
+  ld c, $00
+  ld e, $97
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $08
+  ld e, $84
+  call JumpLoadTilemap
+  call $6c7e
+  xor a
+  ld [$c740], a
+  call $67de
+  ret
+; 0x6ea4f

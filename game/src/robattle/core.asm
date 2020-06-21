@@ -13,10 +13,10 @@ RobattleStateMachine::
   jp hl
 
 .table
-  dw $408B ; 00
-  dw $409B ; 01
-  dw $40B5 ; 02
-  dw $40BC ; 03
+  dw RobattleStateInitialize ; 00
+  dw RobattleSubStateDoSomething ; 01
+  dw RobattleInitializeSubState ; 02
+  dw RobattleStateLoadMedarotSelectTilemaps ; 03
   dw $4077 ; 04
   dw $4115 ; 05
   dw $4123 ; 06
@@ -26,7 +26,7 @@ RobattleStateMachine::
   dw $430B ; 0A
   dw $43EC ; 0B
   dw $44BC ; 0C
-  dw $4564 ; 0D
+  dw RobattleStateLoadMedarotSelectPartTilemap ; 0D
   dw $45C4 ; 0E
   dw $45E4 ; 0F
   dw $4604 ; 10
@@ -68,7 +68,129 @@ RobattleStateDoNothing::
   ; This is a placeholder state.
   ret
 
-SECTION "Robattle States (Partial)", ROMX[$4748], BANK[$4]
+SECTION "Robattle States (Partial 1)", ROMX[$408B], BANK[$4]
+RobattleStateInitialize: ; 1008b (4:408b)
+  ld a, $01
+  call JumpTable_1e6
+  xor a
+  ld [$c750], a
+  ld a, $02
+  ld [$ffa0], a
+  jp JumpIncSubStateIndexWrapper
+
+RobattleSubStateDoSomething: ; 1009b (4:409b), not sure what this does exaclty
+  call $722d
+  ld a, [$c750]
+  cp $ff
+  ret nz
+  ld a, $00
+  ld [$c740], a
+  ld a, $08
+  ld [$c72d], a
+  ld a, $21
+  ld [$ffa0], a
+  jp JumpIncSubStateIndexWrapper
+
+RobattleInitializeSubState: ; 100b5 (4:40b5)
+  xor a
+  ld [$c740], a
+  jp JumpIncSubStateIndexWrapper
+
+RobattleStateLoadMedarotSelectTilemaps: ; 100bc (4:40bc)
+  ld a, [$c740]
+  or a
+  jr nz, .asm_100dd
+  ld b, $01
+  ld c, $00
+  ld e, $9c
+  call JumpLoadTilemap
+  ld hl, $9840
+  ld b, $0a
+  ld c, $0a
+  call JumpTable_270
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  ret
+.asm_100dd
+  ld b, $0a
+  ld c, $00
+  ld e, $9b
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $0c
+  ld e, $30
+  call JumpLoadTilemap
+  call JumpTable_29d
+  call $77e4
+  ld a, [$c72d]
+  ld b, $01
+  call JumpTable_2a3
+  call $77af
+  ld a, $02
+  call JumpTable_17d
+  ld b, $08
+  ld c, $09
+  ld d, $0a
+  ld e, $00
+  ld a, $05
+  call JumpTable_309
+  jp JumpIncSubStateIndexWrapper
+
+SECTION "Robattle States (Partial 2)", ROMX[$4564], BANK[$4]
+RobattleStateLoadMedarotSelectPartTilemap: ; 10564 (4:4564)
+  call $4c66
+  ld a, $01
+  call JumpTable_180
+  or a
+  ret z
+  ld hl, $9800
+  ld d, $00
+  ld a, [$c740]
+  ld e, a
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  add hl, de
+  ld b, $14
+.asm_1058e
+  xor a
+  di
+  call JumpWaitLCDController
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .asm_1058e
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  cp $12
+  ret nz
+  xor a
+  ld [$c740], a
+  ld b, $0a
+  ld c, $00
+  ld e, $97
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $08
+  ld e, $84
+  call JumpLoadTilemap
+  call JumpTable_2dc
+  call JumpTable_2df
+  call JumpTable_366
+  jp JumpIncSubStateIndexWrapper
+; 0x105c4
+
+
+SECTION "Robattle States (Partial 3)", ROMX[$4748], BANK[$4]
 RobattleStatePrepareAttackScreen::
   ld a, [$A044]
   ld d, a
