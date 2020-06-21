@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌─────────┐
 │         │
-│ Remove  │
+│ \x90\x91\x92\x93    │
 │         │
-│ Status  │
+│ \x8C\x8D\x8E\x8F    │
 │         │
-│ Begin   │
+│ \x94\x95\x96     │
 │         │
-│ Cancel  │
+│ \x98\x99\x9A\x9B    │
 └─────────┘

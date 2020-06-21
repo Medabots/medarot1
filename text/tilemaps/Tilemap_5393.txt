@@ -1,10 +1,10 @@
 [OVERLAY]
 ┌─────────┐
-│ Select  │
+│ \x88\x89\x8A\x8B    │
 │         │
-│ Status  │
+│ \x8C\x8D\x8E\x8F    │
 │         │
-│ Begin   │
+│ \x94\x95\x96     │
 │         │
-│ Cancel  │
+│ \x98\x99\x9A\x9B    │
 └─────────┘

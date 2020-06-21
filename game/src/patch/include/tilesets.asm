@@ -31,6 +31,12 @@ PatchTilesetEndPartsInfoText::
 PatchTilesetStartMedarotScreenText::
   INCBIN "build/tilesets/patch/MedarotScreen.1bpp"
 PatchTilesetEndMedarotScreenText::
+PatchTilesetStartRobottlesMedarotSelectText::
+  INCBIN "build/tilesets/patch/RobottlesMedarotSelect.1bpp"
+PatchTilesetEndRobottlesMedarotSelectText::
 PatchTilesetStartRobottlesText::
   INCBIN "build/tilesets/patch/Robottles.1bpp"
 PatchTilesetEndRobottlesText::
+PatchTilesetStartRobattleGraphics::
+  INCBIN "build/tilesets/patch/RobottleGraphics.malias"
+PatchTilesetEndRobattleGraphics
