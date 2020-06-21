@@ -23,6 +23,7 @@ VWFPortraitDrawn:: ds 1
 VWFCreditsRingBufferOffsetIndex:: ds 1
 VWFTileMappingAddress:: ds 2
 VWFInitialPaddingOffset:: ds 1
+OAMDMAReady:: ds 1
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30
