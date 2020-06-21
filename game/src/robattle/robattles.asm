@@ -482,7 +482,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $99c6, $be
+  psbc $99c6, $9a
   call VWFPutStringTo8
   ret
   ld hl, $000e
@@ -512,7 +512,7 @@ RobattleLoadText:
   ld c, $1
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9a0b, $c6
+  psbc $9a0b, $a2
   call VWFPutStringTo8
   ret
   ld hl, $000f
@@ -549,7 +549,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $9a01, $ce
+  psbc $9a01, $aa
   call VWFPutStringTo8
   ret
 
