@@ -40,3 +40,9 @@ PatchTilesetEndRobottlesText::
 PatchTilesetStartRobattleGraphics::
   INCBIN "build/tilesets/patch/RobottleGraphics.malias"
 PatchTilesetEndRobattleGraphics
+PatchTilesetStartMinimalEquipScreenText::
+  INCBIN "build/tilesets/patch/MinimalEquipScreen.1bpp"
+PatchTilesetEndMinimalEquipScreenText
+PatchTilesetStartDash::
+  INCBIN "build/tilesets/patch/Dash.1bpp"
+PatchTilesetEndDash

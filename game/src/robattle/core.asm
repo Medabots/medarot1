@@ -48,7 +48,7 @@ RobattleStateMachine::
   dw $46EE ; 20
   dw $46F8 ; 21
   dw RobattleStatePrepareAttackScreen ; 22
-  dw RobattleStateReloadTextHack_23 ; 23
+  dw $4778 ; 23
   dw $483A ; 24
   dw $4852 ; 25
   dw $486E ; 26
@@ -56,7 +56,7 @@ RobattleStateMachine::
   dw $494A ; 28
   dw $4974 ; 29
   dw $49B4 ; 2A
-  dw RobattleStateReloadTextHack_2B ; 2B
+  dw $4A02 ; 2B
   dw $4ADF ; 2C
   dw $4AFB ; 2D
   dw $4B1A ; 2E
@@ -179,7 +179,7 @@ RobattleStateLoadMedarotSelectPartTilemap: ; 10564 (4:4564)
   ld b, $0a
   ld c, $00
   ld e, $97
-  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  ld a, $1f ; LoadMinimalPartScreenAndLoadTilemap
   rst $08
   ld b, $00
   ld c, $08
@@ -236,48 +236,3 @@ RobattleStatePrepareAttackScreen::
 
 .table
   db 3, 0, 1, 2
-; Redraw moves in case they've been wiped by going to medarot equip screen
-SECTION "(Hack) Robattle States", ROMX[$7977], BANK[$4]
-RobattleStateReloadTextHack_23::
-  ld a, [RobattleHackNeedsRedraw]
-  or a
-  jr z, .noredraw
-  ld a, [$A044]
-  ld d, a
-  ld a, [$A045]
-  ld e, a
-  call $54CB
-  xor a
-  ld [RobattleHackNeedsRedraw], a
-.noredraw
-  call $4778
-  ret
-RobattleStateReloadTextHack_2B::
-  ld a, [RobattleHackNeedsRedraw]
-  or a
-  jr z, .noredraw
-  ld a, [$A044]
-  ld d, a
-  ld a, [$A045]
-  ld e, a
-  call $54CB
-  xor a
-  ld [RobattleHackNeedsRedraw], a
-.noredraw
-  call $4A02
-  ret
-
-; FIXME: Need to properly disassemble this state handler
-; Part of the '1F' state when transitioning from medarot equip menu back to the main screen
-SECTION "(FIXME) 1F Handler", ROMX[$6af8], BANK[$1b]
-  call RedrawTextHack
-
-SECTION "(Hack) Redraw medarot names in robattles after leaving medarot equip menu", ROMX[$781f], BANK[$1b]
-RedrawTextHack::
-  call $6b20
-  ld a, BANK(RedrawTextHack)
-  rst $10 ; Store bank to make sure VWF call doesn't send us to the wrong one
-  call RobattleLoadMedarotNamesCopy
-  ld a, $01
-  ld [RobattleHackNeedsRedraw], a
-  ret

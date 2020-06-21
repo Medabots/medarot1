@@ -49,6 +49,7 @@ HackPredefTable:
   dw LoadPartsInfoTextAndLoadTilemap ; 1C
   dw LoadRobottleMedarotSelectTextAndLoadTilemap ; 1D
   dw LoadRobottleText ; 1E
+  dw LoadMinimalPartScreenAndLoadTilemap ; 1f
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -321,6 +322,17 @@ LoadRobottleText:
   pop de
   pop hl
   ret
+
+LoadMinimalPartScreenAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartMinimalEquipScreenText, PatchTilesetEndMinimalEquipScreenText
+  Load1BPPTileset $8BA0, PatchTilesetStartDash, PatchTilesetEndDash
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
 
 INCLUDE "game/src/patch/include/patch_text.asm"
 

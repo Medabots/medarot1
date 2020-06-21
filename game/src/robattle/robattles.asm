@@ -482,7 +482,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $99c6, $9a
+  psbc $99c6, $a1
   call VWFPutStringTo8
   ret
   ld hl, $000e
@@ -512,7 +512,7 @@ RobattleLoadText:
   ld c, $1
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9a0b, $a2
+  psbc $9a0b, $a9
   call VWFPutStringTo8
   ret
   ld hl, $000f
@@ -549,7 +549,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $9a01, $aa
+  psbc $9a01, $b1
   call VWFPutStringTo8
   ret
 
@@ -1035,7 +1035,7 @@ RobattleStateLoadPartScreenTilemaps: ; 6ea13 (1b:6a13)
   ld b, $0a
   ld c, $00
   ld e, $97
-  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  ld a, $1f ; LoadMinimalPartScreenAndLoadTilemap
   rst $08
   ld b, $00
   ld c, $08
