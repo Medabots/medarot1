@@ -39,7 +39,7 @@ RobattleStateMachine::
   dw RobattleStateDoNothing ; 17
   dw RobattleStateDoNothing ; 18
   dw RobattleStateDoNothing ; 19
-  dw $4624 ; 1A
+  dw RobattleStateSetupRobattleScreenLoadFonts ; 1A
   dw $4646 ; 1B
   dw $467A ; 1C
   dw $4077 ; 1D
@@ -189,8 +189,22 @@ RobattleStateLoadMedarotSelectPartTilemap: ; 10564 (4:4564)
   jp JumpIncSubStateIndexWrapper
 ; 0x105c4
 
+SECTION "Robattle States (Partial 3)", ROMX[$4624], BANK[$4]
+RobattleStateSetupRobattleScreenLoadFonts: ; 10624 (4:4624)
+  call JumpTable_1a7
+  call JumpTable_1aa
+  call JumpTable_156
+  call JumpTable_213
+  ld a, $0b
+  call JumpLoadFont
+  ld a, $0a
+  call JumpLoadFont
+  call $6276
+  call $520c
+  call $5366
+  jp JumpIncSubStateIndexWrapper
 
-SECTION "Robattle States (Partial 3)", ROMX[$4748], BANK[$4]
+SECTION "Robattle States (Partial 4)", ROMX[$4748], BANK[$4]
 RobattleStatePrepareAttackScreen::
   ld a, [$A044]
   ld d, a

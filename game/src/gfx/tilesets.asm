@@ -257,28 +257,6 @@ DecompressAndLoadTiles:: ; 12e8 (0:12e8)
   ret
 .asm_135e
 
-SECTION "Load Menu Text (in Robattles)", ROMX[$6ac7], BANK[$1b]
-  ld a, $a
-  ld b, $1
-  call JumpDecompressAndLoadTiles ; Calls decompress tiles
-  ld a, [$c64e]
-  or a
-  ret nz
-  ld a, [$c752]
-  add $d
-  call JumpLoadFont
-  ld a, $2
-  call JumpTable_17d
-  ld b, $8
-  ld c, $b
-  ld d, $6
-  ld e, $0
-  ld a, $a
-  call JumpTable_309
-  call $67de
-  ret
-; 0x6eaf1
-
 SECTION "Load Uncompressed Tiles", ROM0[$1fb9] ; Address is at the end of the old control codes
 NoDecompressLoadTiles:
   ld a, [de]
