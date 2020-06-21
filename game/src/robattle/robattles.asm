@@ -218,12 +218,8 @@ RobattleScreenSetup:
 
 SECTION "Robattle - Restore font when exiting parts", ROMX[$6ac7], BANK[$1b]
 RobattleReloadFont: ; 6eac7 (1b:6ac7)
-  ld a, $0a
-  ld b, $01
-  call JumpDecompressAndLoadTiles
-  ld a, [$c64e]
-  or a
-  ret nz
+  ld a, $1e ; LoadRobottleText
+  rst $08
   ld a, [$c752]
   add $0d
   call JumpLoadFont
@@ -237,6 +233,10 @@ RobattleReloadFont: ; 6eac7 (1b:6ac7)
   call JumpTable_309
   call $67de
   ret
+.end
+REPT $6af1 - .end
+  nop
+ENDR
 ; 0x6eaf1
 
 SECTION "Robattle - Part Screen", ROMX[$6c7e], BANK[$1b]
@@ -1035,7 +1035,8 @@ RobattleStateLoadPartScreenTilemaps: ; 6ea13 (1b:6a13)
   ld b, $0a
   ld c, $00
   ld e, $97
-  call JumpLoadTilemap
+  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  rst $08
   ld b, $00
   ld c, $08
   ld e, $84

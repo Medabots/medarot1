@@ -103,7 +103,8 @@ RobattleStateLoadMedarotSelectTilemaps: ; 100bc (4:40bc)
   ld b, $01
   ld c, $00
   ld e, $9c
-  call JumpLoadTilemap
+  ld a, $1d ; LoadRobottleMedarotSelectTextAndLoadTilemap
+  rst $08
   ld hl, $9840
   ld b, $0a
   ld c, $0a
@@ -178,7 +179,8 @@ RobattleStateLoadMedarotSelectPartTilemap: ; 10564 (4:4564)
   ld b, $0a
   ld c, $00
   ld e, $97
-  call JumpLoadTilemap
+  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  rst $08
   ld b, $00
   ld c, $08
   ld e, $84
@@ -197,12 +199,16 @@ RobattleStateSetupRobattleScreenLoadFonts: ; 10624 (4:4624)
   call JumpTable_213
   ld a, $0b
   call JumpLoadFont
-  ld a, $0a
-  call JumpLoadFont
+  ld a, $1e ; LoadRobottleText
+  rst $08
   call $6276
   call $520c
   call $5366
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4646 - .end
+  nop
+ENDR
 
 SECTION "Robattle States (Partial 4)", ROMX[$4748], BANK[$4]
 RobattleStatePrepareAttackScreen::
