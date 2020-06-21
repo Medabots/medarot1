@@ -29,7 +29,8 @@ LoadMedalStatScreen:
   ld b, $0
   ld c, $0
   ld e, $93
-  call JumpLoadTilemap
+  ld a, $19 ; LoadMedalScreenTextAndLoadTilemap
+  rst $08
   ld a, [$c725]
   ld b, a
   ld a, [$c6f4]

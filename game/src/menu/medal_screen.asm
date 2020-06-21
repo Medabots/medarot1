@@ -202,7 +202,8 @@ MedalScreenSetupDrawInfoTilemaps: ; 9b7c (2:5b7c)
   ld b, $01
   ld c, $00
   ld e, $6b
-  call JumpLoadTilemap
+  ld a, $19 ; LoadMedalScreenTextAndLoadTilemap
+  rst $08
   ld b, $0a
   ld c, $01
   ld e, $23
@@ -239,41 +240,36 @@ MedalScreenSetupLoadMedalText:
   psa $9883
   ld [$c645], a
   ld b, $5
-  ld d, h
-  ld e, l
 .asm_9890
-  ld a, [de]
+  ld a, [hl]
   or a
   ret z
   push bc
-  push de
-  ld hl, $0001
-  add hl, de
+  push hl
+  inc hl
   ld a, [hl]
   call JumpLoadMedalList
   ld a, [$c644]
   ld b, a
   ld a, [$c645]
   ld c, a
+  push bc
   ld hl, cBUF01
-  ld a, $07
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
+  ld a, $07 ; Max tile length of $7
   call VWFPutStringAutoNarrow
-  ld a, [$c644]
-  ld h, a
-  ld a, [$c645]
-  ld l, a
-  ld bc, $0730
+  pop bc
+  ld hl, $0730 ; Max tile length of $7, each line is $30 apart
   add hl, bc
   ld a, h
   ld [$c644], a
   ld a, l
   ld [$c645], a
-  pop de
+  pop hl
   pop bc
-  ld hl, $0020
+  ld de, $0020
   add hl, de
-  ld d, h
-  ld e, l
   dec b
   jr nz, .asm_9890 ; 0x98ca $c4
   ret
@@ -312,14 +308,13 @@ MedalScreenLoadMedarotName: ; 9a4a (2:5a4a)
   ld hl, $2
   add hl, de
   push hl
-  ld bc, $9a0b
-  call JumpPadTextTo8
-  ld h, $00
-  ld l, a
-  add hl, bc
-  ld b, h
-  ld c, l
+  call VWFPadTextTo8
   pop hl
-  call JumpPutString
+  psbc $9a0b, $e0
+  call VWFPutStringTo8
   ret
+.end
+REPT $5a93 - .end
+  nop
+ENDR
 ; 0x9a93
