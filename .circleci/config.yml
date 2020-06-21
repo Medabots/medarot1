@@ -6,7 +6,7 @@ jobs:
       game-version:
         type: string
     docker:
-      - image: variantxyz/rgbds-20200404:4e96cf98759de41c118cbeb4e5d7765737b95982
+      - image: variantxyz/rgbds-20200621:f996186fae53fa87b1f7a8b3373d91211601d21d
     steps:
       - add_ssh_keys:
           fingerprints:
