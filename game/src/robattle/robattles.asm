@@ -1,152 +1,6 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
-SECTION "Robattle Portraits", ROMX[$4000], BANK[$14]
-RobattleImages::
-  INCLUDE "game/src/story/include/robattle_portraits.asm"
-  INCLUDE "game/src/story/include/robattle_backgrounds.asm"
-
-SECTION "Load Player Portrait", ROM0[$2e3f]
-LoadPlayerPortrait: ; 2e3f (0:2e3f)
-  ld a, BANK(RobattleImages)
-  rst $10
-  ld hl, RobattleImages
-  ld de, $9010
-  ld bc, $100
-  call CopyVRAMData
-  ld a, [$c740]
-  inc a
-  ld [$c740], a
-  ret
-; 0x2e58
-
-SECTION "Robattles Start Screen", ROM0[$2e58]
-LoadRobattleStartScreenMedarotter:
-  ld a, BANK(MedarottersPtr)
-  rst $10
-  ld a, [$c753]
-  ld hl, MedarottersPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld a, [hl]
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  ld a, BANK(RobattleImages)
-  rst $10
-  ld hl, RobattleImages
-  add hl, bc
-  ld de, $9110
-  ld bc, $0100
-  call CopyVRAMData
-  ld a, [$c740]
-  inc a
-  ld [$c740], a
-  xor a
-  ld [$c741], a
-  ret
-  nop
-  nop
-; 0x2eb0
-
-SECTION "Robattles Start Screen - Name", ROM0[$2f2f]
-LoadRobattleNames:
-  ld hl, cNAME
-  push hl
-  call VWFPadTextTo8
-  ld h, $0
-  ld l, a
-  psbc $9841, $be
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call VWFPutStringTo8
-  ld a, BANK(MedarottersPtr)
-  rst $10
-  ld a, [$c753]
-  ld hl, MedarottersPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  inc hl
-  ld a, [hli]
-  push hl
-  push af
-  ld a, [$c74e]
-  ld hl, $d0c0
-  ld b, $0
-  ld c, a
-  ld a, $6
-  call GetListTextOffset
-  ld b, $0
-  pop af
-  ld c, a
-  add hl, bc
-  ld a, h
-  ld [$c754], a
-  ld a, l
-  ld [$c755], a
-  pop hl
-  ld a, [hli]
-  ld [$c76b], a
-  ld a, [$c776]
-  or a
-  jr nz, .asm_2f95 ; 0x2f81 $12
-  push hl
-  call VWFPadTextTo8
-  ld h, $0
-  ld l, a
-  psbc $984b, $c6
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call VWFPutStringTo8
-  ret
-.asm_2f95
-  ld hl, $c778
-  push hl
-  call VWFPadTextTo8
-  ld h, $0
-  ld l, a
-  psbc $984b, $c6
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call VWFPutStringTo8
-  ret
-  nop
-  nop
-; 0x2faa
-
 SECTION "Robattle Screen - Copy Player Medarot Info", ROMX[$4d8f], BANK[$4]
 RobattleScreenCopyPlayerMedarotInfo:
   ld c, $a
@@ -361,6 +215,29 @@ RobattleScreenSetup:
   jp nz, $521c
   ret
 ; 0x11326
+
+SECTION "Robattle - Restore font when exiting parts", ROMX[$6ac7], BANK[$1b]
+RobattleReloadFont: ; 6eac7 (1b:6ac7)
+  ld a, $1e ; LoadRobottleText
+  rst $08
+  ld a, [$c752]
+  add $0d
+  call JumpLoadFont
+  ld a, $02
+  call JumpTable_17d
+  ld b, $08
+  ld c, $0b
+  ld d, $06
+  ld e, $00
+  ld a, $0a
+  call JumpTable_309
+  call $67de
+  ret
+.end
+REPT $6af1 - .end
+  nop
+ENDR
+; 0x6eaf1
 
 SECTION "Robattle - Part Screen", ROMX[$6c7e], BANK[$1b]
 RobattlePartScreen:
@@ -605,7 +482,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $99c6, $be
+  psbc $99c6, $9a
   call VWFPutStringTo8
   ret
   ld hl, $000e
@@ -635,7 +512,7 @@ RobattleLoadText:
   ld c, $1
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9a0b, $c6
+  psbc $9a0b, $a2
   call VWFPutStringTo8
   ret
   ld hl, $000f
@@ -672,7 +549,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $9a01, $ce
+  psbc $9a01, $aa
   call VWFPutStringTo8
   ret
 
@@ -1138,3 +1015,35 @@ RobattleHealthDisplayFix::
   ei
   inc bc
   ret
+
+SECTION "Robattle - Load Part Screen",  ROMX[$6a13],  BANK[$1b]
+RobattleStateLoadPartScreenTilemaps: ; 6ea13 (1b:6a13)
+  ld hl, $9800
+  ld b, $00
+  ld a, [$c740]
+  ld c, a
+  ld a, $06
+  call JumpGetListTextOffset
+  ld b, $14
+  ld c, $02
+  call JumpTable_270
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  cp $09
+  ret nz
+  ld b, $0a
+  ld c, $00
+  ld e, $97
+  ld a, $1b ; LoadMedarotScreenFontAndLoadTilemap
+  rst $08
+  ld b, $00
+  ld c, $08
+  ld e, $84
+  call JumpLoadTilemap
+  call $6c7e
+  xor a
+  ld [$c740], a
+  call $67de
+  ret
+; 0x6ea4f
