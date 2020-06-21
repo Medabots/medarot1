@@ -312,6 +312,11 @@ LoadRobottleText:
   push de
   push bc
   Load1BPPTileset $8800, PatchTilesetStartRobottlesText, PatchTilesetEndRobottlesText
+  ld hl, $8F00
+  ld de, PatchTilesetStartRobattleGraphics
+  ld a, [de]
+  inc de
+  call LoadTiles
   pop bc
   pop de
   pop hl

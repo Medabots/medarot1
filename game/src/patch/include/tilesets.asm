@@ -37,3 +37,6 @@ PatchTilesetEndRobottlesMedarotSelectText::
 PatchTilesetStartRobottlesText::
   INCBIN "build/tilesets/patch/Robottles.1bpp"
 PatchTilesetEndRobottlesText::
+PatchTilesetStartRobattleGraphics::
+  INCBIN "build/tilesets/patch/RobottleGraphics.malias"
+PatchTilesetEndRobattleGraphics
