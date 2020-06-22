@@ -429,7 +429,7 @@ Pointer[#version],Original,Translated
 0x74356,なぐる・がむしゃらにこうかをはっき!<S3c><*4>,Physical attack detected!<S3c><*4>
 0x74358,うつ・ねらいうちにこうかをはっき!<S3c><*4>,Ranged attack detected!<S3c><*4>
 0x7435a,トラップかいじょを おこなった!<S3c><*4>,Attempted to clear traps!<S3c><*4>
-0x7435c,<&BUF01> は<4E>ダメージかいふくを おこなった!<S3c><*4>,"""<&BUF04>"" transformed into ""<&BUF01>""!"
+0x7435c,<&BUF01> は<4E>ダメージかいふくを おこなった!<S3c><*4>,"<&BUF01> cleared its damage!<S3c><*4>"
 0x7435e,=0x7435c,=0x7435c
 0x74360,=0x7435c,=0x7435c
 0x74362,=0x7435c,=0x7435c
