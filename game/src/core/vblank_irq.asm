@@ -77,16 +77,19 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld [$ff43], a
   ld [$ff42], a
   jr .draw_scroll_return
-.draw_scroll_section  
+.draw_scroll_section
   ld a, l
   cp $b0
   jr nz, .draw_scroll_section_not_original
-  ld a, [$ff45] ; Keep track of original interrupt point
+  ld a, [$c5aa] ; if c5aa is set, use that instead as the original point
+  or a
+  jr nz, .use_c5aa
+  ld a, [$ff45] ; If c5aa isn't set, take the value of ff45
+.use_c5aa
   ld [HackHBlankOriginal], a
 .draw_scroll_section_not_original
   ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
   ld a, [hli] ; [0] = Line to stop at
-  sub $03 ; Set the trigger 3 lines early
   ld [$ff45], a
   ld a, [hli] 
   ld [$ff43], a ; [1] = SCX
@@ -125,11 +128,10 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   pop bc
   pop af
   reti
+.end
+REPT $562 - .end
   nop
-  nop
-  nop
-  nop
-  nop
+ENDR
 ; 0x562
 
 SECTION "IRQ Hacks", ROM0[$1F79]
