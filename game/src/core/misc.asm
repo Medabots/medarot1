@@ -22,6 +22,60 @@ LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
   call JumpLoadTilemap
   jp JumpIncSubStateIndexWrapper
 
+SECTION "Func_50cc", ROMX[$50cc], BANK[$1]
+Func_50cc: ; 50cc (1:50cc)
+  ld a, [$c5ce]
+  or a
+  jp z, $5187
+  dec a
+  ld hl, cBUF01
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, h
+  ld [$c640], a
+  ld a, l
+  ld [$c641], a
+  ld a, [hl]
+  ld hl, $53bd
+  ld b, $00
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  or a
+  jp z, $5187
+  push af
+  ld a, [$c640]
+  ld h, a
+  ld a, [$c641]
+  ld l, a
+  pop af
+  ld [hl], a
+  ld [$c64e], a
+  call JumpTable_231
+  ld a, [$c5ce]
+  dec a
+  ld hl, $982a
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [$c64f]
+  di
+  call JumpWaitLCDController
+  ld [hl], a
+  ei
+  ld bc, $20
+  add hl, bc
+  ld a, [$c64e]
+  di
+  call JumpWaitLCDController
+  ld [hl], a
+  ei
+  jp $5187
+; 0x5129
+
 SECTION "Func_25e5", ROM0[$25e5]
 Func_25e5: ; 25e5 (0:25e5)
   ld a, $12
