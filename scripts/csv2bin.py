@@ -124,8 +124,8 @@ if __name__ == '__main__':
                 if line[0][0] == '#':
                     continue
                 #Pointer, Original, Translated
-                original_txt = line[original_idx].strip('"')
-                translated_txt = line[translated_idx].strip('"')
+                original_txt = line[original_idx]
+                translated_txt = line[translated_idx]
                 ptr = line[0]
                 if "#" in ptr:
                     ptr, suffix = ptr.split("#")
