@@ -50,6 +50,7 @@ HackPredefTable:
   dw LoadRobottleMedarotSelectTextAndLoadTilemap ; 1D
   dw LoadRobottleText ; 1E
   dw LoadMinimalPartScreenAndLoadTilemap ; 1f
+  dw LoadLoadGameTextAndLoadTilemap ; 20
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -330,6 +331,16 @@ LoadMinimalPartScreenAndLoadTilemap:
   push bc
   Load1BPPTileset $8800, PatchTilesetStartMinimalEquipScreenText, PatchTilesetEndMinimalEquipScreenText
   Load1BPPTileset $8BA0, PatchTilesetStartDash, PatchTilesetEndDash
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadLoadGameTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartLoadGame, PatchTilesetEndLoadGame
   pop bc
   pop de
   pop hl

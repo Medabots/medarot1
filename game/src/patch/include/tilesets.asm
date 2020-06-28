@@ -46,3 +46,6 @@ PatchTilesetEndMinimalEquipScreenText
 PatchTilesetStartDash::
   INCBIN "build/tilesets/patch/Dash.1bpp"
 PatchTilesetEndDash
+PatchTilesetStartLoadGame::
+  INCBIN "build/tilesets/patch/LoadGame.1bpp"
+PatchTilesetEndLoadGame
