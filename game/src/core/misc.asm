@@ -22,6 +22,16 @@ LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
   call JumpLoadTilemap
   jp JumpIncSubStateIndexWrapper
 
+SECTION "Town Map Location Name loading", ROMX[$7a2d], BANK[$1]
+LoadTownMapTilemapLocation: ; 7a2d (1:7a2d)
+  ld a, [$c76e]
+  add $a0
+  ld e, a
+  ld b, $04
+  ld c, $01
+  call JumpLoadTilemap
+  ret
+
 SECTION "Func_50cc", ROMX[$50cc], BANK[$1]
 Func_50cc: ; 50cc (1:50cc)
   ld a, [$c5ce]
