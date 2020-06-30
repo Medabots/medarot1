@@ -26,12 +26,13 @@ LoadTownMapTilemapTextBox: ; 77e9 (1:77e9)
 SECTION "Town Map Location Name loading", ROMX[$7a2d], BANK[$1]
 LoadTownMapTilemapLocation: ; 7a2d (1:7a2d)
   ld a, [$c76e]
-  add $a0
-  ld e, a
-  ld b, $04
-  ld c, $01
-  call JumpLoadTilemap
-  ret
+  ld hl, LocationsPtr
+  rst $30 ; hl = [hl + a*2]
+  jp DrawLocationsVWF
+.end
+REPT $7a3b - .end
+  nop
+ENDR
 
 SECTION "Func_50cc", ROMX[$50cc], BANK[$1]
 Func_50cc: ; 50cc (1:50cc)
