@@ -5,7 +5,7 @@ REPT $33
 ENDR
 
 ; Free space at the end of banks
-SECTION "BANK01_END", ROMX[$7d5a], BANK[$1]
+SECTION "BANK01_END", ROMX[$7d6f], BANK[$1]
 BANK01_END::
 REPT $8000 - BANK01_END
   db 0
