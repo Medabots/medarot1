@@ -66,16 +66,16 @@ Main::
   ldh [$FF0F], a
   ld a, $B
   ldh [$FFFF], a
-  ld a, $1F
+  ld a, BANK(SGB_DetectICDPresence)
   ld [$C6E0], a
   rst $10
   ld a, 0
   ld [$C5FA], a
-  call $41AF
+  call SGB_DetectICDPresence
   jp nc, .jpA
   ld a, 1
   ld [$C5FA], a
-  call $4000
+  call SGB_InstallBorderAndHotpatches
 
 .jpA
   ld a, 1

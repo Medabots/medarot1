@@ -1,6 +1,9 @@
 INCLUDE "build/buffer_constants.asm"
 
+hRegJoyp           EQU $ff00
+hRegLCDC           EQU $ff40
 hLCDStat           EQU $ff41
+hRegBGP            EQU $ff47
 
 hPushOAM           EQU $ff80
 
