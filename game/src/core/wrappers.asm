@@ -74,11 +74,11 @@ Wrapper_5f2::
 Wrapper_5f5::
   jp $c80
 Wrapper_5f8::
-  call $4133
+  call $4133 ; Possibly SGB_SendPackets?
   rst $18
   ret
 Wrapper_5fd::
-  call $4169
+  call $4169 ; Possibly SGB_SendPacketsWithVRAM?
   rst $18
   ret
 Wrapper_602::
@@ -836,9 +836,9 @@ Wrapper_a99::
   rst $18
   ret
 Wrapper_aa3::
-  ld a, $1f
+  ld a, BANK(SGB_SendConstructedPaletteSetPacket)
   rst $10
-  call $4105
+  call SGB_SendConstructedPaletteSetPacket
   rst $18
   ret
 Wrapper_aab::
