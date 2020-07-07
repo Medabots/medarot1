@@ -64,6 +64,10 @@ workflows:
           use-latest-translations: false
           game-version: "kuwagata"
       - build:
-          name: "Latest Translations"
+          name: "Kabuto - Latest Translations"
           use-latest-translations: true
-          game-version: "all"
+          game-version: "kabuto"
+      - build:
+          name: "Kuwagata - Latest Translations"
+          use-latest-translations: true
+          game-version: "kuwagata"
