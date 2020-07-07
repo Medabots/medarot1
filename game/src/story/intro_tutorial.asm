@@ -1,9 +1,5 @@
 SECTION "Intro Setup", ROMX[$703a], BANK[$16]
 IntroTutorialLoadTiles: ; 5b03a (16:703a)
-  ld a, $02
-  call JumpLoadFont
-  ld a, $03
-  call JumpLoadFont
   ld a, $09
   call JumpLoadFont
   ld a, $32
@@ -11,7 +7,8 @@ IntroTutorialLoadTiles: ; 5b03a (16:703a)
   ld b, $00
   ld c, $00
   ld e, $0f
-  call JumpLoadTilemap
+  ld a, $21 ; LoadIntroTutorialTextAndLoadTilemap
+  rst $8
   ld b, $05
   ld c, $08
   ld d, $00
@@ -53,3 +50,7 @@ IntroTutorialLoadTiles: ; 5b03a (16:703a)
   ld a, $01
   ld [$c600], a
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $70b1 - .end
+  nop
+ENDR

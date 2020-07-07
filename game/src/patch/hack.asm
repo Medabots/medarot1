@@ -51,6 +51,7 @@ HackPredefTable:
   dw LoadRobottleText ; 1E
   dw LoadMinimalPartScreenAndLoadTilemap ; 1f
   dw LoadLoadGameTextAndLoadTilemap ; 20
+  dw LoadIntroTutorialTextAndLoadTilemap ; 21
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -341,6 +342,16 @@ LoadLoadGameTextAndLoadTilemap:
   push de
   push bc
   Load1BPPTileset $8800, PatchTilesetStartLoadGame, PatchTilesetEndLoadGame
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadIntroTutorialTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetIntroTutorial, PatchTilesetEndIntroTutorial
   pop bc
   pop de
   pop hl

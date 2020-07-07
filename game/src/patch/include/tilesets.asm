@@ -49,3 +49,6 @@ PatchTilesetEndDash
 PatchTilesetStartLoadGame::
   INCBIN "build/tilesets/patch/LoadGame.1bpp"
 PatchTilesetEndLoadGame
+PatchTilesetIntroTutorial::
+  INCBIN "build/tilesets/patch/IntroTutorial.1bpp"
+PatchTilesetEndIntroTutorial
