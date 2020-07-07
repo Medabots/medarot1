@@ -52,3 +52,6 @@ PatchTilesetEndLoadGame
 PatchTilesetIntroTutorial::
   INCBIN "build/tilesets/patch/IntroTutorial.1bpp"
 PatchTilesetEndIntroTutorial
+PatchTilesetNameScreen::
+  INCBIN "build/tilesets/patch/NameScreen.1bpp"
+PatchTilesetEndNameScreen
