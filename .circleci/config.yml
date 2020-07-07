@@ -35,22 +35,19 @@ jobs:
                 name: "Update Credits"
                 working_directory: ~/medarot_1
                 command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
-            - run:
-                name: "Update Version"
-                working_directory: ~/medarot_1
-                command: |
-                  export DATE=`date +%Y-%m-%d`
-                  export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
-                  sed -i -e "s/hhhhhhh/$SHORT_HASH/g" -e "s/YYYY-MM-DD/$DATE/g" -e "s/NNNNNNNN/<<pipeline.number>>/g" text/patch/version.txt && cat text/patch/version.txt
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
-          command: make << parameters.game-version >> -j
+          command: |
+            export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
+            export PIPELINE_NUMBER=<< pipeline.number >>
+            make << parameters.game-version >> -j
       - run:
           name: "Generate Patch"
           command: |
             mkdir patch
             ips_util create ~/medarot_1/baserom_<<  parameters.game-version >>.gb ~/medarot_1/medarot_<<  parameters.game-version >>.gb -o patch/$PATCH_OUTPUT.ips
+            cp ~/medarot_1/build/patch/version.txt patch/version.txt
       - store_artifacts:
           path: patch/
           destination: patch

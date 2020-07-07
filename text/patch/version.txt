@@ -1,3 +1,1 @@
-v0.2.3-hhhhhhh
-YYYY-MM-DD
-Build NNNNNNNN
+v0.2.3

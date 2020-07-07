@@ -117,7 +117,7 @@ patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias
 patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
 patch_locations_ADDITIONAL := $(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE)
 
-.PHONY: all clean default $(VERSIONS) diag
+.PHONY: all clean default $(VERSIONS)
 default: kabuto
 all: $(VERSIONS)
 
@@ -133,6 +133,23 @@ $(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
 $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
 	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
 	$(FIX) $(FIX_ARGS) -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
+
+# Treat version.bin specially
+# SHORT_HASH is set in CI
+$(PATCH_TEXT_OUT)/version.$(BIN_TYPE): $(PATCH_TEXT)/version.$(TEXT_TYPE) | $(PATCH_TEXT_OUT)
+	cat $< > $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+ifndef SHORT_HASH
+	echo "" >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+else
+	echo "-${SHORT_HASH}" >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+endif
+	date +%Y-%m-%d >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+ifndef PIPELINE_NUMBER
+	echo 'Build CUSTOM' >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+else
+	echo 'Build ${PIPELINE_NUMBER}' >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+endif
+	$(PYTHON) $(SCRIPT)/patchtext2bin.py $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE) $@
 
 # Don't delete intermediate files
 .SECONDEXPANSION:
