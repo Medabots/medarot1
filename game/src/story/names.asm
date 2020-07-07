@@ -145,3 +145,28 @@ OnEraseCharacter:
   ld [$c5c9], a
   ret
 ; 0x51fe
+
+SECTION "Setup Medarot Name Screen", ROMX[$4da6], BANK[$1]
+MedarotNameScreenLoadTilemap: ; 4da6 (1:4da6)
+  ld b, $00
+  ld c, $00
+  ld e, $02
+  call JumpLoadTilemap
+  ld b, $02
+  ld c, $06
+  ld e, $2b
+  call JumpLoadTilemap
+  ld b, $01
+  ld c, $01
+  ld e, $2a
+  call JumpLoadTilemap
+  call $5213
+  ld a, [$c5a2]
+  ld [$c5ab], a
+  ld a, [$c5a3]
+  ld [$c5ac], a
+  xor a
+  ld [$c5a2], a
+  ld [$c5a3], a
+  jp $4ef4
+; 0x4dda
