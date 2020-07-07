@@ -1,11 +1,11 @@
 [OVERLAY]
 ┌──────────────────┐
-│Message speed     │
-│       Slo Med Fst│
-│Animation speed   │
-│           Med Fst│
-│Battle time limit │
-│           Med Fst│
+│\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2          │
+│       \x92\x93\x94 \x95\x96\x97 \x98\x99\x9a│
+│\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac         │
+│           \x95\x96\x97 \x98\x99\x9a│
+│\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5         │
+│           \x95\x96\x97 \x98\x99\x9a│
 │                  │
-│           Close  │
+│           \x8f\x90\x91    │
 └──────────────────┘

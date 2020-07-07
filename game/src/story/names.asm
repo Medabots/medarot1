@@ -31,7 +31,8 @@ SetupInitialNameScreen: ;4a9f
   ld b, $0
   ld c, $0
   ld e, $2
-  call JumpLoadTilemap
+  ld a, $22 ; LoadNameScreenTextAndLoadTilemap
+  rst $8
   ld b, $2
   ld c, $6
   ld e, $2b
@@ -55,26 +56,10 @@ SetupInitialNameScreen: ;4a9f
   ld a, $2
   call JumpTable_309
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4b1c - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
+ENDR
 
 ;TODO: Properly disassemble this routine which draws the OAM for the setup screen
 SECTION "Setup Initial Name Screen OAM", ROMX[$4b2e], BANK[$1]
@@ -157,7 +142,8 @@ MedarotNameScreenLoadTilemap: ; 4da6 (1:4da6)
   ld b, $00
   ld c, $00
   ld e, $02
-  call JumpLoadTilemap
+  ld a, $22 ; LoadNameScreenTextAndLoadTilemap
+  rst $8
   ld b, $02
   ld c, $06
   ld e, $2b

@@ -16,13 +16,15 @@ LoadGameScreen:: ; 448c (1:448c)
   ld hl, PatchTextDisclaimerNotice
   ld a, $13 ; LoadPatchText
   rst $8
-  ld b, $b4
+  ld b, $b6
   ld hl, PatchTextVersion
   ld a, $14 ; LoadPatchTextFixed
   rst $8
   ld bc, $0000
   pop de
-  call WrapLoadTilemap
+  ;call WrapLoadTilemap
+  ld a, $20 ; LoadLoadGameTextAndLoadTilemap
+  rst $8
   ld a, $01
   call DrawCursor
   ld a, $08

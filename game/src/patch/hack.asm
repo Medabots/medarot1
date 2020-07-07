@@ -50,6 +50,9 @@ HackPredefTable:
   dw LoadRobottleMedarotSelectTextAndLoadTilemap ; 1D
   dw LoadRobottleText ; 1E
   dw LoadMinimalPartScreenAndLoadTilemap ; 1f
+  dw LoadLoadGameTextAndLoadTilemap ; 20
+  dw LoadIntroTutorialTextAndLoadTilemap ; 21
+  dw LoadNameScreenTextAndLoadTilemap ; 22
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -335,6 +338,36 @@ LoadMinimalPartScreenAndLoadTilemap:
   pop hl
   jp WrapLoadTilemap
 
+LoadLoadGameTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartLoadGame, PatchTilesetEndLoadGame
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadIntroTutorialTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetIntroTutorial, PatchTilesetEndIntroTutorial
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadNameScreenTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8C00, PatchTilesetNameScreen, PatchTilesetEndNameScreen
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
 INCLUDE "game/src/patch/include/patch_text.asm"
 
 GetPatchTextLength:
@@ -389,7 +422,7 @@ LoadPatchText:
 LoadPatchTextFixedTopRight:
 ; hl = Text Pointer in this bank
 ; b = tile drawing index
-  ld de, $980b
+  ld de, $982a
 .loop
   call GetPatchTextLength
   ld [VWFTileLength], a

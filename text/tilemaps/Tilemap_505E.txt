@@ -1,4 +1,4 @@
 [OVERLAY]
       
-Tinpet   
- name?
+ \xe3\xe4\xe5\xe6
+ \xe7\xe8\xe9\xea  
