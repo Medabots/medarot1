@@ -52,15 +52,15 @@ SGB_InstallBorderAndHotpatches::
     ld de, SGB_PacketAttrTransfer
     call SGB_SendPacketsWithVRAM
 
-    ld hl, $49D4
+    ld hl, SGB_BorderGfx
     ld de, SGB_PacketTileTransferLow
     call SGB_SendPacketsWithVRAM
 
-    ld hl, $59D4
+    ld hl, SGB_BorderGfx + $1000
     ld de, SGB_PacketTileTransferHigh
     call SGB_SendPacketsWithVRAM
 
-    ld hl, $69D4
+    ld hl, SGB_BorderTilemap
     ld de, SGB_PacketBorderTmapTransfer
     call SGB_SendPacketsWithVRAM
 

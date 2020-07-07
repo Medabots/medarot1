@@ -77,3 +77,8 @@ hJPInputRight      EQU $10
 hJPInputLeft       EQU $20
 hJPInputUp         EQU $40
 hJPInputDown       EQU $80
+
+; For SGB Tilemaps.
+P4 EQU $1000
+P5 EQU $1400
+P6 EQU $1800
