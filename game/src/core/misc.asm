@@ -891,10 +891,10 @@ Func_3942: ; 3942 (0:3942)
   add hl, bc
   ld a, [hl]
   push af
-  ld a, $1f
+  ld a, BANK(PartDescriptionsPtr)
   rst $10
   pop af
-  ld hl, $7234
+  ld hl, PartDescriptionsPtr
   ld b, $00
   ld c, a
   sla c
