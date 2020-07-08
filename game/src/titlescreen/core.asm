@@ -72,9 +72,9 @@ TitlescreenStateInitialize::
   ld [hli], a
   ld b, 3
   ld c, 4
-  ld d, 0
-  ld e, 0
-  ld a, 3
+  ld d, $39
+  ld e, $3A
+  ld a, $E
   call JumpTable_309
   ld a, 3
   ldh [$FFA0], a
