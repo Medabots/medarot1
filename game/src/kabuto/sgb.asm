@@ -1,7 +1,7 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
-SECTION "SGB Border (Kabuto)", ROMX[$49D4], BANK[$1F]
+SECTION "SGB Border (Kabuto)", ROMX[$4A3E], BANK[$1F]
 SGB_BorderGfx::
   INCBIN "text/tilesets/sgb/border_kabuto.4bpp"
 
