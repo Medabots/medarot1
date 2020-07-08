@@ -61,14 +61,23 @@ jobs:
           root: patch
           paths:
             - .
+
   release:
     executor: rom-executor
+    docker:
+      - image: cibuilds/github:0.10
     steps:
       - attach_workspace:
           at: patch
       - store_artifacts:
           path: patch
           destination: patch
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$CIRCLE_BRANCH
+            ghr -t ${GHR_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./patch/
+
 workflows:
   workflow:
     jobs:
