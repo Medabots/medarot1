@@ -1,14 +1,20 @@
 version: 2.1
+
+executors:
+  rom-executor:
+    docker:
+      - image: variantxyz/rgbds-20200621:f996186fae53fa87b1f7a8b3373d91211601d21d
+    working_directory: /tmp
+
 jobs:
   build:
+    executor: rom-executor
     parameters:
       use-latest-translations:
         type: boolean
         default: false
       game-version:
         type: string
-    docker:
-      - image: variantxyz/rgbds-20200621:f996186fae53fa87b1f7a8b3373d91211601d21d
     environment:
       PATCH_OUTPUT: m1<< parameters.game-version >>-<<pipeline.number>>-<<pipeline.git.revision>>
     steps:
@@ -16,11 +22,10 @@ jobs:
           fingerprints:
             - "4f:8a:7b:39:92:9f:c1:33:12:ea:98:fe:a2:6d:58:0f"
       - checkout:
-          path: ~/medarot_1
+          path: medarot_1
       - run:
           name: "Get base"
-          working_directory: ~
-          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_<< parameters.game-version >>.gb ~/medarot_1/baserom_<< parameters.game-version >>.gb
+          command: git clone --quiet $BASEROM_REPO medarot_baserom && cp medarot_baserom/medarot_<< parameters.game-version >>.gb medarot_1/baserom_<< parameters.game-version >>.gb
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
@@ -29,15 +34,15 @@ jobs:
                 command: wget -q --no-check-certificate "https://docs.google.com/spreadsheets/d/$TRANSLATION_SHEET_ID/export" -O ~/sheet.xlsx
             - run:
                 name: "Update Dialog"
-                working_directory: ~/medarot_1
+                working_directory: medarot_1
                 command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
             - run:
                 name: "Update Credits"
-                working_directory: ~/medarot_1
+                working_directory: medarot_1
                 command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
       - run:
           name: "Build ROM"
-          working_directory: ~/medarot_1
+          working_directory: medarot_1
           command: |
             export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
             export PIPELINE_NUMBER=<< pipeline.number >>
@@ -46,11 +51,32 @@ jobs:
           name: "Generate Patch"
           command: |
             mkdir patch
-            ips_util create ~/medarot_1/baserom_<<  parameters.game-version >>.gb ~/medarot_1/medarot_<<  parameters.game-version >>.gb -o patch/$PATCH_OUTPUT.ips
-            cp ~/medarot_1/build/patch/version.txt patch/version.txt
+            ips_util create medarot_1/baserom_<<  parameters.game-version >>.gb medarot_1/medarot_<<  parameters.game-version >>.gb -o patch/$PATCH_OUTPUT.ips
+            cp medarot_1/build/patch/version.txt patch/version-<<  parameters.game-version >>.txt
+            sha1sum medarot_1/medarot_<<  parameters.game-version >>.gb > patch/<<  parameters.game-version >>.sha1
       - store_artifacts:
           path: patch/
           destination: patch
+      - persist_to_workspace:
+          root: patch
+          paths:
+            - .
+
+  release:
+    executor: rom-executor
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: patch
+      - store_artifacts:
+          path: patch
+          destination: patch
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$CIRCLE_BRANCH
+            ghr -t ${GHR_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./patch/
 
 workflows:
   workflow:
@@ -71,3 +97,13 @@ workflows:
           name: "Kuwagata - Latest Translations"
           use-latest-translations: true
           game-version: "kuwagata"
+      - release:
+          name: "Release"
+          requires:
+            - "Kabuto - Latest Translations"
+            - "Kuwagata - Latest Translations"
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?(?:[+](?<build>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+)))*))?)$/        
