@@ -32,7 +32,7 @@ LoadPartType:
   ld h, [hl]
   ld l, a
   ld de, cBUF02
-  ld b, $9 ; What's the point of the pointer table if you're going to use fixed lengths anyway?
+  ld b, $10 ; What's the point of the pointer table if you're going to use fixed lengths anyway?
 .asm_7501
   ld a, [hli]
   ld [de], a

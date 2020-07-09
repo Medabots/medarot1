@@ -197,7 +197,7 @@ $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_
 $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
 
-$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
+$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 	$(PYTHON) scripts/csv2bin.py $*
 
 $(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm
