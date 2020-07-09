@@ -3,7 +3,9 @@ INCLUDE "game/src/common/macros.asm"
 
 SECTION "Robattle Portraits", ROMX[$4000], BANK[$14]
 RobattleImages::
+RobattlePortraits::
   INCLUDE "game/src/story/include/robattle_portraits.asm"
+RobattleBackgrounds::
   INCLUDE "game/src/story/include/robattle_backgrounds.asm"
 
 SECTION "Load Player Portrait", ROM0[$2e3f]
