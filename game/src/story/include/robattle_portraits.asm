@@ -1,4 +1,3 @@
-RobattlePortraits::
   INCBIN "build/tilesets/robattle_portrait_000.2bpp"
   INCBIN "build/tilesets/robattle_portrait_001.2bpp"
   INCBIN "build/tilesets/robattle_portrait_002.2bpp"

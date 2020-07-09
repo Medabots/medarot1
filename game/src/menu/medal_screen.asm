@@ -319,3 +319,7 @@ MedalScreenLoadMedarotName: ; 9a4a (2:5a4a)
   call JumpPutString
   ret
 ; 0x9a93
+
+SECTION "Medal Screen - Medal Icons", ROMX[$4e4e], BANK[$8]
+MedalIcons::
+  INCLUDE "game/src/menu/include/medal_icons.asm"
