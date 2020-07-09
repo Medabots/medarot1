@@ -2,7 +2,7 @@ Pointer[#version],Original,Translated
 0x60000,むこうに メダロットが<4E>いっぱい すてられてるぞ,There's a bunch of trashed Medarots over at the back.
 0x60002,うちゅうじんが メダルを<4E>もってきたって ほんとうかしら？,Have aliens really come to bring us Medals?
 0x60004,あっ <&NAME>さん<4E>こんにちは<4C>よぞらに いちばんちかいばしょで<4E>ねがいごとをすると<4C>おもいが とどきやすい そうですよ<4C>かがくてきには<4E>なんのこんきょも ないんですけど<4C>でも そういうはなしって<4E>ステキだと おもいませんか？<*4>,"Ah, <&NAME>. <49>Hello.<4C>They say if you make a wish when you're closer to the stars, it's more likely to come true.<4C>There's no basis in science, but it's nice to think like that, right?<*4>"
-0x60006,いいこと してあげるから<4E>パーツのリストを みせてちょうだい<*4>,"If you show me the parts you've gained, I'll give you<49>something good. So how about it?<*4>"
+0x60006,いいこと してあげるから<4E>パーツのリストを みせてちょうだい<*4>,Show me the parts you've gained. I'll give you<49>something good. How about it?<*4>
 0x60008,ホホホッ<4E>パーツは「ちょうだい」したわよ,Hohohoo!<49>I'll be taking those parts!
 0x6000a,パーツが とられてしまった!,My parts got stolen!
 0x6000c,よく みやぶったわね,You saw right through me!
@@ -11,14 +11,14 @@ Pointer[#version],Original,Translated
 0x60012,おみやげに<4E>ほしのかけらを かいませんか？<*4>,Will you buy this Star Piece as a souvenir?
 0x60014,あリがとう,Thanks.
 0x60016,あリがとう ございます<4E>300円になリます,Thank you very much. That'll be 300¥.
-0x60018,おお! おちていたメダルを<4E>とどけてくれたのか<4C>なかなか えらいじゃないか<4E>では あずかっておこう<4C>と いいたいところだが しょうじきに<4E>とどけてくれた ごほうびだ<4C>そのメダルを きみに あげよう<4C>でも ちゃんと パパに<4E>ほうこくするんだぞ,"Oh! You've come to return a lost Medal?<49>What an honest young man.<4C>Well, I would take it off your hands, but...<49>Why not hold onto it? You can think of it as your reward for turning it in.<49>Alright, it's settled. The Medal is yours!<49>Be sure to tell to your parents about it."
-0x6001a,たとえ<4E>うちゅうじんが せめてきても<4C>セレクトたいが いるから<4E>ちきゅうは だいじょうぶだよね,"Even if aliens are invading, we have the Select Force<49>to protect us. As long as they're around, Earth is as good as safe."
+0x60018,おお! おちていたメダルを<4E>とどけてくれたのか<4C>なかなか えらいじゃないか<4E>では あずかっておこう<4C>と いいたいところだが しょうじきに<4E>とどけてくれた ごほうびだ<4C>そのメダルを きみに あげよう<4C>でも ちゃんと パパに<4E>ほうこくするんだぞ,"Oh! You've come to return a lost Medal?<49>What an honest young man.<4C>Well, I would take it off your hands, but...<49>Why not hold onto it? <49>You can think of it as your reward for turning it in.<4C>Alright, it's settled. <49>The Medal is yours!<4C>Be sure to tell to your parents about it."
+0x6001a,たとえ<4E>うちゅうじんが せめてきても<4C>セレクトたいが いるから<4E>ちきゅうは だいじょうぶだよね,"Even if aliens invade, we have the Select Force to protect us.<4C>As long as they're around, Earth is safe."
 0x6001c,おおきくなったら セレクトたいに<4E>はいろうと おもってたのに,"When I grow up, I want to join the Select Force."
 0x6001e,んっ？<4E>みたことない ほしがあるぞ,Hm?<49>I've never seen a star like that before.
-0x60020,あっ ほしがうごいたっ!？<4C>なんだ<4E>ただのえんばんか,"Ah! The star is moving?!<49>Oh, it's just a UFO."
-0x60022,あっ <&NAME>さん<4E>おぼえていて くれたんですね,Ah <&NAME>. You actually came!<49>You remembered.
+0x60020,あっ ほしがうごいたっ!？<4C>なんだ<4E>ただのえんばんか,Ah! The star is moving?!<4C>Oh.<49>it's just a UFO.
+0x60022,あっ <&NAME>さん<4E>おぼえていて くれたんですね,"Ah, <&NAME>.<49>You remembered."
 0x60024,ほしが とってもきれいですね<4C>いや きみのほうが・・・,"The stars look beautiful, don't they?<4C>Not as beautiful as you..."
-0x60026,おんなのこに ほしのかけらを<4E>プレゼントすると よろこばれるわよ,"If you give a pretty girl a Star Piece, I'm sure it<49>would make her very happy."
+0x60026,おんなのこに ほしのかけらを<4E>プレゼントすると よろこばれるわよ,"If you give a pretty girl a Star Piece, I'm sure it would make her very happy."
 0x60028,うちゅうせんを みるようになってから<4E>ロボロボだんが あらわれたんだよ,The RoboRobo Gang started showing up ever since we started seeing space ships.
 0x6002a,すいせいが おちて<4E>メダルに なったんだって,They say Medals fell to Earth on a comet.
 0x6002c,てんたいドームだと<4E>ほしが はっきリみえるのよ,You can see stars very clearly <49>from the observatory dome.
@@ -30,13 +30,13 @@ Pointer[#version],Original,Translated
 0x60038,・・・ にがしたか・・,It got away...
 0x6003a,いいルアーだな よかったら<4E>おじさんに くれないか？<*4>,That's a good lure you got there. Can I have it?<*4>
 0x6003c,あリがとう<4E>かわリに これをやるよ,Thanks. You can have this.
-0x6003e,じゃあ 1000円で かうぞ,"All right, I'll buy it for 1000¥."
+0x6003e,じゃあ 1000円で かうぞ,"All right, I'll buy it for ¥1000."
 0x60040,おおっ!<4E>よくつれるぞ このルアー,Ooh! This is a very well-made lure.
 0x60042,たいかいドームヘ ようこそ,Welcome to the Tournament Dome!
 0x60044,メダルは ぜんぶで57しゅるいさ,There are 57 different kinds of Medals.
 0x60046,メダルは ぜんぶで28コあるのさ,There are 28 medals in total.
 0x60048,オラと しょうぶだ!,Fight me!
-0x6004a,ケイタイを ひらいて メダルの<4E>じゅくれんどを みてみな<4C>メダロットを くみたてたときに<4E>メダルの したに でるだろう？<4C>それが そのメダロットが<4E>とくいな こうどうなのさ<4C>じゅくれんどは つかえば<4E>つかうほど あがっていくぜ<4C>はずれても いいから くリかえし<4E>れんしゅうすることが だいじなのさ<4C>じゅくれんどが ひくいままじゃ<4E>つよいやつには かすリもしない<4C>レベルのたかいやつを まかしたきゃ<4E>じゅくれんどを ガンガンあげな<4C>あたリにくいときゃ さくてきを<4E>つかうのも ひとつの てだぜ,"You can look at your Medarot's skills when you open up your Phone menu.<49>Have you noticed something underneath its Medal? That is the Medal's specialty.<49>The more you use it, the more its power will increase. Even if you miss the attack, simply using it will<49>increase its power. Right now, its power may be weak...but if you fight powerful oppenents, it will increase<49>little by little. If you defeat high-leveled oppenents, its power will increase exponentially!<49>If you find it difficult to hit your oppenents, try using ""Scan""."
+0x6004a,ケイタイを ひらいて メダルの<4E>じゅくれんどを みてみな<4C>メダロットを くみたてたときに<4E>メダルの したに でるだろう？<4C>それが そのメダロットが<4E>とくいな こうどうなのさ<4C>じゅくれんどは つかえば<4E>つかうほど あがっていくぜ<4C>はずれても いいから くリかえし<4E>れんしゅうすることが だいじなのさ<4C>じゅくれんどが ひくいままじゃ<4E>つよいやつには かすリもしない<4C>レベルのたかいやつを まかしたきゃ<4E>じゅくれんどを ガンガンあげな<4C>あたリにくいときゃ さくてきを<4E>つかうのも ひとつの てだぜ,"You can look at your Medarot's skills when you open up your Phone menu.<4C>Have you noticed something underneath its Medal? <49>That's the Medal's specialty.<4C>The more you use it, the more its power will increase, even if you miss the attack. <4C>Right now, its power may be weak...but if you fight powerful oppenents, it will increase<49>little by little.<4C>If you defeat high-leveled oppenents, its power will increase exponentially!<4C>If you find it difficult to hit your oppenents, try using ""Scan""."
 0x6004c,=0x6004a,=0x6004a
 0x6004e,=0x6004a,=0x6004a
 0x60050,んっ ぼうずか・・・<4E>ひとリものどうし ロボトルするか？<*4>,Hey boy..<49>How about a robottle between two single men?<*4>
@@ -45,16 +45,16 @@ Pointer[#version],Original,Translated
 0x60056,ロボトルしよーぜ!<4C>えっ メダロットを もってないって<4E>ちぇっ ださいやつ,"C'mon, let's Robottle!<4C>Huh? You don't have a Medarot? <49>Laaame."
 0x60058,メダロットどうしを たたかわせる<4E>ロボトルが はやっているのよ<4C>メダロットの1たいも もってなきゃ<4E>おんなのこに もてないんだから,"Right now, it's super cool to have your Medarot fight in Robottles.<49>If you don't have your own Medarot, you'll never be popular with the ladies!"
 0x6005a,メダロットに ロボトルに<4E>パーツ ティンペット メダルっと<4C>うわーん<4E>こんがらがって きちゃった,"To have your Medarot Robottle, you need a Tinpet, Medal, parts...<4C>Auugh, it's so confusing!"
-0x6005c,メダロットを あくようして わるさを<4E>している れんちゅうがいるんだ<4C>それが ロボロボだんさ<4E>ロボロボだんを みつけたら<4C>せいぎのみかた セレクトたいに<4E>まもってもらわなきゃ,"They say there's a group of bad guys going around using Medarots for evil deeds.<4C>They call themselves the RoboRobo Gang. If you see one of them, you should report it to the Select Force right away. They're the defenders of justice!"
+0x6005c,メダロットを あくようして わるさを<4E>している れんちゅうがいるんだ<4C>それが ロボロボだんさ<4E>ロボロボだんを みつけたら<4C>せいぎのみかた セレクトたいに<4E>まもってもらわなきゃ,"They say there's a group of bad guys going around using Medarots for evil deeds.<4C>They call themselves the RoboRobo Gang.<4C>If you see one of them, you should report it to the Select Force right away.<4C>They're the defenders of justice!"
 0x6005e,さあ<4E>けっちゃくを つけようじゃないか,"Now, let's settle this."
 0x60060,けっきょく<4E>きみだけには かてなかったな,It seems that I can beat everyone except you.
-0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,"D-Dad?<49>My opponent for the semi-finals... is my dad?<49><&NAME>, surpass me and grow as a Medarotter!"
-0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"Well then, if I may...<49>*sniffle* ...I-I'm so proud of you, son!!<49>You've grown so much...<49>The winner,<&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
-0x60066,がんばれよ <&NAME><4E>パパのゆめを かなえてくれ,"Do your best, <&NAME>. Achieve your father's dream!"
+0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,D-Dad?<4C>My opponent for the semi-finals... is dad?<4C><&NAME>...<49>Surpass me and grow as a Medarotter!
+0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"Well then, if I may...<49>*sniffle*<4C>...I-I'm so proud of you, son!!<49>You've grown so much...<4C>The winner,<&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
+0x60066,がんばれよ <&NAME><4E>パパのゆめを かなえてくれ,"Do your best, <&NAME>.<49>Achieve your father's dream!"
 0x60068,さいきょうの メダロッターをかけた<4E>このラストバトル<4C>めがみは どちらにほほえむのか!？<4C><&NAME>くんは<4E>やるきまんまんです <4C>それでは ロボトルファイト!!,"The strongest Medarotters are going head to head<49>in this final battle.<4C>Who will Lady Luck smile upon today?<4C><&NAME> sure looks determined!<4C>That said, Robottle Fight!"
-0x6006a,しょうしゃは <&NAME>くん!<4C>セレクトたい たいちょうをうちやぶリ<4E>えいこうの ざを かちとリました!<4C>ただでは すまさんぞ!,The winner is <&NAME>!<49>He completely trounced the Select Force Commander<49>in this heated battle!<4C>Don't think I'm done just yet!
+0x6006a,しょうしゃは <&NAME>くん!<4C>セレクトたい たいちょうをうちやぶリ<4E>えいこうの ざを かちとリました!<4C>ただでは すまさんぞ!,The winner is <&NAME>!<4C>He completely trounced the Select Force Commander in this heated battle!<4C>Don't think I'm done just yet!
 0x6006c,=0x6006a,=0x6006a
-0x6006e,<&NAME>!<4E>けがはないか？<4C>あれっ？<4E>ケイタイがうごかない・・・<4C>メダルに ヒビがはいっちゃったけど<4E>パパなら なおせるよね<4C>なんてことだ ケイタイから<4E>メダロットがとリだせなくなっている<4C>えっ・・・？<4C>メダルは なおすことが できないんだ,"<&NAME>!<49>Are you okay?<49>Huuh? The phone isn't working.<49>It looks like your Medal is cracked, I'll fix it for you.<49>What's this? I can't send out the Medarot.<49>...What?<49>I'm sorry, <&NAME>, there's no way to fix a Medal..."
+0x6006e,<&NAME>!<4E>けがはないか？<4C>あれっ？<4E>ケイタイがうごかない・・・<4C>メダルに ヒビがはいっちゃったけど<4E>パパなら なおせるよね<4C>なんてことだ ケイタイから<4E>メダロットがとリだせなくなっている<4C>えっ・・・？<4C>メダルは なおすことが できないんだ,"<&NAME>!<49>Are you okay?<4C>Huh?<49>My phone isn't working...<4C>It looks like your Medal is cracked, I'll fix it for you.<49>What's this? I can't send out the Medarot.<4C>...What?<4C>I'm sorry, <&NAME>. There's no way for me to fix the Medal."
 0x60070,フッフッフッ,Fufufuu...
 0x60072,なんて きたない やつだ<4C>おおーっと<4E>どうしたことでしょうか!？<4C><&NAME>くんの メダロットが<4E>とつぜん ばくはつしました!？<4C>ひょうしょうしきは ちゅうしして<4E>ごじつ・・・,That slimeball...<49>What's this! <&NAME>'s Medarot suddenly exploded?!<49>I'm afraid we'll have to postpone the awards ceremony...
 0x60074,おちこむな <&NAME><4C>メダルをなおす ほうほうは<4E>きっと あるはずだ,"Don't be sad, <&NAME>.<49>I'm sure there's a way to fix your Medal."
@@ -66,7 +66,7 @@ Pointer[#version],Original,Translated
 0x60080,いらっしゃーい<4E>とってもレアなもの い・か・が？,Welcome!<49>What would you like? We have some rare items.
 0x60082,=0x60080,=0x60080
 0x60084,がいこくの メダロットや パーツを<4E>ちょくせつ ゆにゅうしているのよ,We import Medarots and parts from overseas.
-0x60086,ダメロットを 20000円で<4E>うってくれない？<*4>,Will you sell this Medanot for 20000¥?
+0x60086,ダメロットを 20000円で<4E>うってくれない？<*4>,Will you sell this Medanot for ¥20000?
 0x60088,あリがとうね ぼうや,"Thank you, boy."
 0x6008a,いいもの うってないかしら,I wonder if they're selling anything good.
 0x6008c,ダメロットって<4E>なんの やくにたつのかしら・・・,"I wonder if this ""Medanot"" could be useful for anything..."
@@ -192,7 +192,7 @@ Pointer[#version],Original,Translated
 0x6017c,・・・・・・,......
 0x6017e,おじいちゃん どうしたの<4E>しっかリして!!<4C>ふぁーーーっ よくねたっ,Grandpa! What happened?<49>Hang in there!<4C>Fuaah... that was a good nap.
 0x60180,ワシが・・・<4E>ワシが せかいを まもるんじゃあ!,I...I will protect the Earth!
-0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<49>You remind me of my granddaughter.<49>Here, take this. It's 11500¥, plus tax."
+0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<49>You remind me of my granddaughter.<49>Here, take this. It's ¥11500, plus tax."
 0x60184,これからも しょうじんせい<4C>ほっほっほっ,
 0x60186,まあまあ よくきたのう<4C>それじゃ さっそく ロボトルかいし<4C>・・・と いきたいところだがの<4C>わたしは ロボトルせんからのぉ<4E>ほっほっほっ,"Ah, you did well to come here. Now, let's quickly start our Robottle...is what I would like to say but...I just came out of a Robottle. Hohohoo!"
 0x60188,なんも ないところだが<4E>ゆっくリして おいき,
@@ -457,7 +457,7 @@ Pointer[#version],Original,Translated
 0x6038a,こうえんの いけにおかねを なげると<4E>ねがいが かなうんだって,"If you toss a coin into the fountain, your wish will come true!"
 0x6038c,=0x6038a,=0x6038a
 0x6038e,こどもは いいなあ<4E>なつやすみが あってさ<4C>おっ おじさんは<4E>サボってるんじゃないぞ,"Must be nice to be a kid and still get summer vacation...<4C>What? No, I didn't come here to slack off or anything!"
-0x60390,なんだ 10えんだまか,"Oh cool, a 10¥ coin."
+0x60390,なんだ 10えんだまか,"Oh cool, a ¥10 coin."
 0x60392,んっ？ これは メダルだ!,Hm? This is a Medal!
 0x60394,メダロットで あそんでみたいでチュ<4C>パーツを かしてほしいで<4E>ちょうだいで くれないでチュか？<*4>,You like you're into Medarots.<49>Can I bowwow some parts?<*4>
 0x60396,あリがとうでチュ<4C>きっと おれいするでチュ,Thank you. I will pay you back.

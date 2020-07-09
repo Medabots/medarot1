@@ -1,5 +1,5 @@
 Pointer[#version],Original,Translated
-0x5a000,とおせだと？<4C>サメの いっぴきでも<4E>たおせば かんがえてやるよ<4C>まあ おまえには むリだろうがな,"You wanna get through here?<4C>Maybe if you could beat a shark in a fight, I'd think about letting you pass.<4C>No way that's possible for you, though!"
+0x5a000,とおせだと？<4C>サメの いっぴきでも<4E>たおせば かんがえてやるよ<4C>まあ おまえには むリだろうがな,"You wanna get through here?<4C>Maybe if you could beat a shark in a fight, I'd think about letting you pass.<4C>No way that's possible for you, though!<49>"
 0x5a002,そろそろ このまえのけっちゃくを<4E>つけようぜ<*4>,"Alright, it's about time we settled this!<*4>"
 0x5a004,うみのどうくつの たからをひとめ<4E>みたいんじゃが サメがでるんじゃよ,"I'd like to go looking for the treasure in that seaside cave myself, but with these sharks around..."
 0x5a006,サメが でるから およげないんだ,We can't go swimming with sharks around.
@@ -14,7 +14,7 @@ Pointer[#version],Original,Translated
 0x5a018,おサルにメダルを とられたの<4E>とリかえしてほしいの,A monkey took my Medal. <49>I hope I can get it back...
 0x5a01a,やまのおサルが おリてきて<4E>わるさを するんだ,The monkeys come down the mountain from time to time <49>to cause mischief.
 0x5a01c,まだ まけたわけじゃないからね!<4C>セレクトビルに いくんだったら<4C>あそこで はたらいてる パパに<4E>あいさつでも してくれば？,I still haven't lost yet!<49>I wonder if I should say hi to Dad at the<49>Select Headquarters.
-0x5a01e,ところで もういせきには<4E>いったのか？<4C>いせきはいいぞー<4E>ロマンがあってな,"That being said, have you gone to the Ruins yet? The Ruins are great.<49>They have an adventurous feeling to them."
+0x5a01e,ところで もういせきには<4E>いったのか？<4C>いせきはいいぞー<4E>ロマンがあってな,"That being said, have you gone to the Ruins yet? <4C>The Ruins are great.<4C>They have an adventurous feeling to them."
 0x5a020,いせきには トロッコで<4E>いくんだよ,You can reach the Ruins by taking the rail car.
 0x5a022,セレクトしぶで ごほうびが<4E>でるそうじゃないか<4C>やったな!<4C>きょうは とうこうびだろ<4C>がっこうが おわったら<4E>もらいに いってこいよ,"You did it!<49>By the way, The Select Office has a reward for you.<49>Wait, do you have school today? Go<49>pick it up when your day is over."
 0x5a024,そうだ 1つ ちゅういすることを<4E>わすれていたぞ<4C>じんじゃの たちいリきんしの<4E>ばしょには はいっちゃいかんぞ<4C>ロボロボだんが でるって<4E>はなしだからな<4C>ぜーったいに はいっちゃいかんぞ!<4C>それと しゅくだいは<4E>はやめに おわらせるんだぞ!,"Oh that's right, I forgot to say one thing.<49>Stay away from the back of the Shrine, it's off-limits!<49>There's been talk of the RoboRobo Gang lurking around that area, <49>do not try to go there! Also, try to keep up with your homework as well."
@@ -78,7 +78,7 @@ Pointer[#version],Original,Translated
 0x5a08e,きみの ライバルであることが<4E>ほこらしく おもえるよ,I'm proud to consider you a rival.
 0x5a090,ぬうっ？<4E>ものども どこヘいった？<4C>ふむ・・・<4E>くらやみで はぐれてしまったか<4C>しかたない ワシみずから<4E>てをくだすとするか・・・,"Hm? Where'd everybody go?<49>Hmm...Did we get separated in the darkness?<49>I guess it can't be helped, I'll take care of you myself."
 0x5a092,・・・ふん,...Hmph.
-0x5a094,800円を てにいれた,Obtained 800¥.
+0x5a094,800円を てにいれた,Obtained ¥800.
 0x5a096,なんだ<4E>もってないのか,What? You don't have anything?
 0x5a098,あんまリ いいもの<4E>もっていないのね,You never have anything good...
 0x5a09a,おまつリの じゅんびで<4E>いそがしいから<4C>じんじゃには はいれないのよ,"We're busy preparing for the festival, so the shrine is closed today."
