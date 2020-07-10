@@ -218,7 +218,7 @@ MedalScreenSetupDrawPageNumber:
 
 MedalScreenSetupWriteText: ; 9b9d (2:5b9d)
   ld a, [$c725]
-  call $57b7
+  call MedalScreenSetupMedalIcons
   ld a, [$c725]
   call $5808
   ld a, [$c725]
@@ -350,3 +350,84 @@ MedalScreenLoadMedalIcons:: ; 3262 (0:3262)
   ret
   nop
   nop
+
+SECTION "Medal Screen - Setup Load Medal Icons", ROMX[$57b7], BANK[$2]
+MedalScreenSetupMedalIcons: ; 97b7 (2:57b7)
+  ld hl, $a640
+  dec a
+  ld b, $00
+  ld c, a
+  call $58e9
+  ld a, $90
+  ld [$c644], a
+  ld a, $10
+  ld [$c645], a
+  ld b, $05
+  ld d, h
+  ld e, l
+.asm_97cf
+  ld a, [de]
+  or a
+  ret z
+  push hl
+  push bc
+  push de
+  ld hl, $1
+  add hl, de
+  ld a, [hl]
+  push af
+  ld a, [$c644]
+  ld d, a
+  ld a, [$c645]
+  ld e, a
+  pop af
+  call JumpTable_27c
+  ld a, [$c644]
+  ld h, a
+  ld a, [$c645]
+  ld l, a
+  ld de, $40
+  add hl, de
+  ld a, h
+  ld [$c644], a
+  ld a, l
+  ld [$c645], a
+  pop de
+  pop bc
+  pop hl
+  ld hl, $20
+  add hl, de
+  ld d, h
+  ld e, l
+  dec b
+  jr nz, .asm_97cf
+  ret
+; 0x9808
+
+SECTION "Medal Screen - Draw Medal Icon tilemap", ROMX[$585a], BANK[$2]
+MedalScreenDrawMedalIconTilemap: ; 985a (2:585a)
+  push hl
+  push bc
+  push de
+  ld c, $02
+.asm_985f
+  push hl
+  ld b, $02
+.asm_9862
+  di
+  call JumpWaitLCDController
+  ld [hli], a
+  ei
+  inc a
+  dec b
+  jr nz, .asm_9862
+  pop hl
+  ld de, $20
+  add hl, de
+  dec c
+  jr nz, .asm_985f
+  pop de
+  pop bc
+  pop hl
+  ret
+; 0x9878
