@@ -327,7 +327,7 @@ MedalIcons::
 SECTION "Medal Screen - Load Medal Icons", ROM0[$3262]
 MedalScreenLoadMedalIcons:: ; 3262 (0:3262)
   push af
-  ld a, $08
+  ld a, BANK(MedalIcons)
   ld [$2000], a
   pop af
   ld b, $00
