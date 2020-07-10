@@ -748,7 +748,7 @@ RobattleLoadMedarotNames::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  pshl $98ec, $d6
+  pshl $98ec, $19
   ld a, [$c652]
   ld bc, $0820
 .loop_enemy_getoffset
@@ -832,7 +832,7 @@ RobattleLoadMedarotNamesCopy::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  pshl $98ec, $d6
+  pshl $98ec, $19
   ld a, [$c652]
   ld bc, $0820
 .loop_enemy_getoffset
