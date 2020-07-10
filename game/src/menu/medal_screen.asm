@@ -319,37 +319,34 @@ REPT $5a93 - .end
 ENDR
 ; 0x9a93
 
-SECTION "Medal Screen - Medal Icons", ROMX[$4e4e], BANK[$8]
+SECTION "Medal Screen - Medal Icons", ROMX[$67a0], BANK[$7]
 MedalIcons::
   INCLUDE "game/src/menu/include/medal_icons.asm"
 
 SECTION "Medal Screen - Load Medal Icons", ROM0[$3262]
 MedalScreenLoadMedalIcons:: ; 3262 (0:3262)
-  push af
+  ld h, $0
+  ld l, a
   ld a, BANK(MedalIcons)
   rst $10
-  pop af
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  ld hl, MedalIcons
+  add hl, hl
+  add hl, hl
+  add hl, hl
+  add hl, hl
+  add hl, hl
+  ld b, h
+  ld c, l
+  add hl, hl
   add hl, bc
-  ld bc, $40
+  ld bc, MedalIcons
+  add hl, bc
+  ld bc, $60
   call CopyVRAMData
   ret
+.end
+REPT $328d - .end
   nop
-  nop
+ENDR
 
 SECTION "Medal Screen - Setup Load Medal Icons", ROMX[$57b7], BANK[$2]
 MedalScreenSetupMedalIcons: ; 97b7 (2:57b7)
@@ -386,7 +383,7 @@ MedalScreenSetupMedalIcons: ; 97b7 (2:57b7)
   ld h, a
   ld a, [$c645]
   ld l, a
-  ld de, $40
+  ld de, $60
   add hl, de
   ld a, h
   ld [$c644], a
@@ -440,7 +437,7 @@ MedalScreenDrawAllMedalIconTilemaps: ; 9808 (2:5808)
   ld a, l
   ld [$c645], a
   ld a, [$c64e]
-  add $04
+  add $06
   ld [$c64e], a
   pop de
   pop bc
@@ -456,7 +453,7 @@ MedalScreenDrawMedalIconTilemap: ; 985a (2:585a)
   push hl
   push bc
   push de
-  ld c, $02
+  ld c, $03
 .asm_985f
   push hl
   ld b, $02
@@ -483,7 +480,7 @@ SECTION "Medal Screen - Clear Screen (page swap)", ROMX[$5ad7], BANK[$2]
 MedalScreenClearMedalList: ; 9ad7 (2:5ad7)
   ld hl, $9860
   ld b, $0a
-  ld c, $0e
+  ld c, $0f
   call $7b9b
   ld hl, $984b
   ld b, $08
