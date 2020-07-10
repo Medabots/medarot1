@@ -218,7 +218,7 @@ MedalScreenSetupWriteText: ; 9b9d (2:5b9d)
   ld a, [$c725]
   call MedalScreenSetupMedalIcons
   ld a, [$c725]
-  call $5808
+  call MedalScreenDrawAllMedalIconTilemaps
   ld a, [$c725]
   call MedalScreenSetupLoadMedalText
   ld a, [$c725]
@@ -403,7 +403,54 @@ MedalScreenSetupMedalIcons: ; 97b7 (2:57b7)
   ret
 ; 0x9808
 
-SECTION "Medal Screen - Draw Medal Icon tilemap", ROMX[$585a], BANK[$2]
+SECTION "Medal Screen - Draw Medal Icon functions", ROMX[$5808], BANK[$2]
+MedalScreenDrawAllMedalIconTilemaps: ; 9808 (2:5808)
+  ld hl, $a640
+  dec a
+  ld b, $00
+  ld c, a
+  call $58e9
+  ld a, $98
+  ld [$c644], a
+  ld a, $61
+  ld [$c645], a
+  ld a, $01
+  ld [$c64e], a
+  ld b, $05
+  ld d, h
+  ld e, l
+.asm_9825
+  ld a, [de]
+  or a
+  ret z
+  push hl
+  push bc
+  push de
+  ld a, [$c644]
+  ld h, a
+  ld a, [$c645]
+  ld l, a
+  ld a, [$c64e]
+  call MedalScreenDrawMedalIconTilemap
+  ld bc, $60
+  add hl, bc
+  ld a, h
+  ld [$c644], a
+  ld a, l
+  ld [$c645], a
+  ld a, [$c64e]
+  add $04
+  ld [$c64e], a
+  pop de
+  pop bc
+  pop hl
+  ld hl, $20
+  add hl, de
+  ld d, h
+  ld e, l
+  dec b
+  jr nz, .asm_9825
+  ret
 MedalScreenDrawMedalIconTilemap: ; 985a (2:585a)
   push hl
   push bc
