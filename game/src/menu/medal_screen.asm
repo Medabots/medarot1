@@ -478,3 +478,20 @@ MedalScreenDrawMedalIconTilemap: ; 985a (2:585a)
   pop hl
   ret
 ; 0x9878
+
+SECTION "Medal Screen - Clear Screen (page swap)", ROMX[$5ad7], BANK[$2]
+MedalScreenClearMedalList: ; 9ad7 (2:5ad7)
+  ld hl, $9860
+  ld b, $0a
+  ld c, $0e
+  call $7b9b
+  ld hl, $984b
+  ld b, $08
+  ld c, $0a
+  call $7b9b
+  ld hl, $99eb
+  ld b, $08
+  ld c, $02
+  call $7b9b
+  ret
+; 0x9af6
