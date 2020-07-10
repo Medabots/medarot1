@@ -431,35 +431,6 @@ Func_3195: ; 3195 (0:3195)
   nop
   nop
 
-SECTION "Func_3262", ROM0[$3262]
-Func_3262: ; 3262 (0:3262)
-  push af
-  ld a, $08
-  rst $10
-  pop af
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  sla c
-  rl b
-  ld hl, $4e4e
-  add hl, bc
-  ld bc, $40
-  call CopyVRAMData
-  ret
-  nop
-  nop
-; 0x328f
-
 SECTION "Func_32ed", ROM0[$32ed]
 Func_32ed: ; 32ed (0:32ed)
   push hl

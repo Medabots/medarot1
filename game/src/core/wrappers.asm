@@ -345,7 +345,7 @@ Wrapper_763::
   rst $18
   ret
 Wrapper_768::
-  call $3262
+  call MedalScreenLoadMedalIcons
   rst $18
   ret
 Wrapper_76d::

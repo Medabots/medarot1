@@ -322,3 +322,31 @@ ENDR
 SECTION "Medal Screen - Medal Icons", ROMX[$4e4e], BANK[$8]
 MedalIcons::
   INCLUDE "game/src/menu/include/medal_icons.asm"
+
+SECTION "Medal Screen - Load Medal Icons", ROM0[$3262]
+MedalScreenLoadMedalIcons:: ; 3262 (0:3262)
+  push af
+  ld a, $08
+  rst $10
+  pop af
+  ld b, $00
+  ld c, a
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  ld hl, MedalIcons
+  add hl, bc
+  ld bc, $40
+  call CopyVRAMData
+  ret
+  nop
+  nop
