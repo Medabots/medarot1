@@ -317,6 +317,11 @@ LoadRobottleText:
   push bc
   Load1BPPTileset $8800, PatchTilesetStartRobottlesText, PatchTilesetEndRobottlesText
   Load1BPPTileset $8BA0, PatchTilesetStartDash, PatchTilesetEndDash
+  Load1BPPTileset $8980, PatchTilesetStartFWFY, PatchTilesetEndFWFY
+  Load1BPPTileset $88D0, PatchTilesetStartFWFN, PatchTilesetEndFWFN
+  Load1BPPTileset $89E0, PatchTilesetStartFWFe, PatchTilesetEndFWFe
+  Load1BPPTileset $8AC0, PatchTilesetStartFWFs, PatchTilesetEndFWFs
+  Load1BPPTileset $8A80, PatchTilesetStartFWFo, PatchTilesetEndFWFo
   ld hl, $8F00
   ld de, PatchTilesetStartRobattleGraphics
   ld a, [de]
