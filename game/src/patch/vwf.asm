@@ -61,6 +61,10 @@ LoadPortraitTileset:
   rst $10
   ret
 
+VWFPutStringTo8Pad2::
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
+
 VWFPutStringTo8::
   ld a, 8
   ; Continues into VWFPutString.

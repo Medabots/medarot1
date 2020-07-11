@@ -286,6 +286,7 @@ LoadMedarotScreenFontAndLoadTilemap:
   push de
   push bc
   Load1BPPTileset $8800, PatchTilesetStartMedarotScreenText, PatchTilesetEndMedarotScreenText
+  Load1BPPTileset $8BA0, PatchTilesetStartDash, PatchTilesetEndDash
   pop bc
   pop de
   pop hl

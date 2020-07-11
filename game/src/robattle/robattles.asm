@@ -255,7 +255,7 @@ RobattlePartScreen:
   call VWFPadTextTo8
   ld h, $0
   ld l, a
-  psbc $984b, $45
+  psbc $984b, $47
   add hl, bc
   ld b, h
   ld c, l
@@ -320,7 +320,7 @@ RobattlePartScreenLoadMedalIcon: ; 6ed0e (1b:6d0e)
   push hl
   push bc
   push de
-  ld c, $02
+  ld c, $03
 .asm_6ed13
   push hl
   ld b, $02
