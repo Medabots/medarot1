@@ -1,6 +1,8 @@
 ; Sections of nops
-SECTION "Free3", ROM0[$CD]
-REPT $33
+SECTION "Free3", ROM0[$9F]
+Free:
+.free
+REPT $100 - .free
   nop
 ENDR
 

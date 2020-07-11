@@ -92,7 +92,7 @@ LoadMedarotPartSelectMedal:
   call JumpLoadMedalList
   ld hl, cBUF01
   psbc $98ac, $c6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8Pad2
   ret
 LoadMedarotPartSelectHead:
   ld a, [$a03d]
@@ -239,18 +239,17 @@ LoadMedarotPartSelectSkills:
   inc a
   ld [$c658], a
   cp $8
-  jp nz, .asm_b644 ; asm_b644
+  jr nz, .asm_b644 ; asm_b644
   ld a, [$c65a]
   ld hl, SkillsPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
+  rla ; Realistically, there's not enough Skills for this to ever overflow
+  rst $28 ; hl += a
   psbc $98ec, $ce
   ld d, BANK(LoadMedarotPartSelectSkills)
   ld e, BANK(SkillsPtr)
-  jp PrintPtrText
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
+  jp PrintPtrTextAutoNarrow
 .end
 REPT $7685 - .end
   nop

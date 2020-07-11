@@ -61,10 +61,6 @@ LoadPortraitTileset:
   rst $10
   ret
 
-VWFPutStringTo8Pad2::
-  ld a, $02
-  ld [VWFInitialPaddingOffset], a
-
 VWFPutStringTo8::
   ld a, 8
   ; Continues into VWFPutString.
@@ -158,6 +154,23 @@ VWFLeftPadText::
   xor a
   pop de
   ret
+
+VWFAutoNarrowTo8::
+  ld a, 8
+  ; Continues into VWFAutoNarrow.
+  
+VWFAutoNarrow::
+  push de
+  call VWFPadTextCommon
+  ld a, $d
+  rst $8 ; VWFCalculateAutoNarrow
+  xor a
+  pop de
+  ret
+
+VWFPutStringAutoNarrowTo8Pad2::
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
 
 VWFPutStringAutoNarrowTo8::
   ld a, 8

@@ -1,6 +1,6 @@
 ; Functions that needed to go within the core game space 
 
-SECTION "GetNextChar", ROM0[$79]
+SECTION "GetNextChar", ROM0[$1e22]
 GetNextChar::
   push hl
   ld a, [hl]
@@ -9,7 +9,7 @@ GetNextChar::
   ld a, $8 ; SetNextChar
   rst $8
   ret
-
+  
 PrintPtrText::
   ; hl is pointer to string (must deref)
   ; d = bank to return to
@@ -24,6 +24,22 @@ PrintPtrText::
 .start
   rst $38 ; hl = [hl], deref ptr
   call VWFPutStringTo8
+  pop af ; take stored de -> af, a = d, f = e
+  or a
+  jr z, .return
+  rst $10
+.return
+  ret
+
+PrintPtrTextAutoNarrow:: ; Same as PrintPtrText but calling AutoNarrow, can't be used with PadPtrTextTo8
+  push de
+  ld a, e
+  or a
+  jr z, .start
+  rst $10 ; bank swap
+.start
+  rst $38 ; hl = [hl], deref ptr
+  call VWFPutStringAutoNarrowTo8
   pop af ; take stored de -> af, a = d, f = e
   or a
   jr z, .return

@@ -1,5 +1,7 @@
-SECTION "Old Dialog Control Codes", ROM0[$1e16]
-REPT $163
+SECTION "Old Dialog Control Codes", ROM0[$1e5e]
+Free:
+.marker
+REPT $1f79 - .marker
   nop
 ENDR
 
