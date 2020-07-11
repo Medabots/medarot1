@@ -271,7 +271,7 @@ RobattlePartScreen:
   pop de
   ld a, $41
   ld hl, $988a
-  call $6d0e
+  call RobattlePartScreenLoadMedalIcon
   push de
   ld hl, $0081
   add hl, de
@@ -316,7 +316,31 @@ RobattlePartScreen:
   pop de
   call $6ece
   ret
-; 0x6ed0e
+RobattlePartScreenLoadMedalIcon: ; 6ed0e (1b:6d0e)
+  push hl
+  push bc
+  push de
+  ld c, $02
+.asm_6ed13
+  push hl
+  ld b, $02
+.asm_6ed16
+  di
+  call JumpWaitLCDController
+  ld [hli], a
+  ei
+  inc a
+  dec b
+  jr nz, .asm_6ed16
+  pop hl
+  ld de, $20
+  add hl, de
+  dec c
+  jr nz, .asm_6ed13
+  pop de
+  pop bc
+  pop hl
+  ret
 
 SECTION "Robattle - Load Parts", ROMX[$6d2c], BANK[$1b]
 RobattleMedarotInfoLoadHead:
