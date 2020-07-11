@@ -212,11 +212,11 @@ LoadMedarotPartSelectSkills:
   ld [$c658], a
   ld [$c65a], a
   ld [$c65b], a
-.asm_b644
   ld hl, $000c
   add hl, de
   ld a, [hl]
   ld [$c65b], a
+.asm_b644
   ld hl, $000c
   ld b, $0
   ld a, [$c658]
@@ -237,7 +237,7 @@ LoadMedarotPartSelectSkills:
   inc a
   ld [$c658], a
   cp $8
-  jp nz, $7644 ; asm_b644
+  jp nz, .asm_b644
   ld a, [$c65a]
   ld hl, SkillsPtr
   ld b, $0
