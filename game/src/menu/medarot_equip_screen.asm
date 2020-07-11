@@ -239,7 +239,7 @@ LoadMedarotPartSelectSkills:
   inc a
   ld [$c658], a
   cp $8
-  jp nz, $7644 ; asm_b644
+  jp nz, .asm_b644 ; asm_b644
   ld a, [$c65a]
   ld hl, SkillsPtr
   ld b, $0
@@ -248,7 +248,11 @@ LoadMedarotPartSelectSkills:
   rl b
   add hl, bc
   psbc $98ec, $ce
-  ld d, BANK(LoadSkill)
+  ld d, BANK(LoadMedarotPartSelectSkills)
   ld e, BANK(SkillsPtr)
   jp PrintPtrText
+.end
+REPT $7685 - .end
+  nop
+ENDR
 ; 0xb685
