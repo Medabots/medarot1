@@ -174,7 +174,7 @@ Func_2bb2: ; 2bb2 (0:2bb2)
 SECTION "Func_2ca1", ROM0[$2ca1]
 Func_2ca1: ; 2ca1 (0:2ca1)
   ld a, $10
-  ld [$2000], a
+  rst $10
   ld a, [$c92c]
   ld h, a
   ld a, [$c92d]
@@ -222,13 +222,15 @@ Func_2ca1: ; 2ca1 (0:2ca1)
   ld a, [hli]
   ld [$c658], a
   ret
+  nop
+  nop
 .func_2cef
 ; 0x2cef
 
 SECTION "Func_2d25", ROM0[$2d25]
 Func_2d25: ; 2d25 (0:2d25)
   ld a, $03
-  ld [$2000], a
+  rst $10
   ld a, [$c0d8]
   ld b, $00
   ld c, a
@@ -247,7 +249,7 @@ Func_2d25: ; 2d25 (0:2d25)
   add b
   ld [$c651], a
   ld a, $10
-  ld [$2000], a
+  rst $10
   ld a, [$c92f]
   ld h, a
   ld a, [$c930]
@@ -275,19 +277,23 @@ Func_2d25: ; 2d25 (0:2d25)
   ld a, [hli]
   ld [$c650], a
   ld a, $03
-  ld [$2000], a
+  rst $10
   call $4000
   ld a, $01
   ld [$c64e], a
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 ; 0x2d85
 
 SECTION "Func_2dba", ROM0[$2dba]
 Func_2dba: ; 2dba (0:2dba)
   ld a, $17
   rst $10
-  nop
-  nop
   ld hl, $c933
   ld a, [$c936]
   cp $ff
@@ -322,6 +328,8 @@ Func_2dba: ; 2dba (0:2dba)
   ld a, [hl]
   ld [$c64f], a
   ret
+  nop
+  nop
 .asm_2dfb
 ; 0x2dfb
 
@@ -400,7 +408,7 @@ SECTION "Func_3117", ROM0[$3117]
 Func_3117:: ; 3117 (0:3117)
   ld [$c64e], a
   ld a, $17
-  ld [$2000], a
+  rst $10
   ld hl, .data_314d
   ld d, $00
   ld e, b
@@ -428,6 +436,8 @@ Func_3117:: ; 3117 (0:3117)
   ld a, [hl]
   ld [$c64e], a
   ret
+  nop
+  nop
 .data_314d
   dw $4000
   dw $43d0
