@@ -232,6 +232,7 @@ RobattleReloadFont: ; 6eac7 (1b:6ac7)
   ld a, $0a
   call JumpTable_309
   call $67de
+  call RobattleLoadMedarotNamesCopy
   ret
 .end
 REPT $6af1 - .end
@@ -254,7 +255,7 @@ RobattlePartScreen:
   call VWFPadTextTo8
   ld h, $0
   ld l, a
-  psbc $984b, $be
+  psbc $984b, $45
   add hl, bc
   ld b, h
   ld c, l
@@ -482,7 +483,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $99c6, $a1
+  psbc $99c6, $9f
   call VWFPutStringTo8
   ret
   ld hl, $000e
@@ -512,7 +513,7 @@ RobattleLoadText:
   ld c, $1
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9a0b, $a9
+  psbc $9a0b, $ad
   call VWFPutStringTo8
   ret
   ld hl, $000f
@@ -549,7 +550,7 @@ RobattleLoadText:
   ld b, h
   ld c, l
   ld hl, cBUF01
-  psbc $9a01, $b1
+  psbc $9a01, $be
   call VWFPutStringTo8
   ret
 
@@ -748,7 +749,7 @@ RobattleLoadMedarotNames::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  pshl $98ec, $d6
+  pshl $98ec, $19
   ld a, [$c652]
   ld bc, $0820
 .loop_enemy_getoffset
@@ -832,7 +833,7 @@ RobattleLoadMedarotNamesCopy::
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  pshl $98ec, $d6
+  pshl $98ec, $19
   ld a, [$c652]
   ld bc, $0820
 .loop_enemy_getoffset

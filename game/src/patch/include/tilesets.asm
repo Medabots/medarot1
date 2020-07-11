@@ -46,6 +46,21 @@ PatchTilesetEndMinimalEquipScreenText
 PatchTilesetStartDash::
   INCBIN "build/tilesets/patch/Dash.1bpp"
 PatchTilesetEndDash
+PatchTilesetStartFWFY::
+  INCBIN "build/tilesets/patch/FWF_Y.1bpp"
+PatchTilesetEndFWFY
+PatchTilesetStartFWFN::
+  INCBIN "build/tilesets/patch/FWF_N.1bpp"
+PatchTilesetEndFWFN
+PatchTilesetStartFWFe::
+  INCBIN "build/tilesets/patch/FWF_e.1bpp"
+PatchTilesetEndFWFe
+PatchTilesetStartFWFs::
+  INCBIN "build/tilesets/patch/FWF_s.1bpp"
+PatchTilesetEndFWFs
+PatchTilesetStartFWFo::
+  INCBIN "build/tilesets/patch/FWF_o.1bpp"
+PatchTilesetEndFWFo
 PatchTilesetStartLoadGame::
   INCBIN "build/tilesets/patch/LoadGame.1bpp"
 PatchTilesetEndLoadGame
