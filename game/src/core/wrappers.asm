@@ -337,7 +337,7 @@ Wrapper_750::
   nop
   nop
 Wrapper_75e::
-  call $3117
+  call Func_3117
   rst $18
   ret
 Wrapper_763::

@@ -638,7 +638,7 @@ RobattleLoadAttackText:
   ld b, a
   ld a, $f
   push de
-  call $3117
+  call Func_3117
   pop de
   ld a, BANK(AttacksPtr)
   rst $10

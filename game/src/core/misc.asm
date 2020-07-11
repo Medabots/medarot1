@@ -171,6 +171,117 @@ Func_2bb2: ; 2bb2 (0:2bb2)
 .asm_2c1e
 ; 0x2c1e
 
+SECTION "Func_2ca1", ROM0[$2ca1]
+Func_2ca1: ; 2ca1 (0:2ca1)
+  ld a, $10
+  ld [$2000], a
+  ld a, [$c92c]
+  ld h, a
+  ld a, [$c92d]
+  ld l, a
+.asm_2cae
+  ld a, [hli]
+  cp $ff
+  jp z, .func_2cef
+  ld b, a
+  ld a, [$c64e]
+  cp b
+  jr z, .asm_2cc5
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  jp .asm_2cae
+.asm_2cc5
+  ld a, [hli]
+  ld b, a
+  ld a, [$c64f]
+  cp b
+  jr z, .asm_2cd6
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  inc hl
+  jp .asm_2cae
+.asm_2cd6
+  ld a, [hli]
+  ld [$c64e], a
+  ld a, [hli]
+  ld [$c650], a
+  ld a, [hli]
+  ld [$c652], a
+  ld a, [hli]
+  ld [$c654], a
+  ld a, [hli]
+  ld [$c656], a
+  ld a, [hli]
+  ld [$c658], a
+  ret
+.func_2cef
+; 0x2cef
+
+SECTION "Func_2d25", ROM0[$2d25]
+Func_2d25: ; 2d25 (0:2d25)
+  ld a, $03
+  ld [$2000], a
+  ld a, [$c0d8]
+  ld b, $00
+  ld c, a
+  sla c
+  rl b
+  ld hl, $400f
+  add hl, bc
+  ld a, [hli]
+  ld b, a
+  ld a, [$c0d4]
+  add b
+  ld [$c650], a
+  ld a, [hli]
+  ld b, a
+  ld a, [$c0d5]
+  add b
+  ld [$c651], a
+  ld a, $10
+  ld [$2000], a
+  ld a, [$c92f]
+  ld h, a
+  ld a, [$c930]
+  ld l, a
+.asm_2d57
+  ld a, [hli]
+  cp $ff
+  ret z
+  ld b, a
+  ld a, [$c650]
+  cp b
+  jr z, .asm_2d67
+  inc hl
+  inc hl
+  jp .asm_2d57
+.asm_2d67
+  ld a, [hli]
+  ld b, a
+  ld a, [$c651]
+  cp b
+  jr z, .asm_2d73
+  inc hl
+  jp .asm_2d57
+.asm_2d73
+  ld a, [hli]
+  ld [$c650], a
+  ld a, $03
+  ld [$2000], a
+  call $4000
+  ld a, $01
+  ld [$c64e], a
+  ret
+; 0x2d85
+
 SECTION "Func_2dba", ROM0[$2dba]
 Func_2dba: ; 2dba (0:2dba)
   ld a, $17
@@ -285,7 +396,43 @@ Func_2faa: ; 2faa (0:2faa)
   nop
 ; 0x2fcf
 
-SECTION "Func_3155", ROM0[$3155]
+SECTION "Func_3117", ROM0[$3117]
+Func_3117:: ; 3117 (0:3117)
+  ld [$c64e], a
+  ld a, $17
+  ld [$2000], a
+  ld hl, .data_314d
+  ld d, $00
+  ld e, b
+  sla e
+  rl d
+  add hl, de
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld d, $00
+  ld e, c
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  add hl, de
+  ld a, [$c64e]
+  ld d, $00
+  ld e, a
+  add hl, de
+  ld a, [hl]
+  ld [$c64e], a
+  ret
+.data_314d
+  dw $4000
+  dw $43d0
+  dw $47a0
+  dw $4b70
 Func_3155: ; 3155 (0:3155)
   ld [$c64e], a
   ld a, $17
@@ -852,7 +999,7 @@ Func_3942: ; 3942 (0:3942)
   pop af
   ld c, a
   ld a, $01
-  call $3117
+  call Func_3117
   ld a, $02
   rst $10
   ld hl, $67f7
