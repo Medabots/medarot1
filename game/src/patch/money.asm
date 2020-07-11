@@ -1,33 +1,39 @@
 SECTION "Map Price With Yen Symbol", ROM0[$A7]
 MapMoneyWithYenSymbol::
-  dec c
-  di
-  call WaitLCDController
-  xor a
-  ld [bc], a
-  ei
-  inc c
+; Warning: Be careful about making changes to the money window tilemap.
+; MapMoneyWithYenSymbol can descend into an infinite loop if it can't find a place to insert the yen symbol.
+
   call JumpTable_1ec
-  push bc
-  inc c
-  inc c
+  ld a, c
+  inc a
+  inc a
+  jr .decccommon
 
 .loop
   di
   call WaitLCDController
   ld a, [bc]
   ei
-  dec c
-  jr z, .exit
   or a
-  jr nz, .loop
-  inc c
+  jr z, .exit
+
+.decc
+  ld a, c
+  dec a
+
+.decccommon
+  and $1F
+  ld d, a
+  ld a, c
+  and $E0
+  add d
+  ld c, a
+  jr .loop
+
+.exit
   di
   call WaitLCDController
   ld a, $7C
   ld [bc], a
   ei
-
-.exit
-  pop bc
   ret
