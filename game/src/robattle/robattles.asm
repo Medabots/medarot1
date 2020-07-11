@@ -279,7 +279,7 @@ RobattlePartScreen:
   call JumpLoadMedalList
   ld hl, cBUF01 ; Medal
   psbc $98ac, $c6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8Pad2
   pop de
   call $6fc4
   ld hl, $000d
@@ -453,22 +453,25 @@ RobattleMedarotInfoLoadSkill:
   inc a
   ld [$c658], a
   cp $8
-  jp nz, .asm_6fd6
+  jr nz, .asm_6fd6
   ld a, [$c65a]
   ld hl, SkillsPtr
-  ld b, $0
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
+  rla ; Realistically, there's not enough Skills for this to ever overflow
+  rst $28
   psbc $98ec, $ce
   push de
   ld d, BANK(RobattleMedarotInfoLoadSkill)
-  ld e, BANK(SkillsPtr)  
-  call PrintPtrText
+  ld e, BANK(SkillsPtr)
+  ld a, $02
+  ld [VWFInitialPaddingOffset], a
+  call PrintPtrTextAutoNarrow
   pop de
+  ret
+.end
+REPT $7019 - .end
+  nop
+ENDR
 ; 0x6f019
-  ret ; Overwrites the first byte of the unused 1B copy
 
 SECTION "Robattle - Load Text", ROMX[$54f1], BANK[$4]
 RobattleLoadText:

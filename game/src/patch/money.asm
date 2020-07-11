@@ -1,4 +1,4 @@
-SECTION "Map Price With Yen Symbol", ROM0[$A7]
+SECTION "Map Price With Yen Symbol", ROM0[$79]
 MapMoneyWithYenSymbol::
   dec c
   di
