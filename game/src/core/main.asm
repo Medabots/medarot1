@@ -18,7 +18,7 @@ Main::
 
 ; Switch to bank 1.
   ld a, 1
-  ld [$2000], a
+  rst $10
 
 ; Switch to sram bank 0.
   ld a, 0
@@ -111,6 +111,8 @@ Main::
   xor a
   ld [$C5A1], a
   jp .gameLoop
+  nop
+  nop
   nop
   nop
   nop
