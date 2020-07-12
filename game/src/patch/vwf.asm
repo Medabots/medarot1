@@ -952,10 +952,11 @@ VWFChar4D::
   call VWFIncTextOffset
   pop hl
   ld a, [$c6c1]
-  cp $ff
+  cp $7f
   ret nz
   xor a
   ld [$c6c1], a
+  ld [$c6c4], a
   ret
 
 VWFChar4C::
