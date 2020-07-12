@@ -1,12 +1,12 @@
 [OVERLAY]
           
-Casual Robattle
+Practice Robattle
 
           
-Serious Robattle
+Official Robattle
 
           
 Trade Parts
 
           
-End Comms
+End Connection
