@@ -136,7 +136,7 @@ for file in texts:
     with open("text/credits/" + file + ".csv", "w", encoding="utf-8") as fp:
         fp.write("Pointer[#version],VRAMOffset,Original\n")
         for idx in OrderedDict(sorted(texts[file].items(), key=lambda t: t[0])):
-            fp.write("{},{}\n".format(idx, texts[file][idx]))
+            fp.write("{},0x{}\n".format(idx, texts[file][idx]))
 
 ptrs.truncate()
 ptrs.close()
