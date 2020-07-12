@@ -664,7 +664,10 @@ RobattleLoadAttackText:
   pop de
   pop hl
   ret
+.end
+REPT $3b23 - .end
   nop
+ENDR
 ; 0x3b23
 
 SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
