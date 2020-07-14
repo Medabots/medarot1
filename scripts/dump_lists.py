@@ -22,7 +22,12 @@ list_map = ({
 
 VERSIONS = [("baserom_kabuto.gb", "kabuto"), ("baserom_kuwagata.gb", "kuwagata")]
 
-tileset = utils.merge_dicts([utils.read_table("scripts/res/tileset_MainDialog.tbl"), utils.read_table("scripts/res/tileset_MainSpecial.tbl"), utils.read_table("scripts/res/dakuten.tbl")])
+tileset = utils.merge_dicts([
+			utils.read_table("scripts/res/tileset_MainDialog.tbl"), 
+		 	utils.read_table("scripts/res/tileset_MainSpecial.tbl"),
+		 	utils.read_table("scripts/res/tileset_BoldLetters.tbl"),
+		 	utils.read_table("scripts/res/dakuten.tbl")
+		 ])
 for lst in list_map:
 	merged_dict = {}
 	addr, length, term, pad, n = list_map[lst]

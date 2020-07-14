@@ -19,10 +19,10 @@ TilesetStart1156::
   INCBIN "build/tilesets/1156.malias"
 TilesetEnd1156::
 
-Tileset115B::
-TilesetStart115B::
-  INCBIN "build/tilesets/115B.malias"
-TilesetEnd115B::
+TilesetBoldLetters::
+TilesetStartBoldLetters::
+  INCBIN "build/tilesets/BoldLetters.malias"
+TilesetEndBoldLetters::
 
 SECTION "Tileset Data 2", ROMX[$4000], BANK[$21]
 Tileset116A::
