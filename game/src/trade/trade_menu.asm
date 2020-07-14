@@ -16,7 +16,7 @@ LoadPartsTradeMenu:
   and $7F
   ld b, 0
   call JumpTable_294
-  ld hl, $C6A2
+  ld hl, cBUF01
   ld bc, $988A
   call JumpPutString
   ld a, [$C6F0]
@@ -29,7 +29,7 @@ LoadPartsTradeMenu:
   and $7F
   ld b, 0
   call JumpTable_294
-  ld hl, $C6A2
+  ld hl, cBUF01
   ld bc, $98CA
   call JumpPutString
   ld a, [$C6F0]
@@ -42,7 +42,7 @@ LoadPartsTradeMenu:
   and $7F
   ld b, 0
   call JumpTable_294
-  ld hl, $C6A2
+  ld hl, cBUF01
   ld bc, $990A
   call JumpPutString
   ld a, [$C6F0]
@@ -55,7 +55,7 @@ LoadPartsTradeMenu:
   and $7F
   ld b, 0
   call JumpTable_294
-  ld hl, $C6A2
+  ld hl, cBUF01
   ld bc, $994A
   call JumpPutString
   ret
