@@ -16,7 +16,8 @@ if __name__ == '__main__':
 		utils.read_table("scripts/res/tileset_MainDialog.tbl", reverse=True), 
 		utils.read_table("scripts/res/tileset_MainSpecial.tbl", reverse=True),
 		utils.read_table("scripts/res/tileset_MenuText.tbl", reverse=True),
-		utils.read_table("scripts/res/dakuten.tbl", reverse=True)
+		utils.read_table("scripts/res/dakuten.tbl", reverse=True),
+		utils.read_table("scripts/res/tileset_BoldLetters.tbl", reverse=True)
 	])
 
 	with open(output_file, 'wb') as o, open(input_file, 'r', encoding="utf-8") as i:

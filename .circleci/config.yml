@@ -40,6 +40,10 @@ jobs:
                 name: "Update Credits"
                 working_directory: medarot_1
                 command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
+            - run:
+                name: "Update Lists"
+                working_directory: medarot_1
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists HeadParts RightParts LeftParts LegParts Items Medarots Medals
       - run:
           name: "Build ROM"
           working_directory: medarot_1
