@@ -24,6 +24,7 @@ for sheet in wb.worksheets:
 	useful_indices = [i for i,x in enumerate(header) if x not in ['Original', 'Notes', 'OK?', '#'] ]
 
 	with open(filename, 'w') as outfile:
+		print("Writing {0}".format(filename))
 		for line in data:
 			if line[0] == '#':
 				continue
