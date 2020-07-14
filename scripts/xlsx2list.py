@@ -29,4 +29,7 @@ for sheet in wb.worksheets:
 				continue
 			for i in useful_indices:
 				if line[i]:
-					outfile.write(line[i] + "\n")
+					try:
+						outfile.write(line[i] + "\n")
+					except:
+						print("{}: {}".format(sheet.title, line[i]))
