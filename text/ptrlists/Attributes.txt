@@ -1,4 +1,3 @@
-80
 Melee
 Shooting
 Optical
@@ -20,10 +19,10 @@ Scan
 Conceal
 Time
 Uses
-Martyr
+Sacrifice
 Love
 Change
 Sneak
 Transform
-Volatile
+Capricious
 None

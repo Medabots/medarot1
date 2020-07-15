@@ -44,6 +44,10 @@ jobs:
                 name: "Update Lists"
                 working_directory: medarot_1
                 command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists HeadParts RightParts LeftParts LegParts Items Medarots Medals
+            - run:
+                name: "Update Pointer Lists"
+                working_directory: medarot_1
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/ptrlists Attacks Attributes Medarotters PartDescriptions PartTypes Skills
       - run:
           name: "Build ROM"
           working_directory: medarot_1

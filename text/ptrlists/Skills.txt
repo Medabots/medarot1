@@ -1,4 +1,3 @@
-80
 Strike
 Berserk
 Shoot
@@ -6,4 +5,4 @@ Snipe
 Support
 Protect
 Heal
-Misc
+Other
