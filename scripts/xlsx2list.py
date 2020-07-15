@@ -20,8 +20,8 @@ for sheet in wb.worksheets:
 	filename = path.join(outdir, "{0}.txt".format(sheet.title))
 	data = sheet.values
 	header = next(data)
-	useful_indices = [i for i,x in enumerate(header) if x not in ['Original', 'Notes', 'OK?', '#'] and not x.startswith('Prefix') ]
-	prefix_indices = [i for i,x in enumerate(header) if x.startswith('Prefix')]
+	useful_indices = [i for i,x in enumerate(header) if x and x not in ['Original', 'Notes', 'OK?', '#'] and not x.startswith('Prefix') ]
+	prefix_indices = [i for i,x in enumerate(header) if x and x.startswith('Prefix')]
 
 	with open(filename, 'w') as outfile:
 		print("Writing {0}".format(filename))
@@ -33,5 +33,5 @@ for sheet in wb.worksheets:
 				if line[i]:
 					outtext += line[i]
 			# The remaining text each gets its own line (e.g. for models in part lists)
-			outtext += '\n'.join([line[i] for i in useful_indices if line[i]])
+			outtext += '\n'.join([str(line[i]) for i in useful_indices if line[i]])
 			print(outtext, file=outfile)
