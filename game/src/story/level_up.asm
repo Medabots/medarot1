@@ -17,5 +17,5 @@ Func_7353: ; 7353 (1:7353)
   add $51
   ld [$a0c3], a
   ld a, $01
-  call JumpTable_1d7
+  call JumpSetupDialog
   jp $73ce

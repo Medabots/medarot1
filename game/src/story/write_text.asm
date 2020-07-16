@@ -1,5 +1,5 @@
 SECTION "SetupDialog", ROM0[$1c87]
-SetupDialog:
+SetupDialog::
   ld [$c5c7], a
   xor a
   ld [$c5c8], a

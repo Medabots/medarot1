@@ -44,7 +44,7 @@ JumpTable_1cb:: jp Wrapper_630
 JumpTable_1ce:: jp Wrapper_630
 JumpTable_1d1:: jp Wrapper_635
 JumpTable_1d4:: jp Wrapper_635
-JumpTable_1d7:: jp Wrapper_63a
+JumpSetupDialog:: jp WrapSetupDialog
 JumpTable_1da:: jp Wrapper_63f
 JumpTable_1dd:: jp Wrapper_658
 JumpTable_1e0:: jp Wrapper_65b
@@ -82,7 +82,7 @@ JumpTable_23d:: jp Wrapper_6f6
 JumpTable_240:: jp Wrapper_6fa
 JumpTable_243:: jp Wrapper_6fe
 JumpDecompressAndLoadTiles:: jp WrapDecompressAndLoadTiles
-JumpTable_249:: jp Wrapper_707
+JumpLoadMainDialogTileset:: jp WrapLoadMainDialogTileset
 JumpTable_24c:: jp Wrapper_70c
 JumpTable_24f:: jp Wrapper_711
 JumpTable_252:: jp Wrapper_715

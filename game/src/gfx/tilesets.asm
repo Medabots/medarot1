@@ -1,5 +1,5 @@
 SECTION "Load Dialogue Font", ROM0[$2d85]
-LoadFont1:
+LoadMainDialogTileset::
   ld a, 3
   call DecompressAndLoadTiles ; Decompress
   ret
