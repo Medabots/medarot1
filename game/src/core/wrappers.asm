@@ -126,7 +126,7 @@ Wrapper_635::
   call $1cc9
   rst $18
   ret
-Wrapper_63a::
+WrapSetupDialog::
   call $1c87
   rst $18
   ret
@@ -257,8 +257,8 @@ WrapDecompressAndLoadTiles::
   call DecompressAndLoadTiles
   rst $18
   ret
-Wrapper_707::
-  call $2d85
+WrapLoadMainDialogTileset::
+  call LoadMainDialogTileset
   rst $18
   ret
 Wrapper_70c::
