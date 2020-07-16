@@ -70,3 +70,6 @@ PatchTilesetEndIntroTutorial
 PatchTilesetNameScreen::
   INCBIN "build/tilesets/patch/NameScreen.1bpp"
 PatchTilesetEndNameScreen
+PatchTilesetStartLinkMainMenuText::
+  INCBIN "build/tilesets/patch/LinkMainMenu.1bpp"
+PatchTilesetEndLinkMainMenuText

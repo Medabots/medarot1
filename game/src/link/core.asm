@@ -108,7 +108,8 @@ LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   ld b, $00
   ld c, $00
   ld e, $b5
-  call JumpLoadTilemap
+  ld a, $23 ; LoadLinkMainMenuTextAndLoadTilemap
+  rst $8
   ld b, $05
   ld c, $03
   ld e, $b2
