@@ -673,7 +673,7 @@ ENDR
 SECTION "Robattle - Ending Screen", ROMX[$72c4], BANK[$1]
 RobattleEndScreenEXP:
   ld a, $1
-  call JumpTable_1d7
+  call JumpSetupDialog
   ld a, [$a08e]
   ld b, a
   ld a, [$a08f]
@@ -725,7 +725,7 @@ RobattleEndScreenEXP:
 .asm_732d
   ld [$a0c3], a
   ld a, $1
-  call JumpTable_1d7
+  call JumpSetupDialog
   jp $73ce
 ; 0x7338
 
