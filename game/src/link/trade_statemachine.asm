@@ -1,6 +1,6 @@
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "Link Robattle State Machine", ROMX[$46A2], BANK[$7]
+SECTION "Part Trade State Machine", ROMX[$46A2], BANK[$7]
 PartTradeStateMachine::
   call $607F
   ld a, [$C64E]
