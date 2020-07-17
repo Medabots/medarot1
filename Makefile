@@ -111,6 +111,8 @@ shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
+robattle_robattles_ADDITIONAL := $(PTRLISTS_OUT)/Skills.asm
+
 # Manually add MainDialog as a special case for map text reloading
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
 patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))

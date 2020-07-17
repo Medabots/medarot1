@@ -54,8 +54,8 @@ LinkMenuStateMachine:: ; 1c000 (7:4000)
   dw $40a5
   dw LinkMenuStateMachineLoadMainTilemap
   dw $409b
-  dw $42c0
-  dw $4356
+  dw LinkMenuStateMachineMainMenuSteadyState
+  dw LinkMenuStateMachineMainMenuOptionSelected
   dw $438f
   dw $43e8
   dw $441b
@@ -97,7 +97,6 @@ LinkMenuStateMachineInitialize:: ; 1c0af (7:40af)
   call JumpSetupDialog
   jp JumpIncSubStateIndexWrapper
 
-
 SECTION "Link Menu States Partial 2", ROMX[$4272], BANK[$7]
 LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   xor a
@@ -135,3 +134,88 @@ LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   call JumpTable_17d
   jp JumpIncSubStateIndexWrapper
 ; 0x1c2c0
+LinkMenuStateMachineMainMenuSteadyState:: ; 1c2c0 (7:42c0)
+  ld a, [$da27]
+  sub $02
+  ld b, a
+  jr c, .asm_1c2e2
+  push bc
+  ld a, [$c6f0]
+  ld b, a
+  ld a, $01
+  call LinkMenuLoadSelectorTilemap
+  pop bc
+  ld a, b
+  ld [$c6f0], a
+  xor a
+  ld [$c740], a
+  ld a, $04
+  ld [$ffa1], a
+  jp JumpIncSubStateIndexWrapper
+.asm_1c2e2
+  ld a, [$c6f0]
+  ld b, a
+  ld a, $00
+  call LinkMenuLoadSelectorTilemap
+  ld a, [$ff8d]
+  and $09
+  jp nz, $4301
+  ld a, [$ff8d]
+  and $40
+  jp nz, $431e
+  ld a, [$ff8d]
+  and $80
+  jp nz, $4338
+  ret
+; 0x1c301
+
+SECTION "Link Menu States Partial 3", ROMX[$4356], BANK[$7]
+LinkMenuStateMachineMainMenuOptionSelected:: ; 1c356 (7:4356)
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  sub $14
+  jr c, .asm_1c377
+  ld a, [$c6f0]
+  ld b, a
+  ld a, $00
+  call LinkMenuLoadSelectorTilemap
+  ld a, [$c740]
+  sub $3c
+  ret c
+  xor a
+  ld [$c740], a
+  jp JumpIncSubStateIndexWrapper
+.asm_1c377
+  ld a, [$da01]
+  or a
+  jr z, .asm_1c385
+  ld a, [$c6f0]
+  inc a
+  ld [$da2d], a
+  ret
+.asm_1c385
+  ld a, [$da27]
+  or a
+  ret z
+  dec a
+  ld [$c6f0], a
+  ret
+; 0x1c38f
+
+SECTION "Link Menu States Partial 4", ROMX[$5377], BANK[$7]
+LinkMenuLoadSelectorTilemap: ; 1d377 (7:5377)
+  ld e, $b3
+  add e
+  ld e, a
+  ld a, b
+  sla b
+  add b
+  ld b, a
+  ld a, $02
+  add b
+  ld c, a
+  ld b, $04
+  call JumpLoadTilemap
+  ret
+; 0x1d34b
