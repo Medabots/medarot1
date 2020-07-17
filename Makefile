@@ -94,6 +94,7 @@ shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
+robattle_robattles_ADDITIONAL := $(PTRLISTS_OUT)/Skills.asm
 
 .PHONY: all clean default $(VERSIONS)
 default: kabuto
