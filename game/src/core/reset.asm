@@ -23,7 +23,7 @@ ResetGameStateMachine::
 ResetGameSubStateInitA::
   ld a, 1
   ld [$CE96], a
-  ld a, 2
+  inc a
   ld [$C5B1], a
   xor a
   ld [$C5B0], a
@@ -41,6 +41,7 @@ ResetGameSubStateInitB::
   call JumpTable_180
   or a
   ret z
+  di
   call JumpTable_192
   ld a, [$C5FA]
   push af
