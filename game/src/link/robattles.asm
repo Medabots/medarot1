@@ -339,7 +339,7 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   ld b, a
   ld a, [$c64e]
   cp b
-  jp nz, .asm_515d
+  jr nz, .asm_515d
   ld hl, $a500
   ld b, $00
   ld a, [$c654]
@@ -355,24 +355,20 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   call JumpGetListTextOffset
   pop de
   ld b, $20
-  push hl
-.asm_5513d
-  ld a, [de]
-  ld [hli], a
-  inc de
-  dec b
-  jr nz, .asm_5513d
+  xor a
+  call HackCopyDEtoHL_15
+  srl b
+  ld a, $ee ; A hack to copy the name to $f0
+  call HackCopyDEtoHL_15
   ld a, [$c652]
   inc a
   ld [$c652], a
-  pop hl
   ld d, h
   ld e, l
-  ld hl, $11
+  ld hl, $0011
   add hl, de
   ld a, [$c650]
   ld [hl], a
-  ld a, [$c650]
   inc a
   ld [$c650], a
   ret
@@ -382,9 +378,30 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   ld [$c654], a
   inc de
   dec c
-  jp nz, .asm_5113
+  jr nz, .asm_5113
   ret
+.end
+REPT $516a - .end
+  nop
+ENDR
 ; 0x5516a
+
+SECTION "(Hack) Copy 'b' bytes from [de] to [hl+a], preserve all registers except a (15 copy)", ROMX[$7f19], BANK[$15]
+HackCopyDEtoHL_15:
+  push bc
+  push de
+  push hl
+  rst $28 ; hl += a
+.loop
+  ld a, [de]
+  ld [hli], a
+  inc de
+  dec b
+  jr nz, .loop
+  pop hl
+  pop de
+  pop bc
+  ret
 
 SECTION "Link Robattle States - Load Part Data", ROMX[$5867], BANK[$15]
 LinkRobattleLoadPartHead:
@@ -540,7 +557,7 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   ld a, [de]
   or a
   jp z, .next_medarot
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call VWFLeftPadTextTo8
   pshl $98e0, $01
@@ -555,7 +572,7 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
 .end_loop_player_getoffset
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call VWFPutStringTo8
 .next_medarot
@@ -588,7 +605,7 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
 .end_loop_enemy_getoffset
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
   call VWFPutStringTo8
 .next_enemy_medarot
