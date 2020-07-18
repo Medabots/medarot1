@@ -52,8 +52,8 @@ LinkRobattleStateMachine:: ; 54000 (15:4000)
   dw $46cc
   dw $46e2
   dw $4bba
-  dw $46f8
-  dw $4714
+  dw LinkRobattleStateSetupRobattleScreenLoadFonts
+  dw LinkRobattleStateSetupRobattleScreenLoadInitialTilemaps
   dw $473f
   dw $40e7
   dw $475e
@@ -246,3 +246,249 @@ LinkRobattleStateLoadMedarotSelectPartTilemap: ; 545e7 (15:45e7)
   call JumpTable_366
   jp JumpIncSubStateIndexWrapper
 ; 0x54647
+
+SECTION "Link Robattle States Partial 3", ROMX[$46f8], BANK[$15]
+LinkRobattleStateSetupRobattleScreenLoadFonts: ; 546f8 (15:46f8)
+  call JumpTable_1a7
+  call JumpTable_1aa
+  call JumpTable_156
+  call JumpTable_213
+  ld a, $0b
+  call JumpLoadFont
+  ld a, $0a
+  call JumpLoadFont
+  call $65f5
+  jp JumpIncSubStateIndexWrapper
+
+LinkRobattleStateSetupRobattleScreenLoadInitialTilemaps: ; 54714 (15:4714)
+  call $51d7
+  call $5289
+  call $52ac
+  call $67cf
+  call $54da
+  call $555b
+  call $556d
+  ld b, $00
+  ld c, $0c
+  ld e, $50
+  call JumpLoadTilemap
+  ld hl, $98c0
+  ld b, $14
+  ld c, $06
+  call JumpTable_270
+  jp JumpIncSubStateIndexWrapper
+; 0x5473f
+
+SECTION "Link Robattle States Partial 4", ROMX[$5867], BANK[$15]
+LinkRobattleLoadPartHead:
+  ld hl, $000d
+  add hl, de
+  ld a, [hl]
+  and a, $7f
+  sub a, $3c
+  jp c, .valid_part
+.broken_or_missing_part
+  ld b, $06
+  ld c, $0d
+  ld e, $86 ; -------
+  call JumpLoadTilemap
+  ret
+.valid_part ; 5587d (15:587d)
+  ld hl, $d3
+  add hl, de
+  ld a, [hl]
+  or a
+  jr z, .broken_or_missing_part
+  ld hl, $d
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b520
+  ld c, a
+  ld b, $00
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $00
+  call JumpTable_294
+  ld hl, cBUF01
+  call JumpPadTextTo8
+  ld hl, $99c6
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+
+LinkRobattleLoadPartRightArm:
+  ld hl, $000e
+  add hl, de
+  ld a, [hl]
+  and a, $7f
+  sub a, $3c
+  jp c, .valid_part
+.broken_or_missing_part
+  ld b, $0b
+  ld c, $0f
+  ld e, $86 ; -------
+  call JumpLoadTilemap
+  ret
+.valid_part
+  ld hl, $000e
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b5a0
+  ld c, a
+  ld b, $00
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $01
+  call JumpTable_294
+  ld hl, cBUF01
+  ld bc, $9a0b
+  call JumpPutString
+  ret
+
+LinkRobattleLoadPartLeftArm:
+  ld hl, $000f
+  add hl, de
+  ld a, [hl]
+  and a, $7f
+  sub a, $3c
+  jp c, .valid_part
+.broken_or_missing_part
+  ld b, $01
+  ld c, $0f
+  ld e, $86 ; -------
+  call JumpLoadTilemap
+  ret
+.valid_part
+  ld hl, $000f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld hl, $b620
+  ld c, a
+  ld b, $00
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $02
+  call JumpTable_294
+  ld hl, cBUF01
+  call LeftPadTextTo8
+  ld hl, $9a01
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+
+SECTION "Link Robattle LeftPadTextTo8", ROMX[$57f1], BANK[$15]
+LeftPadTextTo8:
+  push hl
+  push bc
+  ld b, $0
+.loop
+  ld a, [hli]
+  cp $50
+  jr z, .endloop ; 0x11476 $3
+  inc b
+  jr .loop ; 0x11479 $f8
+.endloop
+  ld a, $8
+  sub b
+  pop bc
+  pop hl
+  ret
+
+SECTION "Link Robattle - Load Medarot Names", ROMX[$7b34], BANK[$15]
+RobattleLoadMedarotNames: ; 15:7b34
+  xor a
+  ld [$c652], a
+.loop_medarot
+  ld hl, RobattlePlayerMedarot1
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpGetListTextOffset
+  ld a, [de]
+  or a
+  jp z, .next_medarot
+  ld hl, $0002
+  add hl, de
+  call LeftPadTextTo8
+  ld [$c650], a
+  push de
+  ld hl, $98e0
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $6
+  call JumpGetListTextOffset
+  pop de
+  ld a, [$c650]
+  ld b, $0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call JumpPutString
+.next_medarot
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .loop_medarot
+  xor a
+  ld [$c652], a
+.loop_enemy_medarot
+  ld hl, RobattleEnemyMedarot1
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $8
+  call JumpGetListTextOffset
+  ld a, [de]
+  or a
+  jp z, .next_enemy_medarot
+  push de
+  ld hl, $98ec
+  ld b, $0
+  ld a, [$c652]
+  ld c, a
+  ld a, $6
+  call JumpGetListTextOffset
+  pop de
+  ld b, h
+  ld c, l
+  ld hl, $0002
+  add hl, de
+  call JumpPutString
+.next_enemy_medarot
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  cp $3
+  jp nz, .loop_enemy_medarot
+  ret
