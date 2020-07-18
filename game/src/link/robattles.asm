@@ -237,7 +237,8 @@ LinkRobattleStateLoadMedarotSelectPartTilemap: ; 545e7 (15:45e7)
   ld b, $0a
   ld c, $00
   ld e, $97
-  call JumpLoadTilemap
+  ld a, $1f ; LoadMinimalPartScreenAndLoadTilemap
+  rst $08
   ld b, $00
   ld c, $08
   ld e, $84
