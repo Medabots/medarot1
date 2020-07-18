@@ -162,7 +162,8 @@ LinkRobattleLoadMedarotSelectTilemaps:
   ld b, $01
   ld c, $00
   ld e, $9c
-  call JumpLoadTilemap
+  ld a, $1d ; LoadRobottleMedarotSelectTextAndLoadTilemap
+  rst $08
   ld hl, $9840
   ld b, $0a
   ld c, $0a
