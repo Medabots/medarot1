@@ -1,6 +1,7 @@
 ; Core state machine for the link robattles
 
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Link Robattle State Machine", ROMX[$4000], BANK[$15]
 LinkRobattleStateMachine:: ; 54000 (15:4000)
@@ -257,10 +258,14 @@ LinkRobattleStateSetupRobattleScreenLoadFonts: ; 546f8 (15:46f8)
   call JumpTable_213
   ld a, $0b
   call JumpLoadFont
-  ld a, $0a
-  call JumpLoadFont
+  ld a, $1e ; LoadRobottleText
+  rst $08
   call $65f5
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4714 - .end
+  nop
+ENDR
 
 LinkRobattleStateSetupRobattleScreenLoadInitialTilemaps: ; 54714 (15:4714)
   call $51d7
@@ -417,15 +422,15 @@ LinkRobattleLoadPartHead:
   ld c, $00
   call JumpTable_294
   ld hl, cBUF01
-  call JumpPadTextTo8
-  ld hl, $99c6
-  ld b, $00
+  call VWFPadTextTo8
+  ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $99c6, $9f
+  call VWFPutStringTo8
   ret
 
 LinkRobattleLoadPartRightArm:
@@ -458,8 +463,8 @@ LinkRobattleLoadPartRightArm:
   ld c, $01
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $9a0b
-  call JumpPutString
+  psbc $9a0b, $ad
+  call VWFPutStringTo8
   ret
 
 LinkRobattleLoadPartLeftArm:
@@ -492,15 +497,15 @@ LinkRobattleLoadPartLeftArm:
   ld c, $02
   call JumpTable_294
   ld hl, cBUF01
-  call LeftPadTextTo8
-  ld hl, $9a01
-  ld b, $00
+  call VWFLeftPadTextTo8
+  ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $9a01, $be
+  call VWFPutStringTo8
   ret
 
 SECTION "Link Robattle LeftPadTextTo8", ROMX[$57f1], BANK[$15]
@@ -537,25 +542,22 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   jp z, .next_medarot
   ld hl, $0002
   add hl, de
-  call LeftPadTextTo8
-  ld [$c650], a
-  push de
-  ld hl, $98e0
-  ld b, $0
+  call VWFLeftPadTextTo8
+  pshl $98e0, $01
   ld a, [$c652]
-  ld c, a
-  ld a, $6
-  call JumpGetListTextOffset
-  pop de
-  ld a, [$c650]
-  ld b, $0
-  ld c, a
+  ld bc, $0820
+.loop_player_getoffset
+  or a
+  jr z, .end_loop_player_getoffset
   add hl, bc
+  dec a
+  jr .loop_player_getoffset
+.end_loop_player_getoffset
   ld b, h
   ld c, l
   ld hl, $0002
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_medarot
   ld a, [$c652]
   inc a
@@ -574,19 +576,21 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  push de
-  ld hl, $98ec
-  ld b, $0
+  pshl $98ec, $19
   ld a, [$c652]
-  ld c, a
-  ld a, $6
-  call JumpGetListTextOffset
-  pop de
+  ld bc, $0820
+.loop_enemy_getoffset
+  or a
+  jr z, .end_loop_enemy_getoffset
+  add hl, bc
+  dec a
+  jr .loop_enemy_getoffset
+.end_loop_enemy_getoffset
   ld b, h
   ld c, l
   ld hl, $0002
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -594,6 +598,16 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 
 SECTION "Link Robattle - Partial Disassembly 5", ROMX[$558e], BANK[$15]
 LinkRobattleInitialize: ; 5558e (15:558e)
