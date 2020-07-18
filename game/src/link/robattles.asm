@@ -82,7 +82,7 @@ LinkRobattleStateMachine:: ; 54000 (15:4000)
   dw $4c1c
   dw $4c36
   dw $4c5e
-  dw $4c6f
+  dw LinkRobattleScreenSetEnemyMedarotInfo
   dw $4c0b
   dw $4c5e
   dw $4cb5
@@ -281,7 +281,107 @@ LinkRobattleStateSetupRobattleScreenLoadInitialTilemaps: ; 54714 (15:4714)
   jp JumpIncSubStateIndexWrapper
 ; 0x5473f
 
-SECTION "Link Robattle States Partial 4", ROMX[$5867], BANK[$15]
+SECTION "Link Robattle States Partial 4", ROMX[$4c6f], BANK[$15]
+LinkRobattleScreenSetEnemyMedarotInfo: ; 54c6f (15:4c6f)
+  ld hl, RobattleEnemyMedarot1
+  call $7da2
+  ld d, h
+  ld e, l
+  call $7e56
+  call $7e5d
+  ld b, $20
+.asm_54c7f
+  ld a, [hl]
+  cp $01
+  jr nz, .asm_54c88
+  xor a
+  ld [de], a
+  jr .asm_54c8e
+.asm_54c88
+  ld a, $04
+  add l
+  ld l, a
+  ld a, [hl]
+  ld [de], a
+.asm_54c8e
+  inc de
+  ld a, $04
+  add l
+  ld l, a
+  dec b
+  jr nz, .asm_54c7f
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  cp $03
+  jp z, .asm_4ca8
+  ld a, $33
+  ld [CoreSubStateIndex], a
+  ret
+.asm_4ca8
+  xor a
+  ld [$c740], a
+  ld [$c741], a
+  ld [$c742], a
+  jp JumpIncSubStateIndexWrapper
+; 0x54cb5
+
+SECTION "Link Robattle - Copy Player Medarot Info", ROMX[$5111], BANK[$15]
+LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
+  ld c, $0a
+.asm_5113
+  ld a, [de]
+  ld b, a
+  ld a, [$c64e]
+  cp b
+  jp nz, .asm_515d
+  ld hl, $a500
+  ld b, $00
+  ld a, [$c654]
+  ld c, a
+  ld a, $05
+  call JumpGetListTextOffset
+  push de
+  ld hl, RobattlePlayerMedarot1
+  ld b, $00
+  ld a, [$c652]
+  ld c, a
+  ld a, $08
+  call JumpGetListTextOffset
+  pop de
+  ld b, $20
+  push hl
+.asm_5513d
+  ld a, [de]
+  ld [hli], a
+  inc de
+  dec b
+  jr nz, .asm_5513d
+  ld a, [$c652]
+  inc a
+  ld [$c652], a
+  pop hl
+  ld d, h
+  ld e, l
+  ld hl, $11
+  add hl, de
+  ld a, [$c650]
+  ld [hl], a
+  ld a, [$c650]
+  inc a
+  ld [$c650], a
+  ret
+.asm_515d
+  ld a, [$c654]
+  inc a
+  ld [$c654], a
+  inc de
+  dec c
+  jp nz, .asm_5113
+  ret
+; 0x5516a
+
+SECTION "Link Robattle States - Load Part Data", ROMX[$5867], BANK[$15]
 LinkRobattleLoadPartHead:
   ld hl, $000d
   add hl, de
@@ -422,7 +522,7 @@ LeftPadTextTo8:
   ret
 
 SECTION "Link Robattle - Load Medarot Names", ROMX[$7b34], BANK[$15]
-RobattleLoadMedarotNames: ; 15:7b34
+LinkRobattleLoadMedarotNames: ; 15:7b34
   xor a
   ld [$c652], a
 .loop_medarot
