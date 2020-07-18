@@ -39,7 +39,7 @@ LinkRobattleStateMachine:: ; 54000 (15:4000)
   dw $4382
   dw $4467
   dw $453b
-  dw $45e7
+  dw LinkRobattleStateLoadMedarotSelectPartTilemap
   dw $4647
   dw $4667
   dw $4683
@@ -125,7 +125,6 @@ LinkRobattleStateMachine:: ; 54000 (15:4000)
 LinkRobattleStateMachineRet::
   ret
 
-
 SECTION "Link Robattle States Partial 1", ROMX[$40fb], BANK[$15]
 LinkRobattleStateInitialize:
   ld a, $01
@@ -196,3 +195,55 @@ LinkRobattleLoadMedarotSelectTilemaps:
   ld a, $05
   call JumpTable_309
   jp JumpIncSubStateIndexWrapper
+
+SECTION "Link Robattle States Partial 2", ROMX[$45e7], BANK[$15]
+LinkRobattleStateLoadMedarotSelectPartTilemap: ; 545e7 (15:45e7)
+  call $4fe8
+  ld a, $01
+  call JumpTable_180
+  or a
+  ret z
+  ld hl, $9800
+  ld d, $00
+  ld a, [$c740]
+  ld e, a
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  sla e
+  rl d
+  add hl, de
+  ld b, $14
+.asm_54611
+  xor a
+  di
+  call JumpWaitLCDController
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .asm_54611
+  ld a, [$c740]
+  inc a
+  ld [$c740], a
+  cp $12
+  ret nz
+  xor a
+  ld [$c740], a
+  ld b, $0a
+  ld c, $00
+  ld e, $97
+  call JumpLoadTilemap
+  ld b, $00
+  ld c, $08
+  ld e, $84
+  call JumpLoadTilemap
+  call JumpTable_2dc
+  call JumpTable_2df
+  call JumpTable_366
+  jp JumpIncSubStateIndexWrapper
+; 0x54647
