@@ -777,8 +777,24 @@ LinkRobattleWriteText: ; 54bc9 (15:4bc9)
   jp JumpIncSubStateIndexWrapper
 ; 0x54bf1
 
-SECTION "Post-Robattle Screen - Partial Disassembly 1", ROMX[$5828], BANK[$7]
-LinkPostRobattleLoadText: ; 1d828 (7:5828)
+
+SECTION "Post-Robattle Screen - Partial Disassembly 1", ROMX[$5078], BANK[$7]
+LinkPostRobattleSetupPartLostText: ; 1d078 (7:5078)
+  ld a, $01
+  call JumpSetupDialog
+  ld a, $01
+  call $57fc
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld a, $09
+  call JumpTable_1ef
+  ld a, $20
+  ld [CoreSubStateIndex], a
+  ret
+; 0x1d093
+
+SECTION "Post-Robattle Screen - Partial Disassembly 2", ROMX[$5828], BANK[$7]
+LinkPostRobattleLoadTextWonMedal: ; 1d828 (7:5828)
   ld a, [$c782]
   ld d, a
   ld a, [$c783]
@@ -790,8 +806,66 @@ LinkPostRobattleLoadText: ; 1d828 (7:5828)
   ld hl, cBUF01
   call LinkPostRobattleLoadPartNameForRoulette ; Loads it into cBUF04
   ret
-
-SECTION "Post-Robattle Screen - Partial Disassembly 2", ROMX[$58b3], BANK[$7]
+LinkPostRobattleLoadTextWonHead: ; 1d83f (7:583f)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $39
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $00
+  call JumpTable_294
+  ld hl, cBUF01
+  call LinkPostRobattleLoadPartNameForRoulette
+  ret
+LinkPostRobattleLoadTextWonRArm: ; 1d85c (7:585c)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $3f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $01
+  call JumpTable_294
+  ld hl, cBUF01
+  call LinkPostRobattleLoadPartNameForRoulette
+  ret
+LinkPostRobattleLoadTextWonLArm: ; 1d879 (7:5879)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $45
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $02
+  call JumpTable_294
+  ld hl, cBUF01
+  call LinkPostRobattleLoadPartNameForRoulette
+  ret
+LinkPostRobattleLoadTextWonLegs: ; 1d896 (7:5896)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $4b
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld b, $00
+  ld c, $03
+  call JumpTable_294
+  ld hl, cBUF01
+  call LinkPostRobattleLoadPartNameForRoulette
+  ret
 LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
   ld de, cBUF04
   ld b, $09
