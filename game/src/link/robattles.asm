@@ -294,32 +294,33 @@ LinkRobattleScreenSetEnemyMedarotInfo: ; 54c6f (15:4c6f)
   ld e, l
   call $7e56
   call $7e5d
+
   ld b, $20
 .asm_54c7f
   ld a, [hl]
-  cp $01
+  dec a
   jr nz, .asm_54c88
-  xor a
   ld [de], a
   jr .asm_54c8e
 .asm_54c88
-  ld a, $04
-  add l
-  ld l, a
+  call HackIncrementLBy4_15
   ld a, [hl]
   ld [de], a
 .asm_54c8e
   inc de
-  ld a, $04
-  add l
-  ld l, a
+  call HackIncrementLBy4_15
   dec b
   jr nz, .asm_54c7f
+
+  ; Copy the medarot name to $f0 from $02
+  call HackCallCopyNameHack_15
+
   ld a, [$c740]
   inc a
-  ld [$c740], a
   cp $03
   jp z, .asm_4ca8
+  ld [$c740], a
+
   ld a, $33
   ld [CoreSubStateIndex], a
   ret
@@ -329,6 +330,10 @@ LinkRobattleScreenSetEnemyMedarotInfo: ; 54c6f (15:4c6f)
   ld [$c741], a
   ld [$c742], a
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4cb5 - .end
+  nop
+ENDR
 ; 0x54cb5
 
 SECTION "Link Robattle - Copy Player Medarot Info", ROMX[$5111], BANK[$15]
@@ -358,6 +363,7 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   xor a
   call HackCopyDEtoHL_15
   srl b
+  srl b ; only need 8
   ld a, $ee ; A hack to copy the name to $f0
   call HackCopyDEtoHL_15
   ld a, [$c652]
@@ -386,8 +392,19 @@ REPT $516a - .end
 ENDR
 ; 0x5516a
 
-SECTION "(Hack) Copy 'b' bytes from [de] to [hl+a], preserve all registers except a (15 copy)", ROMX[$7f19], BANK[$15]
-HackCopyDEtoHL_15:
+SECTION "(Hack)", ROMX[$7f19], BANK[$15]
+HackIncrementLBy4_15:
+  ld a, $04
+  add l
+  ld l, a
+  ret
+HackCallCopyNameHack_15:
+  xor a
+  ld e, $02
+  ld h, d
+  ld l, $f0
+  ld b, $08
+HackCopyDEtoHL_15: ;  Copy 'b' bytes from [de] to [hl+a], preserve all registers except a 
   push bc
   push de
   push hl
