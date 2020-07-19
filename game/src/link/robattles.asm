@@ -594,3 +594,214 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+
+SECTION "Link Robattle - Partial Disassembly 5", ROMX[$558e], BANK[$15]
+LinkRobattleInitialize: ; 5558e (15:558e)
+  ld a, [$c753]
+  call JumpTable_2bb
+  ld a, [$c64e]
+  ld [$c745], a
+  xor a
+  ld [$c65a], a
+.asm_5559e
+  ld hl, RobattleEnemyMedarot1
+  ld b, $00
+  ld a, [$c65a]
+  ld c, a
+  ld a, $08
+  call JumpGetListTextOffset
+  ld a, $03
+  ld [de], a
+  ld a, $01
+  ld hl, $0
+  add hl, de
+  ld [hl], a
+  ld a, [$c650]
+  ld hl, .data_556a8
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, $1
+  add hl, de
+  ld [hl], a
+  ld a, [$c656]
+  ld hl, $b
+  add hl, de
+  ld [hl], a
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $03
+  ld hl, $c650
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, $d
+  add hl, de
+  ld [hl], a
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $03
+  ld hl, $c650
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, $e
+  add hl, de
+  ld [hl], a
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $03
+  ld hl, $c650
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, $f
+  add hl, de
+  ld [hl], a
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $03
+  ld hl, $c650
+  ld b, $00
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  ld hl, $10
+  add hl, de
+  ld [hl], a
+  ld a, [$c65a]
+  inc a
+  ld hl, $11
+  add hl, de
+  ld [hl], a
+  ld a, [$c64e]
+  push af
+  call $571d
+  pop af
+  ld [$c64e], a
+  ld hl, $d
+  add hl, de
+  ld a, [hl]
+  and $7f
+  ld c, a
+  call JumpLoadMedarotList
+  push de
+  ld b, $09
+  ld hl, $2
+  add hl, de
+  ld d, h
+  ld e, l
+  ld hl, cBUF01
+.asm_5564d
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_5564d
+  pop de
+  ld a, $01
+  ld hl, $c8
+  add hl, de
+  ld [hl], a
+  ld hl, $80
+  add hl, de
+  ld a, $01
+  ld [hl], a
+  ld hl, $b
+  add hl, de
+  ld a, [hl]
+  ld hl, $81
+  add hl, de
+  ld [hl], a
+  ld a, [$c654]
+  ld b, a
+  ld a, [$c934]
+  add b
+  ld c, a
+  sub $0b
+  jr c, .asm_5567b
+  ld c, $0a
+.asm_5567b
+  ld a, c
+  ld hl, $83
+  add hl, de
+  ld [hl], a
+  ld a, [$c655]
+  ld b, a
+  ld a, [$c935]
+  add b
+  ld c, a
+  sub $07
+  jr c, .asm_55690
+  ld c, $06
+.asm_55690
+  ld a, c
+  ld hl, $84
+  add hl, de
+  ld [hl], a
+  ld a, [$c65a]
+  inc a
+  ld [$c65a], a
+  ld a, [$c64e]
+  dec a
+  ld [$c64e], a
+  jp nz, .asm_5559e
+  ret
+.data_556a8
+  db $00
+; 0x556a9
+
+SECTION "Link Robattle - Partial Disassembly 6", ROMX[$4bc9], BANK[$15]
+LinkRobattleWriteText: ; 54bc9 (15:4bc9)
+  call JumpTable_26d
+  ld a, $01
+  call JumpSetupDialog
+  call $7977
+  ld hl, $3c
+  add hl, de
+  ld a, [hl]
+  ld [$c740], a
+  call $7a36
+  ld hl, $2
+  add hl, de
+  ld de, cBUF01
+  ld b, $09
+.asm_54be8
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_54be8
+  jp JumpIncSubStateIndexWrapper
+; 0x54bf1
+
+SECTION "Post-Robattle Screen - Partial Disassembly 1", ROMX[$5828], BANK[$7]
+LinkPostRobattleLoadText: ; 1d828 (7:5828)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $81
+  add hl, de
+  ld a, [hl]
+  call JumpLoadMedalList ; Actually loads part name into cBUF01
+  ld hl, cBUF01
+  call LinkPostRobattleLoadPartNameForRoulette ; Loads it into cBUF04
+  ret
+
+SECTION "Post-Robattle Screen - Partial Disassembly 2", ROMX[$58b3], BANK[$7]
+LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
+  ld de, cBUF04
+  ld b, $09
+.asm_1d8b8
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_1d8b8
+  ret
+; 0x1d8bf
