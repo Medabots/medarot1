@@ -817,7 +817,7 @@ LinkRobattleWriteText: ; 54bc9 (15:4bc9)
   ld hl, $2
   add hl, de
   ld de, cBUF01
-  ld b, $09
+  ld b, $19
 .asm_54be8
   ld a, [hli]
   ld [de], a
@@ -836,7 +836,7 @@ LinkPostRobattleSetupPartLostText: ; 1d078 (7:5078)
   call $57fc
   ld hl, cBUF01
   ld de, cBUF04
-  ld a, $09
+  ld a, $19
   call JumpTable_1ef
   ld a, $20
   ld [CoreSubStateIndex], a
@@ -918,7 +918,7 @@ LinkPostRobattleLoadTextWonLegs: ; 1d896 (7:5896)
   ret
 LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1d8b8
   ld a, [hli]
   ld [de], a
