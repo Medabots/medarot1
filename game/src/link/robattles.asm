@@ -879,3 +879,151 @@ LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
   jr nz, .asm_1d8b8
   ret
 ; 0x1d8bf
+
+SECTION "Post-Robattle Screen - Partial Disassembly 3", ROMX[$4cd2], BANK[$7]
+Func_1ccd2: ; 1ccd2 (7:4cd2)
+  ld a, $19
+  ld [$ffa0], a
+  ld a, [$c78c]
+  call JumpTable_38d
+  ld a, [$c78c]
+  ld c, a
+  ld b, $00
+  ld a, [$c78d]
+  call JumpTable_294
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld b, $09
+.asm_1ccf0
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_1ccf0
+  ld a, $01
+  call JumpSetupDialog
+  jp JumpIncSubStateIndexWrapper
+
+SECTION "Post-Robattle Screen - Partial Disassembly 4", ROMX[$5175], BANK[$7]
+Func_1d175: ; 1d175 (7:5175)
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld a, $09
+  call JumpTable_1ef
+  ld a, $01
+  call JumpSetupDialog
+  jp JumpIncSubStateIndexWrapper
+
+SECTION "Post-Robattle Screen - Partial Disassembly 5", ROMX[$57dd], BANK[$7]
+Func_1d7dd: ; 1d7dd (7:57dd)
+  ld a, [$c782]
+  ld d, a
+  ld a, [$c783]
+  ld e, a
+  ld hl, $1
+  add hl, de
+  ld a, [hli]
+  ld [$c756], a
+  ld de, cBUF01
+  ld b, $09
+.asm_1d7f2
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_1d7f2
+  call JumpTable_33f
+  ret
+
+SECTION "Post-Robattle Screen - Partial Disassembly 6", ROMX[$5af8], BANK[$7]
+Func_1daf8: ; 1daf8 (7:5af8)
+  cp $00
+  jr nz, .asm_1db33
+  ld a, [$c78c]
+  ld c, a
+  ld b, $01
+  ld a, [$c78d]
+  call JumpTable_294
+  ld hl, cBUF01
+  ld bc, $9802
+  call JumpPutString
+  ld a, [$c78c]
+  ld c, a
+  ld b, $00
+  ld a, [$c78d]
+  call JumpTable_294
+  ld hl, cBUF01
+  call JumpPadTextTo8
+  ld h, $00
+  ld l, a
+  ld bc, $9841
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+.asm_1db33
+  ld a, [$c78e]
+  ld c, a
+  ld b, $01
+  ld a, [$c78f]
+  call JumpTable_294
+  ld hl, cBUF01
+  ld bc, $980c
+  call JumpPutString
+  ld a, [$c78e]
+  ld c, a
+  ld b, $00
+  ld a, [$c78f]
+  call JumpTable_294
+  ld hl, cBUF01
+  call JumpPadTextTo8
+  ld h, $00
+  ld l, a
+  ld bc, $984b
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+; 0x1db6a
+
+SECTION "Post-Robattle Screen - Partial Disassembly 7", ROMX[$5b76], BANK[$7]
+Func_1db76: ; 1db76 (7:5b76)
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld b, $09
+.asm_1db7e
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_1db7e
+  ld a, [$c78e]
+  ld c, a
+  ld b, $00
+  ld a, [$c78f]
+  call JumpTable_294
+  ret
+; 0x1db91
+
+SECTION "Post-Robattle Screen - Partial Disassembly 8", ROMX[$5d11], BANK[$7]
+Func_1dd11: ; 1dd11 (7:5d11)
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld b, $09
+.asm_1dd19
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_1dd19
+  ld a, [$c78c]
+  ld c, a
+  ld b, $00
+  ld a, [$c78d]
+  call JumpTable_294
+  ret
+; 0x1dd2c
