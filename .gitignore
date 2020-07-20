@@ -2,7 +2,7 @@
 *.sav
 *.sgm
 build/
-*.sn1
+*.sn*
 *.sna
 *.o
 .vscode/
