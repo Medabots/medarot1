@@ -1,9 +1,51 @@
 INCLUDE "build/buffer_constants.asm"
 
 hRegJoyp           EQU $ff00
+hRegSB             EQU $ff01
+hRegSC             EQU $ff02
+hRegIF             EQU $ff0f
+hRegNR10           EQU $ff10
+hRegNR11           EQU $ff11
+hRegNR12           EQU $ff12
+hRegNR13           EQU $ff13
+hRegNR14           EQU $ff14
+hRegNR21           EQU $ff16
+hRegNR22           EQU $ff17
+hRegNR23           EQU $ff18
+hRegNR24           EQU $ff19
+hRegNR30           EQU $ff1a
+hRegNR31           EQU $ff1b
+hRegNR32           EQU $ff1c
+hRegNR33           EQU $ff1d
+hRegNR34           EQU $ff1e
+hRegNR41           EQU $ff20
+hRegNR42           EQU $ff21
+hRegNR43           EQU $ff22
+hRegNR44           EQU $ff23
+hRegNR50           EQU $ff24
+hRegNR51           EQU $ff25
+hRegNR52           EQU $ff26
 hRegLCDC           EQU $ff40
 hLCDStat           EQU $ff41
+hRegSCY            EQU $ff42
+hRegSCX            EQU $ff43
+hRegLY             EQU $ff44
+hRegLYC            EQU $ff45
+hRegDMA            EQU $ff46
 hRegBGP            EQU $ff47
+hRegOBP0           EQU $ff48
+hRegOBP1           EQU $ff49
+hRegWY             EQU $ff4a
+hRegWX             EQU $ff4b
+hRegKEY1           EQU $ff4d
+hRegVBK            EQU $ff4f
+hRegRP             EQU $ff56
+hRegBGPI           EQU $ff68
+hRegBGPD           EQU $ff69
+hRegOBPI           EQU $ff6a
+hRegOBPD           EQU $ff6b
+hRegSVBK           EQU $ff70
+hRegIE             EQU $ffff
 
 hPushOAM           EQU $ff80
 

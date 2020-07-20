@@ -156,14 +156,14 @@ LinkMenuStateMachineMainMenuSteadyState:: ; 1c2c0 (7:42c0)
   ld b, a
   ld a, $00
   call LinkMenuLoadSelectorTilemap
-  ld a, [$ff8d]
-  and $09
+  ld a, [hJPInputChanged]
+  and hJPInputA | hJPInputStart
   jp nz, $4301
-  ld a, [$ff8d]
-  and $40
+  ld a, [hJPInputChanged]
+  and hJPInputUp
   jp nz, $431e
-  ld a, [$ff8d]
-  and $80
+  ld a, [hJPInputChanged]
+  and hJPInputDown
   jp nz, $4338
   ret
 ; 0x1c301
