@@ -941,7 +941,7 @@ Func_1ccd2: ; 1ccd2 (7:4cd2)
   call JumpTable_294
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1ccf0
   ld a, [hli]
   ld [de], a
@@ -956,7 +956,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 4", ROMX[$5175], BANK[$7]
 Func_1d175: ; 1d175 (7:5175)
   ld hl, cBUF01
   ld de, cBUF04
-  ld a, $09
+  ld a, $19
   call JumpTable_1ef
   ld a, $01
   call JumpSetupDialog
@@ -973,7 +973,7 @@ Func_1d7dd: ; 1d7dd (7:57dd)
   ld a, [hli]
   ld [$c756], a
   ld de, cBUF01
-  ld b, $09
+  ld b, $19
 .asm_1d7f2
   ld a, [hli]
   ld [de], a
@@ -1042,7 +1042,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 7", ROMX[$5b76], BANK[$7]
 Func_1db76: ; 1db76 (7:5b76)
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1db7e
   ld a, [hli]
   ld [de], a
@@ -1061,7 +1061,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 8", ROMX[$5d11], BANK[$7]
 Func_1dd11: ; 1dd11 (7:5d11)
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1dd19
   ld a, [hli]
   ld [de], a
