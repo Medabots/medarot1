@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "LCDC VBlank_IRQ", ROM0[$049B]
 VBlankingIRQ::
   push af
@@ -60,17 +62,17 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $1
   add hl, de
   ld a, [hl]
-  ld [$ff43], a
+  ld [hRegSCX], a
   ld hl, $2
   add hl, de
   ld a, [hl]
-  ld [$ff42], a
+  ld [hRegSCY], a
   ld hl, $0
   add hl, de
   ld a, [hl]
   ld b, a
 .asm_509
-  ld a, [$ff44]
+  ld a, [hRegLY]
   sub b
   jr c, .asm_509
   ld hl, $3
@@ -81,8 +83,8 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
 ; 0x517
 .asm_517: ; 517 (0:517)
   xor a
-  ld [$ff43], a
-  ld [$ff42], a
+  ld [hRegSCX], a
+  ld [hRegSCY], a
   jp .asm_549
 .asm_51f: ; 51f (0:51f)
   xor a
@@ -91,14 +93,14 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $c800
 .asm_529
   ld a, [hli]
-  ld [$ff43], a
+  ld [hRegSCX], a
   ld a, $00
-  ld [$ff42], a
+  ld [hRegSCY], a
   ld a, [$c7fc]
   ld b, a
 .asm_534
   call WaitLCDController
-  ld a, [$ff44]
+  ld a, [hRegLY]
   sub b
   jr c, .asm_534
   ld a, [$c7fc]

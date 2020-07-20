@@ -54,17 +54,17 @@ ResetGameSubStateInitB::
   ld [$C5A9], a
   ldh [hRegLCDC], a
   xor a
-  ldh [$FF0F], a
+  ldh [hRegIF], a
   ld a, 9
-  ldh [$FFFF], a
+  ldh [hRegIE], a
   ei
   call JumpTable_243
   ld a, $40
   ldh [hLCDStat], a
   xor a
-  ldh [$FF0F], a
+  ldh [hRegIF], a
   ld a, $B
-  ldh [$FFFF], a
+  ldh [hRegIE], a
   pop af
   ld [$C5FA], a
   ld a, 2
