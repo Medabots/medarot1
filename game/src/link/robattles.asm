@@ -1,6 +1,7 @@
 ; Core state machine for the link robattles
 
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Link Robattle State Machine", ROMX[$4000], BANK[$15]
 LinkRobattleStateMachine:: ; 54000 (15:4000)
@@ -257,10 +258,14 @@ LinkRobattleStateSetupRobattleScreenLoadFonts: ; 546f8 (15:46f8)
   call JumpTable_213
   ld a, $0b
   call JumpLoadFont
-  ld a, $0a
-  call JumpLoadFont
+  ld a, $1e ; LoadRobottleText
+  rst $08
   call $65f5
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4714 - .end
+  nop
+ENDR
 
 LinkRobattleStateSetupRobattleScreenLoadInitialTilemaps: ; 54714 (15:4714)
   call $51d7
@@ -289,32 +294,33 @@ LinkRobattleScreenSetEnemyMedarotInfo: ; 54c6f (15:4c6f)
   ld e, l
   call $7e56
   call $7e5d
+
   ld b, $20
 .asm_54c7f
   ld a, [hl]
-  cp $01
+  dec a
   jr nz, .asm_54c88
-  xor a
   ld [de], a
   jr .asm_54c8e
 .asm_54c88
-  ld a, $04
-  add l
-  ld l, a
+  call HackIncrementLBy4_15
   ld a, [hl]
   ld [de], a
 .asm_54c8e
   inc de
-  ld a, $04
-  add l
-  ld l, a
+  call HackIncrementLBy4_15
   dec b
   jr nz, .asm_54c7f
+
+  ; Copy the medarot name to $f0 from $02
+  call HackCallCopyNameHack_15
+
   ld a, [$c740]
   inc a
-  ld [$c740], a
   cp $03
   jp z, .asm_4ca8
+  ld [$c740], a
+
   ld a, $33
   ld [CoreSubStateIndex], a
   ret
@@ -324,6 +330,10 @@ LinkRobattleScreenSetEnemyMedarotInfo: ; 54c6f (15:4c6f)
   ld [$c741], a
   ld [$c742], a
   jp JumpIncSubStateIndexWrapper
+.end
+REPT $4cb5 - .end
+  nop
+ENDR
 ; 0x54cb5
 
 SECTION "Link Robattle - Copy Player Medarot Info", ROMX[$5111], BANK[$15]
@@ -334,7 +344,7 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   ld b, a
   ld a, [$c64e]
   cp b
-  jp nz, .asm_515d
+  jr nz, .asm_515d
   ld hl, $a500
   ld b, $00
   ld a, [$c654]
@@ -350,24 +360,21 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   call JumpGetListTextOffset
   pop de
   ld b, $20
-  push hl
-.asm_5513d
-  ld a, [de]
-  ld [hli], a
-  inc de
-  dec b
-  jr nz, .asm_5513d
+  xor a
+  call HackCopyDEtoHL_15
+  srl b
+  srl b ; only need 8
+  ld a, $ee ; A hack to copy the name to $f0
+  call HackCopyDEtoHL_15
   ld a, [$c652]
   inc a
   ld [$c652], a
-  pop hl
   ld d, h
   ld e, l
-  ld hl, $11
+  ld hl, $0011
   add hl, de
   ld a, [$c650]
   ld [hl], a
-  ld a, [$c650]
   inc a
   ld [$c650], a
   ret
@@ -377,9 +384,41 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   ld [$c654], a
   inc de
   dec c
-  jp nz, .asm_5113
+  jr nz, .asm_5113
   ret
+.end
+REPT $516a - .end
+  nop
+ENDR
 ; 0x5516a
+
+SECTION "(Hack)", ROMX[$7f19], BANK[$15]
+HackIncrementLBy4_15:
+  ld a, $04
+  add l
+  ld l, a
+  ret
+HackCallCopyNameHack_15:
+  xor a
+  ld e, $02
+  ld h, d
+  ld l, $f0
+  ld b, $08
+HackCopyDEtoHL_15: ;  Copy 'b' bytes from [de] to [hl+a], preserve all registers except a 
+  push bc
+  push de
+  push hl
+  rst $28 ; hl += a
+.loop
+  ld a, [de]
+  ld [hli], a
+  inc de
+  dec b
+  jr nz, .loop
+  pop hl
+  pop de
+  pop bc
+  ret
 
 SECTION "Link Robattle States - Load Part Data", ROMX[$5867], BANK[$15]
 LinkRobattleLoadPartHead:
@@ -417,15 +456,15 @@ LinkRobattleLoadPartHead:
   ld c, $00
   call JumpTable_294
   ld hl, cBUF01
-  call JumpPadTextTo8
-  ld hl, $99c6
-  ld b, $00
+  call VWFPadTextTo8
+  ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $99c6, $9f
+  call VWFPutStringTo8
   ret
 
 LinkRobattleLoadPartRightArm:
@@ -458,8 +497,8 @@ LinkRobattleLoadPartRightArm:
   ld c, $01
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $9a0b
-  call JumpPutString
+  psbc $9a0b, $ad
+  call VWFPutStringTo8
   ret
 
 LinkRobattleLoadPartLeftArm:
@@ -492,15 +531,15 @@ LinkRobattleLoadPartLeftArm:
   ld c, $02
   call JumpTable_294
   ld hl, cBUF01
-  call LeftPadTextTo8
-  ld hl, $9a01
-  ld b, $00
+  call VWFLeftPadTextTo8
+  ld b, $0
   ld c, a
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  psbc $9a01, $be
+  call VWFPutStringTo8
   ret
 
 SECTION "Link Robattle LeftPadTextTo8", ROMX[$57f1], BANK[$15]
@@ -535,27 +574,24 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   ld a, [de]
   or a
   jp z, .next_medarot
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
-  call LeftPadTextTo8
-  ld [$c650], a
-  push de
-  ld hl, $98e0
-  ld b, $0
+  call VWFLeftPadTextTo8
+  pshl $98e0, $01
   ld a, [$c652]
-  ld c, a
-  ld a, $6
-  call JumpGetListTextOffset
-  pop de
-  ld a, [$c650]
-  ld b, $0
-  ld c, a
+  ld bc, $0820
+.loop_player_getoffset
+  or a
+  jr z, .end_loop_player_getoffset
   add hl, bc
+  dec a
+  jr .loop_player_getoffset
+.end_loop_player_getoffset
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_medarot
   ld a, [$c652]
   inc a
@@ -574,19 +610,21 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   ld a, [de]
   or a
   jp z, .next_enemy_medarot
-  push de
-  ld hl, $98ec
-  ld b, $0
+  pshl $98ec, $19
   ld a, [$c652]
-  ld c, a
-  ld a, $6
-  call JumpGetListTextOffset
-  pop de
+  ld bc, $0820
+.loop_enemy_getoffset
+  or a
+  jr z, .end_loop_enemy_getoffset
+  add hl, bc
+  dec a
+  jr .loop_enemy_getoffset
+.end_loop_enemy_getoffset
   ld b, h
   ld c, l
-  ld hl, $0002
+  ld hl, $00f0
   add hl, de
-  call JumpPutString
+  call VWFPutStringTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -594,6 +632,16 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
 
 SECTION "Link Robattle - Partial Disassembly 5", ROMX[$558e], BANK[$15]
 LinkRobattleInitialize: ; 5558e (15:558e)
@@ -769,7 +817,7 @@ LinkRobattleWriteText: ; 54bc9 (15:4bc9)
   ld hl, $2
   add hl, de
   ld de, cBUF01
-  ld b, $09
+  ld b, $19
 .asm_54be8
   ld a, [hli]
   ld [de], a
@@ -788,7 +836,7 @@ LinkPostRobattleSetupPartLostText: ; 1d078 (7:5078)
   call $57fc
   ld hl, cBUF01
   ld de, cBUF04
-  ld a, $09
+  ld a, $19
   call JumpTable_1ef
   ld a, $20
   ld [CoreSubStateIndex], a
@@ -870,7 +918,7 @@ LinkPostRobattleLoadTextWonLegs: ; 1d896 (7:5896)
   ret
 LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1d8b8
   ld a, [hli]
   ld [de], a
@@ -893,7 +941,7 @@ Func_1ccd2: ; 1ccd2 (7:4cd2)
   call JumpTable_294
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1ccf0
   ld a, [hli]
   ld [de], a
@@ -908,7 +956,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 4", ROMX[$5175], BANK[$7]
 Func_1d175: ; 1d175 (7:5175)
   ld hl, cBUF01
   ld de, cBUF04
-  ld a, $09
+  ld a, $19
   call JumpTable_1ef
   ld a, $01
   call JumpSetupDialog
@@ -925,7 +973,7 @@ Func_1d7dd: ; 1d7dd (7:57dd)
   ld a, [hli]
   ld [$c756], a
   ld de, cBUF01
-  ld b, $09
+  ld b, $19
 .asm_1d7f2
   ld a, [hli]
   ld [de], a
@@ -994,7 +1042,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 7", ROMX[$5b76], BANK[$7]
 Func_1db76: ; 1db76 (7:5b76)
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1db7e
   ld a, [hli]
   ld [de], a
@@ -1013,7 +1061,7 @@ SECTION "Post-Robattle Screen - Partial Disassembly 8", ROMX[$5d11], BANK[$7]
 Func_1dd11: ; 1dd11 (7:5d11)
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $09
+  ld b, $19
 .asm_1dd19
   ld a, [hli]
   ld [de], a

@@ -24,10 +24,10 @@ RobattleScreenCopyPlayerMedarotInfo:
   call JumpGetListTextOffset
   pop de
   ld b, $20
+  xor a
   call HackCopyDEtoHL_4
   srl b
   ld a, $ee ; A hack to copy the name to $f0
-  rst $28 ; hl += a
   call HackCopyDEtoHL_4
   ld a, [$c652]
   inc a
@@ -41,13 +41,18 @@ RobattleScreenCopyPlayerMedarotInfo:
   inc a
   ld [$c650], a
   ret
+.end
+REPT $4ddb - .end
+  nop
+ENDR
 ; 0x10ddb
 
-SECTION "(Hack) Copy 'b' bytes from [de] to [hl], preserve all registers except a", ROMX[$796a], BANK[$4]
+SECTION "(Hack) Copy 'b' bytes from [de] to [hl+a], preserve all registers except a", ROMX[$796a], BANK[$4]
 HackCopyDEtoHL_4:
   push bc
   push de
   push hl
+  rst $28 ; hl += a
 .loop
   ld a, [de]
   ld [hli], a
