@@ -64,7 +64,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, $8F ; When the original start point is 0, we can set the interrupt to occur at $8F, leaving 1 more than the vblank period to draw
   ld [HackHBlankOriginal], a
 .hack_notzero
-  ld [$ff45], a
+  ld [hRegLYC], a
   ld a, $b0
   ld [HackHBlankOffset], a
   ld de, -$03
@@ -74,8 +74,8 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   inc b
   call HBlankWaitForLine ; We might be here early, so wait
   xor a
-  ld [$ff43], a
-  ld [$ff42], a
+  ld [hRegSCX], a
+  ld [hRegSCY], a
   jr .draw_scroll_return
 .draw_scroll_section
   ld a, l
@@ -84,17 +84,17 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, [$c5aa] ; if c5aa is set, use that instead as the original point
   or a
   jr nz, .use_c5aa
-  ld a, [$ff45] ; If c5aa isn't set, take the value of ff45
+  ld a, [hRegLYC] ; If c5aa isn't set, take the value of ff45
 .use_c5aa
   ld [HackHBlankOriginal], a
 .draw_scroll_section_not_original
   ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
   ld a, [hli] ; [0] = Line to stop at
-  ld [$ff45], a
+  ld [hRegLYC], a
   ld a, [hli] 
-  ld [$ff43], a ; [1] = SCX
+  ld [hRegSCX], a ; [1] = SCX
   ld a, [hli]
-  ld [$ff42], a ; [2] = SCY
+  ld [hRegSCY], a ; [2] = SCY
   ld a, l
   ld [HackHBlankOffset], a
   jr .draw_scroll_return
@@ -105,14 +105,14 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $c800
 .asm_529
   ld a, [hli]
-  ld [$ff43], a
+  ld [hRegSCX], a
   xor a
-  ld [$ff42], a
+  ld [hRegSCY], a
   ld a, [$c7fc]
   ld b, a
 .asm_534
   call WaitLCDController
-  ld a, [$ff44]
+  ld a, [hRegLY]
   sub b
   jr c, .asm_534
   ld a, [$c7fc]
@@ -177,7 +177,7 @@ ResetIRQVars::
   ret
 HBlankWaitForLine::
 .waitforline
-  ld a, [$ff44]
+  ld a, [hRegLY]
   cp b
   jr c, .waitforline
   ret

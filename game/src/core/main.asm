@@ -8,8 +8,8 @@ Main::
 
 ; Turn off all the interrupts.
   xor a
-  ldh [$FF0F], a
-  ldh [$FFFF], a
+  ldh [hRegIF], a
+  ldh [hRegIE], a
   ld sp, $FFFE
 
 ; Enable sram.
@@ -53,19 +53,19 @@ Main::
   call $17D4
   ld a, $83
   ld [$C5A9], a
-  ldh [$FF40], a
+  ldh [hRegLCDC], a
   xor a
-  ldh [$FF0F], a
+  ldh [hRegIF], a
   ld a, $D
-  ldh [$FFFF], a
+  ldh [hRegIE], a
   ei
   call $3EB5
   ld a, $40
   ldh [hLCDStat], a
   xor a
-  ldh [$FF0F], a
+  ldh [hRegIF], a
   ld a, $B
-  ldh [$FFFF], a
+  ldh [hRegIE], a
   ld a, BANK(SGB_DetectICDPresence)
   ld [$C6E0], a
   rst $10
