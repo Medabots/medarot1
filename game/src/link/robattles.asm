@@ -933,62 +933,7 @@ Func_1d7dd: ; 1d7dd (7:57dd)
   call JumpTable_33f
   ret
 
-SECTION "Post-Robattle Screen - Partial Disassembly 6", ROMX[$5af8], BANK[$7]
-Func_1daf8: ; 1daf8 (7:5af8)
-  cp $00
-  jr nz, .asm_1db33
-  ld a, [$c78c]
-  ld c, a
-  ld b, $01
-  ld a, [$c78d]
-  call JumpTable_294
-  ld hl, cBUF01
-  ld bc, $9802
-  call JumpPutString
-  ld a, [$c78c]
-  ld c, a
-  ld b, $00
-  ld a, [$c78d]
-  call JumpTable_294
-  ld hl, cBUF01
-  call JumpPadTextTo8
-  ld h, $00
-  ld l, a
-  ld bc, $9841
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
-  call JumpPutString
-  ret
-.asm_1db33
-  ld a, [$c78e]
-  ld c, a
-  ld b, $01
-  ld a, [$c78f]
-  call JumpTable_294
-  ld hl, cBUF01
-  ld bc, $980c
-  call JumpPutString
-  ld a, [$c78e]
-  ld c, a
-  ld b, $00
-  ld a, [$c78f]
-  call JumpTable_294
-  ld hl, cBUF01
-  call JumpPadTextTo8
-  ld h, $00
-  ld l, a
-  ld bc, $984b
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
-  call JumpPutString
-  ret
-; 0x1db6a
-
-SECTION "Post-Robattle Screen - Partial Disassembly 7", ROMX[$5b76], BANK[$7]
+SECTION "Post-Robattle Screen - Partial Disassembly 6", ROMX[$5b76], BANK[$7]
 Func_1db76: ; 1db76 (7:5b76)
   ld hl, cBUF01
   ld de, cBUF04
@@ -1007,7 +952,7 @@ Func_1db76: ; 1db76 (7:5b76)
   ret
 ; 0x1db91
 
-SECTION "Post-Robattle Screen - Partial Disassembly 8", ROMX[$5d11], BANK[$7]
+SECTION "Post-Robattle Screen - Partial Disassembly 7", ROMX[$5d11], BANK[$7]
 Func_1dd11: ; 1dd11 (7:5d11)
   ld hl, cBUF01
   ld de, cBUF04

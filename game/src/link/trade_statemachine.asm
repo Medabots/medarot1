@@ -32,7 +32,7 @@ PartTradeStateMachine::
   dw $47FD
   dw $4819
   dw $4821
-  dw $482F
+  dw PartTradeLoadPartTypeTilemap
   dw $483B
   dw $488C
   dw $48A5
@@ -124,7 +124,7 @@ PartTradeFadeOutState::
   ret z
   jp JumpIncSubStateIndexWrapper
 
-SECTION "Link Robattle State Machine - Part 2", ROMX[$47B9], BANK[$7]
+SECTION "Trade State Machine - Part 2", ROMX[$47B9], BANK[$7]
 PartTradeDrawScreenState::
   call JumpTable_1a7
   call JumpTable_1aa
@@ -156,3 +156,66 @@ PartTradeMapScreenState::
   ld a, 1
   call JumpTable_17d
   jp JumpIncSubStateIndexWrapper
+
+SECTION "Trade State Machine - Part 3", ROMX[$482f], BANK[$7]
+PartTradeLoadPartTypeTilemap: ; 1c82f (7:482f)
+  ld b, $00
+  ld c, $00
+  ld e, $b9
+  call JumpLoadTilemap
+  jp JumpIncSubStateIndexWrapper
+
+SECTION "Trade State Machine - Part 4", ROMX[$5af8], BANK[$7]
+PartTradeDrawTradeItems: ; 1daf8 (7:5af8)
+  cp $00
+  jr nz, .asm_1db33
+  ld a, [$c78c]
+  ld c, a
+  ld b, $01
+  ld a, [$c78d]
+  call JumpTable_294
+  ld hl, cBUF01
+  ld bc, $9802
+  call JumpPutString
+  ld a, [$c78c]
+  ld c, a
+  ld b, $00
+  ld a, [$c78d]
+  call JumpTable_294
+  ld hl, cBUF01
+  call JumpPadTextTo8
+  ld h, $00
+  ld l, a
+  ld bc, $9841
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+.asm_1db33
+  ld a, [$c78e]
+  ld c, a
+  ld b, $01
+  ld a, [$c78f]
+  call JumpTable_294
+  ld hl, cBUF01
+  ld bc, $980c
+  call JumpPutString
+  ld a, [$c78e]
+  ld c, a
+  ld b, $00
+  ld a, [$c78f]
+  call JumpTable_294
+  ld hl, cBUF01
+  call JumpPadTextTo8
+  ld h, $00
+  ld l, a
+  ld bc, $984b
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld hl, cBUF01
+  call JumpPutString
+  ret
+; 0x1db6a
