@@ -68,52 +68,25 @@ SerIO_IRQ::
   ldh [hRegSB], a
   ld a, $80
   ldh [hRegSC], a
-  jp .return
-
-; This makes no fucking sense. Obviously this is meant to buffer a number of bytes of transferred data at a time, but SerIO_NumConnectionPackets is always 1, so the buffer length is always 1. It may be that $FE plays into this, but it is never used to my knowledge.
+  jr .return
 
 .packetXfrMode
   ld a, 1
   ld [SerIO_DoingXfer], a
-  ld a, [SerIO_PacketType]
-  xor 1
-  ld [SerIO_PacketType], a
-  ld hl, SerIO_DriverInByte
-  ld a, [SerIO_TransferLocationOffset]
-  ld e, a
-  xor a
-  ld d, a
-  add hl, de
   ldh a, [hRegSB]
-  ld [hl], a
-  ld hl, SerIO_DriverOutByte
+  ld [SerIO_DriverInByte], a
   add hl, de
-  ld a, [hl]
+  ld a, [SerIO_DriverOutByte]
   ldh [hRegSB], a
+  ld bc, $20
+  call SerIO_Wait
   ld a, $80
   ldh [hRegSC], a
-  ld a, [SerIO_TransferLocationOffset]
-  inc a
-  ld [SerIO_TransferLocationOffset], a
-  ld b, a
-  ld a, [SerIO_NumConnectionPackets]
-  cp b
-  jp nz, .doWait
   xor a
   ld [SerIO_TransferLocationOffset], a
   ld [SerIO_DoingXfer], a
   call $3F88
   call $3F4A
-  jr .return
-
-.doWait
-  ld a, [SerIO_PacketType]
-  and a
-  jr z, .return
-  ld bc, $1A
-  call SerIO_Wait
-  ld a, $81
-  ldh [hRegSC], a
 
 .return
   pop hl
@@ -121,6 +94,11 @@ SerIO_IRQ::
   pop bc
   pop af
   reti
+
+.end
+REPT $3EB5 - .end
+  nop
+ENDR
 
 SECTION "SerIO Functions",  ROM0[$3EF8]
 SerIO_SendConnectPacket::
