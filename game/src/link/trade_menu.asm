@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Load Parts Trade Menu", ROMX[$5a31], BANK[$7]
 LoadPartsTradeMenu:
@@ -17,8 +18,8 @@ LoadPartsTradeMenu:
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $988A
-  call JumpPutString
+  psbc, $988A, $A0
+  call VWFPutStringTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C788]
@@ -30,8 +31,8 @@ LoadPartsTradeMenu:
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $98CA
-  call JumpPutString
+  psbc, $98CA, $A8
+  call VWFPutStringTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C789]
@@ -43,8 +44,8 @@ LoadPartsTradeMenu:
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $990A
-  call JumpPutString
+  psbc, $990A, $B0
+  call VWFPutStringTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C78A]
@@ -56,7 +57,7 @@ LoadPartsTradeMenu:
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $994A
-  call JumpPutString
+  psbc, $994A, $B8
+  call VWFPutStringTo8
   ret
 ; 0x5a9f

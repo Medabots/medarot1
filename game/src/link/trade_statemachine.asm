@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Part Trade State Machine", ROMX[$46A2], BANK[$7]
 PartTradeStateMachine::
@@ -162,7 +163,8 @@ PartTradeLoadPartTypeTilemap: ; 1c82f (7:482f)
   ld b, $00
   ld c, $00
   ld e, $b9
-  call JumpLoadTilemap
+  ld a, $1f ; LoadMinimalPartScreenAndLoadTilemap
+  rst $8
   jp JumpIncSubStateIndexWrapper
 
 SECTION "Trade State Machine - Part 4", ROMX[$5af8], BANK[$7]
@@ -175,23 +177,23 @@ PartTradeDrawTradeItems: ; 1daf8 (7:5af8)
   ld a, [$c78d]
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $9802
-  call JumpPutString
+  psbc $9802, $90
+  call VWFPutStringTo8
   ld a, [$c78c]
   ld c, a
   ld b, $00
   ld a, [$c78d]
   call JumpTable_294
   ld hl, cBUF01
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $00
   ld l, a
-  ld bc, $9841
+  psbc $9841, $98
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  call VWFPutStringTo8
   ret
 .asm_1db33
   ld a, [$c78e]
@@ -200,22 +202,22 @@ PartTradeDrawTradeItems: ; 1daf8 (7:5af8)
   ld a, [$c78f]
   call JumpTable_294
   ld hl, cBUF01
-  ld bc, $980c
-  call JumpPutString
+  psbc $980c, $c0
+  call VWFPutStringTo8
   ld a, [$c78e]
   ld c, a
   ld b, $00
   ld a, [$c78f]
   call JumpTable_294
   ld hl, cBUF01
-  call JumpPadTextTo8
+  call VWFPadTextTo8
   ld h, $00
   ld l, a
-  ld bc, $984b
+  psbc $984b, $c8
   add hl, bc
   ld b, h
   ld c, l
   ld hl, cBUF01
-  call JumpPutString
+  call VWFPutStringTo8
   ret
 ; 0x1db6a
