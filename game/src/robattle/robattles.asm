@@ -364,7 +364,7 @@ RobattleMedarotInfoLoadHead:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9949, $d6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 RobattleMedarotInfoLoadRArm:
   ld a, [$a03f]
@@ -382,7 +382,7 @@ RobattleMedarotInfoLoadRArm:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9989, $de
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 RobattleMedarotInfoLoadLArm:
   ld a, [$a041]
@@ -400,7 +400,7 @@ RobattleMedarotInfoLoadLArm:
   call JumpTable_294
   ld hl, cBUF01
   psbc $99c9, $e6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 RobattleMedarotInfoLoadLegs:
   ld a, [$a043]
@@ -418,7 +418,7 @@ RobattleMedarotInfoLoadLegs:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9a09, $5c
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 ; 0x6edcc
 
@@ -526,7 +526,9 @@ RobattleLoadHeadPart:
   ld bc, $0000
   call JumpTable_294
   ld hl, cBUF01
+  push hl
   call VWFPadTextTo8
+  pop hl
   ld a, [VWFCurrentFont]
   or a
   jr z, .not_narrow
@@ -587,7 +589,9 @@ RobattleLoadLeftArm:
   ld bc, $0002
   call JumpTable_294
   ld hl, cBUF01
+  push hl
   call VWFLeftPadTextTo8
+  pop hl
   ld a, [VWFCurrentFont]
   or a
   jr z, .not_narrow

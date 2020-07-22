@@ -117,7 +117,7 @@ LoadMedarotPartSelectHead:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9949, $d6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 LoadMedarotPartSelectRArm:
   ld a, [$a03f]
@@ -142,7 +142,7 @@ LoadMedarotPartSelectRArm:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9989, $de
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 LoadMedarotPartSelectLArm:
   ld a, [$a041]
@@ -167,7 +167,7 @@ LoadMedarotPartSelectLArm:
   call JumpTable_294
   ld hl, cBUF01
   psbc $99c9, $e6
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 ; 0xafbc
 LoadMedarotPartSelectLegs:
@@ -194,7 +194,7 @@ LoadMedarotPartSelectLegs:
   call JumpTable_294
   ld hl, cBUF01
   psbc $9a09, $5c
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 ; 0xaff0
 
