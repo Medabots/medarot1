@@ -481,8 +481,7 @@ ENDR
 SECTION "Robattle - Draw Part Names in Attack Selection Screen", ROMX[$54cb], BANK[$4]
 RobattleLoadAttackSelectPartNames:: ; 114cb (4:54cb)
   ld hl, $99a1
-  ld b, $12
-  ld c, $04
+  ld bc, $1204
   call JumpTable_270
   push de
   call RobattleLoadHeadPart
@@ -495,25 +494,24 @@ RobattleLoadAttackSelectPartNames:: ; 114cb (4:54cb)
   pop de
   ret
 ; 0x114e5
+RobattlePartBrokenLoadTilemap:
+  ld e, $86
+  call JumpLoadTilemap
+  ret
 RobattleLoadHeadPart:
   ld hl, $000d
   add hl, de
   ld a, [hl]
   and a, $7f
   sub a, $3c
-  jp c, .not_broken
-.is_broken:
-  ld b, $6
-  ld c, $d
-  ld e, $86
-  call JumpLoadTilemap
-  ret
+  jr nc, RobattlePartBrokenLoadTilemap
 .not_broken:
   ld hl, $00d3
   add hl, de
   ld a, [hl]
   or a
-  jr z, .is_broken
+  ld bc, $060d
+  jr z, RobattlePartBrokenLoadTilemap
   ld hl, $000d
   add hl, de
   ld a, [hl]
@@ -521,21 +519,19 @@ RobattleLoadHeadPart:
   ld hl, $b520
   ld c, a
   ld b, $0
-  sla c
-  rl b
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $0
-  ld c, $0
+  ld bc, $0000
   call JumpTable_294
   ld hl, cBUF01
   call VWFPadTextTo8
-  ld b, $0
-  ld c, a
-  add hl, bc
-  ld b, h
-  ld c, l
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFPadTextTo8
+.not_narrow
   ld hl, cBUF01
   psbc $99c6, $9f
   call VWFPutStringTo8
@@ -547,11 +543,8 @@ RobattleLoadRightArm:
   and $7f
   sub $3c
   jp c, .not_broken
-  ld b, $b
-  ld c, $f
-  ld e, $86
-  call JumpLoadTilemap
-  ret
+  ld bc, $0b0f
+  jr z, RobattlePartBrokenLoadTilemap
 .not_broken
   ld hl, $000e
   add hl, de
@@ -560,17 +553,15 @@ RobattleLoadRightArm:
   ld hl, $b5a0
   ld c, a
   ld b, $0
-  sla c
-  rl b
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $0
-  ld c, $1
+  ld bc, $0001
   call JumpTable_294
   ld hl, cBUF01
   psbc $9a0b, $ad
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 RobattleLoadLeftArm:
   ld hl, $000f
@@ -579,11 +570,8 @@ RobattleLoadLeftArm:
   and $7f
   sub $3c
   jp c, .not_broken
-  ld b, $1
-  ld c, $f
-  ld e, $86
-  call JumpLoadTilemap
-  ret
+  ld bc, $010f
+  jp z, RobattlePartBrokenLoadTilemap
 .not_broken
   ld hl, $000f
   add hl, de
@@ -592,25 +580,28 @@ RobattleLoadLeftArm:
   ld hl, $b620
   ld c, a
   ld b, $0
-  sla c
-  rl b
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $0
-  ld c, $2
+  ld bc, $0002
   call JumpTable_294
   ld hl, cBUF01
   call VWFLeftPadTextTo8
-  ld b, $0
-  ld c, a
-  add hl, bc
-  ld b, h
-  ld c, l
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFLeftPadTextTo8
+.not_narrow
   ld hl, cBUF01
   psbc $9a01, $be
   call VWFPutStringTo8
   ret
+.end
+REPT $55b9 - .end
+  nop
+ENDR
+; 0x55b9
 
 SECTION "LeftPadTextTo8", ROMX[$546f], BANK[$4]
 LeftPadTextTo8:
