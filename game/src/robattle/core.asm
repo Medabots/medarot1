@@ -216,7 +216,7 @@ RobattleStatePrepareAttackScreen::
   ld d, a
   ld a, [$A045]
   ld e, a
-  call $54CB
+  call RobattleLoadAttackSelectPartNames
   ld hl, $58
   add hl, de
   ld a, [hl]

@@ -478,20 +478,42 @@ REPT $7019 - .end
 ENDR
 ; 0x6f019
 
-SECTION "Robattle - Load Part Names", ROMX[$54f1], BANK[$4]
-RobattleLoadHeadBroken:
+SECTION "Robattle - Draw Part Names in Attack Selection Screen", ROMX[$54cb], BANK[$4]
+RobattleLoadAttackSelectPartNames:: ; 114cb (4:54cb)
+  ld hl, $99a1
+  ld b, $12
+  ld c, $04
+  call JumpTable_270
+  push de
+  call RobattleLoadHeadPart
+  pop de
+  push de
+  call RobattleLoadRightArm
+  pop de
+  push de
+  call RobattleLoadLeftArm
+  pop de
+  ret
+; 0x114e5
+RobattleLoadHeadPart:
+  ld hl, $000d
+  add hl, de
+  ld a, [hl]
+  and a, $7f
+  sub a, $3c
+  jp c, .not_broken
+.is_broken:
   ld b, $6
   ld c, $d
   ld e, $86
   call JumpLoadTilemap
   ret
-RobattleLoadHeadPart:
-; 0x114fb
+.not_broken:
   ld hl, $00d3
   add hl, de
   ld a, [hl]
   or a
-  jr z, RobattleLoadHeadBroken ; This should pretty much never be used though...
+  jr z, .is_broken
   ld hl, $000d
   add hl, de
   ld a, [hl]
