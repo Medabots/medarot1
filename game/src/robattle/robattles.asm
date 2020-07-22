@@ -478,20 +478,20 @@ REPT $7019 - .end
 ENDR
 ; 0x6f019
 
-SECTION "Robattle - Load Text", ROMX[$54f1], BANK[$4]
-RobattleLoadText:
-.asm_114f1
+SECTION "Robattle - Load Part Names", ROMX[$54f1], BANK[$4]
+RobattleLoadHeadBroken:
   ld b, $6
   ld c, $d
   ld e, $86
   call JumpLoadTilemap
   ret
+RobattleLoadHeadPart:
 ; 0x114fb
   ld hl, $00d3
   add hl, de
   ld a, [hl]
   or a
-  jr z, .asm_114f1 ; 0x11501 $ee
+  jr z, RobattleLoadHeadBroken ; This should pretty much never be used though...
   ld hl, $000d
   add hl, de
   ld a, [hl]
@@ -518,17 +518,19 @@ RobattleLoadText:
   psbc $99c6, $9f
   call VWFPutStringTo8
   ret
+RobattleLoadRightArm:
   ld hl, $000e
   add hl, de
   ld a, [hl]
   and $7f
   sub $3c
-  jp c, $554b
+  jp c, .not_broken
   ld b, $b
   ld c, $f
   ld e, $86
   call JumpLoadTilemap
   ret
+.not_broken
   ld hl, $000e
   add hl, de
   ld a, [hl]
@@ -548,17 +550,19 @@ RobattleLoadText:
   psbc $9a0b, $ad
   call VWFPutStringTo8
   ret
+RobattleLoadLeftArm:
   ld hl, $000f
   add hl, de
   ld a, [hl]
   and $7f
   sub $3c
-  jp c, $5587
+  jp c, .not_broken
   ld b, $1
   ld c, $f
   ld e, $86
   call JumpLoadTilemap
   ret
+.not_broken
   ld hl, $000f
   add hl, de
   ld a, [hl]
