@@ -109,7 +109,7 @@ LoadShopPartsMenu:
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
-  ld b, $c
+  ld b, $d
   ld c, $4
   call JumpTable_1dd
   push hl
@@ -117,8 +117,8 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpDrawNumber
-  ld b, $10
+  call MapMoneyWithYenSymbol
+  ld b, $11
   ld c, $4
   ld e, $19
   call JumpTable_2ca
@@ -137,7 +137,7 @@ LoadShopPartsMenu:
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
-  ld b, $c
+  ld b, $d
   ld c, $6
   call JumpTable_1dd
   push hl
@@ -145,8 +145,8 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpDrawNumber
-  ld b, $10
+  call MapMoneyWithYenSymbol
+  ld b, $11
   ld c, $6
   ld e, $19
   call JumpTable_2ca
@@ -165,7 +165,7 @@ LoadShopPartsMenu:
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
-  ld b, $c
+  ld b, $d
   ld c, $8
   call JumpTable_1dd
   push hl
@@ -173,8 +173,8 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpDrawNumber
-  ld b, $10
+  call MapMoneyWithYenSymbol
+  ld b, $11
   ld c, $8
   ld e, $19
   call JumpTable_2ca
@@ -192,7 +192,7 @@ LoadShopPartsMenu:
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
-  ld b, $c
+  ld b, $d
   ld c, $a
   call JumpTable_1dd
   push hl
@@ -200,8 +200,8 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpDrawNumber
-  ld b, $10
+  call MapMoneyWithYenSymbol
+  ld b, $11
   ld c, $a
   ld e, $19
   call JumpTable_2ca

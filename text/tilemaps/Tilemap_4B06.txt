@@ -1,2 +1,2 @@
 [OVERLAY]
-\x6b\x6b\x7c
+\x6b\x6b
