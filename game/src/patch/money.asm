@@ -3,7 +3,7 @@ MapMoneyWithYenSymbol::
 ; Warning: Be careful about making changes to the money window tilemap.
 ; MapMoneyWithYenSymbol can descend into an infinite loop if it can't find a place to insert the yen symbol.
 
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld a, c
   inc a
   inc a

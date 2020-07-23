@@ -163,8 +163,8 @@ Wrapper_665::
   jp $32df
 Wrapper_668::
   jp $dc6
-Wrapper_66b::
-  call $3394
+WrapDrawNumber::
+  call DrawNumber
   rst $18
   ret
 Wrapper_670::

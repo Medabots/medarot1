@@ -117,7 +117,7 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $10
   ld c, $4
   ld e, $19
@@ -145,7 +145,7 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $10
   ld c, $6
   ld e, $19
@@ -173,7 +173,7 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $10
   ld c, $8
   ld e, $19
@@ -200,7 +200,7 @@ LoadShopPartsMenu:
   ld h, $0
   ld a, [$c884]
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $10
   ld c, $a
   ld e, $19
@@ -237,7 +237,7 @@ LoadShopPartsMenuSell:
   pop af
   ld h, $0
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $11
   ld c, $4
   ld e, $18
@@ -265,7 +265,7 @@ LoadShopPartsMenuSell:
   pop af
   ld h, $0
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $11
   ld c, $6
   ld e, $18
@@ -293,7 +293,7 @@ LoadShopPartsMenuSell:
   pop af
   ld h, $0
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $11
   ld c, $8
   ld e, $18
@@ -321,7 +321,7 @@ LoadShopPartsMenuSell:
   pop af
   ld h, $0
   ld l, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld b, $11
   ld c, $a
   ld e, $18

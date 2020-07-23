@@ -1057,7 +1057,7 @@ RobattleHealthDisplayFix::
   cp 10
   call c, .clearTile
   pop bc
-  jp JumpTable_1ec
+  jp JumpDrawNumber
 
 .clearTile
   di

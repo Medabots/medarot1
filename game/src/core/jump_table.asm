@@ -51,7 +51,7 @@ JumpTable_1e0:: jp Wrapper_65b
 JumpLoadItemList:: jp WrapLoadItemList
 JumpTable_1e6:: jp Wrapper_665
 JumpTable_1e9:: jp Wrapper_668
-JumpTable_1ec:: jp Wrapper_66b
+JumpDrawNumber:: jp WrapDrawNumber
 JumpTable_1ef:: jp Wrapper_670
 JumpTable_1f2:: jp Wrapper_673
 JumpTable_1f5:: jp Wrapper_678
