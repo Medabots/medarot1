@@ -37,3 +37,34 @@ MapMoneyWithYenSymbol::
   ld [bc], a
   ei
   ret
+
+SECTION "Map Price With Yen Symbol 2", ROMX[$7F6C], BANK[$3]
+MapSellMoneyWithYenSymbol::
+  push hl
+  ld de, $C89D
+  ld bc, $37C
+
+.loop
+  ld a, [de]
+  or a
+  jr nz, .yenFound
+  xor a
+  di
+  call WaitLCDController
+  ld [hli], a
+  ei
+  inc de
+  dec b
+  jr nz, .loop
+
+.yenFound
+  di
+  call WaitLCDController
+  ld [hl], c
+  ei
+
+  pop hl
+  inc hl
+  xor a
+  ld [$C89A], a
+  jp $433A
