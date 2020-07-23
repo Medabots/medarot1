@@ -1137,3 +1137,137 @@ Func_3ca6: ; 3ca6 (0:3ca6)
   jp $3d53
 .asm_3d4d
 ; 0x3d4d
+
+SECTION "Draw Numbers", ROM0[$3394]
+DrawNumber:: ; 3394 (0:3394)
+  push hl
+  push de
+  push bc
+  xor a
+  ld [$c650], a
+  ld a, b
+  ld [$c642], a
+  ld a, c
+  ld [$c643], a
+  ld bc, $3e8
+  call $330e
+  ld a, [SerIO_ConnectionTestResult]
+  or a
+  jr nz, .asm_33b7
+  ld b, a
+  ld a, [$c650]
+  or a
+  jr z, .asm_33ce
+  ld a, b
+.asm_33b7
+  add $6b
+  push af
+  ld a, [$c642]
+  ld h, a
+  ld a, [$c643]
+  ld l, a
+  pop af
+  di
+  call WaitLCDController
+  ld [hl], a
+  ei
+  ld a, $01
+  ld [$c650], a
+.asm_33ce
+  ld a, [$c640]
+  ld h, a
+  ld a, [$c641]
+  ld l, a
+  ld bc, $64
+  call $330e
+  ld a, [SerIO_ConnectionTestResult]
+  or a
+  jr nz, .asm_33ea
+  ld b, a
+  ld a, [$c650]
+  or a
+  jr z, .asm_3408
+  ld a, b
+.asm_33ea
+  add $6b
+  push af
+  ld a, [$c642]
+  ld h, a
+  ld a, [$c643]
+  ld l, a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  pop af
+  di
+  call WaitLCDController
+  ld [hl], a
+  ei
+  ld a, $01
+  ld [$c650], a
+.asm_3408
+  ld a, [$c640]
+  ld h, a
+  ld a, [$c641]
+  ld l, a
+  ld bc, $a
+  call $330e
+  ld a, [SerIO_ConnectionTestResult]
+  or a
+  jr nz, .asm_3424
+  ld b, a
+  ld a, [$c650]
+  or a
+  jr z, .asm_3444
+  ld a, b
+.asm_3424
+  add $6b
+  push af
+  ld a, [$c642]
+  ld h, a
+  ld a, [$c643]
+  ld l, a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  pop af
+  di
+  call WaitLCDController
+  ld [hl], a
+  ei
+.asm_3444
+  ld a, [$c640]
+  ld h, a
+  ld a, [$c641]
+  ld l, a
+  ld bc, $1
+  call $330e
+  ld a, [SerIO_ConnectionTestResult]
+  add $6b
+  push af
+  ld a, [$c642]
+  ld h, a
+  ld a, [$c643]
+  ld l, a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  ld bc, $1
+  add hl, bc
+  call $2a2a
+  pop af
+  di
+  call WaitLCDController
+  ld [hl], a
+  ei
+  pop bc
+  pop de
+  pop hl
+  ret
+; 0x3480

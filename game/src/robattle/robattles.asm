@@ -979,7 +979,7 @@ RobattleDisplayHealth::
   ld a, [hli]
   ld l, [hl]
   ld h, a
-  call JumpTable_1ec
+  call JumpDrawNumber
 
   ; Map "/".
 
@@ -1004,7 +1004,7 @@ RobattleDisplayHealth::
   ld a, [hli]
   ld l, [hl]
   ld h, a
-  call JumpTable_1ec
+  call JumpDrawNumber
   pop de
   ret
 

@@ -98,13 +98,13 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld a, [$c8f1]
   ld l, a
   ld bc, $9884
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld a, [$c8f2]
   ld h, a
   ld a, [$c8f3]
   ld l, a
   ld bc, $988e
-  call JumpTable_1ec
+  call JumpDrawNumber
   ld a, [$c8f4]
   ld hl, $994c
   call JumpTable_2fa
