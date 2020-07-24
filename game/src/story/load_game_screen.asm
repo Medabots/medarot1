@@ -1,3 +1,35 @@
+SECTION "Check save data", ROMX[$4430], BANK[$1]
+CheckSaveData: ; 4430 (1:4430)
+  call JumpTable_21c
+  ld [$c624], a
+  cp $00
+  jr z, .load_game
+  cp $01
+  jr z, .new_game
+  ld b, $02 ; If we reached here, something is wrong (a not in (0, 1))
+  ld c, $05
+  ld e, $26
+  call JumpLoadTilemap
+  ld a, $04
+  call JumpTable_17d
+  jp JumpIncSubStateIndexWrapper
+.load_game
+  ld a, [$bffd]
+  or a
+  jr nz, .asm_445a
+  ld a, $01
+  ld [$c624], a
+.asm_445a
+  ld a, $04
+  ld [CoreSubStateIndex], a
+  ret
+.new_game
+  call JumpTable_21f
+  ld a, $04
+  ld [CoreSubStateIndex], a
+  ret
+; 0x4469
+
 SECTION "New/Load Game Screen", ROMX[$448c], BANK[$1]
 LoadGameScreen:: ; 448c (1:448c)
   call JumpTable_1a7
