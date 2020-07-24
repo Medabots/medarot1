@@ -43,7 +43,7 @@ TILESET_TEXT := $(TEXT)/tilesets
 TILESET_OUT := $(BUILD)/tilesets
 TILESET_UNCOMPRESSED_TEXT := $(TILESET_TEXT)/nomalias
 
-MODULES := core gfx story menu robattle titlescreen link
+MODULES := core gfx story menu shop robattle titlescreen link
 TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 StoryText2 StoryText3
 
 # Toolchain
