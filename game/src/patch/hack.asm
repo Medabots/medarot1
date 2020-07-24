@@ -54,6 +54,7 @@ HackPredefTable:
   dw LoadIntroTutorialTextAndLoadTilemap ; 21
   dw LoadNameScreenTextAndLoadTilemap ; 22
   dw LoadLinkMainMenuTextAndLoadTilemap ; 23
+  dw LoadSaveDataCorruptedTextAndLoadTilemap ; 24
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -380,6 +381,16 @@ LoadLinkMainMenuTextAndLoadTilemap:
   push de
   push bc
   Load1BPPTileset $8800, PatchTilesetStartLinkMainMenuText, PatchTilesetEndLinkMainMenuText
+  pop bc
+  pop de
+  pop hl
+  jp WrapLoadTilemap
+
+LoadSaveDataCorruptedTextAndLoadTilemap:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartSaveDataCorruptedText, PatchTilesetEndSaveDataCorruptedText
   pop bc
   pop de
   pop hl

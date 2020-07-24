@@ -73,3 +73,6 @@ PatchTilesetEndNameScreen
 PatchTilesetStartLinkMainMenuText::
   INCBIN "build/tilesets/patch/LinkMainMenu.1bpp"
 PatchTilesetEndLinkMainMenuText
+PatchTilesetStartSaveDataCorruptedText::
+  INCBIN "build/tilesets/patch/SaveDataCorrupted.1bpp"
+PatchTilesetEndSaveDataCorruptedText
