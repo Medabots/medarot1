@@ -24,6 +24,11 @@ VWFCreditsRingBufferOffsetIndex:: ds 1
 VWFTileMappingAddress:: ds 2
 VWFInitialPaddingOffset:: ds 1
 OAMDMAReady:: ds 1
+ShopPartDrawIndex:: ds 1
+ShopPartMapPseudoIndex:: ds 1
+ShopPartMapLocation:: ds 2
+ShopPartMapLineIndex:: ds 1
+TempReturnBank:: ds 1
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30
