@@ -1,6 +1,7 @@
 ; Core state machine for the link menu
 
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Link Menu State Machine", ROMX[$4000], BANK[$7]
 LinkMenuStateMachine:: ; 1c000 (7:4000)
@@ -101,7 +102,7 @@ SECTION "Link Menu States Partial 2", ROMX[$4185], BANK[$7]
 LinkMenuStateMachineDrawSavingTileset: ; 1c185 (7:4185)
   ld a, [$c6f0]
   or a
-  jp nz, .selected_no
+  jr nz, .selected_no
   ld a, $02
   ld [$ffa0], a
   ld a, $01
@@ -113,18 +114,32 @@ LinkMenuStateMachineDrawSavingTileset: ; 1c185 (7:4185)
   ld [$c900], a
   ld a, [$c0d5]
   ld [$c901], a
-  ld a, $00
+  xor a
   ld [$c797], a
-  ld b, $01
-  ld c, $01
-  ld e, $3a
-  call JumpTable_183
+  call HackDrawSavingText
   jp JumpIncSubStateIndexWrapper
 .selected_no
   ld a, $05
   ld [CoreSubStateIndex], a
   ret
-; 0x1c1bb
+.end
+REPT $41bf - .end
+  nop
+ENDR
+
+SECTION "(Hack) Saving... text", ROMX[$7240], BANK[$7]
+HackSavingText:
+  db $92, $9A, $AF, $A2, $A7, $A0, $BB, $BB, $BB, $50 ; 'Saving...'
+HackDrawSavingText:
+  ld de, $9c41
+  ld b, $c0
+  ld hl, HackSavingText
+  ld a, $11
+  ld [VWFTileLength], a
+  ld a, $12
+  rst $8 ; VWFPutStringInitFullTileLocation
+  call VWFPutStringLoop
+  ret
 
 SECTION "Link Menu States Partial 3", ROMX[$4272], BANK[$7]
 LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
