@@ -211,11 +211,13 @@ LoadShopPartsMenu:
 .asm_c69f
   ret
 ; 0xc6a0
-LoadShopPartsMenuSell:
+LoadShopPartsMenuSell::
   ld a, [$c88a]
   ld c, a
   call JumpTable_16b
   ld [$c883], a
+
+.extEntry
   call $4815
   cp $ff
   jp z, .asm_c79f
@@ -355,6 +357,45 @@ LoadShopInfo: ; c7a0 (3:47a0)
   ld a, [hli]
   ret
 ; 0xc7c1
+
+SECTION "Load Shop Menu - Sell Menu Scroll Up", ROMX[$4B63], BANK[$3]
+LoadShopPartsMenuSellScrollUp::
+  ld a, [$C891]
+  cp 0
+  ret z
+  dec a
+  ld [$C891], a
+  ld a, 3
+  ldh [$FFA1], a
+  ld b, 2
+  ld c, 2
+  ld e, $1D
+  call JumpTable_2ca
+  ld a, [$C891]
+  call $47C1
+  ld [$C886], a
+  jp LoadShopPartsMenuSell.extEntry
+
+SECTION "Load Shop Menu - Sell Menu Scroll Down", ROMX[$4BB2], BANK[$3]
+LoadShopPartsMenuSellScrollDown::
+  ld a, [$C883]
+  ld b, a
+  ld a, [$C891]
+  inc a
+  cp b
+  ret z
+  ld [$C891], a
+  ld a, 3
+  ldh [$FFA1], a
+  ld b, 2
+  ld c, 2
+  ld e, $1D
+  call JumpTable_2ca
+  ld a, [$C891]
+  sub 3
+  call $47C1
+  ld [$C886], a
+  jp LoadShopPartsMenuSell.extEntry
 
 SECTION "Load Buy/Sell Menu (in shops)", ROMX[$70d3], BANK[$3]
 LoadBuySellTilemap: ; f0d3 (3:70d3)
