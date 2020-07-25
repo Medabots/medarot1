@@ -98,7 +98,7 @@ ShopSellPriceDisplayState::
   ld b, $C
   ld c, $E
   call $412D
-  call $433A ; Displays the sell price.
+  call MapSellMoneyWithYenSymbol ; Displays the sell price.
   ldh a, [hJPInputChanged]
   and hJPInputUp
   jr z, .upNotPressed
