@@ -602,7 +602,7 @@ ShopPartsMenuShiftLine::
   jr nz, .loop
   ret
 
-SECTION "1bpp Tilesets", ROMX[$5000], BANK[$2D]
+SECTION "1bpp Tilesets", ROMX[$4000], BANK[$2D]
 ; Tileset methods
 INCLUDE "game/src/patch/include/tilesets.asm"
 

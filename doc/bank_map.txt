@@ -43,6 +43,6 @@
 2A: Dialogue Text
 2B: Tilemaps
 2C: List Text & Pointer List Text
-2D:
+2D: Prerendered Text
 2E: Portraits
 2F: Portraits 2
