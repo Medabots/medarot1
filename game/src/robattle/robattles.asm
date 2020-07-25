@@ -422,11 +422,6 @@ RobattleMedarotInfoLoadLegs:
   ret
 ; 0x6edcc
 
-; They actually maintain a separate copy of all the skills in 1B
-; SECTION "Skills_1B", ROMX[$7019], BANK[$1b]
-; Skills_1B:
-; INCLUDE "build/ptrlists/Skills.asm"
-
 SECTION "Robattle - Load Parts - Skills", ROMX[$6fc4], BANK[$1b]
 RobattleMedarotInfoLoadSkill:
   xor a

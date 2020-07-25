@@ -100,25 +100,24 @@ TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
 UNCOMPRESSED_TILESET_FILES := $(foreach FILE,$(UNCOMPRESSED_TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_SRC_TYPE))
 LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
-PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
+PTRLISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE)_$(VERSION).$(SOURCE_TYPE)))
 PATCH_TEXT_TILESET_FILES := $(foreach FILE,$(PATCH_TEXT_TILESETS),$(PATCH_TILESET_OUT)/$(FILE))
 PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(TSET_TYPE))
 PATCH_PORTRAIT_TILESET_FILES := $(foreach FILE,$(PATCH_PORTRAIT_TILESETS),$(PATCH_PORTRAITS_OUT)/$(FILE).$(TSET_SRC_TYPE))
 PATCH_BIN_FILES := $(foreach FILE,$(PATCH_TEXT_FILES),$(PATCH_TEXT_OUT)/$(FILE).$(BIN_TYPE))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
-shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
+shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES) $(PTRLISTS_FILES) $(wildcard $(SRC)/version/*.$(SOURCE_TYPE))
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
-robattle_robattles_ADDITIONAL := $(PTRLISTS_OUT)/Skills.asm
 
 # Manually add MainDialog as a special case for map text reloading
 # Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
 patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
 patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias $(PATCH_BIN_FILES) $(PATCH_TEXT_TILESET_FILES)
 patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
-patch_locations_ADDITIONAL := $(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE)
+patch_locations_ADDITIONAL := $(foreach VERSION,$(VERSIONS),$(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE))
 
 .PHONY: all clean default $(VERSIONS)
 default: kabuto
@@ -193,21 +192,21 @@ $(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_TILESET_TEXT)/%.$(RAW_TSET_SRC_
 $(PATCH_PORTRAITS_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_PORTRAITS_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_PORTRAITS_OUT)
 	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
 
+$(PATCH_TEXT_OUT)/%.$(BIN_TYPE): $(PATCH_TEXT)/%.$(TEXT_TYPE) | $(PATCH_TEXT_OUT)
+	$(PYTHON) $(SCRIPT)/patchtext2bin.py $< $@
+
 .SECONDEXPANSION:
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
-$(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
-	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
+$(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(PTRLISTS_OUT)
+	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
 $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
 	$(PYTHON) scripts/csv2bin.py $*
 
 $(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm
 	$(PYTHON) scripts/credits2bin.py
-
-$(PATCH_TEXT_OUT)/%.$(BIN_TYPE): $(PATCH_TEXT)/%.$(TEXT_TYPE) | $(PATCH_TEXT_OUT)
-	$(PYTHON) $(SCRIPT)/patchtext2bin.py $< $@
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
 
