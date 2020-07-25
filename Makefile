@@ -87,14 +87,13 @@ TILEMAP_FILES := $(foreach FILE,$(TILEMAPS),$(TILEMAP_OUT)/$(FILE).$(TMAP_TYPE))
 TILESET_FILES := $(foreach FILE,$(TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_TYPE))
 UNCOMPRESSED_TILESET_FILES := $(foreach FILE,$(UNCOMPRESSED_TILESETS),$(TILESET_OUT)/$(FILE).$(TSET_SRC_TYPE))
 LISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(LISTS),$(LISTS_OUT)/$(FILE)_$(VERSION).$(LIST_TYPE)))
-PTRLISTS_FILES := $(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE).$(SOURCE_TYPE))
+PTRLISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(PTRLISTS),$(PTRLISTS_OUT)/$(FILE)_$(VERSION).$(SOURCE_TYPE)))
 
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
-shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES)
+shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES) $(PTRLISTS_FILES) $(wildcard $(SRC)/version/*.$(SOURCE_TYPE))
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
-robattle_robattles_ADDITIONAL := $(PTRLISTS_OUT)/Skills.asm
 
 .PHONY: all clean default $(VERSIONS)
 default: kabuto
@@ -142,8 +141,8 @@ $(TILESET_OUT)/%.$(TSET_SRC_TYPE): $(TILESET_TEXT)/%.$(RAW_TSET_SRC_TYPE) | $(TI
 $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(LISTS_OUT)
 	$(PYTHON) $(SCRIPT)/list2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
-$(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/%.$(TEXT_TYPE) | $(PTRLISTS_OUT)
-	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@
+$(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(PTRLISTS_OUT)
+	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
 $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES)
 	$(PYTHON) scripts/csv2bin.py $*

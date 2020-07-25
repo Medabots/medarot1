@@ -8,6 +8,7 @@ from common import utils
 if __name__ == '__main__':
 	input_file = sys.argv[1]
 	output_file = sys.argv[2]
+	version_suffix = sys.argv[3]
 
 	prefix = "." + os.path.splitext(os.path.basename(input_file))[0]
 
@@ -21,8 +22,12 @@ if __name__ == '__main__':
 		term, = (int(x) if x.isdigit() else literal_eval(x) for x in i.readline().strip().split("|"))
 		char_table['\n'] = term
 		ptrs = []
+
+		version_check = "[{}]".format(version_suffix)
 		for n, line in enumerate(i):
-			ptrs.append(("{}_{:02X}".format(prefix, n),", ".join("${:02X}".format(x) for x in utils.txt2bin(line, char_table))))
+			if not line.startswith("[") or line.startswith(version_check):
+				line = line.replace(version_check,"") # Not the best way to do it, but it's good enough
+				ptrs.append(("{}_{:02X}".format(prefix, n),", ".join("${:02X}".format(x) for x in utils.txt2bin(line, char_table))))
 		o.write("".join("dw {}\n".format(ptr[0]) for ptr in ptrs))
 
 		for ptr in ptrs:
