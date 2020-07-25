@@ -15,11 +15,7 @@ LeftPartList::
 LegPartList::
   INCBIN "build/lists/LegParts_{GAMEVERSION}.bin"
 
-SECTION "Part Names", ROMX[$750b], BANK[$1]
-PartTypesPtr::
-INCLUDE "build/ptrlists/PartTypes_{GAMEVERSION}.asm"
-
-SECTION "Pointer Lists", ROMX[$4000], BANK[$2d]
+; Pointer lists
 AttributesPtr::
 INCLUDE "build/ptrlists/Attributes_{GAMEVERSION}.asm"
 PartDescriptionsPtr::
@@ -30,6 +26,10 @@ AttacksPtr::
 INCLUDE "build/ptrlists/Attacks_{GAMEVERSION}.asm"
 MedarottersPtr::
 INCLUDE "build/ptrlists/Medarotters_{GAMEVERSION}.asm"
+
+SECTION "Part Names", ROMX[$750b], BANK[$1]
+PartTypesPtr::
+INCLUDE "build/ptrlists/PartTypes_{GAMEVERSION}.asm"
 
 ; They actually maintain a separate copy of all the skills in 1B
 ;SECTION "Skills_1B", ROMX[$7019], BANK[$1b]

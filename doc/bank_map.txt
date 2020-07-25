@@ -42,7 +42,7 @@
 29: Dialogue Text
 2A: Dialogue Text
 2B: Tilemaps
-2C: List Text
-2D: Pointer List Text
+2C: List Text & Pointer List Text
+2D:
 2E: Portraits
 2F: Portraits 2
