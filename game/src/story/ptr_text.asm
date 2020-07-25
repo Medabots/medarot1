@@ -1,21 +1,6 @@
-; For text in tables with pointers (except Dialog Text and Tilemaps which are handled separately)
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "Part Names", ROMX[$750b], BANK[$1]
-PartTypesPtr::
-INCLUDE "build/ptrlists/PartTypes.asm"
-
-SECTION "Pointer Lists", ROMX[$4000], BANK[$2d]
-PartDescriptionsPtr::
-INCLUDE "build/ptrlists/PartDescriptions.asm"
-AttributesPtr::
-INCLUDE "build/ptrlists/Attributes.asm"
-SkillsPtr::
-INCLUDE "build/ptrlists/Skills.asm"
-MedarottersPtr::
-INCLUDE "build/ptrlists/Medarotters.asm"
-AttacksPtr::
-INCLUDE "build/ptrlists/Attacks.asm"
+; Pointer text can be found in version/list_data.asm
 
 SECTION "Load Part Type", ROMX[$74eb], BANK[$1]
 LoadPartType:
