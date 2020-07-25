@@ -43,7 +43,7 @@ LinkMenuStateMachine:: ; 1c000 (7:4000)
   dw $4177
   dw $40f4
   dw $40ff
-  dw $4185
+  dw LinkMenuStateMachineDrawSavingTileset
   dw $41bf
   dw $41dc
   dw $41ea
@@ -97,7 +97,36 @@ LinkMenuStateMachineInitialize:: ; 1c0af (7:40af)
   call JumpSetupDialog
   jp JumpIncSubStateIndexWrapper
 
-SECTION "Link Menu States Partial 2", ROMX[$4272], BANK[$7]
+SECTION "Link Menu States Partial 2", ROMX[$4185], BANK[$7]
+LinkMenuStateMachineDrawSavingTileset: ; 1c185 (7:4185)
+  ld a, [$c6f0]
+  or a
+  jp nz, .selected_no
+  ld a, $02
+  ld [$ffa0], a
+  ld a, $01
+  call JumpSetupDialog
+  call $535d
+  xor a
+  ld [$c740], a
+  ld a, [$c0d4]
+  ld [$c900], a
+  ld a, [$c0d5]
+  ld [$c901], a
+  ld a, $00
+  ld [$c797], a
+  ld b, $01
+  ld c, $01
+  ld e, $3a
+  call JumpTable_183
+  jp JumpIncSubStateIndexWrapper
+.selected_no
+  ld a, $05
+  ld [CoreSubStateIndex], a
+  ret
+; 0x1c1bb
+
+SECTION "Link Menu States Partial 3", ROMX[$4272], BANK[$7]
 LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   xor a
   ld [$c765], a
@@ -168,7 +197,7 @@ LinkMenuStateMachineMainMenuSteadyState:: ; 1c2c0 (7:42c0)
   ret
 ; 0x1c301
 
-SECTION "Link Menu States Partial 3", ROMX[$4356], BANK[$7]
+SECTION "Link Menu States Partial 4", ROMX[$4356], BANK[$7]
 LinkMenuStateMachineMainMenuOptionSelected:: ; 1c356 (7:4356)
   ld a, [$c740]
   inc a
@@ -202,7 +231,7 @@ LinkMenuStateMachineMainMenuOptionSelected:: ; 1c356 (7:4356)
   ret
 ; 0x1c38f
 
-SECTION "Link Menu States Partial 4", ROMX[$5377], BANK[$7]
+SECTION "Link Menu States Partial 5", ROMX[$5377], BANK[$7]
 LinkMenuLoadSelectorTilemap: ; 1d377 (7:5377)
   ld e, $b3
   add e
