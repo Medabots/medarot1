@@ -1,8 +1,30 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
-SECTION "Load Parts Trade Menu", ROMX[$5a31], BANK[$7]
-LoadPartsTradeMenu:
+SECTION "Load Parts Trade Menu", ROMX[$5A0E], BANK[$7]
+LoadPartsTradeMenuScrollUp::
+  ld a, [$C6F1]
+  or a
+  ret nz
+  call $5953
+  or a
+  ret nz
+  call $5994
+  call LoadPartsTradeMenu
+  ret
+
+LoadPartsTradeMenuScrollDown::
+  ld a, [$C6F1]
+  cp 3
+  ret nz
+  call $59AA
+  or a
+  ret nz
+  call $59EF
+  call LoadPartsTradeMenu
+  ret
+
+LoadPartsTradeMenu::
   ld b, 8
   ld c, 2
   ld e, $BA

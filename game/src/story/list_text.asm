@@ -110,7 +110,7 @@ PartListPointers:
   dw LegPartList
 
 SECTION "Load from Part List", ROM0[$34f0]
-LoadPartList:
+LoadPartList::
   ld [$c64e], a
   ld a, BANK(PartList)
   rst $10 ; Swap and preserve bank

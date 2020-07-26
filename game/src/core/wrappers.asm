@@ -374,7 +374,7 @@ Wrapper_788::
   rst $18
   ret
 Wrapper_78d::
-  call $34f0
+  call LoadPartList
   rst $18
   ret
 Wrapper_792::
