@@ -1,6 +1,8 @@
 ; Functions that needed to go within the core game space 
 
-SECTION "GetNextChar", ROM0[$1e22]
+; Takes space from control_codes.asm, precedes VWF core functions
+; (will need to modify both if these are modified)
+SECTION "GetNextChar", ROM0[$1d6b]
 GetNextChar::
   push hl
   ld a, [hl]

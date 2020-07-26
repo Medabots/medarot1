@@ -12,15 +12,17 @@ LoadPartInfo:
   call JumpTable_294
   ld hl, cBUF01
   call VWFPadTextTo8
-  ld h, $0
-  ld l, a
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFPadTextTo8
+.not_narrow
   psbc $9901, $be
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
-  call VWFPutStringTo8
-  ret
+  jp VWFPutStringTo8
+.end
+REPT $6778 - .end
+  nop
+ENDR
 ; 0xa778
 
 SECTION "Load Attribute", ROMX[$6789], BANK[$2]

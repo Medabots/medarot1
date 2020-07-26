@@ -521,15 +521,12 @@ RobattleLoadHeadPart:
   ld bc, $0000
   call JumpTable_294
   ld hl, cBUF01
-  push hl
   call VWFPadTextTo8
-  pop hl
   ld a, [VWFCurrentFont]
   or a
   jr z, .not_narrow
   call VWFPadTextTo8
 .not_narrow
-  ld hl, cBUF01
   psbc $99c6, $9f
   call VWFPutStringTo8
   ret
@@ -584,15 +581,12 @@ RobattleLoadLeftArm:
   ld bc, $0002
   call JumpTable_294
   ld hl, cBUF01
-  push hl
   call VWFLeftPadTextTo8
-  pop hl
   ld a, [VWFCurrentFont]
   or a
   jr z, .not_narrow
   call VWFLeftPadTextTo8
 .not_narrow
-  ld hl, cBUF01
   psbc $9a01, $be
   call VWFPutStringTo8
   ret

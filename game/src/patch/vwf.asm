@@ -1,6 +1,6 @@
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "VWF Word Length Tester", ROM0[$1D6B]
+SECTION "VWF Core Functions", ROM0[$1da7]
 VWFWordLengthTest::
   ld a, [hl]
   or a
@@ -128,6 +128,7 @@ VWFPadTextTo8::
   ; Continues into VWFPadText.
   
 VWFPadText::
+  push hl
   push de
   call VWFPadTextCommon
   ld a, 9
@@ -137,6 +138,7 @@ VWFPadText::
 
   xor a
   pop de
+  pop hl
   ret
 
 ; Copy of VWFPadTextTo8, but for right-aligned text
@@ -144,6 +146,7 @@ VWFLeftPadTextTo8::
   ld a, 8
 
 VWFLeftPadText::
+  push hl
   push de
   call VWFPadTextCommon
   ld a, $c
@@ -153,6 +156,7 @@ VWFLeftPadText::
 
   xor a
   pop de
+  pop hl
   ret
 
 VWFAutoNarrowTo8::

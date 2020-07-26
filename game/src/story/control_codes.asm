@@ -1,4 +1,4 @@
-SECTION "Old Dialog Control Codes", ROM0[$1e5e]
+SECTION "Old Dialog Control Codes", ROM0[$1e62]
 Free:
 .marker
 REPT $1f6e - .marker
