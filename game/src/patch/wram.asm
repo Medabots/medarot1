@@ -29,6 +29,8 @@ ShopPartMapPseudoIndex:: ds 1
 ShopPartMapLocation:: ds 2
 ShopPartMapLineIndex:: ds 1
 TempReturnBank:: ds 1
+PartTradeScrollPosition:: ds 1
+PartTradeScrollNewLinePartIndex:: ds 1
 
 SECTION "VWF Composite Area", WRAMX[$DCD0], BANK[$1]
 VWFCompositeArea:: ds $30

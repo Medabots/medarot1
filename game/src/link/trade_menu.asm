@@ -10,7 +10,8 @@ LoadPartsTradeMenuScrollUp::
   or a
   ret nz
   call $5994
-  call LoadPartsTradeMenu
+  ld a, $27 ; PartTradeMenuScrollUp
+  rst $8
   ret
 
 LoadPartsTradeMenuScrollDown::
@@ -21,14 +22,15 @@ LoadPartsTradeMenuScrollDown::
   or a
   ret nz
   call $59EF
-  call LoadPartsTradeMenu
+  ld a, $28 ; PartTradeMenuScrollDown
+  rst $8
   ret
 
 LoadPartsTradeMenu::
   ld b, 8
   ld c, 2
   ld e, $BA
-  call JumpLoadTilemap
+  call PartsTradeMenuLoadTilemapAndResetOffset
   ld a, [$C6F0]
   ld c, a
   ld a, [$C787]
@@ -41,7 +43,7 @@ LoadPartsTradeMenu::
   call JumpTable_294
   ld hl, cBUF01
   psbc, $988A, $A0
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C788]
@@ -54,7 +56,7 @@ LoadPartsTradeMenu::
   call JumpTable_294
   ld hl, cBUF01
   psbc, $98CA, $A8
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C789]
@@ -67,7 +69,7 @@ LoadPartsTradeMenu::
   call JumpTable_294
   ld hl, cBUF01
   psbc, $990A, $B0
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
   ld a, [$C78A]
@@ -80,6 +82,13 @@ LoadPartsTradeMenu::
   call JumpTable_294
   ld hl, cBUF01
   psbc, $994A, $B8
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
 ; 0x5a9f
+
+SECTION "Load Parts Trade Menu - Reset Tracker", ROMX[$7FF8], BANK[$7]
+PartsTradeMenuLoadTilemapAndResetOffset::
+  call JumpLoadTilemap
+  xor a
+  ld [PartTradeScrollPosition], a
+  ret

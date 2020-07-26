@@ -58,6 +58,8 @@ HackPredefTable:
   dw LoadSaveDataCorruptedTextAndLoadTilemap ; 24
   dw ShopPartsMenuSellScrollUp ; 25
   dw ShopPartsMenuSellScrollDown ; 26
+  dw PartTradeMenuScrollUp ; 27
+  dw PartTradeMenuScrollDown ; 28
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -437,84 +439,72 @@ LoadPatchTextFixedTopRight:
   cp $50 ; [hl] will only be $50 once we're done
   jr nz, .loop
   ret
+  
+PartTradeMenuScrollUp::
+  ld de, $990A
+  ld hl, $994A
+  call PartTradeMenuShiftLine
+  ld de, $98CA
+  ld hl, $990A
+  call PartTradeMenuShiftLine
+  ld de, $988A
+  ld hl, $98CA
+  call PartTradeMenuShiftLine
+  ld a, [PartTradeScrollPosition]
+  dec a
+  ld [PartTradeScrollPosition], a
+  call PartTradeCalculateLineDrawingPositionOnScroll
+  psa $988A
+  ld [ShopPartMapPseudoIndex], a
+  ld a, $8A
+  ld [ShopPartMapLocation], a
+  ld a, $98
+  ld [ShopPartMapLocation + 1], a
+  ld a, [$C787]
+  ld [PartTradeScrollNewLinePartIndex], a
+  jp PartTradeMenuDrawSingle
+  
+PartTradeMenuScrollDown::
+  ld de, $98CA
+  ld hl, $988A
+  call PartTradeMenuShiftLine
+  ld de, $990A
+  ld hl, $98CA
+  call PartTradeMenuShiftLine
+  ld de, $994A
+  ld hl, $990A
+  call PartTradeMenuShiftLine
+  ld a, [PartTradeScrollPosition]
+  inc a
+  ld [PartTradeScrollPosition], a
+  add 3
+  call PartTradeCalculateLineDrawingPositionOnScroll
+  psa $994A
+  ld [ShopPartMapPseudoIndex], a
+  ld a, $4A
+  ld [ShopPartMapLocation], a
+  ld a, $99
+  ld [ShopPartMapLocation + 1], a
+  ld a, [$C78A]
+  ld [PartTradeScrollNewLinePartIndex], a
+  jp PartTradeMenuDrawSingle
 
-ShopPartsMenuSellScrollUp::
-  ld de, $9904
-  ld hl, $9944
-  call ShopPartsMenuShiftLine
-  ld de, $98C4
-  ld hl, $9904
-  call ShopPartsMenuShiftLine
-  ld de, $9884
-  ld hl, $98C4
-  call ShopPartsMenuShiftLine
-  call ShopPartsCalculateLineDrawingPositionOnScroll
-  xor a
-  jp ShopPartsSellMenuScrollCommon
-
-ShopPartsMenuSellScrollDown::
-  ld de, $98C4
-  ld hl, $9884
-  call ShopPartsMenuShiftLine
-  ld de, $9904
-  ld hl, $98C4
-  call ShopPartsMenuShiftLine
-  ld de, $9944
-  ld hl, $9904
-  call ShopPartsMenuShiftLine
-  call ShopPartsCalculateLineDrawingPositionOnScroll
-  ld a, 3
-  jp ShopPartsSellMenuScrollCommon
-
-ShopPartsCalculateLineDrawingPositionOnScroll::
-  ld a, [$C891]
-  ; Continues into ShopPartsCalculateSpecificLineDrawingPosition.
-
-ShopPartsCalculateSpecificLineDrawingPosition::
+PartTradeCalculateLineDrawingPositionOnScroll::
   and 3
   add a
   add a
   add a
-  add $B0
+  add $A0
   ld [ShopPartDrawIndex], a
   ret
 
-ShopPartsCalculateLineMappingPosition::
-  add a
+PartTradeMenuDrawSingle::
+  ld a, [$C6F0]
   ld c, a
-  add 4
-  ld [ShopPartMapLineIndex], a
-  ld a, c
-  add a
-  add a
-  add a
-  add a
-  ld c, a
-  psa $9884
-  add c
-  ld [ShopPartMapPseudoIndex], a
-  ld b, 0
-  ld hl, $9884
-  add hl, bc
-  add hl, bc
-  ld a, l
-  ld [ShopPartMapLocation], a
-  ld a, h
-  ld [ShopPartMapLocation + 1], a
-  ret
-
-ShopPartsSellMenuScrollCommon::
-  call ShopPartsCalculateLineMappingPosition
-  ; Continues into ShopPartsSellMenuDrawSingle.
-
-ShopPartsSellMenuDrawSingle::
-  ld a, [ShopPartMapLocation]
-  ld l, a
-  ld a, [ShopPartMapLocation + 1]
-  ld h, a
-
-.empty
-  ld b, 7
+  ld a, [PartTradeScrollNewLinePartIndex]
+  or a
+  jr nz, .notEmpty
+  ld b, 2
 
 .clearloop
   di
@@ -527,17 +517,139 @@ ShopPartsSellMenuDrawSingle::
   xor a
   ld [hli], a
   ld [hli], a
+  ld [hli], a
+  ld [hli], a
   ei
   dec b
   jr nz, .clearloop
+
+.notEmpty
+  push af
+  ld a, [$c6e0]
+  ld [TempReturnBank], a
+  ld a, $24
+  ld [$c6e0], a
+  pop af
+  and $7F
+  ld b, 0
+  call JumpTable_294
+  ld hl, cBUF01
+  ld a, [ShopPartDrawIndex]
+  ld b, a
+  ld a, [ShopPartMapPseudoIndex]
+  ld c, a
+  ld a, [TempReturnBank]
+  ld [$c6e0], a
+  jp VWFPutStringAutoNarrowTo8
+
+ShopPartsMenuSellScrollUp::
+  ld de, $9904
+  ld hl, $9944
+  call ShopPartsMenuShiftLine
+  ld de, $98C4
+  ld hl, $9904
+  call ShopPartsMenuShiftLine
+  ld de, $9884
+  ld hl, $98C4
+  call ShopPartsMenuShiftLine
+  call ShopPartsCalculateLineDrawingPositionOnScroll
+  ld a, 4
+  ld [ShopPartMapLineIndex], a
+  psa $9884
+  ld [ShopPartMapPseudoIndex], a
+  ld a, $84
+  ld [ShopPartMapLocation], a
+  ld a, $98
+  ld [ShopPartMapLocation + 1], a
+  jp ShopPartsSellMenuDrawSingle
+
+ShopPartsMenuSellScrollDown::
+  ld de, $98C4
+  ld hl, $9884
+  call ShopPartsMenuShiftLine
+  ld de, $9904
+  ld hl, $98C4
+  call ShopPartsMenuShiftLine
+  ld de, $9944
+  ld hl, $9904
+  call ShopPartsMenuShiftLine
+  call ShopPartsCalculateLineDrawingPositionOnScroll
+  ld a, $A
+  ld [ShopPartMapLineIndex], a
+  psa $9944
+  ld [ShopPartMapPseudoIndex], a
+  ld a, $44
+  ld [ShopPartMapLocation], a
+  ld a, $99
+  ld [ShopPartMapLocation + 1], a
+  jp ShopPartsSellMenuDrawSingle
+
+ShopPartsCalculateLineDrawingPositionOnScroll::
+  ld a, [$C891]
+  and 3
+  add a
+  add a
+  add a
+  add $B0
+  ld [ShopPartDrawIndex], a
+  ret
+
+ShopPartsSellMenuDrawSingle::
+  ld a, [ShopPartMapLocation]
+  add 8
+  ld l, a
+  ld a, [ShopPartMapLocation + 1]
+  ld h, a
+  ld b, 2
+
+.clearloopA
+  di
+
+.wfbA
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfbA
+
+  xor a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .clearloopA
 
   ld a, [$C886]
   ld b, a
   ld a, 3
   call ShopPartsMenuCrossBank4815
   cp $FF
-  ret z
+  jr nz, .notEmpty
 
+  ld a, [ShopPartMapLocation]
+  ld l, a
+  ld a, [ShopPartMapLocation + 1]
+  ld h, a
+  ld b, 2
+
+.clearloopB
+  di
+
+.wfbB
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfbB
+
+  xor a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .clearloopB
+  ret
+
+.notEmpty
   push af
   ld a, [$c6e0]
   ld [TempReturnBank], a
@@ -571,6 +683,10 @@ ShopPartsSellMenuDrawSingle::
   ld a, [TempReturnBank]
   ld [$c6e0], a
   ret
+
+PartTradeMenuShiftLine::
+  ld b, 4
+  jr ShopPartsMenuShiftLine.loop
 
 ShopPartsMenuShiftLine::
   ld b, 7
