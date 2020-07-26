@@ -379,7 +379,22 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   ret
 ; 0x5516a
 
-SECTION "Link Robattle States - Load Part Data", ROMX[$5867], BANK[$15]
+SECTION "Link Robattle States - Load Part Data", ROMX[$584d], BANK[$15]
+LinkRobattleSetupParts: ; 5584d (15:584d)
+  ld hl, $99a1
+  ld b, $12
+  ld c, $04
+  call JumpTable_270
+  push de
+  call LinkRobattleLoadPartHead
+  pop de
+  push de
+  call LinkRobattleLoadPartRightArm
+  pop de
+  push de
+  call LinkRobattleLoadPartLeftArm
+  pop de
+  ret
 LinkRobattleLoadPartHead:
   ld hl, $000d
   add hl, de
