@@ -155,27 +155,34 @@ LoadTiles:: ; 1214 (0:1214)
   inc de
   inc de
   jp .loop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
+
+Load1BPPTiles::
+; hl is the vram address to write to.
+; de is the address to copy from.
+; b is the number of tiles to copy.
+  ld c, 8
+.loop
+  di
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  ld a, [de]
+  ld [hli], a
+  ld [hli], a
+
+  ei
+
+  inc de
+  dec c
+  jr nz, .loop
+  dec b
+  jr nz, Load1BPPTiles
+  
+  ret
+
   nop
   nop
   nop
@@ -212,49 +219,82 @@ DecompressAndLoadTiles:: ; 12e8 (0:12e8)
   ld l, a
   inc de
   jp NoDecompressLoadTiles
-  ld a, [$c6ce]
-  or a
-  jp nz, .asm_132e
-  ld a, $01
-  ld [$c6ce], a
-  ld a, h
-  ;ld [$c5f6], a
-  ld a, l
-  ld [$c5f7], a
-  ld a, [de]
-  ld c, a
-  inc de
-  ld a, [de]
-  ld b, a
-  inc de
-  jp .asm_1342
-; 0x132e
-.asm_132e
-  ld a, [$c6d4]
+
+Load1BPPTilesFrom2D::
+  ld a, $2D
   rst $10
-  ld a, [$c6cf]
-  ld b, a
-  ld a,[$c6d0]
-  ld c, a
-  ld a,[$c6d1]
-  ld d, a
-  ld a,[$c6d2]
-  ld e, a
-.asm_1342
-  ld a, [$c6d3]
-  or a
-  jr nz, .asm_135e
-  ld a, b
-  ld [$c6cf], a
-  ld a, c
-  ld [$c6d0], a
-  ld a, d
-  ld [$c6d1], a
-  ld a, e
-  ld [$c6d2], a
-  ld a, $01
-  ld [$c64e], a
+  call Load1BPPTiles
+  ld a, $24
+  rst $10
   ret
+
+LoadTilesFrom2D::
+  ld a, $2D
+  rst $10
+  ld a, [de]
+  inc de
+  call LoadTiles
+  ld a, $24
+  rst $10
+  ret
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+  nop
+  nop
 .asm_135e
 
 SECTION "Load Uncompressed Tiles", ROM0[$1fb9] ; Address is at the end of the old control codes

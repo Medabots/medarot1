@@ -37,6 +37,9 @@ PatchTilesetEndRobottlesMedarotSelectText::
 PatchTilesetStartRobottlesText::
   INCBIN "build/tilesets/patch/Robottles.1bpp"
 PatchTilesetEndRobottlesText::
+PatchTilesetStartRobattleGraphics::
+  INCBIN "build/tilesets/patch/RobottleGraphics.malias"
+PatchTilesetEndRobattleGraphics
 PatchTilesetStartMinimalEquipScreenText::
   INCBIN "build/tilesets/patch/MinimalEquipScreen.1bpp"
 PatchTilesetEndMinimalEquipScreenText

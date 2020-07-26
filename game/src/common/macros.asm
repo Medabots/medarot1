@@ -40,9 +40,16 @@ atfline: MACRO
   db ((((\5 % 10000) / 1000) % 4) << 6) + ((((\5 % 1000) / 100) % 4) << 4) + ((((\5 % 100) / 10) % 4) << 2) + ((\5 % 10) % 4)
   ENDM
 
+Load1BPPTilesetLocal: MACRO
+  ld hl, \1
+  ld de, \2
+  ld b, (\3 - \2) / $8
+  call Load1BPPTiles
+  ENDM
+
 Load1BPPTileset: MACRO
   ld hl, \1
   ld de, \2
   ld b, (\3 - \2) / $8
-  call Load1BPPTilesWrapper
+  call Load1BPPTilesFrom2D
   ENDM

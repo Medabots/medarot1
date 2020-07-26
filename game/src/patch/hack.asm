@@ -153,10 +153,6 @@ AddHLShiftBC5:
   add hl, bc
   ret
 
-PatchTilesetStartRobattleGraphics::
-  INCBIN "build/tilesets/patch/RobottleGraphics.malias"
-PatchTilesetEndRobattleGraphics
-
 LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
@@ -214,9 +210,7 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   ld hl, $8F00
   ld de, PatchTilesetStartMainMenuGraphics
-  ld a, [de]
-  inc de
-  call LoadTiles
+  call LoadTilesFrom2D
   pop bc
   pop de
   pop hl
@@ -297,9 +291,7 @@ LoadRobottleText:
   Load1BPPTileset $8A80, PatchTilesetStartFWFo, PatchTilesetEndFWFo
   ld hl, $8F00
   ld de, PatchTilesetStartRobattleGraphics
-  ld a, [de]
-  inc de
-  call LoadTiles
+  call LoadTilesFrom2D
   pop bc
   pop de
   pop hl
@@ -606,7 +598,7 @@ SECTION "1bpp Tilesets", ROMX[$4000], BANK[$2D]
 ; Tileset methods
 INCLUDE "game/src/patch/include/tilesets.asm"
 
-SECTION "Load 1BPP Tiles", ROM0[$1F4F]
+SECTION "Load 1BPP Tiles", ROM0[$1F6E]
 ShopPartsMenuCrossBank4815::
   rst $10
   ld a, b
@@ -616,39 +608,3 @@ ShopPartsMenuCrossBank4815::
   rst $10
   pop af
   ret
-
-Load1BPPTilesWrapper::
-  ld a, $2D
-  rst $10
-  call Load1BPPTiles
-  ld a, $24
-  rst $10
-  ret
-
-Load1BPPTiles::
-; hl is the vram address to write to.
-; de is the address to copy from.
-; b is the number of tiles to copy.
-  ld c, 8
-.loop
-  di
-
-.wfb
-  ldh a, [hLCDStat]
-  and 2
-  jr nz, .wfb
-
-  ld a, [de]
-  ld [hli], a
-  ld [hli], a
-
-  ei
-
-  inc de
-  dec c
-  jr nz, .loop
-  dec b
-  jr nz, Load1BPPTiles
-  
-  ret
-
