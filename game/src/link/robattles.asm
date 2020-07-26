@@ -436,126 +436,110 @@ LinkRobattleSetupParts: ; 5584d (15:584d)
   call LinkRobattleLoadPartLeftArm
   pop de
   ret
+LinkRobattlePartBrokenLoadTilemap:
+  ld e, $86
+  jp JumpLoadTilemap
 LinkRobattleLoadPartHead:
   ld hl, $000d
   add hl, de
   ld a, [hl]
   and a, $7f
   sub a, $3c
-  jp c, .valid_part
-.broken_or_missing_part
-  ld b, $06
-  ld c, $0d
-  ld e, $86 ; -------
-  call JumpLoadTilemap
-  ret
-.valid_part ; 5587d (15:587d)
-  ld hl, $d3
+  jr nc, LinkRobattlePartBrokenLoadTilemap
+.not_broken:
+  ld hl, $00d3
   add hl, de
   ld a, [hl]
   or a
-  jr z, .broken_or_missing_part
-  ld hl, $d
+  ld bc, $060d
+  jr z, LinkRobattlePartBrokenLoadTilemap
+  ld hl, $000d
   add hl, de
   ld a, [hl]
   and $7f
   ld hl, $b520
   ld c, a
-  ld b, $00
-  sla c
-  rl b
+  ld b, $0
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $00
-  ld c, $00
+  ld bc, $0000
   call JumpTable_294
   ld hl, cBUF01
   call VWFPadTextTo8
-  ld b, $0
-  ld c, a
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFPadTextTo8
+.not_narrow
   psbc $99c6, $9f
   call VWFPutStringTo8
   ret
-
 LinkRobattleLoadPartRightArm:
   ld hl, $000e
   add hl, de
   ld a, [hl]
-  and a, $7f
-  sub a, $3c
-  jp c, .valid_part
-.broken_or_missing_part
-  ld b, $0b
-  ld c, $0f
-  ld e, $86 ; -------
-  call JumpLoadTilemap
-  ret
-.valid_part
+  and $7f
+  sub $3c
+  jp c, .not_broken
+  ld bc, $0b0f
+  jr z, LinkRobattlePartBrokenLoadTilemap
+.not_broken
   ld hl, $000e
   add hl, de
   ld a, [hl]
   and $7f
   ld hl, $b5a0
   ld c, a
-  ld b, $00
-  sla c
-  rl b
+  ld b, $0
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $00
-  ld c, $01
+  ld bc, $0001
   call JumpTable_294
   ld hl, cBUF01
   psbc $9a0b, $ad
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
   ret
-
 LinkRobattleLoadPartLeftArm:
   ld hl, $000f
   add hl, de
   ld a, [hl]
-  and a, $7f
-  sub a, $3c
-  jp c, .valid_part
-.broken_or_missing_part
-  ld b, $01
-  ld c, $0f
-  ld e, $86 ; -------
-  call JumpLoadTilemap
-  ret
-.valid_part
+  and $7f
+  sub $3c
+  jp c, .not_broken
+  ld bc, $010f
+  jp z, LinkRobattlePartBrokenLoadTilemap
+.not_broken
   ld hl, $000f
   add hl, de
   ld a, [hl]
   and $7f
   ld hl, $b620
   ld c, a
-  ld b, $00
-  sla c
-  rl b
+  ld b, $0
+  add hl, bc
   add hl, bc
   ld a, [hl]
   and $7f
-  ld b, $00
-  ld c, $02
+  ld bc, $0002
   call JumpTable_294
   ld hl, cBUF01
   call VWFLeftPadTextTo8
-  ld b, $0
-  ld c, a
-  add hl, bc
-  ld b, h
-  ld c, l
-  ld hl, cBUF01
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFLeftPadTextTo8
+.not_narrow
   psbc $9a01, $be
   call VWFPutStringTo8
   ret
+.end
+REPT $593b - .end
+  nop
+ENDR
 
 SECTION "Link Robattle LeftPadTextTo8", ROMX[$57f1], BANK[$15]
 LeftPadTextTo8:

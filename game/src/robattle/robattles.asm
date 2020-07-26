@@ -491,8 +491,7 @@ RobattleLoadAttackSelectPartNames:: ; 114cb (4:54cb)
 ; 0x114e5
 RobattlePartBrokenLoadTilemap:
   ld e, $86
-  call JumpLoadTilemap
-  ret
+  jp JumpLoadTilemap
 RobattleLoadHeadPart:
   ld hl, $000d
   add hl, de
