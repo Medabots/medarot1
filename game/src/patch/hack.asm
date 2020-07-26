@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "User Functions (Hack)", ROMX[$4000], BANK[$24]
 HackPredef::
@@ -55,6 +56,8 @@ HackPredefTable:
   dw LoadNameScreenTextAndLoadTilemap ; 22
   dw LoadLinkMainMenuTextAndLoadTilemap ; 23
   dw LoadSaveDataCorruptedTextAndLoadTilemap ; 24
+  dw ShopPartsMenuSellScrollUp ; 25
+  dw ShopPartsMenuSellScrollDown ; 26
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -150,43 +153,6 @@ AddHLShiftBC5:
   add hl, bc
   ret
 
-; Tileset methods
-INCLUDE "game/src/patch/include/tilesets.asm"
-
-Load1BPPTiles:
-; hl is the vram address to write to.
-; de is the address to copy from.
-; b is the number of tiles to copy.
-  ld c, 8
-.loop
-  di
-
-.wfb
-  ldh a, [hLCDStat]
-  and 2
-  jr nz, .wfb
-
-  ld a, [de]
-  ld [hli], a
-  ld [hli], a
-
-  ei
-
-  inc de
-  dec c
-  jr nz, .loop
-  dec b
-  jr nz, Load1BPPTiles
-
-  ret
-
-Load1BPPTileset: MACRO
-  ld hl, \1
-  ld de, \2
-  ld b, (\3 - \2) / $8
-  call Load1BPPTiles
-  ENDM
-
 LoadInventoryTilesetAndHelpTilemap:
   push hl
   push de
@@ -244,9 +210,7 @@ LoadMainMenuTilesetWithGraphics: ; A little lazy here, but it'll work
   Load1BPPTileset $8800, PatchTilesetStartMainMenuText, PatchTilesetEndMainMenuText
   ld hl, $8F00
   ld de, PatchTilesetStartMainMenuGraphics
-  ld a, [de]
-  inc de
-  call LoadTiles
+  call LoadTilesFrom2D
   pop bc
   pop de
   pop hl
@@ -327,9 +291,7 @@ LoadRobottleText:
   Load1BPPTileset $8A80, PatchTilesetStartFWFo, PatchTilesetEndFWFo
   ld hl, $8F00
   ld de, PatchTilesetStartRobattleGraphics
-  ld a, [de]
-  inc de
-  call LoadTiles
+  call LoadTilesFrom2D
   pop bc
   pop de
   pop hl
@@ -474,4 +436,175 @@ LoadPatchTextFixedTopRight:
   ld a, [hl]
   cp $50 ; [hl] will only be $50 once we're done
   jr nz, .loop
+  ret
+
+ShopPartsMenuSellScrollUp::
+  ld de, $9904
+  ld hl, $9944
+  call ShopPartsMenuShiftLine
+  ld de, $98C4
+  ld hl, $9904
+  call ShopPartsMenuShiftLine
+  ld de, $9884
+  ld hl, $98C4
+  call ShopPartsMenuShiftLine
+  call ShopPartsCalculateLineDrawingPositionOnScroll
+  xor a
+  jp ShopPartsSellMenuScrollCommon
+
+ShopPartsMenuSellScrollDown::
+  ld de, $98C4
+  ld hl, $9884
+  call ShopPartsMenuShiftLine
+  ld de, $9904
+  ld hl, $98C4
+  call ShopPartsMenuShiftLine
+  ld de, $9944
+  ld hl, $9904
+  call ShopPartsMenuShiftLine
+  call ShopPartsCalculateLineDrawingPositionOnScroll
+  ld a, 3
+  jp ShopPartsSellMenuScrollCommon
+
+ShopPartsCalculateLineDrawingPositionOnScroll::
+  ld a, [$C891]
+  ; Continues into ShopPartsCalculateSpecificLineDrawingPosition.
+
+ShopPartsCalculateSpecificLineDrawingPosition::
+  and 3
+  add a
+  add a
+  add a
+  add $B0
+  ld [ShopPartDrawIndex], a
+  ret
+
+ShopPartsCalculateLineMappingPosition::
+  add a
+  ld c, a
+  add 4
+  ld [ShopPartMapLineIndex], a
+  ld a, c
+  add a
+  add a
+  add a
+  add a
+  ld c, a
+  psa $9884
+  add c
+  ld [ShopPartMapPseudoIndex], a
+  ld b, 0
+  ld hl, $9884
+  add hl, bc
+  add hl, bc
+  ld a, l
+  ld [ShopPartMapLocation], a
+  ld a, h
+  ld [ShopPartMapLocation + 1], a
+  ret
+
+ShopPartsSellMenuScrollCommon::
+  call ShopPartsCalculateLineMappingPosition
+  ; Continues into ShopPartsSellMenuDrawSingle.
+
+ShopPartsSellMenuDrawSingle::
+  ld a, [ShopPartMapLocation]
+  ld l, a
+  ld a, [ShopPartMapLocation + 1]
+  ld h, a
+
+.empty
+  ld b, 7
+
+.clearloop
+  di
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  xor a
+  ld [hli], a
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .clearloop
+
+  ld a, [$C886]
+  ld b, a
+  ld a, 3
+  call ShopPartsMenuCrossBank4815
+  cp $FF
+  ret z
+
+  push af
+  ld a, [$c6e0]
+  ld [TempReturnBank], a
+  ld a, BANK(ShopPartsSellMenuDrawSingle)
+  ld [$c6e0], a
+  ld a, [$c88a]
+  ld c, a
+  ld a, [$c886]
+  ld b, 0
+  call Wrapper_78d
+  ld hl, cBUF01
+  ld a, [ShopPartDrawIndex]
+  ld b, a
+  ld a, [ShopPartMapPseudoIndex]
+  ld c, a
+  call VWFPutStringAutoNarrowTo8
+  ld a, [ShopPartMapLocation]
+  add 9
+  ld c, a
+  ld a, [ShopPartMapLocation + 1]
+  ld b, a
+  pop af
+  ld h, 0
+  ld l, a
+  call WrapDrawNumber
+  ld a, [ShopPartMapLineIndex]
+  ld b, $11
+  ld c, a
+  ld e, $18
+  call Wrapper_891
+  ld a, [TempReturnBank]
+  ld [$c6e0], a
+  ret
+
+ShopPartsMenuShiftLine::
+  ld b, 7
+
+.loop
+  di
+
+.wfb
+  ldh a, [hLCDStat]
+  and 2
+  jr nz, .wfb
+
+  ld a, [de]
+  ld [hli], a
+  inc de
+  ld a, [de]
+  ld [hli], a
+  ei
+  inc de
+  dec b
+  jr nz, .loop
+  ret
+
+SECTION "1bpp Tilesets", ROMX[$4000], BANK[$2D]
+; Tileset methods
+INCLUDE "game/src/patch/include/tilesets.asm"
+
+SECTION "Load 1BPP Tiles", ROM0[$1F6E]
+ShopPartsMenuCrossBank4815::
+  rst $10
+  ld a, b
+  call $4815 ; I have no idea what this actually does.
+  push af
+  ld a, $24
+  rst $10
+  pop af
   ret
