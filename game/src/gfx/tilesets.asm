@@ -238,63 +238,10 @@ LoadTilesFrom2D::
   rst $10
   ret
 
+.end
+REPT $135E - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-
-  nop
-  nop
+ENDR
 .asm_135e
 
 SECTION "Load Uncompressed Tiles", ROM0[$1fb9] ; Address is at the end of the old control codes
