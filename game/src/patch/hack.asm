@@ -595,29 +595,6 @@ ShopPartsCalculateLineDrawingPositionOnScroll::
   ret
 
 ShopPartsSellMenuDrawSingle::
-  ld a, [ShopPartMapLocation]
-  add 8
-  ld l, a
-  ld a, [ShopPartMapLocation + 1]
-  ld h, a
-  ld b, 2
-
-.clearloopA
-  di
-
-.wfbA
-  ldh a, [hLCDStat]
-  and 2
-  jr nz, .wfbA
-
-  xor a
-  ld [hli], a
-  ld [hli], a
-  ld [hli], a
-  ei
-  dec b
-  jr nz, .clearloopA
-
   ld a, [$C886]
   ld b, a
   ld a, 3
@@ -629,24 +606,22 @@ ShopPartsSellMenuDrawSingle::
   ld l, a
   ld a, [ShopPartMapLocation + 1]
   ld h, a
-  ld b, 2
+  ld b, 7
 
-.clearloopB
+.clearloop
   di
 
-.wfbB
+.wfb
   ldh a, [hLCDStat]
   and 2
-  jr nz, .wfbB
+  jr nz, .wfb
 
   xor a
   ld [hli], a
   ld [hli], a
-  ld [hli], a
-  ld [hli], a
   ei
   dec b
-  jr nz, .clearloopB
+  jr nz, .clearloop
   ret
 
 .notEmpty
@@ -667,10 +642,17 @@ ShopPartsSellMenuDrawSingle::
   ld c, a
   call VWFPutStringAutoNarrowTo8
   ld a, [ShopPartMapLocation]
-  add 9
+  add 8
+  ld l, a
   ld c, a
   ld a, [ShopPartMapLocation + 1]
+  ld h, a
   ld b, a
+  inc c
+  push bc
+  ld b, 3
+  call .clearloop
+  pop bc
   pop af
   ld h, 0
   ld l, a
