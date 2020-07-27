@@ -61,15 +61,12 @@ LoadPartDescription:
   jp VWFPutString
 ; 0x3942
 LoadPartDescriptionInShops: ; 3942 (0:3942)
-  push af
+  ld c, a
   push bc
-  ld b, $01
-  ld c, $01
+  ld bc, $0101
   ld e, $2f
   call LoadTilemapInWindow
   pop bc
-  pop af
-  ld c, a
   ld a, $01
   call Func_3117
   ld a, $02
@@ -80,26 +77,27 @@ LoadPartDescriptionInShops: ; 3942 (0:3942)
   ld c, a
   add hl, bc
   ld a, [hl]
-  push af
+  ld b, a
   ld a, BANK(PartDescriptionsPtr)
   rst $10
-  pop af
+  ld a, b
   ld hl, PartDescriptionsPtr
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $9c41
-  call PutString
-  ret
+  rst $30 ; a += a; hl = [hl+a]
+  ld de, $9c41
+  ld b, $44
+  ld a, $12
+  ld [VWFTileLength], a
+  rst $8 ; VWFPutStringInitFullTileLocation
+  call VWFPutStringLoop
+  ld de, $9c81
+  ld b, c ; c is the next empty tile index we can draw over
+  ld a, $12
+  rst $8 ; VWFPutStringInitFullTileLocation
+  jp VWFPutStringLoop
+.end
+REPT $3981 - .end
   nop
-  nop
-  nop
-  nop
+ENDR
 ; 0x3981
 
 SECTION "Load Skill", ROMX[$67a6], BANK[$2]
