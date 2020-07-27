@@ -948,45 +948,6 @@ Func_38f8: ; 38f8 (0:38f8)
   ret
 ; 0x3926
 
-SECTION "Func_3942", ROM0[$3942]
-Func_3942: ; 3942 (0:3942)
-  push af
-  push bc
-  ld b, $01
-  ld c, $01
-  ld e, $2f
-  call LoadTilemapInWindow
-  pop bc
-  pop af
-  ld c, a
-  ld a, $01
-  call Func_3117
-  ld a, $02
-  ld [$2000], a
-  ld hl, $67f7
-  ld b, $00
-  ld a, [$c64e]
-  ld c, a
-  add hl, bc
-  ld a, [hl]
-  push af
-  ld a, BANK(PartDescriptionsPtr)
-  ld [$2000], a
-  pop af
-  ld hl, PartDescriptionsPtr
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld bc, $9c41
-  call PutString
-  ret
-; 0x3981
-
 SECTION "Func_398c", ROM0[$398c]
 Func_398c: ; 398c (0:398c)
   ld a, $12
