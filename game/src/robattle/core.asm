@@ -1,3 +1,5 @@
+INCLUDE "game/src/common/constants.asm"
+
 SECTION "Robattle State Machine", ROMX[$4000], BANK[$4]
 RobattleStateMachine::
   ld a, [CoreSubStateIndex]
@@ -61,7 +63,7 @@ RobattleStateMachine::
   dw $4AFB ; 2D
   dw $4B1A ; 2E
   dw RobattleStateDoNothing ; 2F
-  dw $4B58 ; 30
+  dw RobattleLoadNameForDialog ; 30
   dw $4B80 ; 31
 
 RobattleStateDoNothing::
@@ -230,3 +232,27 @@ RobattleStatePrepareAttackScreen::
 
 .table
   db 3, 0, 1, 2
+
+SECTION "Robattle States (Partial 5)", ROMX[$4b58], BANK[$4]
+RobattleLoadNameForDialog:: ; 10b58 (4:4b58)
+  call JumpTable_26d
+  ld a, $01
+  call JumpSetupDialog
+  call $7590
+  ld hl, $3c
+  add hl, de
+  ld a, [hl]
+  ld [$c740], a
+  call $75ce
+  ld hl, $2
+  add hl, de
+  ld de, cBUF01
+  ld b, $09
+.asm_10b77
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_10b77
+  jp JumpIncSubStateIndexWrapper
+; 0x10b80
