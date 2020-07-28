@@ -166,7 +166,7 @@ LoadMedarotterNamesFromTable: ; 2faa (0:2faa)
   inc hl
   inc hl
   ld de, cBUF01
-  ld b, $09
+  ld b, $10
 .asm_2fc8
   ld a, [hli]
   ld [de], a
