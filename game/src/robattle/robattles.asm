@@ -1092,3 +1092,67 @@ RobattleStateLoadPartScreenTilemaps: ; 6ea13 (1b:6a13)
   call $67de
   ret
 ; 0x6ea4f
+
+SECTION "Robattle - Time Limit Reached",  ROMX[$7629],  BANK[$1b]
+RobattleTimeLimitReachedDecideWinner: ; 6f629 (1b:7629)
+  call $7695
+  ld a, [SerIO_ConnectionTestResult]
+  or a
+  jr nz, .asm_6f635
+  call $7700
+.asm_6f635
+  ld a, [$a404]
+  cp $01
+  jr z, .load_own_name
+  cp $ff
+  jr z, .asm_6f677
+  ld a, [$c776]
+  or a
+  jr nz, .asm_6f652
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $01
+  jr z, .load_own_name
+  jr .asm_6f677
+.asm_6f652
+  call JumpTable_162
+  ld a, [$c5f0]
+  and $01
+  ld b, a
+  ld a, [SerIO_Connected]
+  cp b
+  jr z, .load_own_name
+  jr .asm_6f677
+.load_own_name
+  ld a, $01
+  ld [$c74e], a
+  ld hl, cNAME
+  ld de, cBUF01
+  ld b, $09
+.asm_6f670
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_6f670
+  ret
+.asm_6f677
+  ld a, $02
+  ld [$c74e], a
+  ld a, [$c776]
+  or a
+  jr nz, .load_opponent_name
+  call JumpTable_333
+  ret
+.load_opponent_name
+  ld hl, $c778
+  ld de, cBUF01
+  ld b, $09
+.asm_6f68e
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_6f68e
+  ret
+; 0x6f695
