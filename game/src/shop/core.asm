@@ -97,7 +97,7 @@ ShopBuyPriceDisplayState::
   ld b, $c
   ld c, $e
   call $412d
-  call $433a
+  call MapSellMoneyWithYenSymbol
   ldh a, [hJPInputChanged]
   and hJPInputUp
   jr z, .upNotPressed
