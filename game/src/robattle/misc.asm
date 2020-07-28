@@ -148,3 +148,32 @@ LoadRobattleNames:
   nop
   nop
 ; 0x2faa
+
+LoadMedarotterNamesFromTable: ; 2faa (0:2faa)
+  ld a, BANK(MedarottersPtr)
+  rst $10
+  ld a, [$c753]
+  ld hl, MedarottersPtr
+  ld b, $00
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  inc hl
+  inc hl
+  inc hl
+  ld de, cBUF01
+  ld b, $09
+.asm_2fc8
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_2fc8
+  ret
+  nop
+  nop
+; 0x2fcf

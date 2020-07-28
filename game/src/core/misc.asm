@@ -374,36 +374,6 @@ Func_2eb0: ; 2eb0 (0:2eb0)
   nop
 ; 0x2ef7
 
-SECTION "Func_2faa", ROM0[$2faa]
-Func_2faa: ; 2faa (0:2faa)
-  ld a, $17
-  rst $10
-  ld a, [$c753]
-  ld hl, $64e6
-  ld b, $00
-  ld c, a
-  sla c
-  rl b
-  add hl, bc
-  ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  inc hl
-  inc hl
-  inc hl
-  ld de, cBUF01
-  ld b, $09
-.asm_2fc8
-  ld a, [hli]
-  ld [de], a
-  inc de
-  dec b
-  jr nz, .asm_2fc8
-  ret
-  nop
-  nop
-; 0x2fcf
-
 SECTION "Func_3117", ROM0[$3117]
 Func_3117:: ; 3117 (0:3117)
   ld [$c64e], a
