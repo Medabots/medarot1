@@ -250,10 +250,10 @@ RobattleLoadNameForDialog:: ; 10b58 (4:4b58)
   ld a, [hl]
   ld [$c740], a
   call $75ce
-  ld hl, $2
+  ld hl, $f0 ; Name is stored in $f0
   add hl, de
   ld de, cBUF01
-  ld b, $09
+  ld b, $10
 .asm_10b77
   ld a, [hli]
   ld [de], a
