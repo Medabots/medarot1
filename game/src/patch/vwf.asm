@@ -330,7 +330,7 @@ VWFCountChar4B::
   inc e
   inc e
   inc e
-  ret
+  jr VWFMeasureStringPart.loop
 
 VWFMeasureStringPart::
   ; Measures 10 characters at a time. The remaining 2 buffered characters are reserved for if the 9th or 10th character is a 4B control code.
