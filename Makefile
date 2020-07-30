@@ -139,7 +139,7 @@ $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$
 # Treat version.bin specially
 # SHORT_HASH is set in CI
 $(PATCH_TEXT_OUT)/version.$(BIN_TYPE): $(PATCH_TEXT)/version.$(TEXT_TYPE) | $(PATCH_TEXT_OUT)
-	cat $< > $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+	cat $< | tr -d '\n' > $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
 ifndef SHORT_HASH
 	echo "" >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
 else
