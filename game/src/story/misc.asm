@@ -33,13 +33,37 @@ FortuneSpinnerLoad:
   jp $659c
 ; 0xf94b
 
+SECTION "Fortune Spinner Disassembly 2", ROMX[$79c7], BANK[$3]
+FortuneSpinnerStopping:
+  ld a, [$c5a0]
+  and $03
+  ret nz
+  ld a, [$c886]
+  inc a
+  ld [$c886], a
+  cp $10
+  jp z, $79f4
+  ld a, [$c885]
+  inc a
+  and $01
+  ld [$c885], a
+  jp z, FortuneSpinnerStoppingLoadBoxTilemap
+  ld a, [$c884]
+  jp $7ab6
+FortuneSpinnerStoppingLoadBoxTilemap: ; f9eb (3:79eb)
+  ld b, $06
+  ld c, $02
+  ld e, $57
+  jp JumpTable_2ca
+; 0xf9f4
+
 FortuneGreatLuck EQU $00
 FortuneGoodLuck EQU $01
 FortuneSomeLuck EQU $02
 FortuneUncertain EQU $03
 FortuneBadLuck EQU $04
 FortuneDisaster EQU $05
-SECTION "Fortune Spinner Disassembly 2", ROMX[$7ab6], BANK[$3]
+SECTION "Fortune Spinner Disassembly 3", ROMX[$7ab6], BANK[$3]
 FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   ld e, a
   ld d, $00
