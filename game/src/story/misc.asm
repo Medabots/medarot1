@@ -42,20 +42,23 @@ FortuneSpinnerStopping:
   inc a
   ld [$c886], a
   cp $10
-  jp z, $79f4
+  jp z, FortuneSpinnerSlowingDown
   ld a, [$c885]
   inc a
   and $01
   ld [$c885], a
   jp z, FortuneSpinnerStoppingLoadBoxTilemap
   ld a, [$c884]
-  jp $7ab6
+  jp FortuneSpinnerLoadFortuneText
 FortuneSpinnerStoppingLoadBoxTilemap: ; f9eb (3:79eb)
   ld b, $06
   ld c, $02
   ld e, $57
   jp JumpTable_2ca
-; 0xf9f4
+FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
+  ld a, [$c884]
+  call FortuneSpinnerLoadFortuneText
+  jp $659c
 
 FortuneGreatLuck EQU $00
 FortuneGoodLuck EQU $01
