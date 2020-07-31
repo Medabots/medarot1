@@ -12,7 +12,7 @@ FortuneSpinnerLoad:
   ld e, $70
   call JumpTable_204
   ld a, $06
-  ld [SerIO_ConnectionTestResult], a
+  ld [$c64e], a
   ld a, $07
   ld [$c64f], a
   ld a, $02
