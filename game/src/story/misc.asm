@@ -33,11 +33,17 @@ FortuneSpinnerLoad:
   jp $659c
 ; 0xf94b
 
+FortuneGreatLuck EQU $00
+FortuneGoodLuck EQU $01
+FortuneSomeLuck EQU $02
+FortuneUncertain EQU $03
+FortuneBadLuck EQU $04
+FortuneDisaster EQU $05
 SECTION "Fortune Spinner Disassembly 2", ROMX[$7ab6], BANK[$3]
 FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   ld e, a
   ld d, $00
-  ld hl, $7ac8
+  ld hl, .table
   add hl, de
   ld a, [hl]
   add $58
@@ -45,3 +51,12 @@ FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   ld b, $07
   ld c, $03
   jp JumpTable_2ca
+.table
+  db FortuneSomeLuck
+  db FortuneGoodLuck
+  db FortuneSomeLuck
+  db FortuneGreatLuck
+  db FortuneSomeLuck
+  db FortuneDisaster
+  db FortuneSomeLuck
+  db FortuneGoodLuck
