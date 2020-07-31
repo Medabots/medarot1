@@ -59,6 +59,25 @@ FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
   ld a, [$c884]
   call FortuneSpinnerLoadFortuneText
   jp $659c
+FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
+  ld a, [hJPInputChanged]
+  and hJPInputA
+  ret z
+  ld a, $01
+  ld [$c6c7], a
+  call JumpTable_207
+  ld a, $06
+  ld [$c64e], a
+  ld a, $07
+  ld [$c64f], a
+  ld a, $02
+  ld [$c650], a
+  ld a, $04
+  ld [$c651], a
+  ld a, $00
+  call JumpTable_2c7
+  jp $659c
+; fa26
 
 FortuneGreatLuck EQU $00
 FortuneGoodLuck EQU $01
