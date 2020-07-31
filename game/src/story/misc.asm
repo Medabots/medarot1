@@ -11,9 +11,9 @@ FortuneSpinnerLoad:
   ld d, $38
   ld e, $70
   call JumpTable_204
-  ld a, $06
+  ld a, $04 ; Originally 6
   ld [$c64e], a
-  ld a, $07
+  ld a, $09 ; Originally 7
   ld [$c64f], a
   ld a, $02
   ld [$c650], a
@@ -21,10 +21,11 @@ FortuneSpinnerLoad:
   ld [$c651], a
   ld a, $00
   call JumpTable_2c4
-  ld b, $06
+  ld b, $05
   ld c, $02
-  ld e, $57
-  call JumpTable_2ca
+  ld e, $F2 ; Width8TextBox
+  ld a, $29 ; LoadLuckLotteryTextAndJump2ca
+  rst $08
   xor a
   ld [$c884], a
   ld [$c885], a
@@ -51,9 +52,9 @@ FortuneSpinnerStopping:
   ld a, [$c884]
   jp FortuneSpinnerLoadFortuneText
 FortuneSpinnerStoppingLoadBoxTilemap: ; f9eb (3:79eb)
-  ld b, $06
+  ld b, $05
   ld c, $02
-  ld e, $57
+  ld e, $F2
   jp JumpTable_2ca
 FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
   ld a, [$c884]
@@ -66,9 +67,9 @@ FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
   ld a, $01
   ld [$c6c7], a
   call JumpTable_207
-  ld a, $06
+  ld a, $04 ; Originally 6
   ld [$c64e], a
-  ld a, $07
+  ld a, $09 ; Originally 7
   ld [$c64f], a
   ld a, $02
   ld [$c650], a
@@ -94,7 +95,7 @@ FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   ld a, [hl]
   add $58
   ld e, a
-  ld b, $07
+  ld b, $06
   ld c, $03
   jp JumpTable_2ca
 .table

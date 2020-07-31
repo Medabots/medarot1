@@ -76,3 +76,6 @@ PatchTilesetEndLinkMainMenuText
 PatchTilesetStartSaveDataCorruptedText::
   INCBIN "build/tilesets/patch/SaveDataCorrupted.1bpp"
 PatchTilesetEndSaveDataCorruptedText
+PatchTilesetStartLuckLotteryText::
+  INCBIN "build/tilesets/patch/LuckLottery.1bpp"
+PatchTilesetEndLuckLotteryText

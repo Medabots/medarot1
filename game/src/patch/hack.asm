@@ -60,6 +60,7 @@ HackPredefTable:
   dw ShopPartsMenuSellScrollDown ; 26
   dw PartTradeMenuScrollUp ; 27
   dw PartTradeMenuScrollDown ; 28
+  dw LoadLuckLotteryTextAndJump2ca ; 29
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:
@@ -359,6 +360,16 @@ LoadSaveDataCorruptedTextAndLoadTilemap:
   pop de
   pop hl
   jp WrapLoadTilemap
+
+LoadLuckLotteryTextAndJump2ca:
+  push hl
+  push de
+  push bc
+  Load1BPPTileset $8800, PatchTilesetStartLuckLotteryText, PatchTilesetEndLuckLotteryText
+  pop bc
+  pop de
+  pop hl
+  jp JumpTable_2ca
 
 INCLUDE "game/src/patch/include/patch_text.asm"
 

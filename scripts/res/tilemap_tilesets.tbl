@@ -238,3 +238,4 @@ Tilemap_73EE=scripts/res/tileset_MainDialog.tbl
 Tilemap_73F1=scripts/res/tileset_MainDialog.tbl
 Portrait=scripts/res/tileset_MainDialog.tbl
 PortraitRestore=scripts/res/tileset_MainDialog.tbl
+Width6TextBox=scripts/res/tileset_MainDialog.tbl
