@@ -21,7 +21,7 @@ def table_convert(txt, tbl):
     i = 0
     specialStartIdx = 0
     endcode = 0x00
-    while i < len(txt):
+    while i < len(txt) and not txt == '<IGNORED>':
         try: 
             if txt[i] == '<':
                 specialStartIdx = i
@@ -56,6 +56,9 @@ def table_convert(txt, tbl):
                         result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character
                     result.append(0x48)
                     result.append(int(s[0:3], 10)) # @[000, 112], 255 is clear
+                elif special_type == '$': # Literal
+                    s = ''.join(special_data)
+                    result.append(int(s[0:2], 16)) # $[00, FF]
                 elif special_type == 'f': # Font type
                     s = ''.join(special_data)
                     result.append(0x47)
