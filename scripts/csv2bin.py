@@ -56,6 +56,9 @@ def table_convert(txt, tbl):
                         result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character
                     result.append(0x48)
                     result.append(int(s[0:3], 10)) # @[000, 112], 255 is clear
+                elif special_type == '$': # Literal
+                    s = ''.join(special_data)
+                    result.append(int(s[0:2], 16)) # $[00, FF]
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':
