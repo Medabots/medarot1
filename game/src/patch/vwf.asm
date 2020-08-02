@@ -382,26 +382,18 @@ VWFCountChar4B::
   inc e
   jr VWFMeasureStringPart.loop
 
-VWFCountCharOneArg::
+VWFCountChar47::
   inc hl
-  inc hl
+  ld a, [hli]
+  ld [VWFCurrentFont], a
   inc e
   inc e
   jr VWFMeasureStringPart.loop
 
-VWFCountChar45::
-  ld a, 3
-  jr VWFCountChar47.setCurrentFont
-
-VWFCountChar46::
-  xor a
-  jr VWFCountChar47.setCurrentFont
-
-VWFCountChar47::
-  ld a, 2
-
-.setCurrentFont
-  ld [VWFCurrentFont], a
+VWFCountCharOneArg::
+  inc hl
+  inc e
+  ; Continue into VWFCountCharNoArg
 
 VWFCountCharNoArg::
   inc hl
@@ -457,10 +449,6 @@ VWFMeasureStringPart::
   jp z, VWFCountChar4B
   cp $47
   jp z, VWFCountChar47
-  cp $46
-  jp z, VWFCountChar46
-  cp $45
-  jp z, VWFCountChar45
   cp $4D
   jp z, VWFCountCharOneArg
   cp $48
@@ -638,6 +626,7 @@ VWFCheckInit::
   xor a
   ld [VWFIsInit], a
   ld [VWFPortraitDrawn], a
+  ld [VWFCurrentFont], a
   ld a, $D0
   ld [VWFTileBaseIdx], a
   call VWFResetMessageBox
@@ -940,6 +929,7 @@ VWFChar4F::
   xor a
   ld [$c5c7], a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; No idea what this does either.
 
@@ -962,6 +952,7 @@ VWFChar4F::
   xor a
   ld [$c5c7], a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; No idea what this does either.
 
@@ -993,10 +984,11 @@ VWFChar4F::
 
   xor a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; End message indicator variable.
 
-  ld a, 1
+  inc a
   ld [$c6c6], a
 
   ret
@@ -1027,15 +1019,21 @@ VWFChar4F::
 
   xor a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; End message indicator variable.
 
-  ld a, 1
+  inc a
   ld [$c6c6], a
 
   ret
 
 .endType4
+  ; Clearing some basic variables.
+
+  xor a
+  ld [VWFCurrentFont], a
+  
   ; End message indicator variable.
 
   ld a, 1
@@ -1215,24 +1213,21 @@ VWFChar48::
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
-  call VWFResetMessageBox ; Need to set start offsets
-  ret
+  jp VWFResetMessageBox ; Need to set start offsets
 
 VWFChar47::
-  ld a, 2
+  inc hl
+  ld a, [hl]
   ld [VWFCurrentFont], a
   pop hl
+  call VWFIncTextOffset
   jp VWFIncTextOffset
 
 VWFChar46::
-  xor a
-  ld [VWFCurrentFont], a
   pop hl
   jp VWFIncTextOffset
 
 VWFChar45::
-  ld a, 3
-  ld [VWFCurrentFont], a
   pop hl
   jp VWFIncTextOffset
 
