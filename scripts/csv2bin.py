@@ -21,7 +21,7 @@ def table_convert(txt, tbl):
     i = 0
     specialStartIdx = 0
     endcode = 0x00
-    while i < len(txt):
+    while i < len(txt) and not txt == '<IGNORED>':
         try: 
             if txt[i] == '<':
                 specialStartIdx = i
@@ -59,10 +59,16 @@ def table_convert(txt, tbl):
                 elif special_type == '$': # Literal
                     s = ''.join(special_data)
                     result.append(int(s[0:2], 16)) # $[00, FF]
+                elif special_type == 'f': # Font type
+                    s = ''.join(special_data)
+                    result.append(0x47)
+                    result.append(int(s[0:2], 16)) # f[00, FF], 0 is normal
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':
                     result.append(int( special_type + ''.join(special_data), 16))
+                else:
+                    print("Unknown control code %s" % special_type)
             elif txt[i] in tbl:
                 result.append(tbl[txt[i]])
             else:
