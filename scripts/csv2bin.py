@@ -21,7 +21,7 @@ def table_convert(txt, tbl):
     i = 0
     specialStartIdx = 0
     endcode = 0x00
-    while i < len(txt) and not txt == '<IGNORED>':
+    while i < len(txt):
         try: 
             if txt[i] == '<':
                 specialStartIdx = i
@@ -67,7 +67,7 @@ def table_convert(txt, tbl):
                     result.append(0x50)
                 elif special_type == '4':
                     result.append(int( special_type + ''.join(special_data), 16))
-                else:
+                elif txt != '<IGNORED>':
                     print("Unknown control code %s" % special_type)
             elif txt[i] in tbl:
                 result.append(tbl[txt[i]])
