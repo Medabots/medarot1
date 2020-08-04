@@ -5,6 +5,8 @@ VWFWordLengthTest::
   ld a, [hl]
   or a
   ret nz
+  ld a, [VWFCurrentFont]
+  push af
   xor a
   ld [VWFNextWordLength], a
   push bc
@@ -42,6 +44,8 @@ VWFWordLengthTest::
 .exitLoop
   rst $10
   pop bc
+  pop af
+  ld [VWFCurrentFont], a
   ret
 
 ; Tilemaps are loaded from a different branch, so we make sure to keep track
@@ -197,7 +201,7 @@ SECTION "Portraits 64-113", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
 
-SECTION "VWF Drawing Functions", ROMX[$6800], BANK[$24]
+SECTION "VWF Drawing Functions", ROMX[$5500], BANK[$24]
 VWFDrawLetterTable::
   ; This determines the width of each character (excluding the 1px between characters).
   ; The address of this table must be a multiple of $100.
@@ -241,11 +245,57 @@ VWFDrawNarrowLetterTable::
   db 7, 7, 3, 7, 3, 3, 3, 3, 3, 3, 5, 3, 6, 7, 7, 7 ; Fx
   ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
 
+VWFDrawBoldLetterTable::
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+  db 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 0x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 1x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 2x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 3x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 4x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 5x
+  db 7, 7, 4, 5, 4, 4, 2, 4, 4, 6, 6, 5, 3, 5, 5, 5 ; 6x
+  db 5, 5, 5, 5, 5, 6, 2, 5, 4, 5, 4, 7, 7, 1, 4, 7 ; 7x
+  db 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 ; 8x
+  db 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4 ; 9x
+  db 5, 5, 2, 3, 5, 2, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5 ; Ax
+  db 6, 6, 5, 4, 3, 5, 5, 6, 2, 2, 4, 1, 7, 1, 7, 3 ; Bx
+  db 3, 3, 5, 3, 4, 2, 6, 5, 6, 7, 7, 7, 7, 4, 7, 2 ; Cx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Dx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Ex
+  db 7, 7, 3, 7, 3, 3, 3, 3, 4, 4, 7, 5, 7, 7, 7, 7 ; Fx
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+
+VWFDrawRoboticLetterTable::
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+  db 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 0x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 1x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 2x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 3x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 4x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 5x
+  db 7, 7, 4, 4, 4, 3, 1, 3, 4, 5, 5, 4, 2, 4, 4, 4 ; 6x
+  db 4, 4, 4, 4, 4, 5, 1, 5, 4, 5, 4, 7, 7, 1, 4, 7 ; 7x
+  db 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 ; 8x
+  db 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4 ; 9x
+  db 4, 4, 1, 2, 4, 1, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4 ; Ax
+  db 5, 5, 4, 4, 3, 5, 5, 5, 2, 2, 4, 1, 7, 1, 7, 2 ; Bx
+  db 2, 3, 5, 3, 4, 2, 6, 5, 5, 7, 7, 7, 7, 4, 7, 2 ; Cx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Dx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Ex
+  db 7, 7, 3, 7, 3, 3, 3, 3, 4, 4, 7, 5, 7, 7, 7, 7 ; Fx
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+
 VWFFont::
   INCBIN "build/tilesets/patch/Font.1bpp"
 
 VWFNarrowFont::
   INCBIN "build/tilesets/patch/NarrowFont.1bpp"
+
+VWFBoldFont::
+  INCBIN "build/tilesets/patch/BoldFont.1bpp"
+
+VWFRoboticFont::
+  INCBIN "build/tilesets/patch/RoboticFont.1bpp"
 
 VWFMessageBoxInputHandler::
   ; Advance on button press.
@@ -332,6 +382,24 @@ VWFCountChar4B::
   inc e
   jr VWFMeasureStringPart.loop
 
+VWFCountChar47::
+  inc hl
+  ld a, [hli]
+  ld [VWFCurrentFont], a
+  inc e
+  inc e
+  jr VWFMeasureStringPart.loop
+
+VWFCountCharOneArg::
+  inc hl
+  inc e
+  ; Continue into VWFCountCharNoArg
+
+VWFCountCharNoArg::
+  inc hl
+  inc e
+  jr VWFMeasureStringPart.loop
+
 VWFMeasureStringPart::
   ; Measures 10 characters at a time. The remaining 2 buffered characters are reserved for if the 9th or 10th character is a 4B control code.
 
@@ -350,27 +418,18 @@ VWFMeasureStringPart::
   jr z, .ignoreFirstSpace
   or a
   jp nz, .ignoreFirstSpace
+
+.foundTerminator
   xor a
   inc a
   ret
 
 .ignoreFirstSpace
-  ; Count substrings.
-  
-  cp $4b
-  jp z, VWFCountChar4B
-  
-  ; Treat 4D and 48 as zero length and skip arguments.
-  cp $48
-  jr z, .is48
-  cp $4d
-  jr nz, .not4D
-  inc e
-.is48
-  inc e
-  jr .loop
+  cp $50
+  jr nc, .notControlCode
+  cp $40
+  jr c, .notControlCode
 
-.not4D
   ; Treat 4F, 4E, 4C, 4A, and 49 as terminators.
 
   cp $4f
@@ -384,15 +443,28 @@ VWFMeasureStringPart::
   cp $49
   jr z, .foundTerminator
 
+  ; Count substrings.
+  
+  cp $4b
+  jp z, VWFCountChar4B
+  cp $47
+  jp z, VWFCountChar47
+  cp $4D
+  jp z, VWFCountCharOneArg
+  cp $48
+  jp z, VWFCountCharOneArg
+  jp VWFCountCharNoArg
+
+.notControlCode
   ; Abort count if the counted text is already too long.
 
   ld a, [VWFNextWordLength]
   ld d, a
   ld a, [VWFTextLength]
   add d
-  jr c, .foundTerminator
+  jr c, .tooLong
   cp $89
-  jr nc, .foundTerminator
+  jr nc, .tooLong
 
   ; Measure character.
 
@@ -405,7 +477,7 @@ VWFMeasureStringPart::
   xor a
   ret
 
-.foundTerminator
+.tooLong
   xor a
   inc a
   ret
@@ -446,6 +518,11 @@ VWFDrawCharLoop::
   ld a, [hl]
 
 .notSpace
+  cp $50
+  jr nc, .notControlCode
+  cp $40
+  jr c, .notControlCode
+
   cp $4f
   jp z, VWFChar4F
   cp $4e
@@ -462,6 +539,24 @@ VWFDrawCharLoop::
   jp z, VWFChar49
   cp $48
   jp z, VWFChar48
+  cp $47
+  jp z, VWFChar47
+  cp $46
+  jp z, VWFChar46
+  cp $45
+  jp z, VWFChar45
+  cp $44
+  jp z, VWFChar44
+  cp $43
+  jp z, VWFChar43
+  cp $42
+  jp z, VWFChar42
+  cp $41
+  jp z, VWFChar41
+  cp $40
+  jp z, VWFChar40
+
+.notControlCode
   pop hl
   call VWFWriteChar
   jp VWFIncTextOffset
@@ -531,6 +626,7 @@ VWFCheckInit::
   xor a
   ld [VWFIsInit], a
   ld [VWFPortraitDrawn], a
+  ld [VWFCurrentFont], a
   ld a, $D0
   ld [VWFTileBaseIdx], a
   call VWFResetMessageBox
@@ -833,6 +929,7 @@ VWFChar4F::
   xor a
   ld [$c5c7], a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; No idea what this does either.
 
@@ -855,6 +952,7 @@ VWFChar4F::
   xor a
   ld [$c5c7], a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; No idea what this does either.
 
@@ -886,10 +984,11 @@ VWFChar4F::
 
   xor a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; End message indicator variable.
 
-  ld a, 1
+  inc a
   ld [$c6c6], a
 
   ret
@@ -920,15 +1019,21 @@ VWFChar4F::
 
   xor a
   ld [$c6c5], a
+  ld [VWFCurrentFont], a
 
   ; End message indicator variable.
 
-  ld a, 1
+  inc a
   ld [$c6c6], a
 
   ret
 
 .endType4
+  ; Clearing some basic variables.
+
+  xor a
+  ld [VWFCurrentFont], a
+  
   ; End message indicator variable.
 
   ld a, 1
@@ -1108,8 +1213,43 @@ VWFChar48::
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
-  call VWFResetMessageBox ; Need to set start offsets
-  ret
+  jp VWFResetMessageBox ; Need to set start offsets
+
+VWFChar47::
+  inc hl
+  ld a, [hl]
+  ld [VWFCurrentFont], a
+  pop hl
+  call VWFIncTextOffset
+  jp VWFIncTextOffset
+
+VWFChar46::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar45::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar44::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar43::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar42::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar41::
+  pop hl
+  jp VWFIncTextOffset
+
+VWFChar40::
+  pop hl
+  jp VWFIncTextOffset
 
 DrawPortrait:
   ld e, $f1 ; Portrait restore f1, Portrait f0
