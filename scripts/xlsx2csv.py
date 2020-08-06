@@ -3,16 +3,47 @@
 ## Converts translator-defined XLSX file to CSV file for bin conversion
 ## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog
 import sys
+import re
 import openpyxl as xl
 from collections import OrderedDict
 import csv
 from os import path
 
+sys.path.append(path.join(path.dirname(__file__), 'common'))
+from common import utils
+
+font_table = utils.read_table("scripts/res/patch/fonts.tbl", keystring=True)
+
 def transform_line(line):
 	line = (line or "").replace('""', '"')
 	for ptr in ptr_names.keys():
 		line = line.replace("<&{0:X}>".format(ptr, 'x').lower(), "<&{0}>".format(ptr_names[ptr]))
-	return line.replace('\n\n','<4C>').replace('\n','<49>')
+	line = line.replace('\n\n','<4C>').replace('\n','<49>')
+
+	sections = re.split(r'(<b>|</b>|<i>|</i>)', line)
+	if len(sections) == 1:
+		return line
+
+	current_font = "Normal"
+	proposed_font = "Normal" # Don't change fonts until we have non-space characters
+	line = ""
+	for section in sections:
+		if section == '<b>':
+			proposed_font = proposed_font + "Bold"
+		elif section == '</b>':
+			assert "Bold" in proposed_font
+			proposed_font = proposed_font.replace("Bold", "", 1)
+		elif section == '<i>':
+			proposed_font = "RoboticBold" if proposed_font == "NormalBold" else "Robotic"
+		elif section == '</i>':
+			assert "Robotic" in proposed_font
+			proposed_font = proposed_font.replace("Robotic", "Normal", 1)
+		elif section and not section.isspace():
+			if proposed_font != current_font:
+				line += f"<f{int(font_table[proposed_font], 16):02X}>"
+				current_font = proposed_font
+			line += section
+	return line
 
 xlsx = sys.argv[1]
 csvdir = sys.argv[2]
@@ -42,22 +73,24 @@ with open(path.join(path.dirname(__file__), 'res', 'ptrs_orig.tbl'),"r") as f:
 for sheet in wb.worksheets:
 	if not sheet.title in SHEETS:
 		continue
-	data = sheet.values
-	header = next(data)
+	values = sheet.values
+	data = sheet.rows
+	header = next(values)
 	pointer_idx = header.index('Pointer') # Pointer index must precede all useful data (data before the pointer index is ignored)
 	original_idx = header.index('Original')
 	translated_idx = header.index('Translated') # Translated is the end of useful data, everything after this is ignored
 	file_path = path.join(csvdir, "{0}.csv".format(sheet.title))
 	text = {}
-	for line in data:
-		if line[0] == '#':
+	for line in data: 
+		# 'line' is a tuple of Cells
+		if str(line[0].value).startswith('#'):
 			continue
-		ptr = line[pointer_idx]
+		ptr = line[pointer_idx].value
 		try:
-			int(line[pointer_idx].split("#")[0], 16)
+			int(line[pointer_idx].value.split("#")[0], 16)
 		except ValueError:
 			continue
-		text[ptr] = line[:translated_idx+1]
+		text[ptr] = [x.value for x in line[:translated_idx+1]]
 	
 	orig_text = OrderedDict()
 	fieldnames = []
