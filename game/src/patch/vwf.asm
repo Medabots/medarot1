@@ -201,7 +201,7 @@ SECTION "Portraits 64-113", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
 
-SECTION "VWF Drawing Functions", ROMX[$5500], BANK[$24]
+SECTION "VWF Drawing Functions", ROMX[$4C00], BANK[$24]
 VWFDrawLetterTable::
   ; This determines the width of each character (excluding the 1px between characters).
   ; The address of this table must be a multiple of $100.
@@ -285,6 +285,26 @@ VWFDrawRoboticLetterTable::
   db 7, 7, 3, 7, 3, 3, 3, 3, 4, 4, 7, 5, 7, 7, 7, 7 ; Fx
   ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
 
+VWFDrawRoboticBoldLetterTable::
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+  db 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 0x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 1x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 2x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 3x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 4x
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; 5x
+  db 7, 7, 4, 5, 4, 4, 2, 4, 4, 6, 6, 5, 3, 5, 5, 5 ; 6x
+  db 5, 5, 5, 5, 5, 6, 2, 5, 4, 5, 4, 7, 7, 1, 4, 7 ; 7x
+  db 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 ; 8x
+  db 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5 ; 9x
+  db 5, 5, 2, 3, 5, 2, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5 ; Ax
+  db 6, 6, 5, 5, 3, 5, 5, 6, 2, 2, 4, 1, 7, 1, 7, 3 ; Bx
+  db 3, 3, 5, 3, 4, 2, 6, 5, 6, 7, 7, 7, 7, 4, 7, 2 ; Cx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Dx
+  db 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ; Ex
+  db 7, 7, 3, 7, 3, 3, 3, 3, 4, 4, 7, 5, 7, 7, 7, 7 ; Fx
+  ;  x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+
 VWFFont::
   INCBIN "build/tilesets/patch/Font.1bpp"
 
@@ -296,6 +316,9 @@ VWFBoldFont::
 
 VWFRoboticFont::
   INCBIN "build/tilesets/patch/RoboticFont.1bpp"
+
+VWFRoboticBoldFont::
+  INCBIN "build/tilesets/patch/RoboticBoldFont.1bpp"
 
 VWFMessageBoxInputHandler::
   ; Advance on button press.
