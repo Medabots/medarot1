@@ -18,31 +18,32 @@ def transform_line(line):
 	line = (line or "").replace('""', '"')
 	for ptr in ptr_names.keys():
 		line = line.replace("<&{0:X}>".format(ptr, 'x').lower(), "<&{0}>".format(ptr_names[ptr]))
-	line = line.replace('\n\n','<4C>').replace('\n','<49>')
+
+	line = re.sub(r'\n((?:</{0,1}(?:b|i)>)*)\n', r'<4C>\1', line).replace('\n','<49>')
 
 	sections = re.split(r'(<b>|</b>|<i>|</i>)', line)
-	if len(sections) == 1:
-		return line
-
-	current_font = "Normal"
-	proposed_font = "Normal" # Don't change fonts until we have non-space characters
-	line = ""
-	for section in sections:
-		if section == '<b>':
-			proposed_font = proposed_font + "Bold"
-		elif section == '</b>':
-			assert "Bold" in proposed_font
-			proposed_font = proposed_font.replace("Bold", "", 1)
-		elif section == '<i>':
-			proposed_font = "RoboticBold" if proposed_font == "NormalBold" else "Robotic"
-		elif section == '</i>':
-			assert "Robotic" in proposed_font
-			proposed_font = proposed_font.replace("Robotic", "Normal", 1)
-		elif section and not section.isspace():
-			if proposed_font != current_font:
-				line += f"<f{int(font_table[proposed_font], 16):02X}>"
-				current_font = proposed_font
-			line += section
+	if len(sections) > 1:
+		current_font = "Normal"
+		proposed_font = "Normal" # Don't change fonts until we have non-space characters
+		line = ""
+		for section in sections:
+			if section == '<b>':
+				assert "Bold" not in proposed_font
+				proposed_font = proposed_font + "Bold"
+			elif section == '</b>':
+				assert "Bold" in proposed_font
+				proposed_font = proposed_font.replace("Bold", "", 1)
+			elif section == '<i>':
+				proposed_font = "RoboticBold" if proposed_font == "NormalBold" else "Robotic"
+			elif section == '</i>':
+				assert "Robotic" in proposed_font
+				proposed_font = proposed_font.replace("Robotic", "Normal", 1)
+			elif section:
+				if proposed_font != current_font and not section.isspace():
+					line += f"<f{int(font_table[proposed_font], 16):02X}>"
+					current_font = proposed_font
+				line += section
+		print(line)
 	return line
 
 xlsx = sys.argv[1]
