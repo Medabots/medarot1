@@ -3,7 +3,7 @@ version: 2.1
 executors:
   rom-executor:
     docker:
-      - image: variantxyz/rgbds-20200621:f996186fae53fa87b1f7a8b3373d91211601d21d
+      - image: variantxyz/rgbds-20200806:cb4fbdfcd534e43a5f8504b405acd7b8b29f5001
     working_directory: /tmp
 
 jobs:
