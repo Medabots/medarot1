@@ -43,7 +43,6 @@ def transform_line(line):
 					line += f"<f{int(font_table[proposed_font], 16):02X}>"
 					current_font = proposed_font
 				line += section
-		print(line)
 	return line
 
 xlsx = sys.argv[1]
