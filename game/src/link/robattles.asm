@@ -128,7 +128,7 @@ LinkRobattleStateMachineRet::
 SECTION "Link Robattle States Partial 1", ROMX[$40fb], BANK[$15]
 LinkRobattleStateInitialize:
   ld a, $01
-  call JumpTable_1e6
+  call JumpEnableSRAM
   xor a
   ld [$c750], a
   ld [$da42], a

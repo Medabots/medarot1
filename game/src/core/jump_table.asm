@@ -49,7 +49,7 @@ JumpTable_1da:: jp Wrapper_63f
 JumpTable_1dd:: jp Wrapper_658
 JumpTable_1e0:: jp Wrapper_65b
 JumpLoadItemList:: jp WrapLoadItemList
-JumpTable_1e6:: jp Wrapper_665
+JumpEnableSRAM:: jp WrapEnableSRAM
 JumpTable_1e9:: jp Wrapper_668
 JumpDrawNumber:: jp WrapDrawNumber
 JumpTable_1ef:: jp Wrapper_670
@@ -65,10 +65,10 @@ JumpTable_20a:: jp Wrapper_691
 JumpTable_20d:: jp Wrapper_694
 JumpTable_210:: jp Wrapper_697
 JumpTable_213:: jp Wrapper_69a
-JumpTable_216:: jp Wrapper_69d
-JumpTable_219:: jp Wrapper_6a0
-JumpTable_21c:: jp Wrapper_6a3
-JumpTable_21f:: jp Wrapper_6a6
+JumpGenerateSaveHeaderAndChecksum:: jp WrapGenerateSaveHeaderAndChecksum
+JumpGenerateSaveChecksum:: jp WrapGenerateSaveChecksum
+JumpSaveDataVerification:: jp WrapSaveDataVerification
+JumpInitiateNewSave:: jp WrapInitiateNewSave
 JumpTable_222:: jp Wrapper_6a9
 JumpTable_225:: jp Wrapper_6a9
 JumpTable_228:: jp Wrapper_6c4

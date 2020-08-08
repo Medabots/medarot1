@@ -37,7 +37,7 @@ InitializeMenu: ; 8016 (2:4016)
   ld a, $03
   call JumpLoadFont
   ld a, $01
-  call JumpTable_1e6
+  call JumpEnableSRAM
   call JumpIncSubStateIndexWrapper
   ret
 

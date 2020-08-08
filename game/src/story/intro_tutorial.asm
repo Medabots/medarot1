@@ -19,7 +19,7 @@ IntroTutorialLoadTiles: ; 5b03a (16:703a)
   ld a, $0c
   call JumpTable_309
   ld a, $01
-  call JumpTable_1e6
+  call JumpEnableSRAM
   ld a, $3c
   ld [$a03d], a
   ld [$a03f], a
