@@ -24,9 +24,9 @@ jobs:
       - run:
           name: "Get base"
           command: |
-            git clone --quiet $BASEROM_REPO ~/medarot_baserom
-            cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom_kabuto.gb
-            cp ~/medarot_baserom/medarot_kuwagata.gb ~/medarot_1/baserom_kuwagata.gb
+            git clone --quiet $BASEROM_REPO medarot_baserom
+            cp medarot_baserom/medarot_kabuto.gb medarot_1/baserom_kabuto.gb
+            cp medarot_baserom/medarot_kuwagata.gb medarot_1/baserom_kuwagata.gb
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
