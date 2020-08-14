@@ -2,7 +2,7 @@ INCLUDE "game/src/common/macros.asm"
 
 SECTION "Check save data", ROMX[$4430], BANK[$1]
 CheckSaveData: ; 4430 (1:4430)
-  call JumpTable_21c
+  call JumpSaveDataVerification
   ld [$c624], a
   cp $00
   jr z, .load_game
@@ -27,7 +27,7 @@ CheckSaveData: ; 4430 (1:4430)
   ld [CoreSubStateIndex], a
   ret
 .new_game
-  call JumpTable_21f
+  call JumpInitiateNewSave
   ld a, $04
   ld [CoreSubStateIndex], a
   ret

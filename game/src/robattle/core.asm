@@ -73,7 +73,7 @@ RobattleStateDoNothing::
 SECTION "Robattle States (Partial 1)", ROMX[$408B], BANK[$4]
 RobattleStateInitialize: ; 1008b (4:408b)
   ld a, $01
-  call JumpTable_1e6
+  call JumpEnableSRAM
   xor a
   ld [$c750], a
   ld a, $02

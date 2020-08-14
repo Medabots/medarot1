@@ -567,7 +567,7 @@ Func_32ed: ; 32ed (0:32ed)
   ld e, $03
 .asm_32f4
   ld a, d
-  call $32df
+  call EnableSRAM
   ld hl, $a000
   ld bc, $2000
 .asm_32fe

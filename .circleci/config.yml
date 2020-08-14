@@ -13,10 +13,8 @@ jobs:
       use-latest-translations:
         type: boolean
         default: false
-      game-version:
-        type: string
-    environment:
-      PATCH_OUTPUT: m1<< parameters.game-version >>-<<pipeline.number>>-<<pipeline.git.revision>>
+    docker:
+      - image: variantxyz/rgbds-20200806:cb4fbdfcd534e43a5f8504b405acd7b8b29f5001
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -25,7 +23,10 @@ jobs:
           path: medarot_1
       - run:
           name: "Get base"
-          command: git clone --quiet $BASEROM_REPO medarot_baserom && cp medarot_baserom/medarot_<< parameters.game-version >>.gb medarot_1/baserom_<< parameters.game-version >>.gb
+          command: |
+            git clone --quiet $BASEROM_REPO ~/medarot_baserom
+            cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom_kabuto.gb
+            cp ~/medarot_baserom/medarot_kuwagata.gb ~/medarot_1/baserom_kuwagata.gb
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
@@ -54,14 +55,16 @@ jobs:
           command: |
             export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
             export PIPELINE_NUMBER=<< pipeline.number >>
-            make << parameters.game-version >> -j
+            make kabuto kuwagata -j
       - run:
           name: "Generate Patch"
           command: |
             mkdir patch
-            ips_util create medarot_1/baserom_<<  parameters.game-version >>.gb medarot_1/medarot_<<  parameters.game-version >>.gb -o patch/$PATCH_OUTPUT.ips
-            cp medarot_1/build/patch/version.txt patch/version-<<  parameters.game-version >>.txt
-            sha1sum medarot_1/medarot_<<  parameters.game-version >>.gb > patch/<<  parameters.game-version >>.sha1
+            ips_util create medarot_1/baserom_kabuto.gb medarot_1/medarot_kabuto.gb -o patch/m1kabuto-<<pipeline.number>>-<<pipeline.git.revision>>.ips
+            ips_util create medarot_1/baserom_kuwagata.gb medarot_1/medarot_kuwagata.gb -o patch/m1kuwagata-<<pipeline.number>>-<<pipeline.git.revision>>.ips
+            cp medarot_1/build/patch/version.txt patch/version.txt
+            sha1sum medarot_1/medarot_kabuto.gb > patch/kabuto.sha1
+            sha1sum medarot_1/medarot_kuwagata.gb > patch/kuwagata.sha1
       - store_artifacts:
           path: patch/
           destination: patch
@@ -90,32 +93,18 @@ workflows:
   workflow:
     jobs:
       - build:
-          name: "Kabuto"
+          name: "Build ROMs"
           use-latest-translations: false
-          game-version: "kabuto"
       - build:
-          name: "Kuwagata"
-          use-latest-translations: false
-          game-version: "kuwagata"
-      - build:
-          name: "Kabuto - Latest Translations"
+          name: "Build ROMs - Latest Translations"
           use-latest-translations: true
-          game-version: "kabuto"
-          filters:
-            tags:
-              only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?(?:[+](?<build>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+)))*))?)$/
-      - build:
-          name: "Kuwagata - Latest Translations"
-          use-latest-translations: true
-          game-version: "kuwagata"
           filters:
             tags:
               only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?(?:[+](?<build>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+)))*))?)$/
       - release:
           name: "Release"
           requires:
-            - "Kabuto - Latest Translations"
-            - "Kuwagata - Latest Translations"
+            - "Build ROMs - Latest Translations"
           filters:
             branches:
               ignore: /.*/

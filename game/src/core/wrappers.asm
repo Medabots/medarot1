@@ -159,8 +159,8 @@ WrapLoadItemList::
   call LoadItemList
   rst $18
   ret
-Wrapper_665::
-  jp $32df
+WrapEnableSRAM::
+  jp EnableSRAM
 Wrapper_668::
   jp $dc6
 WrapDrawNumber::
@@ -199,14 +199,14 @@ Wrapper_697::
   jp $2a94
 Wrapper_69a::
   jp $e10
-Wrapper_69d::
-  jp $2aac
-Wrapper_6a0::
-  jp $2ad5
-Wrapper_6a3::
-  jp $2b00
-Wrapper_6a6::
-  jp $2b60
+WrapGenerateSaveHeaderAndChecksum::
+  jp GenerateSaveHeaderAndChecksum
+WrapGenerateSaveChecksum::
+  jp GenerateSaveChecksum
+WrapSaveDataVerification::
+  jp SaveDataVerification
+WrapInitiateNewSave::
+  jp InitiateNewSave
 Wrapper_6a9::
   ld [$c64e], a
   ld a, $02
