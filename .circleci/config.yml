@@ -2,11 +2,8 @@
 version: 2.1
 jobs:
   build:
-    parameters:
-      game-version:
-        type: string
     docker:
-      - image: variantxyz/rgbds-20200621:f996186fae53fa87b1f7a8b3373d91211601d21d
+      - image: variantxyz/rgbds-20200806:cb4fbdfcd534e43a5f8504b405acd7b8b29f5001
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -16,18 +13,17 @@ jobs:
       - run:
           name: "Get base"
           working_directory: ~
-          command: git clone --quiet $BASEROM_REPO ~/medarot_baserom && cp ~/medarot_baserom/medarot_<< parameters.game-version >>.gb ~/medarot_1/baserom_<< parameters.game-version >>.gb
+          command: |
+            git clone --quiet $BASEROM_REPO ~/medarot_baserom
+            cp ~/medarot_baserom/medarot_kabuto.gb ~/medarot_1/baserom_kabuto.gb
+            cp ~/medarot_baserom/medarot_kuwagata.gb ~/medarot_1/baserom_kuwagata.gb
       - run:
           name: "Build ROM"
           working_directory: ~/medarot_1
-          command: make << parameters.game-version >> -j
+          command: make kabuto kuwagata -j
 
 workflows:
   workflow:
     jobs:
       - build:
-          name: "Kabuto"
-          game-version: "kabuto"
-      - build:
-          name: "Kuwagata"
-          game-version: "kuwagata"
+          name: "Build ROMs"
