@@ -16,6 +16,9 @@ jobs:
       create-tag:
         type: boolean
         default: false
+      use-latest-tag:
+        type: boolean
+        default: false
     docker:
       - image: variantxyz/rgbds-20200806:cb4fbdfcd534e43a5f8504b405acd7b8b29f5001
     steps:
@@ -30,6 +33,15 @@ jobs:
             git clone --quiet $BASEROM_REPO medarot_baserom
             cp medarot_baserom/medarot_kabuto.gb medarot_1/baserom_kabuto.gb
             cp medarot_baserom/medarot_kuwagata.gb medarot_1/baserom_kuwagata.gb
+      - when:
+          condition: << parameters.use-latest-tag >>
+          steps:
+            - run:
+                name: "Checkout latest tag"
+                working_directory: medarot_1
+                command: | # Checkout the latest created tag
+                  git fetch --tags
+                  git checkout `git for-each-ref --sort=-taggerdate --count=1 refs/tags/[0.9]*.*[0.9] | cut -d'/' -f3-`      
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
@@ -139,9 +151,10 @@ workflows:
           filters:
             branches:
               only:
-                - tr_EN
+                - tr_EN # Though this runs on tr_EN, it will actually checkout the latest tag
     jobs:
       - build:
           name: "Nightly Build Tag"
           use-latest-translations: true
           create-tag: true
+          use-latest-tag: true
