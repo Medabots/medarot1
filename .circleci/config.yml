@@ -85,7 +85,7 @@ jobs:
                   git config user.email ${USER_EMAIL}
                   git config user.name "CI Bot"
 
-                  export VERSION=`cat ./text/patch/version.txt ./text/patch/text_version.txt`
+                  export VERSION=`cat ./text/patch/version.txt ./text/patch/text_version.txt | tr -d '\n'`
                   git commit -am "Nightly build - ${VERSION}" || exit 0
                   git tag ${VERSION:1} || exit 0
                   git push origin ${VERSION:1} || exit 0
