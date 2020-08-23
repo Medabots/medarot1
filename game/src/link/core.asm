@@ -66,7 +66,7 @@ LinkMenuStateMachine:: ; 1c000 (7:4000)
   dw LinkMenuStateMachineRet
   dw $44d6
   dw $44ff
-  dw $459e
+  dw LinkMenuStateBattleEncounterScreenLoadPortraits
   dw $409b
   dw $45d3
   dw $45f3
@@ -231,7 +231,37 @@ LinkMenuStateMachineMainMenuOptionSelected:: ; 1c356 (7:4356)
   ret
 ; 0x1c38f
 
-SECTION "Link Menu States Partial 5", ROMX[$5377], BANK[$7]
+SECTION "Link Menu States Partial 5", ROMX[$459E], BANK[$7]
+LinkMenuStateBattleEncounterScreenLoadPortraits::
+  call JumpTable_255
+  ld a, [$C740]
+  cp $FF
+  ret nz
+  ld a, $20
+  ld [$C5AA], a
+  ld a, 1
+  ld [$C6BF], a
+  ld hl, $C6B0
+  ld a, $40
+  ld [hli], a
+  xor a
+  ld [hli], a
+  ld a, $E0
+  ld [hli], a
+  ld a, $60
+  ld [hli], a
+  xor a
+  ld [hli], a
+  ld a, $20
+  ld [hli], a
+  ld a, 2
+  call JumpTable_17d
+  ld a, $1C
+  ldh [$FFA0], a
+  call $5D2C
+  jp JumpIncSubStateIndexWrapper
+
+SECTION "Link Menu States Partial 6", ROMX[$5377], BANK[$7]
 LinkMenuLoadSelectorTilemap: ; 1d377 (7:5377)
   ld e, $b3
   add e
@@ -247,3 +277,9 @@ LinkMenuLoadSelectorTilemap: ; 1d377 (7:5377)
   call JumpLoadTilemap
   ret
 ; 0x1d34b
+
+SECTION "Link Menu Buffer String Position Tracking", ROMX[$5D2C], BANK[$7]
+LinkMenu_GetCurrentRecvBufferOffset::
+  ld a, [SerIO_RecvBufferRead]
+  ld [$DA3E], a
+  ret
