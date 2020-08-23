@@ -91,8 +91,8 @@ Main::
   ld a, [$C5A1]
   or a
   jr nz, .waitForNextFrame
-  call $3FB8
-  call $3F0F
+  call SerIO_RecvBufferPull
+  call SerIO_SendBufferPush
   call $3EF8
   call $0C09
   call $3B23

@@ -1,6 +1,8 @@
 INCLUDE "game/src/common/constants.asm"
 
-SECTION "SerIO Variables", WRAMX[$DA00], BANK[$1]
+SECTION "SerIO Variables", WRAMX[$D800], BANK[$1]
+SerIO_SendBuffer:: ds $100
+SerIO_RecvBuffer:: ds $100
 SerIO_PacketType:: ds 1
 SerIO_Connected:: ds 1
 SerIO_NumConnectionPackets:: ds 1
@@ -11,10 +13,32 @@ SerIO_ShadowREG_SB:: ds 1
 SerIO_IdleCounter:: ds 1
 
 SECTION "SerIO Variables 2", WRAMX[$DA11], BANK[$1]
-SerIO_DriverInByte:: ds 1
+SerIO_DriverInByte:: ds 4
 
 SECTION "SerIO Variables 3", WRAMX[$DA20], BANK[$1]
-SerIO_DriverOutByte:: ds 1
+SerIO_DriverOutByte:: ds 4
+
+SECTION "SerIO Variables 4", WRAMX[$DA27], BANK[$1]
+SerIO_ProcessInByte:: ds 4
+
+SECTION "SerIO Variables 5", WRAMX[$DA2D], BANK[$1]
+SerIO_ProcessOutByte:: ds 4
+
+SECTION "SerIO Variables 6", WRAMX[$DA33], BANK[$1]
+SerIO_SendBufferWrite:: ds 1
+
+SECTION "SerIO Variables 7", WRAMX[$DA35], BANK[$1]
+SerIO_SendBufferRead:: ds 1
+
+SECTION "SerIO Variables 8", WRAMX[$DA37], BANK[$1]
+SerIO_SendBufferReady:: ds 1
+SerIO_RecvBufferWrite:: ds 1
+
+SECTION "SerIO Variables 9", WRAMX[$DA3A], BANK[$1]
+SerIO_RecvBufferRead:: ds 1
+
+SECTION "SerIO Variables 10", WRAMX[$DA3C], BANK[$1]
+SerIO_RecvBufferReady:: ds 1
 
 SECTION "Connection Test Variables", WRAM0[$C64E]
 SerIO_ConnectionTestResult:: ds 1
@@ -85,8 +109,8 @@ SerIO_IRQ::
   xor a
   ld [SerIO_TransferLocationOffset], a
   ld [SerIO_DoingXfer], a
-  call $3F88
-  call $3F4A
+  call SerIO_RecvBufferPush
+  call SerIO_SendBufferPull
 
 .return
   pop hl
@@ -118,3 +142,198 @@ SerIO_Wait::
   or c
   jr nz, SerIO_Wait
   ret
+
+SerIO_SendBufferPush::
+  di
+  ld a, 1
+  ld [SerIO_SendBufferReady], a
+  ld a, [SerIO_SendBufferWrite]
+  ld l, a
+  ld h, SerIO_SendBuffer >> 8
+  ld b, 0
+  ld de, SerIO_ProcessOutByte
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  jr nz, .nullByte
+  jr c, .nullByte
+  ei
+  ret
+
+.nullByte
+  ld a, l
+  ld [SerIO_SendBufferWrite], a
+  xor a
+  ld hl, SerIO_ProcessOutByte
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ei
+  ret
+
+SerIO_SendBufferPull::
+  ld a, [SerIO_SendBufferReady]
+  and a
+  jr z, .nothingToSend
+  xor a
+  ld [SerIO_SendBufferReady], a
+  ld a, [SerIO_SendBufferRead]
+  ld l, a
+  ld h, SerIO_SendBuffer >> 8
+  ld b, 0
+  ld de, SerIO_DriverOutByte
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  jr nz, .somethingWasRead
+  jr c, .somethingWasRead
+  ret
+
+.somethingWasRead
+  ld a, l
+  ld [SerIO_SendBufferRead], a
+  ret
+
+.nothingToSend
+  xor a
+  ld hl, SerIO_DriverOutByte
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ret
+
+SerIO_RecvBufferPush::
+  ld a, 1
+  ld [SerIO_RecvBufferReady], a
+  ld a, [SerIO_RecvBufferWrite]
+  ld l, a
+  ld h, SerIO_RecvBuffer >> 8
+  ld b, 0
+  ld de, SerIO_DriverInByte
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  ld b, a
+  inc de
+  ld a, [de]
+  ld [hl], a
+  inc l
+  add b
+  jr nz, .somethingWasRead
+  jr c, .somethingWasRead
+  ret
+
+.somethingWasRead
+  ld a, l
+  ld [SerIO_RecvBufferWrite], a
+  ret
+
+SerIO_RecvBufferPull::
+  di
+  ld a, [SerIO_RecvBufferReady]
+  and a
+  jr z, .nothingToRecv
+  xor a
+  ld [SerIO_RecvBufferReady], a
+  ld a, [SerIO_RecvBufferRead]
+  ld l, a
+  ld h, SerIO_RecvBuffer >> 8
+  ld b, 0
+  ld de, SerIO_ProcessInByte
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  ld b, a
+  inc de
+  ld a, [hl]
+  inc l
+  ld [de], a
+  add b
+  jr nz, .somethingWasRead
+  jr c, .somethingWasRead
+  ei
+  ret
+
+.somethingWasRead
+  ld a, l
+  ld [SerIO_RecvBufferRead], a
+  ei
+  ret
+
+.nothingToRecv
+  xor a
+  ld hl, SerIO_ProcessInByte
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ei
+  ret
+
+;0x3FFA

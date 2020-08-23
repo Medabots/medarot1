@@ -179,7 +179,7 @@ LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   jp JumpIncSubStateIndexWrapper
 ; 0x1c2c0
 LinkMenuStateMachineMainMenuSteadyState:: ; 1c2c0 (7:42c0)
-  ld a, [$da27]
+  ld a, [SerIO_ProcessInByte]
   sub $02
   ld b, a
   jr c, .asm_1c2e2
@@ -231,15 +231,15 @@ LinkMenuStateMachineMainMenuOptionSelected:: ; 1c356 (7:4356)
   ld [$c740], a
   jp JumpIncSubStateIndexWrapper
 .asm_1c377
-  ld a, [$da01]
+  ld a, [SerIO_Connected]
   or a
   jr z, .asm_1c385
   ld a, [$c6f0]
   inc a
-  ld [$da2d], a
+  ld [SerIO_ProcessOutByte], a
   ret
 .asm_1c385
-  ld a, [$da27]
+  ld a, [SerIO_ProcessInByte]
   or a
   ret z
   dec a
