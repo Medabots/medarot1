@@ -258,7 +258,7 @@ LinkMenuStateBattleEncounterScreenLoadPortraits::
   call JumpTable_17d
   ld a, $1C
   ldh [$FFA0], a
-  call $5D2C
+  call LinkMenu_GetCurrentRecvBufferOffset
   jp JumpIncSubStateIndexWrapper
 
 SECTION "Link Menu States Partial 6", ROMX[$5377], BANK[$7]
