@@ -64,7 +64,7 @@ LinkMenuStateMachine:: ; 1c000 (7:4000)
   dw $4440
   dw LinkMenuStateMachineRet
   dw LinkMenuStateMachineRet
-  dw LinkMenuStateMachineRet
+  dw LinkMenuStateBattleEncounterSaveOpponentNameBufferOffset
   dw $44d6
   dw $44ff
   dw LinkMenuStateBattleEncounterScreenLoadPortraits
@@ -274,8 +274,9 @@ LinkMenuStateBattleEncounterScreenLoadPortraits::
   call JumpTable_17d
   ld a, $1C
   ldh [$FFA0], a
-  call LinkMenu_GetCurrentRecvBufferOffset
-  jp JumpIncSubStateIndexWrapper
+  ld a, $1F
+  ld [CoreSubStateIndex], a
+  ret
 
 SECTION "Link Menu States Partial 6", ROMX[$5377], BANK[$7]
 LinkMenuLoadSelectorTilemap: ; 1d377 (7:5377)
@@ -298,4 +299,12 @@ SECTION "Link Menu Buffer String Position Tracking", ROMX[$5D2C], BANK[$7]
 LinkMenu_GetCurrentRecvBufferOffset::
   ld a, [SerIO_RecvBufferRead]
   ld [$DA3E], a
+  ret
+
+SECTION "Link Menu Buffer String Position Tracking Patch", ROMX[$7FEC], BANK[$7]
+LinkMenuStateBattleEncounterSaveOpponentNameBufferOffset::
+  ld a, [SerIO_RecvBufferRead]
+  ld [$DA3E], a
+  ld a, $23
+  ld [CoreSubStateIndex], a
   ret
