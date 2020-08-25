@@ -363,7 +363,6 @@ LinkRobattleScreenCopyPlayerMedarotInfo: ; 55111 (15:5111)
   xor a
   call HackCopyDEtoHL_15
   srl b
-  srl b ; only need 8
   ld a, $ee ; A hack to copy the name to $f0
   call HackCopyDEtoHL_15
   ld a, [$c652]
