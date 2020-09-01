@@ -6,23 +6,24 @@ FortuneSpinnerLoad:
   ret nz
   ld a, $01
   ld [$c6c7], a
-  ld b, $20
-  ld c, $40
-  ld d, $38
+  ld b, $18 ; Moved one tile up, originally $20
+  ld c, $38 ; Moved one tile up, originally $40
+  ld d, $30 ; Expanded one tile to the left of original, originally $38
   ld e, $70
-  call JumpTable_204
-  ld a, $04 ; Originally 6
+  call JumpTable_204 ; OAM Tilemap detection function
+  ; FortuneSpinnerUnload should match these values
+  ld a, $04 ; Originally 6, height to save
   ld [$c64e], a
-  ld a, $09 ; Originally 7
+  ld a, $09 ; Originally 7, width to save
   ld [$c64f], a
-  ld a, $02
+  ld a, $01 ; Originally 2, starting y position
   ld [$c650], a
-  ld a, $04
+  ld a, $04 ; Starting x position
   ld [$c651], a
   ld a, $00
   call JumpTable_2c4
   ld b, $05
-  ld c, $02
+  ld c, $01
   ld e, $F2 ; Width8TextBox
   ld a, $29 ; LoadLuckLotteryTextAndJump2ca
   rst $08
@@ -53,7 +54,7 @@ FortuneSpinnerStopping:
   jp FortuneSpinnerLoadFortuneText
 FortuneSpinnerStoppingLoadBoxTilemap: ; f9eb (3:79eb)
   ld b, $05
-  ld c, $02
+  ld c, $01
   ld e, $F2
   jp JumpTable_2ca
 FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
@@ -71,7 +72,7 @@ FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
   ld [$c64e], a
   ld a, $09 ; Originally 7
   ld [$c64f], a
-  ld a, $02
+  ld a, $01 ; Originally 2
   ld [$c650], a
   ld a, $04
   ld [$c651], a
@@ -96,7 +97,7 @@ FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   add $58
   ld e, a
   ld b, $06
-  ld c, $03
+  ld c, $02
   jp JumpTable_2ca
 .table
   db FortuneSomeLuck
