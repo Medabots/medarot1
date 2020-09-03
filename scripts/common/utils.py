@@ -47,7 +47,8 @@ def txt2bin(txt, tbl, pad=0, padbyte=0):
             continue 
         finally:
             idx += 1
-    return tmap if not pad else (tmap + ([padbyte]*(pad-len(tmap))))[0:pad-1] + [padbyte] # Always terminate with a padbyte
+    assert(pad == 0 or pad-len(tmap) >= 0)
+    return tmap if not pad else (tmap + ([padbyte]*(pad-len(tmap))))[0:pad] # Always terminate with a padbyte
 
 def read_short(rom):
     return struct.unpack("<H", rom.read(2))[0]
