@@ -13,6 +13,9 @@ jobs:
       use-latest-translations:
         type: boolean
         default: false
+      use-latest-translation-versioned:
+        type: boolean
+        default: false
       create-tag:
         type: boolean
         default: false
@@ -45,9 +48,18 @@ jobs:
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
-            - run:
-                name: "Download latest text"
-                command: wget -q --no-check-certificate "https://docs.google.com/spreadsheets/d/$TRANSLATION_SHEET_ID/export" -O ~/sheet.xlsx
+            - when:
+                condition: << parameters.use-latest-translation-versioned >>
+                steps:
+                  - run:
+                      name: "Download latest text from repository"
+                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_REPO_URL" -O ~/sheet.xlsx
+            - unless:
+                condition: << parameters.use-latest-translation-versioned >>
+                steps:
+                  - run:
+                      name: "Download latest text from source"
+                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_SOURCE_URL" -O ~/sheet.xlsx
             - run:
                 name: "Update Dialog"
                 working_directory: medarot_1
@@ -156,5 +168,6 @@ workflows:
       - build:
           name: "Nightly Build Tag"
           use-latest-translations: true
+          use-latest-translation-versioned: true
           create-tag: true
           use-latest-tag: true
