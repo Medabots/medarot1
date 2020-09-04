@@ -807,7 +807,7 @@ RobattleLoadMedarotNames::
   ld c, l
   ld hl, $00f0
   add hl, de
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -815,16 +815,10 @@ RobattleLoadMedarotNames::
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+.end
+REPT $7756 - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
+ENDR
 ; 0x13756
 
 SECTION "Robattle - Load Medarot Names (1B copy)", ROMX[$6e26], BANK[$1B]
@@ -891,7 +885,7 @@ RobattleLoadMedarotNamesCopy::
   ld c, l
   ld hl, $00f0
   add hl, de
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -899,16 +893,10 @@ RobattleLoadMedarotNamesCopy::
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+.end
+REPT $6eb0 - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
+ENDR
 
 SECTION "LeftPadTextTo8 (1B Copy)", ROMX[$6ebc], BANK[$1B]
 LeftPadTextTo8Copy:

@@ -622,7 +622,7 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   ld c, l
   ld hl, $00f0
   add hl, de
-  call VWFPutStringTo8
+  call VWFPutStringAutoNarrowTo8
 .next_enemy_medarot
   ld a, [$c652]
   inc a
@@ -630,16 +630,10 @@ LinkRobattleLoadMedarotNames: ; 15:7b34
   cp $3
   jp nz, .loop_enemy_medarot
   ret
+.end
+REPT $7bbe - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
+ENDR
 
 SECTION "Link Robattle - Partial Disassembly 5", ROMX[$558e], BANK[$15]
 LinkRobattleInitialize: ; 5558e (15:558e)
