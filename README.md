@@ -2,8 +2,14 @@
 
 # Obtaining/Applying the Patch
 1. Obtain the original ROM for the Medarot 1 version you want (the md5 hashes are below)
-1. Head to the [Releases](https://github.com/VariantXYZ/medarot1/releases) page and grab the .ips file for your preferred version
+1. Head to the [Latest release](https://github.com/VariantXYZ/medarot1/releases/latest) page and grab the .ips file for your preferred version
 1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/) to apply the IPS patch to your ROM
+
+The '+txt.N' versions indicates the version of the translation. 
+
+# Reporting Bugs
+
+Feel free to create an issue here with at least a screenshot of your issue. A save is ideal, but it's not always readily available.
 
 # Building
 
