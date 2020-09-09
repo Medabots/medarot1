@@ -1165,7 +1165,7 @@ RobattleLoadTextFromBUF01ToBUF04:
   call JumpTable_294
   ld hl, cBUF01
   ld de, cBUF04
-  ld b, $9
+  ld b, $0f
 .asm_158ec
   ld a, [hli]
   ld [de], a
@@ -1189,7 +1189,7 @@ RobattleLoadTextFromBUF01ToBUF02:
   call JumpTable_294
   ld hl, cBUF01
   ld de, cBUF02
-  ld b, $9
+  ld b, $0f
 .asm_15912
   ld a, [hli]
   ld [de], a
