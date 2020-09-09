@@ -33,8 +33,8 @@ Pointer[#version],Original,Translated
 0x6003e,じゃあ 1000円で かうぞ,"All right, I'll buy it for ¥1000."
 0x60040,おおっ!<4E>よくつれるぞ このルアー,Ooh! This is a very well-made lure.
 0x60042,たいかいドームヘ ようこそ,Welcome to the Tournament Dome!
-0x60044,メダルは ぜんぶで57しゅるいさ,There are 57 different kinds of Medals.
-0x60046,メダルは ぜんぶで28コあるのさ,There are 28 medals in total.
+0x60044,メダルは ぜんぶで57しゅるいさ,There are 57 unique Medal forms.
+0x60046,メダルは ぜんぶで28コあるのさ,There are 28 Medals in total.
 0x60048,オラと しょうぶだ!,Fight me!
 0x6004a,ケイタイを ひらいて メダルの<4E>じゅくれんどを みてみな<4C>メダロットを くみたてたときに<4E>メダルの したに でるだろう？<4C>それが そのメダロットが<4E>とくいな こうどうなのさ<4C>じゅくれんどは つかえば<4E>つかうほど あがっていくぜ<4C>はずれても いいから くリかえし<4E>れんしゅうすることが だいじなのさ<4C>じゅくれんどが ひくいままじゃ<4E>つよいやつには かすリもしない<4C>レベルのたかいやつを まかしたきゃ<4E>じゅくれんどを ガンガンあげな<4C>あたリにくいときゃ さくてきを<4E>つかうのも ひとつの てだぜ,"You can look at your Medarot's skills when you open up your Phone menu.<4C>Have you noticed something underneath its Medal? <49>That's the Medal's specialty.<4C>The more you use it, the more its power will increase, even if you miss the attack. <4C>Right now, its power may be weak...but if you fight powerful oppenents, it will increase<49>little by little.<4C>If you defeat high-leveled oppenents, its power will increase exponentially!<4C>If you find it difficult to hit your oppenents, try using ""Scan""."
 0x6004c,=0x6004a,=0x6004a
