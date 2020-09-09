@@ -120,33 +120,22 @@ LoadRobattleNames:
   ld [$c76b], a
   ld a, [$c776]
   or a
-  jr nz, .asm_2f95 ; 0x2f81 $12
-  push hl
-  call VWFPadTextTo8
-  ld h, $0
-  ld l, a
-  psbc $984b, $c6
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call VWFPutStringTo8
-  ret
-.asm_2f95
+  jr z, .no_load_from_buffer ; 0x2f81 $12
   ld hl, $c778
-  push hl
+.no_load_from_buffer
   call VWFPadTextTo8
-  ld h, $0
-  ld l, a
+  ld a, [VWFCurrentFont]
+  or a
+  jr z, .not_narrow
+  call VWFPadTextTo8
+.not_narrow
   psbc $984b, $c6
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
   call VWFPutStringTo8
   ret
+.end
+REPT $2faa - .end
   nop
-  nop
+ENDR
 ; 0x2faa
 
 LoadMedarotterNamesFromTable: ; 2faa (0:2faa)
