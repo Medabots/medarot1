@@ -1144,3 +1144,58 @@ RobattleTimeLimitReachedDecideWinner: ; 6f629 (1b:7629)
   jr nz, .asm_6f68e
   ret
 ; 0x6f695
+
+SECTION "Robattle - Load text for transformation message",  ROMX[$58c7],  BANK[$05]
+RobattleLoadTextFromBUF01ToBUF04:
+  push de
+  ld [$c650], a
+  ld hl, $000d
+  add hl, de
+  ld b, $0
+  ld a, [$c650]
+  ld c, a
+  add hl, bc
+  ld a, [hl]
+  and $7f
+  push af
+  ld b, $0
+  ld a, [$c650]
+  ld c, a
+  pop af
+  call JumpTable_294
+  ld hl, cBUF01
+  ld de, cBUF04
+  ld b, $9
+.asm_158ec
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_158ec ; 0x158f0 $fa
+  pop de
+  ret
+RobattleLoadTextFromBUF01ToBUF02:
+  push de
+  ld [$c650], a
+  ld hl, $002f
+  add hl, de
+  ld a, [hl]
+  and $7f
+  push af
+  ld b, $0
+  ld a, [$c650]
+  ld c, a
+  pop af
+  call JumpTable_294
+  ld hl, cBUF01
+  ld de, cBUF02
+  ld b, $9
+.asm_15912
+  ld a, [hli]
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .asm_15912 ; 0x15916 $fa
+  pop de
+  ret
+; 0x1591a
