@@ -345,7 +345,7 @@ LoadLinkMainMenuTextAndLoadTilemap:
   push hl
   push de
   push bc
-  Load1BPPTileset $8800, PatchTilesetStartLinkMainMenuText, PatchTilesetEndLinkMainMenuText
+  Load1BPPTileset $9010, PatchTilesetStartLinkMainMenuText, PatchTilesetEndLinkMainMenuText
   pop bc
   pop de
   pop hl
