@@ -402,7 +402,7 @@ HackCallCopyNameHack_15:
   ld e, $02
   ld h, d
   ld l, $f0
-  ld b, $08
+  ld b, $09 ; 8 characters per name + 1 for terminator
 HackCopyDEtoHL_15: ;  Copy 'b' bytes from [de] to [hl+a], preserve all registers except a 
   push bc
   push de
