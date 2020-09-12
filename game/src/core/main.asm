@@ -102,7 +102,7 @@ Main::
   ld [$C5A1], a
 
 .jpB
-  call $058D ; Audio handling.
+  call WrapPlaySound ; Audio handling.
 
 .waitForNextFrame
   ldh a, [$FF92]
