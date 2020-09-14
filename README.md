@@ -5,13 +5,15 @@
 1. Head to the [Latest release](https://github.com/VariantXYZ/medarot1/releases/latest) page and grab the .ips file for your preferred version
 1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/) to apply the IPS patch to your ROM
 
-The '+txt.N' versions indicates the version of the translation. 
+The '+txt.N' versions indicates the version of the translation.
 
 # Reporting Bugs
 
-Feel free to create an issue here with at least a screenshot of your issue. A save is ideal, but it's not always readily available.
+Feel free to create an issue here with a save and/or screenshots of your issue. If that's not possible, steps to reproduce it will suffice.
 
 # Building
+
+If all you care about is playing the patch, then refer to the instructions at the top of this README. Otherwise, continue below for build instructions.
 
 ## Dependencies
 
@@ -24,13 +26,21 @@ Feel free to create an issue here with at least a screenshot of your issue. A sa
 ## Make
 
 1. Rename the Medarot 1 KABUTO v1.1 ROM and/or Medarot 1 KUWAGATA v1.1 ROM to 'baserom_kabuto.gb' or 'baserom_kuwagata.gb' respectively and drop it in the project root
-1. Execute make (optionally pass -j)
-
-# Maintainers
-
-* [VariantXYZ](https://github.com/VariantXYZ)
-* [andwhyisit](https://github.com/andwhyisit)
+1. Execute make (optionally pass -j), pass a specific version (kabuto or kuwagata) or 'all'
+	* The default for no arguments is 'kabuto'
+1. 'medarot_kabuto.gb' or 'medarot_kuwagata.gb' should be generated in your project root, depending on the version
 
 # Other References
 
 [Medapedia page](http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project) (source reference for a lot of text and information)
+
+# Contributors
+
+(The [Contributors](https://github.com/VariantXYZ/medarot1/graphs/contributors) page only covers GitHub contributions)
+
+* [VariantXYZ](https://github.com/VariantXYZ) (Repo Maintainer, Disassembly, Coding)
+* [andwhyisit](https://github.com/andwhyisit) (Disassembly, Coding)
+* [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial Research)
+* Tobias (Translations)
+
+And of course, various members of the community for playtesting and submitting bug reports. 
