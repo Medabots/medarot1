@@ -1,18 +1,18 @@
 Pointer[#version],Original,Translated
-0x74000,ヘんどうの こうかが はっせいした!<S3c>\<S2>こうどうせいこうリつが さがった!<S3c><*4>,Inflicted Flux status!<S3c><4A><49><S02>Success rate down!<S3c><*4>
-0x74002,ていしの こうかが はっせいした!<S3c>\<S2>しばらくのあいだ うごけない!<S3c><*4>,Inflicted Stop status!<S3c><4A><49><S02>Unable to move!<S3c><*4>
-0x74004,そくばくの こうかが はっせいした!<S3c>\<S2>スピードが おそくなった!<S3c><*4>,Inflicted Bind status!<S3c><4A><49><S02>Speed decreased!<S3c><*4>
-0x74006,けいぞくの こうかが はっせいした!<S3c>\<S2>いどうちゅうも ダメージを うける!<S3c><*4>,Inflicted Burn status!<S3c><4A><49><S02>Continual damage!<S3c><*4>
-0x74008,<&BUF01> は<4E>ヘんどう から かいじょされた!<S3c><*1>,<&BUF01>'s Flux status was cleared!<S3c><*1>
-0x7400a,<&BUF01> は<4E>ていし から かいじょされた!<S3c><*1>,<&BUF01>'s Stop status was cleared!<S3c><*1>
-0x7400c,<&BUF01> は<4E>そくばく から かいじょされた!<S3c><*1>,<&BUF01>'s Bind status was cleared!<S3c><*1>
-0x7400e,<&BUF01> は<4E>けいぞく から かいじょされた!<S3c><*1>,<&BUF01>'s Burn status was cleared!<S3c><*1>
+0x74000,ヘんどうの こうかが はっせいした!<S3c>\<S2>こうどうせいこうリつが さがった!<S3c><*4>,Inflicted <f02>Flux <f00>status!<S3c><4A><49><S02>Success rate down!<S3c><*4>
+0x74002,ていしの こうかが はっせいした!<S3c>\<S2>しばらくのあいだ うごけない!<S3c><*4>,Inflicted <f02>Stop <f00>status!<S3c><4A><49><S02>Unable to move!<S3c><*4>
+0x74004,そくばくの こうかが はっせいした!<S3c>\<S2>スピードが おそくなった!<S3c><*4>,Inflicted <f02>Bind <f00>status!<S3c><4A><49><S02>Speed decreased!<S3c><*4>
+0x74006,けいぞくの こうかが はっせいした!<S3c>\<S2>いどうちゅうも ダメージを うける!<S3c><*4>,Inflicted <f02>Burn <f00>status!<S3c><4A><49><S02>Continual damage!<S3c><*4>
+0x74008,<&BUF01> は<4E>ヘんどう から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Flux <f00>status was cleared!<S3c><*1>
+0x7400a,<&BUF01> は<4E>ていし から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Stop <f00>status was cleared!<S3c><*1>
+0x7400c,<&BUF01> は<4E>そくばく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Bind <f00>status was cleared!<S3c><*1>
+0x7400e,<&BUF01> は<4E>けいぞく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Burn <f00>status was cleared!<S3c><*1>
 0x74010,<&BUF01> は<4E>かいじょするものが なかった!<S3c><*4>,There are no status effects to clear!<S3c><*4>
 0x74012,<&BUF01> は<4E>かいじょに しっぱいした!<S3c><*4>,<&BUF01>'s clear failed!<S3c><*4>
-0x74014,<&BUF01> は<4E>ヘんどうの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all Flux status!<S3c><*4>
-0x74016,<&BUF01> は<4E>ていしの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all Stop status!<S3c><*4>
-0x74018,<&BUF01> は<4E>そくばくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all Bind status!<S3c><*4>
-0x7401a,<&BUF01> は<4E>けいぞくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all Burn status!<S3c><*4>
+0x74014,<&BUF01> は<4E>ヘんどうの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Flux <f00>status!<S3c><*4>
+0x74016,<&BUF01> は<4E>ていしの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Stop <f00>status!<S3c><*4>
+0x74018,<&BUF01> は<4E>そくばくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Bind <f00>status!<S3c><*4>
+0x7401a,<&BUF01> は<4E>けいぞくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Burn <f00>status!<S3c><*4>
 0x7401c,しかし ばくふうで ダメージをうけた<S3c><*4>,...But it took damage from the blast!<S3c><*4>
 0x7401e,てんたいかんそくじょ,Observatory
 0x74020,=0x7401e,=0x7401e
