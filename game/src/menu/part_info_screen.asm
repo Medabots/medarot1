@@ -84,7 +84,7 @@ LoadPartDescriptionInShops: ; 3942 (0:3942)
   ld hl, PartDescriptionsPtr
   rst $30 ; a += a; hl = [hl+a]
   ld de, $9c41
-  ld b, $44
+  ld b, $cd
   ld a, $12
   ld [VWFTileLength], a
   rst $8 ; VWFPutStringInitFullTileLocation
