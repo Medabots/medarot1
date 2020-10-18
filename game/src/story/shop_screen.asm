@@ -105,7 +105,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9884, $b0
+  psbc $9884, $ad
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -133,7 +133,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $98c4, $b8
+  psbc $98c4, $b5
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -161,7 +161,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9904, $c0
+  psbc $9904, $bd
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
@@ -188,7 +188,7 @@ LoadShopPartsMenu:
   ld b, $0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9944, $c8
+  psbc $9944, $c5
   call VWFPutStringAutoNarrowTo8
   pop af
   call $4593
