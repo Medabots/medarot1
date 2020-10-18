@@ -4,4 +4,4 @@ patch. Please report any bugs
 
 and translation issues at
 
-github.com/VariantXYZ/medarot1
+github.com/Medabots/medarot1
