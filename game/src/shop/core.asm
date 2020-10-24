@@ -164,7 +164,29 @@ ShopBuyPriceDisplayState::
   ret
 ; 0xf337
 
-SECTION "Shop Menu State Machine 3", ROMX[$7446], BANK[$3]
+SECTION "Shop Menu State Machine 3", ROMX[$7414], BANK[$3]
+ShopSellPriceWindowDisplayState::
+  call $456F
+  ld a, [$C8B5]
+  ld [$C886], a
+  ld b, 0
+  ld c, $C
+  ld e, $1C
+  call JumpTable_2ca
+  ld a, 1
+  ld [$C890], a
+  ld b, 0
+  ld a, [$C886]
+  ld c, a
+  call $429E
+  ld b, 7
+  ld c, $10
+  call $412D
+  ld a, 1
+  ld [$C89A], a
+  call $433A
+  jp $659C
+
 ShopSellPriceDisplayState::
   ld b, 0
   ld a, [$C890]
