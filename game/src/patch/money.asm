@@ -68,3 +68,40 @@ MapSellMoneyWithYenSymbol::
   xor a
   ld [$C89A], a
   jp $433A
+
+ShopSellPriceSpriteFixHack::
+  call $456F
+
+  ld hl, $C0A0
+  ld de, $20
+  ld b, $19
+
+.loop
+  ld a, [hl]
+  or a
+  jr z, .dontHide
+
+  and 1
+  jr z, .dontHide
+
+  ld c, l
+  ld a, l
+  add $13
+  ld l, a
+  ld a, [hl]
+  ld l, c
+  or a
+  jr nz, .dontHide
+
+  ld a, [hl]
+  and $FE
+  or 2
+  ld [hl], a
+
+.dontHide
+  add hl, de
+  dec b
+  jr nz, .loop
+  ld a, 1
+  ld [$C600], a
+  ret
