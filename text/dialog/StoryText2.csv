@@ -11,7 +11,7 @@ Pointer[#version],Original,Translated
 0x60012,おみやげに<4E>ほしのかけらを かいませんか？<*4>,Will you buy this Star Piece as a souvenir?
 0x60014,あリがとう,Thanks.
 0x60016,あリがとう ございます<4E>300円になリます,Thank you very much. That'll be 300¥.
-0x60018,おお! おちていたメダルを<4E>とどけてくれたのか<4C>なかなか えらいじゃないか<4E>では あずかっておこう<4C>と いいたいところだが しょうじきに<4E>とどけてくれた ごほうびだ<4C>そのメダルを きみに あげよう<4C>でも ちゃんと パパに<4E>ほうこくするんだぞ,"Oh! You've come to return a lost Medal?<49>What an honest young man.<4C>Well, I would take it off your hands, but...<49>Why not hold onto it? <49>You can think of it as your reward for turning it in.<4C>Alright, it's settled. <49>The Medal is yours!<4C>Be sure to tell your parents about it."
+0x60018,おお! おちていたメダルを<4E>とどけてくれたのか<4C>なかなか えらいじゃないか<4E>では あずかっておこう<4C>と いいたいところだが しょうじきに<4E>とどけてくれた ごほうびだ<4C>そのメダルを きみに あげよう<4C>でも ちゃんと パパに<4E>ほうこくするんだぞ,"Oh! You've come to return a lost Medal?<4C>What an honest young man!<4C>Well, I would take it off your hands, but...<4C>Why not hold onto it?<4C>You can think of it as your reward for turning it in.<4C>Alright, it's settled!<49>The Medal is yours!<4C>Be sure to tell your parents about it."
 0x6001a,たとえ<4E>うちゅうじんが せめてきても<4C>セレクトたいが いるから<4E>ちきゅうは だいじょうぶだよね,"Even if aliens invade, we have the Select Force to protect us.<4C>As long as they're around, Earth is safe."
 0x6001c,おおきくなったら セレクトたいに<4E>はいろうと おもってたのに,"When I grow up, I want to join the Select Force."
 0x6001e,んっ？<4E>みたことない ほしがあるぞ,Hm?<49>I've never seen a star like that before.
@@ -36,19 +36,19 @@ Pointer[#version],Original,Translated
 0x60044,メダルは ぜんぶで57しゅるいさ,There are 57 unique Medal forms.
 0x60046,メダルは ぜんぶで28コあるのさ,There are 28 Medals in total.
 0x60048,オラと しょうぶだ!,Fight me!
-0x6004a,ケイタイを ひらいて メダルの<4E>じゅくれんどを みてみな<4C>メダロットを くみたてたときに<4E>メダルの したに でるだろう？<4C>それが そのメダロットが<4E>とくいな こうどうなのさ<4C>じゅくれんどは つかえば<4E>つかうほど あがっていくぜ<4C>はずれても いいから くリかえし<4E>れんしゅうすることが だいじなのさ<4C>じゅくれんどが ひくいままじゃ<4E>つよいやつには かすリもしない<4C>レベルのたかいやつを まかしたきゃ<4E>じゅくれんどを ガンガンあげな<4C>あたリにくいときゃ さくてきを<4E>つかうのも ひとつの てだぜ,"You can look at your Medarot's skills when you open up your Phone menu.<4C>Have you noticed something underneath its Medal? <49>That's the Medal's specialty.<4C>The more you use it, the more its power will increase, even if you miss the attack. <4C>Right now, its power may be weak...but if you fight powerful oppenents, it will increase<49>little by little.<4C>If you defeat high-leveled oppenents, its power will increase exponentially!<4C>If you find it difficult to hit your oppenents, try using ""Scan""."
+0x6004a,ケイタイを ひらいて メダルの<4E>じゅくれんどを みてみな<4C>メダロットを くみたてたときに<4E>メダルの したに でるだろう？<4C>それが そのメダロットが<4E>とくいな こうどうなのさ<4C>じゅくれんどは つかえば<4E>つかうほど あがっていくぜ<4C>はずれても いいから くリかえし<4E>れんしゅうすることが だいじなのさ<4C>じゅくれんどが ひくいままじゃ<4E>つよいやつには かすリもしない<4C>レベルのたかいやつを まかしたきゃ<4E>じゅくれんどを ガンガンあげな<4C>あたリにくいときゃ さくてきを<4E>つかうのも ひとつの てだぜ,"You can look at your Medarot's skills when you open up your Phone menu.<4C>Have you noticed something underneath its Medal?<49>That's the Medal's specialty.<4C>The more you use it, the more its power will increase, even if you miss the attack. <4C>Right now, its power may be weak...but if you fight powerful oppenents, it will increase<49>little by little.<4C>If you defeat high-leveled oppenents, its power will increase exponentially!<4C>If you find it difficult to hit your oppenents, try using <f02>Scan<f00>."
 0x6004c,=0x6004a,=0x6004a
 0x6004e,=0x6004a,=0x6004a
 0x60050,んっ ぼうずか・・・<4E>ひとリものどうし ロボトルするか？<*4>,Hey boy..<49>How about a robottle between two single men?<*4>
 0x60052,<&NAME> きょうもげんきだな<4C>スポーツもいいけど<4E>そろそろ メダロ・・・<4C>いや いいんだ なんでもない,"Good morning <&NAME>, you're looking good today.<4C>Sports are great and all, but you really should get into Medar...<4C>Er... Nevermind, forget it."
 0x60054,=0x60052,=0x60052
 0x60056,ロボトルしよーぜ!<4C>えっ メダロットを もってないって<4E>ちぇっ ださいやつ,"C'mon, let's Robottle!<4C>Huh? You don't have a Medarot? <49>Laaame."
-0x60058,メダロットどうしを たたかわせる<4E>ロボトルが はやっているのよ<4C>メダロットの1たいも もってなきゃ<4E>おんなのこに もてないんだから,"Right now, it's super cool to have your Medarot fight in Robottles.<49>If you don't have your own Medarot, you'll never be popular with the ladies!"
+0x60058,メダロットどうしを たたかわせる<4E>ロボトルが はやっているのよ<4C>メダロットの1たいも もってなきゃ<4E>おんなのこに もてないんだから,"Right now, it's super cool to have your Medarot fight in Robottles.<4C>If you don't have your own Medarot, you'll never be popular with the ladies!"
 0x6005a,メダロットに ロボトルに<4E>パーツ ティンペット メダルっと<4C>うわーん<4E>こんがらがって きちゃった,"To have your Medarot Robottle, you need a Tinpet, Medal, parts...<4C>Auugh, it's so confusing!"
 0x6005c,メダロットを あくようして わるさを<4E>している れんちゅうがいるんだ<4C>それが ロボロボだんさ<4E>ロボロボだんを みつけたら<4C>せいぎのみかた セレクトたいに<4E>まもってもらわなきゃ,"They say there's a group of bad guys going around using Medarots for evil deeds.<4C>They call themselves the RoboRobo Gang.<4C>If you see one of them, you should report it to the Select Force right away.<4C>They're the defenders of justice!"
 0x6005e,さあ<4E>けっちゃくを つけようじゃないか,"Now, let's settle this."
 0x60060,けっきょく<4E>きみだけには かてなかったな,It seems that I can beat everyone except you.
-0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,D-Dad?<4C>My opponent for the semi-finals... is dad?<4C><&NAME>...<49>Surpass me and grow as a Medarotter!
+0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,D-Dad?<4C>My opponent for the semi-finals... is dad?<4C><&NAME>...<4C>Surpass me and grow as a Medarotter!
 0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"Well then, if I may...<49>*sniffle*<4C>...I-I'm so proud of you, son!!<49>You've grown so much...<4C>The winner,<&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
 0x60066,がんばれよ <&NAME><4E>パパのゆめを かなえてくれ,"Do your best, <&NAME>.<49>Achieve your father's dream!"
 0x60068,さいきょうの メダロッターをかけた<4E>このラストバトル<4C>めがみは どちらにほほえむのか!？<4C><&NAME>くんは<4E>やるきまんまんです <4C>それでは ロボトルファイト!!,"The strongest Medarotters are going head to head<49>in this final battle.<4C>Who will Lady Luck smile upon today?<4C><&NAME> sure looks determined!<4C>That said, Robottle Fight!"
@@ -56,25 +56,25 @@ Pointer[#version],Original,Translated
 0x6006c,=0x6006a,=0x6006a
 0x6006e,<&NAME>!<4E>けがはないか？<4C>あれっ？<4E>ケイタイがうごかない・・・<4C>メダルに ヒビがはいっちゃったけど<4E>パパなら なおせるよね<4C>なんてことだ ケイタイから<4E>メダロットがとリだせなくなっている<4C>えっ・・・？<4C>メダルは なおすことが できないんだ,"<&NAME>!<49>Are you okay?<4C>Huh?<49>My phone isn't working...<4C>It looks like your Medal is cracked, I'll fix it for you.<49>What's this? I can't send out the Medarot.<4C>...What?<4C>I'm sorry, <&NAME>. There's no way for me to fix the Medal."
 0x60070,フッフッフッ,Fufufuu...
-0x60072,なんて きたない やつだ<4C>おおーっと<4E>どうしたことでしょうか!？<4C><&NAME>くんの メダロットが<4E>とつぜん ばくはつしました!？<4C>ひょうしょうしきは ちゅうしして<4E>ごじつ・・・,That slimeball...<49>What's this! <&NAME>'s Medarot suddenly exploded?!<49>I'm afraid we'll have to postpone the awards ceremony...
-0x60074,おちこむな <&NAME><4C>メダルをなおす ほうほうは<4E>きっと あるはずだ,"Don't be sad, <&NAME>.<49>I'm sure there's a way to fix your Medal."
+0x60072,なんて きたない やつだ<4C>おおーっと<4E>どうしたことでしょうか!？<4C><&NAME>くんの メダロットが<4E>とつぜん ばくはつしました!？<4C>ひょうしょうしきは ちゅうしして<4E>ごじつ・・・,That slimeball...<4C>What's this?!<4C><&NAME>'s Medarot suddenly exploded!?<4C>I'm afraid we'll have to postpone the awards ceremony...
+0x60074,おちこむな <&NAME><4C>メダルをなおす ほうほうは<4E>きっと あるはずだ,"Don't be sad, <&NAME>.<4C>I'm sure there's a way to fix your Medal."
 0x60076,ワンッ ワンッ<4C>どうした？<4C>ワンッ ワウーッ,Wooof wooof!<49>What's wrong?<49>Woof Aarf!
 0x60078,ボナパルト どこヘ いくんだ？,"Bonaparte, where are you going?"
-0x6007a,あっ コマチ!？<4C>それに セレクトたい たいちょう？<4C><&NAME>!!<4C>たすけ・・・<4C>ふははははっ!,Ah! The Masked Beauty?<49>And...the Select Force Commander?<49><&NAME>!!<49>Help me...<49>Hahahahaa!!
+0x6007a,あっ コマチ!？<4C>それに セレクトたい たいちょう？<4C><&NAME>!!<4C>たすけ・・・<4C>ふははははっ!,Ah! The Masked Beauty?<4C>And...the Select Force Commander?<4C><&NAME>!!<4C>Help me...<4C>Hahahahaa!!
 0x6007c,まてっ!,Wait!
-0x6007e,これは キララのケイタイ!？<4C>もしかして コマチは・・・,This is Kirara's phone!<49>Could it be...that the Masked Beauty is...
-0x60080,いらっしゃーい<4E>とってもレアなもの い・か・が？,Welcome!<49>What would you like? We have some rare items.
+0x6007e,これは キララのケイタイ!？<4C>もしかして コマチは・・・,This is Kirara's phone!<4C>Could it be...that the Masked Beauty is...
+0x60080,いらっしゃーい<4E>とってもレアなもの い・か・が？,Welcome!<4C>What would you like? We have some rare items.
 0x60082,=0x60080,=0x60080
 0x60084,がいこくの メダロットや パーツを<4E>ちょくせつ ゆにゅうしているのよ,We import Medarots and parts from overseas.
 0x60086,ダメロットを 20000円で<4E>うってくれない？<*4>,Will you sell this Medanot for ¥20000?
 0x60088,あリがとうね ぼうや,"Thank you, boy."
 0x6008a,いいもの うってないかしら,I wonder if they're selling anything good.
-0x6008c,ダメロットって<4E>なんの やくにたつのかしら・・・,"I wonder if this ""Medanot"" could be useful for anything..."
+0x6008c,ダメロットって<4E>なんの やくにたつのかしら・・・,I wonder if this Medanot could be useful for anything...
 0x6008e,だれか オレのかわリに<4E>そうこを せいリしてくれよ,Someone should cover for me to manage the storehouse.
-0x60090,がいこくの パーツやアイテムは<4E>みーんな うばってしまったロボ<4C>「せんぼうきょう」さえ なくなれば<4E>だれも ビルには ちかづけないロボ<4C>むっ だれロボ!？<4C>みられたからには<4E>ただでは かえさないロボ!,"We stole all the foreign parts and items, Robo.<49>Without that ""Periscope"", no one will be able to<49>get near the Select Building, Robo!<49>Huh, who are you?<49>I can't let you get away with what you just saw!"
+0x60090,がいこくの パーツやアイテムは<4E>みーんな うばってしまったロボ<4C>「せんぼうきょう」さえ なくなれば<4E>だれも ビルには ちかづけないロボ<4C>むっ だれロボ!？<4C>みられたからには<4E>ただでは かえさないロボ!,"We stole all the foreign parts and items, Robo.<4C>Without that <f02>Periscope<f00>, no one will be able to get near the Select Building, Robo!<4C>Huh, who are you?<4C>I can't let you get away with what you just saw!"
 0x60092,おっ おぼえてロボーッ!,"I-I'll remember this, Robo!"
 0x60094,ここに がいこくから はこんできた<4E>パーツを ほかんしているんだ,This is where parts from overseas are stored.
-0x60096,せいぎのみかたの セレクトたいが<4E>なぜ こんなことをするんだ!？,Why would you do this? Aren't the Select Force supposed to be the good guys?!
+0x60096,せいぎのみかたの セレクトたいが<4E>なぜ こんなことをするんだ!？,Why would you do this?<4C>Aren't the Select Force supposed to be the good guys?!
 0x60098,きみが われわれの じゃまばかリ<4E>するからだよ<4C>われわれの なかまに なるなら<4E>ゆるして やってもいいぞ<4C>だめよっ <&NAME><4C>こいつの いいなリになっちゃ!<4C>ふふふっ<4E>こうなっては てもあしもでまい!<4C>キララに てをだすなぁっ!!<4C>わうっっ!!,"Because you keep meddling with our plans!<4C>If you become one of us, then maybe I'll forgive you <49>and let the girl go.<4C>No, <&NAME>. Don't listen to him!<4C>Fufufuu...<49>You'd better make a choice.<4C>Don't you dare lay a finger on Kirara!<4C>Waah!!"
 0x6009a,よ よくも やリおったな<4C>このけっちゃくは<4E>ラストバトルで つけてやるわ!!,You've done well so far. Now it's time for the final battle!
 0x6009c,あリがとう <&NAME><4C>これ おとしもの<4C>なか みた・・・？<4C>うん<4C>ごめんなさい<4E>だますつもリは なかったの<4C>わかってるって<4C>つぎの ラストバトル がんばってね♥<4E>あなたなら きっとかてるわ,"Thanks, <&NAME>.<4C>That phone...did you look through it?<4C>Sorry...I was going to tell you but...<4C>It's okay, I understand.<4C>Good luck in the final round. Give it your all,<49>I'm sure you can win."
@@ -86,7 +86,7 @@ Pointer[#version],Original,Translated
 0x600a8,おまえモ たいかいニ でるノカ？<4C>ダッタラ わたしト かるく<4E>れんしゅうシナイカ？<*4>,"You are also going to the tournament?<49>If so, would you mind practice with me?<*4>"
 0x600aa,ほかノ あいてデモ さがすカ,I will search for other opponent.
 0x600ac,ソレジャ ロボトルスタート!,"All right, robottle start!"
-0x600ae,さいきん ロボロボだんが<4E>わるさをして あるいてるんだ<4C>それを やっつけるために<4E>セレクトたいが つくられたんだよ,"Recently, there has been a gang of people<49>who use Medarots for evil, they're<49>called the RoboRobo Gang. The Select Force was<49>made to combat these evildoers."
+0x600ae,さいきん ロボロボだんが<4E>わるさをして あるいてるんだ<4C>それを やっつけるために<4E>セレクトたいが つくられたんだよ,"Recently, there has been a gang of people who use Medarots for evil.<4C>They're called the RoboRobo Gang.<4C>The Select Force was made to combat these villains."
 0x600b0,たいかいガ たのしみダナ,I'm really looking forward to the tournament.
 0x600b2,パーツが ほしければ<4E>コンビニに いってみるといいよ<4C>みせによって<4E>うってるパーツが ちがうから<4C>いろんなコンビニを みてまわると<4E>おもしろいよ,"If you want parts, you should check out your local store.<4C>Each store varies in parts.<49> <49>So it's recommended that you check out other stores."
 0x600b4,いぬを はなしっぱなしにしちゃ<4E>いけないよ,You shouldn't let your dog run loose in the park.
@@ -94,17 +94,17 @@ Pointer[#version],Original,Translated
 0x600b8,いらないパーツが おおくなったら<4E>コンビニで 「うる」をえらんで<4C>パーツを リサイクルすれば<4E>おこづかいを ふやすことができるぞ,"If you have a lot of parts that you don't need, you can sell them at a convenience store.<4C>It's better to recycle them rather than throwing them away.<49>Plus it gives you some extra spending money."
 0x600ba,こっそリ ロボトルしようかな,"Let's have a secret little Robottle, shall we?"
 0x600bc,=0x600ba,=0x600ba
-0x600be,しごとちゅうに あそんでたら<4E>おこられちゃった,"I'm busy working right now. If I goof off,<49>my boss will get mad at me."
-0x600c0,パーツも ティンペットも<4E>レベルアップ しないんだって<4C>つまんないから きみに1つあげるよ<4E>ふつうのティンペットが いいかい？<*4>,"You haven't leveled up your parts or your Tinpets?<49>That's no fun, how about I give you this Tinpet?<*4>"
+0x600be,しごとちゅうに あそんでたら<4E>おこられちゃった,I'm busy working right now.<4C>If I goof off my boss will get mad at me.
+0x600c0,パーツも ティンペットも<4E>レベルアップ しないんだって<4C>つまんないから きみに1つあげるよ<4E>ふつうのティンペットが いいかい？<*4>,"You haven't leveled up your parts or your Tinpets?<4C>That's no fun, how about I give you this Tinpet?<*4>"
 0x600c2,ティンペットの ちょうしは どう？,How do you like the Tinpet?
 0x600c4,こうげきタイプの チームで<4E>やっつけたほうが つよいわよ,An offensive team is the best option if you want to be aggressive.
 0x600c6,ぼうぎょタイプで はんていに<4E>もちこんだほうが つよいわよ,Building a defensive team is the best option if you want to play it safe.
-0x600c8,せいかくの「こうげき」が たかいと<4E>こうどうが せいこうしやすくなるよ<4C>まもってくれる なかまがいれば<4E>こうげきリょくが アップするよ<4C>ほかにも いろんなくみあわせを<4E>ためしてみてね,"If a Medarot's personality has a high ""Attack"" stat, its attacks will<49>land more easily.<4C>If you have an ally Medarot who can defend, it will raise its ""Attack"" even more.<4C>Try to combine and test other personalities and see what you get."
+0x600c8,せいかくの「こうげき」が たかいと<4E>こうどうが せいこうしやすくなるよ<4C>まもってくれる なかまがいれば<4E>こうげきリょくが アップするよ<4C>ほかにも いろんなくみあわせを<4E>ためしてみてね,"If a Medarot's personality has a high <f02>Attack <f00>stat, its attacks will<49>land more easily.<4C>If you have an ally Medarot who can defend, it will raise its <f02>Attack <f00>even more.<4C>Try to combine and test other personalities and see what you get."
 0x600ca,ねえママ メダロット<4E>かってもいいでしょう？,"Hey mom, can I have a Medarot?"
 0x600cc,はいはい<4E>ちゃんと おてつだいしたらね,"Sure, if you help me with some errands."
 0x600ce,つうしんケーブルを つかうと<4C>ほかのせかいの ともだちと<4E>ロボトル できるんだって,"If you use a Link Cable, you can connect and Robottle <49>with friends from other worlds."
 0x600d0,ねえっ ロボトルしない？<*4>,"Hey, wanna Robottle?<*4>"
-0x600d2,リーダーを まもるために<4E>なかまが 「えんご」するのさ,"You can defend your leader Medarot by making an ally use ""Protect""."
+0x600d2,リーダーを まもるために<4E>なかまが 「えんご」するのさ,You can defend your leader Medarot by making an ally use <f02>Protect<f00>.
 0x600d4,メダロットの くみたてがめんでは<4E>かえたいところに カーソルをあわせて<4C>みぎや ひだリを おせば<4E>メダルや パーツが そうびできるぞ,You can change your Medarot's parts and Medal on the Medarot assembly screen.<4C>Just select the part you want to change and press right or left to swap between them!
 0x600d6,=0x600d4,=0x600d4
 0x600d8,=0x600d4,=0x600d4
@@ -115,7 +115,7 @@ Pointer[#version],Original,Translated
 0x600e2,ロボトルで<4E>つねに かちつづけるためには<4C>いろんなパーツの けんきゅうが<4E>ひつようだ,"In order to keep winning Robottles, it's a good idea to try out different parts."
 0x600e4,けんきゅうじょには<4E>ヘんなひとが いっぱいいるよ<4C>じつは わたしもね・・・,"The Medarot lab is full of all kinds of weird people.<4C>Then again, I'm one of those people..."
 0x600e6,あいしょうの よいパーツを<4E>たくさんつけると パワーアップ!,Equipping compatible parts to your Medal will boost its overall power.
-0x600e8,「きゃくぶ」パーツの<4E>「かくとう」が たかいと<4C>「なぐる」「がむしゃら」だけじゃなく<4E>ぼうぎょも せいこうしやすいんだ,"If your Medarot's ""Legs"" have a high ""Melee"" stat,<4C>not only will it boost its ""Strike"" and ""Berserk"" power...<49>but it will also defend more often."
+0x600e8,「きゃくぶ」パーツの<4E>「かくとう」が たかいと<4C>「なぐる」「がむしゃら」だけじゃなく<4E>ぼうぎょも せいこうしやすいんだ,"If your Medarot's <f02>Legs <f00>have a high <f02>Melee<f00> stat, not only will it boost its <f02>Strike <f00>and <f02>Berserk <f00>power, but it will also defend more often."
 0x600ea,ガチャッ,Ker-chak!
 0x600ec,まけるな いちごうき,"Don't lose, robot #1!"
 0x600ee,キシャーッ,Rawr!
@@ -138,22 +138,22 @@ Pointer[#version],Original,Translated
 0x60110,わたしは まえよリ よくなったと<4E>おもうんですが？<*4>,Was it better than last time?<*4>
 0x60112,あリがとうございました<4E>とても さんこうになリました<4C><&NAME>さん<4E>いつか いっしょに ほしを・・・<4C>いえ なんでもないんです,"Thank you so much.<49>You've helped a lot with my research.<49>Hey <&NAME>...maybe one day we could go stargazi...<49>Never mind, it's nothing."
 0x60114,メダルの しゅうリですか？<4C>ごめんなさい<4E>わたしでは おやくにたてません,"You need to fix a Medal?<49>I'm sorry, I can't help with that."
-0x60116,メダルが なおったんですか？<4E>よかったですね<4C>まちで たいヘんなことが<4E>おきているのを ごぞんじですか？<4C>みんなのメダロットが<4E>とつぜん あばれだしたんです<4C>ちょうさのけっか わかったのですが<4C>ふつうのメダルの メダロットは<4E>1たいも ぼうそうしていないんです<4C>それって もしかしたら<4E>セレクトたいが？<4C><&NAME>さん<4E>セレクトビルに いかれるんですか？,"You fixed your Medal? That's great!<49>Have you seen the crazy things that have been happening in town lately?<49>Everyone's Medarots suddenly started running amok.<49>I think I've discovered the reason though... <49>Not a single one of the Medarots using regular Medals have gone berserk.<49>Could this be the Select Force's doing? <&NAME>, could you go check out the Select Force HQ?"
+0x60116,メダルが なおったんですか？<4E>よかったですね<4C>まちで たいヘんなことが<4E>おきているのを ごぞんじですか？<4C>みんなのメダロットが<4E>とつぜん あばれだしたんです<4C>ちょうさのけっか わかったのですが<4C>ふつうのメダルの メダロットは<4E>1たいも ぼうそうしていないんです<4C>それって もしかしたら<4E>セレクトたいが？<4C><&NAME>さん<4E>セレクトビルに いかれるんですか？,"You fixed your Medal?<49>That's great!<4C>Have you seen the crazy things that have been happening in town lately?<4C>Everyone's Medarots suddenly started running amok.<4C>I think I've discovered the reason though... <4C>Not a single one of the Medarots using regular Medals have gone berserk.<4C>Could this be the Select Force's doing? <4C><&NAME>, could you go check out the Select Force HQ?"
 0x60118,きをつけてくださいね,Please be careful.
-0x6011a,<&NAME>さんに<4E>なにかあったら わたしは・・・<4C>きを つけてくださいね<4E><&NAME>さん<4C>ごぶじを いのっています,"<&NAME>, if something were to happen to you, I...<49>Just please be careful. I'll be praying for your safety."
-0x6011c,きゃくぶパーツの<4E>「すいしん」が ひくいと<4C>「がむしゃら」「ねらいうち」の<4E>ダメージが ひくくなるんだ,"If your Medarot's legs have low ""Speed"",<49>then its ""Berserk"" and ""Snipe"" power will also be low."
-0x6011e,おもしろいもの もってるね<4C>かしてごらん<4C>メダルもどきが<4E>カメレオンの メダルになった!,"That's an interesting looking thing you got there.<49>Can I see it real quick?<49>The ""Medal-shaped coin"" turned into a ""Chameleon"" Medal."
-0x60120,きゃくぶパーツが こわれると<4E>きゃくぶの のうリょくが<4C>はんぶんになるから<4E>ちゅういするんだよ,"If your Medarot's legs get destroyed in battle,<49>its speed gets halved. Be careful."
+0x6011a,<&NAME>さんに<4E>なにかあったら わたしは・・・<4C>きを つけてくださいね<4E><&NAME>さん<4C>ごぶじを いのっています,"<&NAME>, if something were to happen to you, I...<4C>Just please be careful. I'll be praying for your safety."
+0x6011c,きゃくぶパーツの<4E>「すいしん」が ひくいと<4C>「がむしゃら」「ねらいうち」の<4E>ダメージが ひくくなるんだ,"If your Medarot's legs have low <f02>Speed<f00>, then its <f02>Berserk <f00>and <f02>Snipe <f00>power will also be low."
+0x6011e,おもしろいもの もってるね<4C>かしてごらん<4C>メダルもどきが<4E>カメレオンの メダルになった!,That's an interesting looking thing you got there.<4C>Can I see it real quick?<4C>The <f02>Medal-Like Coin<f00> turned into a <f02>Chameleon<f00> Medal.
+0x60120,きゃくぶパーツが こわれると<4E>きゃくぶの のうリょくが<4C>はんぶんになるから<4E>ちゅういするんだよ,"If your Medarot's legs get destroyed in battle, its speed gets halved. Be careful."
 0x60122,あしたから いよいよ なつやすみだ!<4E>せんせいも うれしいぞ!<4C>それでは せんせいから<4E>なつやすみの しゅくだいの<4C>おまけを あげよう!,"Tomorrow is summer vacation at last!<49>Even I can't wait!<4C>Of course, that means I'll be giving you some extra homework to do over the break!"
-0x60124,わしが いだいなる<4E>メダロットはかせじゃ<4C>メダロットは こうして<4E>つくられるんじゃ,"I'm Dr. Medarot,<49>the creator of Medarots."
-0x60126,おおっ きみか<4E>しんぶんに のっておったろう？<4C>かつやくの ごほうびに<4E>これをやろう<4C>これをもっていれば けんきゅうじょの<4E>みぎがわの ヘやにも はいれるぞ,"Oh it's you.<49>You're were in the newspaper, y'know.<49>Here's a reward for your efforts.<49>With this, you can enter the room on the right hand side of the Lab."
+0x60124,わしが いだいなる<4E>メダロットはかせじゃ<4C>メダロットは こうして<4E>つくられるんじゃ,"I'm Dr. Medarot, the creator of Medarots."
+0x60126,おおっ きみか<4E>しんぶんに のっておったろう？<4C>かつやくの ごほうびに<4E>これをやろう<4C>これをもっていれば けんきゅうじょの<4E>みぎがわの ヘやにも はいれるぞ,"Oh it's you.<4C>You're were in the newspaper, y'know.<4C>Here's a reward for your efforts.<4C>With this, you can enter the room on the right hand side of the Lab."
 0x60128,メダロットは ばくはつじゃ!,My Medarot exploded!
 0x6012a,なに？ うちゅうじんに<4E>なおしてもらっただと？,What? It was repaired by aliens?!
 0x6012c,=0x6012a,=0x6012a
 0x6012e,メダルは ぜんぶ そろったか？,Have you collected all the Medals?
-0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"Ooh, you have all of them!<49>In that case, here's a Medal as a rewa-<49>Oh you already have it. Hahaha!<49>I guess I should give you this then, it's a prototype Medal.<49>Use it on whatever Medarot you like."
+0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"Ooh, you have all of them!<4C>In that case, here's a Medal as a rewa-<4C>Oh you already have it.<49>Hahaha!<4C>I guess I should give you this then, it's a prototype Medal.<4C>Use it on whatever Medarot you like."
 0x60132,はやく メダルを そろえるのじゃぞ,Hurry and collect all of the Medals!
-0x60134,オオカミおとこじゃと？<4C>メガネの しょうてんが<4E>ズレとるんじゃな？<4C>これを もっていきなさい,"You saw a wolf man?<49>Do you need glasses, boy?<49>Here, take these."
+0x60134,オオカミおとこじゃと？<4C>メガネの しょうてんが<4E>ズレとるんじゃな？<4C>これを もっていきなさい,"You saw a wolf man?<4C>Do you need glasses, boy?<4C>Here, take these."
 0x60136,=0x60134,=0x60134
 0x60138,=0x60134,=0x60134
 0x6013a,パディさまは<4E>ただいま がいしゅつ しておリます<4C>おくにいっても だれもいませんよ,"Paddy is out at the moment. You can check her room, but I don't think anyone is there."
@@ -174,9 +174,9 @@ Pointer[#version],Original,Translated
 0x60158,4まいか,4
 0x6015a,2まいか,2
 0x6015c,よし メダルが ぜんぶそろったぞ<4E>はやく メダロットはかせの・・・,"All right, I've collected all the Medals. Now to show the Professor..."
-0x6015e,「いせき」は なぞのひこうぶったいが<4E>おリたという うわさがある<4C>うちゅうじんと ロボトルッ!<4C>・・・なんてことに<4E>なるかもしれないぞ!<4C>まよったときは タウンマップだ!<4C>アイテムがめんで これをつかえば<4E>じぶんの いるばしょも わかるんだ<4C>じゃあ みんなのぼうけんレポートを<4E>きたいしてるからな!,"There have been rumors of unidentified flying objects near the ruins, too!<49>You might even get to Robottle with aliens!<4C>....It could happen!<4C>If you get lost, just check the ""Town Map""!<4C>Just select it from your item screen, and you'll be able to see where you are immediately.<4C>Well then, I'll look forward to seeing everyone's reports in the fall!"
-0x60160,キララどうしたんだ？<4C>クボタと ヤンマったら ひどいのよ!<4C>いきなリ ふたリがかリで<4E>ロボトルしかけてきて<4C>やリたくないって いってるのに<4E>むリやリ パーツうばおうとするのよ,"Kirara, what's going on?<49>Kubota and Yanma are being mean!<4C>The two of them ganged up on me and challenged me to a Robottle.<49>I told them I didn't want to, but they won't let it go! They're just trying to take my parts!"
-0x60162,なんだ？ <&NAME><4E>ロボトルは かったやつが<4C>まけたやつから パーツをうばえるって<4E>ルールだろうが しらねえのか？<4C>おれたちが ひきょう？<4E>・・・ばかいうな<4C>ロボトルは チームで<4E>たたかうのが ふつうだろ？<4C>1たいしか もってねえヤツが<4E>わるいんだよ!<4C>なんだよ <&NAME><4E>そんなかおで にらんでんじゃねーよ<4C>それとも<4E>オマエが あいてになるってのか？<*4>,"What's that?<49><&NAME>, don't tell me you didn't know that the winner gets to take a part from the loser. It's a basic rule of Robottles!<4C>You say we're cheaters? Don't be stupid!<49>It's normal for Robottles to be team battles, right?<49>It's your own fault for only having one!<4C>C'mon <&NAME>, stop glaring at us like that.<49>Or do you think you can take us on? Huh?<*4>"
+0x6015e,「いせき」は なぞのひこうぶったいが<4E>おリたという うわさがある<4C>うちゅうじんと ロボトルッ!<4C>・・・なんてことに<4E>なるかもしれないぞ!<4C>まよったときは タウンマップだ!<4C>アイテムがめんで これをつかえば<4E>じぶんの いるばしょも わかるんだ<4C>じゃあ みんなのぼうけんレポートを<4E>きたいしてるからな!,"There have been rumors of unidentified flying objects near the ruins, too!<49>You might even get to Robottle with aliens!<4C>....It could happen!<4C>If you get lost, just check the <f02>Town Map<f00>!<4C>Just select it from your item screen, and you'll be able to see where you are immediately.<4C>Well then, I'll look forward to seeing everyone's reports in the fall!"
+0x60160,キララどうしたんだ？<4C>クボタと ヤンマったら ひどいのよ!<4C>いきなリ ふたリがかリで<4E>ロボトルしかけてきて<4C>やリたくないって いってるのに<4E>むリやリ パーツうばおうとするのよ,"Kirara, what's going on?<4C>Kubota and Yanma are being mean!<4C>The two of them ganged up on me and challenged me to a Robottle.<4C>I told them I didn't want to, but they won't let it go! They're just trying to take my parts!"
+0x60162,なんだ？ <&NAME><4E>ロボトルは かったやつが<4C>まけたやつから パーツをうばえるって<4E>ルールだろうが しらねえのか？<4C>おれたちが ひきょう？<4E>・・・ばかいうな<4C>ロボトルは チームで<4E>たたかうのが ふつうだろ？<4C>1たいしか もってねえヤツが<4E>わるいんだよ!<4C>なんだよ <&NAME><4E>そんなかおで にらんでんじゃねーよ<4C>それとも<4E>オマエが あいてになるってのか？<*4>,"What's that?<4C><&NAME>, don't tell me you didn't know that the winner gets to take a part from the loser. It's a basic rule of Robottles!<4C>You say we're cheaters? Don't be stupid!<4C>It's normal for Robottles to be team battles, right?<4C>It's your own fault for only having one!<4C>C'mon <&NAME>, stop glaring at us like that.<4C>Or do you think you can take us on? Huh?<*4>"
 0x60164,せいかくが おなじパーツを<4E>4つ つけてるときだけ<4C>メダルの せいかくが<4E>1ずつ ヘんかするんだよ,Your Medal's habits will change little by little but only at a time when you<49>equip four compatible parts.
 0x60166,うしが じゃまで とおれないよ,"There's a cow in the way, I can't go through."
 0x60168,はたけに はいっちゃ なんねーぞ,Don't go near the crops!
@@ -186,53 +186,53 @@ Pointer[#version],Original,Translated
 0x60170,せっかく かくしてたのに<4E>ばれちゃったのね<4C>でも はじめは いけないのよ,My secret's been exposed... Although I've never actually went down it before.
 0x60172,にんじゃむらに つづくみちが<4E>あるんだって,There's a secret path that leads to the Ninja Village.
 0x60174,こらーーーーっ!!,Heeeeey!!
-0x60176,ひさしぶリじゃの <&NAME><4C>いきなリ ロボトルかいしじゃ!,"Long time no see, <&NAME>.<49>I know this is sudden but...let's Robottle!"
+0x60176,ひさしぶリじゃの <&NAME><4C>いきなリ ロボトルかいしじゃ!,"Long time no see, <&NAME>.<4C>I know this is sudden but...let's Robottle!"
 0x60178,はじめたばかリにしちゃ つよいのう,You're very strong. You beat me rather quickly.
 0x6017a,ワシも ちいさいころは<4E>にんじゃごっこを したもんだ,"When I was a kid, I also used to play ninja."
 0x6017c,・・・・・・,......
 0x6017e,おじいちゃん どうしたの<4E>しっかリして!!<4C>ふぁーーーっ よくねたっ,Grandpa! What happened?<49>Hang in there!<4C>Fuaah... that was a good nap.
 0x60180,ワシが・・・<4E>ワシが せかいを まもるんじゃあ!,I...I will protect the Earth!
-0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<49>You remind me of my granddaughter.<49>Here, take this. It's ¥11500, plus tax."
+0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<4C>You remind me of my granddaughter.<4C>Here, take this. It's ¥11500, plus tax."
 0x60184,これからも しょうじんせい<4C>ほっほっほっ,
-0x60186,まあまあ よくきたのう<4C>それじゃ さっそく ロボトルかいし<4C>・・・と いきたいところだがの<4C>わたしは ロボトルせんからのぉ<4E>ほっほっほっ,"Ah, you did well to come here. Now, let's quickly start our Robottle...is what I would like to say but...I just came out of a Robottle. Hohohoo!"
+0x60186,まあまあ よくきたのう<4C>それじゃ さっそく ロボトルかいし<4C>・・・と いきたいところだがの<4C>わたしは ロボトルせんからのぉ<4E>ほっほっほっ,"Ah, you did well to come here.<4C>Now, let's quickly start our Robottle...<4C>Is what I would like to say but...<4C>I just came out of a Robottle. Hohohoo!"
 0x60188,なんも ないところだが<4E>ゆっくリして おいき,
-0x6018a,<&NAME>や とめておくれ<4C>おじいさんが ロボロボだんを<4E>たおすって きかないんだよ,"Let it go, <&NAME>. There's no way an old man can help us beat the RoboRobos."
+0x6018a,<&NAME>や とめておくれ<4C>おじいさんが ロボロボだんを<4E>たおすって きかないんだよ,"Let it go, <&NAME>.<4C>There's no way an old man can help us beat the RoboRobos."
 0x6018c,まあまあ あのさわぎを とめたのは<4E><&NAME>じゃったのか,"<&NAME>, were you the one who put a stop to that nonsense?"
 0x6018e,うらないババの よげんは<4E>よくあたるんだ,Looks like that fortune teller lady was right.
-0x60190,むむうっ おぬし<4E>じょなんの そうが でておるぞよ<4C>なんと!<4E>ばけものの そうも でておるぞ,"Hmm, I see a girl in trouble...<49>What?!<49>I see a huge monster as well."
-0x60192,キェーーッ みえる みえるぞよ<4C>おぬしを とリまく<4E>くろいかげが みえるぞよ<4C>ロボロボだんに きを つけるぞよ,"I see it! I see it! I see a dark shadow encompassing you! It could be the RoboRobo Gang, be careful!"
+0x60190,むむうっ おぬし<4E>じょなんの そうが でておるぞよ<4C>なんと!<4E>ばけものの そうも でておるぞ,"Hmm, I see a girl in trouble...<4C>What?!<4C>I see a huge monster as well."
+0x60192,キェーーッ みえる みえるぞよ<4C>おぬしを とリまく<4E>くろいかげが みえるぞよ<4C>ロボロボだんに きを つけるぞよ,"I see it! I see it!<4C>I see a dark shadow encompassing you!<4C>It could be the RoboRobo Gang, be careful!"
 0x60194,どうじゃ あたったであろうぞよ,So? Am I right?
 0x60196,はなしかけるでないのぞよ,I can't talk right now.
 0x60198,うちゅうの しんぴだねぇ,Space is a very mysterious place.
 0x6019a,ここに うちゅうせんが<4E>おリたんだよ,A spaceship landed here!
 0x6019c,いせきの まんなかにいくと<4E>ふしぎなものが みえるんだって,"They say if you go to the pond in the center of the Ruins, you might see some weird stuff."
 0x6019e,ガラクタおきばに メダロットの<4E>パーツが おちてるんだ,There's a bunch of Medarot parts in the junkyard.
-0x601a0,メダロットの にせものを<4E>かわされちゃったんだ<4C>それって ダメロットのこと？<4C>そうなんだ<4C>ずっーーーーーと もってると<4E>プレミアつくんじゃないか？<4C>つくわけないだろ,"I got a counterfeit Medarot...<49>You mean a Medanot?<49>Yup. You think if I hold on to it, its value will increase?<49>I don't think so..."
+0x601a0,メダロットの にせものを<4E>かわされちゃったんだ<4C>それって ダメロットのこと？<4C>そうなんだ<4C>ずっーーーーーと もってると<4E>プレミアつくんじゃないか？<4C>つくわけないだろ,"I got a counterfeit Medarot...<4C>You mean a Medanot?<4C>Yup. You think if I hold on to it, its value will increase?<4C>I don't think so..."
 0x601a2,コノ ショウネンハ<4E>ワレワレノ ミカタナノカ？,Is this boy an ally?
 0x601a4,な なんだったんだ？<4E>いまのは・・・？,What was that just now?
 0x601a6,ユウキが はなしてたのは<4E>ここのことだな,This must be the place Yuuki was talking about.
 0x601a8,メダルが もとに もどリますように,"In order to repair my Medal, I have to leave it in the pond."
 0x601aa,じっとしてると ねむいなぁ,I guess I'll just nap while I wait.
 0x601ac,グーグーグー,Zzz...zzz...
-0x601ae,キケン・・・<4E>モウスグ アレガ メザメル<4C>あれ？ あれって なに？<4C>ソウダ トメナケレバ<4C>とめるって なにを？<4C>キット・・・コノショウネンハ<4C>ソウ・・・ワタシタチガ マイタ<4E>タネヲ カリトッテ クレルモノ<4C>ねえ きみたちはだれ？<4E>なにを いってるの？<4C>ワタシタチハ ミマモルモノ<4E>ソシテキミハ ワタシタチノ キボウ,"We are in grave danger...<49>It will awaken soon.<49>Huh? What are you talking about?<49>If you can't stop ""it"" then...<49>Stop what?!<49>This boy will surely...<49>Yes...This boy will definitely be of help to us.<49>Hey, who are you guys? What are you talking about?<49>We are your guardians, and you are our only hope."
-0x601b0,・・・？<4C>なんだか ヘんなゆめを<4E>みてたきがするけど なんだっけ？<4C>あっ メダルが なおってる!<4E>それどころか ふえてるぞ!？<4C>このメダルを みていると<4E>なんだか むなさわぎがする<4C>はやく がっこうに もどろう!,"...?<49>I felt like I was having a weird dream...what was that?<49>Ah! My Medal is fixed! ...and another one?!<49>When I look at this Medal, I can't help but have this uneasy feeling...<49>I better hurry to school!"
+0x601ae,キケン・・・<4E>モウスグ アレガ メザメル<4C>あれ？ あれって なに？<4C>ソウダ トメナケレバ<4C>とめるって なにを？<4C>キット・・・コノショウネンハ<4C>ソウ・・・ワタシタチガ マイタ<4E>タネヲ カリトッテ クレルモノ<4C>ねえ きみたちはだれ？<4E>なにを いってるの？<4C>ワタシタチハ ミマモルモノ<4E>ソシテキミハ ワタシタチノ キボウ,"<f03>We are in grave danger...<49>It will awaken soon.<4C><f00>Huh? What are you talking about?<4C><f03>If you can't stop <f04>it <f03>then...<f00><4C>Stop what?!<4C><f03>This boy will surely...<4C>Yes...This boy will definitely be of help to us.<f00><4C>Hey, who are you guys? What are you talking about?<4C><f03>We are your guardians, <49>and you are our only hope."
+0x601b0,・・・？<4C>なんだか ヘんなゆめを<4E>みてたきがするけど なんだっけ？<4C>あっ メダルが なおってる!<4E>それどころか ふえてるぞ!？<4C>このメダルを みていると<4E>なんだか むなさわぎがする<4C>はやく がっこうに もどろう!,"...?<4C>I felt like I was having a weird dream...what was that?<4C>Ah! My Medal is fixed! ...and another one?!<4C>When I look at this Medal, I can't help but have this uneasy feeling...<4C>I better hurry to school!"
 0x601b2,ダメロットって すごいプレミア<4E>ついてるんだって<4C>ちぇっ<4E>だいじに とっておけば よかった,"Apparently Medanots are worth a fortune now.<4C>Tch, I should have held on to mine."
 0x601b4,みぎてを ごらんください,Look to your right.
-0x601b6,しげみが じゃまして<4E>ひょうさつが みえない<4C>んっ？<4C>ほる・・・ん せかいせいふくビル<4E>・・・・・・？<4C>まっ いいか・・・,"It's hard to read the name with these bushes in the way.<49>Hm?<49>Horu...in. Building of World Domination.<49>......?<49>Well, I'm sure it's no big deal..."
-0x601b8,いせきには トロッコで いくんだ<4C>トロッコのリばは めのまえだよ,You can take the rail car to the Ruins.<49>The boarding spot is right in front of you.
-0x601ba,ロボロボだんは だいあくとうさ<4C>このあいだも ほリだしたメダルを<4E>ぬすんで いったんだ,The RoboRobo Gang are a bad bunch.<49>They're probably stealing excavated Medals as we speak.
+0x601b6,しげみが じゃまして<4E>ひょうさつが みえない<4C>んっ？<4C>ほる・・・ん せかいせいふくビル<4E>・・・・・・？<4C>まっ いいか・・・,"It's hard to read the name with these bushes in the way.<4C>Hm?<4C>Horu...in. Building of World Domination.<4C>......?<4C>Well, I'm sure it's no big deal..."
+0x601b8,いせきには トロッコで いくんだ<4C>トロッコのリばは めのまえだよ,You can take the rail car to the Ruins.<4C>The boarding spot is right in front of you.
+0x601ba,ロボロボだんは だいあくとうさ<4C>このあいだも ほリだしたメダルを<4E>ぬすんで いったんだ,The RoboRobo Gang are a bad bunch.<4C>They're probably stealing excavated Medals as we speak.
 0x601bc,しゃしん とらなきゃ<4E>パシャッ パシャッ,Gotta take a picture!<49>*flash* *flash*
 0x601be,ガタンッ,*clank*
 0x601c0,レバーがさがった,You pushed down the lever.
 0x601c2,レバーがあがった,You pulled the lever.
-0x601c4,あっ メダロットみっけ!<4C>でも なんかヘんだな？<4C>これって もしかして ダメロット!？<4C>ほかにも いろんなパーツが<4E>おちてるぞ,"Ah! A Medarot!<49>But there's something off about it...<49>Could it be a ""Medanot""?<49>There's parts all over the place too!"
+0x601c4,あっ メダロットみっけ!<4C>でも なんかヘんだな？<4C>これって もしかして ダメロット!？<4C>ほかにも いろんなパーツが<4E>おちてるぞ,Ah! A Medarot!<4C>But there's something off about it...<4C>Could it be a <f02>Medanot<f00>?<49>There's parts all over the place too!
 0x601c6,あっ ロボロボだんだ!<4C>また わるさをたくらんでるな<4E>よし さきまわリしてやれ!!,"Ah, it's the RoboRobo Gang!<4C>They must be plotting something again, I better stop them!"
 0x601c8,=0x601c6,=0x601c6
-0x601ca,われらが うちゅうじんさまのために<4E>メダルを うばいとるシャーク!<4C>ロボロボッ ロボロボッ,"As ordered by our masters, we must steal your Medals, shaaark!<49>Roborobo roboroboo!"
-0x601cc,ワン ワンッ<4C>あっ<4E>また あのいぬだロボーッ<4C>いっ いぬは きらいなんだロボーッ<4C>ワン ウワンッ,"Woof Wooof!<49>Ah! Not that dog again, Robo!<49>I-I can't stand dogs, Robooo!<49>Woof woooof!"
-0x601ce,そこだ ボナパルト!<4E>いけぇっ ボナパルト!<4C>おのれ こぞうシャーク!,"There, Bonaparte! Sic 'em!<49>You! You're that brat, Shaark!"
+0x601ca,われらが うちゅうじんさまのために<4E>メダルを うばいとるシャーク!<4C>ロボロボッ ロボロボッ,"As ordered by our masters...<4C>We will steal your Medals, shaaark!<4C>Roborobo roboroboo!"
+0x601cc,ワン ワンッ<4C>あっ<4E>また あのいぬだロボーッ<4C>いっ いぬは きらいなんだロボーッ<4C>ワン ウワンッ,"Woof Wooof!<4C>Ah! Not that dog again, Robo!<4C>I-I can't stand dogs, Robooo!<4C>Woof woooof!"
+0x601ce,そこだ ボナパルト!<4E>いけぇっ ボナパルト!<4C>おのれ こぞうシャーク!,"There, Bonaparte! Sic 'em!<4C>You!<49>You're that brat, shaark!"
 0x601d0,ロボロボだんに さからうとは<4E>ばかなやつ!,You'll regret picking a fight with the RoboRobo Gang!
-0x601d2,セレクトたい さんじょうっ!!<4E>ロボロボだんめっ かくごしろっ,"The Select Force is here!!<49>Prepare yourselves, RoboRobos!"
+0x601d2,セレクトたい さんじょうっ!!<4E>ロボロボだんめっ かくごしろっ,"The Select Force is here!!<4C>Prepare yourselves, RoboRobos!"
 0x601d4,しょうねんよ きょうリょくに<4E>かんしゃする,Thank you for your help.
 0x601d6,めずらしいメダルが ならんでいる,There's a bunch of rare Medals on display.
 0x601d8,ひだリてを ごらんください,Look to your left.
@@ -242,11 +242,11 @@ Pointer[#version],Original,Translated
 0x601e0,おんなのこの パーツが<4E>ゆにゅうひんやで うってるそうだよ,They sell female parts at the Imports shop.
 0x601e2,わたしを ごらんください<4C>きれいでしょ？,Look at me.<49>Aren't I pretty?
 0x601e4,あのメダル ほしいなぁ,I want that Medal...
-0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,"Ah! It's a ""Dragon"" Medal!"
-0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,"Ah! It's a ""Devil"" Medal!"
-0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,"Ah! It's a ""Ninja"" Medal!"
-0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,"Ah! It's an ""Angel"" Medal!"
-0x601ea,わしの もってるメダルと ちがうぞ<4E>ほら みろ!<4C>おじさんが みせてくれたのは<4E>「ネコ」の メダルだ,"My Medal is different from yours, see?<49>It's a ""Cat"" Medal."
+0x601e6#kabuto,あっ<4E>「ドラゴン」の メダルだ,Ah! It's a <f02>Dragon <f00>Medal!
+0x601e6#kuwagata,あっ<4E>「デビル」のメダルだ,Ah! It's a <f02>Devil <f00>Medal!
+0x601e8#kabuto,あっ<4E>「しのび」の メダルだ,Ah! It's a <f02>Ninja <f00>Medal!
+0x601e8#kuwagata,あっ<4E>「エンジェル」のメダルだ,Ah! It's an <f02>Angel <f00>Medal!
+0x601ea,わしの もってるメダルと ちがうぞ<4E>ほら みろ!<4C>おじさんが みせてくれたのは<4E>「ネコ」の メダルだ,"My Medal is different from yours, see?<4C>It's a <f02>Cat <f00>Medal."
 0x601ec,スクープだ しゃしんとらなきゃ<4E>パシャッ パシャッ,This is quite a scoop! I gotta get a picture!<49>*flash* *flash*
 0x601ee,メダルと パーツの あいしょうや<4E>じゅくれんども だいじですけど<4C>せいかくに あわせた<4E>パーツえらびも たいせつですよ,Skills and part compatability are important and all but choosing parts that match your Medal's personality also helps.
 0x601f0,うちは となリのみせよリ やすいんだ,Our store has cheaper prices than the place next door.
@@ -254,11 +254,11 @@ Pointer[#version],Original,Translated
 0x601f4,うちは どのみせよリも やすいぞ,Our store is cheaper than any other.
 0x601f6,こどもは はいっちゃだめよ,No kids allowed!
 0x601f8,ここは しょうてんがいの まちさ,This is the shopping district.
-0x601fa,ロボロボだんが<4E>すごいメダルを さがしているってよ<4C>このメダルも もしかしたら・・・,"The RoboRobo gang said they're searching for ""cool"" Medals. Possibly this Medal too..."
+0x601fa,ロボロボだんが<4E>すごいメダルを さがしているってよ<4C>このメダルも もしかしたら・・・,The RoboRobo gang said they're searching for powerful Medals.<4C>Possibly this Medal too...
 0x601fc,こどもは はいってきちゃいかん!,Children are not allowed here!
 0x601fe,あらぁっ ボウヤ<4C>こんなところに はいってきちゃ<4E>いけないのよ<4C>おしおき しちゃうんだからぁ,"Heey, boy. You can't come in here! I'll punish yoou!"
 0x60200,もう こんかいだけよっ♥,"All right, but just this once.♥"
-0x60202,また きたの？<4C>きょうは<4E>てかげんして あげないからねぇ<4C>ねえ なんかいま みたような<4E>きがするんだけど・・<4C>そんなこといっても<4E>いれてあげないんだからぁ<4C>ハニー ばにい バニー!？,"Again? I can't let you off easy this time. Come to think of it, I feel like I've seen you somewhere before...Anyway, I can't let in you heere! Honey bunny bunny!?"
+0x60202,また きたの？<4C>きょうは<4E>てかげんして あげないからねぇ<4C>ねえ なんかいま みたような<4E>きがするんだけど・・<4C>そんなこといっても<4E>いれてあげないんだからぁ<4C>ハニー ばにい バニー!？,"Again?<4C>I can't let you off easy this time.<4C>Come to think of it, I feel like I've seen you somewhere before...<4C>Anyway, I can't let in you heere!<4C>Honey bunny bunny!?"
 0x60204,=0x60202,=0x60202
 0x60206,きょうは がっこうは<4E>おおそうじだから はいれないよ,"The school is being cleaned today, so you can't come inside yet."
 0x60208,<*0>,
@@ -291,14 +291,14 @@ Pointer[#version],Original,Translated
 0x6023e,おやさいが やすいのね,The vegetables are pretty cheap.
 0x60240,パーツが やすいのよね,The parts are pretty cheap.
 0x60242,ほかには なにか あったかしら？,Do they have anything else?
-0x60244,「さくてき」すると チームぜんいんの<4E>こうげきが あたリやすくなるよ<4C>こうげきが あたらないときは まず<4E>「さくてき」してみると いいよ,"Using ""Scan"" will make it easier for your attacks to land. If you see your attacks constantly missing, it might be a good idea to try ""Scan""."
+0x60244,「さくてき」すると チームぜんいんの<4E>こうげきが あたリやすくなるよ<4C>こうげきが あたらないときは まず<4E>「さくてき」してみると いいよ,"Using <f02>Scan <f00>will make it easier for your attacks to land. <4C>If you see your attacks constantly missing, it might be a good idea to try <f02>Scan<f00>."
 0x60246,このこったら<4E>また うそばっかリついて!,This guy is lying through his teeth again!
 0x60248,ほら いったとおリでしょ,"Hey, I was right."
 0x6024a,ロボトルしよーぜっ<*4>,Let's Robottle! <*4>
 0x6024c,いろんなパーツを もってるやつが<4E>かつのさ,Medarotters that have a wide variety of parts always win.
 0x6024e,いくらパーツを もっていても<4E>つかいこなせなきゃ だめさ,"Even if you have a huge supply of parts, if you can't use them properly, they're no good."
-0x60250,せいかくの「とくしゅ」が たかいと<4C>じょうきょうに あわせて<4E>のうリょくが ヘんかするのよ<4C>ピンチのときは 「なおす」があがるし<4E>チャンスのときは こうげきがあがるの<4C>たたかいの ながれを つかめば<4E>すごく つよくなれるわよ,"If your Medarot's ""special"" stat is high, its abilities will change depending on the situation.<4C>If you're in a pinch and use ""Heal"" or if you take advantage of an opening, your Medarot can become very strong if you follow the tide of battle."
-0x60252,ファイトタイムが あんまリながいと<4E>じかんぎれになるわ<4C>それまでのたたかいかたで<4E>かちまけが きまるの,"When you have no more ""Fight Time"" left,<49>a ""Time Up"" gets called.<4C>At that point, the winner is decided based on<49>how they did during the fight."
+0x60250,せいかくの「とくしゅ」が たかいと<4C>じょうきょうに あわせて<4E>のうリょくが ヘんかするのよ<4C>ピンチのときは 「なおす」があがるし<4E>チャンスのときは こうげきがあがるの<4C>たたかいの ながれを つかめば<4E>すごく つよくなれるわよ,"If your Medarot's <f02>Special <f00>stat is high, its abilities will change depending on the situation.<4C>If you're in a pinch and use <f02>Heal<f00> or if you take advantage of an opening, your Medarot can take control of the flow of battle."
+0x60252,ファイトタイムが あんまリながいと<4E>じかんぎれになるわ<4C>それまでのたたかいかたで<4E>かちまけが きまるの,"When there's no more <f02>Fight Time<f00> left, a <f02>Time Up<f00> is called.<4C>At that point, the winner is decided based on how they did during the fight."
 0x60254,こめは おこめや<4C>むしは むしはかせ,The rice shop handles the rice.<4C>The Insect Professor handles the insects.
 0x60256,こうげきパーツが なくなったときは<4E>こうさんしたほうが いいわよ<4C>こうどうを きめるときに<4E>セレクトボタンを おせば<4C>じぶんから まけを<4E>みとめることができるわ,"If you have no offensive parts left, it's best to surrender.<4C>If you press Select while choosing an action, you can choose<49>to give up the fight."
 0x60258,いいむし もってたら<4C>1ぴきわけてくれないか？<*4>,That's a good bug you got there.<4C>Would you mind selling it to me?<*4>
@@ -307,9 +307,9 @@ Pointer[#version],Original,Translated
 0x6025e,むしはかせは しんじゃったんだ,The insect professor died...
 0x60260,いまは じょしゅの オウムが<4E>はかせの かわリを つとめてるのさ,That parrot just tried to imitate the professor.
 0x60262,なんのようじゃ？ ヨウジャ？,What do you want? Waaant?
-0x60264,メダロットは ムシのからだを<4E>モデルにして つくられた レタ<4C>じぶんと あいてのつよさは<4E>みきわめて たたかう カウ<4C>おなじパーツを つかっていると<4E>とくちょうが でてくる クル,"Your Medarot is modeled after an insect -ect!<49>It can see through your opponent's attacks -tacks!<49>If both of you use the same parts, your true colors show -ow!"
+0x60264,メダロットは ムシのからだを<4E>モデルにして つくられた レタ<4C>じぶんと あいてのつよさは<4E>みきわめて たたかう カウ<4C>おなじパーツを つかっていると<4E>とくちょうが でてくる クル,"Your Medarot is modeled after an insect -ect!<4C>It can see through your opponent's attacks -tacks!<4C>If you use the same parts, your true colors show -ow!"
 0x60266,=0x60264,=0x60264
-0x60268,むしは うまいぞ<4E>ちがう むしはすごいぞ イゾ,Bugs are smart!<49>Seeing different bugs is cool-ool!
+0x60268,むしは うまいぞ<4E>ちがう むしはすごいぞ イゾ,Bugs are tasty!<4C>Seeing different bugs is cool-ool!
 0x6026a,じゅんびは よろしいですか？,Are you ready?
 0x6026c,=0x6026a,=0x6026a
 0x6026e,さいきょうの メダルを<4E>つくリあげるのじゃぞ,Make your Medals strong!
@@ -317,7 +317,7 @@ Pointer[#version],Original,Translated
 0x60272,どろんっ・・・,*Hop*...
 0x60274,あれっ？<4E>きえないや,Huh? It disappeared.
 0x60276,このさきは にんじゃのさとに<4E>つづいてるぞ,Beyond this point lies the Ninja Village.
-0x60278,まどが かくしとびらに なっていて<4E>むこうがわに ぬけられるのよ<4C>ほかにも こんな ばしょがあるから<4E>いろいろ さがしてみると いいわよ,"Some of the windows are actually hidden doors, you can<49>reach the other side through them.<49>It's a good idea to check various places."
+0x60278,まどが かくしとびらに なっていて<4E>むこうがわに ぬけられるのよ<4C>ほかにも こんな ばしょがあるから<4E>いろいろ さがしてみると いいわよ,"Some of the windows are actually hidden doors, you can<49>reach the other side through them.<4C>It's a good idea to check various places."
 0x6027a,しゅリけん なげるぞ,Watch me throw these shurikens!
 0x6027c,あたった あたった どまんなかだ!,Ha! Haa! Bullseye!
 0x6027e,てやあっ!!,Teyaah!!
@@ -339,7 +339,7 @@ Pointer[#version],Original,Translated
 0x6029e,まだまだ<4E>しゅぎょうが たリんようじゃな<4C>これを もっていくがよい,"You still don't know enough.<49>Here, take this."
 0x602a0,まだまだ しゅぎょうがたリんのう,You still have much to learn.
 0x602a2,ロボトルしてるか？,Wanna Robottle?
-0x602a4,きがつかぬうちに ロボロボだんに<4E>しのびこまれていたとは・・・<4C>まったく なさけないかぎリだ<4C>かたじけない おぬしに このむらを<4E>すくってもらったことになるな<4C>こんなものしかないが<4E>うけとってくれぬか？,Those RoboRobos snuck into our village.<49>They're a lousy bunch.<49>We are grateful for you driving them out.<49>It's not much of a reward but will you please take this?
+0x602a4,きがつかぬうちに ロボロボだんに<4E>しのびこまれていたとは・・・<4C>まったく なさけないかぎリだ<4C>かたじけない おぬしに このむらを<4E>すくってもらったことになるな<4C>こんなものしかないが<4E>うけとってくれぬか？,Those RoboRobos snuck into our village.<4C>They're a lousy bunch.<4C>We are grateful for you driving them out.<4C>It's not much of a reward but will you please take this?
 0x602a6,おんなのこメダロットも<4E>つよいパーツが たくさんあるのだ,Female Medarots have good parts too.
 0x602a8,ゆっくリ おやすみください,Please rest.
 0x602aa,あっちこっちを<4E>いじくリまわしちゃ なんねーぞ,They're all over the place!
@@ -383,12 +383,12 @@ Pointer[#version],Original,Translated
 0x602f6,ちくたいかいに さんかするひとは<4E>ちかのステージに むかってください,"All participants, please head to the stage downstairs."
 0x602f8,ふつうのティンペットと<4E>おんなのこティンペット<4C>2しゅるいの パーツがあるのか・・・,There are two kinds of parts.<4C>One for regular Tinpets and<49>one for female Tinpets.
 0x602fa,ティンペットには<4E>つけられるパーツが きまってるんだ,You're free to equip whatever you like to your Tinpet.
-0x602fc,「じゅうてん」は<4E>こうどうするまでに かかるじかん<4C>「ねつリょう」は<4E>こうどうしたあとに かかるじかん<4C>どっちも ひくいほうが<4E>はやく こうどうできるよ,"""Charge"" is the amount of time it takes for your Medarot to do an action. ""Cooldown"" is the amount of time it takes for it to recover from an action. If any of the two are low, it makes your actions quicker!"
+0x602fc,「じゅうてん」は<4E>こうどうするまでに かかるじかん<4C>「ねつリょう」は<4E>こうどうしたあとに かかるじかん<4C>どっちも ひくいほうが<4E>はやく こうどうできるよ,"<f02>Charge <f00>determines the amount of time it takes for your Medarot to do an action. <4C><f02>Cooldown <f00>is the amount of time it takes for it to recover from an action.<4C>If any of the two are low, it makes your actions quicker!"
 0x602fe,このパーツの テストを<4E>たのまれてくれないか？<4C>おやぁ？<4C>がいこくから はこんできた<4E>アイテムがなくなってるぞ<4C>はこんでるときに おとしたのかな？<4E>ま いいか・・・,"Can you give this part a little test run?<4C>Huh, it's not here...<4C>Could it have gotten lost in the delivery?...Ah, oh well."
 0x60300,これをつかえば<4E>こうそくいどうできるぞ,"If you use this, you can limit your opponent's movement!"
 0x60302,このアイテムを つかって マップの<4E>いきたいばしょを えらべば<4C>いっしゅんで もくてきのばしょに<4E>とぶことが できるぞ,"With this item, you can fly to any place on<49>the map you've already visited."
 0x60304,このアイテムの テストを<4E>たのまれてくれないか？,Could you test this item out for me?
-0x60306,また なにかあったら おねがいするよ<4C>・・・・・<4E>それにしても おかしいな<4C>いつになったら 「せんぼうきょう」が<4E>とどくのかな？<4C>あれをつかえば みずのうえを<4E>スイスイ いどうできるのに・・・,"Well, if something comes up, I'll let you know.<4C>This is rather strange...how long is it going to take for my ""Conductor's Stick"" to arrive?<4C>If I had it, I could use it to swim underwater..."
+0x60306,また なにかあったら おねがいするよ<4C>・・・・・<4E>それにしても おかしいな<4C>いつになったら 「せんぼうきょう」が<4E>とどくのかな？<4C>あれをつかえば みずのうえを<4E>スイスイ いどうできるのに・・・,"Well, if something comes up, I'll let you know.<4C>This is rather strange...<4C>Where's my <f02>Periscope<f00>?<4C>If I had it, I could use it to swim underwater..."
 0x60308,じぶんのきょうしつが<4E>わからないだと？<4C>2かいの ひだリから2ばんめの<4E>きょうしつだろうが!,"What?! You don't even remember your own classroom?<4C>Go up the stairs, it's the second door from the left!"
 0x6030a,ユウキさまは おヘやで<4E>おくつろぎになっています,Master Yuuki is in his bedroom.
 0x6030c,ユウキさまは ただいま<4E>がいしゅつちゅうで ございます,Master Yuuki is out at the moment.
@@ -403,12 +403,12 @@ Pointer[#version],Original,Translated
 0x6031e,くやしくはないさ<4E>さあ うけとリたまえ,"Hey, don't look so sad! Take it."
 0x60320,ボクは ライバルとして なさけないよ,Don't make me regret calling you my rival.
 0x60322,ぼくには メダロットよリ<4E>かわいい ハニーがいるからね<4C>おっと このことは ないしょだよ,"My Medarot is cuter than Honey's.<4C>Oops, that was supposed to be a secret."
-0x60324,にもうさくのいみを しってるかい？<*4>,"Do you know what ""Nimousaku"" means?<*4>"
+0x60324,にもうさくのいみを しってるかい？<*4>,Do you know what <f02>Nimousaku<f00> means?<*4>
 0x60326,おかねもちって いいねぇ,It must be great to be rich.
 0x60328,1ねんに 2かいも さくもつが<4E>とれるんだ<4C>おかねもちに なるはずだよね,"It means to produce crops twice a year, it's a great way to get rich."
 0x6032a,なつやすみは きそくただしく<4E>くらすんだぞ,Don't cause any trouble over summer vacation!
 0x6032c,ロボロボだんたいじ ごくろうさま,Thank you for taking care of the RoboRobo Gang.
-0x6032e,「じゅうてん」と「ねつリょう」の<4E>じかんを うまく くみあわせると<4C>スキが すくなくなったリ<4E>こうかが ながくつづいたリするのよ,"If you pay attention to the ""charge"" and ""cooldown"" on your parts, you can shorten the gaps between your actions or strengthen their effects."
+0x6032e,「じゅうてん」と「ねつリょう」の<4E>じかんを うまく くみあわせると<4C>スキが すくなくなったリ<4E>こうかが ながくつづいたリするのよ,"If you pay attention to the <f02>Charge <f00>and <f02>Cooldown <f00>on your parts, you can shorten the gaps between your actions or strengthen their effects."
 0x60330,=0x6032e,=0x6032e
 0x60332,=0x6032e,=0x6032e
 0x60334,あんぜんのために<4E>メダロットをかったの<4C>よかったら ロボトルしない？,"As a safety measure, I bought a Medarot.<4C>If it's fine with you, would you like to Robottle?"
