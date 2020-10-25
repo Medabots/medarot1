@@ -166,7 +166,7 @@ ShopBuyPriceDisplayState::
 
 SECTION "Shop Menu State Machine 3", ROMX[$7414], BANK[$3]
 ShopSellPriceWindowDisplayState::
-  call $456F
+  call ShopSellPriceSpriteFixHack
   ld a, [$C8B5]
   ld [$C886], a
   ld b, 0
