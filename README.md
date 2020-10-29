@@ -33,6 +33,7 @@ If all you care about is playing the patch, then refer to the instructions at th
 # Other References
 
 [Medapedia page](http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project) (source reference for a lot of text and information)
+
 [Translation Spreadsheet](https://github.com/Medabots/medarot1_translation)
 
 # Contributors
