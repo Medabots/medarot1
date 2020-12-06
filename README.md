@@ -40,9 +40,11 @@ If all you care about is playing the patch, then refer to the instructions at th
 
 (The [Contributors](https://github.com/VariantXYZ/medarot1/graphs/contributors) page only covers GitHub contributions)
 
-* [VariantXYZ](https://github.com/VariantXYZ) (Repo Maintainer, Disassembly, Coding)
+* [VariantXYZ](https://github.com/VariantXYZ) (Repo maintainer, Disassembly, Coding)
 * [andwhyisit](https://github.com/andwhyisit) (Disassembly, Coding)
-* [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial Research)
+* [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial research)
 * Tobias (Translations)
+
+* [Sanqui](https://github.com/Sanqui) (Initial research and disassembly, the overlay feature in rgbds, a number of other things)
 
 And of course, various members of the community for playtesting and submitting bug reports. 
