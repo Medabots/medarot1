@@ -192,13 +192,13 @@ Pointer[#version],Original,Translated
 0x6017c,・・・・・・,......
 0x6017e,おじいちゃん どうしたの<4E>しっかリして!!<4C>ふぁーーーっ よくねたっ,Grandpa! What happened?<49>Hang in there!<4C>Fuaah... that was a good nap.
 0x60180,ワシが・・・<4E>ワシが せかいを まもるんじゃあ!,I...I will protect the Earth!
-0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<4C>You remind me of my granddaughter.<4C>Here, take this. It's ¥11500, plus tax."
-0x60184,これからも しょうじんせい<4C>ほっほっほっ,
+0x60182,えらいぞ <&NAME><4E>それでこそ ワシのまごじゃ<4C>ほら もっていけ<4C>ぜいこみで 11500円じゃ,"Excellent, <&NAME>!<4C>That's my grandchild for you!<4C>Here, take this. It's ¥11500, plus tax."
+0x60184,これからも しょうじんせい<4C>ほっほっほっ,"Your youth is only just beginning, boy.<49>Hohohoh!"
 0x60186,まあまあ よくきたのう<4C>それじゃ さっそく ロボトルかいし<4C>・・・と いきたいところだがの<4C>わたしは ロボトルせんからのぉ<4E>ほっほっほっ,"Ah, you did well to come here.<4C>Now, let's quickly start our Robottle...<4C>Is what I would like to say but...<4C>I just came out of a Robottle. Hohohoo!"
 0x60188,なんも ないところだが<4E>ゆっくリして おいき,
 0x6018a,<&NAME>や とめておくれ<4C>おじいさんが ロボロボだんを<4E>たおすって きかないんだよ,"Let it go, <&NAME>.<4C>There's no way an old man can help us beat the RoboRobos."
 0x6018c,まあまあ あのさわぎを とめたのは<4E><&NAME>じゃったのか,"<&NAME>, were you the one who put a stop to that nonsense?"
-0x6018e,うらないババの よげんは<4E>よくあたるんだ,Looks like that fortune teller lady was right.
+0x6018e,うらないババの よげんは<4E>よくあたるんだ,That fortune teller lady's predictions always come true.
 0x60190,むむうっ おぬし<4E>じょなんの そうが でておるぞよ<4C>なんと!<4E>ばけものの そうも でておるぞ,"Hmm, I see a girl in trouble...<4C>What?!<4C>I see a huge monster as well."
 0x60192,キェーーッ みえる みえるぞよ<4C>おぬしを とリまく<4E>くろいかげが みえるぞよ<4C>ロボロボだんに きを つけるぞよ,"I see it! I see it!<4C>I see a dark shadow encompassing you!<4C>It could be the RoboRobo Gang, be careful!"
 0x60194,どうじゃ あたったであろうぞよ,So? Am I right?
@@ -301,15 +301,15 @@ Pointer[#version],Original,Translated
 0x60252,ファイトタイムが あんまリながいと<4E>じかんぎれになるわ<4C>それまでのたたかいかたで<4E>かちまけが きまるの,"When there's no more <f02>Fight Time<f00> left, a <f02>Time Up<f00> is called.<4C>At that point, the winner is decided based on how they did during the fight."
 0x60254,こめは おこめや<4C>むしは むしはかせ,The rice shop handles the rice.<4C>The Insect Professor handles the insects.
 0x60256,こうげきパーツが なくなったときは<4E>こうさんしたほうが いいわよ<4C>こうどうを きめるときに<4E>セレクトボタンを おせば<4C>じぶんから まけを<4E>みとめることができるわ,"If you have no offensive parts left, it's best to surrender.<4C>If you press Select while choosing an action, you can choose<49>to give up the fight."
-0x60258,いいむし もってたら<4C>1ぴきわけてくれないか？<*4>,That's a good bug you got there.<4C>Would you mind selling it to me?<*4>
+0x60258,いいむし もってたら<4C>1ぴきわけてくれないか？<*4>,"If you managed to catch any good bugs,<4C>Would you mind selling it to me?<*4>"
 0x6025a,いきるための ちえは<4E>むしに まなぶといいぞ<4C>むしのつよさを みせてやろう!,You can learn a lot about life from studying bugs.<49>I'll show you the power of bugs!
 0x6025c,うそだっ そんなばかな!？,You're kidding! That's impossible!
 0x6025e,むしはかせは しんじゃったんだ,The insect professor died...
-0x60260,いまは じょしゅの オウムが<4E>はかせの かわリを つとめてるのさ,That parrot just tried to imitate the professor.
+0x60260,いまは じょしゅの オウムが<4E>はかせの かわリを つとめてるのさ,The parrot over there is currently substituting for the professor.
 0x60262,なんのようじゃ？ ヨウジャ？,What do you want? Waaant?
 0x60264,メダロットは ムシのからだを<4E>モデルにして つくられた レタ<4C>じぶんと あいてのつよさは<4E>みきわめて たたかう カウ<4C>おなじパーツを つかっていると<4E>とくちょうが でてくる クル,"Your Medarot is modeled after an insect -ect!<4C>It can see through your opponent's attacks -tacks!<4C>If you use the same parts, your true colors show -ow!"
 0x60266,=0x60264,=0x60264
-0x60268,むしは うまいぞ<4E>ちがう むしはすごいぞ イゾ,Bugs are tasty!<4C>Seeing different bugs is cool-ool!
+0x60268,むしは うまいぞ<4E>ちがう むしはすごいぞ イゾ,Bugs are awesome!<4C>Seeing different bugs is cool-ool!
 0x6026a,じゅんびは よろしいですか？,Are you ready?
 0x6026c,=0x6026a,=0x6026a
 0x6026e,さいきょうの メダルを<4E>つくリあげるのじゃぞ,Make your Medals strong!
