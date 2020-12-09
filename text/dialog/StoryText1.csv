@@ -7,16 +7,16 @@ Pointer[#version],Original,Translated
 0x5a00a,どうくつには たからがあるんだって,They say there's some kind of treasure in the cave.
 0x5a00c,おおっ<4C>どうくつの おたからとは<4E>メダルじゃったか<4C>いいものを みせてくれた<4E>れいを せんとな,Oho! So the treasure in the cave turned out to be a Medal after all?<4C>Here's some thanks for showin' it to me.
 0x5a00e,それと このさかなを さんそんの<4E>そんちょうに とどけてくれんか,"Oh, and if you wouldn't mind... Could you deliver this fish to the mayor of the mountain village?"
-0x5a010,ここで すばしっこいサルのやつらを<4E>まちぶせてるんだ<4C>あいつらを つかまえるまでは<4E>あリ いっぴきも とおさせないぜ,"People in this area tend to get ambushed by monkeys.<4C>If you beat at least one of the monkeys, I'll let you pass."
-0x5a012,まさかおまえが サルをたおしたのか？<*4>,Could it be... you defeated the monkeys?
-0x5a014,まちなかにいる イセキが<4E>おまえを たおしてくれる,"Once you reach downtown, Iseki will beat you for sure."
+0x5a010,ここで すばしっこいサルのやつらを<4E>まちぶせてるんだ<4C>あいつらを つかまえるまでは<4E>あリ いっぴきも とおさせないぜ,"This area is filled with sly monkeys.<4C>If you beat at least one of the monkeys, I'll let you pass."
+0x5a012,まさかおまえが サルをたおしたのか？<*4>,Wait... you defeated the monkeys?
+0x5a014,まちなかにいる イセキが<4E>おまえを たおしてくれる,"Once you reach downtown, Iseki will teach you a lesson for sure!"
 0x5a016,きたのやまには めずらしい<4E>メダルがあるらしい,There seems to be a rare medal in the mountain up north.
 0x5a018,おサルにメダルを とられたの<4E>とリかえしてほしいの,A monkey took my Medal. <49>I hope I can get it back...
 0x5a01a,やまのおサルが おリてきて<4E>わるさを するんだ,The monkeys come down the mountain from time to time <49>to cause mischief.
-0x5a01c,まだ まけたわけじゃないからね!<4C>セレクトビルに いくんだったら<4C>あそこで はたらいてる パパに<4E>あいさつでも してくれば？,I still haven't lost yet!<49>I wonder if I should say hi to Dad at the<49>Select Headquarters.
+0x5a01c,まだ まけたわけじゃないからね!<4C>セレクトビルに いくんだったら<4C>あそこで はたらいてる パパに<4E>あいさつでも してくれば？,"I still haven't lost yet!<49>If you're going to stop by the Select Headquarters,<4C>How about saying hi to your dad there?"
 0x5a01e,ところで もういせきには<4E>いったのか？<4C>いせきはいいぞー<4E>ロマンがあってな,"That being said, have you gone to the Ruins yet? <4C>The Ruins are great.<4C>They have an adventurous feeling to them."
 0x5a020,いせきには トロッコで<4E>いくんだよ,You can reach the Ruins by taking the rail car.
-0x5a022,セレクトしぶで ごほうびが<4E>でるそうじゃないか<4C>やったな!<4C>きょうは とうこうびだろ<4C>がっこうが おわったら<4E>もらいに いってこいよ,"You did it!<49>By the way, The Select Office has a reward for you.<49>Wait, do you have school today? Go<49>pick it up when your day is over."
+0x5a022,セレクトしぶで ごほうびが<4E>でるそうじゃないか<4C>やったな!<4C>きょうは とうこうびだろ<4C>がっこうが おわったら<4E>もらいに いってこいよ,"The Select Office has a reward for you? That's great!<4C>Wait, do you have school today?<49>Go pick it up when your day is over."
 0x5a024,そうだ 1つ ちゅういすることを<4E>わすれていたぞ<4C>じんじゃの たちいリきんしの<4E>ばしょには はいっちゃいかんぞ<4C>ロボロボだんが でるって<4E>はなしだからな<4C>ぜーったいに はいっちゃいかんぞ!<4C>それと しゅくだいは<4E>はやめに おわらせるんだぞ!,"Oh that's right, I forgot to say one thing.<49>Stay away from the back of the Shrine, it's off-limits!<49>There's been talk of the RoboRobo Gang lurking around that area, <49>do not try to go there! Also, try to keep up with your homework as well."
 0x5a026,=0x5a024,=0x5a024
 0x5a028,=0x5a024,=0x5a024
@@ -32,7 +32,7 @@ Pointer[#version],Original,Translated
 0x5a03c,おお これじゃこれじゃ<4E>さけのさかなが ほしかったんじゃ,Ooh you actually brought this to me. I was wanting a good snack...
 0x5a03e,このまちの はずれに<4E>リょうしが おってな<4C>いぜんは じびきあみでとれたものを<4E>よく くれていたんだが<4C>サメがでるようになって リょうが<4E>おもうように できんようになったと<4C>もんくをいっておったわ,"There's a lot of fishermen on the outskirts of town.<4C>Anything they caught for the day, they would bring back to town.<4C>However, ever since the sharks came, they haven't been able to catch anything.<4C>A lot of them are furious."
 0x5a040,サメがでるから およげないの<4E>せっかく およぎにきたのにー,"I can't swim because of the sharks, after all the trouble I went through to come here..."
-0x5a042,ところで つぼをやきたいのじゃが<4E>いい やまのつちが ほしいのう<4C>やまのほこらの あたリのつちが<4E>いいのう,"By the way, I'd like to make a pot but I need some good mountain soil. <4C>Some soil around the mountain shrine<49>should be good."
+0x5a042,ところで つぼをやきたいのじゃが<4E>いい やまのつちが ほしいのう<4C>やまのほこらの あたリのつちが<4E>いいのう,"By the way, I'd like to make a pot but I need some good mountain soil. <4C>Some soil around the mountain shrine should be good."
 0x5a044,このさきの みなとまちが<4E>なんだかさいきん さわがしいけど<4C>なにか あったのかな,This path leads to Harbor Town.<4C>It sounds like there's been some trouble there lately...<4C>I wonder what's going on?
 0x5a046,セレクトたいって なぞの<4E>いたずらしゅうだん ロボロボだんと<4C>おっかけっこしている あいつらだろ？,"Hmm, the Select Force? <4C>Those are the guys chasing after the RoboRobo Gang, right?"
 0x5a048,ぼくだって おんなのこティンペット<4E>ほしいよー,It's not fair... <4C>I want a female Tinpet too...
@@ -69,7 +69,7 @@ Pointer[#version],Original,Translated
 0x5a07c,ふしぎなものって・・・・・<4E>なにも みえないじゃないか,Mysterious? I didn't see anything peculiar about it.
 0x5a07e,ミーはショック!!,"Ah, I am shocked!!"
 0x5a080,キョウダイヨ ショウリハ<4E>オマエト トモニアル・・・,"Brothers and sisters, victory lies with you..."
-0x5a082,まだ あたしは あんたを<4E>みとめたわけじゃないよ,I still refuse to accept you're better than me!
+0x5a082,まだ あたしは あんたを<4E>みとめたわけじゃないよ,I still refuse to accept you as a Medarotter!
 0x5a084,ふん まぐれを じつリょくと<4E>とリちがえんなよな,Hmph...don't mistake your dumb luck for skill.
 0x5a086,ぼくのライバルとして はずかしくない<4E>たたかいを してくれよ,I'm proud to call you my rival. Let's battle again sometime.
 0x5a088,ユウキちゃんを あまリいじめちゃ<4E>いやよ,Please don't bully Yuuki.
@@ -86,12 +86,12 @@ Pointer[#version],Original,Translated
 0x5a09e,どうろの こうじをしてるから<4E>このさきには いけないんだって,"This road is under construction, no entry beyond this point."
 0x5a0a0,トン トン<4C>こうちょうしつの ドアを<4E>ノックした,*Knock knock*<4C>You knocked on the door to the office.
 0x5a0a2,ねえっ <&NAME><4E>これなんの いし？<4C>きれいねーっ しんぴてきっていうか<4E>ふしぎなちからが ねむってるみたい<4C>これ もらっていい？<4C>そのかわリと いったらなんなんだけど<4E>これあげるね<4C>キララ<4E>まだ いいって いってないだろ<4C><&NAME>って おんなのこの<4E>きもちに ほんっと どんかんよね<4C>ガールフレンドに プレゼントの<4E>ひとつでも したことある？<4C>ないでしょ？<4C><&NAME>も<4E>ペンギンちゃん もって<4C>ほら おにあいじゃない<4C>あ・・・ うん<4C>じゃ きまリね,"Hey <&NAME>. That stone...<4C>It looks so shiny and pretty, like it has some kind of power sleeping inside of it...<4C>Is it okay if I have it? It's not much but I'll give you this.<4C>Kirara, I still haven't said anything yet...<4C><&NAME>, you don't really understand girls, do you?<4C>Guys give their girlfriends presents. Here, <&NAME>, take this <f02>Penguin<f00>.<4C>See? That bot looks good on you<4C>Ah...yeah. <4C>Well, then it's decided."
-0x5a0a4,あ・・・<4E>このいし<4C>ああ 「ほしのかけら」のこと？<4C>ほしかったんですけど まよってるうち<4E>うリきれになってしまって<4C>でも よかった<4C><&NAME>さんに<4E>あいにきたら みられるんですね<4C>そんなに ほしかったら<4E>ナエちゃんに あげるよ<4C>いいんです <&NAME>さんに<4E>もっていてもらったほうが<4C>それに あそびにくる<4E>リゆうが できますし・・・<4C>なんかいった？<4C>い いえ<4E>なんでもないです<4C>でも リゆうが できるとか・・<4C>あ そうでした<4C>きょうは パーツのテストを<4E>おねがいしたくて きたんです<4C>このパーツ つかってみてください,"Ah, that stone...<4C>Is that a <f02>Star Piece<f00>?<4C>I always wanted one, but they were always sold out. I could never find one.<4C>I'm glad I can see one up close like this. <4C>I only came here to see you anyway.<4C>If you want it that badly, I'll give it to you...<4C>It's okay, it's better if you hold on to it.<4C>Besides, I want you to have a reason to visit more often...<4C>Huh, did you say something?<4C>Oh...n-nothing. <4C>Anyway, I came here because...<4C>Ah, right.<4C>I want you to test out some new parts.<49>Try them out."
+0x5a0a4,あ・・・<4E>このいし<4C>ああ 「ほしのかけら」のこと？<4C>ほしかったんですけど まよってるうち<4E>うリきれになってしまって<4C>でも よかった<4C><&NAME>さんに<4E>あいにきたら みられるんですね<4C>そんなに ほしかったら<4E>ナエちゃんに あげるよ<4C>いいんです <&NAME>さんに<4E>もっていてもらったほうが<4C>それに あそびにくる<4E>リゆうが できますし・・・<4C>なんかいった？<4C>い いえ<4E>なんでもないです<4C>でも リゆうが できるとか・・<4C>あ そうでした<4C>きょうは パーツのテストを<4E>おねがいしたくて きたんです<4C>このパーツ つかってみてください,"Ah, that stone...<4C>Is that a <f02>Star Piece<f00>?<4C>I always wanted one, but they were always sold out. I could never find one.<4C>I'm glad I can see one up close like this. <4C>Now I can see one when I come to your house.<4C>If you want it that badly, I'll give it to you...<4C>It's okay, it's better if you hold on to it, <&NAME>.<4C>Besides, I want to have a reason to visit more often...<4C>Huh, did you say something?<4C>Oh...n-nothing. <4C>Anyway, I came here because...<4C>Ah, right.<4C>I want you to test out some new parts.<49>Try them out."
 0x5a0a6,ロボトルする あいてのかおのしたに<4E>「!」マークが でるだろ？<4C>あれが あいてチームの<4E>メダロットの かずなんだ,Y'know those <f02>!<f00> marks that appear under an opponent's face before you Robottle them?<4C>That's the number of Medarots they have on their team.
 0x5a0a8,「なぐる」や「がむしゃら」をつかうと<4E>ぼうぎょが できなくなるんだ<4C>そのときは だれかが かわって<4E>ぼうぎょしなくちゃ いけないよ<4C>それに がむしゃらのときは<4E>あいてのこうげきを かわすことも<4C>ぼうぎょすることも できないから<4E>すぐにあたまを ねらわれちゃうんだ,"If you use a <f02>Strike <f00>or <f02>Berserk<f00> attack, you won't be able to defend during cooldown.<4C>In situations like these, it's best to have a Medarot that can use a <f02>Guard <f00>skill.<4C>Moreover, if you use a <f02>Berserk <f00>attack, you won't be able to dodge or defend.<4C>This makes the head a very easy target! Be careful."
 0x5a0aa#kabuto,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「カブト」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,"Heh heh heh... Robo.<4C>At last, I've found it...<4C>What we, the RoboRobo Gang, have been searching for...<4C>The <f02>Kabuto <f00>Medal!<4C>This shine... It... It's so beautiful... Robo.<4C>I'd better hurry and take this to the boss!"
 0x5a0aa#kuwagata,ふっ ふっ ふ ロボ<4C>とうとう てに いれたロボ<4C>これぞ わがロボロボだんが<4E>もとめていた 「クワガタ」メダル<4C>このかがやき<4E>う うつくしい・・・ロボ<4C>はやく もってかえって<4E>かんぶに とリたててもらうロボ,"Heh heh heh... Robo.<4C>At last, I've found it...<4C>What we, the RoboRobo Gang, have been searching for...<4C>The <f02>Kuwagata <f00>Medal!<4C>This shine... It... It's so beautiful... Robo.<4C>I'd better hurry and take this to the boss!"
-0x5a0ac,ちょうないたいかいは たのしんだか？,Did you enjoy the tournament?
+0x5a0ac,ちょうないたいかいは たのしんだか？,Did you have fun at the local tournament?
 0x5a0ae,なにかが あしに あたった,Something hit my foot..
 0x5a0b0,まだまだそろってない パーツや<4E>メダルが あるだろ？<4C>おとこだったら<4E>さいごまで やリとげるんだ,You still haven't set up all your parts and Medals?<4C>Real men always have them ready!
 0x5a0b2,ここまで せいちょうしたら<4E>つぎは つうしんケーブルで<4C>べつの せかいのともだちと<4E>ロボトルに ちょうせんだ!,"As your Medarots grow, you can connect with friends from other worlds through a Link Cable!"
