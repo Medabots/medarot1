@@ -44,7 +44,7 @@ jobs:
                 working_directory: medarot_1
                 command: | # Checkout the latest created tag
                   git fetch --tags
-                  git checkout `git for-each-ref --sort=taggerdate --count=1 refs/tags/* | cut -d'/' -f3-`      
+                  git checkout `git rev-list --tags --max-count=1`    
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
