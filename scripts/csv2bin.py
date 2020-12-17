@@ -16,6 +16,12 @@ with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
         l[1] = "{:X}".format(int(l[1], 16))
         ptr_names[l[0].strip()] = (int(l[1][2:4], 16), int(l[1][0:2], 16))
 
+portrait_names = {}
+with open(os.path.join(os.path.dirname(__file__), 'res/patch', 'portraits.tbl'), "r") as f:
+    for line in f:
+        l = line.split('=')
+        portrait_names[l[1].strip()] = "{:03}".format(int(l[0]))
+
 def table_convert(txt, tbl):
     result = bytearray()
     i = 0
@@ -52,6 +58,8 @@ def table_convert(txt, tbl):
                         result.append(int(s[0:2], 16))
                 elif special_type == '@':
                     s = ''.join(special_data)
+                    if s in portrait_names:
+                        s = portrait_names[s]
                     if specialStartIdx > 0:
                         result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character
                     result.append(0x48)
