@@ -156,7 +156,11 @@ endif
 .SECONDEXPANSION:
 .SECONDARY:
 $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $(shared_ADDITIONAL) $$(wildcard $(SRC)/$$(firstword $$(subst ., ,$$*))/include/*.$(SOURCE_TYPE)) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
+ifdef USE_PORTRAITS
 	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
+else
+	$(CC) $(CC_ARGS) -DUSE_PORTRAITS -DGAMEVERSION=$(CURVERSION) -o $@ $<
+endif
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@

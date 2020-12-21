@@ -55,6 +55,7 @@ LoadTilemapInWindowWrapper:
   rst $10
   ret
 
+IF DEF(USE_PORTRAITS)
 LoadPortraitTileset:
 ; a is the bank where the portraits are
 ; hl is the address of the portrait to pull
@@ -64,6 +65,7 @@ LoadPortraitTileset:
   ld a, BANK(DrawPortrait)
   rst $10
   ret
+ENDC
 
 VWFPutStringTo8::
   ld a, 8
@@ -193,6 +195,7 @@ VWFPutStringAutoNarrow::
   pop hl
   jp VWFPutString.skipSettingLength
 
+IF DEF(USE_PORTRAITS)
 SECTION "Portraits 0-63", ROMX[$4000], BANK[$2E]
 TilesetPortraits1::
   INCLUDE "game/src/patch/include/portraits_1.asm"
@@ -200,6 +203,7 @@ TilesetPortraits1::
 SECTION "Portraits 64-113", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/patch/include/portraits_2.asm"
+ENDC
 
 SECTION "VWF Drawing Functions", ROMX[$4C00], BANK[$24]
 VWFDrawLetterTable::
@@ -1229,14 +1233,22 @@ VWFChar49::
 VWFChar48::
   ; Draw character portrait if called
   ; csv2bin will forcibly add 4C before this, if it isn't the first character in dialog
-
+IF DEF(USE_PORTRAITS)
+  PRINTT "Portraits enabled\n"
   inc hl
   ld a, [hl]
   call DrawPortrait ; Sets VWFPortraitDrawn
   pop hl
   call VWFIncTextOffset
   call VWFIncTextOffset
-  jp VWFResetMessageBox ; Need to set start offsets
+  call VWFResetMessageBox ; Need to set start offsets
+ELSE
+  PRINTT "Portraits disabled\n"
+  pop hl
+  call VWFIncTextOffset
+  call VWFIncTextOffset
+ENDC
+  jp PutCharLoopWithBankSwitch
 
 VWFChar47::
   inc hl
@@ -1274,6 +1286,7 @@ VWFChar40::
   pop hl
   jp VWFIncTextOffset
 
+IF DEF(USE_PORTRAITS)
 DrawPortrait:
   ld e, $f1 ; Portrait restore f1, Portrait f0
   ld b, $1 ; tilemap x position
@@ -1319,6 +1332,7 @@ DrawPortrait:
   ld a, [TempBankStorage]
   ld [$c6e0], a
   ret
+ENDC
 
 VWFWriteCharLimited::
   ld a, [VWFTileLength]
