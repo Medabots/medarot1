@@ -1,7 +1,7 @@
 export LC_CTYPE=C
 export PYTHONIOENCODING=utf-8
 
-VERSIONS := kabuto kuwagata
+VERSIONS := kabuto kuwagata kabuto_portraits kuwagata_portraits
 OUTPUT_PREFIX := medarot_
 ORIGINAL_PREFIX := baserom_
 ROM_TYPE := gb
@@ -113,11 +113,12 @@ story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILE
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
 
 # Manually add MainDialog as a special case for map text reloading
-# Manually add Portraits.2bpp as its temporarily used for dialog character portrait feature
-patch_ADDITIONAL := $(wildcard $(SRC)/patch/include/*.$(SOURCE_TYPE))
+patch_ADDITIONAL :=
 patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias $(PATCH_BIN_FILES) $(PATCH_TEXT_TILESET_FILES)
-patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) $(PATCH_PORTRAIT_TILESET_FILES)
-patch_locations_ADDITIONAL := $(foreach VERSION,$(VERSIONS),$(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE))
+patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) 
+patch_locations_ADDITIONAL := $(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE)
+
+portraits_ADDITIONAL := $(PATCH_PORTRAIT_TILESET_FILES)
 
 .PHONY: all clean default $(VERSIONS)
 default: kabuto
@@ -127,12 +128,23 @@ all: $(VERSIONS)
 # Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
 kabuto: CURVERSION:=kabuto
 kuwagata: CURVERSION:=kuwagata
+# Use underscores to rely on the same dependencies as a base, but rely on new changes
+# Must be in the format 'version_specialty'
+kabuto_portraits: CURVERSION:=kabuto
+kuwagata_portraits: CURVERSION:=kuwagata
+kabuto_portraits: FEATURE:=PORTRAITS
+kuwagata_portraits: FEATURE:=PORTRAITS
 
 $(VERSIONS): %: $(OUTPUT_PREFIX)%.$(ROM_TYPE)
 
 # $| is a hack, we cannot have any other order-only prerequisites
 .SECONDEXPANSION:
-$(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) | $(BASE)/$(ORIGINAL_PREFIX)%.$(ROM_TYPE)
+$(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) \
+	$$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$*/*.$(SOURCE_TYPE)))))) \
+	$$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$(firstword $$(subst _, ,$$*))/*.$(SOURCE_TYPE)))))) \
+	$$(addprefix $(BUILD)/$$(lastword $$(subst _, ,$$*))., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$(lastword $$(subst _, ,$$*))/*.$(SOURCE_TYPE)))))) \
+	| $(BASE)/$(ORIGINAL_PREFIX)$$(firstword $$(subst _, ,$$*)).$(ROM_TYPE)
+	
 	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
 	$(FIX) $(FIX_ARGS) -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
 
@@ -155,12 +167,8 @@ endif
 # Don't delete intermediate files
 .SECONDEXPANSION:
 .SECONDARY:
-$(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $(shared_ADDITIONAL) $$(wildcard $(SRC)/$$(firstword $$(subst ., ,$$*))/include/*.$(SOURCE_TYPE)) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
-ifdef USE_PORTRAITS
-	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
-else
-	$(CC) $(CC_ARGS) -DUSE_PORTRAITS -DGAMEVERSION=$(CURVERSION) -o $@ $<
-endif
+$(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst _, ,$$(firstword $$(subst ., ,$$*))))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $(shared_ADDITIONAL) $$(wildcard $(SRC)/$$(firstword $$(subst ., ,$$*))/include/*.$(SOURCE_TYPE)) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) | $(BUILD)
+	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -DFEATURE_$(FEATURE) -o $@ $<
 
 $(BUILD)/buffer_constants.$(SOURCE_TYPE): $(SCRIPT)/res/ptrs.tbl | $(BUILD)
 	$(PYTHON) $(SCRIPT)/ptrs2asm.py $^ $@

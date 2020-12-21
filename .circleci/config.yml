@@ -86,7 +86,7 @@ jobs:
           command: |
             export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
             export PIPELINE_NUMBER=<< pipeline.number >>
-            make kabuto kuwagata -j
+            make kabuto kuwagata kabuto_portraits kuwagata_portraits -j
       - when:
           condition: << parameters.create-tag >>
           steps:
@@ -108,9 +108,13 @@ jobs:
             mkdir patch
             ips_util create medarot_1/baserom_kabuto.gb medarot_1/medarot_kabuto.gb -o patch/m1kabuto-<<pipeline.number>>-<<pipeline.git.revision>>.ips
             ips_util create medarot_1/baserom_kuwagata.gb medarot_1/medarot_kuwagata.gb -o patch/m1kuwagata-<<pipeline.number>>-<<pipeline.git.revision>>.ips
+            ips_util create medarot_1/baserom_kabuto.gb medarot_1/medarot_kabuto_portraits.gb -o patch/m1kabuto-portraits-<<pipeline.number>>-<<pipeline.git.revision>>.ips
+            ips_util create medarot_1/baserom_kuwagata.gb medarot_1/medarot_kuwagata_portraits.gb -o patch/m1kuwagata-portraits-<<pipeline.number>>-<<pipeline.git.revision>>.ips
             cp medarot_1/build/patch/version.txt patch/version.txt
             sha1sum medarot_1/medarot_kabuto.gb > patch/kabuto.sha1
             sha1sum medarot_1/medarot_kuwagata.gb > patch/kuwagata.sha1
+            sha1sum medarot_1/medarot_kabuto_portraits.gb > patch/kabuto_portraits.sha1
+            sha1sum medarot_1/medarot_kuwagata_portraits.gb > patch/kuwagata_portraits.sha1
       - store_artifacts:
           path: patch/
           destination: patch

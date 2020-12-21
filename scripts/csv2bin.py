@@ -60,8 +60,8 @@ def table_convert(txt, tbl):
                     s = ''.join(special_data)
                     if s in portrait_names:
                         s = portrait_names[s]
-                    if specialStartIdx > 0:
-                        result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character
+                    if specialStartIdx > 0 and result[-1] != 0x4C:
+                        result.append(0x4C) # Force a new window before drawing a new portrait, except on the first character or a previous text box
                     result.append(0x48)
                     result.append(int(s[0:3], 10)) # @[000, 113], 255 is clear
                 elif special_type == '$': # Literal
@@ -74,7 +74,8 @@ def table_convert(txt, tbl):
                 elif special_type == '`':
                     result.append(0x50)
                 elif special_type == '4':
-                    result.append(int( special_type + ''.join(special_data), 16))
+                    s = special_type + ''.join(special_data)
+                    result.append(int(s, 16))
                 elif txt != '<IGNORED>':
                     print("Unknown control code %s" % special_type)
             elif txt[i] in tbl:
