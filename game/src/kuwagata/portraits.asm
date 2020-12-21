@@ -1,0 +1,1 @@
+INCLUDE "game/src/version/portraits.asm"
