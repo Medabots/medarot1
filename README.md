@@ -1,6 +1,9 @@
 [![CircleCI](https://circleci.com/gh/Medabots/medarot1/tree/tr_EN.svg?style=svg)](https://app.circleci.com/pipelines/github/Medabots/medarot1?branch=tr_EN)
 
 # Obtaining/Applying the Patch
+
+**NOTE:** The versions marked '-portraits' are in development and not release ready yet, play the non-portrait builds for the most stable experience.
+
 1. Obtain the original ROM for the Medarot 1 version you want (the md5 hashes are below)
 1. Head to the [Latest release](https://github.com/Medabots/medarot1/releases/latest) page and grab the .ips file for your preferred version
 1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/) to apply the IPS patch to your ROM
