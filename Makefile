@@ -126,12 +126,10 @@ all: $(VERSIONS)
 
 # Support building specific versions
 # Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
-kabuto: CURVERSION:=kabuto
-kuwagata: CURVERSION:=kuwagata
+kabuto%: CURVERSION:=kabuto
+kuwagata%: CURVERSION:=kuwagata
 # Use underscores to rely on the same dependencies as a base, but rely on new changes
 # Must be in the format 'version_specialty'
-kabuto_portraits: CURVERSION:=kabuto
-kuwagata_portraits: CURVERSION:=kuwagata
 kabuto_portraits: FEATURE:=PORTRAITS
 kuwagata_portraits: FEATURE:=PORTRAITS
 
