@@ -86,7 +86,7 @@ jobs:
           command: |
             export SHORT_HASH=`echo $CIRCLE_SHA1 | cut -c -7`
             export PIPELINE_NUMBER=<< pipeline.number >>
-            make kabuto kuwagata kabuto_portraits kuwagata_portraits -j
+            make all -j
       - when:
           condition: << parameters.create-tag >>
           steps:
