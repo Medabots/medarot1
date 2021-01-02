@@ -99,13 +99,13 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld h, a
   ld a, [$c8f1]
   ld l, a
-  ld bc, $9884
+  ld bc, $9885 ; Originally 9884
   call JumpDrawNumber
   ld a, [$c8f2]
   ld h, a
   ld a, [$c8f3]
   ld l, a
-  ld bc, $988e
+  ld bc, $988f ; originally 988e
   call JumpDrawNumber
   ld a, [$c8f4]
   ld hl, $994c
@@ -124,37 +124,49 @@ SaveScreenDrawWinRate: ; 9223 (2:5223)
   ld b, a
   ld a, [$c8f1]
   ld c, a
-  ; hl = total losses
+
+  ; hl = total losses + total wins = total matches
   ld a, [$c8f2]
   ld h, a
   ld a, [$c8f3]
   ld l, a
-  add hl, bc ; hl = total matches
+  add hl, bc
   push hl
-  call .multiply_by_ten ; hl = bc (number of wins) x 10, NOTE: Will break when > 6620ish wins (this broke at 663 wins in the original game)
-  pop bc ; bc = total matches
-  call JumpTable_285 ; [c64e] = hl (wins x 10) / bc (total matches), [c641] = hl % bc
-  push bc
-  ld a, [$c64e]
-  ld hl, $98cd
-  call JumpTable_2fa
-  ld a, [$c641] ; remainder
-  ld b, $0
-  ld c, a
-  call .multiply_by_ten ; hl = (remainder * 10)
-  pop bc
-  call JumpTable_285
-  ld a, [$c64e]
-  ld hl, $98ce
-  call JumpTable_2fa 
-  ret
-.multiply_by_ten
-  ld hl, $0
-  ld d, $0a
+  
+  ; use [d][hl] to store the wins x 100
+  xor a
+  ld hl, $0000
+  ld d, $64
+  
+  ; hl = 100 x win count
 .multiply_loop
   add hl, bc
+  jr nc, .continue
+  inc a
+.continue
   dec d
-  jr nz, .multiply_loop 
+  jr nz, .multiply_loop
+  ld d, a
+  pop bc ; bc = total matches
+  ld a, b
+  cpl
+  ld b, a
+  ld a, c
+  cpl
+  ld c, a
+  xor a
+  inc bc ; bc = ~bc + 1 = -bc
+  inc d
+.divide_loop
+  add hl, bc ; hl = (win x 100) - total matches
+  inc a
+  jr c, .divide_loop
+  dec d
+  jr nz, .divide_loop
+.done
+  dec a
+  ld hl, $98ce
+  call JumpTable_2fa ; Draw number, pad left
   ret
 .end
 REPT $526F - .end
