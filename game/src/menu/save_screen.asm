@@ -119,41 +119,45 @@ SaveScreenInitAsyncDrawTilemap: ; It gets drawn in chunks
   ld [TempStateIndex], a
   ret
 SaveScreenDrawWinRate: ; 9223 (2:5223)
+  ; bc = total wins
   ld a, [$c8f0]
   ld b, a
   ld a, [$c8f1]
   ld c, a
-  ld hl, $0
-  ld d, $64
-.asm_9230
-  add hl, bc
-  dec d
-  jr nz, .asm_9230
-  push hl
+  ; hl = total losses
   ld a, [$c8f2]
   ld h, a
   ld a, [$c8f3]
   ld l, a
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
-  call JumpTable_285
-  ld h, $00
-  ld a, [$c64e]
-  ld l, a
-  ld bc, $a
-  call JumpTable_285
+  add hl, bc ; hl = total matches
+  push hl
+  call .multiply_by_ten ; hl = bc (number of wins) x 10, NOTE: Will break when > 6620ish wins (this broke at 663 wins in the original game)
+  pop bc ; bc = total matches
+  call JumpTable_285 ; [c64e] = hl (wins x 10) / bc (total matches), [c641] = hl % bc
+  push bc
   ld a, [$c64e]
   ld hl, $98cd
   call JumpTable_2fa
-  ld h, $00
-  ld a, [$c641]
-  ld l, a
-  ld bc, $1
+  ld a, [$c641] ; remainder
+  ld b, $0
+  ld c, a
+  call .multiply_by_ten ; hl = (remainder * 10)
+  pop bc
   call JumpTable_285
   ld a, [$c64e]
   ld hl, $98ce
-  call JumpTable_2fa
+  call JumpTable_2fa 
   ret
+.multiply_by_ten
+  ld hl, $0
+  ld d, $0a
+.multiply_loop
+  add hl, bc
+  dec d
+  jr nz, .multiply_loop 
+  ret
+.end
+REPT $526F - .end
+  nop
+ENDR
 ; 0x926f
