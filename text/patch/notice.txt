@@ -1,7 +1,7 @@
-This is a work-in-progress fan
+This is a fan-made patch.
 
-patch. Please report any bugs
+Please report any bugs and
 
-and translation issues at
+translation issues at
 
 github.com/Medabots/medarot1
