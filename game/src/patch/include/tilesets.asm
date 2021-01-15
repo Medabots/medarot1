@@ -39,43 +39,43 @@ PatchTilesetStartRobottlesText::
 PatchTilesetEndRobottlesText::
 PatchTilesetStartRobattleGraphics::
   INCBIN "build/tilesets/patch/RobottleGraphics.malias"
-PatchTilesetEndRobattleGraphics
+PatchTilesetEndRobattleGraphics::
 PatchTilesetStartMinimalEquipScreenText::
   INCBIN "build/tilesets/patch/MinimalEquipScreen.1bpp"
-PatchTilesetEndMinimalEquipScreenText
+PatchTilesetEndMinimalEquipScreenText::
 PatchTilesetStartDash::
   INCBIN "build/tilesets/patch/Dash.1bpp"
-PatchTilesetEndDash
+PatchTilesetEndDash::
 PatchTilesetStartFWFY::
   INCBIN "build/tilesets/patch/FWF_Y.1bpp"
-PatchTilesetEndFWFY
+PatchTilesetEndFWFY::
 PatchTilesetStartFWFN::
   INCBIN "build/tilesets/patch/FWF_N.1bpp"
-PatchTilesetEndFWFN
+PatchTilesetEndFWFN::
 PatchTilesetStartFWFe::
   INCBIN "build/tilesets/patch/FWF_e.1bpp"
-PatchTilesetEndFWFe
+PatchTilesetEndFWFe::
 PatchTilesetStartFWFs::
   INCBIN "build/tilesets/patch/FWF_s.1bpp"
-PatchTilesetEndFWFs
+PatchTilesetEndFWFs::
 PatchTilesetStartFWFo::
   INCBIN "build/tilesets/patch/FWF_o.1bpp"
-PatchTilesetEndFWFo
+PatchTilesetEndFWFo::
 PatchTilesetStartLoadGame::
   INCBIN "build/tilesets/patch/LoadGame.1bpp"
-PatchTilesetEndLoadGame
+PatchTilesetEndLoadGame::
 PatchTilesetIntroTutorial::
   INCBIN "build/tilesets/patch/IntroTutorial.1bpp"
-PatchTilesetEndIntroTutorial
+PatchTilesetEndIntroTutorial::
 PatchTilesetNameScreen::
   INCBIN "build/tilesets/patch/NameScreen.1bpp"
-PatchTilesetEndNameScreen
+PatchTilesetEndNameScreen::
 PatchTilesetStartLinkMainMenuText::
   INCBIN "build/tilesets/patch/LinkMainMenu.1bpp"
-PatchTilesetEndLinkMainMenuText
+PatchTilesetEndLinkMainMenuText::
 PatchTilesetStartSaveDataCorruptedText::
   INCBIN "build/tilesets/patch/SaveDataCorrupted.1bpp"
-PatchTilesetEndSaveDataCorruptedText
+PatchTilesetEndSaveDataCorruptedText::
 PatchTilesetStartLuckLotteryText::
   INCBIN "build/tilesets/patch/LuckLottery.1bpp"
-PatchTilesetEndLuckLotteryText
+PatchTilesetEndLuckLotteryText::
