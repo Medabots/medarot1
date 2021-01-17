@@ -374,11 +374,11 @@ Pointer[#version],Original,Translated
 0x602e4,ちっくしょう なんで かてないんだよ,<@IsekiSad>Darn! Why can't I ever win?
 0x602e6,きょうは ほんきで おあいてして<4E>さしあげますわ,<@Paddy>I'll come at you with everything I got.
 0x602e8,いやーん ですわ,<@PaddySad>Nooo!
-0x602ea,あれっ？<4E>どこかで みたことあるような・・・<4C>だれだったかな？<4C>クスッ<4E>どうしたの？<4C>レディのかおを じいっと<4E>みつめちゃったリして<4C>いっ いや・・・<4E>べつに ぼくは・・・<4C>おたがい ベストをつくしましょう,"Huh? I feel like I've seen you before...who are you?<4C>Heh heh, what's wrong? You're staring pretty hard.<4C>No, it's not what you think...I was...<4C>In any case, let's both do our best!"
-0x602ec,けっこう つよくなったじゃない<4E>また どこかで あいましょう♥,You've become very strong! 'Til we meet again!♥
-0x602ee,ここは ぼくの にわみたいなもの<4E>だからね<4C>まちがっても きみには まけないよ,"This place is like a garden to me..<4C>Which is why, I won't lose to you, no matter what!"
-0x602f0,なんということだ ここで<4E>まけるなんて・・・,I can't believe it... To lose now of all times...
-0x602f2,さいこうの しあいだったよ,That was a great match.
+0x602ea,あれっ？<4E>どこかで みたことあるような・・・<4C>だれだったかな？<4C>クスッ<4E>どうしたの？<4C>レディのかおを じいっと<4E>みつめちゃったリして<4C>いっ いや・・・<4E>べつに ぼくは・・・<4C>おたがい ベストをつくしましょう,"<@Hikaru>Huh? I feel like I've seen you before...who are you?<4C><@Beauty>Heh heh, what's wrong? You're staring pretty hard.<4C><@Hikaru>No, it's not what you think...I was...<4C><@Beauty>In any case, let's both do our best!"
+0x602ec,けっこう つよくなったじゃない<4E>また どこかで あいましょう♥,<@Beauty>You've become very strong! 'Til we meet again!♥
+0x602ee,ここは ぼくの にわみたいなもの<4E>だからね<4C>まちがっても きみには まけないよ,"<@Yuuki>This place is like a garden to me..<4C>Which is why, I won't lose to you, no matter what!"
+0x602f0,なんということだ ここで<4E>まけるなんて・・・,<@YuukiSad>I can't believe it... To lose now of all times...
+0x602f2,さいこうの しあいだったよ,<@Yuuki>That was a great match.
 0x602f4,ここは メダロットしゃです<4C>メダロット トーナメントの<4E>ちくたいかいは ここで おこないます,This is the Medarot Company.<4C>Here is where we will be conducting the District Medarot Tournament.
 0x602f6,ちくたいかいに さんかするひとは<4E>ちかのステージに むかってください,"All participants, please head to the stage downstairs."
 0x602f8,ふつうのティンペットと<4E>おんなのこティンペット<4C>2しゅるいの パーツがあるのか・・・,There are two kinds of parts.<4C>One for regular Tinpets and<49>one for female Tinpets.
@@ -394,14 +394,14 @@ Pointer[#version],Original,Translated
 0x6030c,ユウキさまは ただいま<4E>がいしゅつちゅうで ございます,Master Yuuki is out at the moment.
 0x6030e,ほらっ そうじのじゃまだよっ,"Move, I'm cleaning."
 0x60310,せっかく きれいにした ばしょを<4E>あるかないで おくれ,"Don't walk in here, I went through a lot of trouble cleaning this place."
-0x60312,なんだい ぼくに ようじでも<4E>あるのかい？,What is it? Is there something you want?
-0x60314,ぼくは つぎのたいかいで<4E>しんせいひんを つかうんだよ<4C>パーツのせいで まけたって<4E>いわれるのは いやだから<4C>きみにも 1セット わけてあげよう,"I'm gonna try out a new product in the next tournament.<4C>It's not good to blame your parts if you lose. Here, I'll give you a set too."
-0x60316,ほんたいかいでは じゅんけっしょうで<4E>きみと たたかうことになる<4C>そこまで まけないで<4E>かちすすんでくるんだよ<4C>ほんたいかいで<4E>けっちゃくを つけよう,"Listen, in the final tournament, you and I are gonna fight in the semifinals.<4C>You better not lose 'til then.<4C>We'll finally settle it there."
-0x60318,こわれたメダルを なおしたいって？<4C>そうだな むかし<4E>おじいさまに きいたはなしだと<4C>まんげつのよるに いせきのみずうみに<4E>メダルをしずめれば<4C>メダルが ふっかつするらしい<4C>きょうは まんげつじゃないのか？,"You want to fix a broken Medal?<4C>Well, a long time ago, my grandpa told me a story that if you place a Medal in the fountain at the Ruins on the night of a full moon, the Medal will be revived.<4C>Isn't tonight a full moon?"
-0x6031a,はやく メダルがなおると いいな<4C>きみが おちこんでいる すがたを<4E>みても うれしくないからな,You should hurry and fix your Medal. It bums me out when you're depressed.
-0x6031c,メダロットは そつぎょうしたのさ<4C>・・・<4E>しかたがない<4C>そこまで いうなら<4E>あいてをしてあげても いいよ,Your Medarot has grown. ...I guess it's expected.<4C>Feel free to ask for a match anytime.
-0x6031e,くやしくはないさ<4E>さあ うけとリたまえ,"Hey, don't look so sad! Take it."
-0x60320,ボクは ライバルとして なさけないよ,Don't make me regret calling you my rival.
+0x60312,なんだい ぼくに ようじでも<4E>あるのかい？,<@Yuuki>What is it? Is there something you want?
+0x60314,ぼくは つぎのたいかいで<4E>しんせいひんを つかうんだよ<4C>パーツのせいで まけたって<4E>いわれるのは いやだから<4C>きみにも 1セット わけてあげよう,"<@Yuuki>I'm gonna try out a new product in the next tournament.<4C>It's not good to blame your parts if you lose. Here, I'll give you a set too."
+0x60316,ほんたいかいでは じゅんけっしょうで<4E>きみと たたかうことになる<4C>そこまで まけないで<4E>かちすすんでくるんだよ<4C>ほんたいかいで<4E>けっちゃくを つけよう,"<@Yuuki>Listen, in the final tournament, you and I are gonna fight in the semifinals.<4C>You better not lose 'til then.<4C>We'll finally settle it there."
+0x60318,こわれたメダルを なおしたいって？<4C>そうだな むかし<4E>おじいさまに きいたはなしだと<4C>まんげつのよるに いせきのみずうみに<4E>メダルをしずめれば<4C>メダルが ふっかつするらしい<4C>きょうは まんげつじゃないのか？,"<@Yuuki>You want to fix a broken Medal?<4C>Well, a long time ago, my grandpa told me a story that if you place a Medal in the fountain at the Ruins on the night of a full moon, the Medal will be revived.<4C>Isn't tonight a full moon?"
+0x6031a,はやく メダルがなおると いいな<4C>きみが おちこんでいる すがたを<4E>みても うれしくないからな,<@Yuuki>You should hurry and fix your Medal.<4C>It bums me out when you're depressed.
+0x6031c,メダロットは そつぎょうしたのさ<4C>・・・<4E>しかたがない<4C>そこまで いうなら<4E>あいてをしてあげても いいよ,<@Yuuki>Your Medarot has grown.<4C>...<49>I guess it's expected.<4C>Feel free to ask for a match anytime.
+0x6031e,くやしくはないさ<4E>さあ うけとリたまえ,"<@Yuuki>Hey, don't look so sad! Take it."
+0x60320,ボクは ライバルとして なさけないよ,<@Yuuki>Don't make me regret calling you my rival.
 0x60322,ぼくには メダロットよリ<4E>かわいい ハニーがいるからね<4C>おっと このことは ないしょだよ,"My Medarot is cuter than Honey's.<4C>Oops, that was supposed to be a secret."
 0x60324,にもうさくのいみを しってるかい？<*4>,Do you know what <f02>Nimousaku<f00> means?<*4>
 0x60326,おかねもちって いいねぇ,It must be great to be rich.
