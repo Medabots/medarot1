@@ -1,10 +1,10 @@
 Pointer[#version],Original,Translated
 0x4f800,アーレー たすけてーーーーっ!!,"Huuh?! Someone, help me!"
 0x4f802,うわあああっ!!,Uwaaah!
-0x4f804,あれっ？ とまった<4C>アリガトウ・・・<4C>え？ あたまのなかに<4E>このこえ まえにもきいた・・・,<@Hikaru>Huh? It stopped.<4C><@Static>Thank you...<4C><@Hikaru>That voice..it sounds familiar.
-0x4f806,う うそっ うそだっ!!<4E>うちゅうじんなんぞ しんじるものか<4C>オマエトイウ ヤツハ・・・!,No- no way!<4C>You guys are...<49>aliens!?<4C>You....!
+0x4f804,あれっ？ とまった<4C>アリガトウ・・・<4C>え？ あたまのなかに<4E>このこえ まえにもきいた・・・,<@Hikaru>Huh? It stopped.<4C><@Static><f03>Thank you...<4C><f00><@Hikaru>That voice..it sounds familiar.
+0x4f806,う うそっ うそだっ!!<4E>うちゅうじんなんぞ しんじるものか<4C>オマエトイウ ヤツハ・・・!,No- no way!<4C>You guys are...<49>aliens!?<4C><f03>You....!
 0x4f808,うっ うわーーーっ!!<4E>ごめんなさいぃ たーすけてーぇ,"Uwaah!! I'm sorry!<49>Someone, help!"
-0x4f80a,ほんとに うちゅうじんなの？<4C>メダル・・・ニンゲンニ<4E>アタエタノ ワタシタチ<4C>ソレカラ ズット ミテイタ<4E>コノ キレイナ ホシノコト・・・<4C>モウスコシ オソカッタラ<4E>タスケラレナカッタ<4C>ヨカッタ<4E>・・・キミニ アエテ<4C>まっ まってよ いかないでよ<4E>まだ ききたいことが・・・<4C>わああっ!!,"<@Hikaru>Are you guys...really aliens?<4C><@Alien>We, Medals, that have been bestowed upon humanity<49>have protected this planet...<4C>Had we waited a moment later, we wouldn't have been able to save you.<4C>We're glad...<49>..to have met you.<4C><@Hikaru>W-wait! Don't go!<4C>I still have things I need to ask y-<49>Waaah!"
+0x4f80a,ほんとに うちゅうじんなの？<4C>メダル・・・ニンゲンニ<4E>アタエタノ ワタシタチ<4C>ソレカラ ズット ミテイタ<4E>コノ キレイナ ホシノコト・・・<4C>モウスコシ オソカッタラ<4E>タスケラレナカッタ<4C>ヨカッタ<4E>・・・キミニ アエテ<4C>まっ まってよ いかないでよ<4E>まだ ききたいことが・・・<4C>わああっ!!,"<@Hikaru>Are you guys...really aliens?<4C><@Alien><f03>We, Medals, that have been bestowed upon humanity<49>have protected this planet...<4C>Had we waited a moment later, we wouldn't have been able to save you.<f00><4C><f03>We're glad...<49>..to have met you.<f00><4C><@Hikaru>W-wait! Don't go!<4C>I still have things I need to ask y-<49>Waaah!"
 0x4f80c,おちこむな <&NAME><4C>メダルをなおすほうほうは<4E>きっとあるはずだ<4C>そうだ! ユウキくんなら<4E>なにか しっているんじゃないか!？,"Don't be sad, <&NAME>.<4C>I'm sure there's a way to fix your medal.<4C>...That's right!<49>Yuuki might know something!"
 0x4f80e,げんきだせよ,Lighten up!
 0x4f810,がいこくのひとは かえっちゃったよ,The foreigners went home...

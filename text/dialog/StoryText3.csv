@@ -1,6 +1,6 @@
 Pointer[#version],Original,Translated
 0x68000,セレクトしぶヘ<4E>ようこそ,Welcome to the Select office.
-0x68002,ふつうの メダルもいいけど<4E>ロボロボだんに とられないために<4C>セレクトたいの こうにんメダル<4E>「セレクトメダル」が おすすめさ<4C>それに こうせいのうで<4E>とっても そだてやすいんだ<4C>これぞ スーパーテクノロジーの<4E>けっしょうだね,Normal medals are fine too but the Select Force usually recommends a special kind of a medal called the Select Medal as a way to prevent theft by the RoboRobo gang.<4C>Its high efficiency also makes it easy to raise.<4C>Now that's superb technology!
+0x68002,ふつうの メダルもいいけど<4E>ロボロボだんに とられないために<4C>セレクトたいの こうにんメダル<4E>「セレクトメダル」が おすすめさ<4C>それに こうせいのうで<4E>とっても そだてやすいんだ<4C>これぞ スーパーテクノロジーの<4E>けっしょうだね,Normal medals are fine too but the Select Force usually recommends a special kind of a medal called the <f02>Select Medal<f00> as a way to prevent theft by the RoboRobo gang.<4C>Its high efficiency also makes it easy to raise.<4C>Now that's superb technology!
 0x68004,=0x68002,=0x68002
 0x68006,なぜ セレクトメダルをつけた<4E>メダロットたちが・・・？<4C>もう なにを しんじたらいいのか<4E>わからない,Why is it only the Medarots with Select Medals...?<4C>I don't know who to trust anymore.
 0x68008,これからは あたらしい<4E>セレクトたいとして がんばるよ,"From here on out, I'll try my best to build a new Select Force."
@@ -21,7 +21,7 @@ Pointer[#version],Original,Translated
 0x68026,おちついて パパ<4E>そんなにあわてたら<4C><&NAME>も<4E>ふあんに なるでしょ,<@Mom>Calm down Beisuke.<4C>You're making <&NAME> nervous.
 0x68028,<&NAME>が ぶじで<4E>ほんとうに よかったわ,"I'm really glad you're safe, <&NAME>."
 0x6802a,おかえリ・・・<4C>そ それは？<4E>そのメダルは どうしたんだ!？<4C>とうとう おまえも<4E>ロボトルの こころに めざめたか!<4C>そうだ これをやろう<4E>メダロット・スタートセットだ!,"<@Dad>Welcome back.... Hm?<4C>W-Where did you get that Medal?<4C>I see! So you've finally decided to become a Medarotter!<4C>In that case, you should have this... <49>It's a Medarot Starter Set!"
-0x6802c,はじめは パパが くみたててやろう<4C>Zボタンをおして<4E>ケイタイウィンドウをひらいてごらん<4C>メダロットの いろいろな<4E>じょうほうを みることが できるぞ<4C>1たいだと くみかえができないから<4E>おもしろさが わからないだろう<4C>おこづかいを やるから<4E>これでパーツを かってきなさい<4C>パパから 5000円を もらった,"<@Dad>Here, I'll show you how you put it together...<4C>Press B to open your Info Pad menu<4C>You can find lots of useful information on your Medarot there.<4C>Hmmm... But since you only have one set right now, you won't know how much fun it is to swap in different parts!<4C>Here, I'll give you some extra allowance. <49>Use this to buy some extra parts for your new Medarot!<4C>Got ¥5000 from dad."
+0x6802c,はじめは パパが くみたててやろう<4C>Zボタンをおして<4E>ケイタイウィンドウをひらいてごらん<4C>メダロットの いろいろな<4E>じょうほうを みることが できるぞ<4C>1たいだと くみかえができないから<4E>おもしろさが わからないだろう<4C>おこづかいを やるから<4E>これでパーツを かってきなさい<4C>パパから 5000円を もらった,"<@Dad>Here, I'll show you how you put it together...<4C>Press <f02>B<f00> to open your <f02>Info Pad<f00> menu<4C>You can find lots of useful information on your Medarot there.<4C>Hmmm... But since you only have one set right now, you won't know how much fun it is to swap in different parts!<4C>Here, I'll give you some extra allowance. <49>Use this to buy some extra parts for your new Medarot!<4C>Got ¥5000 from dad."
 0x6802e,メダロットは じぶんで かんがえて<4E>こうげきする あいてをえらぶぞ<4C>メダロッターは どのパーツをつかうか<4E>きめてやるだけで いいぞ<4C>しかし! だれを ねらうとかは<4E>そのメダルの せいかくや<4C>どんなパーツを つけているかで<4E>おおきく かわるぞ<4C>いろんな くみあわせで さいきょうの<4E>メダロッターを めざすんだ!,"<@Dad>Medarots will think for themselves and choose which opponent to attack.<4C>The Medarotter only needs to tell them which parts to use.<4C>However!<49>Keep in mind that their choices depend a lot on the Medal's personality and which parts they have equipped.<4C>Try out lots of combinations, and strive to become the ultimate Medarotter!"
 0x68030,=0x6802e,=0x6802e
 0x68032,ワン! ワン!,<@Bonaparte>Woof! Woof!
@@ -53,8 +53,8 @@ Pointer[#version],Original,Translated
 0x68066,デテイケ デテイケ,GET OUT<49>GET OUT
 0x68068,だから はいってくんなよ,<@Yanma>I just said don't come in here!
 0x6806a,デテイケ<4E>ポンコツ デテイケ,"GET OUT<4C>YOU PIECE OF TRASH, GET OUT"
-0x6806c,「せいこう」が たかければ<4E>こうげきが あたリやすいんだ,"The higher the Success rating is on a part, the better the chance for the attack to hit its target."
-0x6806e,せいかくの「ぼうぎょ」が たかいと<4E>あいての じゃくてんを ねらうんだ,"If your Medal's Defense stat is high, it'll aim for enemy weak spots more often."
+0x6806c,「せいこう」が たかければ<4E>こうげきが あたリやすいんだ,"The higher the <f02>Success<f00> rating is on a part, the better the chance for the attack to hit its target."
+0x6806e,せいかくの「ぼうぎょ」が たかいと<4E>あいての じゃくてんを ねらうんだ,"If your Medal's <f02>Defense <f00>stat is high, it'll aim for enemy weak spots more often."
 0x68070,メダロットが<4E>かいだんを のぼっていったよ,I saw a Medarot climbing the stairs.
 0x68072,メダルを なくしちゃった・・・<4E>メダロットが うごかないよー,I lost my Medal...<49>Now my Medarot won't move...
 0x68074,パーツは コンビニで うってるよ,They sell parts at the convenience store.
@@ -79,7 +79,7 @@ Pointer[#version],Original,Translated
 0x6809a,んっ<4E>それは がったいメダルじゃないか<4C>せんせいに まかせて おきなさい<4C>クワガタメダルと カブトメダルを<4E>わたしますか？<*4>,Hm...Is that a combined Medal?<4C>Let me handle it.<4C>Can you give me your Kabuto and Kuwagata Medals?<*4>
 0x6809c,ざんねんだな<4E>せいきの いっしゅんが みれたのに,That's a shame. It's a very rare opportunity.
 0x6809e,=0x6809c,=0x6809c
-0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, Solar Laser? I would like to borrow it."
+0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, <f02>Solar Laser<f00>? I would like to borrow it."
 0x680a2,これで メダロットをたべる<4E>メダロットが つくれるぞ,"With this, I can make a Medarot that eats other Medarots."
 0x680a4,しかたがない<4E>ほかのパーツで まにあわせよう,It can't be helped. I'll just make do with other parts.
 0x680a6,このパーツと このパーツの<4E>かんけいが・・・,If I connect this part and this part together...
@@ -91,7 +91,7 @@ Pointer[#version],Original,Translated
 0x680b2,あら <&NAME>くん<4E>こんにちは<4C>ほんたいかいヘの しゅつじょう<4E>おめでとう<4C>そうそう<4E>あなたの クラスの せんせいに<4C>きみと ユウキくんに とっくん<4E>してくれって たのまれてるの,"Oh, <&NAME>! Hello.<4C>Congratulations on winning the tournament.<4C>Your teacher would like to do some special training with you and Yuuki."
 0x680b4,さんこうになるか わからないけど<4E>おやくに たてたら うれしいわ<4C>それじゃあ<4E>こころの じゅんびは いい？<*4>,"I'm not sure if I'll be of any help but I'd be glad to.<4C>So, are you ready?<*4>"
 0x680b6,こんなので よかったら<4E>わたしのメダルを かしてあげるわ<4C>でも ムチャだけは しちゃだめよ,"If you like, I could lend you my Medal.<4C>But don't do anything reckless with it!"
-0x680b8,きゃくぶパーツ「ネツコ」を<4E>もってたら かしてくれないかしら<*4>,Do you have the leg part Roots? I would like to borrow it.<*4>
+0x680b8,きゃくぶパーツ「ネツコ」を<4E>もってたら かしてくれないかしら<*4>,Do you have the leg part <f02>Roots<f00>? I would like to borrow it.<*4>
 0x680ba,=0x680b8,=0x680b8
 0x680bc,これなら せいとたちを<4E>まもることができるわ,"With this, I can protect the students!"
 0x680be,しかたがないわ ほかのひとを<4E>さがすことにするわ,Oh well. I'll ask someone else.
@@ -212,7 +212,7 @@ Pointer[#version],Original,Translated
 0x681a4,おい メダロットは<4E>もってきたロボか？<*4>,"Hey, do you have a Medarot, robo?"
 0x681a6,はやく ステージに<4E>あがれロボ,"Hurry and proceed to the stage, robo."
 0x681a8,しかたがないな<4E>このメダロットを かしてやるロボ,"It can't be helped. I'll lend you this one, robo."
-0x681aa,それでは・・・<4C>「だい62かい ロボロボだん<4E>さいきょうは だれだ!」<4C>・・・を はじめるロボ<4E>わーっ!! わーっ!! わーっ!!<4C>だい1バトルは<4E>だんいんエー たい だんいんビー!,Now...<4C>It's time for the 62nd RoboRobo Gang's Strongest Competition!<4C>Yeah!! Yeah!! Yeah!!<4C>Our first battle will be Member A versus Member B!
+0x681aa,それでは・・・<4C>「だい62かい ロボロボだん<4E>さいきょうは だれだ!」<4C>・・・を はじめるロボ<4E>わーっ!! わーっ!! わーっ!!<4C>だい1バトルは<4E>だんいんエー たい だんいんビー!,Now...<4C>It's time for the <f02>62nd RoboRobo Gang's Strongest Competition<f00>!<4C>Yeah!! Yeah!! Yeah!!<4C>Our first battle will be Member A versus Member B!
 0x681ac,あとにしろっ,Leave!
 0x681ae,んっ カードか？<4C>ごくろう ごくろう<4C>ほうびに<4E>わしが あいてをしてやろう,"Oh, a card?<4C>Good job, good job.<4C>As a reward, you get to battle me."
 0x681b0,おまえなんか こてんぱんに<4E>してやるロボ,"I'll beat you to a pulp, robo!"
@@ -466,16 +466,16 @@ Pointer[#version],Original,Translated
 0x6839e,=0x68390,=0x68390
 0x683a0,=0x68390,=0x68390
 0x683a2,ビーーーッ!!<4C>だれだっ!？<4E>けいほうそうちに さわったのは!!,Beeeep!!<4C>Who's there!? Who triggered the alarm?!
-0x683a4,「<&BUF01>」の<4E>メダルを てにいれた!<4C>おなじメダルは 2コもてない!,Obtained a <&BUF01> Medal.<4C>You can't have two of the same Medal!
+0x683a4,「<&BUF01>」の<4E>メダルを てにいれた!<4C>おなじメダルは 2コもてない!,Obtained a <f02><&BUF01><f00> Medal.<4C>You can't have two of the same Medal!
 0x683a6,=0x683a4,=0x683a4
 0x683a8,キミのパーツと<4E>ボクのパーツを<4C>こうかんしてくれないか？,Wanna trade parts?
-0x683aa,<&BUF02><4E>「<&BUF01>」を てにいれた!,Obtained <&BUF02> part<49><&BUF01>!
-0x683ac,「<&BUF01>」の<4E>メダルを てにいれた!,Obtained <&BUF01> Medal!
-0x683ae,「<&BUF01>」を てにいれた!,Obtained <&BUF01>!
-0x683b0,<&BUF03>を てにいれた!,Obtained <&BUF03>.
-0x683b2,「<&BUF01>」を てにいれた!<4E>しかし これいじゃうもてない!,Obtained <&BUF01>!<4C>...But you can't carry any more!
-0x683b4,<&BUF02><4E>「<&BUF01>」が なくなった!,<&BUF02> lost <&BUF01>!
-0x683b6,「<&BUF01>」が なくなった,Lost <&BUF01>.
+0x683aa,<&BUF02><4E>「<&BUF01>」を てにいれた!,Obtained <&BUF02> part<49><f02><&BUF01><f00>!
+0x683ac,「<&BUF01>」の<4E>メダルを てにいれた!,Obtained <f02><&BUF01><f00> Medal!
+0x683ae,「<&BUF01>」を てにいれた!,Obtained <f02><&BUF01><f00>!
+0x683b0,<&BUF03>を てにいれた!,Obtained<f02> <&BUF03><f00>.
+0x683b2,「<&BUF01>」を てにいれた!<4E>しかし これいじゃうもてない!,Obtained <f02><&BUF01><f00>!<4C>...But you can't carry any more!
+0x683b4,<&BUF02><4E>「<&BUF01>」が なくなった!,<&BUF02> lost <f02><&BUF01><f00>!
+0x683b6,「<&BUF01>」が なくなった,Lost <f02><&BUF01><f00>.
 0x683b8,なんの ごようでしょうか？<*4>,What would you like?<*4>
 0x683ba,パーツの しゅるいを<4E>えらんでください<*4>,Select a type of part.<*4>
 0x683bc,パーツを えらんでください<*4>,Select a part.<*4>
@@ -498,7 +498,7 @@ Pointer[#version],Original,Translated
 0x683de,トーナメントに でますか？<*4>,Enter the tournament?<*4>
 0x683e0,これでおわったと おもったら<4E>おおまちがいでチュ,"If you thought it was over, then you are sadly mistaken."
 0x683e2,Zボタンをおすと<4E>ウインドウが ひらくんだ<4C>ケイタイは<4E>メダロットの じょうほう<4C>アイテムは<4E>もっている アイテムが みれる<4C>セーブは これまでの<4E>ゲームないようを きろくできるぞ,"Press B to open the menu.<4C>The Info Pad has information on your Medarot, and the Item menu lets you check what items you're carrying.<4C>Choose ""Save"" when you want to record your progress in the game so far."
-0x683e4,「うつ」や「ねらいうち」のパーツは<4C>「なぐる」や「がむしゃら」に<4E>くらべて あたリにくいけど<4C>こうげきするときに<4E>あいてを きめることが できるから<4C>リーダーだけ をねらって<4E>いっきに たおすこともできるんだ,"Shoot and Snipe parts are a bit less accurate than Strike and Berserk parts, but they let you see which Medarot it'll target before you select them.<4C>If you can land all of your attacks on the opponent's leader, you can put a quick end to the battle."
+0x683e4,「うつ」や「ねらいうち」のパーツは<4C>「なぐる」や「がむしゃら」に<4E>くらべて あたリにくいけど<4C>こうげきするときに<4E>あいてを きめることが できるから<4C>リーダーだけ をねらって<4E>いっきに たおすこともできるんだ,"<f02>Shoot <f00>and <f02>Snipe <f00>parts are a bit less accurate than <f02>Strike<f00> and <f02>Berserk <f00>parts, but they let you see which Medarot it'll target before you select them.<4C>If you can land all of your attacks on the opponent's leader, you can put a quick end to the battle."
 0x683e6,きみのメダルは レベルいくつ？<4E>ぼくのメダルは レベル3さ<4C>もっともっと ロボトルして<4E>レベルをあげなきゃ,What level is your Medal?<49>Mine is level 3!<4C>I need to let it Robottle more so it can level up!
 0x683e8,きみはメダロット 1たいしか<4E>もっていないのか<4C>さいこうで 9たいまで<4E>もてるって うわさだよ,So you only have 1 Medarot?<4C>They say you can keep as many as 9.
 0x683ea,ドウダ オモイシッタカ,How's that? Are you finally beginning to understand?
@@ -515,7 +515,7 @@ Pointer[#version],Original,Translated
 0x68400,ぜったいに ここはとおせないロボ,"I won't let you pass, robo!"
 0x68402,いまのは なしロボ<4E>なんにも なかったロボ,"Th-that doesn't count, robo.<49>Nothing happened here, robo."
 0x68404,まちたまえ,Halt.
-0x68406,えっと・・・ だれだっけ？<4C>ライバルの にもうさくユウキだ!<4C>ロボトルのトーナメントは<4E>「ちょうないたいかい」<4C>「ちくたいかい」<4E>「ほんたいかい」の3かいある<4C>1つのたいかいを かちすすめば<4E>つぎのたいかいに すすめるんだ<4C>まずは おてほんがわリに<4E>ぼくのたたかいを みておくといい,"Huh...? Who are you?<4C>I am Yuuki Nimousaku and I am your rival!<4C>The Robottle Tournament is made up of three smaller tournaments:<4C>The City Tournament,<49>the Regional Tournament,<4C>and the Main Tournament.<4C>If you progress through one tournament, you can move on to the next.<4C>Try to learn from watching me fight."
+0x68406,えっと・・・ だれだっけ？<4C>ライバルの にもうさくユウキだ!<4C>ロボトルのトーナメントは<4E>「ちょうないたいかい」<4C>「ちくたいかい」<4E>「ほんたいかい」の3かいある<4C>1つのたいかいを かちすすめば<4E>つぎのたいかいに すすめるんだ<4C>まずは おてほんがわリに<4E>ぼくのたたかいを みておくといい,"Huh...? Who are you?<4C>I am Yuuki Nimousaku and I am your rival!<4C>The Robottle Tournament is made up of three smaller tournaments:<4C>The <f02>City Tournament<f00>,<49>the <f02>Regional Tournament<f00>,<4C>and the <f02>Main Tournament<f00>.<4C>If you progress through one tournament, you can move on to the next.<4C>Try to learn from watching me fight."
 0x68408,パパは セレクトビルに<4E>おしごとにいったわよ,Your father left for work to the Select Building.
 0x6840a,え？<4E>セレクトたいの たいちょう？<4C>こっちには だれもきてないよ,Huh? You saw the Select Force Chief?<4C>No one came over here.
 0x6840c,=0x6840a,=0x6840a
