@@ -41,7 +41,7 @@ def txt2bin(txt, tbl, pad=0, padbyte=0):
                         tmap.append(tbl[txt[idx:idx+i]])
                         idx += i-1
                         raise ContinueLoopException
-                print("Unable to find mapping for 0x%02X (%c)" % (ord(txt[idx]), txt[idx]))
+                print("WARNING: Unable to find mapping for 0x%02X (%c)" % (ord(txt[idx]), txt[idx]))
                 tmap.append(0x75) # ? in english, ？ in JP
         except ContinueLoopException:
             continue 

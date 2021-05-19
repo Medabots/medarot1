@@ -81,7 +81,7 @@ def table_convert(txt, tbl):
             elif txt[i] in tbl:
                 result.append(tbl[txt[i]])
             else:
-                print("Unable to find mapping for 0x%02X (%c), line: %s" % (t[i], t[i], txt))
+                print("Unable to find mapping for %c\n\tline: %s" % (txt[i], txt))
                 result.append(tbl['?'])
         finally:
             i += 1
