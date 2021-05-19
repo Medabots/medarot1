@@ -340,7 +340,7 @@ LoadNameScreenTextAndLoadTilemap:
   push hl
   push de
   push bc
-  Load1BPPTileset $8C00, PatchTilesetNameScreen, PatchTilesetEndNameScreen
+  Load1BPPTileset $9010, PatchTilesetNameScreen, PatchTilesetEndNameScreen
   pop bc
   pop de
   pop hl
