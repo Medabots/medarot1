@@ -31,6 +31,12 @@ jobs:
       - checkout:
           path: medarot_1
       - run:
+          name: "Print Tool Versions"
+          command: |
+            git --version
+            rgbasm --version
+            python3 --version
+      - run:
           name: "Get base"
           command: |
             git clone --quiet $BASEROM_REPO medarot_baserom
