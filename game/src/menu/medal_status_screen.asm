@@ -60,7 +60,7 @@ LoadMedalStatScreen:
   add hl, de
   ld a, [hl]
   call JumpLoadMedalList
-  psbc, $9841, $c6
+  psbc $9841, $c6
   ld hl, cBUF01
   call VWFPadTextTo8
   ld h, $0
