@@ -57,7 +57,7 @@ TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 Story
 
 # Toolchain
 CC := rgbasm
-CC_ARGS :=
+CC_ARGS := -Weverything
 LD := rgblink
 LD_ARGS :=
 FIX := rgbfix
