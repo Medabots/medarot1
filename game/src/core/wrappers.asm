@@ -1,9 +1,9 @@
 ; Wrapper functions (useful for maintaining bank information when swapping)
 SECTION "Wrappers", ROM0[$058d]
-Wrapper_58d::
+WrapPlaySound::
   ld a, $06
   ld [$2000], a
-  call $4000
+  call PlaySound
   ld a, $01
   ld [$2000], a
   ret
