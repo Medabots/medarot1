@@ -93,7 +93,9 @@ PTRLISTS_FILES := $(foreach VERSION,$(VERSIONS),$(foreach FILE,$(PTRLISTS),$(PTR
 shared_ADDITIONAL := $(LISTS_FILES) $(BIN_FILES) $(PTRLISTS_FILES) $(wildcard $(SRC)/version/*.$(SOURCE_TYPE))
 gfx_ADDITIONAL := $(TILEMAP_OUT)/tilemap_files.$(SOURCE_TYPE) $(TILESET_FILES)
 story_ADDITIONAL := $(PTRLISTS_FILES) $(LISTS_FILES) $(UNCOMPRESSED_TILESET_FILES) $(CREDITS_BIN_FILE)
+# (Little lazy here, I could split these up to be more granular but it's fine)
 menu_medal_screen_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
+robattle_misc_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
 
 .PHONY: all clean default $(VERSIONS)
 default: kabuto

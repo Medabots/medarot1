@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/VariantXYZ/medarot1/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/VariantXYZ/medarot1?branch=master)
+[![CircleCI](https://circleci.com/gh/Medabots/medarot1/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/Medabots/medarot1?branch=master)
 
 [Medapedia page](http://medarot.meowcorp.us/wiki/Medapedia:Medarot_1_Translation_Project) (source reference for a lot of text and information)
 
