@@ -23,7 +23,7 @@ for sheet in wb.worksheets:
 	useful_indices = [i for i,x in enumerate(header) if x and x not in ['Original', 'Notes', 'OK?', '#'] and not x.startswith('Prefix') ]
 	prefix_indices = [i for i,x in enumerate(header) if x and x.startswith('Prefix')]
 
-	with open(filename, 'w') as outfile:
+	with open(filename, 'w', encoding='utf-8') as outfile:
 		print("Writing {0}".format(filename))
 		for line in data:
 			if line[0] == '#':
