@@ -59,13 +59,13 @@ jobs:
                 steps:
                   - run:
                       name: "Download latest text from repository"
-                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_REPO_URL" -O ~/sheet.xlsx
+                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_REPO_URL_ES" -O ~/sheet.xlsx
             - unless:
                 condition: << parameters.use-latest-translation-versioned >>
                 steps:
                   - run:
                       name: "Download latest text from source"
-                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_SOURCE_URL" -O ~/sheet.xlsx
+                      command: wget -q --no-check-certificate "$TRANSLATION_SHEET_SOURCE_URL_ES" -O ~/sheet.xlsx
             - run:
                 name: "Update Dialog"
                 working_directory: medarot_1
@@ -85,7 +85,7 @@ jobs:
             - run:
                 name: "Update Text Version"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt EN
+                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt ES
       - run:
           name: "Build ROM"
           working_directory: medarot_1
