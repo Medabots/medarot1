@@ -1261,3 +1261,24 @@ DrawNumber:: ; 3394 (0:3394)
   pop hl
   ret
 ; 0x3480
+
+SECTION "Setup Robattle (Challenge, not random)", ROMX[$61AF], BANK[$1]
+Func_61af: ; 61af (1:61af)
+  ld b, $03
+  call JumpLoadMainDialogTileset
+  ld a, [SerIO_ConnectionTestResult]
+  or a
+  ret nz
+  ld a, [$c91c]
+  ld [$c8fa], a
+  ld a, [$c91d]
+  ld [$c8fb], a
+  xor a
+  ld [$c0b7], a
+  xor a
+  ld [$c74e], a
+  ld [$c893], a
+  ld a, $1c
+  ld [$ffa0], a
+  jp $6732
+; 0x61d7
