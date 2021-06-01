@@ -1205,7 +1205,7 @@ DrawNumber:: ; 3394 (0:3394)
   ret
 ; 0x3480
 
-SECTION "Setup Robattle (Challenge, not random)", ROMX[$61AF], BANK[$1]
+SECTION "Setup Robattles", ROMX[$61AF], BANK[$1]
 Func_61af: ; 61af (1:61af)
   ld b, $03
   call JumpLoadMainDialogTileset
