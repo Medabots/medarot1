@@ -182,5 +182,7 @@ if __name__ == '__main__':
                     with open('%s/%s_%s.bin' % (output_dir, b, version_suffix), 'ab') as o:
                         o.write(t[1])
                     break
+            else:
+                raise Exception("No bank space left for dialog")
         with open('%s/%s_%s.bin' % (output_dir, section, version_suffix), 'wb') as bin_file:
             [bin_file.write(pack('<BH', b[0], b[1])) for b in offsets]
