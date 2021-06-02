@@ -1265,7 +1265,9 @@ DrawNumber:: ; 3394 (0:3394)
 SECTION "Setup Robattles", ROMX[$61AF], BANK[$1]
 Func_61af: ; 61af (1:61af)
   ld a, $17 ; LoadMainMenuTilesetWithGraphics
-  rst $08  
+  rst $08
+  ld a, $2a ; LoadYesNoFWFTiles
+  rst $08
   ld a, [$c91c]
   ld [$c8fa], a
   ld a, [$c91d]
