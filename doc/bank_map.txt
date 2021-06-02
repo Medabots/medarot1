@@ -35,7 +35,7 @@
 22: Tilesets
 23: Tilesets
 24: Patch functions (HackPredef)
-25: All text pointers
+25: All text pointers & Dialogue Text
 26: Dialogue Text
 27: Dialogue Text
 28: Dialogue Text
