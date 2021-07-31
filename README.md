@@ -6,13 +6,15 @@
 
 1. Obtain the original ROM for the Medarot 1 version you want (the md5 hashes are below)
 1. Head to the [Latest release](https://github.com/Medabots/medarot1/releases/latest) page and grab the .ips file for your preferred version
-1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/) to apply the IPS patch to your ROM
+1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/), or online patcher like [this](https://vxyz.me/rompatcher/) to apply the IPS patch to your ROM
 
 The '+txt.N' versions indicates the version of the translation.
 
 # Reporting Bugs
 
-Feel free to create an issue here with a save and/or screenshots of your issue. If that's not possible, steps to reproduce it will suffice.
+Feel free to create an issue here with a save and/or screenshots of your issue.
+
+If that's not possible, steps to reproduce it will suffice.
 
 # Building
 
@@ -43,8 +45,8 @@ If all you care about is playing the patch, then refer to the instructions at th
 
 (The [Contributors](https://github.com/VariantXYZ/medarot1/graphs/contributors) page only covers GitHub contributions)
 
-* [VariantXYZ](https://github.com/VariantXYZ) (Repo maintainer, Disassembly, Coding)
-* [andwhyisit](https://github.com/andwhyisit) (Disassembly, Coding)
+* [VariantXYZ](https://github.com/VariantXYZ) (Repo maintainer, Disassembly, Developer)
+* [andwhyisit](https://github.com/andwhyisit) (Disassembly, Developer)
 * [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial research)
 * Tobias (Translations)
 
