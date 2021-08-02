@@ -123,8 +123,8 @@ Pointer[#version],Original,Translated
 0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,The link Robottle will now begin!<S3c><*4>
 0x740f4,つかえません!!,You can't use that!!
 0x740f6,すてることはできません,It can't be thrown away.
-0x740f8,いくつすてますか？<*4>,How many?
-0x740fa,ほんとうに すてても<4E>よろしいですか？<*4>,Are you sure you want to throw it away?
+0x740f8,いくつすてますか？<*4>,How many?<*4>
+0x740fa,ほんとうに すてても<4E>よろしいですか？<*4>,Are you sure you want to throw it away? <*4>
 0x740fc,せんとうに さんかできません,It can't battle in this state.
 0x740fe,<&BUF01> は<4E>なにも しなかった!<S1e><*4>,<&BUF01> did nothing!<S1e><*4>
 0x74100,<&BUF01> の<4E>なぐる こうげき! <&BUF04>!<*4>,<&BUF01>'s Strike attack! <&BUF04>!<*4>
