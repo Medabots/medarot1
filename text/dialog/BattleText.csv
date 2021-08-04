@@ -123,8 +123,8 @@ Pointer[#version],Original,Translated
 0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,The link Robottle will now begin!<S3c><*4>
 0x740f4,つかえません!!,You can't use that!!
 0x740f6,すてることはできません,It can't be thrown away.
-0x740f8,いくつすてますか？<*4>,How many?
-0x740fa,ほんとうに すてても<4E>よろしいですか？<*4>,Are you sure you want to throw it away?
+0x740f8,いくつすてますか？<*4>,How many?<*4>
+0x740fa,ほんとうに すてても<4E>よろしいですか？<*4>,Are you sure you want to throw it away?<*4>
 0x740fc,せんとうに さんかできません,It can't battle in this state.
 0x740fe,<&BUF01> は<4E>なにも しなかった!<S1e><*4>,<&BUF01> did nothing!<S1e><*4>
 0x74100,<&BUF01> の<4E>なぐる こうげき! <&BUF04>!<*4>,<&BUF01>'s Strike attack! <&BUF04>!<*4>
@@ -241,7 +241,7 @@ Pointer[#version],Original,Translated
 0x741de,きさまヲ じくうノ はざまニ<4E>とばしてクレルワ<*2>,I'll send you flying into the space-time continuum!<*2>
 0x741e0,ウッ ウァオーン メダルが<4E>つきにみえるぜ<*2>,A-AwooOOooo! Medals... look like... the moon!<*2>
 0x741e2,オ オ オトモダチニ ナリマショウ<*2>,L-l-let's become friends..<*2>
-0x741e4,さあ! しょうぶだ!!<S78><*4>,Now! Let's battle!
+0x741e4,さあ! しょうぶだ!!<S78><*4>,Now! Let's battle!<*4>
 0x741e6,ハカイ・・・スル<*2>,Des...troy...<*2>
 0x741e8,<*2>,
 0x741ea,<*2>,
@@ -275,9 +275,9 @@ Pointer[#version],Original,Translated
 0x74222,のらメダロットは にげていった!<*2>,The stray Medarot fled!<*2>
 0x74224,のらメダロットは にげていった!<*2>,=0x74222
 0x74226,<&NAME>ったら<4E>なかなか やるじゃない<*2>,"I knew you'd do well, <&NAME>.<*2>"
-0x74228,よそういじょうの ウデね ステキよ♥<*2>,You're stronger than I expected ♥!
+0x74228,よそういじょうの ウデね ステキよ♥<*2>,You're stronger than I expected ♥!<*2>
 0x7422a,きょうは ちょうしが わるいらしいな<*2>,Seems I'm not at the top of my game today.<*2>
-0x7422c,あらーっ まけちゃったのねーっ<*2>,Ah I lost-!
+0x7422c,あらーっ まけちゃったのねーっ<*2>,Ah I lost-!<*2>
 0x7422e,なんであんたなんかに まけちゃうの？<*2>,How could I lose?<*2>
 0x74230,・・・・・・<*2>,......<*2>
 0x74232,てっ てかげんしてやったんだよ!<*2>,I-I was just going easy on you!<*2>
@@ -290,7 +290,7 @@ Pointer[#version],Original,Translated
 0x74240,ぬうっ ひきあげじゃぁっ<*2>,"Urgh, retreeeat!<*2>"
 0x74242,きょうの ところは かんべんして<4E>あげるわ<*2>,I'll let you off easy this time.<*2>
 0x74244,うううっ まけたでチュ<*2>,Ugh...I lost!<*2>
-0x74246,こんなに リっぱになって<4E>パパはうれしいぞっ<*2>,You've gotten very good! I'm proud of you!
+0x74246,こんなに リっぱになって<4E>パパはうれしいぞっ<*2>,You've gotten very good! I'm proud of you!<*2>
 0x74248,としよリには ちと きついのう<*2>,Don't be so hard on the elderly.<*2>
 0x7424a,きょうも いっぴきも うれなかったか<*2>,Didn't sell any today either...<*2>
 0x7424c,・・・・・・ じだいが<4E>かわったのかのぉ<*2>,"Times really have changed, haven't they?<*2>"
@@ -385,7 +385,7 @@ Pointer[#version],Original,Translated
 0x742fe,=0x74280,=0x74280
 0x74300,<&NAME>は <&BUF02><4E>「<&BUF01>」を てにいれた<*2>,<&NAME> obtained <f02><&BUF01><f00>!<*2>
 0x74302,カン!カン!カン! ロボトルエンド!<4E>さあ これで じかんぎれです!<4C>はんていのけっかを みてみましょう!<S78><4C><S2>はんていのけっか!<4E><&BUF01>の しょうリです!,Ding ding ding! Time is up!<4C>Now to determine the winner!<S78><4C><S02>It looks like... <&BUF01>'s match!
-0x74304,<&NAME>は <&BUF02><4E>「<&BUF01>」を とられた<*2>,<&NAME> handed over <f02><&BUF01><f00>.
+0x74304,<&NAME>は <&BUF02><4E>「<&BUF01>」を とられた<*2>,<&NAME> handed over <f02><&BUF01><f00>.<*2>
 0x74306,あっ!!!!!!<4E>くまれたメダロットが ひとつもない!<4C>メダロットが できないよー!!<4C><&NAME> は<4E>めいっぱい おちこんだ!!,Ack!! I don't have a single Medarot assembled!<4C>I... I can't go on!!<4C><&NAME> fell into despair!
 0x74308,<&NAME> は<4E>「ロボロボメダル」を てにいれた!<*2>,<&NAME> got a <f02>RoboRobo Medal<f00>!<*2>
 0x7430a,あぁーーーーーーーー!!<4E>こんなところで まけるなんて!<4C>もっと ああして・・・こうして・・・<4E>ぶつぶつぶつ・・・・・・・<4C><&NAME> は<4E>めいっぱい おちこんだ!!,Aaarrgh!! I can't believe I lost in a place like this!<4C>This isn't... how I wanted....<4C>............<4C><&NAME> fell into despair!
@@ -409,7 +409,7 @@ Pointer[#version],Original,Translated
 0x7432e,ハズレ!<4E>なにもとられずにすんだ! ラッキー!,"Miss! Nothing was taken!<49>Phew, that was close!"
 0x74330,Yボタンでストップしてください!<*4>,Press A to stop the wheel!<*4>
 0x74332,パーツせんたくちゅうです!!<*4>,Choosing parts!<*4>
-0x74334,しかし かんぜんなかたちで<4E>とることができなかった!<*2>,"Despite winning, you could not get a part!"
+0x74334,しかし かんぜんなかたちで<4E>とることができなかった!<*2>,"Despite winning, you could not get a part!<*2>"
 0x74336,<&NAME>は <&BUF02><4E>「<&BUF04>」を てにいれた<*2>,<&NAME> got the <&BUF02> part <f02><&BUF04><f00>!<*2>
 0x74338,<&NAME>は <&BUF02><4E>「<&BUF04>」を とられた<*2>,<&NAME> lost the <&BUF02> part <f02><&BUF04><f00>!<*2>
 0x7433a,メダルは いっぱいで もてなかった!<*2>,You can't carry any more of that Medal!<*2>
@@ -449,7 +449,7 @@ Pointer[#version],Original,Translated
 0x7437e,しょうじょうかいじょを おこなった!<S3c><*4>,Attempted to clear status effects!<S3c><*4>
 0x74380,<&NAME> は<4E>メダル「<&BUF04>」をてにいれた<*2>,<&NAME> obtained the <f02><&BUF04><f00> Medal!<*2>
 0x74382,<&NAME> は<4E>メダル「<&BUF04>」をとられた<*2>,<&NAME>'s <f02><&BUF04><f00> Medal was taken!<*2>
-0x74384,<&BUF04> は<4E>メダル「<&BUF01>」をてにいれた<*2>,<&BUF01> defended with its legs!<S3c><*4>
+0x74384,<&BUF04> は<4E>メダル「<&BUF01>」をてにいれた<*2>,<&BUF01> defended with its legs!<S3c><*2>
 0x74386,あっ! メダル「<&BUF04>」は<4E>メダル「<&BUF01>」にヘんかした<*2>,Ah! The <f02><&BUF04><f00> Medal transformed into a <f02><&BUF01> <f00>Medal!<*2>
 0x74388,しかし メダル「<&BUF04>」は<4E>すでにもっています<4C>メダル「<&BUF04>」をもてなかった<4C><*4>,...But you already have that Medal!<4C>The <f02><&BUF04><f00> Medal wasn't taken.<*4>
 0x7438a,そのかわリに<4E>ぜんじゅくれんどが 4アップした!!<*2>,"In exchange, all of its skills were raised by 4!<*2>"

@@ -8,6 +8,7 @@ import os
 import csv
 from sys import getdefaultencoding
 import sys
+import re
 
 ptr_names = {}
 with open(os.path.join(os.path.dirname(__file__), 'res', 'ptrs.tbl'),"r") as f:
@@ -53,7 +54,7 @@ def table_convert(txt, tbl):
                         result.append(ptr_names[s][0])
                         result.append(ptr_names[s][1])
                     else:
-                        print("Unable to find ptr name for {0}".format(s))
+                        print("WARNING: Unable to find ptr name for {0}".format(s))
                         result.append(int(s[2:4], 16))
                         result.append(int(s[0:2], 16))
                 elif special_type == '@':
@@ -77,11 +78,11 @@ def table_convert(txt, tbl):
                     s = special_type + ''.join(special_data)
                     result.append(int(s, 16))
                 elif txt != '<IGNORED>':
-                    print("Unknown control code %s" % special_type)
+                    print("WARNING: Unknown control code %s" % special_type)
             elif txt[i] in tbl:
                 result.append(tbl[txt[i]])
             else:
-                print("Unable to find mapping for %c\n\tline: %s" % (txt[i], txt))
+                print("WARNING: Unable to find mapping for %c\n\tline: %s" % (txt[i], txt))
                 result.append(tbl['?'])
         finally:
             i += 1
@@ -156,6 +157,14 @@ if __name__ == '__main__':
                 elif translated_txt.startswith('='):
                     ptr = translated_txt.strip('=')
                     translated_txt = ''
+                elif translated_txt and original_txt:
+                    # Warn if there are strings that don't match the correct endcode
+                    original_endcode = re.search(r"<\*([0-9])>$", original_txt)
+                    translated_endcode = re.search(r"<\*([0-9])>$", translated_txt)
+                    match = (original_endcode == translated_endcode == None) or (translated_endcode != None and original_endcode != None and original_endcode.group(0) == translated_endcode.group(0))
+                    if not match:
+                        print("WARNING: Endcodes do not match for {0} ({1} vs {2})".format(ptr, original_endcode.group(0) if original_endcode else None, translated_endcode.group(0) if translated_endcode else None))
+
                 converted_txt = table_convert(translated_txt, char_table)
                 txt[section].append((int(ptr, 16), converted_txt))
     pointer_total = sum([len(x) * 3 for x in txt[section]])

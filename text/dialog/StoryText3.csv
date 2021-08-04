@@ -79,18 +79,18 @@ Pointer[#version],Original,Translated
 0x6809a,んっ<4E>それは がったいメダルじゃないか<4C>せんせいに まかせて おきなさい<4C>クワガタメダルと カブトメダルを<4E>わたしますか？<*4>,Hm...Is that a combined Medal?<4C>Let me handle it.<4C>Can you give me your Kabuto and Kuwagata Medals?<*4>
 0x6809c,ざんねんだな<4E>せいきの いっしゅんが みれたのに,That's a shame. It's a very rare opportunity.
 0x6809e,=0x6809c,=0x6809c
-0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, <f02>Solar Laser<f00>? I would like to borrow it."
+0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, <f02>Solar Laser<f00>?<49>I would like to borrow it. <*4>"
 0x680a2,これで メダロットをたべる<4E>メダロットが つくれるぞ,"With this, I can make a Medarot that eats other Medarots."
 0x680a4,しかたがない<4E>ほかのパーツで まにあわせよう,It can't be helped. I'll just make do with other parts.
 0x680a6,このパーツと このパーツの<4E>かんけいが・・・,If I connect this part and this part together...
 0x680a8,とうとう かんせいしたぞ<4C>これで あくのメダロットから<4E>こどもたちを まもれる!!,"It's finally done! With this, we can protect the children from the evil Medarots!!"
 0x680aa,あのね じつはね ・・・<4C>このメダル なにもかいてないの<4C>ヘんなメダルでしょ？,By the way... this Medal doesn't have a symbol on it.<4C>Don't you find that strange?
 0x680ac,=0x680aa,=0x680aa
-0x680ae,メダロットって ロボトルで<4E>きずついても すぐに なおるけど<4C>あなたたちは そうはいかないんだから<4E>あんまリ あぶないことしちゃ だめよ,"Medarots can quickly repair themselves after a Robottle, but it won't be so easy if one of you children gets hurt.<4C>Be sure to stay safe, alright?"
-0x680b0,わたしも メダロットもってるのよ<4E>だってあれ かわいいんだもの♥<4C>わたしのは かいふくタイプなのよ<4E>いつか おあいて してくれる？,"You may not have guessed it, but even I have a Medarot of my own.<4C>She's a real cutie! ♥<4C>My Medarot is a type that specializes in repairs.<49>Perhaps I'll bring her in sometime?"
-0x680b2,あら <&NAME>くん<4E>こんにちは<4C>ほんたいかいヘの しゅつじょう<4E>おめでとう<4C>そうそう<4E>あなたの クラスの せんせいに<4C>きみと ユウキくんに とっくん<4E>してくれって たのまれてるの,"Oh, <&NAME>! Hello.<4C>Congratulations on winning the tournament.<4C>Your teacher would like to do some special training with you and Yuuki."
-0x680b4,さんこうになるか わからないけど<4E>おやくに たてたら うれしいわ<4C>それじゃあ<4E>こころの じゅんびは いい？<*4>,"I'm not sure if I'll be of any help but I'd be glad to.<4C>So, are you ready?<*4>"
-0x680b6,こんなので よかったら<4E>わたしのメダルを かしてあげるわ<4C>でも ムチャだけは しちゃだめよ,"If you like, I could lend you my Medal.<4C>But don't do anything reckless with it!"
+0x680ae,メダロットって ロボトルで<4E>きずついても すぐに なおるけど<4C>あなたたちは そうはいかないんだから<4E>あんまリ あぶないことしちゃ だめよ,"<@Nurse>Medarots can quickly repair themselves after a Robottle, but it won't be so easy if one of you children gets hurt.<4C>Be sure to stay safe, alright?"
+0x680b0,わたしも メダロットもってるのよ<4E>だってあれ かわいいんだもの♥<4C>わたしのは かいふくタイプなのよ<4E>いつか おあいて してくれる？,"<@Nurse>You may not have guessed it, but even I have a Medarot of my own.<4C>She's a real cutie! ♥<4C>My Medarot is a type that specializes in repairs.<49>Perhaps I'll bring her in sometime?"
+0x680b2,あら <&NAME>くん<4E>こんにちは<4C>ほんたいかいヘの しゅつじょう<4E>おめでとう<4C>そうそう<4E>あなたの クラスの せんせいに<4C>きみと ユウキくんに とっくん<4E>してくれって たのまれてるの,"<@Nurse>Oh, <&NAME>! Hello.<4C>Congratulations on winning the tournament.<4C>Your teacher would like to do some special training with you and Yuuki."
+0x680b4,さんこうになるか わからないけど<4E>おやくに たてたら うれしいわ<4C>それじゃあ<4E>こころの じゅんびは いい？<*4>,"<@Nurse>I'm not sure if I'll be of any help but I'd be glad to.<4C>So, are you ready?<*4>"
+0x680b6,こんなので よかったら<4E>わたしのメダルを かしてあげるわ<4C>でも ムチャだけは しちゃだめよ,"<@Nurse>If you like, I could lend you my Medal.<4C>But don't do anything reckless with it!"
 0x680b8,きゃくぶパーツ「ネツコ」を<4E>もってたら かしてくれないかしら<*4>,Do you have the leg part <f02>Roots<f00>? I would like to borrow it.<*4>
 0x680ba,=0x680b8,=0x680b8
 0x680bc,これなら せいとたちを<4E>まもることができるわ,"With this, I can protect the students!"
@@ -193,23 +193,23 @@ Pointer[#version],Original,Translated
 0x6817e,ぼくが いちばんに きまっているさ,I'll go first.
 0x68180,たいしたこと ないでチュね<4C>そ そんな ばかな,That wasn't so hard.<4C>N-no... Impossible!
 0x68182,ひきょうだぞ すがたを みせろ!<4C>こんな まけかたは<4E>みとめないからな!,"Show yourself, you coward!<4C>I won't lose like this!"
-0x68184,こリないな おまえは,"You never learn, do you?"
-0x68186,ちぇっ うんの いいやつだぜ,"Tch, you just got lucky."
-0x68188,かたづけてやる,I'll mop the floor with you!
-0x6818a,また まけた・・・,I lost again...
-0x6818c,わたくしも まいリましたのよ,It seems I have also lost.
-0x6818e,<&NAME>ちゃん<4E>つよいじゃない<4C>ゆうしょうは <&NAME>くん<4E>おめでとうございます!<4C>つぎは ちくたいかいです<4C>メダロットしゃの ちか1かいで<4E>また おあいしましょう,"You're very strong, <&NAME>.<4C>Congratulations on the championship, <&NAME>!<4C>The next tournament is the District Tournament. I'll see you at the Medarot Company's basement."
-0x68190,きょうは おもいっきリ<4E>ロボトルするロボ!<4C>ロボトルたいかいも ひさしぶリロボ<4C>うでが なるぜ<4C>あの はなしかたは!？,"I'm going to give it my all in this Robottle, robo!<4C>It's also been a long time since I've been in a tournament, robo!<4C>I've gotten a lot strongah!<4C>Did you just switch speech patterns!?"
+0x68184,こリないな おまえは,"<@Yanma>You never learn, do you?"
+0x68186,ちぇっ うんの いいやつだぜ,"<@YanmaSad>Tch, you just got lucky."
+0x68188,かたづけてやる,<@Kubota>I'll mop the floor with you!
+0x6818a,また まけた・・・,<@KubotaSad>I lost again...
+0x6818c,わたくしも まいリましたのよ,<@PaddySad>It seems I have also lost.
+0x6818e,<&NAME>ちゃん<4E>つよいじゃない<4C>ゆうしょうは <&NAME>くん<4E>おめでとうございます!<4C>つぎは ちくたいかいです<4C>メダロットしゃの ちか1かいで<4E>また おあいしましょう,"<@Paddy>You're very strong, <&NAME>.<4C>Congratulations on the championship, <&NAME>!<4C>The next tournament is the District Tournament. I'll see you at the Medarot Company's basement."
+0x68190,きょうは おもいっきリ<4E>ロボトルするロボ!<4C>ロボトルたいかいも ひさしぶリロボ<4C>うでが なるぜ<4C>あの はなしかたは!？,"I'm going to give it my all in this Robottle, robo!<4C>It's also been a long time since I've been in a tournament, robo!<4C>I've gotten a lot strongah!<4C><@HikaruSad>Did you just switch speech patterns!?"
 0x68192,あれっ ロボロボだんじゃない？,Huh? You're not with the RoboRobo Gang?
 0x68194,よし<4E>あとを つけてみよう<4C>ようじんのために<4E>これに きがえて・・・,All right. Now to follow them.<4C>I'll change into this just to be safe...
 0x68196,よるに なると<4E>こまいぬが うごきだすんだ,"When night falls, the guardian dog statues start moving."
 0x68198,ゴゴゴゴゴゴッ,*rumble* *rumble* *rumble*
 0x6819a,アウッ アウッ!!,Awoo Awooo!!
-0x6819c,ぼうず きょうは ヒヨコ<4E>100円に まけといてやるぞ<4C>いつも 100円だって？<4E>こまかいことは きにすんな,"Hey, boy. I'm selling baby chicks for ¥100 today.<4C>What? <49>It was always ¥100?<4C>Ah, don't sweat the small stuff."
-0x6819e,ロボトルの うでまえは あがったか？<4C>いろんなパーツが ムチャクチャ<4E>やすいぜ かっていけよ,"Have your Robottle skills improved?<4C>I've got a bunch of parts on discount, so come on and buy them!"
-0x681a0,ざいこが あまっちまってよ<4C>なあ かってくれよ<4E>500円で いいからよ<4C>どうしようかな・・・<4C>ようし かうか!<4E>かうんだな!,"I'm overstocked so feel free to buy from me.<4C>¥500, how 'bout it?<4C>What should I do...?<4C>All right! I'll buy it!"
+0x6819c,ぼうず きょうは ヒヨコ<4E>100円に まけといてやるぞ<4C>いつも 100円だって？<4E>こまかいことは きにすんな,"<@Chickseller>Hey, boy. I'm selling baby chicks for ¥100 today.<4C>What? <49>It was always ¥100?<4C>Ah, don't sweat the small stuff."
+0x6819e,ロボトルの うでまえは あがったか？<4C>いろんなパーツが ムチャクチャ<4E>やすいぜ かっていけよ,"<@Chickseller>Have your Robottle skills improved?<4C>I've got a bunch of parts on discount, so come on and buy them!"
+0x681a0,ざいこが あまっちまってよ<4C>なあ かってくれよ<4E>500円で いいからよ<4C>どうしようかな・・・<4C>ようし かうか!<4E>かうんだな!,"<@Chickseller>I'm overstocked so feel free to buy from me.<4C>¥500, how 'bout it?<4C><@HikaruSad>What should I do...?<4C><@Hikaru>All right! I'll buy it!"
 0x681a2,オレも ロボトルやリてーなーロボッ,"I want to Robottle tooo, robo!"
-0x681a4,おい メダロットは<4E>もってきたロボか？<*4>,"Hey, do you have a Medarot, robo?"
+0x681a4,おい メダロットは<4E>もってきたロボか？<*4>,"Hey, do you have a Medarot, robo? <*4>"
 0x681a6,はやく ステージに<4E>あがれロボ,"Hurry and proceed to the stage, robo."
 0x681a8,しかたがないな<4E>このメダロットを かしてやるロボ,"It can't be helped. I'll lend you this one, robo."
 0x681aa,それでは・・・<4C>「だい62かい ロボロボだん<4E>さいきょうは だれだ!」<4C>・・・を はじめるロボ<4E>わーっ!! わーっ!! わーっ!!<4C>だい1バトルは<4E>だんいんエー たい だんいんビー!,Now...<4C>It's time for the <f02>62nd RoboRobo Gang's Strongest Competition<f00>!<4C>Yeah!! Yeah!! Yeah!!<4C>Our first battle will be Member A versus Member B!
@@ -436,7 +436,7 @@ Pointer[#version],Original,Translated
 0x68362,ヤアヤァ・・・,Yo yo...
 0x68364,メダルのようなものが<4E>まつられている<4C>こっそリ とリますか？<*4>,There is a coin that looks like a Medal on the shrine.<4C>Will you take it?<*4>
 0x68366,メダルのようなものは ない,The Medal-like coin is gone.
-0x68368,メダルのようなものを<4E>もどしますか？<*4>,Will you place the Medal-like coin back?
+0x68368,メダルのようなものを<4E>もどしますか？<*4>,Will you place the Medal-like coin back? <*4>
 0x6836a,メダルのようなものを<4E>かえした,You returned the Medal-like coin.
 0x6836c,ちょっと<4E>いいかげんに してよね!!,"Hey, cut it out, will you?!"
 0x6836e,メダルのようなものを<4E>とることが できなかった？,You couldn't take it back for some reason?

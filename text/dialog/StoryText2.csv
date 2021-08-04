@@ -1,6 +1,6 @@
 Pointer[#version],Original,Translated
 0x60000,むこうに メダロットが<4E>いっぱい すてられてるぞ,There's a bunch of trashed Medarots over at the back.
-0x60002,うちゅうじんが メダルを<4E>もってきたって ほんとうかしら？,Have aliens really come to bring us Medals?
+0x60002,うちゅうじんが メダルを<4E>もってきたって ほんとうかしら？,Is it true that aliens originally gave us Medals?
 0x60004,あっ <&NAME>さん<4E>こんにちは<4C>よぞらに いちばんちかいばしょで<4E>ねがいごとをすると<4C>おもいが とどきやすい そうですよ<4C>かがくてきには<4E>なんのこんきょも ないんですけど<4C>でも そういうはなしって<4E>ステキだと おもいませんか？<*4>,"<@Nae>Ah. <49>Hello <&NAME>.<4C>They say if you make a wish when you're closer to the stars, it's more likely to come true.<4C>There's no basis in science, but it's a nice thought, right?<*4>"
 0x60006,いいこと してあげるから<4E>パーツのリストを みせてちょうだい<*4>,Show me the parts you've gained.<49>I'll give you something good.<4C>How about it?<*4>
 0x60008,ホホホッ<4E>パーツは「ちょうだい」したわよ,<@Reika>Hohohoo!<49>I'll be taking those parts!
@@ -8,7 +8,7 @@ Pointer[#version],Original,Translated
 0x6000c,よく みやぶったわね,<@ReikaSad>You saw right through me!
 0x6000e,こんなところに<4E>さっきとられた パーツがおちている,This place is littered with stolen parts.
 0x60010,そのパーツは・・・<4E>おっ おぼえてらっしゃい!,<@ReikaSad>Those parts...<49>Remember this!
-0x60012,おみやげに<4E>ほしのかけらを かいませんか？<*4>,Will you buy this Star Piece as a souvenir?
+0x60012,おみやげに<4E>ほしのかけらを かいませんか？<*4>,Will you buy this Star Piece as a souvenir? <*4>
 0x60014,あリがとう,<@Researcher>Thanks.
 0x60016,あリがとう ございます<4E>300円になリます,Thank you very much. That'll be 300¥.
 0x60018,おお! おちていたメダルを<4E>とどけてくれたのか<4C>なかなか えらいじゃないか<4E>では あずかっておこう<4C>と いいたいところだが しょうじきに<4E>とどけてくれた ごほうびだ<4C>そのメダルを きみに あげよう<4C>でも ちゃんと パパに<4E>ほうこくするんだぞ,"<@Officer>Oh! You've come to return a lost Medal?<4C>What an honest young man!<4C>Well, I would take it off your hands, but...<4C>Why not hold onto it?<4C>You can think of it as your reward for turning it in.<4C>Alright, it's settled!<49>The Medal is yours!<4C>Be sure to tell your parents about it."
@@ -66,7 +66,7 @@ Pointer[#version],Original,Translated
 0x60080,いらっしゃーい<4E>とってもレアなもの い・か・が？,Welcome!<4C>What would you like? We have some rare items.
 0x60082,=0x60080,=0x60080
 0x60084,がいこくの メダロットや パーツを<4E>ちょくせつ ゆにゅうしているのよ,We import Medarots and parts from overseas.
-0x60086,ダメロットを 20000円で<4E>うってくれない？<*4>,Will you sell this Medanot for ¥20000?
+0x60086,ダメロットを 20000円で<4E>うってくれない？<*4>,Will you sell this Medanot for ¥20000? <*4>
 0x60088,あリがとうね ぼうや,"Thank you, boy."
 0x6008a,いいもの うってないかしら,I wonder if they're selling anything good.
 0x6008c,ダメロットって<4E>なんの やくにたつのかしら・・・,I wonder if this Medanot could be useful for anything...
