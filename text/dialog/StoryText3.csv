@@ -79,7 +79,7 @@ Pointer[#version],Original,Translated
 0x6809a,んっ<4E>それは がったいメダルじゃないか<4C>せんせいに まかせて おきなさい<4C>クワガタメダルと カブトメダルを<4E>わたしますか？<*4>,Hm...Is that a combined Medal?<4C>Let me handle it.<4C>Can you give me your Kabuto and Kuwagata Medals?<*4>
 0x6809c,ざんねんだな<4E>せいきの いっしゅんが みれたのに,That's a shame. It's a very rare opportunity.
 0x6809e,=0x6809c,=0x6809c
-0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, <f02>Solar Laser<f00>? I would like to borrow it."
+0x680a0,あたまパーツ「ソーラーレーザー」を<4E>もっていたら かしてほしいんだ<*4>,"Do you have the head part, <f02>Solar Laser<f00>?<49>I would like to borrow it. <*4>"
 0x680a2,これで メダロットをたべる<4E>メダロットが つくれるぞ,"With this, I can make a Medarot that eats other Medarots."
 0x680a4,しかたがない<4E>ほかのパーツで まにあわせよう,It can't be helped. I'll just make do with other parts.
 0x680a6,このパーツと このパーツの<4E>かんけいが・・・,If I connect this part and this part together...
@@ -209,7 +209,7 @@ Pointer[#version],Original,Translated
 0x6819e,ロボトルの うでまえは あがったか？<4C>いろんなパーツが ムチャクチャ<4E>やすいぜ かっていけよ,"<@Chickseller>Have your Robottle skills improved?<4C>I've got a bunch of parts on discount, so come on and buy them!"
 0x681a0,ざいこが あまっちまってよ<4C>なあ かってくれよ<4E>500円で いいからよ<4C>どうしようかな・・・<4C>ようし かうか!<4E>かうんだな!,"<@Chickseller>I'm overstocked so feel free to buy from me.<4C>¥500, how 'bout it?<4C><@HikaruSad>What should I do...?<4C><@Hikaru>All right! I'll buy it!"
 0x681a2,オレも ロボトルやリてーなーロボッ,"I want to Robottle tooo, robo!"
-0x681a4,おい メダロットは<4E>もってきたロボか？<*4>,"Hey, do you have a Medarot, robo?"
+0x681a4,おい メダロットは<4E>もってきたロボか？<*4>,"Hey, do you have a Medarot, robo? <*4>"
 0x681a6,はやく ステージに<4E>あがれロボ,"Hurry and proceed to the stage, robo."
 0x681a8,しかたがないな<4E>このメダロットを かしてやるロボ,"It can't be helped. I'll lend you this one, robo."
 0x681aa,それでは・・・<4C>「だい62かい ロボロボだん<4E>さいきょうは だれだ!」<4C>・・・を はじめるロボ<4E>わーっ!! わーっ!! わーっ!!<4C>だい1バトルは<4E>だんいんエー たい だんいんビー!,Now...<4C>It's time for the <f02>62nd RoboRobo Gang's Strongest Competition<f00>!<4C>Yeah!! Yeah!! Yeah!!<4C>Our first battle will be Member A versus Member B!
@@ -436,7 +436,7 @@ Pointer[#version],Original,Translated
 0x68362,ヤアヤァ・・・,Yo yo...
 0x68364,メダルのようなものが<4E>まつられている<4C>こっそリ とリますか？<*4>,There is a coin that looks like a Medal on the shrine.<4C>Will you take it?<*4>
 0x68366,メダルのようなものは ない,The Medal-like coin is gone.
-0x68368,メダルのようなものを<4E>もどしますか？<*4>,Will you place the Medal-like coin back?
+0x68368,メダルのようなものを<4E>もどしますか？<*4>,Will you place the Medal-like coin back? <*4>
 0x6836a,メダルのようなものを<4E>かえした,You returned the Medal-like coin.
 0x6836c,ちょっと<4E>いいかげんに してよね!!,"Hey, cut it out, will you?!"
 0x6836e,メダルのようなものを<4E>とることが できなかった？,You couldn't take it back for some reason?

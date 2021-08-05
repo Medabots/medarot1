@@ -1,5 +1,5 @@
 Pointer[#version],Original,Translated
-0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hello, <&NAME>.<49>Um...<4C>Where would you like to play this time?"
+0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hello, <&NAME>.<49>Um...<4C>Where would you like to play this time? <*4>"
 0x3be02,こんどの おやすみのひに<4E>あそびに いきますね,Today I'm gonna go play outside.
 0x3be04,わたし ずっと まってますから,Since I've been waiting so long...
 0x3be06,フフフッ そんなこうげきでは<4E>このメダロットは とめられないロボ,"Fufufuu, you think you can stop me with that an attack like that?"

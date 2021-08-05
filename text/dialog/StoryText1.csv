@@ -8,7 +8,7 @@ Pointer[#version],Original,Translated
 0x5a00c,おおっ<4C>どうくつの おたからとは<4E>メダルじゃったか<4C>いいものを みせてくれた<4E>れいを せんとな,<@Fisherman>Oho! So the treasure in the cave turned out to be a Medal after all?<4C>Here's some thanks for showin' it to me.
 0x5a00e,それと このさかなを さんそんの<4E>そんちょうに とどけてくれんか,"<@Fisherman>Oh, and if you wouldn't mind...<4C>Could you deliver this fish to the mayor of the mountain village?"
 0x5a010,ここで すばしっこいサルのやつらを<4E>まちぶせてるんだ<4C>あいつらを つかまえるまでは<4E>あリ いっぴきも とおさせないぜ,"<@Kubota>This area is filled with sly monkeys.<4C>If you beat at least one of the monkeys, I'll let you pass."
-0x5a012,まさかおまえが サルをたおしたのか？<*4>,<@Kubota>Wait... you defeated the monkeys?
+0x5a012,まさかおまえが サルをたおしたのか？<*4>,<@Kubota>Wait... you defeated the monkeys? <*4>
 0x5a014,まちなかにいる イセキが<4E>おまえを たおしてくれる,"<@Kubota>Once you reach downtown, Iseki will teach you a lesson for sure!"
 0x5a016,きたのやまには めずらしい<4E>メダルがあるらしい,There seems to be a rare medal in the mountain up north.
 0x5a018,おサルにメダルを とられたの<4E>とリかえしてほしいの,A monkey took my Medal. <49>I hope I can get it back...

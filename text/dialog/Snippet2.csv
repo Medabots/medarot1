@@ -1,5 +1,5 @@
 Pointer[#version],Original,Translated
-0x37e00,<&NAME>くん おてがらだね<4E>たいちょうから<4C>ロボロボだんたいじの ごほうびとして<4E>ティンペットを あずかってるんだ<4C>でも おんなのこティンペットは<4E>つかえるパーツが すくないから<4C>すきなほうを えらんでいいよ<4E>おんなのこティンペットにするかい？<*4>,"Thanks a lot, <&NAME>!<4C>As a reward, <49>I'll give you a Tinpet.<4C>However, it's a female Tinpet, only female parts will work.<4C>Think carefully.<49>Will you take it?"
+0x37e00,<&NAME>くん おてがらだね<4E>たいちょうから<4C>ロボロボだんたいじの ごほうびとして<4E>ティンペットを あずかってるんだ<4C>でも おんなのこティンペットは<4E>つかえるパーツが すくないから<4C>すきなほうを えらんでいいよ<4E>おんなのこティンペットにするかい？<*4>,"Thanks a lot, <&NAME>!<4C>As a reward, <49>I'll give you a Tinpet.<4C>However, it's a female Tinpet, only female parts will work.<4C>Think carefully.<49>Will you take it? <*4>"
 0x37e02,ふふふっ<4E>どうだ はいってこれないロボ,"Fufufuu!<49>How's that? <4C>Now you can't enter, Robo!"
 0x37e04,<*0>,
 0x37e06,=0x37e04,=0x37e04
