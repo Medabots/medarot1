@@ -1,14 +1,18 @@
 Pointer[#version],Original,Translated
-0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hello, <&NAME>.<49>Um...<4C>Where would you like to play this time? <*4>"
-0x3be02,こんどの おやすみのひに<4E>あそびに いきますね,Today I'm gonna go play outside.
-0x3be04,わたし ずっと まってますから,Since I've been waiting so long...
-0x3be06,フフフッ そんなこうげきでは<4E>このメダロットは とめられないロボ,"Fufufuu, you think you can stop me with that an attack like that?"
-0x3be08,たいせつに もっていれば<4E>きっと いいことがあリますよ,"If you take good care of it, something good is bound to happen."
-0x3be0a,おかねを とられた!,It took my money!
-0x3be0c,これは ぼくのパソコンだ,It's my computer.
-0x3be0e,<&NAME>の パパって<4E>セレクトビルの けんちくの<4C>おしごとしてるでしょ？<4C>いきなリ たずねていって<4E>おどろかすってのは どう？<4C>えっ？<4C>べつに セレクトビルに いけ!<4C>・・って いってるわけじゃないのよ,"Hey, <&NAME>. Your father helps with work on the construction of the Select building, doesn't he?<4C>How about paying him a surprise visit?<4C>Huh?<4C>I mean I'm not saying that you HAVE to go but...."
-0x3be10,あれっ<4E>つぎは どこだっけ・・・<4C>あっ そうそう<4E>いせきよ いせき!<4C>パパも・・・<4C>いいわよ!<4E>あそこは ロマンがあって・・・<4C>ねっ♥<4E>いってらっしゃいよ♥<4C>まちがっても<4E>「イセキのいえ」じゃないからね!,"Hmm, what was that place again...?<4C>Ah, right! Right!<49>The Ruins!<4C>Your father is going too...<49>It's great! It's very adventurous...<4C>Well, go on now. ♥<49>Don't get lost"
-0x3be12,なわばしごが なくなっている,The rope ladder disappeared.
+<<<<<<< Updated upstream
+0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hola, <&NAME>.<49>Em...<4C>¿Dónde querés que juguemos esta vez?<*4>"
+=======
+0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hola, <&NAME>.<49>Em...<4C>¿Dónde querés que juguemos esta vez?"
+>>>>>>> Stashed changes
+0x3be02,こんどの おやすみのひに<4E>あそびに いきますね,Hoy vamos a jugar afuera.
+0x3be04,わたし ずっと まってますから,Parece que estuve esperando mucho tiempo...
+0x3be06,フフフッ そんなこうげきでは<4E>このメダロットは とめられないロボ,"Fufufuu, ¿pensás que vas a detenerme con un ataque como ese?"
+0x3be08,たいせつに もっていれば<4E>きっと いいことがあリますよ,Si lo cuidas bien seguramente va a pasar algo bueno.
+0x3be0a,おかねを とられた!,<@HikaruSad>¡Se llevó mi dinero!
+0x3be0c,これは ぼくのパソコンだ,<@Hikaru>Es mi computadora.
+0x3be0e,<&NAME>の パパって<4E>セレクトビルの けんちくの<4C>おしごとしてるでしょ？<4C>いきなリ たずねていって<4E>おどろかすってのは どう？<4C>えっ？<4C>べつに セレクトビルに いけ!<4C>・・って いってるわけじゃないのよ,"<@Kirara>Ey, <&NAME> tu papá trabaja en el edificio de Select, ¿No es así?<4C>¿Qué te parece ir a visitarlo?<4C>¿Uh?<4C>¡Andá a el edificio de Select!<4C>..No es exactamente lo que yo diría, pero igual sirve."
+0x3be10,あれっ<4E>つぎは どこだっけ・・・<4C>あっ そうそう<4E>いせきよ いせき!<4C>パパも・・・<4C>いいわよ!<4E>あそこは ロマンがあって・・・<4C>ねっ♥<4E>いってらっしゃいよ♥<4C>まちがっても<4E>「イセキのいえ」じゃないからね!,"<@Kirara>Hmm, ¿Cuál era ese lugar...?<4C>Ah, ¡cierto! ¡Cierto!<49>¡Las Ruinas!<4C>Tu papá también fue...<49>¡Es genial! Es muy aventurero.<4C>Bueno, ahora ponete en camino. ♥<49>No te pierdas."
+0x3be12,なわばしごが なくなっている,La escalera de cuerda desapareció.
 0x3be14,<IGNORED>,<IGNORED>
 0x3be16,=0x3be14,=0x3be14
 0x3be18,=0x3be14,=0x3be14
