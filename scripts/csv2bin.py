@@ -86,6 +86,7 @@ def table_convert(txt, tbl):
                 result.append(tbl['?'])
         except:
             print('ERROR: Invalid format in line "%s"' % txt)
+            raise
         finally:
             i += 1
     
