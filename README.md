@@ -55,6 +55,6 @@ The patch is totally playable from start to finish, but if you'd like to submit 
 * [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial research)
 * Tobias (Translations)
 * [Sanqui](https://github.com/Sanqui) (Initial research and disassembly, the overlay feature in rgbds, a number of other things)
-* [Hideto](https://twitter.com/Onionboy0) (Portrait mapping, Spanish translation on tr_ES branch)
+* [Hideto](https://digicorearg.blogspot.com/) (Portrait mapping, Spanish translation on tr_ES branch)
 
 And of course, various members of the community for playtesting and submitting bug reports. 
