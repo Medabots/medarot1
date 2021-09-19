@@ -62,7 +62,7 @@ Pointer[#version],Original,Translated
 0x5a074#kabuto,みぎうで 「リボルバー」<4E>たんぱつしきで つかいやすいわ<*2>,"<@Kirara>The right arm part, <f02>Revolver<f00>, which fires single shots quickly and accurately.<*2>"
 0x5a074#kuwagata,みぎうで 「チャンバラソード」<4E>すばやく あいてに きリかかるのよ<*2>,"<@Kirara>The right arm part, <f02>Chanbara Sword<f00>, which can swiftly slash the enemy.<*2>"
 0x5a076#kabuto,ひだリうで 「サブマシンガン」<4E>れんしゃしきで けっこうつよいの<*2>,"<@Kirara>The left arm part, <f02>Submachinegun<f00>, which shoots powerful rapid-fire shots.<*2>"
-0x5a076#kuwagata,ひだリうで 「ピコペコハンマー」<4E>このいちげきは けっこうきくわ<*2>,"<@Kirara>The left arm part, <f02>Piko Peko Hammer<f00>, which can deal a very heavy blow.<*2>"
+0x5a076#kuwagata,ひだリうで 「ピコペコハンマー」<4E>このいちげきは けっこうきくわ<*2>,"<@Kirara>The left arm part, <f02>Picopeco Hammer<f00>, which can deal a very heavy blow.<*2>"
 0x5a078#kabuto,きゃくぶ 「オチツカー」<4E>しゃげきこうげきには ピッタシ!<*2>,"<@Kirara>The leg part, <f02>Ochitsuker<f00>, perfect for shooting-type attacks!<*2>"
 0x5a078#kuwagata,きゃくぶ 「タタッカー」<4E>てきのこうげきを すばやくよけるわ<*2>,"<@Kirara>The leg part, <f02>Tatacker<f00>, which allows you to deftly dodge enemy attacks.<*2>"
 0x5a07a,・・・はい できあがリ!<4E>わたしのせつめい わかった？<4C>じゃあ あとでまた あおうね<*2>,"<@Kirara>...And there, it's done! <4C>Did you understand my explanation?<4C>Alright then, I'll see you again later!<*2>"
