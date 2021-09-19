@@ -69,11 +69,11 @@ jobs:
             - run:
                 name: "Update Dialog"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog Default StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
             - run:
                 name: "Update Credits"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Default Credits
             - run:
                 name: "Update Lists"
                 working_directory: medarot_1
