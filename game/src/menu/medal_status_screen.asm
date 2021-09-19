@@ -108,13 +108,10 @@ LoadMedalStatScreenAttribute:
   ld d, BANK(LoadMedalStatScreenAttribute)
   ld e, BANK(AttributesPtr)
   ; Checks string length for padding
-  push hl
   call PadPtrTextTo8
-  ld h, $0
-  ld l, a
-  add hl, bc
-  ld b, h
-  ld c, l
-  pop hl
   jp PrintPtrText
+.end
+REPT $5e57 - .end
+  nop
+ENDR
 ; 0x9e57
