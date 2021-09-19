@@ -45,7 +45,7 @@ def transform_line(line, localization_table):
 				line += section
 
 	# Replace based on localization
-	pattern = '|'.join(sorted(r"\b{0}\b".format(re.escape(key)) for key in localization_table))
+	pattern = '|'.join(sorted(r"(?<!@)(?<!&)\b{0}\b".format(re.escape(key)) for key in localization_table))
 	line = re.sub(pattern, lambda m: localization_table.get(m.group(0)), line)
 
 	return line
