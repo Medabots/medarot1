@@ -1,24 +1,24 @@
 Pointer[#version],Original,Translated
-0x33e00,ごめんなさい<4E>まだ じゅんびちゅうなの<4C>メダロットの パーツのことなら<4E>コンビニを よろしくね,"I'm sorry, we're still setting up.<4C>Thank you for trusting our stores for your Medarot part needs."
-0x33e02,フフフ おもいしったかロボ,"Fufufu...have you finally realized, Robo?"
-0x33e04,じんじゃのむこうに<4E>ロボロボだんの きちが あるんだよ,The RoboRobo Gang have a base at the back of the Shrine.
-0x33e06,ロボロボだんの きちが<4E>なくなってたんだ,The RoboRobo base is gone.
+0x33e00,ごめんなさい<4E>まだ じゅんびちゅうなの<4C>メダロットの パーツのことなら<4E>コンビニを よろしくね,"<@Shopkeeper>I'm sorry, we're still setting up.<4C>Thank you for trusting our stores for your Medabot part needs."
+0x33e02,フフフ おもいしったかロボ,"<@Grunt>Fufufu...<4C>Have you finally realized, Robo?"
+0x33e04,じんじゃのむこうに<4E>ロボロボだんの きちが あるんだよ,The Rubberobo Gang have a base at the back of the Shrine.
+0x33e06,ロボロボだんの きちが<4E>なくなってたんだ,The Rubberobo base is gone.
 0x33e08,ボナパルトのやつ<4E>どこまでいったんだ？<4C>しょうがない さがしにいくか,<@HikaruSad>Where did Bonaparte run off to?<4C>Guess I'd better look for him...
 0x33e0a,かいだんは<4E>とちゅうで なくなっている,The stairs end halfway.
-0x33e0c,いてっ!!<4C>なにも こわれなかった,Oww!!<49>Nothing seems to be broken...
-0x33e0e,うわっ!？<4E>すべった!,Uwaaah!<49>I slipped!
+0x33e0c,いてっ!!<4C>なにも こわれなかった,<@Hikaru>Oww!!<49>Nothing seems to be broken...
+0x33e0e,うわっ!？<4E>すべった!,<@Hikaru>Uwaaah!<49>I slipped!
 0x33e10,そのまえに とっくんしていく？<*4>,"<@Kirara>Before you do that, wanna do some special training? <*4>"
 0x33e12,いいじゃない<4E>そのちょうしよ!,<@Kirara>Not bad! You're doing pretty good.
 0x33e14,うーん<4E>もうちょっとかな？,Hmm...<49>Maybe a little longer?
 0x33e16,カカカ・・・,Kakaka...
 0x33e18,ケケケケッ・・・,Kekekekee...
-0x33e1a,ホーッホッホッホ!!<4C>こ こわい・・・,Hooohohoho!!<49>I'm scared...
+0x33e1a,ホーッホッホッホ!!<4C>こ こわい・・・,Hooohohoho!!<49><@HikaruSad>I'm scared...
 0x33e1c,シノビックパークヘ ようこそ<4E>ふリかえらずに おすすみください,Welcome to the Shinobic Park.<49>Come on in!
 0x33e1e,たちいリきんしの ふだが<4E>かけられている,"The sign reads ""No Trespassing""."
-0x33e20,メダロットの あたまパーツが<4E>たくさん おいてある,There are a lot of head parts for Medarots.
+0x33e20,メダロットの あたまパーツが<4E>たくさん おいてある,<@Hikaru>There are a lot of head parts for Medabots.
 0x33e22,あれっ？<4E>いまのひと きえちゃった,"Huh?<4C>That person just now, he disappeared..."
 0x33e24,おまえニハ まけたヨ<4E>また どこかで あおう,"I have lost.<49>May we meet again, someplace."
-0x33e26,な なんだったんだ？<4C>いまの ゆめは・・・,What was that?<4C>That dream just now...
+0x33e26,な なんだったんだ？<4C>いまの ゆめは・・・,<@Hikaru>What was that?<4C>That dream just now...
 0x33e28,<*0>,
 0x33e2a,=0x33e28,=0x33e28
 0x33e2c,=0x33e28,=0x33e28

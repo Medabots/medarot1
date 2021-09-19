@@ -19,7 +19,7 @@ Pointer[#version],Original,Translated
 0x74022,ほんたいかいかいじょう,Main Tournament Hall
 0x74024,せんしゅホテル,Tournament Hotel
 0x74026,ゆにゅうひんや,Import Shop
-0x74028,メダロットけんきゅうじょ,Medarot Laboratory
+0x74028,メダロットけんきゅうじょ,Medabot Laboratory
 0x7402a,パディのいえ,Paddy's House
 0x7402c,あがた イネサク<4E>    ヨネ  ,Inesaku &<49>Yone Agata
 0x7402e,イタコのいえ,Wise Woman's House
@@ -29,7 +29,7 @@ Pointer[#version],Original,Translated
 0x74036,バー,Bar
 0x74038,むしはかせ けんきゅうじょ,Insect Professor's Lab
 0x7403a,にんじゃやしき,Ninja Mansion
-0x7403c,メダロットしゃ,Medarot Company
+0x7403c,メダロットしゃ,Medabots Corporation
 0x7403e,ユウキのいえ,Yuuki's House
 0x74040,やくば,Town Hall
 0x74042,あがた ベイスケ<4E>    マイコ <4C>あがた <&NAME><4E>    ボナパルト,Beisuke &<49>Maiko Agata<4C><&NAME> Agata<49>Bonaparte
@@ -46,11 +46,11 @@ Pointer[#version],Original,Translated
 0x74058,みたことのないむしだ,It's a bug I've never seen before.
 0x7405a,しんがたパーツが いっぱいある,The newest parts are on display.
 0x7405c,す すごいメダルだ!,W-Whoa! This Medal is amazing!
-0x7405e,ほかのひとの パソコンは<4E>みちゃいけないぞ,I shouldn't mess with other people's computers.
-0x74060,メダロットグッズが やまづみだ,Medarot goods line the shelves.
+0x7405e,ほかのひとの パソコンは<4E>みちゃいけないぞ,<@HikaruSad>I shouldn't mess with other people's computers.
+0x74060,メダロットグッズが やまづみだ,Medabot goods line the shelves.
 0x74062,パーツの じどうはんばいきだ!<4E>だけど ぜんぶ うリきれだ!,It's a vending machine for parts!<49>...But everything's sold out.
-0x74064,メダロットが でます<4E>エサを あたえないでください,"""Please do not feed the Medarots"""
-0x74066,きけん!!<4E>うちゅうじんが でます,"""Danger!! Beware of aliens"""
+0x74064,メダロットが でます<4E>エサを あたえないでください,Please do not feed the Medabots
+0x74066,きけん!!<4E>うちゅうじんが でます,Danger!! Beware of aliens
 0x74068,メダル 「<&BUF01>」 は<4E>レベルアップした!<4C><*4>,<f02><&BUF01><f00> Medal leveled up!<4C><*4>
 0x7406a,=0x74068,=0x74068
 0x7406c,=0x74068,=0x74068
@@ -120,7 +120,7 @@ Pointer[#version],Original,Translated
 0x740ec,=0x740b4,=0x740b4
 0x740ee,=0x740b4,=0x740b4
 0x740f0,=0x740b4,=0x740b4
-0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,The link Robottle will now begin!<S3c><*4>
+0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,The link robattle will now begin!<S3c><*4>
 0x740f4,つかえません!!,You can't use that!!
 0x740f6,すてることはできません,It can't be thrown away.
 0x740f8,いくつすてますか？<*4>,How many?<*4>
@@ -143,7 +143,7 @@ Pointer[#version],Original,Translated
 0x7411a,<&BUF01> は<4E>こうげきを かわした!<S3c><*4>,<&BUF01> dodged the attack!<S3c><*4>
 0x7411c,<&BUF01> の<4E>うつ こうげき! <&BUF04>!<*4>,<&BUF01>'s Shoot attack! <&BUF04>!<*4>
 0x7411e,<&BUF01> の<4E>ねらいうち こうげき! <&BUF04>!<*4>,<&BUF01>'s Snipe attack! <&BUF04>!<*4>
-0x74120,<&BUF01> は<4E>みかたを おうえんした<*4>,<&BUF01> supported its teammate!<*4>
+0x74120,<&BUF01> は<4E>みかたを おうえんした<*4>,<&BUF01> used a support action!<*4>
 0x74122,<&BUF01> は<4E>スピードアップした!!<*4>,<&BUF01>'s speed was boosted!<*4>
 0x74124,<&BUF01> に<4E>おうえんの こうかが なかった<*4>,It had no effect on <&BUF01>.<*4>
 0x74126,ほうねつに せいこうした<4C><*1>,Cooldown succeeded.<4C><*1>
@@ -151,7 +151,7 @@ Pointer[#version],Original,Translated
 0x7412a,<&BUF01> は<4E>チームぜんたいを まもリます!<S3c><*4>,<&BUF01> is guarding its team!<S3c><*4>
 0x7412c,てきのリーダーを たおした<4C><*1>,Defeated the enemy leader!<4C><*1>
 0x7412e,みかたのリーダーが たおれた<4C><*1>,Your leader has been defeated!<4C><*1>
-0x74130,えんごきたいが まもリにはいった!<S1e><*4>,The guard Medarot took the hit!<S1e><*4>
+0x74130,えんごきたいが まもリにはいった!<S1e><*4>,The guard Medabot took the hit!<S1e><*4>
 0x74132,トラップをしかけた!<4E>しかし すでにせっちされていた!<S3c><*4>,A trap has already been set!<S3c><*4>
 0x74134,<&BUF01> の<4E>ほんたいの きのうがていしした!!<*4>,<&BUF01> shut down!<*4>
 0x74136,<&BUF01> は<4E>ぼうぎょに せいこうした!!<S3c><*4>,<&BUF01>'s defense was successful!<S3c><*4>
@@ -189,26 +189,26 @@ Pointer[#version],Original,Translated
 0x74176,あまリこうかが なかった!!<S3c><*4>,It had little effect!<S3c><*4>
 0x74178,<&BUF01> には きかなかった<S3c><*4>,It had no effect on <&BUF01>.<S3c><*4>
 0x7417a,セーブしますか？<*4>,Do you want to save?<*4>
-0x7417c,メダロットが<4E>1たいも くまれていません!<4C>メダロットを くんでください!,You have no battle-ready Medarots!<4C>Please assemble a Medarot!
+0x7417c,メダロットが<4E>1たいも くまれていません!<4C>メダロットを くんでください!,You have no battle-ready Medabots!<4C>Please assemble a Medabot!
 0x7417e,せいぎの ためで あリますっ!<*2>,"For justice, sir!<*2>"
 0x74180,=0x7417e,=0x7417e
 0x74182,あくの かぎリを つくすロボ<*2>,"Our evil knows no bounds, Robo!<*2>"
 0x74184,せっしゃが あいてを するで ござる<*2>,I shall be your opponent!<*2>
 0x74186,かてると おもうんなら<4E>かかってきな!<*2>,Come at me if you think you can win!<*2>
-0x74188,メダロット もってるな<4E>よし やろうぜ<*2>,"You have a Medarot, right?<49>Let's battle!<*2>"
+0x74188,メダロット もってるな<4E>よし やろうぜ<*2>,"You have a Medabot, right?<49>Let's battle!<*2>"
 0x7418a,てかげん しないじゃんじゃん<*2>,"I won't go easy on you, dude.<*2>"
 0x7418c,わしと ボロトルせんか？<*2>,Will you Borottle with me?<*2>
 0x7418e,あたしと ろぼとる しない？<*2>,Wanna wobottle wit me?<*2>
-0x74190,ロボトルするって カンジーッ<*2>,"Like, let's Robottle, y'know?<*2>"
+0x74190,ロボトルするって カンジーッ<*2>,"Like, let's robattle, y'know?<*2>"
 0x74192,ふふふっ そのパーツ いただくわっ<*2>,"Hmhmhm, I'll be taking those parts!<*2>"
 0x74194,にいちゃん かかって きなっ<*2>,"Bring it on, youngster!<*2>"
-0x74196,ロボトルを しゃしんに<4E>とらないかい？<*2>,Mind if I take a photo of our Robottle?<*2>
+0x74196,ロボトルを しゃしんに<4E>とらないかい？<*2>,Mind if I take a photo of our robattle?<*2>
 0x74198,きみの せんリゃくは みきった!<*2>,I've seen through your strategy!<*2>
-0x7419a,ロボトルするべ!<*2>,"Ey, let's Robottle!<*2>"
+0x7419a,ロボトルするべ!<*2>,"Ey, let's robattle!<*2>"
 0x7419c,とあみで つかまえてやるだ<*2>,You'll be caught in my net!<*2>
-0x7419e,するっぺよ なっ？<*2>,"You'll Robottle me, won't ya?<*2>"
+0x7419e,するっぺよ なっ？<*2>,"You'll robattle me, won't ya?<*2>"
 0x741a0,するもぐ するもぐ<*2>,"Dig dig dig, let's go!<*2>"
-0x741a2,のらメダロットが あらわれた!<*2>,A stray Medarot appeared!<*2>
+0x741a2,のらメダロットが あらわれた!<*2>,A stray Medabot appeared!<*2>
 0x741a4,のらメダロットが あらわれた!<*2>,=0x741a2
 0x741a6,いくわよっ!<*2>,Let's go!<*2>
 0x741a8,ぼうや どこからでも<4E>かかってらっしゃい<*2>,"I'll take you on any day, boy!<*2>"
@@ -222,7 +222,7 @@ Pointer[#version],Original,Translated
 0x741b8,なかなか いせいが いいじゃない<*2>,You seem a little strong.<*2>
 0x741ba,ワシと はリあうのは 53ねん<4E>はやいわっ<*2>,You're 53 years too early to face me!<*2>
 0x741bc,ボクちゃんは つよいでチュよ<*2>,"I'm stwong, ya know!<*2>"
-0x741be,ふんっ せかいは ロボロボだんの<4E>ために あるのだっ<*2>,The RoboRobo Gang will rule the world.<*2>
+0x741be,ふんっ せかいは ロボロボだんの<4E>ために あるのだっ<*2>,The Rubberobo Gang will rule the world.<*2>
 0x741c0,ワシは みすみす やられは せんぞ<*2>,I won't be defeated so easily!<*2>
 0x741c2,われわれの じゃまをするものは<4E>いかして かえさないわ<*2>,Those who get in our way will be dealt with.<*2>
 0x741c4,ボクちゃんと たたかうでチュ<*2>,Let's battle!<*2>
@@ -242,7 +242,7 @@ Pointer[#version],Original,Translated
 0x741e0,ウッ ウァオーン メダルが<4E>つきにみえるぜ<*2>,A-AwooOOooo! Medals... look like... the moon!<*2>
 0x741e2,オ オ オトモダチニ ナリマショウ<*2>,L-l-let's become friends..<*2>
 0x741e4,さあ! しょうぶだ!!<S78><*4>,Now! Let's battle!<*4>
-0x741e6,ハカイ・・・スル<*2>,Des...troy...<*2>
+0x741e6,ハカイ・・・スル<*2>,<f03>DES... TROY... <f00><*2>
 0x741e8,<*2>,
 0x741ea,<*2>,
 0x741ec,<*2>,
@@ -272,7 +272,7 @@ Pointer[#version],Original,Translated
 0x7421c,とあみが からまっただ<*2>,My net got tangled...<*2>
 0x7421e,おらの まけけぇ？<*2>,Whuzzat? I lost?<*2>
 0x74220,もぐ もぐ まけもぐ<*2>,"Dig dig dig, I lost...<*2>"
-0x74222,のらメダロットは にげていった!<*2>,The stray Medarot fled!<*2>
+0x74222,のらメダロットは にげていった!<*2>,The stray Medabot fled!<*2>
 0x74224,のらメダロットは にげていった!<*2>,=0x74222
 0x74226,<&NAME>ったら<4E>なかなか やるじゃない<*2>,"I knew you'd do well, <&NAME>.<*2>"
 0x74228,よそういじょうの ウデね ステキよ♥<*2>,You're stronger than I expected ♥!<*2>
@@ -306,7 +306,7 @@ Pointer[#version],Original,Translated
 0x74260,ハアッ ハアッ まけちまったぜ<*2>,Hah... Hah... I lost!<*2>
 0x74262,ダカラ オトモダチニ・・・<*2>,<f03>Will you be my friend?<f00><*2>
 0x74264,<*2>,<*2>
-0x74266,バッ パッ ピッ<4E>バカナーッ!!<*2>,<f03>A... I-I... Bzzt-- Impossible...!!<f00><*2>
+0x74266,バッ パッ ピッ<4E>バカナーッ!!<*2>,<f03>A... I-I... BZZT-- IMPOSSIBLE...!!<f00><*2>
 0x74268,<*2>,<*2>
 0x7426a,<*2>,=0x74268
 0x7426c,<*2>,=0x74268
@@ -386,23 +386,23 @@ Pointer[#version],Original,Translated
 0x74300,<&NAME>は <&BUF02><4E>「<&BUF01>」を てにいれた<*2>,<&NAME> obtained <f02><&BUF01><f00>!<*2>
 0x74302,カン!カン!カン! ロボトルエンド!<4E>さあ これで じかんぎれです!<4C>はんていのけっかを みてみましょう!<S78><4C><S2>はんていのけっか!<4E><&BUF01>の しょうリです!,Ding ding ding! Time is up!<4C>Now to determine the winner!<S78><4C><S02>It looks like... <&BUF01>'s match!
 0x74304,<&NAME>は <&BUF02><4E>「<&BUF01>」を とられた<*2>,<&NAME> handed over <f02><&BUF01><f00>.<*2>
-0x74306,あっ!!!!!!<4E>くまれたメダロットが ひとつもない!<4C>メダロットが できないよー!!<4C><&NAME> は<4E>めいっぱい おちこんだ!!,Ack!! I don't have a single Medarot assembled!<4C>I... I can't go on!!<4C><&NAME> fell into despair!
-0x74308,<&NAME> は<4E>「ロボロボメダル」を てにいれた!<*2>,<&NAME> got a <f02>RoboRobo Medal<f00>!<*2>
+0x74306,あっ!!!!!!<4E>くまれたメダロットが ひとつもない!<4C>メダロットが できないよー!!<4C><&NAME> は<4E>めいっぱい おちこんだ!!,Ack!! I don't have a single Medabot assembled!<4C>I... I can't go on!!<4C><&NAME> fell into despair!
+0x74308,<&NAME> は<4E>「ロボロボメダル」を てにいれた!<*2>,<&NAME> got a <f02>Rubberobo Medal<f00>!<*2>
 0x7430a,あぁーーーーーーーー!!<4E>こんなところで まけるなんて!<4C>もっと ああして・・・こうして・・・<4E>ぶつぶつぶつ・・・・・・・<4C><&NAME> は<4E>めいっぱい おちこんだ!!,Aaarrgh!! I can't believe I lost in a place like this!<4C>This isn't... how I wanted....<4C>............<4C><&NAME> fell into despair!
 0x7430c,<&NAME> は<4E>ティンペットを てにいれた!!,<&NAME> obtained a Tinpet!
 0x7430e,あれっ!!<4E>ティンペットは そろっているよ!<4C><&NAME> は<4E>ティンペットを もてなかった!!,Huh? You already have too many!<4C><&NAME> did not take the Tinpet!
 0x74310,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>つうしん しますか？<*4>,You can play with your friends using a Game Link cable here.<4C>Do you want to connect?<*4>
 0x74312,つうしんまえに セーブしますが<4E>よろしいですか？<*4>,The game will be saved before connecting.<49>Is this alright?<*4>
-0x74314,\ロボトルほんぶに アクセスします<S3c><*4>,<4A><49>Accessing Robottle HQ...<S3c><*4>
+0x74314,\ロボトルほんぶに アクセスします<S3c><*4>,<4A><49>Accessing robattle HQ...<S3c><*4>
 0x74316,つうしんちゅう!!<*4>,Connecting!<*4>
 0x74318,つうしん できませんでした!,Couldn't connect!
-0x7431a,2たい いじょう くまれた<4E>メダロットがないと できません<S3c><*1>,You need at least 2 battle-ready Medarots to use this mode.<S3c><*1>
+0x7431a,2たい いじょう くまれた<4E>メダロットがないと できません<S3c><*1>,You need at least 2 battle-ready Medabots to use this mode.<S3c><*1>
 0x7431c,トレードする パーツがあリません<S3c><*1>,You have no parts to trade.<S3c><*1>
 0x7431e,<Sff>つうしんまちです!!<S1e><*4>,<Sff>Waiting on connection!<S1e><*4>
 0x74320,<&NAME> は<4E>たたかいに かちました!!<4C>みごとな しょうリです!<4E>これからもガンガンいこう!!,<&NAME> won the battle!<4C>An excellent victory!<49>Keep it up!
 0x74322,<&NAME> は<4E>たたかいに まけました!!<4C>もういちど きたえなおしだ!<4E>こんどは がんばリましょう!!,<&NAME> lost the battle!<4C>That's too bad!<49>Train hard and go for the win!
-0x74324,あなたは ロボトルしょうしゃとして<4E>「ロボとーる」を おこなえます!,"As the winner of the Robottle, you get to play <f02>Robo-Toll<f00>!"
-0x74326,あなたは ロボトルはいしゃとして<4E>パーツをとられてしまいます,"As the loser of the Robottle, one of your parts will be taken."
+0x74324,あなたは ロボトルしょうしゃとして<4E>「ロボとーる」を おこなえます!,"As the winner of the robattle, you get to play <f02>Robo-Toll<f00>!"
+0x74326,あなたは ロボトルはいしゃとして<4E>パーツをとられてしまいます,"As the loser of the robattle, one of your parts will be taken."
 0x74328,<&BUF01> は<4E>「ロボとーる」に<S10>・・・・・・・・・\<S2>せいこうした!<S3c><*4>,<&BUF01>'s <f02>Robo-Toll<f00><S10>.........<4A><49><S02>Succeeded!<S3c><*4>
 0x7432a,<&BUF01> は<4E>「ロボとーる」に<S10>・・・・・・・・・\<S2>しっぱいした!<S3c><*4>,<&BUF01>'s <f02>Robo-Toll<f00><S10>.........<4A><49><S02>Failed!<S3c><*4>
 0x7432c,ハズレ! なにも とれなかった!<4E>ざんねんですが しかたあリません!,"Miss! You didn't get anything!<49>Too bad, maybe next time!"
@@ -421,7 +421,7 @@ Pointer[#version],Original,Translated
 0x74346,「<&BUF04>」と<4E>「<&BUF01>」をトレードします<S3c><*4>,<f02><&BUF04><f00> will be traded for <f02><&BUF01><f00>.<S3c><*4>
 0x74348,「<&BUF04>」は<4E>「<&BUF01>」にヘんかした!,<f02><&BUF04><f00> transformed into <f02><&BUF01><f00>!
 0x7434a,そこには いけません!!,You can't go that way!
-0x7434c,ロボロボメダルを つかいますか？<*4>,Will you use a RoboRobo Medal?<*4>
+0x7434c,ロボロボメダルを つかいますか？<*4>,Will you use a Rubberobo Medal?<*4>
 0x7434e,せんとうから にげられた!!<S3c><*4>,Fled from the battle!<S3c><*4>
 0x74350,こうさん しますか？<*4>,Do you want to surrender?<*4>
 0x74352,おめでとうございます!<4E>パスワードが すべてそろいました!<4C>4もじをおうぼはがきに かきこんで<4E>イマジニアあてに おおくリください<4C>ちゅうせんで ひかるゲームボーイを<4E>プレゼント いたします!,Congratulations!<49>You've collected all 4 password letters!<4C>Write the password on the included postcard and send it to Imagineer to be entered in a draw for a glow-in-the-dark Game Boy!
@@ -453,8 +453,8 @@ Pointer[#version],Original,Translated
 0x74386,あっ! メダル「<&BUF04>」は<4E>メダル「<&BUF01>」にヘんかした<*2>,Ah! The <f02><&BUF04><f00> Medal transformed into a <f02><&BUF01> <f00>Medal!<*2>
 0x74388,しかし メダル「<&BUF04>」は<4E>すでにもっています<4C>メダル「<&BUF04>」をもてなかった<4C><*4>,...But you already have that Medal!<4C>The <f02><&BUF04><f00> Medal wasn't taken.<*4>
 0x7438a,そのかわリに<4E>ぜんじゅくれんどが 4アップした!!<*2>,"In exchange, all of its skills were raised by 4!<*2>"
-0x7438c,くまれたメダロットがないとできません<S3c><*1>,You need at least one battle-ready Medarot to use this mode.<S3c><*1>
-0x7438e,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>まず はじめてこられた あなたヘ<4E>つうしんロボトルを せつめいします<4C>ーーあそびでロボトルーー<4E>ともだちのメダロットと<4C>きがるに たいせんできるモードです<4C>ーーしんけんロボトルーー<4E>ともだちのメダロットと<4C>メダルおよびパーツをかけた<4E>しんけんしょうぶができるモードです<4C><*4>,"Hello! This is where you can play together with your friends using a Game Link cable.<49>Since this is your first time coming here, I'll explain link Robottles for you:<4C>--- Practice Robottle ---<49>In this mode, you can battle against your friends without worrying about winning or losing parts.<4C>--- Official Robottle ---<49>In this mode, you can battle your friends while putting your parts and Medals on the line!<*4>"
+0x7438c,くまれたメダロットがないとできません<S3c><*1>,You need at least one battle-ready Medabot to use this mode.<S3c><*1>
+0x7438e,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>まず はじめてこられた あなたヘ<4E>つうしんロボトルを せつめいします<4C>ーーあそびでロボトルーー<4E>ともだちのメダロットと<4C>きがるに たいせんできるモードです<4C>ーーしんけんロボトルーー<4E>ともだちのメダロットと<4C>メダルおよびパーツをかけた<4E>しんけんしょうぶができるモードです<4C><*4>,"Hello! This is where you can play together with your friends using a Game Link cable.<49>Since this is your first time coming here, I'll explain link robattles for you:<4C>--- Practice robattle ---<49>In this mode, you can battle against your friends without worrying about winning or losing parts.<4C>--- Official robattle ---<49>In this mode, you can battle your friends while putting your parts and Medals on the line!<*4>"
 0x74390,まけたほうは メダルおよびパーツを<4E>とられてしまいます<4C>メダロットのすくない はじめのうちは<4E>やらないほうが いいとおもいます<4C>ーーパーツをトレードするーー<4E>ともだちのもっているパーツと<4C>あなたのもっているパーツを<4E>こうかんできるモードです<4C>いじょう!!<4E>3つのモードが たのしめます!,"The loser of the battle will have one of their parts or Medals taken by the winner.<49>For experienced players only!<4C>--- Trading Parts ---<49>In this mode, you can trade spare parts with your friends.<4C>That ends the explanation!<49>Have fun!"
 0x74392,<IGNORED>,<IGNORED>
 0x74394,=0x74392,=0x74392
