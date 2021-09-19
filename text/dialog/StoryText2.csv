@@ -145,15 +145,15 @@ Pointer[#version],Original,Translated
 0x6011e,おもしろいもの もってるね<4C>かしてごらん<4C>メダルもどきが<4E>カメレオンの メダルになった!,<@Researcher>That's an interesting looking thing you got there.<4C>Can I see it real quick?<4C><@None>The <f02>Medal-Like Coin<f00> turned into a <f02>Chameleon<f00> Medal.
 0x60120,きゃくぶパーツが こわれると<4E>きゃくぶの のうリょくが<4C>はんぶんになるから<4E>ちゅういするんだよ,"If your Medabot's legs get destroyed in battle, its speed gets halved. Be careful."
 0x60122,あしたから いよいよ なつやすみだ!<4E>せんせいも うれしいぞ!<4C>それでは せんせいから<4E>なつやすみの しゅくだいの<4C>おまけを あげよう!,"<@Gym>Tomorrow is summer vacation at last!<49>Even I can't wait!<4C>Of course, that means I'll be giving you some extra homework to do over the break!"
-0x60124,わしが いだいなる<4E>メダロットはかせじゃ<4C>メダロットは こうして<4E>つくられるんじゃ,"<@Medabot>I'm Dr. Medabot, the creator of Medabots."
-0x60126,おおっ きみか<4E>しんぶんに のっておったろう？<4C>かつやくの ごほうびに<4E>これをやろう<4C>これをもっていれば けんきゅうじょの<4E>みぎがわの ヘやにも はいれるぞ,"<@Medabot>Oh it's you.<4C>You're were in the newspaper, y'know.<4C>Here's a reward for your efforts.<4C>With this, you can enter the room on the right hand side of the Lab."
-0x60128,メダロットは ばくはつじゃ!,<@Medabot>My Medabot exploded!
-0x6012a,なに？ うちゅうじんに<4E>なおしてもらっただと？,<@Medabot>What? It was repaired by aliens?!
+0x60124,わしが いだいなる<4E>メダロットはかせじゃ<4C>メダロットは こうして<4E>つくられるんじゃ,"<@Medarot>I'm Dr. Medabot, the creator of Medabots."
+0x60126,おおっ きみか<4E>しんぶんに のっておったろう？<4C>かつやくの ごほうびに<4E>これをやろう<4C>これをもっていれば けんきゅうじょの<4E>みぎがわの ヘやにも はいれるぞ,"<@Medarot>Oh it's you.<4C>You're were in the newspaper, y'know.<4C>Here's a reward for your efforts.<4C>With this, you can enter the room on the right hand side of the Lab."
+0x60128,メダロットは ばくはつじゃ!,<@Medarot>My Medabot exploded!
+0x6012a,なに？ うちゅうじんに<4E>なおしてもらっただと？,<@Medarot>What? It was repaired by aliens?!
 0x6012c,=0x6012a,=0x6012a
-0x6012e,メダルは ぜんぶ そろったか？,<@Medabot>Have you collected all the Medals?
-0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"<@Medabot>Ooh, you have all of them!<4C>In that case, here's a Medal as a rewa-<4C>Oh you already have it.<49>Hahaha!<4C>I guess I should give you this then, it's a prototype Medal.<4C>Use it on whatever Medabot you like."
-0x60132,はやく メダルを そろえるのじゃぞ,<@Medabot>Hurry and collect all of the Medals!
-0x60134,オオカミおとこじゃと？<4C>メガネの しょうてんが<4E>ズレとるんじゃな？<4C>これを もっていきなさい,"<@Medabot>You saw a wolf man?<4C>Do you need glasses, kid?<4C>Here, take these."
+0x6012e,メダルは ぜんぶ そろったか？,<@Medarot>Have you collected all the Medals?
+0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"<@Medarot>Ooh, you have all of them!<4C>In that case, here's a Medal as a rewa-<4C>Oh you already have it.<49>Hahaha!<4C>I guess I should give you this then, it's a prototype Medal.<4C>Use it on whatever Medabot you like."
+0x60132,はやく メダルを そろえるのじゃぞ,<@Medarot>Hurry and collect all of the Medals!
+0x60134,オオカミおとこじゃと？<4C>メガネの しょうてんが<4E>ズレとるんじゃな？<4C>これを もっていきなさい,"<@Medarot>You saw a wolf man?<4C>Do you need glasses, kid?<4C>Here, take these."
 0x60136,=0x60134,=0x60134
 0x60138,=0x60134,=0x60134
 0x6013a,パディさまは<4E>ただいま がいしゅつ しておリます<4C>おくにいっても だれもいませんよ,"Paddy is out at the moment. You can check her room, but I don't think anyone is there."
@@ -312,7 +312,7 @@ Pointer[#version],Original,Translated
 0x60268,むしは うまいぞ<4E>ちがう むしはすごいぞ イゾ,<@Parrot>Bugs are awesome!<4C>Seeing different bugs is cool-ool!
 0x6026a,じゅんびは よろしいですか？,<@Nae>Are you ready?
 0x6026c,=0x6026a,=0x6026a
-0x6026e,さいきょうの メダルを<4E>つくリあげるのじゃぞ,<@Medabot>Make your Medals strong!
+0x6026e,さいきょうの メダルを<4E>つくリあげるのじゃぞ,<@Medarot>Make your Medals strong!
 0x60270,このあたリの むしは むしはかせに<4E>とられちゃったんだ,The professor caught all of the bugs in this area...
 0x60272,どろんっ・・・,*Hop*...
 0x60274,あれっ？<4E>きえないや,Huh? It disappeared.
