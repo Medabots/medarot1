@@ -73,7 +73,7 @@ jobs:
             - run:
                 name: "Update Credits"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Default Credits
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits America Credits
             - run:
                 name: "Update Lists"
                 working_directory: medarot_1
