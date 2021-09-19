@@ -27,7 +27,6 @@ ENDR
 
 SECTION "Load Attribute", ROMX[$6789], BANK[$2]
 LoadAttribute:
-  ld a, $0
   call $6778
   ld hl, AttributesPtr
   ld b, $0
@@ -37,9 +36,13 @@ LoadAttribute:
   rl b
   add hl, bc
   psbc $9941, $c6
-  ld d, BANK(LoadAttribute)
-  ld e, BANK(AttributesPtr)
+  ld de, BANK(LoadAttribute) << 8 | BANK(AttributesPtr)
+  call PadPtrTextTo8
   jp PrintPtrText
+.end
+REPT $67a6 - .end
+  nop
+ENDR
 ; 0xa7a6
 
 SECTION "Load Part Description", ROM0[$3926]

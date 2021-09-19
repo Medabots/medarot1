@@ -17,7 +17,7 @@ PrintPtrText::
   ; d = bank to return to
   ; e = bank to swap to, if 0 don't do anything
   ; bc = VRAM Address
-  ; de can be trampled
+  ; de is preserved
   push de
   ld a, e
   or a
@@ -50,8 +50,10 @@ PrintPtrTextAutoNarrow:: ; Same as PrintPtrText but calling AutoNarrow, can't be
   ret
 
 PadPtrTextTo8::
-  ; Usually called with PrintPtrText, same arguments, but must store/restore de
+  ; Usually called with PrintPtrText, same arguments, but will restore hl, bc, and de
   ; Calls PadTextTo8 while optionally swapping banks if necessary
+  push hl
+  push bc
   push de
   ld a, e
   or a
@@ -65,6 +67,8 @@ PadPtrTextTo8::
   or a
   jr z, .return
   rst $10
-  xor a
 .return
-  ret ; 00A6
+  pop bc
+  pop hl
+  ret 
+  ; 1DA7
