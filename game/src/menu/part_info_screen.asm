@@ -27,13 +27,13 @@ ENDR
 
 SECTION "Load Attribute", ROMX[$6789], BANK[$2]
 LoadAttribute:
+  xor a
   call $6778
   ld hl, AttributesPtr
   ld b, $0
   ld a, [$c64e]
   ld c, a
-  sla c
-  rl b
+  add hl, bc
   add hl, bc
   psbc $9941, $c6
   ld de, BANK(LoadAttribute) << 8 | BANK(AttributesPtr)
@@ -111,19 +111,24 @@ LoadSkill::
   ld a, $3
   call $6778
   ld hl, $67d1
-  ld b, $0
+  xor a
+  ld b, a ; b = 0
   ld a, [$c64e]
   ld c, a
   add hl, bc
   ld a, [hl]
   ld hl, SkillsPtr
-  ld b, $0
+  ; b is still 0 here
   ld c, a
   sla c
   rl b
   add hl, bc
   psbc $99a1, $45
-  ld d, BANK(LoadSkill)
-  ld e, BANK(SkillsPtr)  
+  ld de, BANK(LoadSkill) << 8 | BANK(SkillsPtr)
+  call PadPtrTextTo8
   jp PrintPtrText
+.end
+REPT $67d1 - .end
+  nop
+ENDR
 ; 0xa7d1
