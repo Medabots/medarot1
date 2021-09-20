@@ -1,7 +1,7 @@
 #!/bin/python
 
 ## Converts translator-defined XLSX file to CSV file for bin conversion
-## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog
+## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog <Localization Version>
 import sys
 import re
 import openpyxl as xl
