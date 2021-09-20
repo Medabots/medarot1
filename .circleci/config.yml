@@ -77,11 +77,11 @@ jobs:
             - run:
                 name: "Update Lists"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists Default HeadParts RightParts LeftParts LegParts Items Medarots Medals
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists America HeadParts RightParts LeftParts LegParts Items Medarots Medals
             - run:
                 name: "Update Pointer Lists"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/ptrlists Default Attacks Attributes Medarotters PartDescriptions PartTypes Skills
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/ptrlists America Attacks Attributes Medarotters PartDescriptions PartTypes Skills
             - run:
                 name: "Update Text Version"
                 working_directory: medarot_1

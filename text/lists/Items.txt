@@ -1,6 +1,6 @@
 32|80|0
 Exit
-RoboRobo Medal
+Rubberobo Medal
 Lottery Ticket
 Mr. Wataru Lure
 Handmade Lure
@@ -20,7 +20,7 @@ Star Piece
 Medal-Like Coin
 Mountain Soil
 Pottery
-RoboRobo Suit
+Rubberobo Suit
 Boss's Photo
 Select Medal
 Shining Parts
@@ -31,8 +31,8 @@ Mini-Handle
 Periscope
 Town Map
 Shinobi Ticket
-RoboRobo Card
-RoboRobo Badge
+Rubberobo Card
+Rubberobo Badge
 Password 1 - Zu
 Password 2 - I
 Password 3 - Ke

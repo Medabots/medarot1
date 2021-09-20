@@ -19,14 +19,14 @@ Blocks "Laser" and "Beam" attacks
 Blocks "Missile" and "Napalm" attacks
 Blocks "Break" and "Press" attacks
 Blocks special attacks
-Protects allied Medarots
+Protects allied Medabots
 Completely blocks all attacks
 Completely blocks weak attacks
 Repairs damaged parts
 Revives destroyed parts
-Strong against flying Medarots
+Strong against flying Medabots
 
-Strong against aquatic |Medarots
+Strong against aquatic |Medabots
 
 Increases accuracy
 Increases evasion
@@ -42,10 +42,10 @@ Reduces charge time to zero
 
 
 Transforms into different parts
-Becomes a flying Medarot
+Becomes a flying Medabot
 Not affected by terrain
 Best with close-range attacks
 Good overall balance
 Good with "Berserk" and |"Snipe" attacks
 Moves slowly but has high armor
-Becomes an aquatic Medarot
+Becomes an aquatic Medabot
