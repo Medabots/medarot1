@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Medabots/medarot1/tree/tr_EN.svg?style=svg)](https://app.circleci.com/pipelines/github/Medabots/medarot1?branch=tr_EN)
+[![CircleCI](https://circleci.com/gh/Medabots/medarot1/tree/tr_EN.svg?style=svg)](https://app.circleci.com/pipelines/github/Medabots/medarot1?branch=tr_EN-US)
 
 # Obtaining/Applying the Patch
 
