@@ -85,7 +85,7 @@ jobs:
             - run:
                 name: "Update Text Version"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt EN
+                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt EN-US
       - run:
           name: "Build ROM"
           working_directory: medarot_1
