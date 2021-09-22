@@ -1,7 +1,7 @@
 #!/bin/python
 
 ## Converts translator-defined XLSX file to CSV file for bin conversion
-## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog
+## Usage: python3 scripts/xlsx2csv.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/dialog <Localization Version>
 import sys
 import re
 import openpyxl as xl
@@ -14,7 +14,7 @@ from common import utils
 
 font_table = utils.read_table("scripts/res/patch/fonts.tbl", keystring=True)
 
-def transform_line(line):
+def transform_line(line, localization_table):
 	line = (line or "").replace('""', '"')
 	for ptr in ptr_names.keys():
 		line = line.replace("<&{0:X}>".format(ptr, 'x').lower(), "<&{0}>".format(ptr_names[ptr]))
@@ -22,7 +22,7 @@ def transform_line(line):
 	line = re.sub(r'\n((?:</{0,1}(?:b|i)>)*)\n', r'<4C>\1', line).replace('\n','<49>')
 
 	sections = re.split(r'(<b>|</b>|<i>|</i>)', line)
-	if len(sections) > 1:
+	if len(sections) > 0:
 		current_font = "Normal"
 		proposed_font = "Normal" # Don't change fonts until we have non-space characters
 		line = ""
@@ -43,12 +43,18 @@ def transform_line(line):
 					line += f"<f{int(font_table[proposed_font], 16):02X}>"
 					current_font = proposed_font
 				line += section
+
+	# Replace based on localization
+	pattern = '|'.join(sorted(r"(?<!@)(?<!&)\b{0}\b".format(re.escape(key)) for key in localization_table))
+	line = re.sub(pattern, lambda m: localization_table.get(m.group(0)), line)
+
 	return line
 
 xlsx = sys.argv[1]
 csvdir = sys.argv[2]
+localization = sys.argv[3]
 
-if len(sys.argv) < 4:
+if len(sys.argv) < 5:
 	SHEETS = ([
 		"StoryText1",
 		"StoryText2",
@@ -61,7 +67,9 @@ if len(sys.argv) < 4:
 		"BattleText",
 	])
 else:
-	SHEETS = list(sys.argv[3:])
+	SHEETS = list(sys.argv[4:])
+
+localization_table = utils.read_table("scripts/res/patch/localization_{0}.tbl".format(localization), keystring=True)
 
 wb = xl.load_workbook(filename = xlsx)
 ptr_names = {}
@@ -121,6 +129,6 @@ for sheet in wb.worksheets:
 				row = orig_text[ptr]
 				row.append("")
 			else:
-				row = [transform_line(x) if i == (original_idx - pointer_idx) or i == (translated_idx - pointer_idx) else x for i, x in enumerate(text[ptr][pointer_idx:translated_idx+1])]
+				row = [transform_line(x, localization_table) if i == (original_idx - pointer_idx) or i == (translated_idx - pointer_idx) else x for i, x in enumerate(text[ptr][pointer_idx:translated_idx+1])]
 				row[original_idx - pointer_idx] = original_text # Keep our dumped version of the original text at all times
 			writer.writerow(row)

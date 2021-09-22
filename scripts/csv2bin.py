@@ -84,6 +84,9 @@ def table_convert(txt, tbl):
             else:
                 print("WARNING: Unable to find mapping for %c\n\tline: %s" % (txt[i], txt))
                 result.append(tbl['?'])
+        except:
+            print('ERROR: Invalid format in line "%s"' % txt)
+            raise
         finally:
             i += 1
     

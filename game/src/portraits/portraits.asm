@@ -6,12 +6,12 @@ SECTION "Portraits 64-113", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/portraits/include/portraits_2.asm"
 
-SECTION "Core portrait functions", ROM0[$1da7]
+SECTION "Core portrait functions", ROM0[$1daa]
 LoadPortraitTileset:
 ; a is the bank where the portraits are
 ; hl is the address of the portrait to pull
+; bc is the size of the portraits (always 0100)
   rst $10
-  ld bc, $0100
   call CopyVRAMData
   ld a, BANK(DrawPortrait)
   rst $10
@@ -43,6 +43,7 @@ DrawPortrait::
   ld c, $0
   ld de, $8C00
   add hl, bc
+  ld bc, $0100
   call LoadPortraitTileset
   pop de
   pop bc

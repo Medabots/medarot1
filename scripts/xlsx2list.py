@@ -1,16 +1,23 @@
 #!/bin/python
 
 ## Converts translator-defined XLSX file to text files for bin conversion
-## Usage: python3 scripts/xlsx2list.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/lists <List Types>
+## Usage: python3 scripts/xlsx2list.py ../Medarot\ 1\ Translation\ Sheet.xlsx ./text/lists <Localization Version> <List Types>
 import sys
 import openpyxl as xl
 from collections import OrderedDict
 import csv
 from os import path
+import re
+
+sys.path.append(path.join(path.dirname(__file__), 'common'))
+from common import utils
 
 xlsx = sys.argv[1]
 outdir = sys.argv[2]
-SHEETS = list(sys.argv[3:])
+localization = sys.argv[3]
+SHEETS = list(sys.argv[4:])
+
+localization_table = utils.read_table("scripts/res/patch/localization_{0}.tbl".format(localization), keystring=True)
 
 wb = xl.load_workbook(filename = xlsx)
 
@@ -34,4 +41,7 @@ for sheet in wb.worksheets:
 					outtext += line[i]
 			# The remaining text each gets its own line (e.g. for models in part lists)
 			outtext += '\n'.join([str(line[i]) for i in useful_indices if line[i]])
+			# Replace based on localization
+			pattern = '|'.join(sorted(r"(?<!\[)\b{0}\b(?!\])".format(re.escape(key)) for key in localization_table))
+			outtext = re.sub(pattern, lambda m: localization_table.get(m.group(0)), outtext)
 			print(outtext, file=outfile)

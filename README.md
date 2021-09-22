@@ -41,6 +41,11 @@ If all you care about is playing the patch, then refer to the instructions at th
 
 [Translation Spreadsheet](https://github.com/Medabots/medarot1_translation)
 
+# Contributing
+
+The patch is totally playable from start to finish, but if you'd like to submit any fixes we missed or submit a text correction, feel free to submit a Pull Request or join the [Medabots Discord](https://discord.gg/4hHxKSX).
+
+
 # Contributors
 
 (The [Contributors](https://github.com/VariantXYZ/medarot1/graphs/contributors) page only covers GitHub contributions)
@@ -49,7 +54,7 @@ If all you care about is playing the patch, then refer to the instructions at th
 * [andwhyisit](https://github.com/andwhyisit) (Disassembly, Developer)
 * [Kimbles](https://medarot.meowcorp.us/wiki/User:Kimbles) (Translations, Editing, Initial research)
 * Tobias (Translations)
-
 * [Sanqui](https://github.com/Sanqui) (Initial research and disassembly, the overlay feature in rgbds, a number of other things)
+* [Hideto](https://digicorearg.blogspot.com/) (Portrait mapping, Spanish translation on tr_ES branch)
 
 And of course, various members of the community for playtesting and submitting bug reports. 

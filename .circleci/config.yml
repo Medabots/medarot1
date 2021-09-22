@@ -6,6 +6,7 @@ executors:
       - image: variantxyz/rgbds-20200806:cb4fbdfcd534e43a5f8504b405acd7b8b29f5001
     working_directory: /tmp
 
+# Per each language branch, several '+<LANG_CODE>' need to be replaced
 jobs:
   build:
     executor: rom-executor
@@ -48,9 +49,10 @@ jobs:
             - run:
                 name: "Checkout latest tag"
                 working_directory: medarot_1
-                command: | # Checkout the latest created tag
+                command: | # Checkout the latest created tag, filtered by +<LANG_CODE>, it is an error to not have any tags for this language when running this step
                   git fetch --tags
-                  git checkout `git rev-list --tags --max-count=1`    
+                  git describe --tags --match "*+EN" HEAD || exit 1
+                  git checkout `git tag --list --sort=-version:refname "*+EN" | head -n 1`    
       - when:
           condition: << parameters.use-latest-translations >>
           steps:
@@ -69,23 +71,23 @@ jobs:
             - run:
                 name: "Update Dialog"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/dialog Default StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
             - run:
                 name: "Update Credits"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Credits
+                command: python3 scripts/xlsx2csv.py ~/sheet.xlsx ./text/credits Default Credits
             - run:
                 name: "Update Lists"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists HeadParts RightParts LeftParts LegParts Items Medarots Medals
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/lists Default HeadParts RightParts LeftParts LegParts Items Medarots Medals
             - run:
                 name: "Update Pointer Lists"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/ptrlists Attacks Attributes Medarotters PartDescriptions PartTypes Skills
+                command: python3 scripts/xlsx2list.py ~/sheet.xlsx ./text/ptrlists Default Attacks Attributes Medarotters PartDescriptions PartTypes Skills
             - run:
                 name: "Update Text Version"
                 working_directory: medarot_1
-                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt ES
+                command: python3 scripts/xlsx_dump_version.py ~/sheet.xlsx ./text/patch/text_version.txt
       - run:
           name: "Build ROM"
           working_directory: medarot_1
@@ -146,6 +148,7 @@ jobs:
             ghr -t ${GHR_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./patch/
 
 workflows:
+  # Build and release on any tag
   workflow:
     jobs:
       - build:
@@ -167,6 +170,7 @@ workflows:
             tags:
               only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?(?:[+](?<build>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+)))*))?)$/
 
+  # Will actually checkout the latest tag to see if new text is available, run on every language branch
   nightly:
     triggers:
       - schedule:
@@ -174,7 +178,7 @@ workflows:
           filters:
             branches:
               only:
-                - tr_EN # Though this runs on tr_EN, it will actually checkout the latest tag
+                - tr_*
     jobs:
       - build:
           name: "Nightly Build Tag"
@@ -183,7 +187,9 @@ workflows:
           create-tag: true
           use-latest-tag: true
 
-  initial: # Initial tag, similar to nightly but happens on initial build
+  # Initial tag, will only trigger on 'MAJOR.MINOR.PATCH+<LANG_CODE>'
+  # Modify the last part of the regex on the current branch's language code (can't use a parameter...)
+  initial:
     jobs:
       - build:
           name: "Initial Release Tag"
@@ -195,4 +201,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?(?:[+](?<build>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:(?:0|[1-9])+)))*))?)$/
+              only: /(?<=^[Vv]|^)(?:(?<major>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<minor>(?:0|[1-9](?:(?:0|[1-9])+)*))[.](?<patch>(?:0|[1-9](?:(?:0|[1-9])+)*))(?:-(?<prerelease>(?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*))(?:[.](?:(?:(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?|(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)(?:[A-Za-z]|-)(?:(?:(?:0|[1-9])|(?:[A-Za-z]|-))+)?)|(?:0|[1-9](?:(?:0|[1-9])+)*)))*))?[+]EN)$/
