@@ -1,51 +1,51 @@
 80
-Simple and easy to use
-High in attack power
-Blast deals extra damage
-Higher damage if target can't |defend
-Damages "Strike" and "Berserk" |parts
-Damages "Shoot" and "Snipe" |parts
-Lowers success rate
-Stops the target's movement
-Slows down target
-Damages target while it's |moving
-Destroys traps
-Heals "Bug" and "Virus" ailments
-Heals "Thunder" and "Ice" |ailments
-Heals "Hold" and "Wave" ailments
-Heals "Melt" and "Fire" ailments
-Heals all status ailments
-Blocks "Laser" and "Beam" attacks
-Blocks "Missile" and "Napalm" attacks
-Blocks "Break" and "Press" attacks
-Blocks special attacks
-Protects allied Medarots
-Completely blocks all attacks
-Completely blocks weak attacks
-Repairs damaged parts
-Revives destroyed parts
-Strong against flying Medarots
+Fácil de usar
+Poder de ataque alto
+Daño extra por explosión
+Daño si el rival no | puede cubrir
+Daña partes de Golpe y | Berserk 
+Daña partes de Disparo | y Tirador 
+Baja precision
+Detiene al objetivo
+Frena al objetivo
+Daña objetivos en movimiento
+Destruye trampas
+Cura estados"Bug" y "Virus"
+Cura estados "paralisis" | y"congelado" 
+Cura estados "freno" y "Wave" 
+Cura estados "Derretir" | y "Fuego" 
+Cura todos los problemas de estado
+Disruptor de "Laser" y "Beam"
+Disruptor de "Missile" y "Napalm" 
+Disruptor de "Break" y "Press" 
+Disruptor de ataques especiales
+Protege a los aliados
+Disruptor de todos los ataques
+Disruptor de los ataques debiles
+Restaura partes dañadas
+Recupera partes destruidas
+Fuerte contra bots voladores
 
-Strong against aquatic |Medarots
+Fuerte contra bots de agua
 
-Increases accuracy
-Increases evasion
-Removes accuracy bonuses
-
-
-Increases movement speed
-Reduces charge time to zero
+Sube precisión
+Sube evasión
+Quita los bonus de precision
 
 
+Aumenta velocidad
+Reduce el tiempo de carga a 0
 
 
 
 
-Transforms into different parts
-Becomes a flying Medarot
-Not affected by terrain
-Best with close-range attacks
-Good overall balance
-Good with "Berserk" and |"Snipe" attacks
-Moves slowly but has high armor
-Becomes an aquatic Medarot
+
+
+Se transforma en otras partes
+Se vuelve un Medarot volador
+No lo afecta el terreno
+Bueno para combate | cuerpo a cuerpo.
+Buen equilibrio general
+Bueno con ataques "Berserk" y |"Tirador" 
+Lento, pero muy defensivo
+Se vuelve un Medarot acuatico

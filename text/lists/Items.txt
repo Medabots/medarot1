@@ -1,40 +1,40 @@
 32|80|0
 Exit
-RoboRobo Medal
-Lottery Ticket
-Mr. Wataru Lure
-Handmade Lure
-Blue Chick
-Name Tag
-Ordinary Glasses
-Conductor's Baton
-Difficult Book
-Complicated Book
-Esoteric Book
-[kabuto]Rhino Beetle
-[kuwagata]Stag Beetle
-None
+Medalla RoboRobo
+Boleto Lotería
+Anzuelo Sr.Wataru
+Anzuelo artesanal.
+Pollito Azul
+Tarjeta Personal
+Anteojos normales
+Batuta Conductor
+Libro Dificil
+Libro Complicado
+Libro Esoterico
+[kabuto]Escarabajo Rhino
+[kuwagata]Escarabajo Stag
+Ninguno
 Medanot
-Fresh Fish
-Star Piece
-Medal-Like Coin
-Mountain Soil
-Pottery
-RoboRobo Suit
-Boss's Photo
+Pescado Fresco
+Pieza De Estrella
+Moneda Rara
+Barro Montañoso
+Vasija
+Traje RoboRobo
+Foto Del Jefe
 Select Medal
 Shining Parts
 Worn-Out Parts
-Kirara's Phone
-Wings of Wind
+Celular Kirara
+Alas Del Viento
 Mini-Handle
-Periscope
-Town Map
+Periscopio
+Mapa
 Shinobi Ticket
-RoboRobo Card
-RoboRobo Badge
+Carta RoboRobo
+Medalla RoboRobo
 Password 1 - Zu
 Password 2 - I
 Password 3 - Ke
 Password 4 - N
-Girl's Medal
+Medalla de niña
