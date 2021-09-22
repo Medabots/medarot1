@@ -445,7 +445,7 @@ LoadPatchText:
 LoadPatchTextFixedTopRight:
 ; hl = Text Pointer in this bank
 ; b = tile drawing index
-  ld de, $982a
+  ld de, $9829
 .loop
   call GetPatchTextLength
   ld [VWFTileLength], a
