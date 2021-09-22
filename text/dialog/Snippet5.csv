@@ -5,7 +5,7 @@ Pointer[#version],Original,Translated
 0x4f806,う うそっ うそだっ!!<4E>うちゅうじんなんぞ しんじるものか<4C>オマエトイウ ヤツハ・・・!,<@TaiyoSad>No- ¡no puede ser!<4C>Ustedes son...<49>¿¡Aliens!?<4C><f03><@Static2>Ustedes....!
 0x4f808,うっ うわーーーっ!!<4E>ごめんなさいぃ たーすけてーぇ,<@TaiyoSad>¡¡Uwaah!! ¡Perdón!<49>¡Ayúdenme!
 0x4f80a,ほんとに うちゅうじんなの？<4C>メダル・・・ニンゲンニ<4E>アタエタノ ワタシタチ<4C>ソレカラ ズット ミテイタ<4E>コノ キレイナ ホシノコト・・・<4C>モウスコシ オソカッタラ<4E>タスケラレナカッタ<4C>ヨカッタ<4E>・・・キミニ アエテ<4C>まっ まってよ いかないでよ<4E>まだ ききたいことが・・・<4C>わああっ!!,"<@Hikaru>¿De verdad ustedes...son aliens?<4C><@Alien>Nosotros<f03>, Medallas,Que fueron otorgadas a la humanidad han protegido este planeta...<4C>Si hubieramos esperado un poco mas, no hubieramos podido salvarte.<f00><4C><f03>Estamos contentos...<49>..de haberte conocido.<f00><4C><@Hikaru>¡E-esperen! ¡No se vayan!<4C>Todavía tengo cosas que necesito preguntar y-<49>¡Waaah!"
-0x4f80c,おちこむな <&NAME><4C>メダルをなおすほうほうは<4E>きっとあるはずだ<4C>そうだ! ユウキくんなら<4E>なにか しっているんじゃないか!？,"<@DadSad>No estés triste, <&NAME>.<4C><@Dad>Estoy seguro de que hay alguna forma de arreglar la medalla.<4C><@Hikaru>...¡Eso es!<49>¡Yuuki seguro sabe algo!"
+0x4f80c,おちこむな <&NAME><4C>メダルをなおすほうほうは<4E>きっとあるはずだ<4C>そうだ! ユウキくんなら<4E>なにか しっているんじゃないか!？,"<@DadSad>No estés triste, <&NAME>.<4C><@Dad>Estoy seguro de que hay alguna forma de arreglar la Medalla.<4C><@Hikaru>...¡Eso es!<49>¡Yuuki seguro sabe algo!"
 0x4f80e,げんきだせよ,<@Dad>¡Animate!
 0x4f810,がいこくのひとは かえっちゃったよ,Los extranjeros volvieron a sus casas...
 0x4f812,<*0>,

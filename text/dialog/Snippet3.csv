@@ -1,11 +1,7 @@
 Pointer[#version],Original,Translated
-<<<<<<< Updated upstream
-0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hola, <&NAME>.<49>Em...<4C>¿Dónde querés que juguemos esta vez?<*4>"
-=======
-0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"Hola, <&NAME>.<49>Em...<4C>¿Dónde querés que juguemos esta vez?"
->>>>>>> Stashed changes
-0x3be02,こんどの おやすみのひに<4E>あそびに いきますね,Hoy vamos a jugar afuera.
-0x3be04,わたし ずっと まってますから,Parece que estuve esperando mucho tiempo...
+0x3be00,こんにちは <&NAME>さん<4E>あの・・・<4C>こんど あそびに<4E>いっても いいですか？<*4>,"<@Nae>Hola, <&NAME>.<49>Em...<4C>¿Dónde querés qué vayamos a jugar?<*4>"
+0x3be02,こんどの おやすみのひに<4E>あそびに いきますね,<@Nae>Hoy vamos a jugar afuera.
+0x3be04,わたし ずっと まってますから,<@Nae>Parece que estuve esperando mucho tiempo...
 0x3be06,フフフッ そんなこうげきでは<4E>このメダロットは とめられないロボ,"Fufufuu, ¿pensás que vas a detenerme con un ataque como ese?"
 0x3be08,たいせつに もっていれば<4E>きっと いいことがあリますよ,Si lo cuidas bien seguramente va a pasar algo bueno.
 0x3be0a,おかねを とられた!,<@HikaruSad>¡Se llevó mi dinero!

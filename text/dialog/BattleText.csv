@@ -48,10 +48,10 @@ Pointer[#version],Original,Translated
 0x7405c,す すごいメダルだ!,¡W-Wow! ¡Esta es Medalla es asombrosa!
 0x7405e,ほかのひとの パソコンは<4E>みちゃいけないぞ,<@HikaruSad>No debería tocar las computadoras de otras personas.
 0x74060,メダロットグッズが やまづみだ,Hay muchos productos de Medarot en las góndolas.
-0x74062,パーツの じどうはんばいきだ!<4E>だけど ぜんぶ うリきれだ!,¡Es una máquina expendedora de partes!<49>... Pero están agotadas.
+0x74062,パーツの じどうはんばいきだ!<4E>だけど ぜんぶ うリきれだ!,"¡Es una máquina expendedora de partes!,<49>... Pero están agotadas."
 0x74064,メダロットが でます<4E>エサを あたえないでください,"""Por favor no alimente a los Medarot"""
 0x74066,きけん!!<4E>うちゅうじんが でます,¡¡PELIGRO!! Cuidado con los Aliens.
-0x74068,メダル 「<&BUF01>」 は<4E>レベルアップした!<4C><*4>,¡La medalla <f02><&BUF01><f00> subió de nivel!<49> <49> <*4>
+0x74068,メダル 「<&BUF01>」 は<4E>レベルアップした!<4C><*4>,¡La Medalla <f02><&BUF01><f00> subió de nivel!<49> <49><*4>
 0x7406a,=0x74068,=0x74068
 0x7406c,=0x74068,=0x74068
 0x7406e,=0x74068,=0x74068
@@ -88,8 +88,8 @@ Pointer[#version],Original,Translated
 0x740ac,まもるが <&BUF01> あがった!<4C><*4>,¡La habilidad de Cubrir aumenta en <&BUF01>!<49> <49> <*4>
 0x740ae,なおすが <&BUF01> あがった!<4C><*4>,¡La habilidad de Curar aumenta en <&BUF01>!<49> <49> <*4>
 0x740b0,そのほかが <&BUF01> あがった!<4C><*4>,¡Otra habilidad aumenta en <&BUF01>!<49> <49> <*4>
-0x740b2,メダル 「<&BUF01>」 は<4E>ランクアップした!<4C><*4>,¡El rango de la medalla <&BUF01> sube!  <49> <49><*4>
-0x740b4,さあ せんとうかいし!<*3>,¡Empieza la robobatalla!<*3>
+0x740b2,メダル 「<&BUF01>」 は<4E>ランクアップした!<4C><*4>,¡El Rango de la Medalla <&BUF01> sube!  <49> <49><*4>
+0x740b4,さあ せんとうかいし!<*3>,¡Empieza la Robobatalla!<*3>
 0x740b6,=0x740b4,=0x740b4
 0x740b8,=0x740b4,=0x740b4
 0x740ba,=0x740b4,=0x740b4
@@ -120,7 +120,7 @@ Pointer[#version],Original,Translated
 0x740ec,=0x740b4,=0x740b4
 0x740ee,=0x740b4,=0x740b4
 0x740f0,=0x740b4,=0x740b4
-0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,¡Empieza la robobatalla en link!<S3c><*4>
+0x740f2,つうしんロボトルを はじめます!!<S3c><*4>,¡Empieza la Robobatalla en link!<S3c><*4>
 0x740f4,つかえません!!,¡No podés usar eso!
 0x740f6,すてることはできません,No se puede tirar
 0x740f8,いくつすてますか？<*4>,¿Cuantos?<*4>
@@ -199,14 +199,14 @@ Pointer[#version],Original,Translated
 0x7418a,てかげん しないじゃんじゃん<*2>,"Viejo, no voy a ser blando con vos.<*2>"
 0x7418c,わしと ボロトルせんか？<*2>,¿Te parece Borobotallar contra mi?<*2>
 0x7418e,あたしと ろぼとる しない？<*2>,¿qele woboballa cunmigo?<*2>
-0x74190,ロボトルするって カンジーッ<*2>,"Tipo, osea vamos a robobatallar, ¿Sabes?<*2>"
+0x74190,ロボトルするって カンジーッ<*2>,"Tipo, osea vamos a Robobatallar. ¿Sabes?<*2>"
 0x74192,ふふふっ そのパーツ いただくわっ<*2>,"Hmhmhm, ¡voy a quedarme con esas partes!<*2>"
 0x74194,にいちゃん かかって きなっ<*2>,¡Adelante Jovencito!<*2>
-0x74196,ロボトルを しゃしんに<4E>とらないかい？<*2>,¿Te importa si saco una foto de nuestra robobatalla?<*2>
+0x74196,ロボトルを しゃしんに<4E>とらないかい？<*2>,¿Te importa si saco una foto de nuestra Robobatalla?<*2>
 0x74198,きみの せんリゃくは みきった!<*2>,¡Pudé ver tu estrategia!<*2>
-0x7419a,ロボトルするべ!<*2>,"¡Ey, vamos a robobatallar!<*2>"
+0x7419a,ロボトルするべ!<*2>,"¡Ey, vamos a Robobatallar!<*2>"
 0x7419c,とあみで つかまえてやるだ<*2>,¡Voy a atraparte con mi red!<*2>
-0x7419e,するっぺよ なっ？<*2>,"Va a robobatalla conmigo, ¿no e asi?<*2>"
+0x7419e,するっぺよ なっ？<*2>,"Va a Rubobatala conmigo, ¿no e asi?<*2>"
 0x741a0,するもぐ するもぐ<*2>,"Excavar, excavar, excavar, ¡vamos!<*2>"
 0x741a2,のらメダロットが あらわれた!<*2>,¡Un Medarot vagabundo apareció!<*2>
 0x741a4,のらメダロットが あらわれた!<*2>,=0x741a2
@@ -241,11 +241,7 @@ Pointer[#version],Original,Translated
 0x741de,きさまヲ じくうノ はざまニ<4E>とばしてクレルワ<*2>,¡Voy a mandarte volando al espacio tiempo continuo!<*2>
 0x741e0,ウッ ウァオーン メダルが<4E>つきにみえるぜ<*2>,¡A-AwooOOooo! ¡Las Medallas... se parecen... a la luna!<*2>
 0x741e2,オ オ オトモダチニ ナリマショウ<*2>,S-s-seamos amigos..<*2>
-<<<<<<< Updated upstream
 0x741e4,さあ! しょうぶだ!!<S78><*4>,¡Ahora! ¡Vamos a pelear!<*4>
-=======
-0x741e4,さあ! しょうぶだ!!<S78><*4>,¡Ahora! ¡Vamos a pelear!
->>>>>>> Stashed changes
 0x741e6,ハカイ・・・スル<*2>,Des...truir...<*2>
 0x741e8,<*2>,
 0x741ea,<*2>,
@@ -279,15 +275,9 @@ Pointer[#version],Original,Translated
 0x74222,のらメダロットは にげていった!<*2>,¡El Medarot vagabundo se escapo!<*2>
 0x74224,のらメダロットは にげていった!<*2>,=0x74222
 0x74226,<&NAME>ったら<4E>なかなか やるじゃない<*2>,Sabia que ibas a hacerlo bien. <&NAME>.<*2>
-<<<<<<< Updated upstream
 0x74228,よそういじょうの ウデね ステキよ♥<*2>,¡Sos más fuerte de lo que esperaba!♥<*2>
 0x7422a,きょうは ちょうしが わるいらしいな<*2>,Parece que hoy no estoy al tope de mi rendimiento.<*2>
 0x7422c,あらーっ まけちゃったのねーっ<*2>,¡Ah perdí!<*2>
-=======
-0x74228,よそういじょうの ウデね ステキよ♥<*2>,¡Sos más fuerte de lo que esperaba!♥
-0x7422a,きょうは ちょうしが わるいらしいな<*2>,Parece que hoy no estoy al tope de mi rendimiento.<*2>
-0x7422c,あらーっ まけちゃったのねーっ<*2>,¡Ah perdí!
->>>>>>> Stashed changes
 0x7422e,なんであんたなんかに まけちゃうの？<*2>,¿Cómo pudé perder?<*2>
 0x74230,・・・・・・<*2>,......<*2>
 0x74232,てっ てかげんしてやったんだよ!<*2>,¡Y-yo solo estaba bromeando!<*2>
@@ -300,11 +290,7 @@ Pointer[#version],Original,Translated
 0x74240,ぬうっ ひきあげじゃぁっ<*2>,"Urgh, ¡reeeetiiiiraaaadaaaa!<*2>"
 0x74242,きょうの ところは かんべんして<4E>あげるわ<*2>,Te dejare en paz esta vez.<*2>
 0x74244,うううっ まけたでチュ<*2>,Ugh...¡perdí!<*2>
-<<<<<<< Updated upstream
 0x74246,こんなに リっぱになって<4E>パパはうれしいぞっ<*2>,¡Te volviste muy bueno! ¡Estoy orgulloso de vos!<*2>
-=======
-0x74246,こんなに リっぱになって<4E>パパはうれしいぞっ<*2>,¡Te volviste muy bueno! ¡Estoy orgulloso de vos!
->>>>>>> Stashed changes
 0x74248,としよリには ちと きついのう<*2>,No seas tan duro con los ancianos.<*2>
 0x7424a,きょうも いっぴきも うれなかったか<*2>,Tampoco hoy vendí ninguno...<*2>
 0x7424c,・・・・・・ じだいが<4E>かわったのかのぉ<*2>,"Los tiempos realmente cambiaron, ¿No es así?<*2>"
@@ -398,12 +384,8 @@ Pointer[#version],Original,Translated
 0x742fc,=0x74280,=0x74280
 0x742fe,=0x74280,=0x74280
 0x74300,<&NAME>は <&BUF02><4E>「<&BUF01>」を てにいれた<*2>,¡<&NAME> obtiene una parte llamada <&BUF01>!<*2>
-0x74302,カン!カン!カン! ロボトルエンド!<4E>さあ これで じかんぎれです!<4C>はんていのけっかを みてみましょう!<S78><4C><S2>はんていのけっか!<4E><&BUF01>の しょうリです!,¡Ding ding ding! ¡Se acabo el tiempo!<49> <49>¡Ahora elegiremos al ganador!<S78><49> <49><S02>Parece que... ¡<&BUF01> gano el encuentro!
-<<<<<<< Updated upstream
+0x74302,カン!カン!カン! ロボトルエンド!<4E>さあ これで じかんぎれです!<4C>はんていのけっかを みてみましょう!<S78><4C><S2>はんていのけっか!<4E><&BUF01>の しょうリです!,¡Ding ding ding! ¡Se acabo el tiempo!<49>¡Ahora elegiremos al ganador!<S78><49><S02>Parece que... ¡<&BUF01> gano el encuentro!
 0x74304,<&NAME>は <&BUF02><4E>「<&BUF01>」を とられた<*2>,<&NAME> le dio al rival <&BUF01>.<*2>
-=======
-0x74304,<&NAME>は <&BUF02><4E>「<&BUF01>」を とられた<*2>,<&NAME> le dio al rival <&BUF01>.
->>>>>>> Stashed changes
 0x74306,あっ!!!!!!<4E>くまれたメダロットが ひとつもない!<4C>メダロットが できないよー!!<4C><&NAME> は<4E>めいっぱい おちこんだ!!,<@DarkSad>¡¡Ack!! ¡No tengo ni un Medarot ensamblado!<4C>¡¡Yo... yo no puedo seguir!!<4C><@None>¡<&NAME> cayó en la desesperación!
 0x74308,<&NAME> は<4E>「ロボロボメダル」を てにいれた!<*2>,¡<&NAME> Obtiene una Medalla RoboRobo!<*2>
 0x7430a,あぁーーーーーーーー!!<4E>こんなところで まけるなんて!<4C>もっと ああして・・・こうして・・・<4E>ぶつぶつぶつ・・・・・・・<4C><&NAME> は<4E>めいっぱい おちこんだ!!,<@DarkSad>¡¡Aaarrgh!! ¡No puedo creer que perdí en un lugar como este!<49>Así no es... como yo quería....<49>............<49>¡<&NAME> cayó en desesperación!
@@ -427,11 +409,7 @@ Pointer[#version],Original,Translated
 0x7432e,ハズレ!<4E>なにもとられずにすんだ! ラッキー!,"¡Falla! ¡No pudiste conseguir nada!<49>Phew, ¡Eso estuvo cerca!"
 0x74330,Yボタンでストップしてください!<*4>,¡Presiona A para detener la rueda!<*4>
 0x74332,パーツせんたくちゅうです!!<*4>,¡Elegir partes!<*4>
-<<<<<<< Updated upstream
-0x74334,しかし かんぜんなかたちで<4E>とることができなかった!<*2>,"A pesar de ganar, ¡No pudiste conseguir ninguna parte!<*2>"
-=======
-0x74334,しかし かんぜんなかたちで<4E>とることができなかった!<*2>,"A pesar de ganar, ¡No pudiste conseguir una parte!"
->>>>>>> Stashed changes
+0x74334,しかし かんぜんなかたちで<4E>とることができなかった!<*2>,"A pesar de ganar, ¡No pudiste conseguir una parte!<*2>"
 0x74336,<&NAME>は <&BUF02><4E>「<&BUF04>」を てにいれた<*2>,¡<&NAME> obtuvo <&BUF02> parte <&BUF04>!<*2>
 0x74338,<&NAME>は <&BUF02><4E>「<&BUF04>」を とられた<*2>,¡<&NAME> pierde la <&BUF02> parte <&BUF04>!<*2>
 0x7433a,メダルは いっぱいで もてなかった!<*2>,¡No podes llevar mas de esas Medallas!<*2>
@@ -443,11 +421,11 @@ Pointer[#version],Original,Translated
 0x74346,「<&BUF04>」と<4E>「<&BUF01>」をトレードします<S3c><*4>,<f02><&BUF04><f00>fue cambiada por <f02><&BUF01><f00>.<S3c><*4>
 0x74348,「<&BUF04>」は<4E>「<&BUF01>」にヘんかした!,<f02>¡<&BUF04> se transformo en <&BUF01><f00>!
 0x7434a,そこには いけません!!,¡No podes ir por ahi!
-0x7434c,ロボロボメダルを つかいますか？<*4>,¿Querés usar una medalla RoboRobo?<*4>
+0x7434c,ロボロボメダルを つかいますか？<*4>,¿Querés usar una Medalla RoboRobo?<*4>
 0x7434e,せんとうから にげられた!!<S3c><*4>,¡Escapaste de la pelea!<S3c><*4>
 0x74350,こうさん しますか？<*4>,¿Te rendís?<*4>
 0x74352,おめでとうございます!<4E>パスワードが すべてそろいました!<4C>4もじをおうぼはがきに かきこんで<4E>イマジニアあてに おおくリください<4C>ちゅうせんで ひかるゲームボーイを<4E>プレゼント いたします!,¡Felicitaciones!<49>¡Conseguiste las 4 partes del password!<49> <49>¡Escribí el password en una postal y mandalo a Imagineer para entrar en un sorteo por un glow-in-the-dark Game Boy!<49><@HikaruSad>Creo que paso demasiado tiempo para hacer eso.
-0x74354,<&NAME>のメダルは<4E><&BUF01>のけいけんちをえた!<*2>,Las medallas de <&NAME> ganaron <&BUF01> de experiencia!<*2>
+0x74354,<&NAME>のメダルは<4E><&BUF01>のけいけんちをえた!<*2>,Las Medallas de <&NAME> ganaron <&BUF01> de experiencia!<*2>
 0x74356,なぐる・がむしゃらにこうかをはっき!<S3c><*4>,¡Ataque fisico detectado!<S3c><*4>
 0x74358,うつ・ねらいうちにこうかをはっき!<S3c><*4>,¡Ataque a distancia detectado!<S3c><*4>
 0x7435a,トラップかいじょを おこなった!<S3c><*4>,¡Intento despejar trampas!<S3c><*4>
@@ -471,21 +449,13 @@ Pointer[#version],Original,Translated
 0x7437e,しょうじょうかいじょを おこなった!<S3c><*4>,¡Intento disipar los efectos de estado!<S3c><*4>
 0x74380,<&NAME> は<4E>メダル「<&BUF04>」をてにいれた<*2>,¡<&NAME> obtuvo la Medalla <&BUF04>!<*2>
 0x74382,<&NAME> は<4E>メダル「<&BUF04>」をとられた<*2>,¡La Medalla <&BUF04> de <&NAME> fue tomada!<*2>
-<<<<<<< Updated upstream
 0x74384,<&BUF04> は<4E>メダル「<&BUF01>」をてにいれた<*2>,¡<&BUF01> defiende con las piernas!<S3c><*2>
-=======
-0x74384,<&BUF04> は<4E>メダル「<&BUF01>」をてにいれた<*2>,¡<&BUF01> defiende con las piernas!<S3c><*4>
->>>>>>> Stashed changes
 0x74386,あっ! メダル「<&BUF04>」は<4E>メダル「<&BUF01>」にヘんかした<*2>,¡Ah! La Medalla <&BUF04> se transformo en una Medalla <&BUF01>!<*2>
-0x74388,しかし メダル「<&BUF04>」は<4E>すでにもっています<4C>メダル「<&BUF04>」をもてなかった<4C><*4>,"...Pero, ¡ya tenes esa Medalla!<49> <49>La Medalla <&BUF04> no pudo ser tomada.<*4>"
+0x74388,しかし メダル「<&BUF04>」は<4E>すでにもっています<4C>メダル「<&BUF04>」をもてなかった<4C><*4>,"...Pero, ¡ya tenés esa Medalla!<49> <49>No pudiste agarrar la Medalla <&BUF04>.<*4>"
 0x7438a,そのかわリに<4E>ぜんじゅくれんどが 4アップした!!<*2>,"¡A cambio, todas sus Skills aumentaron en 4!<*2>"
 0x7438c,くまれたメダロットがないとできません<S3c><*1>,Necesitas al menos un Medarot armado para usar este modo.<S3c><*1>
-<<<<<<< Updated upstream
-0x7438e,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>まず はじめてこられた あなたヘ<4E>つうしんロボトルを せつめいします<4C>ーーあそびでロボトルーー<4E>ともだちのメダロットと<4C>きがるに たいせんできるモードです<4C>ーーしんけんロボトルーー<4E>ともだちのメダロットと<4C>メダルおよびパーツをかけた<4E>しんけんしょうぶができるモードです<4C><*4>,"¡Hola! Acá es donde podés jugar con tus amigos usando un Cable Link.<49>Como es tu primera vez, te explicare las funciones de conexión:<4C>- Robobatalla de Práctica -<49>En este modo, podés pelear contra tus amigos sin preocuparte por ganar o perder partes.<4C>--- Robobatalla Oficial ---<49>En este modo, ¡podés pelear contra tus amigos poniendo partes o medallas en juego!<*4>"
-=======
-0x7438e,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>まず はじめてこられた あなたヘ<4E>つうしんロボトルを せつめいします<4C>ーーあそびでロボトルーー<4E>ともだちのメダロットと<4C>きがるに たいせんできるモードです<4C>ーーしんけんロボトルーー<4E>ともだちのメダロットと<4C>メダルおよびパーツをかけた<4E>しんけんしょうぶができるモードです<4C><*4>,"¡Hola! Acá es donde podés jugar con tus amigos usando un Cable Link.<49>Como es tu primera vez, te explicare las funciones de conexión:<4C>- Robobatalla de Práctica -<49>En este modo, podés pelear contra tus amigos sin preocuparte por ganar o perder partes.<4C>--- Robobatalla Oficial ---<49>En este modo, ¡podés pelear contra tus amigos poniendo partes o medallas en juego!"
->>>>>>> Stashed changes
-0x74390,まけたほうは メダルおよびパーツを<4E>とられてしまいます<4C>メダロットのすくない はじめのうちは<4E>やらないほうが いいとおもいます<4C>ーーパーツをトレードするーー<4E>ともだちのもっているパーツと<4C>あなたのもっているパーツを<4E>こうかんできるモードです<4C>いじょう!!<4E>3つのモードが たのしめます!,"El perdedor deberá darle una de sus partes o medallas al ganador.<49> ¡Solo para jugadores experimentados!<49> <49> --- Cambio de partes ---<49> En este modo, podés cambiar partes con tus amigos.<49> <49> ¡Eso concluye la explicación!<49> ¡Diviértete!"
+0x7438e,ここでは つうしんケーブルをつかって<4E>ともだちと あそぶことができます<4C>まず はじめてこられた あなたヘ<4E>つうしんロボトルを せつめいします<4C>ーーあそびでロボトルーー<4E>ともだちのメダロットと<4C>きがるに たいせんできるモードです<4C>ーーしんけんロボトルーー<4E>ともだちのメダロットと<4C>メダルおよびパーツをかけた<4E>しんけんしょうぶができるモードです<4C><*4>,"¡Hola! Acá es donde podés jugar con tus amigos usando un Cable Link.<49>Como es tu primera vez, te explicare las funciones de conexión:<4C>- Robobatalla de Práctica -<49>En este modo, podés pelear contra tus amigos sin preocuparte por ganar o perder partes.<4C>--- Robobatalla Oficial ---<49>En este modo, ¡podés pelear contra tus amigos poniendo partes o Medallas en juego!<*4>"
+0x74390,まけたほうは メダルおよびパーツを<4E>とられてしまいます<4C>メダロットのすくない はじめのうちは<4E>やらないほうが いいとおもいます<4C>ーーパーツをトレードするーー<4E>ともだちのもっているパーツと<4C>あなたのもっているパーツを<4E>こうかんできるモードです<4C>いじょう!!<4E>3つのモードが たのしめます!,"El perdedor deberá darle una de sus partes o Medallas al ganador.<49>¡Solo para jugadores experimentados!<49> <49>--- Cambio de partes ---<49>En este modo, podés cambiar partes con tus amigos.<49> <49>¡Eso concluye la explicación!<49>¡Diviértete!"
 0x74392,<IGNORED>,<IGNORED>
 0x74394,=0x74392,=0x74392
 0x74396,=0x74392,=0x74392
