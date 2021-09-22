@@ -125,6 +125,7 @@ if __name__ == '__main__':
                 if o[0].startswith("FREE_"):
                     bank_map[o[0]] = { "BANK": int(o[2].replace('BANK','').replace('[','').replace(']','').replace('$','0x'), 16), "OFFSET": int(o[1].replace('ROMX','').replace('[','').replace(']','').replace('$','0x'), 16) }
 
+
     for f in additional_banks:
         name = "Additional_b%s" % f 
         bank_map[f] = { "BANK": int(f, 16), "OFFSET": 0x4000 } 
@@ -175,8 +176,7 @@ if __name__ == '__main__':
         raise Exception("ERROR: Pointers in %s take up %i bytes (max %i)", section, pointer_total, bank_size_max)
 
     for b in bank_map:
-        with suppress(OSError):
-            os.remove('%s/%s_%s.bin' % (output_dir, b, version_suffix))
+            open('%s/%s_%s.bin' % (output_dir, b, version_suffix), 'wb').close()
 
     for section in sections:
         offsets = []
