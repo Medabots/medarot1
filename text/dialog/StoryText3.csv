@@ -109,7 +109,7 @@ Pointer[#version],Original,Translated
 0x680d6,せんせいは かなしいぞうっ,<@Gym>I'm sad now...
 0x680d8,それじゃあ かがやく たいように<4E>むかって ロボトルだあっ!,"<@Gym>Now, let us robattle underneath the shining sun!"
 0x680da,また こんど あそびましょう,<@Nurse>Let's play again sometime.
-0x680dc,あくの しゅうだん ロボロボだんが<4E>あちこちで わるさをしているんだ<4C>しかも メダルを うばっていくから<4E>しまつがわるい<4C>なつやすみは きをつけて<4E>げんきに あそべよ,"Those criminals in the Rubberobo Gang have been causing trouble all over town.<4C>Not to mention they're stealing people's Medals...<4C>Take care and have a safe summer vacation, y'hear?"
+0x680dc,あくの しゅうだん ロボロボだんが<4E>あちこちで わるさをしているんだ<4C>しかも メダルを うばっていくから<4E>しまつがわるい<4C>なつやすみは きをつけて<4E>げんきに あそべよ,"<@Science>Those criminals in the Rubberobo Gang have been causing trouble all over town.<4C>Not to mention they're stealing people's Medals...<4C>Take care and have a safe summer vacation, y'hear?"
 0x680de,=0x680dc,=0x680dc
 0x680e0,=0x680dc,=0x680dc
 0x680e2,=0x680dc,=0x680dc
@@ -126,7 +126,7 @@ Pointer[#version],Original,Translated
 0x680f8,ごうじょう はらなくっても いいのよ<4C>ちゃんと きほんから<4E>おしえてあげるから,"<@KiraraSad>You don't have to be so stubborn, y'know.<4C><@Hikaru>Sorry, I'll tell you the whole story later..."
 0x680fa,こうえんで まってるからね<4E>わすれずに くるのよ,<@Kirara>I'll be waiting for you at the park after school. Don't forget to come!
 0x680fc,あしたから なんごくのしま<4E>ジャワとうか・・・<4C>まなつの たいようが<4E>ぼくをまってるんだ,"<@Yuuki>By this time tomorrow, I'll be on a plane to the southern island of Java..."
-0x680fe,まえのせきの ふたリは<4E>ユウキと パディ<4C>つうしょう おかねもちコンビね<4C>うしろのふたリは ヤンマと クボタ<4E>いつも わるさをしているワルガキよ<4C>あなた キララと おさななじみ<4E>なんですって？<4C>もうチューは した？<4E>・・・って<4C>なんで あたしが こんなこと<4E>せつめいしなくちゃなんないのよ!<4C>この イセキさまに むかって<4E>いいどきょうじゃない!<4C>あんたなんか クボタと ヤンマを<4E>つかって こてんぱんに<4C>のしちゃうことだって<4E>できるんだからね,"<@Iseki>The two at the front of the class are Yuuki and Paddy.<4C>They're your usual rich kid couple.<4C>The two in the back are Yanma and Kubota.<49>They're always getting in trouble with the teachers.<4C>Kirara is your childhood friend, right?<4C>Have you kissed yet?<49>....Wait.<4C><@IsekiSad>Why am I the one explaining this to you?!<4C><@Iseki>You've got a lot of nerve talking to me, the great Iseki!<4C>I could get Yanma and Kubota to beat you into a pulp any day of the week!"
+0x680fe,まえのせきの ふたリは<4E>ユウキと パディ<4C>つうしょう おかねもちコンビね<4C>うしろのふたリは ヤンマと クボタ<4E>いつも わるさをしているワルガキよ<4C>あなた キララと おさななじみ<4E>なんですって？<4C>もうチューは した？<4E>・・・って<4C>なんで あたしが こんなこと<4E>せつめいしなくちゃなんないのよ!<4C>この イセキさまに むかって<4E>いいどきょうじゃない!<4C>あんたなんか クボタと ヤンマを<4E>つかって こてんぱんに<4C>のしちゃうことだって<4E>できるんだからね,"<@Iseki>The two at the front of the class are Yuuki and Paddy.<4C>They're your usual rich kid couple.<4C>The two in the back are Yanma and Kubota.<4C>They're always getting in trouble with the teachers.<4C>Kirara is your childhood friend, right?<4C>Have you kissed yet?<4C>....Wait.<4C><@IsekiSad>Why am I the one explaining this to you?!<4C><@Iseki>You've got a lot of nerve talking to me, the great Iseki!<4C>I could get Yanma and Kubota to beat you into a pulp any day of the week!"
 0x68100,これから まいにち<4E>メダロットであそべる,"<@Kubota>Now that school's out, we can play with Medabots every day."
 0x68102,クボタ! かえったら<4E>こうえんで ロボトルだぜ,<@Yanma>Kubota! We're going to robattle at the park after school!
 0x68104,きょうで おわかれね<4C>パディちゃんのこと<4E>わすれちゃいやよ,<@Paddy>I guess this is farewell.<49>I hope you won't forget about lil' old me.
