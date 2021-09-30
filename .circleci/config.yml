@@ -178,7 +178,7 @@ workflows:
           filters:
             branches:
               only:
-                - tr_EN
+                - tr_EN-US
     jobs:
       - build:
           name: "Nightly Build Tag"
