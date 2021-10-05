@@ -5,3 +5,5 @@ TilesetPortraits1::
 SECTION "Portraits 64-113", ROMX[$4000], BANK[$2F]
 TilesetPortraits2::
   INCLUDE "game/src/portraits/include/portraits_2.asm"
+
+; Actual portrait functionality is in version/portraits.asm, which allows for the use of IF DEF(FEATURE_PORTRAITS)
