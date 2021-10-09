@@ -62,6 +62,7 @@ HackPredefTable:
   dw PartTradeMenuScrollDown ; 28
   dw LoadLuckLotteryTextAndJump2ca ; 29
   dw LoadYesNoFWFTiles ; 2a
+  dw VWFPortraitClearSGBAttribAndWindowOnEndcode ; 2b
 
 ; bc = [WTextOffsetHi][$c6c0]
 GetTextOffset:

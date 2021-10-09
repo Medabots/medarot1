@@ -67,12 +67,18 @@ ENDC
   ret
 
 VWFPortraitClearSGBAttribAndWindowOnEndcode::
+  ld a, [$c6e0]
+  ld [TempBankStorage], a
+  ld a, BANK(DrawPortrait)
+  ld [$c6e0], a
+  call Wrapper_630_Alt
+  ld a, [TempBankStorage]
+  ld [$c6e0], a
 IF DEF(FEATURE_PORTRAITS)
-  call $1ab0
   xor a
   ; Continues into VWFPortraitSGBApplyAttrib.
 ELSE
-  jp $1ab0
+  ret
 ENDC
 
 VWFPortraitSGBApplyAttrib::

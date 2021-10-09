@@ -111,8 +111,3 @@ Main::
   xor a
   ld [$C5A1], a
   jp .gameLoop
-  nop
-  nop
-  nop
-  nop
-  nop
