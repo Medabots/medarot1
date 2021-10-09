@@ -938,7 +938,7 @@ VWFChar4F::
 
   ; No idea what this does either.
 
-  call $1ab0
+  call VWFPortraitClearSGBAttribAndWindowOnEndcode
 
   ; End message indicator variable.
 
@@ -961,7 +961,7 @@ VWFChar4F::
 
   ; No idea what this does either.
 
-  call $1ab0
+  call VWFPortraitClearSGBAttribAndWindowOnEndcode
 
   ; End message indicator variable.
 
