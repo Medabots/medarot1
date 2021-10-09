@@ -125,7 +125,8 @@ Wrapper_62a::
 Wrapper_62d::
   jp $1aa2
 Wrapper_630::
-  call $1ab0
+  ld a, $2b
+  rst $8 ; VWFPortraitClearSGBAttribAndWindowOnEndcode
   rst $18
   ret
 Wrapper_635::
@@ -1134,3 +1135,9 @@ Wrapper_bfd::
   ret
   nop
   nop
+
+SECTION "Wrappers 2", ROM0[$0449]
+Wrapper_630_Alt::
+  call $1ab0
+  rst $18
+  ret

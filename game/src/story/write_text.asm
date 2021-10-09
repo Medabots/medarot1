@@ -5,7 +5,8 @@ SetupDialog::
   ld [$c5c8], a
   inc a
   ld [VWFIsInit], a
-  call $1ab0
+  ld a, $2b
+  rst $8 ; VWFPortraitClearSGBAttribAndWindowOnEndcode
   xor a
   ld a, $2
   rst $8 ; ZeroTextOffset
