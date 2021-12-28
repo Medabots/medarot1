@@ -1,18 +1,18 @@
 Pointer[#version],Original,Translated
-0x74000,ヘんどうの こうかが はっせいした!<S3c>\<S2>こうどうせいこうリつが さがった!<S3c><*4>,Inflicted <f02>Flux <f00>status!<S3c><4A><49><S02>Success rate down!<S3c><*4>
-0x74002,ていしの こうかが はっせいした!<S3c>\<S2>しばらくのあいだ うごけない!<S3c><*4>,Inflicted <f02>Stop <f00>status!<S3c><4A><49><S02>Unable to move!<S3c><*4>
-0x74004,そくばくの こうかが はっせいした!<S3c>\<S2>スピードが おそくなった!<S3c><*4>,Inflicted <f02>Bind <f00>status!<S3c><4A><49><S02>Speed decreased!<S3c><*4>
-0x74006,けいぞくの こうかが はっせいした!<S3c>\<S2>いどうちゅうも ダメージを うける!<S3c><*4>,Inflicted <f02>Burn <f00>status!<S3c><4A><49><S02>Continuous damage!<S3c><*4>
-0x74008,<&BUF01> は<4E>ヘんどう から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Flux <f00>status was cleared!<S3c><*1>
-0x7400a,<&BUF01> は<4E>ていし から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Stop <f00>status was cleared!<S3c><*1>
-0x7400c,<&BUF01> は<4E>そくばく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Bind <f00>status was cleared!<S3c><*1>
-0x7400e,<&BUF01> は<4E>けいぞく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Burn <f00>status was cleared!<S3c><*1>
+0x74000,ヘんどうの こうかが はっせいした!<S3c>\<S2>こうどうせいこうリつが さがった!<S3c><*4>,Inflicted <f02>Flux <f00>status!<S3c><4C><S02>Success rate down!<S3c><*4>
+0x74002,ていしの こうかが はっせいした!<S3c>\<S2>しばらくのあいだ うごけない!<S3c><*4>,Inflicted <f02>Stop <f00>status!<S3c><4C><S02>Unable to move!<S3c><*4>
+0x74004,そくばくの こうかが はっせいした!<S3c>\<S2>スピードが おそくなった!<S3c><*4>,Inflicted <f02>Bind <f00>status!<S3c><4C><S02>Speed decreased!<S3c><*4>
+0x74006,けいぞくの こうかが はっせいした!<S3c>\<S2>いどうちゅうも ダメージを うける!<S3c><*4>,Inflicted <f02>Burn <f00>status!<S3c><4C><S02>Continuous damage!<S3c><*4>
+0x74008,<&BUF01> は<4E>ヘんどう から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Flux <f00>wore off!<S3c><*1>
+0x7400a,<&BUF01> は<4E>ていし から かいじょされた!<S3c><*1>,<&BUF01> recovered from <f02>Stop<f00>!<S3c><*1>
+0x7400c,<&BUF01> は<4E>そくばく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Bind<f00> wore off!<S3c><*1>
+0x7400e,<&BUF01> は<4E>けいぞく から かいじょされた!<S3c><*1>,<&BUF01>'s <f02>Burn <f00>wore off!<S3c><*1>
 0x74010,<&BUF01> は<4E>かいじょするものが なかった!<S3c><*4>,There are no status effects to clear!<S3c><*4>
-0x74012,<&BUF01> は<4E>かいじょに しっぱいした!<S3c><*4>,<&BUF01>'s clear failed!<S3c><*4>
+0x74012,<&BUF01> は<4E>かいじょに しっぱいした!<S3c><*4>,<&BUF01>'s status clear failed!<S3c><*4>
 0x74014,<&BUF01> は<4E>ヘんどうの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Flux <f00>status!<S3c><*4>
 0x74016,<&BUF01> は<4E>ていしの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Stop <f00>status!<S3c><*4>
 0x74018,<&BUF01> は<4E>そくばくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Bind <f00>status!<S3c><*4>
-0x7401a,<&BUF01> は<4E>けいぞくの こうかを かいじょした!<S3c><*4>,<&BUF01> cleared all <f02>Burn <f00>status!<S3c><*4>
+0x7401a,<&BUF01> は<4E>けいぞくの こうかを かいじょした!<S3c><*4>,<&BUF01> healed all <f02>Burn <f00>status!<S3c><*4>
 0x7401c,しかし ばくふうで ダメージをうけた<S3c><*4>,...But it took damage from the blast!<S3c><*4>
 0x7401e,てんたいかんそくじょ,Observatory
 0x74020,=0x7401e,=0x7401e
@@ -46,11 +46,11 @@ Pointer[#version],Original,Translated
 0x74058,みたことのないむしだ,It's a bug I've never seen before.
 0x7405a,しんがたパーツが いっぱいある,The newest parts are on display.
 0x7405c,す すごいメダルだ!,W-Whoa! This Medal is amazing!
-0x7405e,ほかのひとの パソコンは<4E>みちゃいけないぞ,I shouldn't mess with other people's computers.
+0x7405e,ほかのひとの パソコンは<4E>みちゃいけないぞ,<@HikaruSad>I shouldn't mess with other people's computers.
 0x74060,メダロットグッズが やまづみだ,Medarot goods line the shelves.
 0x74062,パーツの じどうはんばいきだ!<4E>だけど ぜんぶ うリきれだ!,It's a vending machine for parts!<49>...But everything's sold out.
-0x74064,メダロットが でます<4E>エサを あたえないでください,"""Please do not feed the Medarots"""
-0x74066,きけん!!<4E>うちゅうじんが でます,"""Danger!! Beware of aliens"""
+0x74064,メダロットが でます<4E>エサを あたえないでください,Please do not feed the Medarots
+0x74066,きけん!!<4E>うちゅうじんが でます,Danger!! Beware of aliens
 0x74068,メダル 「<&BUF01>」 は<4E>レベルアップした!<4C><*4>,<f02><&BUF01><f00> Medal leveled up!<4C><*4>
 0x7406a,=0x74068,=0x74068
 0x7406c,=0x74068,=0x74068
@@ -143,7 +143,7 @@ Pointer[#version],Original,Translated
 0x7411a,<&BUF01> は<4E>こうげきを かわした!<S3c><*4>,<&BUF01> dodged the attack!<S3c><*4>
 0x7411c,<&BUF01> の<4E>うつ こうげき! <&BUF04>!<*4>,<&BUF01>'s Shoot attack! <&BUF04>!<*4>
 0x7411e,<&BUF01> の<4E>ねらいうち こうげき! <&BUF04>!<*4>,<&BUF01>'s Snipe attack! <&BUF04>!<*4>
-0x74120,<&BUF01> は<4E>みかたを おうえんした<*4>,<&BUF01> supported its teammate!<*4>
+0x74120,<&BUF01> は<4E>みかたを おうえんした<*4>,<&BUF01> used a support action!<*4>
 0x74122,<&BUF01> は<4E>スピードアップした!!<*4>,<&BUF01>'s speed was boosted!<*4>
 0x74124,<&BUF01> に<4E>おうえんの こうかが なかった<*4>,It had no effect on <&BUF01>.<*4>
 0x74126,ほうねつに せいこうした<4C><*1>,Cooldown succeeded.<4C><*1>
@@ -242,7 +242,7 @@ Pointer[#version],Original,Translated
 0x741e0,ウッ ウァオーン メダルが<4E>つきにみえるぜ<*2>,A-AwooOOooo! Medals... look like... the moon!<*2>
 0x741e2,オ オ オトモダチニ ナリマショウ<*2>,L-l-let's become friends..<*2>
 0x741e4,さあ! しょうぶだ!!<S78><*4>,Now! Let's battle!<*4>
-0x741e6,ハカイ・・・スル<*2>,Des...troy...<*2>
+0x741e6,ハカイ・・・スル<*2>,<f03>DES... TROY... <f00><*2>
 0x741e8,<*2>,
 0x741ea,<*2>,
 0x741ec,<*2>,
@@ -306,7 +306,7 @@ Pointer[#version],Original,Translated
 0x74260,ハアッ ハアッ まけちまったぜ<*2>,Hah... Hah... I lost!<*2>
 0x74262,ダカラ オトモダチニ・・・<*2>,<f03>Will you be my friend?<f00><*2>
 0x74264,<*2>,<*2>
-0x74266,バッ パッ ピッ<4E>バカナーッ!!<*2>,<f03>A... I-I... Bzzt-- Impossible...!!<f00><*2>
+0x74266,バッ パッ ピッ<4E>バカナーッ!!<*2>,<f03>A... I-I... BZZT-- IMPOSSIBLE...!!<f00><*2>
 0x74268,<*2>,<*2>
 0x7426a,<*2>,=0x74268
 0x7426c,<*2>,=0x74268
@@ -437,7 +437,7 @@ Pointer[#version],Original,Translated
 0x74366,<&BUF01> は<4E>きのうかいふくを おこなった!<S3c><*4>,<&BUF01> tried to restore function!<S3c><*4>
 0x74368,ねらったパーツは<4E>ダメージを うけていません!<S3c><*4>,The targeted part is not damaged!<S3c><*4>
 0x7436a,ねらったパーツは<4E>きのうていし していません!<S3c><*4>,The targeted part is not destroyed!<S3c><*4>
-0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Accuracy bonuses were reduced!<S3c><*4>
+0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Success rate bonuses were reduced!<S3c><*4>
 0x7436e,<&BUF01> は<4E>あたまで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its head!<S3c><*4>
 0x74370,<&BUF01> は<4E>みぎうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its right arm!<S3c><*4>
 0x74372,<&BUF01> は<4E>ひだリうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its left arm!<S3c><*4>
