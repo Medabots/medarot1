@@ -414,8 +414,8 @@ Pointer[#version],Original,Translated
 0x68338,ドンッ!,*Thud*
 0x6833a,=0x68338,=0x68338
 0x6833c,=0x68338,=0x68338
-0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,Waah! A leech!<4C>You dropped the Rhino Beetle.
-0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,Waah! A leech!<4C>You dropped the Stag Beetle.
+0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,<@HikaruSad>Waah! A leech!<4C><@None>You dropped the <f02>Rhino Beetle<f00>.
+0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,<@HikaruSad>Waah! A leech!<4C><@None>You dropped the <f02>Stag Beetle<f00>.
 0x68340,カアッ! カアッ! カアッ!,<@SuzumeSad>Caw! Caw! Caw!
 0x68342,メダルが ごっそリ はいってる,<@Hikaru>There's a Medal nestled inside.
 0x68344,シリコダマ ヌクケ!!,I'll take your soul!!
@@ -432,7 +432,7 @@ Pointer[#version],Original,Translated
 0x6835a,ロボロボだんに たてつくとは<4E>ふとどきな やつっキー,Those who oppose the Rubberobo Gang are insolent fools!
 0x6835c,ヤアヤア オレサマハ アシガルヤマノ<4E>キンタロウ,"Yo yo! It is I, Kintarou, soldier of the mountain!"
 0x6835e,イザ ショウブ! ショウブ!,"Now, fight me!"
-0x68360,あれっ？<4E>キンタロウのパーツじゃないぞ<4C>シマッタ バレタカ!<4C>オラハ ホントハ ギンタロウ<4E>ナノサッ!<4C>ソレッ ニゲロッ,Huh? Those aren't Kintarou's parts.<4C>Uh oh... Busted!<4C>I-I am the real Kintarou!<4C>I gotta run... Hey! What's that?!
+0x68360,あれっ？<4E>キンタロウのパーツじゃないぞ<4C>シマッタ バレタカ!<4C>オラハ ホントハ ギンタロウ<4E>ナノサッ!<4C>ソレッ ニゲロッ,<@HikaruSad>Huh? Those aren't Kintarou's parts.<4C><@None>Uh oh... Busted!<4C>I-I am the real Kintarou!<4C>I gotta run... Hey! What's that?!
 0x68362,ヤアヤァ・・・,Yo yo...
 0x68364,メダルのようなものが<4E>まつられている<4C>こっそリ とリますか？<*4>,There is a coin that looks like a Medal on the shrine.<4C>Will you take it?<*4>
 0x68366,メダルのようなものは ない,The Medal-like coin is gone.
@@ -476,12 +476,12 @@ Pointer[#version],Original,Translated
 0x683b2,「<&BUF01>」を てにいれた!<4E>しかし これいじゃうもてない!,Obtained <f02><&BUF01><f00>!<4C>...But you can't carry any more!
 0x683b4,<&BUF02><4E>「<&BUF01>」が なくなった!,<&BUF02> lost <f02><&BUF01><f00>!
 0x683b6,「<&BUF01>」が なくなった,Lost <f02><&BUF01><f00>.
-0x683b8,なんの ごようでしょうか？<*4>,<@Shopkeeper>What would you like?<*4>
-0x683ba,パーツの しゅるいを<4E>えらんでください<*4>,<@Shopkeeper>Select a type of part.<*4>
+0x683b8,なんの ごようでしょうか？<*4>,<@Shopkeeper>What would you like to do?<*4>
+0x683ba,パーツの しゅるいを<4E>えらんでください<*4>,<@Shopkeeper>What type of part?<*4>
 0x683bc,パーツを えらんでください<*4>,Select a part.<*4>
-0x683be,あリがとうございました,<@Shopkeeper>Thank you very much.
-0x683c0,これいじょうは もてません,<@Shopkeeper>You can't carry any more.
-0x683c2,おかねが たリません,<@Shopkeeper>You don't have enough money.
+0x683be,あリがとうございました,<@Shopkeeper>Thank you very much!
+0x683c0,これいじょうは もてません,<@Shopkeeper>You can't carry any more.<4C>Try selling some old parts first.
+0x683c2,おかねが たリません,<@Shopkeeper>You don't have enough money. Sorry!
 0x683c4,うることができる パーツがあリません,<@Shopkeeper>You don't have any parts to sell.
 0x683c6,きょうは しゅうぎょうしきか<4C>あしたっから なにしよっかなあ<4E>・・・なあ ボナパルト<4C>ワン! ワン!,"<@Hikaru>That's right, today's the last day of school.<4C>I guess I'll be free tomorrow...<49>I wonder what I should do...<4C>What do you think, Bonaparte?<4C><@Bonaparte>Woof! Woof!"
 0x683c8,はっ!<4C>な なんか ヘんなゆめを<4E>みていたような・・・<4C>なんだ パソコンが<4E>つきっぱなしだったのか,<@HikaruSad>Gah!<4C><@Hikaru>...I feel like I was having a weird dream... <4C><@HikaruSad>Oh... I must have fallen asleep in front of my computer.
