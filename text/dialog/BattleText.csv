@@ -437,7 +437,7 @@ Pointer[#version],Original,Translated
 0x74366,<&BUF01> は<4E>きのうかいふくを おこなった!<S3c><*4>,<&BUF01> tried to restore function!<S3c><*4>
 0x74368,ねらったパーツは<4E>ダメージを うけていません!<S3c><*4>,The targeted part is not damaged!<S3c><*4>
 0x7436a,ねらったパーツは<4E>きのうていし していません!<S3c><*4>,The targeted part is not destroyed!<S3c><*4>
-0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Accuracy bonuses were reduced!<S3c><*4>
+0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Success rate bonuses were reduced!<S3c><*4>
 0x7436e,<&BUF01> は<4E>あたまで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its head!<S3c><*4>
 0x74370,<&BUF01> は<4E>みぎうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its right arm!<S3c><*4>
 0x74372,<&BUF01> は<4E>ひだリうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its left arm!<S3c><*4>

@@ -31,7 +31,7 @@ Pointer[#version],Original,Translated
 0x6003a,いいルアーだな よかったら<4E>おじさんに くれないか？<*4>,<@Fisherman>That's a good lure you got there. Can I have it?<*4>
 0x6003c,あリがとう<4E>かわリに これをやるよ,<@Fisherman>Thanks. You can have this.
 0x6003e,じゃあ 1000円で かうぞ,"<@Fisherman>All right, I'll buy it for ¥1000."
-0x60040,おおっ!<4E>よくつれるぞ このルアー,<@Fisherman>Ooh! This is a very well-made lure.
+0x60040,おおっ!<4E>よくつれるぞ このルアー,<@Fisherman>Oh! This is a very well-made lure.
 0x60042,たいかいドームヘ ようこそ,Welcome to the Tournament Dome!
 0x60044,メダルは ぜんぶで57しゅるいさ,There are 57 unique Medal forms.
 0x60046,メダルは ぜんぶで28コあるのさ,There are 28 Medals in total.
@@ -49,7 +49,7 @@ Pointer[#version],Original,Translated
 0x6005e,さあ<4E>けっちゃくを つけようじゃないか,"<@Yuuki>Now, let's settle this."
 0x60060,けっきょく<4E>きみだけには かてなかったな,<@YuukiSad>It seems that I can beat everyone except you.
 0x60062,パ パパ・・・<4E>けっしょうの あいてってパパなの？<4C><&NAME>よ<4E>パパを ふみこえて おおきくなるんだ,<@Hikaru>D-Dad?<4C>My opponent for the semi-finals... is dad?<4C><@Dad><&NAME>...<4C>Surpass me and grow as a Medafighter!
-0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"<@DadSad>Well then, if I may...<49>*sniffle*<4C>...I-I'm so proud of you, son!!<49>You've grown so much...<4C><@Uruchi>The winner, <&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
+0x60064,じゃ えんリょなく・・・<4E>ムギュッ<4C>パ パパは うれしいぞ<4E>こんな リっぱになって イタッ・・<4C>ゆうしょうしゃの<4E><&NAME>くんには<4C>セレクトたい たいちょう<4E>タイヨーとの ラストバトルに<4C>ちょうせんして もらいます,"<Hikaru>All right, go ahead...<49><@DadSad>*sniffle*<4C>...I-I'm so proud of you, son!!<49>You've grown so much...<4C><@Uruchi>The winner, <&NAME>, will now proceed to the Finals against Taiyo, commander of the Select Force!"
 0x60066,がんばれよ <&NAME><4E>パパのゆめを かなえてくれ,"<@Dad>Do your best, <&NAME>.<49>Achieve your father's dream!"
 0x60068,さいきょうの メダロッターをかけた<4E>このラストバトル<4C>めがみは どちらにほほえむのか!？<4C><&NAME>くんは<4E>やるきまんまんです <4C>それでは ロボトルファイト!!,"<@Uruchi>The strongest Medafighters are going head to head<49>in this final battle.<4C>Who will Lady Luck smile upon today?<4C><&NAME> sure looks determined!<4C>That said, robattle Fight!"
 0x6006a,しょうしゃは <&NAME>くん!<4C>セレクトたい たいちょうをうちやぶリ<4E>えいこうの ざを かちとリました!<4C>ただでは すまさんぞ!,<@Uruchi>The winner is <&NAME>!<4C>He completely trounced the Select Force Commander in this heated battle!<4C><@TaiyoSad>Don't think I'm done just yet!
@@ -151,7 +151,7 @@ Pointer[#version],Original,Translated
 0x6012a,なに？ うちゅうじんに<4E>なおしてもらっただと？,<@Medarot>What? It was repaired by aliens?!
 0x6012c,=0x6012a,=0x6012a
 0x6012e,メダルは ぜんぶ そろったか？,<@Medarot>Have you collected all the Medals?
-0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"<@Medarot>Ooh, you have all of them!<4C>In that case, here's a Medal as a rewa-<4C>Oh you already have it.<49>Hahaha!<4C>I guess I should give you this then, it's a prototype Medal.<4C>Use it on whatever Medabot you like."
+0x60130,おおっ すべてのメダルが<4E>そろっておるではないか!<4C>よし それじゃあ ごほうびに<4E>このメダルを・・・<4C>もっておるか・・・<4C>はっはっはっ<4C>しかたがない とっておきの<4E>このメダルをやるか・・・<4C>このメダルは すべてのメダル<4E>プロトタイプじゃ<4C>きみのすきなように<4E>そだててみたまえ,"<@Medarot>Oh, you have all of them!<4C>In that case, here's a Medal as a rewa-<4C>Ah, you already have it.<4C>Hahaha!<4C>I guess I should give you this then, it's a prototype Medal.<4C>Use it on whatever Medabot you like."
 0x60132,はやく メダルを そろえるのじゃぞ,<@Medarot>Hurry and collect all of the Medals!
 0x60134,オオカミおとこじゃと？<4C>メガネの しょうてんが<4E>ズレとるんじゃな？<4C>これを もっていきなさい,"<@Medarot>You saw a wolf man?<4C>Do you need glasses, kid?<4C>Here, take these."
 0x60136,=0x60134,=0x60134
