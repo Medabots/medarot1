@@ -5,8 +5,7 @@ SetupDialog::
   ld [$c5c8], a
   inc a
   ld [VWFIsInit], a
-  ld a, $2b
-  rst $8 ; VWFPortraitClearSGBAttribAndWindowOnEndcode
+  call $1ab0
   xor a
   ld a, $2
   rst $8 ; ZeroTextOffset
@@ -32,6 +31,10 @@ SetupDialog::
   ld a, l
   ld [$c6c3], a
   ret
+.end
+REPT $1cc6 - .end
+  nop
+ENDR
 ; 0x1cc6
 
 SECTION "PutChar", ROM0[$1cc9]
@@ -187,37 +190,11 @@ PutString:: ; 2fcf
 .continue
   ld [hPSCounter], a
   jr .loop
+.end
+REPT $303c - .end
   nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-  nop
-; 303b
+ENDR
+; 303c
 
 SECTION "PadTextTo8", ROM0[$34c4]
 ; Centers text given 8 tiles
