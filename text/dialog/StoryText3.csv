@@ -1,9 +1,9 @@
 Pointer[#version],Original,Translated
 0x68000,セレクトしぶヘ<4E>ようこそ,<@Officer>Welcome to the Select office.
-0x68002,ふつうの メダルもいいけど<4E>ロボロボだんに とられないために<4C>セレクトたいの こうにんメダル<4E>「セレクトメダル」が おすすめさ<4C>それに こうせいのうで<4E>とっても そだてやすいんだ<4C>これぞ スーパーテクノロジーの<4E>けっしょうだね,<@Officer>Normal medals are fine too but the Select Force usually recommends a special kind of a medal called the <f02>Select Medal<f00> as a way to prevent theft by the Rubberobo gang.<4C>Its high efficiency also makes it easy to raise.<4C>Now that's superb technology!
+0x68002,ふつうの メダルもいいけど<4E>ロボロボだんに とられないために<4C>セレクトたいの こうにんメダル<4E>「セレクトメダル」が おすすめさ<4C>それに こうせいのうで<4E>とっても そだてやすいんだ<4C>これぞ スーパーテクノロジーの<4E>けっしょうだね,<@Officer>Normal medals are fine too but the Select Corps usually recommends a special kind of a medal called the <f02>Select Medal<f00> as a way to prevent theft by the Rubberobo gang.<4C>Its high efficiency also makes it easy to raise.<4C>Now that's superb technology!
 0x68004,=0x68002,=0x68002
 0x68006,なぜ セレクトメダルをつけた<4E>メダロットたちが・・・？<4C>もう なにを しんじたらいいのか<4E>わからない,<@OfficerSad>Why is it only the Medabots with Select Medals...?<4C>I don't know who to trust anymore.
-0x68008,これからは あたらしい<4E>セレクトたいとして がんばるよ,"From here on out, I'll try my best to build a new Select Force."
+0x68008,これからは あたらしい<4E>セレクトたいとして がんばるよ,"From here on out, I'll try my best to build a new Select Corps."
 0x6800a,きみも じゅんびに いそがしそうだね,You're probably busy preparing too.
 0x6800c,さいきんは しずかに なったのぉ,It's gotten very quiet recently.
 0x6800e,なんの ようじゃ<4C>こどもは うるさいから きらいじゃ,What do you want? I'm in a bad mood today from all these noisy children!
@@ -12,11 +12,11 @@ Pointer[#version],Original,Translated
 0x68014,んっ あリがとうな<4C>・・・また こいよ,Hmm thank you very much. ...Come again sometime.
 0x68016,<*0>,
 0x68018,ところで <&NAME><4E>つうしんぼは どうだったの？<4C>あっ わすれてた<4E>こんどみせるよ,"<@Mom>By the way <&NAME><4C>How was your last report card?<4C><@HikaruSad>Uh, I forgot. <49>I'll show it to you next time."
-0x6801a,ほら <&NAME>が<4E>しんぶんに のっているぞ<4C>「ゆうかんなしょうねん<4E>ロボロボだん たいじ!!」<4C>こんなに リっぱになって<4E>さすがは パパのこどもだ<4C>しょうらいは セレクトたいの<4E>だいかんぶだな!,"<@Dad>Hey, <&NAME>, check it out! You're in the newspaper!<4C>""Young heroic boy trumps the Rubberobo Gang!!"".<4C>You've grown so much, I'd expect no less from my son.<4C>You'd make a great leader in the Select Force!"
-0x6801c,パパも もうすこし わかかったら<4E>セレクトたいに はいったんだけどなあ,"<@Dad>If I was a bit younger, I would have joined the Select Force myself."
+0x6801a,ほら <&NAME>が<4E>しんぶんに のっているぞ<4C>「ゆうかんなしょうねん<4E>ロボロボだん たいじ!!」<4C>こんなに リっぱになって<4E>さすがは パパのこどもだ<4C>しょうらいは セレクトたいの<4E>だいかんぶだな!,"<@Dad>Hey, <&NAME>, check it out! You're in the newspaper!<4C>""Young heroic boy trumps the Rubberobo Gang!!"".<4C>You've grown so much, I'd expect no less from my son.<4C>You'd make a great leader in the Select Corps!"
+0x6801c,パパも もうすこし わかかったら<4E>セレクトたいに はいったんだけどなあ,"<@Dad>If I was a bit younger, I would have joined the Select Corps myself."
 0x6801e,きょうは とうこうびだから<4E>がっこうに いくのよ,<@Mom>Today is a school day so you need to get to class.
 0x68020,しゅくだいは はやめに<4E>おわらせなさいよ,<@Mom>Be sure not to forget to do your homework.
-0x68022,ぼうそうしているのは<4E>セレクトメダルをつけた<4C>メダロットたちらしい<4C>セレクトたいは いったい<4E>どうなってしまったんだ!,<@Dad>It seems only the Medabots with Select Medals equipped are going out of control.<4C><@DadSad>What on earth is going on with the Select Force?
+0x68022,ぼうそうしているのは<4E>セレクトメダルをつけた<4C>メダロットたちらしい<4C>セレクトたいは いったい<4E>どうなってしまったんだ!,<@Dad>It seems only the Medabots with Select Medals equipped are going out of control.<4C><@DadSad>What on earth is going on with the Select Corps?
 0x68024,さっき キララちゃんが きていたぞ<4C>おまえを さがして うみのほうヘ<4E>いったみたいだぞ,<@Dad>I saw Kirara come by a while ago.<4C>It looks like she went to go look for you at the beach.
 0x68026,おちついて パパ<4E>そんなにあわてたら<4C><&NAME>も<4E>ふあんに なるでしょ,<@Mom>Calm down Beisuke.<4C>You're making <&NAME> nervous.
 0x68028,<&NAME>が ぶじで<4E>ほんとうに よかったわ,"I'm really glad you're safe, <&NAME>."
@@ -302,7 +302,7 @@ Pointer[#version],Original,Translated
 0x68258,はしが もとに もどった!!,The bridge is back!!
 0x6825a,はしは もとに もどっている,The bridge is turning back to normal.
 0x6825c,さいきんは おこめが<4E>おいしくなったのぉ,The rice around here has gotten better lately.
-0x6825e,このあいだ セレクトたいが<4E>イネカリしておったぞ,The Select Force have reaped some rice already.
+0x6825e,このあいだ セレクトたいが<4E>イネカリしておったぞ,The Select Corps have reaped some rice already.
 0x68260,1つの じゅくれんどだけを<4E>てっていしてあげると いいみたい,It's not a bad idea to have your Medabots specialize in just one skill.
 0x68262,ふくびきで せとものが<4E>でることも あるんだ,You can also win some pottery at the lottery.
 0x68264,ふくびきで シノビックパークの<4E>チケット もらっちゃった,I won a ticket to Shinobic Park from the lottery. What are the odds?
@@ -377,7 +377,7 @@ Pointer[#version],Original,Translated
 0x682ee,ハカイ  ハカ・・・イ<4E>ハ・・・・・イ,<@Static2> DESTROY... DEST... ROY... DEST...<4C><@Static2> ...
 0x682f0,ビルが<4E>ビルが くずれるっ!,<@TaiyoSad>Th-the building is collapsing!
 0x682f2,アリガトウ・・・,Thank you...
-0x682f4,セレクトたい たいちょう<4E>タイヨーだな<4C>メダロットの あくよう<4E>そして ビルはかいの げんこうはん<4C>そのほかにも いろいろの ことを<4E>ひっくるめて タイホする!!,"<@Officer>Select Force Chief Taiyou, you're under arrest for disturbing the peace, the abuse of Medabots, destroying the Select Building and many other offenses!"
+0x682f4,セレクトたい たいちょう<4E>タイヨーだな<4C>メダロットの あくよう<4E>そして ビルはかいの げんこうはん<4C>そのほかにも いろいろの ことを<4E>ひっくるめて タイホする!!,"<@Officer>Select Corps Chief Taiyou, you're under arrest for disturbing the peace, the abuse of Medabots, destroying the Select Building and many other offenses!"
 0x682f6,う うちゅうじんが<4E>うちゅうじんがーっ<4C>わかったわかった<4C>そういうことは けいさつで<4E>ゆっくリ きいてやるから,"<@Taiyo>A-aliens, aliens!<4C><@Officer>Yeah yeah, you can talk to the police about it."
 0x682f8,やまでは カブトや クワガタが<4E>いっぱいとれるよ,The mountain is full of rhino beetles and stag beetles.
 0x682fa,ほんとうに いたんだ<4E>うちゅうじんが!<4C>うるさい だまって あるけっ!,<@TaiyoSad>There really are aliens!<4C><@Officer>Be quiet and walk!
@@ -414,8 +414,8 @@ Pointer[#version],Original,Translated
 0x68338,ドンッ!,*Thud*
 0x6833a,=0x68338,=0x68338
 0x6833c,=0x68338,=0x68338
-0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,Waah! A leech!<4C>You dropped the Rhino Beetle.
-0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,Waah! A leech!<4C>You dropped the Stag Beetle.
+0x6833e#kabuto,わーっ!<4E>ヒルだ!<4C>カブトムシを おとした!,<@HikaruSad>Waah! A leech!<4C><@None>You dropped the <f02>Rhino Beetle<f00>.
+0x6833e#kuwagata,わーっ!<4E>ヒルだ!<4C>クワガタムシを おとした!,<@HikaruSad>Waah! A leech!<4C><@None>You dropped the <f02>Stag Beetle<f00>.
 0x68340,カアッ! カアッ! カアッ!,<@SuzumeSad>Caw! Caw! Caw!
 0x68342,メダルが ごっそリ はいってる,<@Hikaru>There's a Medal nestled inside.
 0x68344,シリコダマ ヌクケ!!,I'll take your soul!!
@@ -432,7 +432,7 @@ Pointer[#version],Original,Translated
 0x6835a,ロボロボだんに たてつくとは<4E>ふとどきな やつっキー,Those who oppose the Rubberobo Gang are insolent fools!
 0x6835c,ヤアヤア オレサマハ アシガルヤマノ<4E>キンタロウ,"Yo yo! It is I, Kintarou, soldier of the mountain!"
 0x6835e,イザ ショウブ! ショウブ!,"Now, fight me!"
-0x68360,あれっ？<4E>キンタロウのパーツじゃないぞ<4C>シマッタ バレタカ!<4C>オラハ ホントハ ギンタロウ<4E>ナノサッ!<4C>ソレッ ニゲロッ,Huh? Those aren't Kintarou's parts.<4C>Uh oh... Busted!<4C>I-I am the real Kintarou!<4C>I gotta run... Hey! What's that?!
+0x68360,あれっ？<4E>キンタロウのパーツじゃないぞ<4C>シマッタ バレタカ!<4C>オラハ ホントハ ギンタロウ<4E>ナノサッ!<4C>ソレッ ニゲロッ,<@HikaruSad>Huh? Those aren't Kintarou's parts.<4C><@None>Uh oh... Busted!<4C>I-I am the real Kintarou!<4C>I gotta run... Hey! What's that?!
 0x68362,ヤアヤァ・・・,Yo yo...
 0x68364,メダルのようなものが<4E>まつられている<4C>こっそリ とリますか？<*4>,There is a coin that looks like a Medal on the shrine.<4C>Will you take it?<*4>
 0x68366,メダルのようなものは ない,The Medal-like coin is gone.
@@ -446,7 +446,7 @@ Pointer[#version],Original,Translated
 0x68376,メダロットが すごいはやさで<4E>とんでいったぞ,That Medabot flew up with great speed.
 0x68378,メダロットは そうびする<4E>パーツの ぞくせいで<4C>いろんな タイプに<4E>ヘんかするんだよ,Your Medabot's type can change depending on its part attributes.
 0x6837a,ロボトルで てにいれたパーツを<4E>コンビニに うリにいこっと,You can sell parts that you win from robattles at the store.
-0x6837c,セレクトたいは ロボロボだんから<4E>ちきゅうを まもってるんだ,The Select Force protects the Earth from the Rubberobo Gang.
+0x6837c,セレクトたいは ロボロボだんから<4E>ちきゅうを まもってるんだ,The Select Corps protects the Earth from the Rubberobo Gang.
 0x6837e,・・と おもって いたんだけどな,... Or so I thought.
 0x68380,なつやすみになると メダロットの<4E>トーナメントが ひらかれるんだ,There's going to be a Medabot tournament this summer.
 0x68382,やまの どうくつには<4E>おたからが ねむっているらしい,It seems that there is some kind of treasure hidden within the mountain cave.
@@ -476,12 +476,12 @@ Pointer[#version],Original,Translated
 0x683b2,「<&BUF01>」を てにいれた!<4E>しかし これいじゃうもてない!,Obtained <f02><&BUF01><f00>!<4C>...But you can't carry any more!
 0x683b4,<&BUF02><4E>「<&BUF01>」が なくなった!,<&BUF02> lost <f02><&BUF01><f00>!
 0x683b6,「<&BUF01>」が なくなった,Lost <f02><&BUF01><f00>.
-0x683b8,なんの ごようでしょうか？<*4>,<@Shopkeeper>What would you like?<*4>
-0x683ba,パーツの しゅるいを<4E>えらんでください<*4>,<@Shopkeeper>Select a type of part.<*4>
+0x683b8,なんの ごようでしょうか？<*4>,<@Shopkeeper>What would you like to do?<*4>
+0x683ba,パーツの しゅるいを<4E>えらんでください<*4>,<@Shopkeeper>What type of part?<*4>
 0x683bc,パーツを えらんでください<*4>,Select a part.<*4>
-0x683be,あリがとうございました,<@Shopkeeper>Thank you very much.
-0x683c0,これいじょうは もてません,<@Shopkeeper>You can't carry any more.
-0x683c2,おかねが たリません,<@Shopkeeper>You don't have enough money.
+0x683be,あリがとうございました,<@Shopkeeper>Thank you very much!
+0x683c0,これいじょうは もてません,<@Shopkeeper>You can't carry any more.<4C>Try selling some old parts first.
+0x683c2,おかねが たリません,<@Shopkeeper>You don't have enough money. Sorry!
 0x683c4,うることができる パーツがあリません,<@Shopkeeper>You don't have any parts to sell.
 0x683c6,きょうは しゅうぎょうしきか<4C>あしたっから なにしよっかなあ<4E>・・・なあ ボナパルト<4C>ワン! ワン!,"<@Hikaru>That's right, today's the last day of school.<4C>I guess I'll be free tomorrow...<49>I wonder what I should do...<4C>What do you think, Bonaparte?<4C><@Bonaparte>Woof! Woof!"
 0x683c8,はっ!<4C>な なんか ヘんなゆめを<4E>みていたような・・・<4C>なんだ パソコンが<4E>つきっぱなしだったのか,<@HikaruSad>Gah!<4C><@Hikaru>...I feel like I was having a weird dream... <4C><@HikaruSad>Oh... I must have fallen asleep in front of my computer.
@@ -517,12 +517,12 @@ Pointer[#version],Original,Translated
 0x68404,まちたまえ,<@Yuuki>Halt.
 0x68406,えっと・・・ だれだっけ？<4C>ライバルの にもうさくユウキだ!<4C>ロボトルのトーナメントは<4E>「ちょうないたいかい」<4C>「ちくたいかい」<4E>「ほんたいかい」の3かいある<4C>1つのたいかいを かちすすめば<4E>つぎのたいかいに すすめるんだ<4C>まずは おてほんがわリに<4E>ぼくのたたかいを みておくといい,"<@HikaruSad>Huh...? Who are you?<4C><@Yuuki>I am Yuuki Nimousaku and I am your rival!<4C>The robattle Tournament is made up of three smaller tournaments:<4C>The <f02>City Tournament<f00>,<49>the <f02>Regional Tournament<f00>,<4C>and the <f02>Main Tournament<f00>.<4C>If you progress through one tournament, you can move on to the next.<4C>Try to learn from watching me fight."
 0x68408,パパは セレクトビルに<4E>おしごとにいったわよ,Your father left for work to the Select Building.
-0x6840a,え？<4E>セレクトたいの たいちょう？<4C>こっちには だれもきてないよ,Huh? You saw the Select Force Chief?<4C>No one came over here.
+0x6840a,え？<4E>セレクトたいの たいちょう？<4C>こっちには だれもきてないよ,Huh? You saw the Select Corps Chief?<4C>No one came over here.
 0x6840c,=0x6840a,=0x6840a
 0x6840e,よかった <&NAME>さんなら<4E>そういってくれると おもってました,"<@Nae>I'm glad. I figured you would think the same, <&NAME>."
 0x68410,そうですか・・・<4C>こんなのしんじてるなんて<4E>こどもっぽいですよね,<@NaeSad>I see...<4C>I suppose it is a bit of a childish belief.
 0x68412,こんにちは <&NAME>くん,"<@Kirara>Hello, <&NAME>."
-0x68414,まさか ロボロボだんの しょうたいが<4E>セレクトたい だったなんて・・・<4C>もう なにも しんじられない,<@Officer>This has to be joke... The Rubberobo Gang was the Select Force the whole time...<4C><@OfficerSad>I don't know who to trust anymore.
+0x68414,まさか ロボロボだんの しょうたいが<4E>セレクトたい だったなんて・・・<4C>もう なにも しんじられない,<@Officer>This has to be joke... The Rubberobo Gang was the Select Corps the whole time...<4C><@OfficerSad>I don't know who to trust anymore.
 0x68416,ロボトルばっかリ してないで<4E>たまには べんきょうも しなさいよ,"<@Mom>Don't get too distracted by Robottling, you should focus on your studies from time to time."
 0x68418,また あとでね♥,<@Kirara>See ya later♥
 0x6841a,きょうは<4E>ひとリで あそぼっかな・・・,<@KiraraSad>I guess I'll play alone today...

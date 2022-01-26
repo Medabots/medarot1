@@ -3,20 +3,20 @@ Pointer[#version],Original,Translated
 0x5a002,そろそろ このまえのけっちゃくを<4E>つけようぜ<*4>,"<@Yanma>Alright, it's about time we settled this!<*4>"
 0x5a004,うみのどうくつの たからをひとめ<4E>みたいんじゃが サメがでるんじゃよ,<@Fisherman>I'd like to go looking for the treasure in that seaside cave myself...<4C><@FishermanSad>but with these sharks around...
 0x5a006,サメが でるから およげないんだ,We can't go swimming with sharks around.
-0x5a008,どうくつに はいろうとしたら<4E>サメに おそわれるんだ,"<@Boy>If you try to go near the cave, you'll be attacked by a shark!"
-0x5a00a,どうくつには たからがあるんだって,<@Lady>They say there's some kind of treasure in the cave.
+0x5a008,どうくつに はいろうとしたら<4E>サメに おそわれるんだ,"If you try to go near the cave, you'll be attacked by a shark!"
+0x5a00a,どうくつには たからがあるんだって,They say there's some kind of treasure in the cave.
 0x5a00c,おおっ<4C>どうくつの おたからとは<4E>メダルじゃったか<4C>いいものを みせてくれた<4E>れいを せんとな,<@Fisherman>Oho! So the treasure in the cave turned out to be a Medal after all?<4C>Here's some thanks for showin' it to me.
 0x5a00e,それと このさかなを さんそんの<4E>そんちょうに とどけてくれんか,"<@Fisherman>Oh, and if you wouldn't mind...<4C>Could you deliver this fish to the mayor of the mountain village?"
 0x5a010,ここで すばしっこいサルのやつらを<4E>まちぶせてるんだ<4C>あいつらを つかまえるまでは<4E>あリ いっぴきも とおさせないぜ,"<@Kubota>This area is filled with sly monkeys.<4C>If you beat at least one of the monkeys, I'll let you pass."
 0x5a012,まさかおまえが サルをたおしたのか？<*4>,<@Kubota>What... you defeated the monkeys? <*4>
 0x5a014,まちなかにいる イセキが<4E>おまえを たおしてくれる,"<@Kubota>Once you reach downtown, Iseki will teach you a lesson for sure!"
 0x5a016,きたのやまには めずらしい<4E>メダルがあるらしい,<@Researcher>There seems to be a rare medal in the mountain up north.
-0x5a018,おサルにメダルを とられたの<4E>とリかえしてほしいの,<@PreschoolerSad>A monkey took my Medal.<49>I hope I can get it back...
+0x5a018,おサルにメダルを とられたの<4E>とリかえしてほしいの,<@PreschoolerSad>A monkey took my Medal.<4C>I hope I can get it back...
 0x5a01a,やまのおサルが おリてきて<4E>わるさを するんだ,<@Villager>The monkeys come down the mountain from time to time to cause mischief.
 0x5a01c,まだ まけたわけじゃないからね!<4C>セレクトビルに いくんだったら<4C>あそこで はたらいてる パパに<4E>あいさつでも してくれば？,<@IsekiSad>I still haven't lost yet!<4C><@Iseki>You're going to stop by the Select Headquarters? <4C>You should say hi to your dad there.
 0x5a01e,ところで もういせきには<4E>いったのか？<4C>いせきはいいぞー<4E>ロマンがあってな,<@Dad>Anyway have you gone to the Ruins yet? <4C>The Ruins are great.<4C>They have an adventurous feeling to them.
 0x5a020,いせきには トロッコで<4E>いくんだよ,You can reach the Ruins by taking the rail car.
-0x5a022,セレクトしぶで ごほうびが<4E>でるそうじゃないか<4C>やったな!<4C>きょうは とうこうびだろ<4C>がっこうが おわったら<4E>もらいに いってこいよ,"<@Dad>The Select Office has a reward for you?<49>That's great!<4C>Wait, don't you have school today?<49>Go pick it up when after school."
+0x5a022,セレクトしぶで ごほうびが<4E>でるそうじゃないか<4C>やったな!<4C>きょうは とうこうびだろ<4C>がっこうが おわったら<4E>もらいに いってこいよ,"<@Dad>The Select Office has a reward for you?<49>That's great!<4C>Wait, don't you have school today?<4C>Go pick it up when after school."
 0x5a024,そうだ 1つ ちゅういすることを<4E>わすれていたぞ<4C>じんじゃの たちいリきんしの<4E>ばしょには はいっちゃいかんぞ<4C>ロボロボだんが でるって<4E>はなしだからな<4C>ぜーったいに はいっちゃいかんぞ!<4C>それと しゅくだいは<4E>はやめに おわらせるんだぞ!,"<@Gym>Oh that's right, I forgot to say one thing.<4C>Stay away from the back of the Shrine, it's off-limits!<4C>There's been talk of the Rubberobo Gang lurking around that area.<4C>Do not try to go there! <4C>Also, try to keep up with your homework as well."
 0x5a026,=0x5a024,=0x5a024
 0x5a028,=0x5a024,=0x5a024
@@ -29,12 +29,12 @@ Pointer[#version],Original,Translated
 0x5a036,わーい メダルがかえってきた<4E>あリがとう おにいちゃん<4C>おれいに これあげるー,<@Preschooler>Yaay! Thank you for returning my medal.<4C>Here's your reward!
 0x5a038,=0x5a036,=0x5a036
 0x5a03a,=0x5a036,=0x5a036
-0x5a03c,おお これじゃこれじゃ<4E>さけのさかなが ほしかったんじゃ,<@Geezer>Ooh you actually brought this to me. <4C>I was wanting a good snack...
+0x5a03c,おお これじゃこれじゃ<4E>さけのさかなが ほしかったんじゃ,<@Geezer>Oh! Is that a <f02>Fresh Fish<f00>? <4C>Thanks for bringing this to me.<49>I was wanting a good snack...
 0x5a03e,このまちの はずれに<4E>リょうしが おってな<4C>いぜんは じびきあみでとれたものを<4E>よく くれていたんだが<4C>サメがでるようになって リょうが<4E>おもうように できんようになったと<4C>もんくをいっておったわ,"There's a lot of fishermen on the outskirts of town.<4C>Anything they caught for the day, they would bring back to town.<4C>However, ever since the sharks came, they haven't been able to catch anything.<4C>A lot of them are furious."
 0x5a040,サメがでるから およげないの<4E>せっかく およぎにきたのにー,I can't swim because of the sharks!<4C>After all the trouble I went through to come here...
 0x5a042,ところで つぼをやきたいのじゃが<4E>いい やまのつちが ほしいのう<4C>やまのほこらの あたリのつちが<4E>いいのう,"<@Geezer>By the way, I'd like to make a pot but I need some good mountain soil. <4C>Some soil around the mountain shrine should be good."
 0x5a044,このさきの みなとまちが<4E>なんだかさいきん さわがしいけど<4C>なにか あったのかな,This path leads to Harbor Town.<4C>It sounds like there's been some trouble there lately...<4C>I wonder what's going on?
-0x5a046,セレクトたいって なぞの<4E>いたずらしゅうだん ロボロボだんと<4C>おっかけっこしている あいつらだろ？,"Hmm, the Select Force? <4C>Those are the guys chasing after the Rubberobo Gang, right?"
+0x5a046,セレクトたいって なぞの<4E>いたずらしゅうだん ロボロボだんと<4C>おっかけっこしている あいつらだろ？,"Hmm, the Select Corps? <4C>Those are the guys chasing after the Rubberobo Gang, right?"
 0x5a048,ぼくだって おんなのこティンペット<4E>ほしいよー,It's not fair... <4C>I want a female Tinpet too...
 0x5a04a,きょうは たいリょうじゃ,<@Fisherman>Today was quite a big catch.
 0x5a04c,=0x5a04a,=0x5a04a
@@ -47,7 +47,7 @@ Pointer[#version],Original,Translated
 0x5a05a,=0x5a052,=0x5a052
 0x5a05c,=0x5a052,=0x5a052
 0x5a05e,=0x5a052,=0x5a052
-0x5a060,これよリ ロボトルほんたいかいを<4E>かいさい いたします<4C>こんかいは わがまちの<4E>56チームに くわえて<4C>がいこくから 8にんの<4E>しょうたいせんしゅを<4C>まねいておリます<4C>さあ わがまちの<4E>ゆうしゅうな メダロッターたちは<4C>なみいるきょうごうを<4E>うちまかせるのでしょうか？<4C>それでは だい1かいせん<4E>ロボトルファイトッ!,"<@Uruchi>Ladies and gentlemen, I will be your tournament host.<4C>This year, a total of 56 teams, including 8 foreign teams, have joined.<4C>Will they be able to beat our veteran fighters? <4C>Let's find out! Round 1! <4C>robattle Fight!"
+0x5a060,これよリ ロボトルほんたいかいを<4E>かいさい いたします<4C>こんかいは わがまちの<4E>56チームに くわえて<4C>がいこくから 8にんの<4E>しょうたいせんしゅを<4C>まねいておリます<4C>さあ わがまちの<4E>ゆうしゅうな メダロッターたちは<4C>なみいるきょうごうを<4E>うちまかせるのでしょうか？<4C>それでは だい1かいせん<4E>ロボトルファイトッ!,"<@Uruchi>Ladies and gentlemen!<4C>I, Mr. Referee, will be your tournament host!<4C>This year, a total of 56 teams, including 8 foreign teams, have joined.<4C>Will they be able to beat our veteran fighters? <4C>Let's find out! Round 1! <4C>robattle Fight!"
 0x5a062,だい2かいせんの あいては<4E>しょうたいせんしゅの ひとリ<4C>フィールドをまう きこうし<4E>シャモジール!!<4C>さあ <&NAME>くんは<4E>どのように たたかうのでしょうか？<4C>それでは ロボトルファイト!,"<@Uruchi>Round 2 will be interesting, a young man who loves to dance and sweep their opponents off their feet.<4C>Here's Shamojiel!!<4C>Now, how will <&NAME> handle this? <4C>Let's find out. robattle Fight!"
 0x5a064,だい3かいせんの あいては・・<4C>イクゾ!<4C>おーっと<4E>おきてやぶリの せんせいこうげき!<4C>そっ<4E>それでは ロボトルファイト!,"<@Uruchi>Round 3 will be...<4C><@Jaw>LET'S GO!<4C><@Uruchi>Woah, a preemptive strike, that's against the rules!<4C>Uh...w-without further ado, robattle Fight!"
 0x5a066,だい4かいせんの あいては<4E>あやしい わざをつかう<4C>みわくのメダロッター<4E>タワラーマさんです<4C>おとなびた ふんいきを<4E>もっているあたリが いいですねぇ<4C>おっと みとれてしまいましたが<4E>きをとリなおし ロボトルファイト!,"<@Uruchi>Round 4's opponent uses rather strange techniques...<4C>A rather captivating Medafighter she is, give it up for Tawarama!<4C>Ah, she has quite the mature look to her...<4C>Oops, I'm getting distracted...now on to the match. robattle Fight!"
