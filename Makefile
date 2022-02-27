@@ -215,10 +215,10 @@ $(LISTS_OUT)/%.$(LIST_TYPE): $(LISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_
 $(PTRLISTS_OUT)/%.$(SOURCE_TYPE): $(PTRLISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(PTRLISTS_OUT)
 	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $< $@ $(word 2, $(subst _, ,$*))
 
-$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES) $(BUILD)/buffer_constants.$(SOURCE_TYPE)
+$(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES) $(BUILD)/buffer_constants.$(SOURCE_TYPE) | $(BUILD)
 	$(PYTHON) scripts/csv2bin.py $*
 
-$(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm
+$(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm | $(BUILD)
 	$(PYTHON) scripts/credits2bin.py
 
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
