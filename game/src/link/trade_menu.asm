@@ -42,7 +42,7 @@ LoadPartsTradeMenu::
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $988A, $A0
+  psbc $988A, $90
   call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
@@ -55,7 +55,7 @@ LoadPartsTradeMenu::
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $98CA, $A8
+  psbc $98CA, $98
   call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
@@ -68,7 +68,7 @@ LoadPartsTradeMenu::
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $990A, $B0
+  psbc $990A, $A0
   call VWFPutStringAutoNarrowTo8
   ld a, [$C6F0]
   ld c, a
@@ -81,7 +81,7 @@ LoadPartsTradeMenu::
   ld b, 0
   call JumpTable_294
   ld hl, cBUF01
-  psbc $994A, $B8
+  psbc $994A, $A8
   call VWFPutStringAutoNarrowTo8
   ret
 ; 0x5a9f

@@ -526,7 +526,7 @@ PartTradeCalculateLineDrawingPositionOnScroll::
   add a
   add a
   add a
-  add $A0
+  add $90
   ld [ShopPartDrawIndex], a
   ret
 
