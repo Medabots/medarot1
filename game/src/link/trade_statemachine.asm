@@ -177,8 +177,8 @@ PartTradeDrawTradeItems: ; 1daf8 (7:5af8)
   ld a, [$c78d]
   call JumpTable_294
   ld hl, cBUF01
-  psbc $9802, $90
-  call VWFPutStringTo8
+  ld bc, $9802
+  call JumpPutString
   ld a, [$c78c]
   ld c, a
   ld b, $00
@@ -202,8 +202,8 @@ PartTradeDrawTradeItems: ; 1daf8 (7:5af8)
   ld a, [$c78f]
   call JumpTable_294
   ld hl, cBUF01
-  psbc $980c, $c0
-  call VWFPutStringTo8
+  ld bc, $980c
+  call JumpPutString
   ld a, [$c78e]
   ld c, a
   ld b, $00
