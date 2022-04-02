@@ -1,0 +1,3 @@
+et-xmlfile==1.1.0
+jdcal==1.4.1
+git+https://github.com/VariantXYZ/openpyxl-variant.git@873cc3dda43578c098843ebe930325c879d20baf#egg=openpyxl
