@@ -1,0 +1,461 @@
+page i
+
+DMG-AMXJ-JPN-1
+GAME BOY® Cartridge
+1/24 MEDAROT SERIES
+KABUTO VERSION
+Medarot (Kabuto Version)
+
+MEDAROT
+
+Compatible with Super Game Boy
+Compatible with Game Link Cable
+User Manual
+imagineer
+
+
+page ii
+
+Thank you for selecting Nintendo Game Boy Cartridge MEDAROT. Before using, please read the instructions and warnings in this USER MANUAL thoroughly to ensure proper handling of your new cartridge. Save this manual for future reference.
+
+PRECAUTIONS FOR YOUR SAFETY
+WARNING:
+- Avoid playing while you are tired. Similarly, avoid playing for a long, continuous period as it may harm your health.
+- In very rare cases, some people may have seizures or blackouts triggered by light glares and flashes, such as while watching TV. Anyone who has had similar symptoms should consult a doctor before playing a video game. If you suffer any of these symptoms, stop playing immediately and see a doctor.
+- If you feel dizziness, nausea, fatigue, motion sickness or the like, stop playing immediately. If the discomfort remains, see a doctor. Negligence in doing so may aggravate your symptoms.
+- If you have a hand or arm injury, or if you are tired, playing a video game may worsen your condition. Should you fit in this category, please consult a doctor before playing.
+- If your eyes feel strained, dry, or if you have altered vision, stop playing and take a 5 to 10 minute break.
+
+
+page iii
+
+WARNING:
+- Take intermittent breaks if you are playing for a long time. It is advised to take a 10 to 15 minute break every hour or so.
+
+PRECAUTIONS BEFORE USING THE DEVICE
+CAUTION:
+- Do not use the game device while driving or walking, as well as in places where usage is prohibited such as in an airplane or at a hospital. It may cause accidents and harm to yourself and others.
+WARNING:
+- The cartridge contains plastic and metal, which are dangerous when exposed to fire. If you want to dispose it, follow the instructions of your local government.
+PRECAUTIONS WHEN USING THE DEVICE:
+- Avoid using or storing under extreme temperature conditions. Do not jolt the game device. Do not disassemble or attempt to modify.
+- After using the device, always turn the power switch OFF.
+- Do not touch, dirty, or spill water on the supply terminal.
+
+The cartridge contains a battery backup to record your game progress and save data. If the power switch is turned ON and OFF repeatedly, or if you remove the cartridge while the game device is still ON, your save data may be lost.
+We can replace the lithium battery for a fee.
+
+
+page 1
+
+This is Medarot Kabuto Version. There exists another version called the Kuwagata Version. There is no difference in story, characters, and dialogues between the two versions. However, the starting robots, the medals that you acquire, and some robot parts will vary.
+
+Table of Contents
+① What Is This Place? 2
+② Who Am I? 3
+③ What Are the Controls? 4
+④ Lectures on Medarots From Dr. Medarot 5
+⑤ Let’s Begin the Adventure! 9
+⑥ Try Opening the Menu Screen! 10
+⑦ What Kind of Items Are There? 14
+⑧ How Do I Fight? 15
+⑨ Trading and Versus Through Game Link 18
+⑩ Friends in Hikaru’s Circle?! 21
+⑪ The Town Where Hikaru Lives 22
+⑫ Medarots Introduction 23
+
+
+page 2
+
+① What Is This Place?
+In a not so distant future, people own robots (Medarots) as pets and have them fight each other for sport in Robot Battles (commonly known as Robottles). The game comes with a rule where you can take a robot part from your opponent if you win.
+
+Among them, there are those who use Medarots to commit evil deeds. One example is a group called the RoboRobo Gang that wreaks havoc in the local area.
+
+Of course, there exists a group of justice who protects the citizens from them. They are known as the Select Force, always keeping a watchful eye on the RoboRobo Gang to thwart their evil plans.
+
+And thus (huh?), the main protagonist Hikaru Agata gets on the scene! It is currently the peak of summer, and the grade schooler is hoping to finish his social studies homework by exploring the seashores and mountains. Unfortunately, he always finds himself thrust in the middle of the mayhem caused by the RoboRobo Gang.
+
+Can Hikaru make use of his Medarot and pull through? Can he save the world from its peril? ...maybe that last bit was an exaggeration.
+
+
+page 3
+
+② Who Am I?
+July 22, 200x (sunny)
+It’s the start of a fun summer holiday tomorrow! —yeah, right. Is my report card even doing alright? I also have a pile of homework to do... *sigh* There's a lot to worry about when you're my age.
+
+Oh yeah, my name is Hikaru Agata. This dog is Bonaparte, my trusted partner.
+
+“Bow wow wow!”
+“Bonaparte, you’re being too loud! What, you want me to take you on a walk? Well, I guess I’ve been too busy recently.”
+“Bow wow wow!”
+“Okay, okay, we’re going, okay? Let’s go to the public park or somewhere!”
+
+
+page 4
+
+③ What Are the Controls?
+Control Pad
+For walking on the field map and highlighting items on game menus.
+
+Select Button
+Switches pages at the Parts screen. Reorders Medarots, Medals, Items. Displays abilities while purchasing Parts. To surrender during a battle.
+
+Start Button
+Commences battle. Checks your status during battle.
+
+B Button
+Opens the Menu screen. Cancels your selection.
+
+A Button
+Confirms your selection. Engages people in conversation. Interacts with your surroundings. Shows more information on Medals and Parts at the Medarots screen.
+
+
+page 5
+
+④ Lectures on Medarots From Dr. Medarot
+Before you start using Medarots, you need to learn about their components. Otherwise, you’ll never become an expert in Robottles! Don’t worry though, I’m here to cram everything you need to know into your brain. There will be a pop quiz, so make sure to take notes! (Just kidding.) A Medarot has a skeletal frame called a Tinpet, add a Medal and a few Parts to it, and we’re done! I’ll explain more about them one by one.
+
+Lecture 1) More About Tinpets
+1 > A Tinpet is every Medarot’s basic frame. It’s like a human skeleton, so to speak. A Medarot is assembled by attaching Parts and inserting a Medal into the Tinpet!
+2 > There are two Tinpet models: Male and Female! A male Tinpet can only have male Parts, and vice versa, so watch out not to get the wrong ones!
+3 > You will obtain Tinpets from the people you meet during your adventure. By the way, you can carry up to 9 Tinpets at once!
+
+
+page 6
+
+Lecture 2) More About Parts
+1 > Medarot Parts are separated into four different types: Head, Right Arm, Left Arm, and Legs.
+2 > Counting both Kabuto and Kuwagata Versions, there are 60 of each type, totalling 240 Parts hidden somewhere in the game. Can you gather them all?
+3 > There are two types of Parts, one for male Medarots, and the other for female ones. Male Parts can only be attached to male Tinpets, and vice versa.
+
+※Functions of Each Part
+Head
+Special Ability
+Has a special ability with limited amount of uses and improves basic abilities.
+
+Right Arm
+Light Equipment
+Has high accuracy and a fast charge time, but low firepower.
+
+Left Arm
+Heavy Equipment
+Has a slow charge time, but high firepower.
+
+Legs
+Movement + Basic Ability
+Defines the movement type and basic abilities.
+
+
+page 7
+
+Lecture 3) More About Medals
+1 > A Medal is similar to a human brain! Without it, a Medarot will not be able to operate!
+2 > There are 26 Medals in total, and they each have a unique attribute. Medarots will have a different Special Skill depending on the Medal they are equipped with.
+3 > By taking part in battles, Medals will gain experience. At certain levels, they will increase their rank, up to 4 stages in total. Ranking up will transform a Medal's symbol and increase its strength all at once.
+4 > Certain Medals will transform through Game Link, and some can be combined to create new Medals.
+
+
+page 8
+
+Lecture 4) Analysis of Hikaru’s Medarot
+METABEE
+
+Rhino Beetle-type Medarot
+Alias: Metabee
+
+Tinpet: Male
+
+Parts
+Head: Missile (can damage multiple enemy parts)
+Right Arm: Revolver (fires single shots quickly and accurately)
+Left Arm: Submachinegun (shoots powerful rapid-fire shots)
+Legs: Ochitsuker (perfect for shooting-type attacks)
+
+Medal: Kabuto / excels at shooting abilities
+
+
+page 9
+
+⑤ Let’s Begin the Adventure!
+Start by inserting Medarot cartridge into your Game Boy. The title screen will be displayed after you turn the switch ON. Press the Start button to begin.
+
+New Game:
+Select New Game when you are playing for the first time. The game will commence after you input a name for the protagonist. 
+
+Continue:
+If you have a save data, Continue will be added to the menu. You can continue playing from where you last saved.
+
+Options:
+There are several options that you can configure in the game.
+
+Message speed: There are three levels of how fast messages are displayed to choose from.
+Animation speed: Configures the speed of the animation in battles.
+Battle time limit: Configures the maximum duration of a battle.
+
+
+page 10
+
+⑥ Try Opening the Menu Screen!
+Press B Button when you are on the field to open the Menu screen. The screen allows you to select from Info, Items, Save, and Close.
+
+Info: Selecting Info will give you 4 additional options to view the status of your Medarots and detailed information of your Medals and Parts.
+
+〇 Medarots
+You can equip Medal and Parts from this menu.
+
+※ How to assemble a Medarot
+1 ) Select the Tinpet that you want to use on the Medarots screen.
+2 ) On the next screen, use Control Pad to highlight and select the Medal and Parts that you want to equip.
+3 ) Press A Button to show more information on the Medal and Parts.
+
+A good compatibility between Medal and Parts is indicated with a Medal symbol on the right side.
+
+
+page 11
+
+〇 Medals
+You can view more information on the Medals you own.
+
+Status
+Rank: The Medal's current rank.
+Level: The Medal's current level.
+Exp.: Experience points needed to level up.
+Attack: Attack power.
+Defense: Ability to reduce damage taken.
+Special: Effectiveness of special abilities.
+Bonus: Bonus stats from having compatible Parts, the higher the better.
+
+Skills
+Strike: Proficiency with Strike attacks.
+Berserk: Proficiency with Berserk attacks.
+Shoot: Proficiency with Shoot attacks.
+Snipe: Proficiency with Snipe attacks.
+Support: Effectiveness of abilities that support your allies.
+Protect: Effectiveness of abilities that defend your allies.
+Heal: Effectiveness of abilities that recover your own or your allies' Health Points (HP).
+Other: Effectiveness of miscellaneous abilities.
+
+
+page 12
+
+〇 Parts
+You can view more information on the Parts you own.
+
+Head
+Armor: The Part’s Health Points (HP).
+Hit: The Part’s attack accuracy.
+Power: The Part’s firepower.
+Uses: The Part’s amount of use per battle.
+
+Right Arm / Left Arm
+Armor: The Part’s Health Points (HP).
+Hit: The Part’s attack accuracy.
+Power: The Part’s firepower.
+Charge: How long it takes to perform an attack with this Part.
+Cooldown: How long it takes to perform the next action after attacking.
+
+
+page 13
+
+Legs
+Armor: The Part’s Health Points (HP).
+Speed: The speed to perform an attack.
+Mobility: The evasion ability.
+Fight: The Part’s fight ability.
+Shoot: The Part’s shoot ability.
+Scan: The Part’s scan ability.
+
+〇 Close
+Returns to the menu screen.
+
+Items: Displays current inventory. Press Select to reorder.
+Save: Records the progress of your adventure. You can save anywhere except during battle.
+Close: Returns to the field map.
+
+
+page 14
+
+⑦ What Kind of Items Are There?
+Town Map
+Obtained in the beginning at school. Shows your current location.
+
+RoboRobo Medal
+Allows you to escape from field enemies.
+
+Lottery Ticket
+Allows you to draw a lottery at the shopping district.
+
+Difficult Book
+A difficult book, the school librarian lost it somewhere.
+
+RoboRobo Suit
+RoboRobo Gang’s uniform.
+
+Shinobi Ticket
+A ticket to enter the Shinobic Park.
+
+Rhino Beetle
+Some will fall off the tree when you kick it.
+
+Fresh Fish
+Obtained by helping the fisherman.
+
+
+page 15
+
+⑧ How Do I Robottle (Fight)?
+5 Rules to Robottle
+1 ) Players and enemies can use up to three Medarots in a Robottle.
+2 ) When a Medarot’s Head is destroyed, it will cease functioning no matter how much Health Points (HP) its Right Arm, Left Arm, Legs still have.
+3 ) In a team Robottle, losing the leader (the uppermost Medarot on the battle screen) means losing the battle.
+4 ) Each Robottle has a time limit. When the time is up, the referee will give a fair judgment to decide the winner. You can configure the Battle Time Limit in the Options.
+5 ) You can take a Part from your opponent if you win. If you lose, you have to give up one of your Parts to your opponent.
+
+Note: The Health Points (HP) of all Parts are restored at the end of each Robottle.
+
+
+page 16
+
+Robottle Preparations
+Note: You cannot change your Medals and Parts during an enemy encounter. Make sure to assemble your favorite Medarots beforehand.
+
+When you encounter an enemy, a screen similar to the image below will be displayed.
+
+Enemy and Field Display
+The field is shown in the middle. The enemy’s photo is displayed to the right, and below it (the ! sign) is the number of Medarots they have.
+
+Medarots Selection Screen
+1 ) Select a Medarot as the leader. You lose a Robottle when your leader is destroyed, so make sure to choose wisely.
+2 ) Pick two more Medarots for the team. (You can still take part in a Robottle with only one Medarot.)
+3 ) Choose Begin or press Start to commence robattle.
+
+If you have your three favorite Medarots in a column to the left side of the screen, you can simply press A Button to complete your preparations.
+
+
+page 17
+
+Robottle Begins!
+1 ) Choose which Part to perform an attack with for each of your Medarots.
+2 ) After your selection, the Medarots will move towards the middle of the screen in tandem. They will perform an attack the moment they reach the center line.
+3 ) After attacking, the Medarots will return to the starting point (left side of the screen) where you can select your next action.
+
+Note: Medarots are operated with an AI that will determine which enemy and Part to attack. (Players cannot choose their targets.)
+
+Robottle Tips
+1 ) Medarots have compatibilities between Medals and Parts. A good compatibility will improve the abilities of both components, while a bad compatibility will dampen their true strength.
+2 ) Spamming normal attacks (Shoot, Strike) is not the way of a Robottle expert. Make use of teamwork. Defend, heal, and coordinate between the three Medarots to pave your way to victory!
+
+
+page 18
+
+⑨ Trading and Versus Through Game Link
+Medarot can be paired with a Game Link cable (sold separately) to play with your friends. You can trade or take each other’s Medals and Parts through Robottles. To play with a friend: connect two Game Boys with a Game Link cable before selecting Continue in the menu screen, then enter a Convenience Store and interact (press the A button) with the Game Link Helper in the top right corner of the store.
+
+There are three things that you can enjoy with Game Link.
+
+Practice Robottle: Tests your beloved Medarots against a fellow fighter in a Robottle. You will not obtain or lose any Medals or Parts in this mode, so you can simply enjoy the fight.
+1 ) Highlight Practice Robottle before pressing A Button.
+2 ) The battle will commence when your opponent is ready.
+
+
+page 19
+
+Official Robottle: Tests your beloved Medarots against a fellow fighter in a Robottle. You can win a Medal or one of your opponent’s Parts if you win.
+1 ) Highlight Official Robottle before pressing A Button.
+2 ) The battle will commence when your opponent is ready.
+3 ) The Roulette Screen will be displayed when the Robottle ends.
+4 ) The roulette will decide which Part or Medal you will get or lose.
+
+Note: You cannot take part in an Official Robottle if you do not own two or more complete Medarots.
+
+
+page 20
+
+Trade Parts: Trades the Parts you own with your friends.
+1 ) Highlight Trade Parts before pressing A Button.
+2 ) The Parts Selection Screen will be displayed where you can select which Part to trade with.
+
+Note: You cannot Trade Parts if you do not own at least one complete Medarot.
+
+End Communications: Cancels the Game Link mode and returns to the field map.
+
+※ Secret Intelligence from Dr. Medarot
+By trading Parts through Game Link, there is a chance they will transform into new Parts! Some of them can’t be obtained anywhere else, so make sure to try things out yourselves!
+
+
+page 21
+
+⑩ Friends in Hikaru’s Circle?!
+Kirara
+Hikaru’s childhood friend. She is smart, and Hikaru respects her for that. Her Medarot is Sailormate, which excels in technique.
+
+Yuuki
+Hikaru’s rival. Son of a multi-millionaire and is very conceited. His Medarot is Rollstar, a speed-type robot with beam attacks.
+
+Iseki
+The leader of the Bad Kid Trio. She is strongwilled and will not hold back from scolding her underlings. Her Medarot is Magentacat, which uses electric attacks.
+
+Yanma
+He likes to show off his knowledge about things. His Medarot is Cyandog, which heavily uses guns.
+
+
+page 22
+
+Kubota
+He is sluggish and dazes off quite often. His Medarot is Yellowturtle, a heavy-type with lasers.
+
+Paddy
+A quiet rich lady. She doesn’t listen to what people tell her. Her Medarot is Betty Bear, which can control gravity.
+
+⑪ The Town Where Hikaru Lives
+School: The grade school that Hikaru and Kirara go to. The school term is about to end, so let's go check it out! You might be able to obtain various useful information from the teachers and other students.
+Convenience Store: Sells Medarot Parts. They also sell Medals, but they are always out of stock due to their popularity. Interact with the Game Link Device inside whenever you want to play with your friends through a Game Link cable.
+Antiques: Sells rare Parts that are not available in the Convenience Store.
+Select Headquarters: The headquarters of Select Force, which is currently under construction. Hikaru’s father is the main architect who manages the construction.
+Medarot Laboratory: Experiments on Medarots are always held here. You might get something good if you help them!
+
+
+page 23
+
+⑫ Medarots Introduction
+WARRIOR
+Bipedal
+Warrior-Type Robot
+
+UNICORN
+Multi-legged
+Unicorn-Type Robot
+
+
+page 24
+DRAGON
+Hover
+Dragon-Type Robot
+
+KNIGHT
+Chariot
+Knight-Type Robot
+
+
+page 25
+
+1/24 MEDAROT SERIES
+KABUTO VERSION
+MEDAROT
+
+Imagineer Co., Ltd.
+〒163-0715 Tokyo Shinjuku-ku Nishi-Shinjuku 2-7-1 Shinjuku Daiichi Seimei Building 15th floor
+TEL: 03-3343-8911 (Rep) / FAX: 03-3343-8915
+User Support Desk
+TEL: 03-3343-8900 Mon-Fri excluding public holidays 10:00-11:45, 12:45-17:00
+
+*We cannot answer any inquiries regarding the game content.
+
+Original / Character Design: HORUMA Rin
+Production Cooperation: (Ltd.) Kodansha Comic BomBom Editorial Department
+©1997 Imagineer Co., Ltd. ©1997 Natsume Co., Ltd.
+
+FOR SALE AND USE IN JAPAN ONLY AND COMMERCIAL RENTAL PROHIBITED.
+Game Boy is a registered trademark of Nintendo.
