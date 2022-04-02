@@ -45,6 +45,7 @@ If all you care about is playing the patch, then refer to the instructions at th
 
 The patch is totally playable from start to finish, but if you'd like to submit any fixes we missed or submit a text correction, feel free to submit a Pull Request or join the [Medabots Discord](https://discord.gg/4hHxKSX).
 
+If you'd like to locally edit test your changes, you can directly edit files under the text/ folder and rebuild. If you prefer to use the spreadsheet for editing, setup a virtualenv and restore the packages with pip and use the xlsx2csv and xlsx2list scripts (usage is in the file comments).
 
 # Contributors
 
