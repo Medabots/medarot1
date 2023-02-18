@@ -197,7 +197,7 @@ Pointer[#version],Original,Translated
 0x74186,かてると おもうんなら<4E>かかってきな!<*2>,Come at me if you think you can win!<*2>
 0x74188,メダロット もってるな<4E>よし やろうぜ<*2>,"You have a Medabot, right?<49>Let's battle!<*2>"
 0x7418a,てかげん しないじゃんじゃん<*2>,"I won't go easy on you, dude.<*2>"
-0x7418c,わしと ボロトルせんか？<*2>,Will you Borottle with me?<*2>
+0x7418c,わしと ボロトルせんか？<*2>,Will you borattle with me?<*2>
 0x7418e,あたしと ろぼとる しない？<*2>,Wanna wobottle wit me?<*2>
 0x74190,ロボトルするって カンジーッ<*2>,"Like, let's robattle, y'know?<*2>"
 0x74192,ふふふっ そのパーツ いただくわっ<*2>,"Hmhmhm, I'll be taking those parts!<*2>"
@@ -261,7 +261,7 @@ Pointer[#version],Original,Translated
 0x74206,このままでは すまさないからな<*2>,You haven't seen the last of me!<*2>
 0x74208,チェッ シロウトだと<4E>おもったんだけどな<*2>,"Aww, I thought you were a beginner.<*2>"
 0x7420a,これくらいで かんべんして<4E>やるじゃんじゃん<*2>,"I'll let you off easy this time, dude!<*2>"
-0x7420c,ボトルロは むずかしいのぉ<*2>,Bottleros are hard to win...<*2>
+0x7420c,ボトルロは むずかしいのぉ<*2>,battleros are hard to win...<*2>
 0x7420e,うえーーーっん まけたでチュ<*2>,"Waaaah, I lost!<*2>"
 0x74210,なんか ゆるせないって カンジーッ<*2>,"I, like, won't forgive you for this!<*2>"
 0x74212,あら ぼうや つよいじゃない<*2>,"My, you're a strong one!<*2>"
@@ -437,7 +437,7 @@ Pointer[#version],Original,Translated
 0x74366,<&BUF01> は<4E>きのうかいふくを おこなった!<S3c><*4>,<&BUF01> tried to restore function!<S3c><*4>
 0x74368,ねらったパーツは<4E>ダメージを うけていません!<S3c><*4>,The targeted part is not damaged!<S3c><*4>
 0x7436a,ねらったパーツは<4E>きのうていし していません!<S3c><*4>,The targeted part is not destroyed!<S3c><*4>
-0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Accuracy bonuses were reduced!<S3c><*4>
+0x7436c,さくてきで あがったせいこうリつを<4E>さげた!<S3c><*4>,Success rate bonuses were reduced!<S3c><*4>
 0x7436e,<&BUF01> は<4E>あたまで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its head!<S3c><*4>
 0x74370,<&BUF01> は<4E>みぎうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its right arm!<S3c><*4>
 0x74372,<&BUF01> は<4E>ひだリうでで ぼうぎょした!!<S3c><*4>,<&BUF01> defended with its left arm!<S3c><*4>
