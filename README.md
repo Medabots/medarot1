@@ -2,7 +2,7 @@
 
 # Obtaining/Applying the Patch
 
-**NOTE:** The versions marked '-portraits' are in development and not release ready yet, play the non-portrait builds for the most stable experience.
+**NOTE:** The versions marked '-portraits' introduce portraits. They help understand the flow of conversation in the games a lot better, but there may still be some lines that could use them that currently don't have them. Please report them if you find any!
 
 1. Obtain the original ROM for the Medarot 1 version you want (the md5 hashes are below)
 1. Head to the [Latest release](https://github.com/Medabots/medarot1/releases/latest) page and grab the .ips file for your preferred version
