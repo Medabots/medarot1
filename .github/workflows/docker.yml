@@ -46,7 +46,7 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          file: '.github/workflows/Dockerfile'
+          file: '.github/Dockerfile'
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             RGBDS_REPOSITORY=${{ env.RGBDS_REPOSITORY }}

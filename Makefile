@@ -221,6 +221,26 @@ $(BASE_BIN_FILE)_%.$(BIN_TYPE): $(DIALOG_FILES) $(BUILD)/buffer_constants.$(SOUR
 $(CREDITS_BIN_FILE): $(CREDIT_FILES) $(SRC)/story/credits.asm | $(BUILD)
 	$(PYTHON) scripts/credits2bin.py
 
+
+# TRANSLATION_SHEET="~/sheet.xlsx" make dump_xlsx
+.PHONY: dump_xlsx_dialog dump_xlsx_ptrlist dump_xlsx_glossary dump_xlsx_soundeffects
+dump_xlsx: dump_xlsx_dialog dump_xlsx_ptrlist dump_xlsx_lists dump_xlsx_credits dump_text_version
+
+dump_xlsx_dialog: $(DIALOG)
+	$(PYTHON) $(SCRIPT)/xlsx2csv.py "$(TRANSLATION_SHEET)" "$(DIALOG)" Default StoryText1 StoryText2 StoryText3 Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 BattleText
+
+dump_xlsx_ptrlist: $(PTRLISTS_TEXT)
+	$(PYTHON) $(SCRIPT)/xlsx2list.py "$(TRANSLATION_SHEET)" "$(PTRLISTS_TEXT)" Default Attacks Attributes Medarotters PartDescriptions PartTypes Skills
+
+dump_xlsx_lists: $(LISTS_TEXT)
+	$(PYTHON) $(SCRIPT)/xlsx2list.py "$(TRANSLATION_SHEET)" "$(LISTS_TEXT)" Default HeadParts RightParts LeftParts LegParts Items Medarots Medals
+
+dump_xlsx_credits: $(CREDITS)
+	$(PYTHON) $(SCRIPT)/xlsx2csv.py "$(TRANSLATION_SHEET)" $(CREDITS) Default Credits
+
+dump_text_version: $(PATCH_TEXT)
+	$(PYTHON) $(SCRIPT)/xlsx_dump_version.py "$(TRANSLATION_SHEET)" $(PATCH_TEXT)/text_version.txt
+
 dump: dump_text dump_tilemaps dump_lists dump_ptrlists dump_credits
 
 dump_text:
