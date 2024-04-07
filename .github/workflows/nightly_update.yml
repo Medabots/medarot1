@@ -1,0 +1,81 @@
+name: Nightly Update (EN)
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # run at 2 AM UTC
+
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    container: ghcr.io/medabots/medarot1:tr_EN
+
+    steps:
+      - name: List versions
+        run: |
+          git --version
+          python3 --version
+          rgbasm --version
+          rgblink --version
+          rgbgfx --version
+
+      - name: Checkout main repository
+        uses: actions/checkout@v2
+        with:
+          path: 'medarot1'
+
+      - name: Checkout baserom repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ secrets.BASEROM1_REPOSITORY }}
+          ssh-key: ${{ secrets.BASEROM1_KEY }}
+          path: 'baserom'
+
+      - name: Copy baserom into main repository
+        run: |
+          cp $GITHUB_WORKSPACE/baserom/*.gb $GITHUB_WORKSPACE/medarot1
+
+      - name: Get Tag Info
+        working-directory: 'medarot1'
+        run: |
+          git fetch --tags --all
+          echo "TAG_NAME=`git rev-parse --abbrev-ref HEAD`" >> $GITHUB_ENV
+          echo "LATEST_TAG_NAME=`git tag --list --sort=-authordate \"\`git name-rev --name-only HEAD\`+nightly.*\" | head -n 1`" >> $GITHUB_ENV
+          echo "NIGHTLY_TAG_NAME=`git rev-parse --abbrev-ref HEAD`+nightly.`date +%Y%m%d`" >> $GITHUB_ENV
+
+      - name: Get latest text from source
+        working-directory: 'medarot1'
+        env:
+          TRANSLATION_SHEET: sheet.xlsx
+        run: |
+          wget -q --no-check-certificate "${{ secrets.TRANSLATION_SHEET_URL_SOURCE }}" -O $TRANSLATION_SHEET
+          make -j dump_xlsx
+          git status --porcelain
+
+      - name: Push and release if there are changes
+        working-directory: 'medarot1'
+        run: |
+          [ -z "$(git status --porcelain)" ] && git diff --exit-code $LATEST_TAG_NAME && exit 0
+
+          make -j all
+
+          git config user.email "${{ secrets.USER_EMAIL }}"
+          git config user.name "$GITHUB_ACTOR"
+
+          git commit -am "Nightly text update - `date +%Y%m%d`" || echo "No text changes"
+
+          mkdir patch
+          ips_util create baserom_kabuto.gb medarot_kabuto.gb -o patch/m1kabuto-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata.gb -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+          ips_util create baserom_kabuto.gb medarot_kabuto_portraits.gb -o patch/m1kabuto-portraits-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata_portraits.gb -o patch/m1kuwagata-portraits-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+          cp build/patch/version.txt patch/version.txt
+          sha1sum medarot_kabuto.gb > patch/kabuto.sha1
+          sha1sum medarot_kuwagata.gb > patch/kuwagata.sha1
+          sha1sum medarot_kabuto_portraits.gb > patch/kabuto_portraits.sha1
+          sha1sum medarot_kuwagata_portraits.gb > patch/kuwagata_portraits.sha1
+
+          git push
+
+          ghr -t ${{ secrets.GITHUB_TOKEN }} -u $GITHUB_REPOSITORY_OWNER -r medarot1 -delete $NIGHTLY_TAG_NAME ./patch/
