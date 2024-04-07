@@ -64,10 +64,10 @@ jobs:
         working-directory: 'medarot1'
         run: |
           mkdir patch
-          ips_util create baserom_kabuto.gbc medarot_kabuto.gbc -o patch/m1kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
-          ips_util create baserom_kuwagata.gbc medarot_kuwagata.gbc -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
-          ips_util create baserom_kabuto.gbc medarot_kabuto_portraits.gbc -o patch/m1kabuto-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
-          ips_util create baserom_kuwagata.gbc medarot_kuwagata_portraits.gbc -o patch/m1kuwagata-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kabuto.gb medarot_kabuto.gb -o patch/m1kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata.gb -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kabuto.gb medarot_kabuto_portraits.gb -o patch/m1kabuto-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata_portraits.gb -o patch/m1kuwagata-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
           cp build/patch/version.txt patch/version.txt
           sha1sum medarot_kabuto.gb > patch/kabuto.sha1
           sha1sum medarot_kuwagata.gb > patch/kuwagata.sha1
