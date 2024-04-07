@@ -2,7 +2,7 @@ name: Create a Docker image
 
 on:
   push:
-    branches: ['master']
+    branches: ['tr_EN']
     paths:
       - '.github/Dockerfile'
       - '.github/workflows/docker.yml'
@@ -21,7 +21,7 @@ env:
   PYTHON_VERSION_NUM: 3.10.6
 
 jobs:
-  build-and-push-image:
+  docker-update:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -46,7 +46,7 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          file: '.github/Dockerfile'
+          file: '.github/workflows/Dockerfile'
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             RGBDS_REPOSITORY=${{ env.RGBDS_REPOSITORY }}
