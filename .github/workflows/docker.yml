@@ -1,0 +1,56 @@
+name: Create a Docker image 
+
+on:
+  push:
+    branches: ['master']
+    paths:
+      - '.github/Dockerfile'
+      - '.github/workflows/docker.yml'
+  # Allows running manually
+  workflow_dispatch:
+
+env:
+  # Image metadata
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  # Dockerfile arguments
+  RGBDS_REPOSITORY: https://github.com/gbdev/rgbds.git
+  RGBDS_VERSION: v0.7.0
+  OPENPYXL_REPOSITORY: https://github.com/VariantXYZ/openpyxl-variant.git
+  OPENPYXL_VERSION: 873cc3dda43578c098843ebe930325c879d20baf
+  PYTHON_VERSION_NUM: 3.10.6
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          file: '.github/Dockerfile'
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            RGBDS_REPOSITORY=${{ env.RGBDS_REPOSITORY }}
+            RGBDS_VERSION=${{ env.RGBDS_VERSION }}
+            OPENPYXL_REPOSITORY=${{ env.OPENPYXL_REPOSITORY }}
+            OPENPYXL_VERSION=${{ env.OPENPYXL_VERSION }}
+            PYTHON_VERSION_NUM=${{ env.PYTHON_VERSION_NUM }}
