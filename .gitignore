@@ -2,6 +2,7 @@
 *.sav
 *.sgm
 build/
+/patch/
 *.sn*
 *.sna
 *.o

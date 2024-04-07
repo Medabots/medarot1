@@ -1,0 +1,88 @@
+# Simply execute 'make' to verify things still build
+
+name: Build All
+
+on:
+  push:
+    branches:
+      - master
+      - 'tr_*'
+
+  # Allows running manually
+  workflow_dispatch:
+    inputs:
+      use-latest-translations:
+        required: false
+        default: true
+        description: 'Use latest translations from shared Google Docs sheet (default: true)'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/medabots/medarot1:tr_EN
+
+    steps:
+      - name: List versions
+        run: |
+          git --version
+          python3 --version
+          rgbasm --version
+          rgblink --version
+          rgbgfx --version
+
+      - name: Checkout main repository
+        uses: actions/checkout@v2
+        with:
+          path: 'medarot1'
+
+      - name: Checkout baserom repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ secrets.BASEROM1_REPOSITORY }}
+          ssh-key: ${{ secrets.BASEROM1_KEY }}
+          path: 'baserom'
+
+      - name: Copy baserom into main repository
+        run: |
+          cp $GITHUB_WORKSPACE/baserom/*.gb $GITHUB_WORKSPACE/medarot1
+
+      - name: Get latest text from source
+        if: github.event.inputs.use-latest-translations == 'true'
+        working-directory: 'medarot1'
+        env:
+          TRANSLATION_SHEET: sheet.xlsx
+        run: |
+          wget -q --no-check-certificate "${{ secrets.TRANSLATION_SHEET_URL_SOURCE }}" -O $TRANSLATION_SHEET
+          make -j dump_xlsx
+
+      - name: Make all
+        working-directory: 'medarot1'
+        run: |
+          make -j all
+
+      - name: Generate IPS files
+        working-directory: 'medarot1'
+        run: |
+          mkdir patch
+          ips_util create baserom_kabuto.gb medarot_kabuto.gb -o patch/m1kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata.gb -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kabuto.gb medarot_kabuto_portraits.gb -o patch/m1kabuto-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kuwagata.gb medarot_kuwagata_portraits.gb -o patch/m1kuwagata-portraits-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          cp build/patch/version.txt patch/version.txt
+          sha1sum medarot_kabuto.gb > patch/kabuto.sha1
+          sha1sum medarot_kuwagata.gb > patch/kuwagata.sha1
+          sha1sum medarot_kabuto_portraits.gb > patch/kabuto_portraits.sha1
+          sha1sum medarot_kuwagata_portraits.gb > patch/kuwagata_portraits.sha1
+
+      - name: 'Archive Patch'
+        uses: actions/upload-artifact@v2
+        with:
+          name: ips_files
+          path: medarot1/patch/*
+          retention-days: 1
+
+      - name: Verify there are no uncommitted changes
+        if: github.event.inputs.use-latest-translations != 'true'
+        working-directory: 'medarot1'
+        run: |
+          [ -z "$(git status --porcelain)" ] && exit 0 || exit 1
