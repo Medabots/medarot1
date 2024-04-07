@@ -39,7 +39,7 @@ jobs:
 
       - name: Copy baserom into main repository
         run: |
-          cp $GITHUB_WORKSPACE/baserom/*.gbc $GITHUB_WORKSPACE/medarot1
+          cp $GITHUB_WORKSPACE/baserom/*.gb $GITHUB_WORKSPACE/medarot1
 
       - name: Make dump
         working-directory: 'medarot1'
