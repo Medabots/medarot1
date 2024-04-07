@@ -51,3 +51,23 @@ RUN git clone $RGBDS_REPOSITORY ~/rgbds && \
     make -C ~/rgbds install && \
     rm -rf ~/rgbds && \
     rgbasm --version
+
+# install ghr
+RUN wget https://github.com/tcnksm/ghr/releases/download/v0.14.0/ghr_v0.14.0_linux_amd64.tar.gz && \
+    tar -xvzf ghr_v0.14.0_linux_amd64.tar.gz && \
+    mv ghr_v0.14.0_linux_amd64/ghr /usr/local/bin
+
+# install ips-util
+RUN python3 -m pip install ips-util
+
+# install pyspellcheck
+RUN python3 -m pip install pyspellchecker dataclasses
+
+# install openpyxl
+RUN git clone $OPENPYXL_REPOSITORY ~/openpyxl && \
+    cd ~/openpyxl && \
+    git checkout $OPENPYXL_VERSION && \
+    python3 setup.py build && \
+    python3 setup.py install && \
+    cd - && \
+    rm -rf ~/openpyxl
