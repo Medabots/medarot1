@@ -159,10 +159,10 @@ ifdef SHORT_HASH
 	echo "${SHORT_HASH}" >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
 endif
 	date +%Y-%m-%d >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
-ifndef PIPELINE_NUMBER
+ifndef GITHUB_RUN_NUMBER
 	echo 'Build CUSTOM' >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
 else
-	echo 'Build ${PIPELINE_NUMBER}' >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
+	echo 'Build ${GITHUB_RUN_NUMBER}' >> $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE)
 endif
 	$(PYTHON) $(SCRIPT)/patchtext2bin.py $(PATCH_TEXT_OUT)/version.$(TEXT_TYPE) $@
 
