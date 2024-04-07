@@ -13,8 +13,8 @@ on:
     inputs:
       use-latest-translations:
         required: false
-        default: false
-        description: 'Use latest translations from shared Google Docs sheet (default: false)'
+        default: true
+        description: 'Use latest translations from shared Google Docs sheet (default: true)'
 
 jobs:
   build:
