@@ -46,7 +46,7 @@ jobs:
       - name: Get Tag Info
         working-directory: 'medarot1'
         run: |
-          git fetch --tags --all
+          git fetch --tags --all -f
           echo "TAG_NAME=`git rev-parse --abbrev-ref HEAD`" >> $GITHUB_ENV
           echo "LATEST_TAG_NAME=`git tag --list --sort=-authordate \"\`git name-rev --name-only HEAD\`+nightly.*\" | head -n 1`" >> $GITHUB_ENV
           echo "NIGHTLY_TAG_NAME=`git rev-parse --abbrev-ref HEAD`+nightly.`date +%Y%m%d`" >> $GITHUB_ENV
@@ -64,7 +64,10 @@ jobs:
       - name: Push and release if there are changes
         working-directory: 'medarot1'
         run: |
-          [ -z "$(git status --porcelain)" ] && git diff --exit-code $LATEST_TAG_NAME -- text/ game/ && exit 0
+          echo "TAG_NAME=$TAG_NAME"
+          echo "LATEST_TAG_NAME=$LATEST_TAG_NAME"
+          echo "NIGHTLY_TAG_NAME=$NIGHTLY_TAG_NAME"
+          [ -z "$(git status --porcelain)" ] && [ -n "$LATEST_TAG_NAME" ] && git diff --exit-code $LATEST_TAG_NAME -- text/ game/ && exit 0
 
           make -j all
 
@@ -85,4 +88,4 @@ jobs:
 
           git push
 
-          ghr -t ${{ secrets.GITHUB_TOKEN }} -u $GITHUB_REPOSITORY_OWNER -r medarot1 -delete $NIGHTLY_TAG_NAME ./patch/
+          ghr -t ${{ secrets.GITHUB_TOKEN }} -c `git rev-parse HEAD` -u $GITHUB_REPOSITORY_OWNER -r medarot1 -delete $NIGHTLY_TAG_NAME ./patch/
