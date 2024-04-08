@@ -1,4 +1,4 @@
-name: Nightly Update (EN)
+name: Nightly Update
 
 on:
   schedule:
@@ -10,6 +10,12 @@ jobs:
   update:
     runs-on: ubuntu-latest
     container: ghcr.io/medabots/medarot1:tr_EN
+
+    strategy:
+      matrix:
+        branch:
+          - tr_EN
+          - tr_EN-US
 
     steps:
       - name: List versions
@@ -24,6 +30,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: 'medarot1'
+          ref: ${{ matrix.branch }}
 
       - name: Checkout baserom repository
         uses: actions/checkout@v2
@@ -57,14 +64,9 @@ jobs:
       - name: Push and release if there are changes
         working-directory: 'medarot1'
         run: |
-          [ -z "$(git status --porcelain)" ] && git diff --exit-code $LATEST_TAG_NAME && exit 0
+          [ -z "$(git status --porcelain)" ] && git diff --exit-code $LATEST_TAG_NAME -- text/ game/ && exit 0
 
           make -j all
-
-          git config user.email "${{ secrets.USER_EMAIL }}"
-          git config user.name "$GITHUB_ACTOR"
-
-          git commit -am "Nightly text update - `date +%Y%m%d`" || echo "No text changes"
 
           ips_util create baserom_kabuto.gb medarot_kabuto.gb -o patch/m1kabuto-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
           ips_util create baserom_kuwagata.gb medarot_kuwagata.gb -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
@@ -75,6 +77,11 @@ jobs:
           sha1sum medarot_kuwagata.gb > patch/kuwagata.sha1
           sha1sum medarot_kabuto_portraits.gb > patch/kabuto_portraits.sha1
           sha1sum medarot_kuwagata_portraits.gb > patch/kuwagata_portraits.sha1
+
+          git config user.email "${{ secrets.USER_EMAIL }}"
+          git config user.name "$GITHUB_ACTOR"
+
+          git commit -am "Nightly text update - `date +%Y%m%d`" || echo "No text changes"
 
           git push
 
