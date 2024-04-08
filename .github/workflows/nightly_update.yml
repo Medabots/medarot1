@@ -47,8 +47,9 @@ jobs:
       - name: Get latest text from source
         working-directory: 'medarot1'
         env:
-          TRANSLATION_SHEET: sheet.xlsx
+          TRANSLATION_SHEET: patch/sheet.xlsx
         run: |
+          mkdir patch
           wget -q --no-check-certificate "${{ secrets.TRANSLATION_SHEET_URL_SOURCE }}" -O $TRANSLATION_SHEET
           make -j dump_xlsx
           git status --porcelain
@@ -65,7 +66,6 @@ jobs:
 
           git commit -am "Nightly text update - `date +%Y%m%d`" || echo "No text changes"
 
-          mkdir patch
           ips_util create baserom_kabuto.gb medarot_kabuto.gb -o patch/m1kabuto-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
           ips_util create baserom_kuwagata.gb medarot_kuwagata.gb -o patch/m1kuwagata-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
           ips_util create baserom_kabuto.gb medarot_kabuto_portraits.gb -o patch/m1kabuto-portraits-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
