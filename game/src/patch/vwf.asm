@@ -509,7 +509,7 @@ VWFDrawCharLoop::
   or a
   jr nz, .notSpace
 
-  ; Treat spaces as 49 control codes if they preceed a word that will overflow the current line.
+  ; Treat spaces as 49 control codes if they precede a word that will overflow the current line.
 
   ld a, [VWFNextWordLength]
   ld d, a
