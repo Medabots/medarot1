@@ -132,11 +132,11 @@ Pointer[#version],Original,Translated
 0x68104,きょうで おわかれね<4C>パディちゃんのこと<4E>わすれちゃいやよ,<@Paddy>I guess this is farewell.<49>I hope you won't forget about lil' old me.
 0x68106,それじゃあ せんせいは プールで<4E>きみたちを まってるからな,"<@GymSad>With that, I'll be waiting for all of you at the pool."
 0x68108,=0x68106,=0x68106
-0x6810a,なかなか やるじゃない<4E>すこしだけ みなおしちゃったな<4C>じんじゃで こうしきの<4E>トーナメントが ひらかれるんだけど<4C><&NAME>も<4E>さんかするんでしょ？,"<@Kirara>Impressive, you're better than I thought.<4C>There's an official tournament being held at the Shrine.<4C><@Kirara>Do you plan on participating, <&NAME>?"
+0x6810a,なかなか やるじゃない<4E>すこしだけ みなおしちゃったな<4C>じんじゃで こうしきの<4E>トーナメントが ひらかれるんだけど<4C><&NAME>も<4E>さんかするんでしょ？,"<@Kirara>Impressive, you're better than I thought.<4C>There's a local tournament being held at the Shrine.<4C><@Kirara>Do you plan on participating, <&NAME>?"
 0x6810c,こんかいの きみのかつやくは<4E>しんぶんで よませてもらったよ<4C>ロボロボだんも ぼくがいったときに<4E>あらわれなくて せいかいだったね<4C>もし ぼくが あいてをしたら<4E>にげかえることも できなかったさ,"<@Yuuki>You were mentioned in the newspaper.<4C>The Rubberobo Gang was right to stay in hiding while I was in town. <4C>If they had tried to fight me, they wouldn't have stood a chance."
 0x6810e,<&NAME>ちゃん おげんき？<4C>わたくしも おげんきよ,"<@Paddy>How are you feeling, <&NAME>? I'm feeling great!"
 0x68110,しんぶんに のったからって<4E>ちょうしに のってんじゃないよ,<@IsekiSad>Don't act all high and mighty just because you're in the newspaper.
-0x68112,・・・ふん<4C>ちょうないたいかいでは<4E>ボコボコにしてやる,<@Kubota>...Hmph. <4C>I'll beat you to a pulp in the town tournament.
+0x68112,・・・ふん<4C>ちょうないたいかいでは<4E>ボコボコにしてやる,<@Kubota>...Hmph. <4C>I'll beat you to a pulp in the local tournament.
 0x68114,オレだって ロボロボだんの<4E>ひとリや ふたリ<4C>でも 3にんは かんべんしてくれよな,"<@Yanma>I can take one or two Rubberobo members, but...<4C><@YanmaSad>Three was too much..."
 0x68116,みんな げんきかっ!？<4C>せんせいは げんきだぞっ!!,<@Gym>Is everyone happy!? I'm happy!!
 0x68118,やばんな メダロットたちだ<4C>みたまえ ぼくのメダロットを!,<@Yuuki>This is terrible. Look at the Medabots!<4C>Look at MY Medabot!
@@ -186,7 +186,7 @@ Pointer[#version],Original,Translated
 0x68170,はなび いらんか？,Would you like some fireworks?
 0x68172,わたあめ おいしいな,Cotton candy is so good.
 0x68174,かえったら はなびやるんだ,"When I get home, I'll set off some fireworks."
-0x68176,ここで ロボトルの<4E>ちょうないたいかいが あるんだよ,The city tournament is held here.
+0x68176,ここで ロボトルの<4E>ちょうないたいかいが あるんだよ,The local tournament is held here.
 0x68178,しんじるものは すくわれるので<4E>あーリます<4C>おさいせんに<4E>50円はらいますか？<*4>,Those who have faith will be saved.<4C>Will you please donate ¥50 as an offering?<*4>
 0x6817a,カラン カラン<4E>いいことが あリますように,*clang* *clang*<49>May your life be blessed with fortune....
 0x6817c,=0x6817a,=0x6817a
@@ -198,7 +198,7 @@ Pointer[#version],Original,Translated
 0x68188,かたづけてやる,<@Kubota>I'll mop the floor with you!
 0x6818a,また まけた・・・,<@KubotaSad>I lost again...
 0x6818c,わたくしも まいリましたのよ,<@PaddySad>It seems I have also lost.
-0x6818e,<&NAME>ちゃん<4E>つよいじゃない<4C>ゆうしょうは <&NAME>くん<4E>おめでとうございます!<4C>つぎは ちくたいかいです<4C>メダロットしゃの ちか1かいで<4E>また おあいしましょう,"<@Paddy>You're very strong, <&NAME>.<4C>Congratulations on the championship, <&NAME>!<4C>The next tournament is the District Tournament. I'll see you at the Medabots Corporation's basement."
+0x6818e,<&NAME>ちゃん<4E>つよいじゃない<4C>ゆうしょうは <&NAME>くん<4E>おめでとうございます!<4C>つぎは ちくたいかいです<4C>メダロットしゃの ちか1かいで<4E>また おあいしましょう,"<@Paddy>You're very strong, <&NAME>.<4C>Congratulations on the championship, <&NAME>!<4C>The next tournament is the district tournament. I'll see you at the Medabots Corporation's basement."
 0x68190,きょうは おもいっきリ<4E>ロボトルするロボ!<4C>ロボトルたいかいも ひさしぶリロボ<4C>うでが なるぜ<4C>あの はなしかたは!？,"I'm going to give it my all in this robattle, robo!<4C>It's also been a long time since I've been in a tournament, robo!<4C>I've gotten a lot strongah!<4C><@HikaruSad>Did you just switch speech patterns!?"
 0x68192,あれっ ロボロボだんじゃない？,<@Grunt>Huh? You're not with the Rubberobo Gang?
 0x68194,よし<4E>あとを つけてみよう<4C>ようじんのために<4E>これに きがえて・・・,<@Hikaru>All right. Now to follow them.<4C>I'll change into this just to be safe...
@@ -515,7 +515,7 @@ Pointer[#version],Original,Translated
 0x68400,ぜったいに ここはとおせないロボ,"<@Grunt>I won't let you pass, robo!"
 0x68402,いまのは なしロボ<4E>なんにも なかったロボ,"<@GruntSad>Th-that doesn't count, robo.<49>Nothing happened here, robo."
 0x68404,まちたまえ,<@Yuuki>Halt.
-0x68406,えっと・・・ だれだっけ？<4C>ライバルの にもうさくユウキだ!<4C>ロボトルのトーナメントは<4E>「ちょうないたいかい」<4C>「ちくたいかい」<4E>「ほんたいかい」の3かいある<4C>1つのたいかいを かちすすめば<4E>つぎのたいかいに すすめるんだ<4C>まずは おてほんがわリに<4E>ぼくのたたかいを みておくといい,"<@HikaruSad>Huh...? Who are you?<4C><@Yuuki>I am Yuuki Nimousaku and I am your rival!<4C>The robattle Tournament is made up of three smaller tournaments:<4C>The <f02>City Tournament<f00>,<49>the <f02>Regional Tournament<f00>,<4C>and the <f02>Main Tournament<f00>.<4C>If you progress through one tournament, you can move on to the next.<4C>Try to learn from watching me fight."
+0x68406,えっと・・・ だれだっけ？<4C>ライバルの にもうさくユウキだ!<4C>ロボトルのトーナメントは<4E>「ちょうないたいかい」<4C>「ちくたいかい」<4E>「ほんたいかい」の3かいある<4C>1つのたいかいを かちすすめば<4E>つぎのたいかいに すすめるんだ<4C>まずは おてほんがわリに<4E>ぼくのたたかいを みておくといい,"<@HikaruSad>Huh...? Who are you?<4C><@Yuuki>I am Yuuki Nimousaku and I am your rival!<4C>The robattle Tournament is made up of three smaller tournaments:<4C>The <f02>Local Tournament<f00>,<49>the <f02>District Tournament<f00>,<4C>and the <f02>National Tournament<f00>.<4C>If you progress through one tournament, you can move on to the next.<4C>Try to learn from watching me fight."
 0x68408,パパは セレクトビルに<4E>おしごとにいったわよ,Your father left for work to the Select Building.
 0x6840a,え？<4E>セレクトたいの たいちょう？<4C>こっちには だれもきてないよ,Huh? You saw the Select Corps Chief?<4C>No one came over here.
 0x6840c,=0x6840a,=0x6840a
