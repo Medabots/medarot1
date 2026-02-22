@@ -710,7 +710,7 @@ RobattleEndScreenEXP:
   ld [$c64e], a
   ret
   ld a, $19
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, [$a044]
   ld h, a
   ld a, [$a045]

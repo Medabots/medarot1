@@ -60,7 +60,7 @@ FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
   call FortuneSpinnerLoadFortuneText
   jp $659c
 FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputA
   ret z
   ld a, $01

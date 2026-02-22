@@ -77,7 +77,7 @@ RobattleStateInitialize: ; 1008b (4:408b)
   xor a
   ld [$c750], a
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp JumpIncSubStateIndexWrapper
 
 RobattleSubStateDoSomething: ; 1009b (4:409b), not sure what this does exaclty
@@ -90,7 +90,7 @@ RobattleSubStateDoSomething: ; 1009b (4:409b), not sure what this does exaclty
   ld a, $08
   ld [$c72d], a
   ld a, $21
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp JumpIncSubStateIndexWrapper
 
 RobattleInitializeSubState: ; 100b5 (4:40b5)

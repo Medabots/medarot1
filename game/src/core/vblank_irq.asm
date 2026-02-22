@@ -62,11 +62,11 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $1
   add hl, de
   ld a, [hl]
-  ld [hRegSCX], a
+  ldh [hRegSCX], a
   ld hl, $2
   add hl, de
   ld a, [hl]
-  ld [hRegSCY], a
+  ldh [hRegSCY], a
   ld hl, $0
   add hl, de
   ld a, [hl]
@@ -83,8 +83,8 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
 ; 0x517
 .asm_517: ; 517 (0:517)
   xor a
-  ld [hRegSCX], a
-  ld [hRegSCY], a
+  ldh [hRegSCX], a
+  ldh [hRegSCY], a
   jp .asm_549
 .asm_51f: ; 51f (0:51f)
   xor a
@@ -93,14 +93,14 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $c800
 .asm_529
   ld a, [hli]
-  ld [hRegSCX], a
+  ldh [hRegSCX], a
   ld a, $00
-  ld [hRegSCY], a
+  ldh [hRegSCY], a
   ld a, [$c7fc]
   ld b, a
 .asm_534
   call WaitLCDController
-  ld a, [hRegLY]
+  ldh a, [hRegLY]
   sub b
   jr c, .asm_534
   ld a, [$c7fc]

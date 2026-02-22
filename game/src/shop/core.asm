@@ -107,7 +107,7 @@ ShopBuyPriceDisplayState::
   cp b
   ret nc
   ld a, $3
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld a, [$c890]
   inc a
   ld [$c890], a
@@ -120,7 +120,7 @@ ShopBuyPriceDisplayState::
   cp $1
   ret z
   ld a, $3
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld a, [$c890]
   dec a
   ld [$c890], a
@@ -130,7 +130,7 @@ ShopBuyPriceDisplayState::
   and hJPInputB
   jr z, .bNotPressed
   ld a, $6
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld a, $c
   ld [$c7f2], a
   ld a, [$c88b]
@@ -152,7 +152,7 @@ ShopBuyPriceDisplayState::
   cp l
   jp c, $7337
   ld a, $4
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld b, $e
   ld c, $7
   ld e, $68
