@@ -72,7 +72,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld a, [hl]
   ld b, a
 .asm_509
-  ld a, [hRegLY]
+  ldh a, [hRegLY]
   sub b
   jr c, .asm_509
   ld hl, $3
