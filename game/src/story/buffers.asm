@@ -47,12 +47,12 @@ ClearBuf: ; 4efc
 SECTION "Save name screen to buf", ROMX[$5058], BANK[$1]
 NameScreenSaveToBuf: ; 5058
   ld a, $5
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld a, [$c222]
-  ld [$ff8f], a
+  ldh [$ff8f], a
   ld a, [$c223]
   add $4
-  ld [$ff8e], a
+  ldh [$ff8e], a
   call JumpTable_1b3
   di
   call JumpWaitLCDController

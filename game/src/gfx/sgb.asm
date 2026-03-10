@@ -158,9 +158,9 @@ SGB_SendPackets::
     push bc
 
     ld a, 0
-    ld [c], a
+    ldh [c], a
     ld a, $30
-    ld [c], a
+    ldh [c], a
 
     ld b, $10
 
@@ -179,10 +179,10 @@ SGB_SendPackets::
     ld a, $20
 
 .sendOneBit
-    ld [c], a
+    ldh [c], a
 
     ld a, $30
-    ld [c], a
+    ldh [c], a
 
     rr d
     dec e
@@ -192,9 +192,9 @@ SGB_SendPackets::
     jr nz, .beginByte
 
     ld a, $20
-    ld [c], a
+    ldh [c], a
     ld a, $30
-    ld [c], a
+    ldh [c], a
 
     pop bc
     dec b

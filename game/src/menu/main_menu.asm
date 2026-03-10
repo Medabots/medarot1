@@ -55,5 +55,5 @@ AdditionalSetupMainMenu: ; 80a4 (2:40a4)
   call JumpTable_204
   call DrawPlayerMoneyInMenu
   ld a, $05
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp MenuIncrementStateSubIndex

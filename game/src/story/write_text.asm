@@ -158,12 +158,12 @@ WriteChar: ; 1f96
   jp $1d11
   ; 0x1ff2
 
-hPSTextAddrHi          EQU $c640
-hPSTextAddrLo          EQU $c641
-hPSVRAMAddrHi          EQU $c642
-hPSVRAMAddrLo          EQU $c643
-hPSCurrChar            EQU $c64e
-hPSCurrCharTile        EQU $c64f
+DEF    hPSTextAddrHi          EQU $c640
+DEF    hPSTextAddrLo          EQU $c641
+DEF    hPSVRAMAddrHi          EQU $c642
+DEF    hPSVRAMAddrLo          EQU $c643
+DEF    hPSCurrChar            EQU $c64e
+DEF    hPSCurrCharTile        EQU $c64f
 SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
   ld a, h

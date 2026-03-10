@@ -1,22 +1,22 @@
 ; macro for putting a byte then a word
-dbw: MACRO
+MACRO dbw
   db \1
   dw \2
   ENDM
 
 ; macro for putting a word then a byte
-dwb: MACRO
+MACRO dwb
   dw \1
   db \2
   ENDM
 
-dbww: MACRO
+MACRO dbww
   db \1
   dw \2
   dw \3
   ENDM
   
-atfline: MACRO
+MACRO atfline
   db ((((\1 % 10000) / 1000) % 4) << 6) + ((((\1 % 1000) / 100) % 4) << 4) + ((((\1 % 100) / 10) % 4) << 2) + ((\1 % 10) % 4)
   db ((((\2 % 10000) / 1000) % 4) << 6) + ((((\2 % 1000) / 100) % 4) << 4) + ((((\2 % 100) / 10) % 4) << 2) + ((\2 % 10) % 4)
   db ((((\3 % 10000) / 1000) % 4) << 6) + ((((\3 % 1000) / 100) % 4) << 4) + ((((\3 % 100) / 10) % 4) << 2) + ((\3 % 10) % 4)

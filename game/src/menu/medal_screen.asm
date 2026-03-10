@@ -164,7 +164,7 @@ MedalScreenSetupMedalTilesetStateMachineLoadMedalTileset: ; 949a (2:549a)
   xor a
   ld [TempStateIndex], a
   ld a, $06
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp MenuIncrementStateSubIndex
 
 SECTION "Medal Screen State Machine (partial disassembly)", ROMX[$54ab], BANK[$2]

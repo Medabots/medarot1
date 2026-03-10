@@ -13,7 +13,7 @@ MenuExitAsyncRestoreTileset:: ; 975f (2:575f)
   jp MenuIncrementStateSubIndex
 MenuExitSetState:: ; 976e (2:576e)
   ld a, $05
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $01
   ld [$c600], a
   ld a, $01

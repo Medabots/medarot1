@@ -64,19 +64,19 @@ SteadyStateInfoMenu: ; 8205 (2:4205)
   ld b, $0d
   ld c, $05
   call MenuSwapCursor
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputB
   jr z, .check_inputs
   ld a, $06
-  ld [$ffa1], a
+  ldh [$ffa1], a
   call MenuIncrementStateSubIndex
   jp MenuIncrementStateSubIndex
 .check_inputs
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputA | hJPInputStart
   jp z, .no_input
   ld a, $04
-  ld [$ffa1], a
+  ldh [$ffa1], a
   ld a, [InfoMenuPosition]
   cp $00
   jr nz, .check_medals
@@ -87,7 +87,7 @@ SteadyStateInfoMenu: ; 8205 (2:4205)
   ld c, $05
   call MenuSwapCursor
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $04
   ld [MenuStateIndex], a
   ld a, $00
@@ -103,7 +103,7 @@ SteadyStateInfoMenu: ; 8205 (2:4205)
   ld c, $05
   call MenuSwapCursor
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $05
   ld [MenuStateIndex], a
   ld a, $00
@@ -119,7 +119,7 @@ SteadyStateInfoMenu: ; 8205 (2:4205)
   ld c, $05
   call MenuSwapCursor
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $06
   ld [MenuStateIndex], a
   ld a, $00
