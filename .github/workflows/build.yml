@@ -75,7 +75,7 @@ jobs:
           sha1sum medarot_kuwagata_portraits.gb > patch/kuwagata_portraits.sha1
 
       - name: 'Archive Patch'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ips_files
           path: medarot1/patch/*
