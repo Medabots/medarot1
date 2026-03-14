@@ -135,7 +135,7 @@ MenuIncrementStateCounter::
 MenuWaitLCD:: ; 85a8 (2:45a8)
   push af
 .loop
-  ld a, [hLCDStat]
+  ldh a, [hLCDStat]
   and $02
   jr nz, .loop
   pop af

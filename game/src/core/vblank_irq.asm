@@ -74,8 +74,8 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   inc b
   call HBlankWaitForLine ; We might be here early, so wait
   xor a
-  ld [hRegSCX], a
-  ld [hRegSCY], a
+  ldh [hRegSCX], a
+  ldh [hRegSCY], a
   jr .draw_scroll_return
 .draw_scroll_section
   ld a, l
@@ -91,7 +91,7 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ; Starting at c6b0, there are sets of 3 bytes indicating which line to apply the scroll until, SCX, SCY
   ld a, [hli] ; [0] = Line to stop at
   ld [hRegLYC], a
-  ld a, [hli] 
+  ld a, [hli]
   ld [hRegSCX], a ; [1] = SCX
   ld a, [hli]
   ld [hRegSCY], a ; [2] = SCY
@@ -105,14 +105,14 @@ LCDC_Status_IRQ: ; 4d0 (0:4d0)
   ld hl, $c800
 .asm_529
   ld a, [hli]
-  ld [hRegSCX], a
+  ldh [hRegSCX], a
   xor a
-  ld [hRegSCY], a
+  ldh [hRegSCY], a
   ld a, [$c7fc]
   ld b, a
 .asm_534
   call WaitLCDController
-  ld a, [hRegLY]
+  ldh a, [hRegLY]
   sub b
   jr c, .asm_534
   ld a, [$c7fc]

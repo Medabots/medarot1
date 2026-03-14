@@ -262,7 +262,7 @@ dump_tilesets: | $(TILESETS_TEXT) $(TILESET_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
-	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
+	rm -rf $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
 
 # Rules to stop Make from deleting outputs...
 list_files:  $(LISTS_FILES)

@@ -1278,7 +1278,7 @@ Func_61af: ; 61af (1:61af)
   ld [$c74e], a
   ld [$c893], a
   ld a, $1c
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp $6732
 .end
 REPT $61d7 - .end

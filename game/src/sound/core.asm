@@ -6,22 +6,22 @@ PlaySound:: ; 18000 (6:4000)
   push bc
   push de
   push hl
-  ld a, [$ffa0] ; Swap music if not 0
+  ldh a, [$ffa0] ; Swap music if not 0
   cp $01
   jp z, $44b8
   or a
   jr z, .continue_same_music
   call SwapMusic
   xor a
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jr .asm_18021
 .continue_same_music
-  ld a, [$ffa1] ; Sound effect
+  ldh a, [$ffa1] ; Sound effect
   or a
   jr z, .asm_18021
   call $4ae7
   xor a
-  ld [$ffa1], a
+  ldh [$ffa1], a
 .asm_18021
   ld a, [$ce90]
   or a
@@ -32,14 +32,14 @@ PlaySound:: ; 18000 (6:4000)
   ld a, $ff
   ld [$ce91], a
   ld a, $08
-  ld [hRegNR22], a
-  ld [hRegNR42], a
+  ldh [hRegNR22], a
+  ldh [hRegNR42], a
   xor a
-  ld [hRegNR32], a
+  ldh [hRegNR32], a
   ld a, $80
-  ld [hRegNR24], a
-  ld [hRegNR44], a
-  ld [hRegNR34], a
+  ldh [hRegNR24], a
+  ldh [hRegNR44], a
+  ldh [hRegNR34], a
   jp .asm_18168
 .asm_18047
   ld a, [$ce91]
@@ -48,12 +48,12 @@ PlaySound:: ; 18000 (6:4000)
   xor a
   ld [$ce91], a
   ld a, $8f
-  ld [hRegNR52], a
+  ldh [hRegNR52], a
   ld [$ce94], a
   ld a, $08
-  ld [hRegNR12], a
+  ldh [hRegNR12], a
   ld a, $80
-  ld [hRegNR14], a
+  ldh [hRegNR14], a
   xor a
   ld [$cda0], a
 .asm_18064
@@ -71,38 +71,38 @@ PlaySound:: ; 18000 (6:4000)
   sub $22
   jr c, .asm_1808a
   ld [$ce98], a
-  ld [hRegNR50], a
+  ldh [hRegNR50], a
   ld a, [$ce96]
   ld [$ce97], a
   jr .asm_180cc
 .asm_1808a
   xor a
-  ld [hRegNR50], a
+  ldh [hRegNR50], a
   ld [$ce96], a
   ld [$ce97], a
-  ld [hRegNR51], a
+  ldh [hRegNR51], a
   ld [$cd00], a
   ld [$cd28], a
   ld [$cd50], a
   ld [$cd78], a
   ld [$cda0], a
   ld [$cdc8], a
-  ld [hRegNR11], a
-  ld [hRegNR21], a
-  ld [hRegNR32], a
-  ld [hRegNR42], a
-  ld [hRegNR13], a
-  ld [hRegNR23], a
-  ld [hRegNR33], a
-  ld [hRegNR43], a
-  ld [hRegNR30], a
+  ldh [hRegNR11], a
+  ldh [hRegNR21], a
+  ldh [hRegNR32], a
+  ldh [hRegNR42], a
+  ldh [hRegNR13], a
+  ldh [hRegNR23], a
+  ldh [hRegNR33], a
+  ldh [hRegNR43], a
+  ldh [hRegNR30], a
   ld a, $08
-  ld [hRegNR10], a
+  ldh [hRegNR10], a
   ld a, $c0
-  ld [hRegNR14], a
-  ld [hRegNR24], a
-  ld [hRegNR34], a
-  ld [hRegNR44], a
+  ldh [hRegNR14], a
+  ldh [hRegNR24], a
+  ldh [hRegNR34], a
+  ldh [hRegNR44], a
   pop hl
   pop de
   pop bc
@@ -114,7 +114,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_1811d
   xor a
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_180e1
   ld a, [hl]
@@ -130,19 +130,19 @@ PlaySound:: ; 18000 (6:4000)
   ld hl, $5
   add hl, de
   ld a, [hli]
-  ld [hRegNR10], a
+  ldh [hRegNR10], a
   ld a, [hli]
-  ld [hRegNR11], a
+  ldh [hRegNR11], a
   inc hl
   ld a, [hli]
   or $08
-  ld [hRegNR12], a
+  ldh [hRegNR12], a
   inc hl
   ld a, [hli]
-  ld [hRegNR13], a
+  ldh [hRegNR13], a
   ld a, [hl]
   or $80
-  ld [hRegNR14], a
+  ldh [hRegNR14], a
   ld hl, $25
   add hl, de
   ld a, [hl]
@@ -166,7 +166,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_18136
   ld a, $01
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_18133
   ld a, [hl]
@@ -181,7 +181,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_1814f
   ld a, $02
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_1814c
   ld a, [hl]
@@ -196,7 +196,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_18168
   ld a, $03
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_18165
   ld a, [hl]
@@ -211,7 +211,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_18181
   ld a, $04
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_1817e
   ld a, [hl]
@@ -229,7 +229,7 @@ PlaySound:: ; 18000 (6:4000)
   or a
   jr z, .asm_181a0
   ld a, $05
-  ld [hJoypadReleased], a
+  ldh [hJoypadReleased], a
   call $41a5
   jr z, .asm_1819d
   ld a, [hl]
@@ -257,25 +257,25 @@ SwapMusic: ; 18aca (6:4aca)
   ld [$ceb4], a
   ld [$ceb5], a
   ld hl, $4c22
-  ld a, [$ffa0]
+  ldh a, [$ffa0]
   jr .asm_18b0d
   ld hl, $70e5
-  ld a, [$ffa1]
+  ldh a, [$ffa1]
   jr .asm_18b0d
 .asm_18aee
   inc bc
   inc bc
 .loop
-  ld a, [$ffa2]
+  ldh a, [$ffa2]
   inc a
-  ld [$ffa2], a
+  ldh [$ffa2], a
   cp $06
   jr nz, .asm_18b05
   ld a, $77
   ld [$ce98], a
-  ld [$ff24], a
+  ldh [$ff24], a
   ld a, $ff
-  ld [$ff25], a
+  ldh [$ff25], a
   ret
 .asm_18b05
   ld hl, $28
@@ -300,7 +300,7 @@ SwapMusic: ; 18aca (6:4aca)
   inc bc
   ld de, $cd00
   xor a
-  ld [$ffa2], a
+  ldh [$ffa2], a
 .asm_18b26
   ld a, [$ce92]
   add a
@@ -327,23 +327,23 @@ SwapMusic: ; 18aca (6:4aca)
   add hl, de
   ld [hl], $ff
   call $471e
-  ld a, [$ffa2]
+  ldh a, [$ffa2]
   cp $05
   jr nz, .asm_18b6d
   ld a, [$cd78]
   or a
   jp nz, $4baa
   xor a
-  ld [$ff20], a
-  ld [$ff21], a
-  ld [$ff22], a
+  ldh [$ff20], a
+  ldh [$ff21], a
+  ldh [$ff22], a
   ld a, $80
-  ld [$ff23], a
+  ldh [$ff23], a
   jp $4baa
 .asm_18b6d
   push bc
   ld hl, $4bc2
-  ld a, [$ffa2]
+  ldh a, [$ffa2]
   or a
   jr z, .asm_18b93
   ld b, $00
