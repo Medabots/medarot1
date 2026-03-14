@@ -80,10 +80,10 @@ ZeroTextOffset:
   ld [FlagNewLine], a
   ret
 
-hLineMax           EQU $11 ;Max offset from start of line
-hLineOffset        EQU $20 ;Bytes between line tiles
-hLineCount         EQU $04 ;Total number of lines
-hLineVRAMStart     EQU $9C00 ;Initial Tile VRAM location
+DEF    hLineMax           EQU $11 ;Max offset from start of line
+DEF    hLineOffset        EQU $20 ;Bytes between line tiles
+DEF    hLineCount         EQU $04 ;Total number of lines
+DEF    hLineVRAMStart     EQU $9C00 ;Initial Tile VRAM location
 
 SetInitialName: ; TODO: In the future, we might be able to just set this as a loop and pull it from a build obj for different language support
   ld a, $87 ; H

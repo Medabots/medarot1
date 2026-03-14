@@ -107,8 +107,8 @@ DEF    hCGB               EQU $ffe6
 DEF    hSGB               EQU $ffe7
 DEF    hDMATransfer       EQU $ffe8
 
-hSaveA             EQU $FF90
-hBank              EQU $FF91
+DEF    hSaveA             EQU $FF90
+DEF    hBank              EQU $FF91
 
 ; Joypad
 DEF    hJPInputHeldDown   EQU $ff8c

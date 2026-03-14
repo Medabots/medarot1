@@ -16,19 +16,19 @@ MACRO dbww
   dw \3
   ENDM
 
-psbc: MACRO
+MACRO psbc
   ld bc, (((\2&$FF)*$100)+((((\1-$20)>>1)&$F0)+((\1-1)&$F)))
   ENDM
 
-pshl: MACRO
+MACRO pshl
   ld hl, (((\2&$FF)*$100)+((((\1-$20)>>1)&$F0)+((\1-1)&$F)))
   ENDM
 
-psa: MACRO
+MACRO psa
   ld a, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
   ENDM
 
-psc: MACRO
+MACRO psc
   ld c, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
   ENDM
   
@@ -40,14 +40,14 @@ MACRO atfline
   db ((((\5 % 10000) / 1000) % 4) << 6) + ((((\5 % 1000) / 100) % 4) << 4) + ((((\5 % 100) / 10) % 4) << 2) + ((\5 % 10) % 4)
   ENDM
 
-Load1BPPTilesetLocal: MACRO
+MACRO Load1BPPTilesetLocal
   ld hl, \1
   ld de, \2
   ld b, (\3 - \2) / $8
   call Load1BPPTiles
   ENDM
 
-Load1BPPTileset: MACRO
+MACRO Load1BPPTileset
   ld hl, \1
   ld de, \2
   ld b, (\3 - \2) / $8

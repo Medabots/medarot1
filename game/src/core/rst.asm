@@ -15,7 +15,7 @@ SECTION "rst8",ROM0[$8] ; HackPredef
 
 SECTION "rst8Cont",ROM0[$62] ;Replaces a bunch of empty space
 Rst8Cont:
-  ld a, [hBank]
+  ldh a, [hBank]
   push af
   ld a, BANK(HackPredef)
   rst $10
@@ -28,7 +28,7 @@ Rst8Cont:
   ret
 
 SECTION "rst10, bank swap",ROM0[$10]
-  ld [hBank], a
+  ldh [hBank], a
   ld [$2000], a
   ret
 
