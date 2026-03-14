@@ -2,6 +2,7 @@
 *.sav
 *.sgm
 build/
+build.log
 /patch/
 *.sn*
 *.sna
@@ -18,3 +19,4 @@ scripts/common/__pycache__/
 
 # venv
 env/
+.venv

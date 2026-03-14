@@ -5,8 +5,8 @@
 **NOTE:** The versions marked '-portraits' introduce portraits. They help understand the flow of conversation in the games a lot better, but there may still be some lines that could use them that currently don't have them. Please report them if you find any!
 
 1. Obtain the original ROM for the Medarot 1 version you want (the md5 hashes are below)
-1. Head to the [Latest release](https://github.com/Medabots/medarot1/releases/latest) page and grab the .ips file for your preferred version
-1. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/), or online patcher like [this](https://vxyz.me/rompatcher/) to apply the IPS patch to your ROM
+2. Head to the [Latest release](https://github.com/Medabots/medarot1/releases/latest) page and grab the .ips file for your preferred version
+3. Use an IPS Patching Tool like [LunarIPS](https://www.romhacking.net/utilities/240/), or online patcher like [this](https://vxyz.me/rompatcher/) to apply the IPS patch to your ROM
 
 The '+txt.N' versions indicates the version of the translation.
 
@@ -26,14 +26,14 @@ If all you care about is playing the patch, then refer to the instructions at th
 	* Currently relies on the rgbds overlay feature as parts are disassembled and tacked on
 * Make 4.0+
 * Python 3.6 or greater, aliased to 'python3'
-* [rgbds v0.4.1+](https://github.com/rednex/rgbds)
+* [rgbds v1.x+](https://github.com/gbdev/rgbds)
 
 ## Make
 
 1. Rename the Medarot 1 KABUTO v1.1 ROM and/or Medarot 1 KUWAGATA v1.1 ROM to 'baserom_kabuto.gb' or 'baserom_kuwagata.gb' respectively and drop it in the project root
-1. Execute make (optionally pass -j), pass a specific version (kabuto or kuwagata) or 'all'
+2. Execute make (optionally pass -j), pass a specific version (kabuto or kuwagata) or 'all'
 	* The default for no arguments is 'kabuto'
-1. 'medarot_kabuto.gb' or 'medarot_kuwagata.gb' should be generated in your project root, depending on the version
+3. 'medarot_kabuto.gb' or 'medarot_kuwagata.gb' should be generated in your project root, depending on the version
 
 # Other References
 

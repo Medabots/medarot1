@@ -104,7 +104,7 @@ LinkMenuStateMachineDrawSavingTileset: ; 1c185 (7:4185)
   or a
   jr nz, .selected_no
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $01
   call JumpSetupDialog
   call $535d
@@ -173,7 +173,7 @@ LinkMenuStateMachineLoadMainTilemap:: ; 1c272 (7:4272)
   ld a, $02
   call JumpTable_309
   ld a, $05
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $08
   call JumpTable_17d
   jp JumpIncSubStateIndexWrapper
@@ -194,20 +194,20 @@ LinkMenuStateMachineMainMenuSteadyState:: ; 1c2c0 (7:42c0)
   xor a
   ld [$c740], a
   ld a, $04
-  ld [$ffa1], a
+  ldh [$ffa1], a
   jp JumpIncSubStateIndexWrapper
 .asm_1c2e2
   ld a, [$c6f0]
   ld b, a
   ld a, $00
   call LinkMenuLoadSelectorTilemap
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputA | hJPInputStart
   jp nz, $4301
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputUp
   jp nz, $431e
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputDown
   jp nz, $4338
   ret

@@ -57,9 +57,9 @@ TEXT := BattleText Snippet1 Snippet2 Snippet3 Snippet4 Snippet5 StoryText1 Story
 
 # Toolchain
 CC := rgbasm
-CC_ARGS := -Weverything
+CC_ARGS := -Weverything -Werror=obsolete
 LD := rgblink
-LD_ARGS :=
+LD_ARGS := -p 0xFF -Weverything -Werror=obsolete
 FIX := rgbfix
 FIX_ARGS :=
 CCGFX := rgbgfx
@@ -117,7 +117,7 @@ robattle_misc_ADDITIONAL := $(UNCOMPRESSED_TILESET_FILES)
 # Manually add MainDialog as a special case for map text reloading
 patch_ADDITIONAL :=
 patch_hack_ADDITIONAL := $(PATCH_TILESET_FILES) $(TILESET_OUT)/MainDialog.malias $(PATCH_BIN_FILES) $(PATCH_TEXT_TILESET_FILES)
-patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES) 
+patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES)
 patch_locations_ADDITIONAL := $(PTRLISTS_OUT)/Locations.$(SOURCE_TYPE)
 
 portraits_ADDITIONAL := $(PATCH_PORTRAIT_TILESET_FILES)
@@ -146,7 +146,7 @@ $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) \
 	$$(addprefix $(BUILD)/$$*., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$(firstword $$(subst _, ,$$*))/*.$(SOURCE_TYPE)))))) \
 	$$(addprefix $(BUILD)/$$(lastword $$(subst _, ,$$*))., $$(addsuffix .$(INT_TYPE), $$(notdir $$(basename $$(wildcard $(SRC)/$$(lastword $$(subst _, ,$$*))/*.$(SOURCE_TYPE)))))) \
 	| $(BASE)/$(ORIGINAL_PREFIX)$$(firstword $$(subst _, ,$$*)).$(ROM_TYPE)
-	
+
 	$(LD) $(LD_ARGS) -n $(OUTPUT_PREFIX)$*.$(SYM_TYPE) -m $(OUTPUT_PREFIX)$*.$(MAP_TYPE) -O $| -o $@ $^
 	$(FIX) $(FIX_ARGS) -v -k 9C -l 0x33 -m 0x13 -p 0 -r 3 $@ -t "MEDAROT $(call TOUPPER,$(CURVERSION))"
 
@@ -262,7 +262,7 @@ dump_tilesets: | $(TILESETS_TEXT) $(TILESET_BIN)
 	$(PYTHON) $(SCRIPT)/dump_tilesets.py
 
 clean:
-	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
+	rm -rf $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
 
 # Rules to stop Make from deleting outputs...
 list_files:  $(LISTS_FILES)

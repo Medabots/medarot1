@@ -46,7 +46,7 @@ SetupInitialNameScreen: ;4a9f
   call JumpPutString
   call $5213
   ld a, $1
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, $4
   call JumpTable_17d
   ld b, $5
