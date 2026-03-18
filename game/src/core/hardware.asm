@@ -19,7 +19,7 @@ SECTION "WaitLCDController", ROM0[$17cb]
 WaitLCDController:: ; 17cb (0:17cb)
   push af
 .asm_17cc
-  ld a, [hLCDStat]
+  ldh a, [hLCDStat]
   and $02
   jr nz, .asm_17cc
   pop af

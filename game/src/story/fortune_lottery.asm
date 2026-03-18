@@ -62,7 +62,7 @@ FortuneSpinnerSlowingDown: ; f9f4 (3:79f4)
   call FortuneSpinnerLoadFortuneText
   jp $659c
 FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
-  ld a, [hJPInputChanged]
+  ldh a, [hJPInputChanged]
   and hJPInputA
   ret z
   ld a, $01
@@ -81,12 +81,12 @@ FortuneSpinnerUnload: ; f9fd (3:79fd), restores textbox
   jp $659c
 ; fa26
 
-FortuneGreatLuck EQU $00
-FortuneGoodLuck EQU $01
-FortuneSomeLuck EQU $02
-FortuneUncertain EQU $03
-FortuneBadLuck EQU $04
-FortuneDisaster EQU $05
+DEF   FortuneGreatLuck EQU $00
+DEF   FortuneGoodLuck EQU $01
+DEF   FortuneSomeLuck EQU $02
+DEF   FortuneUncertain EQU $03
+DEF   FortuneBadLuck EQU $04
+DEF   FortuneDisaster EQU $05
 SECTION "Fortune Spinner Disassembly 3", ROMX[$7ab6], BANK[$3]
 FortuneSpinnerLoadFortuneText: ; fab6 (3:7ab6)
   ld e, a

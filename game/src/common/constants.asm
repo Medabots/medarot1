@@ -1,129 +1,129 @@
 INCLUDE "build/buffer_constants.asm"
 
-hRegJoyp           EQU $ff00
-hRegSB             EQU $ff01
-hRegSC             EQU $ff02
-hRegIF             EQU $ff0f
-hRegNR10           EQU $ff10
-hRegNR11           EQU $ff11
-hRegNR12           EQU $ff12
-hRegNR13           EQU $ff13
-hRegNR14           EQU $ff14
-hRegNR21           EQU $ff16
-hRegNR22           EQU $ff17
-hRegNR23           EQU $ff18
-hRegNR24           EQU $ff19
-hRegNR30           EQU $ff1a
-hRegNR31           EQU $ff1b
-hRegNR32           EQU $ff1c
-hRegNR33           EQU $ff1d
-hRegNR34           EQU $ff1e
-hRegNR41           EQU $ff20
-hRegNR42           EQU $ff21
-hRegNR43           EQU $ff22
-hRegNR44           EQU $ff23
-hRegNR50           EQU $ff24
-hRegNR51           EQU $ff25
-hRegNR52           EQU $ff26
-hRegLCDC           EQU $ff40
-hLCDStat           EQU $ff41
-hRegSCY            EQU $ff42
-hRegSCX            EQU $ff43
-hRegLY             EQU $ff44
-hRegLYC            EQU $ff45
-hRegDMA            EQU $ff46
-hRegBGP            EQU $ff47
-hRegOBP0           EQU $ff48
-hRegOBP1           EQU $ff49
-hRegWY             EQU $ff4a
-hRegWX             EQU $ff4b
-hRegKEY1           EQU $ff4d
-hRegVBK            EQU $ff4f
-hRegRP             EQU $ff56
-hRegBGPI           EQU $ff68
-hRegBGPD           EQU $ff69
-hRegOBPI           EQU $ff6a
-hRegOBPD           EQU $ff6b
-hRegSVBK           EQU $ff70
-hRegIE             EQU $ffff
+DEF    hRegJoyp           EQU $ff00
+DEF    hRegSB             EQU $ff01
+DEF    hRegSC             EQU $ff02
+DEF    hRegIF             EQU $ff0f
+DEF    hRegNR10           EQU $ff10
+DEF    hRegNR11           EQU $ff11
+DEF    hRegNR12           EQU $ff12
+DEF    hRegNR13           EQU $ff13
+DEF    hRegNR14           EQU $ff14
+DEF    hRegNR21           EQU $ff16
+DEF    hRegNR22           EQU $ff17
+DEF    hRegNR23           EQU $ff18
+DEF    hRegNR24           EQU $ff19
+DEF    hRegNR30           EQU $ff1a
+DEF    hRegNR31           EQU $ff1b
+DEF    hRegNR32           EQU $ff1c
+DEF    hRegNR33           EQU $ff1d
+DEF    hRegNR34           EQU $ff1e
+DEF    hRegNR41           EQU $ff20
+DEF    hRegNR42           EQU $ff21
+DEF    hRegNR43           EQU $ff22
+DEF    hRegNR44           EQU $ff23
+DEF    hRegNR50           EQU $ff24
+DEF    hRegNR51           EQU $ff25
+DEF    hRegNR52           EQU $ff26
+DEF    hRegLCDC           EQU $ff40
+DEF    hLCDStat           EQU $ff41
+DEF    hRegSCY            EQU $ff42
+DEF    hRegSCX            EQU $ff43
+DEF    hRegLY             EQU $ff44
+DEF    hRegLYC            EQU $ff45
+DEF    hRegDMA            EQU $ff46
+DEF    hRegBGP            EQU $ff47
+DEF    hRegOBP0           EQU $ff48
+DEF    hRegOBP1           EQU $ff49
+DEF    hRegWY             EQU $ff4a
+DEF    hRegWX             EQU $ff4b
+DEF    hRegKEY1           EQU $ff4d
+DEF    hRegVBK            EQU $ff4f
+DEF    hRegRP             EQU $ff56
+DEF    hRegBGPI           EQU $ff68
+DEF    hRegBGPD           EQU $ff69
+DEF    hRegOBPI           EQU $ff6a
+DEF    hRegOBPD           EQU $ff6b
+DEF    hRegSVBK           EQU $ff70
+DEF    hRegIE             EQU $ffff
 
-hPushOAM           EQU $ff80
+DEF    hPushOAM           EQU $ff80
 
-hBuffer            EQU $ff8b
+DEF    hBuffer            EQU $ff8b
 
-hRTCDayHi          EQU $ff8d
-hRTCDayLo          EQU $ff8e
-hRTCHours          EQU $ff8f
-hRTCMinutes        EQU $ff90
-hRTCSeconds        EQU $ff91
+DEF    hRTCDayHi          EQU $ff8d
+DEF    hRTCDayLo          EQU $ff8e
+DEF    hRTCHours          EQU $ff8f
+DEF    hRTCMinutes        EQU $ff90
+DEF    hRTCSeconds        EQU $ff91
 
-hHours             EQU $ff94
+DEF    hHours             EQU $ff94
 
-hMinutes           EQU $ff96
+DEF    hMinutes           EQU $ff96
 
-hSeconds           EQU $ff98
+DEF    hSeconds           EQU $ff98
 
-hROMBank           EQU $ff9d
+DEF    hROMBank           EQU $ff9d
 
-hJoypadReleased    EQU $ffa2
-hJoypadPressed     EQU $ffa3
-hJoypadDown        EQU $ffa4
-hJoypadSum         EQU $ffa5
-hJoyReleased       EQU $ffa6
-hJoyPressed        EQU $ffa7
-hJoyDown           EQU $ffa8
+DEF    hJoypadReleased    EQU $ffa2
+DEF    hJoypadPressed     EQU $ffa3
+DEF    hJoypadDown        EQU $ffa4
+DEF    hJoypadSum         EQU $ffa5
+DEF    hJoyReleased       EQU $ffa6
+DEF    hJoyPressed        EQU $ffa7
+DEF    hJoyDown           EQU $ffa8
 
-hPastLeadingZeroes EQU $ffb3
+DEF    hPastLeadingZeroes EQU $ffb3
 
-hDividend          EQU $ffb3
-hDivisor           EQU $ffb7
-hQuotient          EQU $ffb4
+DEF    hDividend          EQU $ffb3
+DEF    hDivisor           EQU $ffb7
+DEF    hQuotient          EQU $ffb4
 
-hMultiplicand      EQU $ffb4
-hMultiplier        EQU $ffb7
-hProduct           EQU $ffb3
+DEF    hMultiplicand      EQU $ffb4
+DEF    hMultiplier        EQU $ffb7
+DEF    hProduct           EQU $ffb3
 
-hMathBuffer        EQU $ffb8
+DEF    hMathBuffer        EQU $ffb8
 
-hLCDStatCustom     EQU $ffc6
+DEF    hLCDStatCustom     EQU $ffc6
 
-hBGMapMode         EQU $ffd4
-hBGMapThird        EQU $ffd5
-hBGMapAddress      EQU $ffd6
+DEF    hBGMapMode         EQU $ffd4
+DEF    hBGMapThird        EQU $ffd5
+DEF    hBGMapAddress      EQU $ffd6
 
-hOAMUpdate         EQU $ffd8
-hSPBuffer          EQU $ffd9
+DEF    hOAMUpdate         EQU $ffd8
+DEF    hSPBuffer          EQU $ffd9
 
-hBGMapUpdate       EQU $ffdb
+DEF    hBGMapUpdate       EQU $ffdb
 
-hTileAnimFrame     EQU $ffdf
+DEF    hTileAnimFrame     EQU $ffdf
 
-hRandomAdd         EQU $ffe1
-hRandomSub         EQU $ffe2
+DEF    hRandomAdd         EQU $ffe1
+DEF    hRandomSub         EQU $ffe2
 
-hBattleTurn        EQU $ffe4
-hCGBPalUpdate      EQU $ffe5
-hCGB               EQU $ffe6
-hSGB               EQU $ffe7
-hDMATransfer       EQU $ffe8
+DEF    hBattleTurn        EQU $ffe4
+DEF    hCGBPalUpdate      EQU $ffe5
+DEF    hCGB               EQU $ffe6
+DEF    hSGB               EQU $ffe7
+DEF    hDMATransfer       EQU $ffe8
 
-hSaveA             EQU $FF90
-hBank              EQU $FF91
+DEF    hSaveA             EQU $FF90
+DEF    hBank              EQU $FF91
 
 ; Joypad
-hJPInputHeldDown   EQU $ff8c
-hJPInputChanged    EQU $ff8d
+DEF    hJPInputHeldDown   EQU $ff8c
+DEF    hJPInputChanged    EQU $ff8d
 
-hJPInputA          EQU $1
-hJPInputB          EQU $2
-hJPInputSelect     EQU $4
-hJPInputStart      EQU $8
-hJPInputRight      EQU $10
-hJPInputLeft       EQU $20
-hJPInputUp         EQU $40
-hJPInputDown       EQU $80
+DEF    hJPInputA          EQU $1
+DEF    hJPInputB          EQU $2
+DEF    hJPInputSelect     EQU $4
+DEF    hJPInputStart      EQU $8
+DEF    hJPInputRight      EQU $10
+DEF    hJPInputLeft       EQU $20
+DEF    hJPInputUp         EQU $40
+DEF    hJPInputDown       EQU $80
 
 ; For SGB Tilemaps.
-P4 EQU $1000
-P5 EQU $1400
-P6 EQU $1800
+DEF    P4 EQU $1000
+DEF    P5 EQU $1400
+DEF    P6 EQU $1800

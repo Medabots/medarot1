@@ -1,38 +1,38 @@
 ; macro for putting a byte then a word
-dbw: MACRO
+MACRO dbw
   db \1
   dw \2
   ENDM
 
 ; macro for putting a word then a byte
-dwb: MACRO
+MACRO dwb
   dw \1
   db \2
   ENDM
 
-dbww: MACRO
+MACRO dbww
   db \1
   dw \2
   dw \3
   ENDM
 
-psbc: MACRO
+MACRO psbc
   ld bc, (((\2&$FF)*$100)+((((\1-$20)>>1)&$F0)+((\1-1)&$F)))
   ENDM
 
-pshl: MACRO
+MACRO pshl
   ld hl, (((\2&$FF)*$100)+((((\1-$20)>>1)&$F0)+((\1-1)&$F)))
   ENDM
 
-psa: MACRO
+MACRO psa
   ld a, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
   ENDM
 
-psc: MACRO
+MACRO psc
   ld c, ((((\1-$20)>>1)&$F0)+((\1-1)&$F))
   ENDM
   
-atfline: MACRO
+MACRO atfline
   db ((((\1 % 10000) / 1000) % 4) << 6) + ((((\1 % 1000) / 100) % 4) << 4) + ((((\1 % 100) / 10) % 4) << 2) + ((\1 % 10) % 4)
   db ((((\2 % 10000) / 1000) % 4) << 6) + ((((\2 % 1000) / 100) % 4) << 4) + ((((\2 % 100) / 10) % 4) << 2) + ((\2 % 10) % 4)
   db ((((\3 % 10000) / 1000) % 4) << 6) + ((((\3 % 1000) / 100) % 4) << 4) + ((((\3 % 100) / 10) % 4) << 2) + ((\3 % 10) % 4)
@@ -40,14 +40,14 @@ atfline: MACRO
   db ((((\5 % 10000) / 1000) % 4) << 6) + ((((\5 % 1000) / 100) % 4) << 4) + ((((\5 % 100) / 10) % 4) << 2) + ((\5 % 10) % 4)
   ENDM
 
-Load1BPPTilesetLocal: MACRO
+MACRO Load1BPPTilesetLocal
   ld hl, \1
   ld de, \2
   ld b, (\3 - \2) / $8
   call Load1BPPTiles
   ENDM
 
-Load1BPPTileset: MACRO
+MACRO Load1BPPTileset
   ld hl, \1
   ld de, \2
   ld b, (\3 - \2) / $8

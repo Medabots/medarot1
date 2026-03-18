@@ -75,7 +75,7 @@ PutChar:
   ld a, b
   and $f
   ld b, a
-  add hl, bc ;Pointers to text in each of the banks now also have the bank offset, so instead of logical shifts just add it 3 times 
+  add hl, bc ;Pointers to text in each of the banks now also have the bank offset, so instead of logical shifts just add it 3 times
   add hl, bc
   add hl, bc
   ld a,[hli] ;To have more room for text, change the pointer table to include banks ({Bank:1, Address:2 (LE)})
@@ -84,7 +84,7 @@ PutChar:
   pop af
   ld [VWFTrackBank], a
   rst $10
-  
+
 PutCharLoop: ;1d11, things jump to here after the control code
   push hl
   ld a, $1 ; GetTextOffset
@@ -110,7 +110,7 @@ PutCharLoop: ;1d11, things jump to here after the control code
   ; Switch to the bank where the vwf font is located.
   ld a, BANK(VWFFont)
   rst $10
-  
+
   ; From here on out there is no reason for us to operate in bank 0 until the next character is required.
   jp VWFDrawCharLoop
 
@@ -125,12 +125,12 @@ PutCharLoopWithBankSwitch::
   nop
   nop
 
-hPSCounter             EQU $c640
-hPSTextAddrLo          EQU $c641
-hPSVRAMAddrHi          EQU $c642
-hPSVRAMAddrLo          EQU $c643
-hPSCurrChar            EQU $c64e
-hPSCurrCharTile        EQU $c64f
+DEF    hPSCounter             EQU $c640
+DEF    hPSTextAddrLo          EQU $c641
+DEF    hPSVRAMAddrHi          EQU $c642
+DEF    hPSVRAMAddrLo          EQU $c643
+DEF    hPSCurrChar            EQU $c64e
+DEF    hPSCurrCharTile        EQU $c64f
 SECTION "PutString", ROM0[$2fcf]
 PutString:: ; 2fcf
   ; hl is ptr to string to print, terminated by 0x50
@@ -153,7 +153,7 @@ PutString:: ; 2fcf
   push hl ; Save current text addr
   push bc ; Save current VRAM addr
   push bc ; hl = bc
-  pop hl 
+  pop hl
   ld bc, $ffe0
   add hl, bc
   di

@@ -111,7 +111,7 @@ MedarotScreenSetupSetupMedarots: ; a968 (2:6968)
   ret z
   jp MenuIncrementStateSubIndex
 
-MedarotSelectStateIndex   EQU $c740
+DEF    MedarotSelectStateIndex   EQU $c740
 SECTION "Medarot Screen State Machine - Setup Medarot Select", ROMX[$7815], BANK[$2]
 MedarotScreenSetupMedarotSelect::
   xor a

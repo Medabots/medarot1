@@ -134,7 +134,7 @@ LinkRobattleStateInitialize:
   ld [$c750], a
   ld [$da42], a
   ld a, $02
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp JumpIncSubStateIndexWrapper
 
 LinkRobattleSubStateDoSomething: ; not sure what this does exaclty
@@ -147,7 +147,7 @@ LinkRobattleSubStateDoSomething: ; not sure what this does exaclty
   ld a, $08
   ld [$c72d], a
   ld a, $21
-  ld [$ffa0], a
+  ldh [$ffa0], a
   jp JumpIncSubStateIndexWrapper
 
 LinkRobattleSubStateInitialize:
@@ -923,7 +923,7 @@ LinkPostRobattleLoadPartNameForRoulette: ; 1d8b3 (7:58b3)
 SECTION "Post-Robattle Screen - Partial Disassembly 3", ROMX[$4cd2], BANK[$7]
 Func_1ccd2: ; 1ccd2 (7:4cd2)
   ld a, $19
-  ld [$ffa0], a
+  ldh [$ffa0], a
   ld a, [$c78c]
   call JumpTable_38d
   ld a, [$c78c]
